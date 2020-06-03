@@ -105,8 +105,12 @@
       "description": "Required for Correct Time for autopic get from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
       "value": "",
       "required": false
-    }
-  },
+    },
+    "REM_BG_API_KEY": {
+            "description": "RemoveBg API Key get it from https://www.remove.bg/api",
+            "required": false
+    },
+ },
   "addons": [{
     "plan": "heroku-postgresql",
     "options": {
