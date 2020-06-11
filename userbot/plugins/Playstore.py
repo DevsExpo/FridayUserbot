@@ -17,9 +17,9 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 
-@borg.on(events.NewMessage(pattern='.play (.*)'))
+@borg.on(events.NewMessage(pattern='.app (.*)'))
 
-@borg.on(events.MessageEdited(pattern='.play (.*)'))
+@borg.on(events.MessageEdited(pattern='.app (.*)'))
 
 async def apk(e):
     try:
