@@ -99,7 +99,7 @@ def paginate_help(page_number, loaded_plugins, prefix):
         if not p.startswith("_"):
             helpable_plugins.append(p)
     helpable_plugins = sorted(helpable_plugins)
-    modules = [custom.Button.inline(
+    modules = [custom.Button.inline)
         "{} {} {}".format ("⚡", x , "⚡"),
         data="us_plugin_{}".format(x))
         for x in helpable_plugins]
