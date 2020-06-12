@@ -15,7 +15,6 @@ For any query or want to know how it works join 👇
 
 I THANK INFOTEL FOR THIER FREE VIDEO SERVICE WATCH VIDEO ON HOW TO DEPLOY ♥️
 
-<a href="https://youtu.be/xfHcm_e92eQ"><img src="https://telegra.ph/file/9ac774b59c57b7b3a0c89.png?logo=youtube"></a>
 
 ## Installing Heroku 
 
