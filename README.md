@@ -1,7 +1,6 @@
 # FRIDAY
 
-<p align="center">
-<img src="Logo.jpeg" alt="NGYNY">
+
 
 Best User Bot To Manage Your Telegram Account 😉
 ## Most PowerFul And Better And Secure !
