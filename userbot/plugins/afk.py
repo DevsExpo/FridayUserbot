@@ -121,7 +121,7 @@ async def on_afk(event):
             else:
                 afk_since = f"`{int(seconds)}s` **ago**"
         msg = None
-        message_to_reply = f"My Master Has Been Gone For {afk_since}\nWhere He Is: **Only God Knows** " + \
+        message_to_reply = f"My Master Has Been Gone For {afk_since}\nWhere He Is: **No One Knows** " + \
             f"\n\n__ I'll back in a few Light years__\n**REASON**: {reason}" \
             if reason \
             else f"**Important Notice**\n\n[I am not here... Wait for my reply and be patient. Stay Home Stay Safe!] "
