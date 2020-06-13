@@ -82,7 +82,7 @@ async def _(event):
             "👁👁\n  💋  =====> Ayush Emma Stone Pankha",
             "👁👁\n  👄  =====> Abey Ja Na Rendi",
             "👁👁\n  👅  =====> Abey Ja Na Bhai Bsdk",    
-            "👁👁\n  💋  =====> Abey Ja Na Chutiye",
+            "👁👁\n  💋  =====> Ayush Bhai Majak Hai",
             "👁👁\n  👄  =====> Hi Ayush, How Are You feeling now?"
         ]
 
