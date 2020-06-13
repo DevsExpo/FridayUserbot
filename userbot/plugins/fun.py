@@ -29,17 +29,13 @@ RAPE_STRINGS = [
      "`Dekho Bhaiyya esa hai! Izzat bachailo apni warna Gaand maar lenge tumhari`",
      "`Relax your Rear, ders nothing to fear,The Rape train is finally here`",
      "`Rape coming... Raped! haha 😆`",
-     "`Lodu Andha hai kya Yaha tera rape ho raha hai aur tu abhi tak yahi gaand mara raha hai lulz`",
+     "`Andha hai kya Yaha tera rape ho raha hai aur tu abhi tak yahi gend mara raha hai lulz`",
 ] 
 ABUSE_STRINGS = [
-       "`Madharchod`",
-	   "`Gaandu`",
+       	   "`Gendu`",
 	   "`Chutiya he rah jaye ga`",
-	   "`Ja be Gaandu`",
-	   "`Ma ka Bhodsa madharchod`",
-	   "`mml`",
-	   "`You MotherFukcer`",
-	   "`Muh Me Lega Bhosdike ?`"
+	   "`Ja be Gendu`",
+	   "`Muh Me Lega Bhai Bsdk ?`"
 ]
 GEY_STRINGS = [
      "`you gey bsdk`",
