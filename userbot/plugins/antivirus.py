@@ -19,15 +19,15 @@ async def _(event):
     if not reply_message.media:
        await event.edit("```reply to a media message```")
        return
-    chat = "@DrWebBot"
+    chat = "@VS_Robot"
     sender = reply_message.sender
     if reply_message.sender.bot:
        await event.edit("```Reply to actual users message.```")
        return
-    await event.edit(" **This is CipherX Exclusive Antivirus** `still let me check this thing.`")
+    await event.edit(" **This is CipherX Exclusive Antivirus** `still let me check this file.`")
     async with borg.conversation(chat) as conv:
           try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=161163358))
+              response = conv.wait_event(events.NewMessage(incoming=True,from_users=299969270))
               await borg.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
@@ -37,6 +37,6 @@ async def _(event):
              await event.edit("```can you kindly disable your forward privacy settings for good?```")
           else:
           	if response.text.startswith("Select"):
-          		await event.edit("`Please go to` @DrWebBot `and select your language.`") 
+          		await event.edit("`Please go to` @VS_Robot `and select your language.`") 
           	else: 
-          			await event.edit(f"`Antivirus scan was completed.`\n**covid19 will end with the end of April-2020 from the globe.**\n`YAH, I got dem final results.`\n {response.message.message}")
+          			await event.edit(f"`Antivirus scan was completed.`\n**This is CipherX Exclusive Antivirus**\n`YAH, I got dem final results.`\n {response.message.message}")
