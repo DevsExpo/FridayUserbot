@@ -1,9 +1,12 @@
 # Lots of lub to @r4v4n4 for gibing the base <3
+""" cmd is .scan """
+
+import os
 import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from userbot.utils import admin_cmd,register
+from uniborg.util import admin_cmd
 
 @borg.on(admin_cmd("scan ?(.*)"))
 async def _(event):
@@ -21,7 +24,7 @@ async def _(event):
     if reply_message.sender.bot:
        await event.edit("```Reply to actual users message.```")
        return
-    await event.edit(" `Sliding my tip, of fingers over it`")
+    await event.edit(" **This is CipherX Exclusive Antivirus** `still let me check this thing.`")
     async with borg.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=161163358))
@@ -36,4 +39,4 @@ async def _(event):
           	if response.text.startswith("Select"):
           		await event.edit("`Please go to` @DrWebBot `and select your language.`") 
           	else: 
-          			await event.edit(f"**Antivirus scan was completed. I got dem final results.**\n {response.message.message}")
+          			await event.edit(f"`Antivirus scan was completed.`\n**covid19 will end with the end of April-2020 from the globe.**\n`YAH, I got dem final results.`\n {response.message.message}")
