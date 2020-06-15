@@ -36,6 +36,7 @@ import os
 import sys
 import time
 from collections import deque
+from userbot.utils import admin_cmd
 
 @borg.on(events.NewMessage(pattern=r"\.slash", outgoing=True))
 async def kek(keks):
