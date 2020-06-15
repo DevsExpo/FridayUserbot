@@ -3,7 +3,6 @@ import asyncio
 import json
 import random
 import re
-from userbot.util import admin_cmd
 from telethon import events, errors, custom, functions, __version__
 from userbot import CMD_LIST
 import io
