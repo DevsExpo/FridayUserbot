@@ -16,7 +16,7 @@ async def amireallyalive(alive):
     await alive.edit("**MY STATUS** \n`FRIDAY IS:` **✅ Alive**\n\n"
                      "`TELETHON VERSION:` **6.0.9**\n`Python:` **3.7.4**\n"
                      "`DATABASE STATUS:` **ALL NORMAL! WORKING FINE 🙂**\n`NO PROBLEM FOUND🔥!\n`"
-                     "`F.R.I.D.A.Y VERSION`: [2.0 FRIDAY OS](https://telegra.ph/FRIDAY-06-15)\n"
+                     "F.R.I.D.A.Y VERSION: [2.0 FRIDAY OS](https://telegra.ph/FRIDAY-06-15)\n"
                      f"`MY BOSS`: {DEFAULTUSER}\n\n"
                      "ALWAYS WITH YOU MY BOSS\n\n"
                      "[⚡DEPLOY FRIDAY⚡](https://github.com/StarkGang/FRIDAYUserbot)") 
