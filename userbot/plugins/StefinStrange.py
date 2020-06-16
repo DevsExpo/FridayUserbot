@@ -59,7 +59,7 @@ COLLECTION_STRINGZ = [
   
 ]
 
-  
+
 
 async def animepp():
 
@@ -85,7 +85,7 @@ async def animepp():
 
     urllib.request.urlretrieve(fy,"donottouch.jpg")
 
-@borg.on(admin_cmd(pattern="gamerdp ?(.*)"))
+@borg.on(admin_cmd(pattern="wallpaper ?(.*)"))
 
 async def main(event):
 
