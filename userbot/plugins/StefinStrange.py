@@ -85,7 +85,7 @@ async def animepp():
 
     urllib.request.urlretrieve(fy,"donottouch.jpg")
 
-@borg.on(admin_cmd(pattern="wallpaper ?(.*)"))
+@borg.on(admin_cmd(pattern="wallpaperdp ?(.*)"))
 
 async def main(event):
 
