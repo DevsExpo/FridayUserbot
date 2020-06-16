@@ -16,17 +16,50 @@ from time import sleep
 
 COLLECTION_STRINGZ = [
 
-  "star-wars-wallpaper-1080p",
+  "4K Deadpool Wallpaper",
 
-  "4k-sci-fi-wallpaper",
+  "Batman HD Wallpapers 1080p", 
 
-  "star-wars-iphone-6-wallpaper",
+  "The Flash 4K Wallpaper", 
 
-  "kylo-ren-wallpaper",
+  "Deathstroke Wallpapers HD", 
 
-  "darth-vader-wallpaper"
-
+  "Joker iPhone 6 Wallpaper", 
+  
+  "Green Lantern Logo Wallpaper", 
+  
+  "Batman Christmas Wallpaper", 
+  
+  "Funny Deadpool Wallpapers", 
+  
+  "The Riddler Wallpaper HD",
+  
+  "Batman Symbol Wallpaper HD", 
+  
+  "Cw Flash iPhone Wallpaper", 
+  
+  "DC Raven Wallpaper", 
+  
+  "Swamp Thing Wallpaper", 
+  
+  "Superman HD Wallpapers 1080p", 
+  
+  "New 52 Batman Wallpaper", 
+  
+  "Avengers HD Wallpapers 1080p", 
+  
+  "Green Arrow Wallpaper HD", 
+  
+  "Agents of Shield Wallpaper", 
+  
+  "DC Comics HD Wallpaper", 
+  
+  "Joker Harley Quinn Wallpaper", 
+  
+  
 ]
+
+  
 
 async def animepp():
 
