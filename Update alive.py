@@ -40,7 +40,7 @@ async def amireallyalive(alive):
 
                      "`BASED ON:` UNIBORG\n"
 
-                     "`SATELLITE:` 💜 NGY 💜\n"
+                     "`SATELLITE:` 💜 NGYUSER 💜\n"
 
                      "`MADE USING:` PYTHON\n"
 
