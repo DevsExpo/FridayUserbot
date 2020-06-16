@@ -22,11 +22,11 @@ async def amireallyalive(alive):
 
     """ For .alive command, check if the bot is running.  """
 
-    await alive.edit("**MY STATUS** \n`NGY IS:` **✅ Alive**\n\n"
+    await alive.edit("**MY STATUS** \n`FRIDAY IS:` **✅ Alive**\n\n"
 
                      "`TELETHON VERSION:` **6.0.9**\n`Python:` **3.7.4**\n"
 
-                     "`DATABASE STATUS:` **ALL NORMAL! WORKING FINE 🙂**\n\n`NO PROBLEM FOUND🔥!\n`"
+                     "`DATABASE STATUS:` **ALL NORMAL! WORKING FINE 🙂**\n`NO PROBLEM FOUND🔥!\n`"
 
                      "`CONNECTION PROVIDER:` ** AMAZON WEB SERVICES\n"
 
@@ -40,15 +40,12 @@ async def amireallyalive(alive):
 
                      "`BASED ON:` UNIBORG\n"
 
-                     "`SATELLITE:` 💜 NGYUSER 💜\n"
+                     "`SATELLITE:` ⚡STARK SAT-2⚡\n"
 
                      "`MADE USING:` PYTHON\n"
 
-                     f"`MY BOSS`: @NGYNY\n\n"
+                     f"`MY BOSS`: {DEFAULTUSER}\n\n"
 
                      "ALWAYS WITH YOU MY BOSS\n\n"
 
                      "`SATELLITE STATUS: ✅ Alive\n\n"
-
-                      
-
