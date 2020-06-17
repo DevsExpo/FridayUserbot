@@ -16,52 +16,80 @@ from time import sleep
 
 COLLECTION_STRINGZ = [
 
-  "4K Deadpool Wallpaper",
+  "http://getwallpapers.com/collection/batman-hd-wallpapers-1080p", 
 
-  "Batman HD Wallpapers 1080p", 
+  "http://getwallpapers.com/collection/the-flash-4k-wallpaper", 
 
-  "The Flash 4K Wallpaper", 
+  "http://getwallpapers.com/collection/4k-deadpool-wallpaper", 
+  
+  "http://getwallpapers.com/collection/deathstroke-wallpapers-hd", 
+  
+  "http://getwallpapers.com/collection/joker-iphone-6-wallpaper", 
 
-  "Deathstroke Wallpapers HD", 
+  "http://getwallpapers.com/collection/green-lantern-logo-wallpaper", 
+  
+  "http://getwallpapers.com/collection/batman-christmas-wallpaper", 
 
-  "Joker iPhone 6 Wallpaper", 
-  
-  "Green Lantern Logo Wallpaper", 
-  
-  "Batman Christmas Wallpaper", 
-  
-  "Funny Deadpool Wallpapers", 
-  
-  "The Riddler Wallpaper HD",
-  
-  "Batman Symbol Wallpaper HD", 
-  
-  "Cw Flash iPhone Wallpaper", 
-  
-  "DC Raven Wallpaper", 
-  
-  "Swamp Thing Wallpaper", 
-  
-  "Superman HD Wallpapers 1080p", 
-  
-  "New 52 Batman Wallpaper", 
-  
-  "Avengers HD Wallpapers 1080p", 
-  
-  "Green Arrow Wallpaper HD", 
-  
-  "Agents of Shield Wallpaper", 
-  
-  "DC Comics HD Wallpaper", 
-  
-  "Joker Harley Quinn Wallpaper", 
-  
-  
-]
+  "http://getwallpapers.com/collection/attack-on-titan-iphone-wallpaper", 
 
+  "http://getwallpapers.com/collection/silver-surfer-wallpaper-hd", 
 
+  "http://getwallpapers.com/collection/anti-venom-wallpaper", 
 
-async def animepp():
+  "http://getwallpapers.com/collection/green-lantern-logo-wallpaper", 
+
+  "http://getwallpapers.com/collection/batman-christmas-wallpaper", 
+
+  "http://getwallpapers.com/collection/attack-on-titan-iphone-wallpaper", 
+
+  "http://getwallpapers.com/collection/funny-deadpool-wallpapers", 
+
+  "http://getwallpapers.com/collection/the-riddler-wallpaper-hd", 
+
+  "http://getwallpapers.com/collection/batman-symbol-wallpaper-hd", 
+
+  "http://getwallpapers.com/collection/sasuke-uchiha-hd-wallpaper", 
+
+  "http://getwallpapers.com/collection/cw-flash-iphone-wallpaper", 
+
+  "http://getwallpapers.com/collection/dc-raven-wallpaper", 
+
+  "http://getwallpapers.com/collection/swamp-thing-wallpaper", 
+
+  "http://getwallpapers.com/collection/superman-hd-wallpapers-1080p", 
+
+  "http://getwallpapers.com/collection/dragon-pokemon-wallpapers", 
+
+  "http://getwallpapers.com/collection/new-52-batman-wallpaper", 
+  
+  "http://getwallpapers.com/collection/avengers-hd-wallpapers-1080p", 
+  
+  "http://getwallpapers.com/collection/green-arrow-wallpaper-hd", 
+  
+  "http://getwallpapers.com/collection/agents-of-shield-wallpaper", 
+ 
+  "http://getwallpapers.com/collection/dc-comics-hd-wallpaper", 
+  
+  "http://getwallpapers.com/collection/green-arrow-wallpaper-1920x1080", 
+  
+  "http://getwallpapers.com/collection/pokemon-super-mystery-dungeon-wallpaper", 
+  
+  "http://getwallpapers.com/collection/original-pokemon-wallpaper", 
+  
+  "http://getwallpapers.com/collection/batman-wallpaper-and-screensaver", 
+  
+  "http://getwallpapers.com/collection/spider-man-2099-hd-wallpaper", 
+  
+  "http://getwallpapers.com/collection/joker-harley-quinn-wallpaper", 
+  
+  "http://getwallpapers.com/collection/minimalist-marvel-wallpaper", 
+  
+  "http://getwallpapers.com/collection/darkseid-hd-wallpaper", 
+  
+  "http://getwallpapers.com/collection/thanos-wallpaper-hd", 
+  
+  ]
+  async def animepp():
 
     os.system("rm -rf donot.jpg")
 
