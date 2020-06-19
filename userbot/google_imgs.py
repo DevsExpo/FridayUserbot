@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # In[ ]:
 #  coding: utf-8
+
 ###### Searching and Downloading Google Images to the local disk ######
 
 # Import Libraries
@@ -748,7 +749,7 @@ class googleimagesdownload:
         start_object = s.find('[', start_line + 1)
         end_object = s.find('</script>', start_object + 1) - 4
         object_raw = str(s[start_object:end_object])
-        object_decode = bytes(object_raw, "utf-8").decode("unicode_escape")
+        object_decode = bytes(object_raw[:-1], "utf-8").decode("unicode_escape")
         image_objects = json.loads(object_decode)[31][0][12][2]
         return image_objects
 
