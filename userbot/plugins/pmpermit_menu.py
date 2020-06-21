@@ -34,9 +34,9 @@ async def _(event):
                "**Choose one of the following reasons why you are here:**\n\n"
                "`1`. To chat with my master\n"
                "`2`. To Give Your Girl Friend Details.\n"
-
-               "`3`. To enquire something\n"
-               "`4`. To request something\n")
+               "`3`. To Send nudes\n"
+               "`4`. To enquire something\n"
+               "`5`. To request something\n")
          ONE = ("__Okay. Your request has been registered. Do not spam my master's inbox.You can expect a reply within 24 light years. He is a busy man, unlike you probably.__\n\n"
                 "**⚠️ You will be blocked and reported if you spam nibba. ⚠️**\n\n"
                 "__Use__ `/start` __to go back to the main menu.__")
