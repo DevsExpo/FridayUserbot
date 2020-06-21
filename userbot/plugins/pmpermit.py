@@ -16,11 +16,11 @@ REDIRECTCHANNELS = str(REDIRECTCHANNEL)
 USER_BOT_WARN_ZERO = "`You were spamming my peru master's inbox, henceforth your retarded lame ass has been blocked by my master's userbot.` "
 USER_BOT_NO_WARN = ("    ╭━━━━━━━╮ \n┃       ● ══    ┃ \n┃███████┃ \n┃███████┃ \n┃███████┃ \n┃███████┃ \n┃███████┃ \n┃███████┃ \n┃███████┃ \n┃███████┃ \n┃        🄾        ┃ \n╰━━━━━━━╯\n\n" 
                     "`Hello ! This is` **CipherX**\n"
-                    "`Private Messaging Security Protocol ⚠️`\n\n"
+                    "`Private Messaging Security Protocol`\n\n"
                     "**You Have Trespassed To My Boss\n"
                     f"{DEFAULTUSER}'s Inbox**\n\n"
                     "**You Better Go To My Master's Channel And Read His info**\n"
-                    f"{REDIRECTCHANNELS} 🔥 \n"
+                    f"{REDIRECTCHANNELS} \n"
                     "**This is Illegal And Regarded As A Crime ☣️**"
                     "**Now You Are In Trouble So Send** 🔥 `/start` 🔥  **To Start A Valid Conversation!!**")
 
