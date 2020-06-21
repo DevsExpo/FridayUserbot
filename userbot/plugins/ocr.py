@@ -115,7 +115,7 @@ async def parse_ocr_space_api(event):
         ParsedText = test_file["ParsedResults"][0]["ParsedText"]
         ProcessingTimeInMilliseconds = str(int(test_file["ProcessingTimeInMilliseconds"]) // 1000)
     except Exception as e:
-        await event.edit("Errors.\n `{}`\nReport This to @UniBorg\n\n`{}`".format(str(e), json.dumps(test_file, sort_keys=True, indent=4)))
+        await event.edit("Errors.\n `{}`\nReport This to CipherX\n\n`{}`".format(str(e), json.dumps(test_file, sort_keys=True, indent=4)))
     else:
         await event.edit("Read Document in {} seconds. \n{}".format(ProcessingTimeInMilliseconds, ParsedText))
     os.remove(downloaded_file_name)
