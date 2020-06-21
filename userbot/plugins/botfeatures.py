@@ -1,9 +1,12 @@
 import asyncio
 import datetime
+import asyncio
 from telethon import events
-from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.errors.rpcerrorlist import YouBlockedUserError, UserAlreadyParticipantError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from uniborg.util import admin_cmd
+from userbot import CMD_HELP
+
 
 @borg.on(admin_cmd(pattern="purl ?(.*)", allow_sudo=True))
 async def _(event):
@@ -76,16 +79,33 @@ async def _(event):
               return
           await event.delete()
           await event.client.send_message(event.chat_id, response.message, reply_to=reply_message)
-
-
-@borg.on(admin_cmd(pattern="connecter ?(.*)", allow_sudo=True))
+        
+        
+@borg.on(admin_cmd(pattern="ad ?(.*)"))
 async def _(event):
-  if event.fwd_from:
-    return
-  if event.is_private:
-    return
-  chat_id = event.chat_id
-  await event.client.send_message('missrose_bot', '/connect {}'.format(chat_id))
-  await event.edit("[Connected](https://t.me/missrose_bot)")
-  await asyncio.sleep(3)
-  await event.delete()
+    if event.fwd_from:
+        return 
+    if not event.reply_to_msg_id:
+       await event.edit("```Reply to any user message.```")
+       return
+    reply_message = await event.get_reply_message() 
+    if not reply_message.media:
+       await event.edit("```reply to media message```")
+       return
+    chat = "@audiotubebot"
+    sender = reply_message.sender
+    if reply_message.sender.bot:
+       await event.edit("```Reply to actual users message.```")
+       return
+    await event.edit("```Processing```")
+    async with borg.conversation(chat) as conv:
+          try:     
+              response = conv.wait_event(events.NewMessage(incoming=True,from_users=507379365))
+              await borg.send_message(chat, reply_message)
+              response = await response 
+          except YouBlockedUserError: 
+              await event.reply("```Please unblock @AudioTubeBot and try again```")
+              return
+          await event.delete()
+          await borg.send_file(event.chat_id, response.message.media)
+
