@@ -19,7 +19,7 @@ async def _(event):
     if not reply_message.media:
        await event.edit("```reply to a media message```")
        return
-    chat = "@VS_Robot"
+    chat = "@DrWebBot"
     sender = reply_message.sender
     if reply_message.sender.bot:
        await event.edit("```Reply to actual users message.```")
@@ -27,7 +27,7 @@ async def _(event):
     await event.edit(" **This is CipherX Exclusive Antivirus** `still let me check this file.`")
     async with borg.conversation(chat) as conv:
           try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=299969270))
+              response = conv.wait_event(events.NewMessage(incoming=True,from_users=161163358))
               await borg.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
