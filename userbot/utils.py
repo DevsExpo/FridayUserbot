@@ -7,7 +7,6 @@ from userbot import LOAD_PLUG
 from userbot import CMD_LIST
 import re
 import logging
-import time
 import inspect
 
 def command(**args):
@@ -253,7 +252,7 @@ def errors_handler(func):
 
             text = "**USERBOT CRASH REPORT**\n\n"
 
-            link = "[here](https://t.me/IndianArMyGiveaway)"
+            link = "[Here](https://t.me/FridayOT)"
             text += "If you wanna you can report it"
             text += f"- just forward this message {link}.\n"
             text += "Nothing is logged except the fact of error and date\n"
@@ -354,4 +353,3 @@ class Loader():
     def __init__(self, func=None, **args):
         self.Var = Var
         bot.add_event_handler(func, events.NewMessage(**args))
-
