@@ -1,7 +1,7 @@
 {
   "name": "FRIDAY",
   "description": "Userbot created by a @Mariodevs and join https://t.me/fridaySupportOfficial for any problems or support",
-  "logo": "https://telegra.ph/file/399567fd5e92fdcd433ad.jpg",
+  "logo": "https://telegra.ph/file/c3ba2e9b965f624936358.png",
     "keywords": [
     "telegram",
     "userbot",
@@ -20,6 +20,11 @@
     "TEMP_DOWNLOAD_DIRECTORY": {
       "description": "Where downloaded files will go.",
       "value": "./userbot/DOWNLOADS/",
+      "required": false
+    },
+    "CUSTOM_PMPERMIT": {
+      "description": "Enter Custom Middle Pm Permit To Show When Some One PM You.",
+      "value": "",
       "required": false
     },
     "ALIVE_NAME": {
@@ -113,11 +118,6 @@
     },
     "TZ": {
       "description": "Required for Correct Time for autopic get from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
-      "value": "",
-      "required": false
-    },
-    "REDIRECTCHANNEL": {
-      "description": "Put You Channel Username Reflecting Your Info or Your Tags Etc",
       "value": "",
       "required": false
     }
