@@ -19,7 +19,7 @@ async def _(event):
     except Exception as e:
         logger.warn(str(e))
     typing_symbol = "|"
-    DELAY_BETWEEN_EDITS = 0.3
+    DELAY_BETWEEN_EDITS = 0.2
     previous_text = ""
     await event.edit(typing_symbol)
     await asyncio.sleep(DELAY_BETWEEN_EDITS)
