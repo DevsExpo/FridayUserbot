@@ -41,12 +41,12 @@ async def cmd_list(event):
             else:
                 await event.edit(input_str + " is not a valid plugin!")
         else:
-            help_string = """Helper.. \nProvided by [CipherX](https://t.me/Hackintush)\n`This is helper to reveal all the commands`"""
+            help_string = """CipherX Helper.. \nProvided by [CipherX](https://t.me/Hackintush)\n`CipherX helper to reveal all the commands`"""
             results = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername,
                 help_string
             )
-            await results[1].click(
+            await results[0].click(
                 event.chat_id,
                 reply_to=event.reply_to_msg_id,
                 hide_via=True
