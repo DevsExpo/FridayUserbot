@@ -531,7 +531,7 @@ async def _(event):
 async def _(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
       
-    await event.edit("EVERyBOdy")
+    await event.edit("Everybody")
     await asyncio.sleep(0.3)
     await event.edit("Was")
     await asyncio.sleep(0.2)
