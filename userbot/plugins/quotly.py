@@ -4,11 +4,9 @@ import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from userbot import bot, CMD_HELP
-from userbot.utils import admin_cmd
+from uniborg.util import admin_cmd
 
-#@register(outgoing=True, pattern="^.q(?: |$)(.*)")
-@borg.on(admin_cmd(pattern=r"qbot(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="qbot ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -25,16 +23,16 @@ async def _(event):
        await event.edit("```Reply to actual users message.```")
        return
     await event.edit("```Making a Quote```")
-    async with bot.conversation(chat) as conv:
+    async with event.client.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=1031952739))
-              await bot.forward_messages(chat, reply_message)
+              await event.client.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
-              await event.reply("```Please unblock @QuotLyBot and try again```")
+              await event.reply("```Please unblock me (@QuotLyBot) u Nigga```")
               return
           if response.text.startswith("Hi!"):
              await event.edit("```Can you kindly disable your forward privacy settings for good?```")
           else: 
-             await event.delete()   
-             await bot.forward_messages(event.chat_id, response.message)
+             await event.delete()
+             await event.client.send_message(event.chat_id, response.message)
