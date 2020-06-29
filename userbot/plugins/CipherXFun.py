@@ -29,7 +29,6 @@
 .solar
 .bombs
 .plane
-.gangestar
 .lol"""
 
 from telethon import events
@@ -526,27 +525,6 @@ async def _(event):
     await asyncio.sleep(3)
     await event.delete()
   
-  
-@borg.on(admin_cmd("gangestar ?(.*)"))
-async def _(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
-      
-    await event.edit("Everybody")
-    await asyncio.sleep(0.3)
-    await event.edit("Was")
-    await asyncio.sleep(0.2)
-    await event.edit("Gangestar")
-    await asyncio.sleep(0.5)
-    await event.edit("Until")
-    await asyncio.sleep(0.2)
-    await event.edit("I")
-    await asyncio.sleep(0.3)
-    await event.edit("Arrived")
-    await asyncio.sleep(0.3)
-    await event.edit("😎😎😎")
-    await asyncio.sleep(0.3)
-    await event.edit("Everybody Was Gangestar Until I Arrived 😎😎😎")
-
 @borg.on(admin_cmd(pattern="lol"))
 async def _(event):
     if event.fwd_from:
