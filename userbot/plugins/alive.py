@@ -27,5 +27,5 @@ async def amireallyalive(alive):
                      f"`MY BOSS`: {DEFAULTUSER}\n\n"
                      "ALWAYS WITH YOU MY BOSS\n\n"
                      "`SATELLITE STATUS: ✅ Alive\n\n"
-                     "[⚡DEPLOY FRIDAY⚡](https://github.com/StarkGang/FRIDAYUserbot)") 
+                     "[🧚🏻‍♀️ZOHRE🧚🏻‍♀️]") 
 
