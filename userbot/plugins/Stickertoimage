@@ -1,5 +1,5 @@
 """
-Avaible commands:.stickertoimage
+Avaible commands:.toimage
 """
 import datetime
 from telethon import events
@@ -7,7 +7,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot.utils import admin_cmd
 
-@borg.on(admin_cmd(pattern="stickertoimage ?(.*)"))
+@borg.on(admin_cmd(pattern = "stickertoimage ?(.*)"))
 async def _(event):
 if event.fwd_from:
 return
@@ -26,7 +26,7 @@ return
 await event.edit("```Making a sticker to image```")
 async with event.client.conversation(chat) as conv:
 try:
-response = conv.wait_event(events.NewMessage(incoming=True,from_users=658563529))
+response = conv.wait_event(events.NewMessage(incoming = True,from_users = 658563529))
 await event.client.forward_messages(chat, reply_message)
 response = await response
 except YouBlockedUserError:
@@ -34,6 +34,6 @@ await event.reply("```Please unblock me (@DownloadStickersBot) ```")
 return
 if response.text.startswith("Hi!"):
 await event.edit("```Can you kindly disable your forward privacy settings for good?```")
-else:
+else :
 await event.delete()
 await event.client.send_message(event.chat_id, response.message)
