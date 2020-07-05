@@ -21,7 +21,7 @@ async def amireallyalive(alive):
                      "`SYSTEM TYPE:` LINUX\n"
                      "`BASED ON:` UNIBORG\n"
                      "`MADE USING:` PYTHON\n"
-                     "`SATELLITE:` 🧚🏻‍♀️ZOHRE🧚🏻‍♀️\n"
+
                      f"`MY BOSS`: {DEFAULTUSER}\n\n"
                      "ALWAYS WITH YOU MY BOSS\n\n"
                      "`SATELLITE STATUS: ✅ Alive\n\n"
