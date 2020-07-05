@@ -1,5 +1,5 @@
 """
-Avaible commands: .toimage
+Avaible commands:.stickertoimage
 """
 import datetime
 from telethon import events
