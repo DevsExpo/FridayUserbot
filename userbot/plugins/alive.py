@@ -20,8 +20,7 @@ async def amireallyalive(alive):
                      "`CURRECT BOT LOCATION:` ** ASHBURN,UNITED STATES\n" 
                      "`SYSTEM TYPE:` LINUX\n"
                      "`BASED ON:` UNIBORG\n"
-                     "`MADE USING:` PYTHON\n"
-
+                     "`MADE USING:` PYTHON\n" 
                      f"`MY BOSS`: {DEFAULTUSER}\n\n"
                      "ALWAYS WITH YOU MY BOSS\n\n"
                      "`SATELLITE STATUS: ✅ Alive\n\n"
