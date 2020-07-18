@@ -20,7 +20,7 @@ async def _(event):
 
     animation_interval = 0.3
 
-    animation_ttl = range(0, 12)
+    animation_ttl = range(0, 48)
 
     await event.edit("Police")
 
@@ -37,11 +37,11 @@ async def _(event):
             "🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵",
             "🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴",
             "🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵",
-            "[FRIDAY](https://www.github.com/midhunkm1294-bit/friday) **Police Service Here**"
+            "[CɪᴘʜᴇʀX](https://t.me/Hackintush) **Exclusive**"
  ]
 
     for i in animation_ttl:
 
         await asyncio.sleep(animation_interval)
 
-        await event.edit(animation_chars[i % 12])
+        await event.edit(animation_chars[i % 48])
