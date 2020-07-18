@@ -49,8 +49,17 @@ import asyncio
 import os
 import sys
 import time
+import requests
+from random import choice, randint
 from collections import deque
 from uniborg.util import admin_cmd
+
+from telethon.tl.functions.users import GetFullUserRequest
+from telethon.tl.types import MessageEntityMentionName
+
+from userbot import CMD_HELP
+from userbot.utils import register
+
 
 @borg.on(events.NewMessage(pattern=r"\.slash", outgoing=True))
 async def kek(keks):
