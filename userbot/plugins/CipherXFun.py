@@ -2,6 +2,7 @@
 """Available Commands:
 .slash
 .para
+.q
 .oof
 .meme
 .flower
