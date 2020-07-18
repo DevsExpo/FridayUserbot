@@ -2,7 +2,6 @@
 """Available Commands:
 .slash
 .para
-.q
 .oof
 .meme
 .flower
@@ -36,7 +35,7 @@
 .love
 .my
 .hi
-.kerala"""
+.car"""
 
 from telethon import events
 import random, re
@@ -65,13 +64,13 @@ async def kek(keks):
         
 @borg.on(events.NewMessage(pattern=r"\.q", outgoing=True))
 async def _(event):
-  if event.fwd_from:
-		   return
-  deq = deque(list("?¿?¿?¿"))
-  for _ in range(48):
-		await asyncio.sleep(0.1)
-		await event.edit("".join(deq))
-		deq.rotate(1)
+        if event.fwd_from:
+	        return
+        deq = deque(list("?¿?¿?¿"))
+        for _ in range(48):
+	        await asyncio.sleep(0.1)
+	        await event.edit("".join(deq))
+	        deq.rotate(1)
     
         
 @borg.on(events.NewMessage(pattern=r"\.oof", outgoing=True))
@@ -3503,7 +3502,7 @@ async def hi(event):
         return
     await event.edit("💕💕𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💕💕")
 
-@borg.on(admin_cmd(pattern=r"kerala"))
+@borg.on(admin_cmd(pattern=r"car"))
 async def kerala(event):
     if event.fwd_from:
         return
