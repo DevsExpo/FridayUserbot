@@ -1,5 +1,4 @@
 # Original written by @Hackintush
-# Original written by @Hackintush
 """Available Commands:
 .slash
 .para
@@ -8,7 +7,7 @@
 .meme
 .flower
 .tlol
-.star
+.butterfly
 .box
 .clock
 .moon
@@ -41,7 +40,7 @@
 .hi
 .car
 .penis,dick
-.lol2
+.figlol
 .fuck
 .jagh"""
 
@@ -150,7 +149,7 @@ async def _(event):
 		await event.edit("".join(deq))
 		deq.rotate(1)
 		
-@borg.on(events.NewMessage(pattern=r"\.star", outgoing=True))
+@borg.on(events.NewMessage(pattern=r"\.butterfly", outgoing=True))
 async def _(event):
 	if event.fwd_from:
 		return
@@ -3576,8 +3575,8 @@ async def emoji_penis(e):
     await e.edit(titid)
 
 
-@register(outgoing=True, pattern="^.lol2$")
-async def lol2(e):
+@register(outgoing=True, pattern="^.figlol$")
+async def figlol(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("`\n╱┏┓╱╱╱╭━━━╮┏┓╱╱╱╱ `" 
                      "`\n╱┃┃╱╱╱┃╭━╮┃┃┃╱╱╱╱ `"       
