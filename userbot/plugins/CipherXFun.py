@@ -40,7 +40,7 @@
 .car
 .penis,dick
 .lol2
-.mf
+.fuck
 .jagh"""
 
 from telethon import events
@@ -3562,7 +3562,7 @@ async def lol2(e):
                      "`\n╱┃┗━━┓┃╰━╯┃┃┗━━┓╱ `" 
                      "`\n╱┗━━━┛╰━━━╯┗━━━┛╱ `") 
  
- @register(outgoing=True, pattern="^.mf$")  
+@register(outgoing=True, pattern="^.fuck$")  
 async def gtfo(e):
    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
