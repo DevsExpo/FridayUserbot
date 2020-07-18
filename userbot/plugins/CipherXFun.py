@@ -8,6 +8,8 @@
 .meme
 .flower
 .tlol
+.star
+.box
 .clock
 .moon
 .earth
@@ -147,7 +149,27 @@ async def _(event):
 		await asyncio.sleep(0.1)
 		await event.edit("".join(deq))
 		deq.rotate(1)
+		
+@borg.on(events.NewMessage(pattern=r"\.star", outgoing=True))
+async def _(event):
+	if event.fwd_from:
+		return
+	deq = deque(list("🦋✨🦋✨🦋✨🦋✨"))
+	for _ in range(48):
+		await asyncio.sleep(0.1)
+		await event.edit("".join(deq))
+		deq.rotate(1) 
     
+@borg.on(events.NewMessage(pattern=r"\.box", outgoing=True))
+async def _(event):
+	if event.fwd_from:
+		return
+	deq = deque(list("🟥🟧🟨🟩🟦🟪🟫⬛⬜"))
+	for _ in range(48):
+		await asyncio.sleep(0.1)
+		await event.edit("".join(deq))
+		deq.rotate(1)
+		
 @borg.on(events.NewMessage(pattern=r"\.clock", outgoing=True))
 async def _(event):
 	if event.fwd_from:
