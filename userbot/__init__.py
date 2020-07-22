@@ -5,8 +5,18 @@ import os
 import sys
 from telethon.sessions import StringSession
 from telethon import TelegramClient
-
 from var import Var
+from pylast import LastFMNetwork, md5
+from logging import basicConfig, getLogger, INFO, DEBUG
+from distutils.util import strtobool as sb
+from pySmartDL import SmartDL
+from dotenv import load_dotenv
+import asyncio
+import pylast
+from requests import get
+import time
+
+Lastupdate = time.time()
 
 os.system("pip install --upgrade pip")
 if Var.STRING_SESSION:
@@ -100,6 +110,10 @@ if bool(ENV):
     # FedBan Premium Module
     F_BAN_LOGGER_GROUP = os.environ.get("F_BAN_LOGGER_GROUP", None)
 
+    # Cbutton 
+    PRIVATE_CHANNEL_BOT_API_ID = os.environ.get("PRIVATE_CHANNEL_BOT_API_ID", None)
+
+
 # Heroku Credentials for updater.
     HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
@@ -128,6 +142,12 @@ if bool(ENV):
     CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
     CUSTOM_STICKER_PACK_NAME = os.environ.get("CUSTOM_STICKER_PACK_NAME", None)
     CUSTOM_ANIMATED_PACK_NAME = os.environ.get("CUSTOM_ANIMATED_PACK_NAME", None)
+
+    # Pm Permit Img
+    PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
+
+    # Gban 
+    USER_IS = os.environ.get("USER_IS", None)
 
     # Last.fm Module
     BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
