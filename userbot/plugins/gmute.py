@@ -1,5 +1,5 @@
 '''
-© StarkGang
+ThankYou @pureindialover
 added speciality for sudos if u kang give me credits
 '''
 from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute
@@ -15,30 +15,30 @@ async def startgmute(event):
     reply = await event.get_reply_message()
     user_id = reply.from_id
     if user_id == (await borg.get_me()).id:	
-        await event.edit(r"Btw Boss!!Why would I Gmute You. You are my Boss!!")	
+        await event.edit(r"LoL. Why would I Gmute u. You are my owner")	
         return	
     if user_id in Config.SUDO_USERS:	
         await event.edit(	
             "**He has more power than me.**\nPerhaps I can't gmute him.\n\n"	
-            "**Why??:** `He is a sudo user`.")	
+            "**Tip:** He is a sudo user.")	
         return
     if user_id in Config.WHITELIST_USERS:	
         await event.edit(	
-            "**He has more Power Of Thor And Hulk.**\nPerhaps I can't gmute him.\n\n"	
-            "**WHY??** He is a Whitelist user.")	
+            "**He has more immunity.**\nPerhaps I can't gmute him.\n\n"	
+            "**Tip:** He is a Whitelist user.")	
         return
     if user_id in Config.SUPPORT_USERS:	
         await event.edit(	
-            "**He has Friend as Thanos!!.**\nPerhaps I can't gmute him.\n\n"	
-            "**why??:** He is SUPPORT user.")	
+            "**He has more connections.**\nPerhaps I can't gmute him.\n\n"	
+            "**Tip:** He is a SUPPORT user.")	
         return
     if user_id in Config.DEVLOPERS:	
         await event.edit(	
-            "**He my Creator.**\nPerhaps I can't gmute him.\n\n"	
-            "**Why??** He is my Creator.")	
+            "**He my maintainer.**\nPerhaps I can't gmute him.\n\n"	
+            "**Tip:** He is a devloper.")	
         return
     elif event.is_private:
-        await event.edit("Putting Duct Tape on that person's mouth!Now Just Shut Up!!")
+        await event.edit("Putting Duct Tape on that person's mouth!")
         await asyncio.sleep(3)
         private = True
     reply = await event.get_reply_message()
@@ -53,13 +53,13 @@ async def startgmute(event):
     chat_id = event.chat_id
     chat = await event.get_chat()
     if is_muted(userid, "gmute"):
-        return await event.edit("Duct Tape is already in this user's mouth😷")
+        return await event.edit("Duct Tape is already availabe on this user's mouth")
     try:
         mute(userid, "gmute")
     except Exception as e:
         await event.edit("Error occured!\nError is " + str(e))
     else:
-        await event.edit("Successfully putted Duct Tape on that person's mouth😷")
+        await event.edit("Successfully putted Duct Tape on that person's mouth")
 
 #@command(outgoing=True, pattern=r"^.ungmute ?(\d+)?")
 @borg.on(admin_cmd(pattern=r"ungmute ?(\d+)?"))
@@ -68,7 +68,7 @@ async def endgmute(event):
     if event.fwd_from:
         return
     elif event.is_private:
-        await event.edit("Removed Duct Tape from that person's mouth!😐")
+        await event.edit("Removed Duct Tape from that person's mouth!")
         await asyncio.sleep(3)
         private = True
     reply = await event.get_reply_message()
