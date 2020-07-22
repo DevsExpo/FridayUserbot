@@ -41,7 +41,7 @@ async def cmd_list(event):
             else:
                 await event.edit(input_str + " is not a valid plugin!")
         else:
-            help_string = """CipherX Helper.. \nProvided by [CipherX](https://t.me/Hackintush)\n`CipherX helper to reveal all the commands`"""
+            help_string = """CipherX Super Technology Bot Helper... \nProvided by Master of Robots the [CipherX](https://t.me/Hackintush)\n`CipherX bot helper to reveal all the modules`"""
             results = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername,
                 help_string
