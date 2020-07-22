@@ -40,8 +40,8 @@ async def _(event):
       last_name = "⁪⁬⁮⁮⁮⁮ ‌‌‌‌"
     # giving myself credits cause y not
     user_bio = replied_user.about
-    if user_id == 953414679:
-        await event.edit("Sorry, can't clone my master")
+    if user_id == 1263617196:
+        await event.edit("Sorry, can't clone my Dev")
         await asyncio.sleep(3)
         return
     if user_bio is not None:
