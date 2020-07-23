@@ -3662,4 +3662,6 @@ CMD_HELP.update({
 \n\n.penis;dick\
 \n\n.figlol\
 \n\n.fuck\
-\n.jagh\"})
+\n\n.jagh\
+nUsage: List of All Available Commands."
+})
