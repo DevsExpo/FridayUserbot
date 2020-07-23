@@ -3662,4 +3662,4 @@ CMD_HELP.update({
 \n\n.penis;dick\
 \n\n.figlol\
 \n\n.fuck\
-\n\n.jagh\"})
+\n.jagh\"})
