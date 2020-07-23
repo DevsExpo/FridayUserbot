@@ -13,7 +13,7 @@ pm_caption += "`Telethon Version:` **6.0.9**\n`Python:` **3.7.4**\n"
 pm_caption += "`Database Status:` **AWS Working Properly**\n"
 pm_caption += "**Current Branch** : `Master`\n"
 pm_caption += "**CɪᴘʜᴇʀX OS** : `3.14`\n"
-pm_caption += f"**My Boss** : {DEFAULTUSER} \n"
+pm_caption += f"**My Boss** : [CɪᴘʜᴇʀX](https://t.me/Hackintush)\n"
 pm_caption += "**CɪᴘʜᴇʀX is the best**" 
 #@command(outgoing=True, pattern="^.alive$")
 @borg.on(admin_cmd(pattern=r"alive"))
