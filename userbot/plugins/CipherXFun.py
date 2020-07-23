@@ -1,48 +1,4 @@
 # Original written by @Hackintush
-"""Available Commands:
-.slash
-.para
-.q
-.oof
-.meme
-.flower
-.tlol
-.butterfly
-.box
-.clock
-.moon
-.earth
-.smile
-.laugh
-.poker
-.wow
-.monkey
-.starheart
-.cheart
-.angry
-.sad
-.amaze
-.omg
-.tongue
-.sun
-.speaker
-.heart
-.sand
-.storm
-.floodwarn
-.rain
-.solar
-.bombs
-.lol
-.lit
-.love
-.my
-.hi
-.car
-.penis,dick
-.figlol
-.fuck
-.jagh"""
 
 from telethon import events
 import random, re
