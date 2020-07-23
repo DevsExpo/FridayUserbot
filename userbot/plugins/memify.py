@@ -1,7 +1,4 @@
 """Reply to an image/sticker with .mmf` 'text on top' ; 'text on bottom
-base by: @pureindialover
-created by: @pureindialover
-if you change these, you gay.
 """
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -40,7 +37,7 @@ MessageMediaPhoto
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
 
-@borg.on(admin_cmd("memify ?(.*)"))
+@borg.on(admin_cmd("mf ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -60,7 +57,7 @@ async def _(event):
        await event.edit("```Reply to actual users message.```")
        return
     else:
-     await event.edit("```Transfiguration Time! Mwahaha memifying this image! (」ﾟﾛﾟ)｣ ```")
+     await event.edit("```Transfiguration Time! Mwahaha memifying this image! ¯\(◉‿◉)/¯ ```")
     
     async with borg.conversation("@MemeAutobot") as bot_conv:
           try:
@@ -76,7 +73,7 @@ async def _(event):
           if response.text.startswith("Forward"):
               await event.edit("```can you kindly disable your forward privacy settings for good nibba?```")
           if "Okay..." in response.text:
-            await event.edit("```🤨 NANI?! This is not an image! This will take sum tym to convert to image owo 🧐```")
+            await event.edit("```NANI?! This is not an image! This will take sum tym to convert to image ow !!!```")
             thumb = None
             if os.path.exists(thumb_image_path):
                 thumb = thumb_image_path
@@ -117,11 +114,11 @@ async def _(event):
                 event.chat_id,
                 requires_file_name,
                 supports_streaming=False,
-                caption="Userbot: Powered by @pureindialover",
+                caption="Friday Userbot",
                 # Courtesy: @A_Dark_Princ3
             )
             await event.delete()
-            await borg.send_message(event.chat_id, "`☠️☠️23 Points to Griffindor!🔥🔥`")
+            await borg.send_message(event.chat_id, "`¯\_༼ ಥ ‿ ಥ ༽_/¯23 Points to @R4N4N4!🔥🔥`")
           elif not is_message_image(reply_message):
             await event.edit("Invalid message type. Plz choose right message type u NIBBA.")
             return
