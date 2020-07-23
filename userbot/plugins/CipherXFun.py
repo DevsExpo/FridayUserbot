@@ -3660,3 +3660,50 @@ async def _(event):
             await asyncio.sleep(animation_interval)
         
             await event.edit(animation_chars[i % 8])
+
+
+CMD_HELP.update({
+    "CipherXFun":
+    ".slash\
+\n\n.para\
+\n\n.q\
+\n\n.oof\
+\n\n.meme\
+\n\n.flower\
+\n\n.tlol\
+\n\n.butterfly\
+\n\n.box\
+\n\n.clock\
+\n\n.moon\
+\n\n.earth\
+\n\n.smile\
+\n\n.laugh\
+\n\n.poker\
+\n\n.wow\
+\n\n.monkey\
+\n\n.starheart\
+\n\n.cheart\
+\n\n.angry\
+\n\n.sad\
+\n\n.amaze\
+\n\n.omg\
+\n\n.tongue\
+\n\n.sun\
+\n\n.speaker\
+\n\n.heart\
+\n\n.sand\
+\n\n.storm\
+\n\n.floodwarn\
+\n\n.rain\
+\n\n.solar\
+\n\n.bombs\
+\n\n.lol\
+\n\n.lit\
+\n\n.love\
+\n\n.my\
+\n\n.hi\
+\n\n.car\
+\n\n.penis;dick\
+\n\n.figlol\
+\n\n.fuck\
+\n\n.jagh\"})
