@@ -8,11 +8,11 @@ from pySmartDL import SmartDL
 import os
 
 CɪᴘʜᴇʀX_Http = "https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=3000&country=IR&ssl=all&anonymity=all" 
-HTTP_TXT = ("**Proxy Info** \nType: __Https__ \nTimeOut: __3000__ \nCountry: __IR__ \nSsl: All \nAnonymity: __All__ \nUploaded By [CɪᴘʜᴇʀX](https://t.me/Hackintush) \n**Here Is Your Proxy** 👇")
+HTTP_TXT = ("**Proxy Info** \nType: __Https__ \nTimeOut: __3000__ \nCountry: __IR__ \nSsl: All \nAnonymity: __All__ \nProvided By ✨CɪᴘʜᴇʀX✨ \n**Here Is Your Proxy** 👇")
 CɪᴘʜᴇʀX_Socks4 = "https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=3000&country=IR"
-SOCKS4_TXT = ("**Proxy Info** \nType: __Socks5__ \nTimeOut: __10000__ \nCountry: __All__ \nSsl: __Only For Http Proxy__ \nAnonymity: __Only For Http__ \nUploaded By [CɪᴘʜᴇʀX](https://t.me/Hackintush) \n**Here Is Your Proxy** 👇")
+SOCKS4_TXT = ("**Proxy Info** \nType: __Socks5__ \nTimeOut: __3000__ \nCountry: __All__ \nSsl: __Only For Http Proxy__ \nAnonymity: __Only For Http__ \nProvided By ✨CɪᴘʜᴇʀX✨ \n**Here Is Your Proxy** 👇")
 CɪᴘʜᴇʀX_Socks5 = "https://api.proxyscrape.com/?request=getproxies&proxytype=socks5&timeout=3000&country=IR"
-SOCKS5_TXT = ("**Proxy Info** \nType: __Socks5__ \nTimeOut: __10000__ \nCountry: __All__ \nSsl: __Only For Http Proxy__ \nAnonymity: __Only For Http__ \nUploaded By [CɪᴘʜᴇʀX](https://t.me/Hackintush) \n**Here Is Your Proxy** 👇")
+SOCKS5_TXT = ("**Proxy Info** \nType: __Socks5__ \nTimeOut: __3000__ \nCountry: __All__ \nSsl: __Only For Http Proxy__ \nAnonymity: __Only For Http__ \nUploaded By ✨CɪᴘʜᴇʀX✨ \n**Here Is Your Proxy** 👇")
 
 @borg.on(admin_cmd(pattern="http")) 
 async def CɪᴘʜᴇʀXhttp(event): 
