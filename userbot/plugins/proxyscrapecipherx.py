@@ -8,11 +8,11 @@ from pySmartDL import SmartDL
 import os
 
 CɪᴘʜᴇʀX_Http = "https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=3000&country=IR&ssl=all&anonymity=all" 
-HTTP_TXT = ("**🔅Proxy Info** \n🔹Type: __Https__ \n🔸TimeOut: __3000__ \n🔹Country: __IR__ \n🔸Ssl: All \n🔹Anonymity: __All__ \n🔸Provided By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy** 👇")
+HTTP_TXT = ("**🔅Proxy List Info** \n🔹Type: __Https__ \n🔸TimeOut: __3000__ \n🔹Country: __IR__ \n🔸Ssl: All \n🔹Anonymity: __All__ \n🔸Provided By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy List** 👇")
 CɪᴘʜᴇʀX_Socks4 = "https://api.proxyscrape.com/?request=getproxies&proxytype=socks4&timeout=3000&country=IR"
-SOCKS4_TXT = ("**🔅Proxy Info** \n🔹Type: __Socks4__ \n🔸TimeOut: __3000__ \n🔹Country: __IR__ \n🔸Ssl: __Only For Http Proxy__ \n🔹Anonymity: __Only For Http__ \n🔸Provided By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy** 👇")
-CɪᴘʜᴇʀX_Socks5 = "https://api.proxyscrape.com/?request=getproxies&proxytype=socks5&timeout=3000&country=IR"
-SOCKS5_TXT = ("**🔅Proxy Info** \n🔹Type: __Socks5__ \n🔸TimeOut: __3000__ \n🔹Country: __IR__ \n🔸Ssl: __Only For Http Proxy__ \n🔹Anonymity: __Only For Http__ \n🔸Uploaded By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy** 👇")
+SOCKS4_TXT = ("**🔅Proxy List Info** \n🔹Type: __Socks4__ \n🔸TimeOut: __3000__ \n🔹Country: __IR__ \n🔸Ssl: __Only For Http Proxy__ \n🔹Anonymity: __Only For Http__ \n🔸Provided By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy List** 👇")
+CɪᴘʜᴇʀX_Socks5 = "https://api.proxyscrape.com/?request=getproxies&proxytype=socks5&timeout=2000&country=all"
+SOCKS5_TXT = ("**🔅Proxy List Info** \n🔹Type: __Socks5__ \n🔸TimeOut: __2000__ \n🔹Country: __All__ \n🔸Ssl: __Only For Http Proxy__ \n🔹Anonymity: __Only For Http__ \n🔸Provided By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy List** 👇")
 
 @borg.on(admin_cmd(pattern="http")) 
 async def CɪᴘʜᴇʀXhttp(event): 
