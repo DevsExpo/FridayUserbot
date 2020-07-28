@@ -18,7 +18,7 @@ async def CɪᴘʜᴇʀXhttp(event):
     chat = await event.get_chat() 
     file_name = "Http_CɪᴘʜᴇʀX.txt"
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY , file_name)
-    downloader = SmartDL( f"{CɪᴘʜᴇʀX_Http}" , downloaded_file_name, progress_bar=False)
+    downloader = SmartDL( f"{CipherX_Http}" , downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False) 
     await borg.send_message(event.chat_id , HTTP_TXT)
     await event.client.send_file(event.chat_id , downloaded_file_name) 
@@ -28,7 +28,7 @@ async def CɪᴘʜᴇʀXsocks4(event):
     chat = await event.get_chat() 
     file_name = "Socks4_CɪᴘʜᴇʀX.txt"
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY , file_name)
-    downloader = SmartDL( f"{CɪᴘʜᴇʀX_Socks4}" , downloaded_file_name, progress_bar=False)
+    downloader = SmartDL( f"{CipherX_Socks4}" , downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False) 
     await borg.send_message(event.chat_id , SOCKS4_TXT)
     await event.client.send_file(event.chat_id , downloaded_file_name) 
@@ -38,7 +38,7 @@ async def CɪᴘʜᴇʀXsocks5(event):
     chat = await event.get_chat() 
     file_name = "Socks5_CɪᴘʜᴇʀX.txt"
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY , file_name)
-    downloader = SmartDL( f"{CɪᴘʜᴇʀX_Socks5}" , downloaded_file_name, progress_bar=False)
+    downloader = SmartDL( f"{CipherX_Socks5}" , downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False) 
     await borg.send_message(event.chat_id , SOCKS5_TXT)
     await event.client.send_file(event.chat_id , downloaded_file_name) 
