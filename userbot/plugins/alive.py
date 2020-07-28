@@ -14,7 +14,7 @@ pm_caption += "`Database Status:` **AWS Working Properly**\n"
 pm_caption += "**Current Branch** : `Master`\n"
 pm_caption += "**CɪᴘʜᴇʀX OS** : `3.14`\n"
 pm_caption += f"**My Boss** : [CɪᴘʜᴇʀX](https://t.me/Hackintush)\n"
-pm_caption += "**CɪᴘʜᴇʀX is the best**" 
+pm_caption += "**✨ CɪᴘʜᴇʀX is the best ✨**" 
 #@command(outgoing=True, pattern="^.alive$")
 @borg.on(admin_cmd(pattern=r"alive"))
 async def amireallyalive(alive):
