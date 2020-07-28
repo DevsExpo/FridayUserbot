@@ -16,7 +16,7 @@ SOCKS5_TXT = ("**Proxy Info** \nType: __Socks5__ \nTimeOut: __10000__ \nCountry:
 @borg.on(admin_cmd(pattern="http")) 
 async def CɪᴘʜᴇʀXhttp(event): 
     chat = await event.get_chat() 
-    file_name = "Http_CɪᴘʜᴇʀX.txt"
+    file_name = "Http_CipherX.txt"
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY , file_name)
     downloader = SmartDL( f"{CɪᴘʜᴇʀX_Http}" , downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False) 
@@ -26,7 +26,7 @@ async def CɪᴘʜᴇʀXhttp(event):
 @borg.on(admin_cmd(pattern="socks4")) 
 async def CɪᴘʜᴇʀXsocks4(event): 
     chat = await event.get_chat() 
-    file_name = "Socks4_CɪᴘʜᴇʀX.txt"
+    file_name = "Socks4_CipherX.txt"
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY , file_name)
     downloader = SmartDL( f"{CɪᴘʜᴇʀX_Socks4}" , downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False) 
@@ -36,7 +36,7 @@ async def CɪᴘʜᴇʀXsocks4(event):
 @borg.on(admin_cmd(pattern="socks5")) 
 async def CɪᴘʜᴇʀXsocks5(event): 
     chat = await event.get_chat() 
-    file_name = "Socks5_CɪᴘʜᴇʀX.txt"
+    file_name = "Socks5_CipherX.txt"
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY , file_name)
     downloader = SmartDL( f"{CɪᴘʜᴇʀX_Socks5}" , downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False) 
