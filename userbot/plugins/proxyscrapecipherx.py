@@ -1,6 +1,7 @@
 # Created By @Hackintush
 # Usage : For Http Proxy : .http , For Socks4 : .socks4 , For socks5 : .socks5 
 
+from asyncio import sleep
 from telethon import events
 from userbot.utils import admin_cmd 
 from pySmartDL import SmartDL
@@ -22,6 +23,7 @@ async def CɪᴘʜᴇʀXhttp(event):
     downloader.start(blocking=False) 
     await borg.send_message(event.chat_id , HTTP_TXT)
     await event.client.send_file(event.chat_id , downloaded_file_name) 
+    await event.delete()
     
 @borg.on(admin_cmd(pattern="socks4")) 
 async def CɪᴘʜᴇʀXsocks4(event): 
@@ -32,7 +34,8 @@ async def CɪᴘʜᴇʀXsocks4(event):
     downloader.start(blocking=False) 
     await borg.send_message(event.chat_id , SOCKS4_TXT)
     await event.client.send_file(event.chat_id , downloaded_file_name) 
- 
+    await event.delete()
+     
 @borg.on(admin_cmd(pattern="socks5")) 
 async def CɪᴘʜᴇʀXsocks5(event): 
     chat = await event.get_chat() 
@@ -42,4 +45,4 @@ async def CɪᴘʜᴇʀXsocks5(event):
     downloader.start(blocking=False) 
     await borg.send_message(event.chat_id , SOCKS5_TXT)
     await event.client.send_file(event.chat_id , downloaded_file_name) 
-    
+    await event.delete()
