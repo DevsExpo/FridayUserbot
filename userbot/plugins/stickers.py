@@ -55,9 +55,9 @@ async def _(event):
         packname = f"StarkGang Packs 🎭"
         packshortname = "StarkGangPack"
     else:
-        packname = f"{DEFAULTUSER}'s Friday Vol.{pack}"
-        packshortname = f"Friday_{userid}_pack"
-    await event.edit("Hey That Sticker Looks Nice ! Mind If I Kang That ? ")
+        packname = f"{DEFAULTUSER}'s saved stickers(Not stolen anyones).{pack}"
+        packshortname = f"Adrew_{userid}_pack"
+    await event.edit("मैं डकैती करूंगा")
 
     is_a_s = is_it_animated_sticker(reply_message)
     file_ext_ns_ion = "FridayUserbot.png"
@@ -67,10 +67,10 @@ async def _(event):
         file_ext_ns_ion = "AnimatedSticker.tgs"
         uploaded_sticker = await borg.upload_file(file, file_name=file_ext_ns_ion)
         if userid == 1263617196:
-            packname = f"Fridays Pack"
-            packshortname = "Friday_Packz"
+            packname = f"Adrew Pack"
+            packshortname = "Adrew_Packz"
         else:
-            packname = f"{DEFAULTUSER}'s Friday Animated Vol.{pack}"
+            packname = f"{DEFAULTUSER}'s Animated stickers.{pack}"
             packshortname = f"Friday_{userid}" # format: Uni_Borg_userid
     elif not is_message_image(reply_message):
         await event.edit("Invalid message type")
@@ -81,7 +81,7 @@ async def _(event):
             sticker.seek(0)
             uploaded_sticker = await borg.upload_file(sticker, file_name=file_ext_ns_ion)
 
-    await event.edit("Processing this sticker. Please Wait!")
+    await event.edit("Please Wait!")
 
     async with borg.conversation("@Stickers") as bot_conv:
         now = datetime.datetime.now()
@@ -131,10 +131,10 @@ async def _(event):
                 while response.text == FILLED_UP_DADDY:
                     pack += 1
                     prevv = int(pack) - 1
-                    packname = f"{DEFAULTUSER}'s Friday Vol.{pack}"
+                    packname = f"{DEFAULTUSER}'s Vol.{pack}"
                     packshortname = f"Vol_{pack}_with_{userid}"
                     #if userid == 1263617196:
-                       # packname = f"{user.first_name}'s Friday Vol.{pack}"
+                       # packname = f"{user.first_name}'s saved stickers(Not stolen anyones).{pack}"
                        # packshortname = "Vol._{pack}_IndianBhai_ke_locker_me"
                    # else:
                        # packname = f"Vol._{pack}_Friday{userid}"
