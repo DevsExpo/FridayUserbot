@@ -1,6 +1,8 @@
 """Get Telegram Profile Picture and other information
 and set as own profile.
 Syntax: .clone @username"""
+#Copy That Plugin by @ViperAdnan
+#Give credit if you are going to kang it.
 
 import html
 import os
@@ -38,10 +40,10 @@ async def _(event):
         last_name = last_name.replace("\u2060", "")
     if last_name is None:
       last_name = "⁪⁬⁮⁮⁮⁮ ‌‌‌‌"
-    # giving myself credits cause y not
+    # inspired by https://telegram.dog/afsaI181
     user_bio = replied_user.about
-    if user_id == 1263617196:
-        await event.edit("Sorry, can't clone my Dev")
+    if user_id == 586949777 or user_id == 948408212 or user_id == 631515786:
+        await event.edit("Sorry, can't clone my master")
         await asyncio.sleep(3)
         return
     if user_bio is not None:
