@@ -36,6 +36,23 @@ async def Ooo(e):
     for j in range(15):
         t = t[:-1] + "oo"
         await e.edit(t)
+	
+@borg.on(admin_cmd("hmm$"))
+#@register(outgoing=True, pattern="^yo$")
+async def Mmm(e):
+    t = "Hmm"
+    for j in range(15):
+        t = t[:-1] + "mm"
+        await e.edit(t)
+	
+@borg.on(admin_cmd("binod$"))
+#@register(outgoing=True, pattern="^yo$")
+async def Binod(e):
+    t = "Binod"
+    for j in range(15):
+        t = t[:-1] + "dd"
+        await e.edit(t)
+
 
 @borg.on(admin_cmd("Oof$"))
 #@register(outgoing=True, pattern="^Oof$")
