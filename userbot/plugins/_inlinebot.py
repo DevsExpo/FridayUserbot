@@ -84,15 +84,15 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
 
 def paginate_help(page_number, loaded_plugins, prefix):
-    number_of_rows = 8
-    number_of_cols = 2
+    number_of_rows = 15
+    number_of_cols = 4
     helpable_plugins = []
     for p in loaded_plugins:
         if not p.startswith("_"):
             helpable_plugins.append(p)
     helpable_plugins = sorted(helpable_plugins)
     modules = [custom.Button.inline(
-        "{} {} {}".format("✨", x, "✨"),
+        "{} {} {}".format("🔥", x, "🔥"),
         data="us_plugin_{}".format(x))
         for x in helpable_plugins]
     pairs = list(zip(modules[::number_of_cols], modules[1::number_of_cols]))
