@@ -72,8 +72,8 @@ async def updater(message):
     )
 
     if not changelog:
-        await message.edit("Trying To Pull Updates !")
-        await asyncio.sleep(10)
+        await message.edit("**Updating Userbot** \n**Version** : `2.0` \n**Telethon** : `1.15.0` \n**Status** : `Pulling Updates` \n**Thank You For Using Friday !**")
+        await asyncio.sleep(5)
  
     message_one = NEW_BOT_UP_DATE_FOUND.format(
         branch_name=active_branch_name,
@@ -135,12 +135,12 @@ def generate_change_log(git_repo, diff_marker):
     out_put_str = ""
     d_form = "%d/%m/%y"
     for repo_change in git_repo.iter_commits(diff_marker):
-        out_put_str += f"•[{repo_change.committed_datetime.strftime(d_form)}]: {repo_change.summary} <{repo_change.author}>\n"
+        out_put_str += f"×[{repo_change.committed_datetime.strftime(d_form)}]: {repo_change.summary} <{repo_change.author}>\n"
     return out_put_str
 
 async def deploy_start(bot, message, refspec, remote):
     await message.edit(RESTARTING_APP)
-    await message.edit("Trying To Restart Dyno To Finalize Updation Process ! \nYou Can Do `.alive` To Check If I am Alive !")
+    await message.edit("**Updating Userbot** \n**Version** : `2.0` \n**Telethon** : `1.15.0` \n**Branch** : `Master` \n**Status** : `Updating & Restarting` \n__You Can Do__ `.alive` __To Check If I am Alive !__")
     remote.push(refspec=refspec)
     await bot.disconnect()
     os.execl(sys.executable, sys.executable, *sys.argv)
