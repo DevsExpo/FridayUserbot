@@ -32,8 +32,8 @@ async def fun(e):
 @borg.on(admin_cmd("yo$"))
 #@register(outgoing=True, pattern="^yo$")
 async def Ooo(e):
-    t = "yo"
-    for j in range(15):
+    t = "Yo"
+    for j in range(8):
         t = t[:-1] + "oo"
         await e.edit(t)
 	
@@ -41,16 +41,16 @@ async def Ooo(e):
 #@register(outgoing=True, pattern="^yo$")
 async def Mmm(e):
     t = "Hmm"
-    for j in range(15):
+    for j in range(8):
         t = t[:-1] + "mm"
         await e.edit(t)
 	
 @borg.on(admin_cmd("binod$"))
 #@register(outgoing=True, pattern="^yo$")
 async def Binod(e):
-    t = "Binod"
-    for j in range(15):
-        t = t[:-1] + "dd"
+    t = "BINOD"
+    for j in range(8):
+        t = t[:-1] + "DD"
         await e.edit(t)
 
 
@@ -58,7 +58,7 @@ async def Binod(e):
 #@register(outgoing=True, pattern="^Oof$")
 async def Oof(e):
     t = "Oof"
-    for j in range(15):
+    for j in range(8):
         t = t[:-1] + "of"
         await e.edit(t)
 
