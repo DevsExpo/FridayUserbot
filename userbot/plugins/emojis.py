@@ -16,7 +16,7 @@ async def _(event):
     animation_interval = 0.3
     animation_ttl = range(0, 16)
     input_str = event.pattern_match.group(1)
-    if input_str == "shrug":
+    if input_str == "sh":
         await event.edit("¯\_(ツ)_/¯")
     elif input_str == "apple":
         await event.edit("\uF8FF")
@@ -29,7 +29,7 @@ async def _(event):
         for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 2])
-    elif input_str == "-_-":
+    elif input_str == "lol":
         await event.edit(input_str)
         animation_chars = [
             "-__-",
