@@ -77,11 +77,11 @@ if bool(ENV):
         pass
 
     # Userbot logging feature switch.
-    BOTLOG = sb(os.environ.get("BOTLOG", "False"))
-    LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
+    BOTLOG = sb(os.environ.get("BOTLOG", "True"))
+    LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "True"))
     
     # Bleep Blop, this is a bot ;)
-    PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
+    PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "True"))
 
     # Console verbose logging
     CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -126,6 +126,9 @@ if bool(ENV):
     # Default .alive name
     ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
     AUTONAME = os.environ.get("AUTONAME", None)
+    
+    #Autobio
+    AUTO_BIO = os.environ.get("AUTO_BIO", None)
 
     # Time & Date - Country and Time Zone
     COUNTRY = str(os.environ.get("COUNTRY", "India"))
