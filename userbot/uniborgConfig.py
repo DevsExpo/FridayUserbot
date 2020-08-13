@@ -109,6 +109,7 @@ if ENV:
         MONGO_URI = os.environ.get("MONGO_URI", None)
         #Lydia API
         LYDIA_API = os.environ.get("LYDIA_API",None)
+        PRIVATE_CHANNEL_BOT_API_ID = os.environ.get("PRIVATE_CHANNEL_BOT_API_ID", None)
         PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", False))
 else:
     class Config(object):
