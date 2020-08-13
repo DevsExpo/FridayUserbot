@@ -49,11 +49,10 @@ for name in files:
 
 import userbot._core
 
-print("Yay your userbot is officially working. You should owe @mariodevs For This Cool Bot")
+print("Friday Has Been Enabled ! Try .ping")
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()
 else:
     bot.run_until_disconnected()
-
 
