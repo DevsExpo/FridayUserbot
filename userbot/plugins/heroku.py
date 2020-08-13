@@ -1,4 +1,4 @@
-# All rights reserved.
+# From Ravana's Repo ! Creator : Unknown ( If You Are Creator Ib @StarkxD )
 """
    Heroku manager for your userbot
 """
@@ -62,7 +62,7 @@ async def variable(var):
             os.remove("configs.json")
             return
     elif exe == "set":
-        await var.edit("`Setting information...`")
+        await var.edit("`Setting information ! Please Wait ...`")
         variable = var.pattern_match.group(2)
         if not variable:
             return await var.edit(">`.set var <ConfigVars-name> <value>`")
@@ -142,11 +142,11 @@ async def dyno_usage(dyno):
 
     return await dyno.edit("**Dyno Usage**:\n\n"
                            f" -> `Dyno usage for`  **{Var.HEROKU_APP_NAME}**:\n"
-                           f"     •  `{AppHours}`**h**  `{AppMinutes}`**m**  "
+                           f"     ✓  `{AppHours}`**h**  `{AppMinutes}`**m**  "
                            f"**|**  [`{AppPercentage}`**%**]"
                            "\n\n"
                            " -> `Dyno hours quota remaining this month`:\n"
-                           f"     •  `{hours}`**h**  `{minutes}`**m**  "
+                           f"     ✓  `{hours}`**h**  `{minutes}`**m**  "
                            f"**|**  [`{percentage}`**%**]"
                            )
 
@@ -163,24 +163,24 @@ def prettyjson(obj, indent=2, maxlinelength=80):
 
     items, _ = getsubitems(obj, itemkey="", islast=True, maxlinelength=maxlinelength - indent, indent=indent)
     return indentitems(items, indent, level=0)
-
+   
 @register(outgoing=True, pattern=r"^\.logs")
 async def _(dyno):        
         try:
              Heroku = heroku3.from_key(Var.HEROKU_API_KEY)                         
              app = Heroku.app(Var.HEROKU_APP_NAME)
         except:
-  	       return await dyno.reply(" Please make sure your Heroku API Key, Your App name are configured correctly in the heroku Please Join @FridayOT For Any Issue")
-        await dyno.edit("Getting Logs....")
+  	       return await dyno.reply(" Please make sure your Heroku API Key, Your App name are configured correctly in the heroku var please check https://t.me/IndianBot_Official/55?single")
+        await dyno.edit("Downloading Logs..")
         with open('logs.txt', 'w') as log:
             log.write(app.get_log())
         await dyno.client.send_file(
             dyno.chat_id,
             "logs.txt",
             reply_to=dyno.id,
-            caption="logs of 100+ lines",
+            caption="logs of Friday",
         )
-        await dyno.edit("Sending in Progress.......")
+        await dyno.edit("Sending logs here....")
         await asyncio.sleep(5)
         await dyno.delete()
-        return os.remove('fridaylogs.txt')
+        return os.remove('logs.txt')
