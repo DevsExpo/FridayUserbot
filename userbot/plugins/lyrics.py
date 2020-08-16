@@ -1,4 +1,7 @@
-# Lel, Didn't Get Time To Make New One So Used Plugin Made br @mrconfused and @sandy1709 dont edit credits
+# Ported from catuserbot
+# For TeleBot
+# Kangers pls keep credits
+
 import os
 import lyricsgenius
 import random
@@ -12,9 +15,6 @@ import io
 import asyncio
 import time
 GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
-
-
-
 
 @borg.on(admin_cmd(outgoing=True, pattern="lyrics (.*)"))
 async def _(event):
@@ -39,7 +39,7 @@ async def _(event):
         else:
             reply = "Couldn't find any lyrics for that song! try with artist name along with song if still doesnt work try `.glyrics`"
     else:
-        reply = "lyrics not found! try with artist name along with song if still doesnt work try `.glyrics`"
+        reply = "Lyrics not found! try with artist name along with song if still doesnt work try `.glyrics`"
         
     if len(reply) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(reply)) as out_file:
@@ -62,12 +62,12 @@ async def lyrics(lyric):
         pass
     else:
         await lyric.edit("`Error: please use '-' as divider for <artist> and <song>`\n"
-                         "eg: `.glyrics Nicki Minaj - Super Bass`")
+                         "eg: `.glyrics Neeraj Madhav - Panipaali`")
         return
 
     if GENIUS is None:
         await lyric.edit(
-            "`Provide genius access token to config.py or Heroku Var first kthxbye!`")
+            "`Set genius access token in heroku vars and retry!`")
     else:
         genius = lyricsgenius.Genius(GENIUS)
         try:
@@ -105,10 +105,6 @@ async def lyrics(lyric):
     else:
         await lyric.edit(f"**Search query**: \n`{artist} - {song}`\n\n```{songs.lyrics}```")
     return
-
-
-
-
 
 
 CMD_HELP.update({
