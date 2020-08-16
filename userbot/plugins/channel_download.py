@@ -11,7 +11,7 @@ import subprocess
 import sys
 from uniborg.util import admin_cmd, humanbytes, progress, time_formatter
 
-@borg.on(admin_cmd(pattern=r"getc"))
+@borg.on(admin_cmd(pattern=r"getc", allow_sudo=True))
 async def get_media(event):
     if event.fwd_from:
         return
@@ -47,7 +47,7 @@ async def get_media(event):
              
              
              
-@borg.on(admin_cmd(pattern=r"geta"))
+@borg.on(admin_cmd(pattern=r"geta", allow_sudo=True))
 async def get_media(event):
     if event.fwd_from:
         return

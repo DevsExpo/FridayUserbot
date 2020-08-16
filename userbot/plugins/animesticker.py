@@ -20,6 +20,7 @@ from PIL import ImageEnhance, ImageOps
 
 from userbot import CMD_HELP
 from userbot.events import register
+from userbot.utils import admin_cmd
 
 
 
@@ -44,8 +45,8 @@ def deEmojify(inputString: str) -> str:
     return re.sub(EMOJI_PATTERN, '', inputString)
 
 
-@register(outgoing=True, pattern="^.waifu(?: |$)(.*)")
-
+#@register(outgoing=True, pattern="^.waifu(?: |$)(.*)", allow_sudo=True))
+@borg.on(admin_cmd(pattern=r"waifu(?: |$)(.*)", allow_sudo=True))
 async def waifu(animu):
 #"""Creates random anime sticker!"""
 

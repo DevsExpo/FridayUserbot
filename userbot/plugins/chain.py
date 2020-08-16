@@ -6,7 +6,7 @@ from telethon import events
 from telethon.tl.functions.messages import SaveDraftRequest
 from userbot.utils import admin_cmd
 
-@borg.on(admin_cmd(pattern="chain"))
+@borg.on(admin_cmd(pattern="chain", allow_sudo=True))
 async def _(event):
     await event.edit("Counting...")
     count = -1

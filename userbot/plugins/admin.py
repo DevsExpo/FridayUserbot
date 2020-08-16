@@ -67,9 +67,8 @@ MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=True)
 UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
-
-#@register(outgoing=True, pattern="^.setgpic$")
-@borg.on(admin_cmd(pattern=r"setgpic"))
+#@register(outgoing=True, pattern="^.setgpic$", allow_sudo=True))
+@borg.on(admin_cmd(pattern=r"setgpic", allow_sudo=True))
 @errors_handler
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
@@ -108,7 +107,7 @@ async def set_group_photo(gpic):
 
 
 #@register(outgoing=True, pattern="^.promote(?: |$)(.*)")
-@borg.on(admin_cmd(pattern=r"promote(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"promote(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def promote(promt):
     """ For .promote command, promotes the replied/tagged person """
@@ -160,7 +159,7 @@ async def promote(promt):
 
 
 #@register(outgoing=True, pattern="^.demote(?: |$)(.*)")
-@borg.on(admin_cmd(pattern=r"demote(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"demote(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def demote(dmod):
     """ For .demote command, demotes the replied/tagged person """
@@ -266,7 +265,7 @@ async def ban(bon):
 
 
 #@register(outgoing=True, pattern="^.unban(?: |$)(.*)")
-@borg.on(admin_cmd(pattern=r"unban(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"unban(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def nothanos(unbon):
     """ For .unban command, unbans the replied/tagged person """
@@ -304,8 +303,8 @@ async def nothanos(unbon):
         await unbon.edit("`Uh oh my unban logic broke!`")
 
 
-#@register(outgoing=True, pattern="^.mute(?: |$)(.*)")
-@borg.on(admin_cmd(pattern=r"mute(?: |$)(.*)"))
+#@register(outgoing=True, pattern="^.mute(?: |$)(.*)", allow_sudo=True))
+@borg.on(admin_cmd(pattern=r"mute(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def spider(spdr):
     """
@@ -448,8 +447,8 @@ async def muter(moot):
             await moot.delete()
 
 
-#@register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
-@borg.on(admin_cmd(pattern=r"ungmute(?: |$)(.*)"))
+#@register(outgoing=True, pattern="^.ungmute(?: |$)(.*)", allow_sudo=True))
+@borg.on(admin_cmd(pattern=r"ungmute(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def ungmoot(un_gmute):
     """ For .ungmute command, ungmutes the target in the userbot """
@@ -494,7 +493,7 @@ async def ungmoot(un_gmute):
 
 
 #@register(outgoing=True, pattern="^.gmute(?: |$)(.*)")
-@borg.on(admin_cmd(pattern=r"gmute(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"gmute(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def gspider(gspdr):
     """ For .gmute command, globally mutes the replied/tagged person """
@@ -540,7 +539,7 @@ async def gspider(gspdr):
 
 
 #@register(outgoing=True, pattern="^.delusers(?: |$)(.*)")
-@borg.on(admin_cmd(pattern=r"delusers(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"delusers(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def rm_deletedacc(show):
     """ For .delusers command, list all the ghost/deleted accounts in a chat. """
@@ -613,7 +612,7 @@ async def rm_deletedacc(show):
 
 
 #@register(outgoing=True, pattern="^.adminlist$")
-@borg.on(admin_cmd(pattern=r"adminlist"))
+@borg.on(admin_cmd(pattern=r"adminlist", allow_sudo=True))
 @errors_handler
 async def get_admin(show):
     """ For .admins command, list all of the admins of the chat. """
@@ -635,7 +634,7 @@ async def get_admin(show):
 
 
 #@register(outgoing=True, pattern="^.pin(?: |$)(.*)")
-@borg.on(admin_cmd(pattern=r"pin(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"pin(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def pin(msg):
     """ For .pin command, pins the replied/tagged message on the top the chat. """
@@ -726,7 +725,7 @@ async def kick(usr):
 
 
 #@register(outgoing=True, pattern="^.users ?(.*)")
-@borg.on(admin_cmd(pattern=r"users ?(.*)"))
+@borg.on(admin_cmd(pattern=r"users ?(.*)", allow_sudo=True))
 @errors_handler
 async def get_users(show):
     """ For .users command, list all of the users in a chat. """

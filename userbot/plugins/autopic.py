@@ -10,8 +10,7 @@ from userbot.utils import admin_cmd
 
 FONT_FILE_TO_USE = "Fonts/digital.ttf"
 
-@command(pattern="^.autopic", outgoing=True)
-#@borg.on(admin_cmd(pattern=r"autopic"))
+@borg.on(admin_cmd(pattern=r"autopic", allow_sudo=True))
 async def autopic(event):
     downloaded_file_name = "userbot/original_pic.png"
     downloader = SmartDL(Var.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=False)
