@@ -1,6 +1,17 @@
-'''
-Fix by @mariodevs
-'''
+#   Copyright 2019 - 2020 Starkgang ( Orginaly By Anubis )
+
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+
+#       http://www.apache.org/licenses/LICENSE-2.0
+
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
 import os
 import sys
 from telethon.sessions import StringSession
@@ -17,6 +28,8 @@ from requests import get
 import time
 
 Lastupdate = time.time()
+
+from var import Var
 
 os.system("pip install --upgrade pip")
 if Var.STRING_SESSION:
@@ -37,13 +50,6 @@ LOAD_PLUG = {}
 ENV = os.environ.get("ENV", False)
 """ PPE initialization. """
 
-from logging import basicConfig, getLogger, INFO, DEBUG
-from distutils.util import strtobool as sb
-import asyncio
-
-import pylast
-from pySmartDL import SmartDL
-from requests import get
 # Bot Logs setup:
 if bool(ENV):
     CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -77,11 +83,10 @@ if bool(ENV):
         pass
 
     # Userbot logging feature switch.
-    BOTLOG = sb(os.environ.get("BOTLOG", "True"))
-    LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "True"))
-    
+    BOTLOG = sb(os.environ.get("BOTLOG", "False"))
+
     # Bleep Blop, this is a bot ;)
-    PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "True"))
+    PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
 
     # Console verbose logging
     CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -99,58 +104,44 @@ if bool(ENV):
     CHROME_DRIVER = os.environ.get("CHROME_DRIVER", None)
     GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN", None)
 
+
+    # Heroku Credentials for updater.
+    HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
+    HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
+    HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
+
+    # Pm Permit Img
+    PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
+    AUTONAME = os.environ.get("AUTONAME", None)
+    CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
+
+
+
     # OpenWeatherMap API Key
     OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
 
     # Anti Spambot Config
     ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "False"))
+    # Log It
+    PRIVATE_GROUP_BOT_API_ID = os.environ.get("PRIVATE_GROUP_BOT_API_ID", None)
 
     ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
 
-    # FedBan Premium Module
-    F_BAN_LOGGER_GROUP = os.environ.get("F_BAN_LOGGER_GROUP", None)
-
-    # Cbutton 
-    PRIVATE_CHANNEL_BOT_API_ID = os.environ.get("PRIVATE_CHANNEL_BOT_API_ID", None)
-
-
-# Heroku Credentials for updater.
-    HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
-    HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
-    HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
-
-   
     # Youtube API key
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
 
     # Default .alive name
     ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
-    AUTONAME = os.environ.get("AUTONAME", None)
     
-    #Autobio
-    AUTO_BIO = os.environ.get("AUTO_BIO", None)
+    LESS_SPAMMY = os.environ.get("LESS_SPAMMY", True)
 
     # Time & Date - Country and Time Zone
-    COUNTRY = str(os.environ.get("COUNTRY", "India"))
+    COUNTRY = str(os.environ.get("COUNTRY", ""))
 
     TZ_NUMBER = int(os.environ.get("TZ_NUMBER", 1))
-    FBAN_REASON = os.environ.get("FBAN_REASON", None)
-    FBAN_USER = os.environ.get("FBAN_USER", None)
-    # Clean Welcome
 
     # Clean Welcome
     CLEAN_WELCOME = sb(os.environ.get("CLEAN_WELCOME", "True"))
-
-    # Custom Module
-    CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
-    CUSTOM_STICKER_PACK_NAME = os.environ.get("CUSTOM_STICKER_PACK_NAME", None)
-    CUSTOM_ANIMATED_PACK_NAME = os.environ.get("CUSTOM_ANIMATED_PACK_NAME", None)
-
-    # Pm Permit Img
-    PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
-
-    # Gban 
-    USER_IS = os.environ.get("USER_IS", None)
 
     # Last.fm Module
     BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -202,7 +193,9 @@ COUNT_MSG = 0
 USERS = {}
 COUNT_PM = {}
 LASTMSG = {}
+SUDO_LIST = {}
 CMD_HELP = {}
+
 ISAFK = False
 AFKREASON = None
-
+# End of PaperPlaneExtended Support Vars
