@@ -2,6 +2,7 @@
 .app <app_name> to fetch app details.
 Credits @MrConfused
 .appr <app_name>  to fetch app details with request link.
+  © [cHAuHaN](http://t.me/amnd33p)"""
 
 import re
 import bs4
@@ -36,7 +37,7 @@ async def apk(event):
         app_details += "\n\n<code>Developer :</code> <a href='"+app_dev_link+"'>"+app_dev+"</a>"
         app_details += "\n<code>Rating :</code> "+app_rating.replace("Rated ", "⭐ ").replace(" out of ", "/").replace(" stars", "", 1).replace(" stars", "⭐ ").replace("five", "5")
         app_details += "\n<code>Features :</code> <a href='"+app_link+"'>View in Play Store</a>"
-        app_details += "\n\n===> CipherX Exclusive <==="
+        app_details += "\n\n===> @FridayOT <==="
         await event.edit(app_details, link_preview = True, parse_mode = 'HTML')
     except IndexError:
         await event.edit("No result found in search. Please enter **Valid app name**")
@@ -66,7 +67,8 @@ async def apkr(event):
         app_details += "\n\n<code>Developer :</code> <a href='"+app_dev_link+"'>"+app_dev+"</a>"
         app_details += "\n<code>Rating :</code> "+app_rating.replace("Rated ", "⭐ ").replace(" out of ", "/").replace(" stars", "", 1).replace(" stars", "⭐ ").replace("five", "5")
         app_details += "\n<code>Features :</code> <a href='"+app_link+"'>View in Play Store</a>"
-        app_details += "\n\n===> CipherX Exclusive <==="
+        app_details += "\n\n<b>Download : </b> <a href='https://t.me/joinchat/JCu-H1NikiYDgNjpjPYd4A'>Request_Here</a>"
+        app_details += "\n\n===> @FridayOT <==="
         await event.edit(app_details, link_preview = True, parse_mode = 'HTML')
     except IndexError:
         await event.edit("No result found in search. Please enter **Valid app name**")
