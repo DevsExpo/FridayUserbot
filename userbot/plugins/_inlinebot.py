@@ -1,3 +1,6 @@
+"""Copy Right By Xtra-Telegram 2020 
+Fixed And Customized By @StarkXD 
+Don't Edit Before This Line"""
 from math import ceil
 import asyncio
 import json
@@ -13,11 +16,11 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         builder = event.builder
         result = None
         query = event.text
-        if event.query.user_id == bot.uid and query.startswith("CɪᴘʜᴇʀX"):
+        if event.query.user_id == bot.uid and query.startswith("Userbot"):
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
-                "© CɪᴘʜᴇʀX Help",
+                "© Userbot Help",
                 text="{}\nCurrently Loaded Plugins: {}".format(
                     query, len(CMD_LIST)),
                 buttons=buttons,
@@ -36,7 +39,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_popp_up_alert = "Please make your own bot, and don't use mine!"
+            reply_popp_up_alert = "Please get your own Userbot, and don't use mine!"
             await event.answer(reply_popp_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(  # pylint:disable=E0602
@@ -54,7 +57,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Please make your own bot, and don't use mine!"
+            reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
     @tgbot.on(events.callbackquery.CallbackQuery(  # pylint:disable=E0602
         data=re.compile(b"us_plugin_(.*)")
@@ -74,14 +77,14 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             else:
                 reply_pop_up_alert = help_string
             reply_pop_up_alert += "\n Use .unload {} to remove this plugin\n\
-                © CɪᴘʜᴇʀX".format(plugin_name)
+                © Userbot".format(plugin_name)
             try:
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
             except: 
                 halps = "Do .help {} to get the list of commands.".format(plugin_name)
                 await event.answer(halps, cache_time=0, alert=True)
         else:
-            reply_pop_up_alert = "Please make your own bot, and don't use mine!"
+            reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
 
 def paginate_help(page_number, loaded_plugins, prefix):
     number_of_rows = 8
@@ -92,7 +95,7 @@ def paginate_help(page_number, loaded_plugins, prefix):
             helpable_plugins.append(p)
     helpable_plugins = sorted(helpable_plugins)
     modules = [custom.Button.inline(
-        "{} {} {}".format("🏴‍☠", x, "🏴‍☠"),
+        "{} {} {}".format("✨", x, "✨"),
         data="us_plugin_{}".format(x))
         for x in helpable_plugins]
     pairs = list(zip(modules[::number_of_cols], modules[1::number_of_cols]))
