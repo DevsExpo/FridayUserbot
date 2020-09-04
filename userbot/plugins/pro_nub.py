@@ -17,7 +17,10 @@ from userbot.utils import admin_cmd
 
 
 
-@borg.on(admin_cmd("(.*)"))
+@borg.on(admin_cmd("(.unoob
+.menoob
+.upro
+.mepro)"))
 
 async def _(event):
 
