@@ -4,7 +4,7 @@
 
 import asyncio
 from telethon import events
-from telethon.tl.types import ChannelParticipantsAdmins
+from telethon.tl.types import ChannelParticipantsAdmins, PeerUser
 from userbot.utils import admin_cmd
 
 # Added to TeleBot by @its_xditya
@@ -31,7 +31,7 @@ async def _(event):
         return
     mentions = "All members tagged successfully. Honor CɪᴘʜᴇʀX!"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat, 5000):
+    async for x in borg.iter_participants(chat, PeerUser):
         mentions += f" \n [{x.first_name}](tg://user?id={x.id})"
     await event.reply(mentions)
     await event.delete()
