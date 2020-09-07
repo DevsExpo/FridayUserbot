@@ -25,7 +25,7 @@ async def _(event):
     await event.delete()
 
 # Added to TeleBot by @its_xditya
-@borg.on(admin_cmd(pattern=r"tagall", outgoing=True))
+@borg.on(admin_cmd(pattern=r"tag", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
