@@ -1,7 +1,5 @@
 # Coded by @AbirHasan2005
 # Telegram Group: http://t.me/linux_repo
-
-
 import asyncio
 
 from telethon import events
