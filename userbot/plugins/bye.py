@@ -1,6 +1,5 @@
 # For @UniBorg
 # Courtesy @yasirsiddiqui
-
 """
 .bye
 """
@@ -8,7 +7,9 @@ import time
 
 from telethon.tl.functions.channels import LeaveChannelRequest
 
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot.utils import admin_cmd
+from userbot.utils import edit_or_reply
+from userbot.utils import sudo_cmd
 
 
 @borg.on(admin_cmd("bye", outgoing=True))
