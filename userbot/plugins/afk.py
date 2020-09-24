@@ -42,7 +42,7 @@ async def _(event):
             )
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
-            afk_time = datetime.datetime.now()  # pylint:disable=E0602
+            afk_time = datetime.datetime.now()  # pylin\t:disable=E0602
         USER_AFK = f"yes: {reason}"  # pylint:disable=E0602
         if reason:
             await borg.send_message(event.chat_id, f"**My Master Is Going ** ~~because~~ Of __{reason}__")
@@ -145,7 +145,7 @@ async def on_afk(event):
             else:
                 afk_since = f"`{int(seconds)}s` **ago**"
         msg = None
-        message_to_reply = f"**My Master is Afk**  \nAFKT : `{total_afk_time}`\nReason : {reason}" + \
+        message_to_reply = f"**My Master is busy**  \nAFKT : `{total_afk_time}`\nReason : {reason}" + \
             f"\n\n~~He Will Reply To You Soon!~~" \
             if reason \
             else f"**My Master is Afk**\n AFK : `{total_afk_time}` ~~He Will Comeback Soon~~"
