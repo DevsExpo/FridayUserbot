@@ -3,9 +3,9 @@ Syntax: .afk REASON"""
 import asyncio
 import datetime
 from datetime import datetime
+
 from telethon import events
 from telethon.tl import functions, types
-
 
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602
