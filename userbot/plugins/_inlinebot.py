@@ -18,21 +18,24 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
                 "© Userbot Help",
-                text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
+                text="{}\nCurrently Loaded Plugins: {}".format(
+                    query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
             )
         if event.query.user_id == bot.uid and query == "stats":
-           result = builder.article(
-           title="Stats",
-           text=f"**Showing Stats For {DEFAULTUSER}'s Friday** \nNote --> Only Owner Can Check This \n(C) @FridayOT",
-           buttons = [
-                   [custom.Button.inline("Show Stats 🚶", data="terminator")],
-                   [Button.url("Repo 🛡️", "https://github.com/StarkGang/FridayUserbot")],
-                   [Button.url("Join Channel 📃", "t.me/Fridayot")],
-             ]
-         )
+            result = builder.article(
+                title="Stats",
+                text=f"**Showing Stats For {DEFAULTUSER}'s Friday** \nNote --> Only Owner Can Check This \n(C) @FridayOT",
+                buttons=[
+                    [custom.Button.inline("Show Stats 🚶", data="terminator")],
+                    [Button.url(
+                        "Repo 🛡️", "https://github.com/StarkGang/FridayUserbot")],
+                    [Button.url("Join Channel 📃", "t.me/Fridayot")],
+                ]
+            )
         await event.answer([result] if result else None)
+
     @tgbot.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(b"helpme_next\((.+?)\)")
@@ -40,8 +43,10 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
     )
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:  # pylint:disable=E0602
-            current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-            buttons = paginate_help(current_page_number + 1, CMD_LIST, "helpme")
+            current_page_number = int(
+                event.data_match.group(1).decode("UTF-8"))
+            buttons = paginate_help(
+                current_page_number + 1, CMD_LIST, "helpme")
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
@@ -55,7 +60,8 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
     )
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:  # pylint:disable=E0602
-            current_page_number = int(event.data_match.group(1).decode("UTF-8"))
+            current_page_number = int(
+                event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(
                 current_page_number - 1, CMD_LIST, "helpme"  # pylint:disable=E0602
             )
@@ -91,20 +97,22 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             try:
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
             except:
-                halps = "Do .help {} to get the list of commands.".format(plugin_name)
+                halps = "Do .help {} to get the list of commands.".format(
+                    plugin_name)
                 await event.answer(halps, cache_time=0, alert=True)
         else:
             reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"terminator")))
     async def rip(event):
-            if event.query.user_id == bot.uid:
-                text = inlinestats
-                await event.answer(text, alert=True)
-            else:
-                txt = "You Can't View My Masters Stats"
-                await event.answer(txt, alert=True)
-                
+        if event.query.user_id == bot.uid:
+            text = inlinestats
+            await event.answer(text, alert=True)
+        else:
+            txt = "You Can't View My Masters Stats"
+            await event.answer(txt, alert=True)
+
+
 def paginate_help(page_number, loaded_plugins, prefix):
     number_of_rows = 8
     number_of_cols = 2
@@ -126,7 +134,7 @@ def paginate_help(page_number, loaded_plugins, prefix):
     modulo_page = page_number % max_num_pages
     if len(pairs) > number_of_rows:
         pairs = pairs[
-            modulo_page * number_of_rows : number_of_rows * (modulo_page + 1)
+            modulo_page * number_of_rows: number_of_rows * (modulo_page + 1)
         ] + [
             (
                 custom.Button.inline(
