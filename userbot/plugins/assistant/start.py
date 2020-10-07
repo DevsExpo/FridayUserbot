@@ -45,7 +45,10 @@ async def start(event):
             message="Hi Master, It's Me Your Assistant.",
             buttons=[
                 [custom.Button.inline("Broadcast 🔥", data="mebroadcast")],
-                [Button.url("Repo?", "https://github.com/StarkGang/FridayUserbot")],
+                [
+                    Button.url("Repo?",
+                               "https://github.com/StarkGang/FridayUserbot")
+                ],
                 [Button.url("Join Channel 📃", "t.me/Fridayot")],
             ],
         )
@@ -70,9 +73,13 @@ async def help(event):
     if event.query.user_id is not bot.uid:
         await tgbot.send_message(
             event.chat_id,
-            message="You Can Deploy Friday In Heroku By Following Steps Bellow, You Can See Some Quick Guides On Support Channel Or On Your Own Assistant Bot. \nThank You For Contacting Me.",
+            message=
+            "You Can Deploy Friday In Heroku By Following Steps Bellow, You Can See Some Quick Guides On Support Channel Or On Your Own Assistant Bot. \nThank You For Contacting Me.",
             buttons=[
-                [Button.url("Deploy Tutorial 📺", "https://youtu.be/xfHcm_e92eQ")],
+                [
+                    Button.url("Deploy Tutorial 📺",
+                               "https://youtu.be/xfHcm_e92eQ")
+                ],
                 [Button.url("Need Help ❓", "t.me/FridaySupportOfficial")],
             ],
         )
