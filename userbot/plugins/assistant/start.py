@@ -13,11 +13,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from telethon import events, custom, Button
-from telethon.tl.types import (
-    Channel,
-    Chat,
-    User
-)
+from telethon.tl.types import Channel, Chat, User
 
 import emoji
 from googletrans import Translator
@@ -36,10 +32,12 @@ from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 import time
 from userbot import Lastupdate, bot
 from userbot.plugins.sql_helper.botusers_sql import add_user_to_db
+
+
 @tgbot.on(events.NewMessage(pattern="^/start"))
 async def start(event):
     vent = event.chat_id
-    starttext = ("Hi! this is An Assistant Bot For My [Owner] ")
+    starttext = "Hi! this is An Assistant Bot For My [Owner] "
     if event.from_id == bot.uid:
         await tgbot.send_message(
             vent,
@@ -47,8 +45,8 @@ async def start(event):
             buttons=[
                 [custom.Button.inline("Broadcast 🔥", data="mebroadcast")],
                 [Button.url("Repo?", "https://github.com/StarkGang/FridayUserbot")],
-                [Button.url("Join Channel 📃", "t.me/Fridayot")]
-            ]
+                [Button.url("Join Channel 📃", "t.me/Fridayot")],
+            ],
         )
     else:
         await tgbot.send_message(
@@ -57,12 +55,13 @@ async def start(event):
             link_preview=False,
             buttons=[
                 [custom.Button.inline("Deploy your Friday 🇮🇳", data="deploy")],
-                [Button.url("Help Me ❓", "t.me/Fridayot")]
-            ]
+                [Button.url("Help Me ❓", "t.me/Fridayot")],
+            ],
         )
 
 
 # Data's
+
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"deploy")))
 async def help(event):
@@ -72,16 +71,16 @@ async def help(event):
             event.chat_id,
             message="You Can Deploy Friday In Heroku By Following Steps Bellow, You Can See Some Quick Guides On Support Channel Or On Your Own Assistant Bot. \nThank You For Contacting Me.",
             buttons=[
-                [Button.url("Deploy Tutorial 📺",
-                            "https://youtu.be/xfHcm_e92eQ")],
-                [Button.url("Need Help ❓", "t.me/FridaySupportOfficial")]
-            ]
+                [Button.url("Deploy Tutorial 📺", "https://youtu.be/xfHcm_e92eQ")],
+                [Button.url("Need Help ❓", "t.me/FridaySupportOfficial")],
+            ],
         )
+
 
 # Bot Permit.
 @tgbot.on(events.NewMessage(func=lambda e: e.is_private))
 async def all_messages_catcher(event):
-    ignore = ['/start', '/tr', '/ping', 'fuck', 'madarchod']
+    ignore = ["/start", "/tr", "/ping", "fuck", "madarchod"]
     sedlyfvro = event.raw_text
     if any(a in event.raw_text for a in ignore):
         pass
@@ -92,14 +91,9 @@ async def all_messages_catcher(event):
         chat_id = event.chat_id
         sed = await event.forward_to(bot.uid)
 
-
-# Add User To Database ,Later For Broadcast Purpose
-# (C) @SpecHide
-        add_user_to_db(
-            sed.id,
-            event.sender_id,
-            event.from_id
-        )
+        # Add User To Database ,Later For Broadcast Purpose
+        # (C) @SpecHide
+        add_user_to_db(sed.id, event.sender_id, event.from_id)
 
 
 # Test
