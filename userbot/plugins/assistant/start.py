@@ -12,26 +12,22 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from telethon import events, custom, Button
-from telethon.tl.types import Channel, Chat, User
+import re
+import time
+from datetime import datetime
+from math import ceil
 
 import emoji
 from googletrans import Translator
-import re
-from math import ceil
-from userbot.plugins import inlinestats
-from telethon import custom, events, Button
-from userbot import CMD_LIST
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from telethon import Button, custom, events
+from telethon.tl.types import Channel, Chat, User
 from telethon.utils import get_display_name
-from userbot.utils import admin_cmd, sudo_cmd
-from userbot.uniborgConfig import Config
-from telethon import events
-from datetime import datetime
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
-import time
-from userbot import Lastupdate, bot
+
+from userbot import CMD_LIST, Lastupdate, bot
+from userbot.plugins import inlinestats
 from userbot.plugins.sql_helper.botusers_sql import add_user_to_db
+from userbot.uniborgConfig import Config
+from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @tgbot.on(events.NewMessage(pattern="^/start"))
