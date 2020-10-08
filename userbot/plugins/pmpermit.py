@@ -23,7 +23,9 @@ DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 )
 CUSTOM_MIDDLE_PMP = (
-    str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "Don't Spam Otherwise Get Ready To Be Fucked.."
+    str(CUSTOM_PMPERMIT)
+    if CUSTOM_PMPERMIT
+    else "Don't Spam Otherwise Get Ready To Be Fucked.."
 )
 USER_BOT_WARN_ZERO = "You Have Attempted To Spam Master's Inbox So In Order To Avoid Over-Spam, You Have Been Blocked.."
 USER_BOT_NO_WARN = (
