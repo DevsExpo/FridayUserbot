@@ -1,12 +1,13 @@
 import asyncio
 import io
 import os
-from userbot.uniborgConfig import Config
+
 from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
 
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from userbot import ALIVE_NAME, CUSTOM_PMPERMIT
+from userbot.uniborgConfig import Config
 
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
