@@ -158,14 +158,14 @@ if Var.PRIVATE_GROUP_ID is not None:
             # don't log verified accounts
 
             return
-        
+
         if PM_ON_OFF == "DISABLE":
             return
-        
+
         if not pmpermit_sql.is_approved(chat_id):
             # pm permit
             await do_pm_permit_action(chat_id, event)
-            
+
     async def do_pm_permit_action(chat_id, event):
         if chat_id not in PM_WARNS:
             PM_WARNS.update({chat_id: 0})
