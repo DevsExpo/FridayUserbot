@@ -1,9 +1,10 @@
 import re
 from math import ceil
+
+from telethon import Button, custom, events
+
+from userbot import ALIVE_NAME, CMD_LIST
 from userbot.plugins import inlinestats
-from telethon import custom, events, Button
-from userbot import ALIVE_NAME
-from userbot import CMD_LIST
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Friday"
 if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:

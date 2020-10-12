@@ -1,50 +1,32 @@
-from telethon import events, custom, Button
-from telethon.tl.types import Channel, Chat, User
+import asyncio
+import time
+from asyncio import sleep
+from datetime import datetime
+from os import remove
 
 import emoji
 from googletrans import Translator
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
-from telethon.utils import get_display_name
-from userbot.utils import admin_cmd, sudo_cmd
-from userbot.uniborgConfig import Config
-from telethon import events
-from datetime import datetime
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
-import time
-from userbot import Lastupdate, bot
-import asyncio
-
-from telethon import events
-from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
-from telethon.tl.types import ChannelParticipantsAdmins
-
-from asyncio import sleep
-from os import remove
-
-from telethon.errors import (
-    BadRequestError,
-    ChatAdminRequiredError,
-    ImageProcessFailedError,
-    PhotoCropSizeSmallError,
-    UserAdminInvalidError,
-)
-from telethon.errors.rpcerrorlist import MessageTooLongError, UserIdInvalidError
-from telethon.tl.functions.channels import (
-    EditAdminRequest,
-    EditBannedRequest,
-    EditPhotoRequest,
-)
+from telethon import Button, custom, events
+from telethon.errors import (BadRequestError, ChatAdminRequiredError,
+                             ImageProcessFailedError, PhotoCropSizeSmallError,
+                             UserAdminInvalidError)
+from telethon.errors.rpcerrorlist import (MessageDeleteForbiddenError,
+                                          MessageTooLongError,
+                                          UserIdInvalidError)
+from telethon.tl.functions.channels import (EditAdminRequest,
+                                            EditBannedRequest,
+                                            EditPhotoRequest)
 from telethon.tl.functions.messages import UpdatePinnedMessageRequest
-from telethon.tl.types import (
-    ChannelParticipantsAdmins,
-    ChatAdminRights,
-    ChatBannedRights,
-    MessageEntityMentionName,
-    MessageMediaPhoto,
-)
+from telethon.tl.types import (Channel, ChannelParticipantsAdmins, Chat,
+                               ChatAdminRights, ChatBannedRights,
+                               MessageEntityMentionName, MessageMediaPhoto,
+                               User)
+from telethon.utils import get_display_name
 
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
-from userbot.utils import admin_cmd, errors_handler, register, sudo_cmd
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, Lastupdate, bot
+from userbot.uniborgConfig import Config
+from userbot.utils import (admin_cmd, edit_or_reply, errors_handler, register,
+                           sudo_cmd)
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"

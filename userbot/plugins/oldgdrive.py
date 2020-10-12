@@ -12,7 +12,6 @@ from mimetypes import guess_type
 
 import httplib2
 from apiclient.http import MediaFileUpload
-
 #
 from googleapiclient.discovery import build
 from oauth2client.client import OAuth2WebServerFlow

@@ -3,9 +3,11 @@
 # Parts of the code below is taken from other sources, the links to the
 # sources is commented above the taken code
 
-from PIL import Image, ImageFont, ImageDraw
-import textwrap
 import os
+import textwrap
+
+from PIL import Image, ImageDraw, ImageFont
+
 from userbot.utils import admin_cmd, sudo_cmd
 from var import Var
 

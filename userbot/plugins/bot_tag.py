@@ -12,11 +12,12 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
-from telethon import events, custom, Button
+from telethon import Button, custom, events
 from telethon.tl.types import Channel, Chat, User
 from telethon.utils import get_display_name
-from userbot.utils import admin_cmd, sudo_cmd, edit_or_reply
+
 from userbot.uniborgConfig import Config
+from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @borg.on(

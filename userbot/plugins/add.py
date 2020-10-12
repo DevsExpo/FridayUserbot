@@ -1,10 +1,9 @@
 """Invite the user(s) to the current chat
 Syntax: .invite <User(s)>"""
 
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 from telethon import functions
 
-from userbot.utils import admin_cmd
+from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 """Invite the user(s) to the current chat
 Syntax: .invite <User(s)>"""

@@ -5,17 +5,17 @@
 
 ###### Searching and Downloading Google Images to the local disk ######
 
+import argparse
+import codecs
+import datetime
+import json
+import os
+import re
+import ssl
+import sys
 # Import Libraries
 # import encodes as request
 import time  # Importing the time library to check the time of code execution
-import ssl
-import re
-import os
-import json
-import datetime
-import codecs
-import argparse
-import sys
 
 version = (3, 0)
 cur_version = sys.version_info

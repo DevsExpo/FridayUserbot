@@ -15,12 +15,8 @@ from PIL import Image
 from telethon.errors import MessageNotModifiedError
 from telethon.errors.rpcerrorlist import StickersetInvalidError
 from telethon.tl.functions.messages import GetStickerSetRequest
-from telethon.tl.types import (
-    DocumentAttributeSticker,
-    InputStickerSetID,
-    InputStickerSetShortName,
-    MessageMediaPhoto,
-)
+from telethon.tl.types import (DocumentAttributeSticker, InputStickerSetID,
+                               InputStickerSetShortName, MessageMediaPhoto)
 
 from userbot import ALIVE_NAME
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd

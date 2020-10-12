@@ -16,8 +16,9 @@
 
 """ users Table """
 
-from sqlalchemy import Column, String, Integer
-from . import SESSION, BASE
+from sqlalchemy import Column, Integer, String
+
+from . import BASE, SESSION
 
 
 class Users(BASE):

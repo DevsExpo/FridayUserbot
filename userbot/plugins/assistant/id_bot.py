@@ -1,31 +1,25 @@
-from telethon.utils import pack_bot_file_id
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot import bot
-from telethon import events, custom, Button
-from telethon.tl.types import Channel, Chat, User
+import asyncio
+import io
+import re
+import time
+from datetime import datetime
+from math import ceil
 
 import emoji
-import asyncio
 from googletrans import Translator
-import re
-import io
-from math import ceil
-from userbot.plugins import inlinestats
-from telethon import custom, events, Button
-from userbot import CMD_LIST
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
-from telethon.utils import get_display_name
-from userbot.utils import admin_cmd, sudo_cmd
-from userbot.uniborgConfig import Config
-from telethon import events
-from datetime import datetime
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
-import time
+from telethon import Button, custom, events
 from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
-from userbot import Lastupdate, bot
+from telethon.tl.types import Channel, Chat, User
+from telethon.utils import get_display_name, pack_bot_file_id
+
+from userbot import CMD_LIST, Lastupdate, bot
+from userbot.plugins import inlinestats
 from userbot.plugins.sql_helper.botusers_sql import add_me_in_db, his_userid
-from userbot.plugins.sql_helper.idadder_sql import add_usersid_in_db, get_all_users
+from userbot.plugins.sql_helper.idadder_sql import (add_usersid_in_db,
+                                                    get_all_users)
+from userbot.uniborgConfig import Config
+from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @tgbot.on(events.NewMessage(pattern="^/id"))

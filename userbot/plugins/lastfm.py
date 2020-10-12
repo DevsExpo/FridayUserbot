@@ -10,16 +10,8 @@ from telethon.errors.rpcerrorlist import FloodWaitError
 from telethon.tl.functions.account import UpdateProfileRequest
 from telethon.tl.functions.users import GetFullUserRequest
 
-from userbot import (
-    BIO_PREFIX,
-    BOTLOG,
-    BOTLOG_CHATID,
-    CMD_HELP,
-    DEFAULT_BIO,
-    LASTFM_USERNAME,
-    bot,
-    lastfm,
-)
+from userbot import (BIO_PREFIX, BOTLOG, BOTLOG_CHATID, CMD_HELP, DEFAULT_BIO,
+                     LASTFM_USERNAME, bot, lastfm)
 from userbot.events import register
 
 # =================== CONSTANT ===================

@@ -14,13 +14,9 @@ from telethon.tl.custom import Message
 from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.functions.messages import GetFullChatRequest
 from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import (
-    ChannelParticipantsAdmins,
-    ChannelParticipantsBots,
-    InputPeerChannel,
-    InputPeerChat,
-    MessageEntityMentionName,
-)
+from telethon.tl.types import (ChannelParticipantsAdmins,
+                               ChannelParticipantsBots, InputPeerChannel,
+                               InputPeerChat, MessageEntityMentionName)
 
 from userbot import CMD_HELP
 from userbot.events import register

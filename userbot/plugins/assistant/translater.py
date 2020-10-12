@@ -4,21 +4,18 @@
 # A Plugin For Assistant Bot
 # x0x
 
-from telethon import events, custom, Button
-from telethon.tl.types import Channel, Chat, User
+import time
+from datetime import datetime
 
 import emoji
 from googletrans import Translator
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from telethon import Button, custom, events
+from telethon.tl.types import Channel, Chat, User
 from telethon.utils import get_display_name
-from userbot.utils import admin_cmd, sudo_cmd
+
+from userbot import Lastupdate, bot
 from userbot.uniborgConfig import Config
-from telethon import events
-from userbot import bot
-from datetime import datetime
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
-import time
-from userbot import Lastupdate
 
 
 @tgbot.on(events.NewMessage(pattern="^/tr ?(.*)"))
