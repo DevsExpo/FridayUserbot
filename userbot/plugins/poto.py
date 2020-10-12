@@ -7,7 +7,6 @@ from userbot.utils import admin_cmd
 
 logger = logging.getLogger(__name__)
 
-
 if 1 == 1:
 
     name = "Profile Photos"
@@ -16,7 +15,6 @@ if 1 == 1:
 
     @borg.on(admin_cmd(pattern="poto(.*)"))
     async def potocmd(event):
-
         """Gets the profile photos of replied users, channels or chats"""
 
         id = "".join(event.raw_text.split(maxsplit=2)[1:])
