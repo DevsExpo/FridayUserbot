@@ -131,6 +131,7 @@ if ENV:
         GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
         # MongoDB
         MONGO_URI = os.environ.get("MONGO_URI", None)
+        ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
         # Lydia API
         LYDIA_API = os.environ.get("LYDIA_API", None)
         PRIVATE_GROUP_ID = int(os.environ.get("PRIVATE_GROUP_ID", False))
