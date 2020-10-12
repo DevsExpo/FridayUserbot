@@ -188,8 +188,8 @@ async def check_incoming_messages(event):
         if entities:
             for entity in entities:
                 if isinstance(
-                        entity,
-                    (types.MessageEntityTextUrl, types.MessageEntityUrl)):
+                    entity,
+                        (types.MessageEntityTextUrl, types.MessageEntityUrl)):
                     is_url = True
         if is_url:
             try:
