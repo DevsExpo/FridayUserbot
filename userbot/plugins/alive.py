@@ -11,7 +11,9 @@ PM_IMG = Config.ALIVE_PIC
 if PM_IMG is None:
     PM_IMG = "https://telegra.ph/file/22535f8051a58af113586.jpg"
 
-#Functions
+# Functions
+
+
 def get_readable_time(seconds: int) -> str:
     count = 0
     ping_time = ""
@@ -38,6 +40,7 @@ def get_readable_time(seconds: int) -> str:
     ping_time += ":".join(time_list)
 
     return ping_time
+
 
 uptime = get_readable_time((time.time() - Lastupdate))
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
