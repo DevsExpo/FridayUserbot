@@ -7,6 +7,10 @@ from datetime import datetime
 from userbot import Lastupdate
 from userbot.plugins import currentversion
 
+PM_IMG = Config.ALIVE_PIC
+if ALIVE_PIC is None:
+    PM_IMG = "https://telegra.ph/file/22535f8051a58af113586.jpg"
+
 #Functions
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -37,7 +41,6 @@ def get_readable_time(seconds: int) -> str:
 
 uptime = get_readable_time((time.time() - Lastupdate))
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
-PM_IMG = "https://telegra.ph/file/22535f8051a58af113586.jpg"
 pm_caption = "➥ **FRIDAY IS:** `ONLINE`\n\n"
 pm_caption += "➥ **SYSTEMS STATS**\n"
 pm_caption += "➥ **Telethon Version:** `1.15.0` \n"
