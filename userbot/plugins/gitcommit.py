@@ -1,7 +1,7 @@
 """
 GITHUB File Uploader Plugin for userbot. Heroku Automation should be Enabled. Else u r not that lazy // For lazy people
 Instructions:- Set GITHUB_ACCESS_TOKEN and GIT_REPO_NAME Variables in Heroku vars First
-usage:- .commit reply_to_any_plugin //can be any type of file too. but for plugin must be in .py 
+usage:- .commit reply_to_any_plugin //can be any type of file too. but for plugin must be in .py
 """
 
 
@@ -67,7 +67,7 @@ async def git_commit(file_name, mone):
             return await mone.edit("`File Already Exists`")
             create_file = False
     file_name = "userbot/plugins/" + file_name
-    if create_file == True:
+    if create_file:
         file_name = file_name.replace("./userbot/temp/", "")
         print(file_name)
         try:
@@ -80,7 +80,7 @@ async def git_commit(file_name, mone):
             await mone.edit(
                 f"`Commited On Your Github Repo`\n\n[Your STDPLUGINS](https://github.com/{ccess}/tree/master/userbot/plugins/)"
             )
-        except:
+        except BaseException:
             print("Cannot Create Plugin")
             await mone.edit("Cannot Upload Plugin")
     else:

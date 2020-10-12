@@ -1,7 +1,7 @@
 """
 Telegram Channel Media Downloader Plugin for userbot.
 usage: .geta channel_username [will  get all media from channel, tho there is limit of 3000 there to prevent API limits.]
-       .getc number_of_messsages channel_username  
+       .getc number_of_messsages channel_username
 By: @Zero_cool7870
 """
 import os
@@ -17,7 +17,7 @@ async def get_media(event):
     dir = "./temp/"
     try:
         os.makedirs("./temp/")
-    except:
+    except BaseException:
         pass
     channel_username = event.text
     limit = channel_username[6:9]
@@ -47,7 +47,7 @@ async def get_media(event):
     dir = "./temp/"
     try:
         os.makedirs("./temp/")
-    except:
+    except BaseException:
         pass
     channel_username = event.text
     channel_username = channel_username[7:]

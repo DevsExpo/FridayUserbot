@@ -1,4 +1,5 @@
-# From Javes 05 Userbot ( For Gmute Plugin ) For Test ( I know I have it already but Wait Let Me Do Test )
+# From Javes 05 Userbot ( For Gmute Plugin ) For Test ( I know I have it
+# already but Wait Let Me Do Test )
 
 try:
     from userbot.plugins.sql_helper import BASE, SESSION

@@ -66,7 +66,7 @@ async def forw(event):
                         "For sending files, upload in Saved Messages and reply .forward to in.",
                     )
                     return
-            except:
+            except BaseException:
                 pass
             error_count += 1
             await edit_or_reply(event, f"Sent : {sent_count}\nError : {error_count}")
@@ -74,7 +74,7 @@ async def forw(event):
     if error_count > 0:
         try:
             await borg.send_message(logs_id, f"{error_count} Errors")
-        except:
+        except BaseException:
             await edit_or_reply(event, "Set up log channel for checking errors.")
 
 
@@ -142,7 +142,7 @@ async def _(event):
                                 "For sending files, upload in Saved Messages and reply .forward to in."
                             )
                             return
-                    except:
+                    except BaseException:
                         pass
                     error_count += 1
                     await event.edit(
@@ -154,7 +154,7 @@ async def _(event):
             if error_count > 0:
                 try:
                     await borg.send_message(logs_id, f"{error_count} Errors")
-                except:
+                except BaseException:
                     pass
         else:
             raw_text = previous_message.text
@@ -179,11 +179,9 @@ async def _(event):
                             == "The message cannot be empty unless a file is provided"
                         ):
                             edit_or_reply(
-                                event,
-                                "For sending files, upload in Saved Messages and reply .forward to in.",
-                            )
+                                event, "For sending files, upload in Saved Messages and reply .forward to in.", )
                             return
-                    except:
+                    except BaseException:
                         pass
                     error_count += 1
                     await event.edit(
@@ -195,7 +193,7 @@ async def _(event):
             if error_count > 0:
                 try:
                     await borg.send_message(logs_id, f"{error_count} Errors")
-                except:
+                except BaseException:
                     await edit_or_reply(
                         event, "Set up log channel for checking errors."
                     )
@@ -227,7 +225,7 @@ async def add_ch(event):
     try:
         if int(chat_id) == logs_id:
             return
-    except:
+    except BaseException:
         pass
     if not in_channels(chat_id):
         add_channel(chat_id)

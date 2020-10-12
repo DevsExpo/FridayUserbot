@@ -32,9 +32,12 @@ async def _(event):
 
     response_api = requests.get(
         sample_url.format(
-            Config.SCREEN_SHOT_LAYER_ACCESS_KEY, input_str, "1", "2560x1440", "PNG", "1"
-        )
-    )
+            Config.SCREEN_SHOT_LAYER_ACCESS_KEY,
+            input_str,
+            "1",
+            "2560x1440",
+            "PNG",
+            "1"))
 
     # https://stackoverflow.com/a/23718458/4723940
 

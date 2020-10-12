@@ -118,7 +118,8 @@ def parse(message, old_entities=None):
                 e.offset += shift
 
         # Replace whole match with text from parser
-        message = "".join((message[: match.start()], text, message[match.end() :]))
+        message = "".join(
+            (message[: match.start()], text, message[match.end():]))
 
         # Append entity if we got one
         if entity:

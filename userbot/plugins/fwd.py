@@ -1,4 +1,4 @@
-"""Enable Seen Counter in any message,Credits To Xtra-Tg Owner 
+"""Enable Seen Counter in any message,Credits To Xtra-Tg Owner
 to know how many users have seen your message
 Syntax: .fwd as reply to any message"""
 from userbot.utils import admin_cmd

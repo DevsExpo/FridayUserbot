@@ -1,5 +1,5 @@
 """ Weebify a text,
-Ported from Saitama Bot. 
+Ported from Saitama Bot.
 By :- @PhycoNinja13b
 Modified by :- @kirito6969
 .weeb <text> """

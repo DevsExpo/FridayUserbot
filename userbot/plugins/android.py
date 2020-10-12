@@ -36,13 +36,12 @@ async def magisk(request):
         releases += (
             f'{name}: [ZIP v{data["magisk"]["version"]}]({data["magisk"]["link"]}) | '
             f'[APK v{data["app"]["version"]}]({data["app"]["link"]}) | '
-            f'[Uninstaller]({data["uninstaller"]["link"]})\n'
-        )
+            f'[Uninstaller]({data["uninstaller"]["link"]})\n')
     await edit_or_reply(request, releases)
 
 
 @borg.on(admin_cmd(outgoing=True, pattern=r"device(?: |$)(\S*)"))
-@borg.on(sudo_cmd(pattern="device(?: |$)(\S*)", allow_sudo=True))
+@borg.on(sudo_cmd(pattern=r"device(?: |$)(\S*)", allow_sudo=True))
 async def device_info(request):
     """ get android device basic info from its codename """
     textx = await request.get_reply_message()
@@ -74,8 +73,14 @@ async def device_info(request):
     await edit_or_reply(request, reply)
 
 
-@borg.on(admin_cmd(outgoing=True, pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)"))
-@borg.on(sudo_cmd(pattern="codename(?: |)([\S]*)(?: |)([\s\S]*)", allow_sudo=True))
+@borg.on(
+    admin_cmd(
+        outgoing=True,
+        pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)"))
+@borg.on(
+    sudo_cmd(
+        pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)",
+        allow_sudo=True))
 async def codename_info(request):
     """ search for android codename """
     textx = await request.get_reply_message()
@@ -97,7 +102,8 @@ async def codename_info(request):
             "certified-android-devices/master/by_brand.json"
         ).text
     )
-    devices_lower = {k.lower(): v for k, v in data.items()}  # Lower brand names in JSON
+    devices_lower = {k.lower(): v for k, v in data.items()
+                     }  # Lower brand names in JSON
     devices = devices_lower.get(brand)
     results = [
         i
@@ -119,8 +125,14 @@ async def codename_info(request):
     await edit_or_reply(request, reply)
 
 
-@borg.on(admin_cmd(outgoing=True, pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)"))
-@borg.on(sudo_cmd(pattern="specs(?: |)([\S]*)(?: |)([\s\S]*)", allow_sudo=True))
+@borg.on(
+    admin_cmd(
+        outgoing=True,
+        pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)"))
+@borg.on(
+    sudo_cmd(
+        pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)",
+        allow_sudo=True))
 async def devices_specifications(request):
     """ Mobile devices specifications """
     textx = await request.get_reply_message()
@@ -136,11 +148,11 @@ async def devices_specifications(request):
         return
     all_brands = (
         BeautifulSoup(
-            get("https://www.devicespecifications.com/en/brand-more").content, "lxml"
-        )
-        .find("div", {"class": "brand-listing-container-news"})
-        .findAll("a")
-    )
+            get("https://www.devicespecifications.com/en/brand-more").content,
+            "lxml") .find(
+            "div",
+            {
+                "class": "brand-listing-container-news"}) .findAll("a"))
     brand_page_url = None
     try:
         brand_page_url = [
@@ -183,7 +195,7 @@ async def devices_specifications(request):
 
 
 @borg.on(admin_cmd(outgoing=True, pattern=r"twrp(?: |$)(\S*)"))
-@borg.on(sudo_cmd(pattern="twrp(?: |$)(\S*)", allow_sudo=True))
+@borg.on(sudo_cmd(pattern=r"twrp(?: |$)(\S*)", allow_sudo=True))
 async def twrp(request):
     """ get android device twrp """
     textx = await request.get_reply_message()

@@ -79,7 +79,8 @@ async def _(event):
             return False
     # logger.info(required_file_name)
     if required_file_name:
-        # Check if token file exists, if not create it by requesting authorization code
+        # Check if token file exists, if not create it by requesting
+        # authorization code
         try:
             with open(G_DRIVE_TOKEN_FILE) as f:
                 pass
@@ -94,7 +95,8 @@ async def _(event):
                 + token_file_data
                 + "`",
             )
-        # Authorize, get file parameters, upload file and print out result URL for download
+        # Authorize, get file parameters, upload file and print out result URL
+        # for download
         http = authorize(G_DRIVE_TOKEN_FILE, None)
         file_name, mime_type = file_ops(required_file_name)
         # required_file_name will have the full path
@@ -138,12 +140,14 @@ async def sch(event):
             + token_file_data
             + "`",
         )
-        # Authorize, get file parameters, upload file and print out result URL for download
+        # Authorize, get file parameters, upload file and print out result URL
+        # for download
     http = authorize(G_DRIVE_TOKEN_FILE, None)
     input_str = event.pattern_match.group(1).strip()
     await event.edit("Searching for {} in G-Drive.".format(input_str))
     if parent_id is not None:
-        query = "'{}' in parents and (title contains '{}')".format(parent_id, input_str)
+        query = "'{}' in parents and (title contains '{}')".format(
+            parent_id, input_str)
     else:
         query = "title contains '{}'".format(input_str)
     query = "'{}' in parents and (title contains '{}')".format(
@@ -212,7 +216,8 @@ async def _(event):
         if Var.AUTH_TOKEN_DATA is not None:
             with open(G_DRIVE_TOKEN_FILE, "w") as t_file:
                 t_file.write(Var.AUTH_TOKEN_DATA)
-        # Check if token file exists, if not create it by requesting authorization code
+        # Check if token file exists, if not create it by requesting
+        # authorization code
         storage = None
         if not os.path.isfile(G_DRIVE_TOKEN_FILE):
             storage = await create_token_file(G_DRIVE_TOKEN_FILE, event)
@@ -242,16 +247,22 @@ async def _(event):
 
 async def create_directory(http, directory_name, parent_id):
     drive_service = build("drive", "v2", http=http, cache_discovery=False)
-    permissions = {"role": "reader", "type": "anyone", "value": None, "withLink": True}
-    file_metadata = {"title": directory_name, "mimeType": G_DRIVE_DIR_MIME_TYPE}
+    permissions = {
+        "role": "reader",
+        "type": "anyone",
+        "value": None,
+        "withLink": True}
+    file_metadata = {
+        "title": directory_name,
+        "mimeType": G_DRIVE_DIR_MIME_TYPE}
     if parent_id is not None:
         file_metadata["parents"] = [{"id": parent_id}]
     file = drive_service.files().insert(body=file_metadata).execute()
     file_id = file.get("id")
     drive_service.permissions().insert(fileId=file_id, body=permissions).execute()
     logger.info(
-        "Created Gdrive Folder:\nName: {}\nID: {} ".format(file.get("title"), file_id)
-    )
+        "Created Gdrive Folder:\nName: {}\nID: {} ".format(
+            file.get("title"), file_id))
     return file_id
 
 
@@ -330,19 +341,21 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
     if parent_id is not None:
         body["parents"] = [{"id": parent_id}]
     # Permissions body description: anyone who has link can upload
-    # Other permissions can be found at https://developers.google.com/drive/v2/reference/permissions
-    permissions = {"role": "reader", "type": "anyone", "value": None, "withLink": True}
+    # Other permissions can be found at
+    # https://developers.google.com/drive/v2/reference/permissions
+    permissions = {
+        "role": "reader",
+        "type": "anyone",
+        "value": None,
+        "withLink": True}
     # Insert a file
     file = drive_service.files().insert(body=body, media_body=media_body)
     response = None
     display_message = ""
     while response is None:
-        (
-            status,
-            response,
-        ) = (
-            file.next_chunk()
-        )  # Credits: https://github.com/AvinashReddy3108/PaperplaneExtended/commit/df65da55d16a6563aa9023cac2bedf43248379f5
+        # Credits:
+        # https://github.com/AvinashReddy3108/PaperplaneExtended/commit/df65da55d16a6563aa9023cac2bedf43248379f5
+        (status, response, ) = (file.next_chunk())
         await asyncio.sleep(1)
         if status:
             percentage = int(status.progress() * 100)

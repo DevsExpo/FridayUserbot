@@ -18,11 +18,13 @@ heroku_api = "https://api.heroku.com"
 
 
 @borg.on(
-    admin_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True)
-)
+    admin_cmd(
+        pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)",
+        outgoing=True))
 @borg.on(
-    sudo_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True)
-)
+    sudo_cmd(
+        pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)",
+        allow_sudo=True))
 async def variable(var):
     """
     Manage most of ConfigVars setting, set new var, get current var,
@@ -203,7 +205,7 @@ async def _(givelogs):
     try:
         Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
         app = Heroku.app(Var.HEROKU_APP_NAME)
-    except:
+    except BaseException:
         return await givelogs.reply(
             " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku var !"
         )

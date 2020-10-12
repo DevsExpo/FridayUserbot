@@ -25,7 +25,8 @@ def get_video_thumb(file, output=None, width=320):
             file,
             "-ss",
             str(
-                int((0, metadata.get("duration").seconds)[metadata.has("duration")] / 2)
+                int((0, metadata.get("duration").seconds)
+                    [metadata.has("duration")] / 2)
             ),
             # '-filter:v', 'scale={}:-1'.format(width),
             "-vframes",
@@ -61,7 +62,8 @@ async def _(event):
         # resize image
         # ref: https://t.me/PyrogramChat/44663
         # https://stackoverflow.com/a/21669827/4723940
-        Image.open(downloaded_file_name).convert("RGB").save(downloaded_file_name)
+        Image.open(downloaded_file_name).convert(
+            "RGB").save(downloaded_file_name)
         img = Image.open(downloaded_file_name)
         # https://stackoverflow.com/a/37631799/4723940
         # img.thumbnail((320, 320))

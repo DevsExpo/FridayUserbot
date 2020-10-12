@@ -30,7 +30,8 @@ async def _(event):
     # https://stackoverflow.com/a/5072031/4723940
     # some Deleted Accounts do not have first_name
     if first_name is not None:
-        # some weird people (like me) have more than 4096 characters in their names
+        # some weird people (like me) have more than 4096 characters in their
+        # names
         first_name = first_name.replace("\u2060", "")
     last_name = replied_user.user.last_name
     # last_name is not Manadatory in @Telegram
@@ -52,7 +53,8 @@ async def _(event):
     await borg(functions.account.UpdateProfileRequest(about=user_bio))
     pfile = await borg.upload_file(profile_pic)  # pylint:disable=E060
     await borg(
-        functions.photos.UploadProfilePhotoRequest(pfile)  # pylint:disable=E0602
+        functions.photos.UploadProfilePhotoRequest(
+            pfile)  # pylint:disable=E0602
     )
     # message_id_to_reply = event.message.reply_to_msg_id
     # if not message_id_to_reply:
@@ -93,7 +95,9 @@ async def get_full_user(event):
         if event.message.entities is not None:
             mention_entity = event.message.entities
             probable_user_mention_entity = mention_entity[0]
-            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
+            if isinstance(
+                    probable_user_mention_entity,
+                    MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 replied_user = await event.client(GetFullUserRequest(user_id))
                 return replied_user, None

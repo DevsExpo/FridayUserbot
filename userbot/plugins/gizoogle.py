@@ -16,7 +16,7 @@ async def gizoogle(event):
     else:
         try:
             result = text(input_str)
-        except:
+        except BaseException:
             result = "Failed to gizoogle the text."
         finally:
             return await event.edit(result)

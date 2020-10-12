@@ -41,8 +41,7 @@ async def _(event):
             else:
                 fullname = first
             username = (
-                f"@{me.username}" if me.username else f"[Me](tg://user?id={me.id})"
-            )
+                f"@{me.username}" if me.username else f"[Me](tg://user?id={me.id})")
             userid = a_user.id
             current_saved_welcome_message = cws.custom_welcome_message
             mention = "[{}](tg://user?id={})".format(a_user.first_name, a_user.id)
@@ -70,7 +69,12 @@ async def _(event):
     msg = await event.get_reply_message()
     if msg and msg.media:
         bot_api_file_id = pack_bot_file_id(msg.media)
-        add_welcome_setting(event.chat_id, msg.message, True, 0, bot_api_file_id)
+        add_welcome_setting(
+            event.chat_id,
+            msg.message,
+            True,
+            0,
+            bot_api_file_id)
         await event.edit("Welcome note saved. ")
     else:
         input_str = event.text.split(None, 1)

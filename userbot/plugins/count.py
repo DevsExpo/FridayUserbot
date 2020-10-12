@@ -10,8 +10,8 @@ from telethon.tl.types import Channel, Chat, User
 from userbot.utils import admin_cmd
 
 logging.basicConfig(
-    format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
-)
+    format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s",
+    level=logging.WARNING)
 logger = logging.getLogger(__name__)
 
 
@@ -73,7 +73,8 @@ async def stats(
         entity = dialog.entity
 
         if isinstance(entity, Channel):
-            # participants_count = (await event.get_participants(dialog, limit=0)).total
+            # participants_count = (await event.get_participants(dialog,
+            # limit=0)).total
             if entity.broadcast:
                 broadcast_channels += 1
                 if entity.creator or entity.admin_rights:

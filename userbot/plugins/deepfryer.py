@@ -4,7 +4,8 @@
 # you may not use this file except in compliance with the License.
 #
 
-# Original source for the deepfrying code (used under the following license): https://github.com/Ovyerus/deeppyer
+# Original source for the deepfrying code (used under the following
+# license): https://github.com/Ovyerus/deeppyer
 
 # MIT License
 #

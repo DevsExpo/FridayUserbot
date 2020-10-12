@@ -11,7 +11,8 @@ if ENV:
         # Get this value from my.telegram.org! Please do not steal
         LOCATION = os.environ.get("LOCATION", None)
         OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
-        # Get your own ACCESS_KEY from http://api.screenshotlayer.com/api/capture
+        # Get your own ACCESS_KEY from
+        # http://api.screenshotlayer.com/api/capture
         SCREEN_SHOT_LAYER_ACCESS_KEY = os.environ.get(
             "SCREEN_SHOT_LAYER_ACCESS_KEY", None
         )
@@ -21,9 +22,12 @@ if ENV:
         TMP_DOWNLOAD_DIRECTORY = os.environ.get(
             "TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/"
         )
-        # This is required for the speech to text module. Get your USERNAME from https://console.bluemix.net/docs/services/speech-to-text/getting-started.html
+        # This is required for the speech to text module. Get your USERNAME
+        # from
+        # https://console.bluemix.net/docs/services/speech-to-text/getting-started.html
         IBM_WATSON_CRED_URL = os.environ.get("IBM_WATSON_CRED_URL", None)
-        IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
+        IBM_WATSON_CRED_PASSWORD = os.environ.get(
+            "IBM_WATSON_CRED_PASSWORD", None)
         # This is required for the hash to torrent file functionality to work.
         HASH_TO_TORRENT_API = os.environ.get(
             "HASH_TO_TORRENT_API", "https://example.com/torrent/{}"
@@ -33,13 +37,16 @@ if ENV:
         # Get a Free API Key from OCR.Space
         OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
         # Send .get_id in any group with all your administration bots (added)
-        G_BAN_LOGGER_GROUP = int(os.environ.get("G_BAN_LOGGER_GROUP", -1001198699233))
+        G_BAN_LOGGER_GROUP = int(os.environ.get(
+            "G_BAN_LOGGER_GROUP", -1001198699233))
         # TG API limit. An album can have atmost 10 media!
-        GOOGLE_SEARCH_COUNT_LIMIT = int(os.environ.get("GOOGLE_SEARCH_COUNT_LIMIT", 9))
+        GOOGLE_SEARCH_COUNT_LIMIT = int(
+            os.environ.get("GOOGLE_SEARCH_COUNT_LIMIT", 9))
         TG_GLOBAL_ALBUM_LIMIT = int(os.environ.get("TG_GLOBAL_ALBUM_LIMIT", 9))
         # Telegram BOT Token from @BotFather
         TG_BOT_TOKEN_BF_HER = os.environ.get("TG_BOT_TOKEN_BF_HER", None)
-        TG_BOT_USER_NAME_BF_HER = os.environ.get("TG_BOT_USER_NAME_BF_HER", None)
+        TG_BOT_USER_NAME_BF_HER = os.environ.get(
+            "TG_BOT_USER_NAME_BF_HER", None)
         PRIVATE_GROUP_BOT_API_ID = int(
             os.environ.get("PRIVATE_GROUP_BOT_API_ID", False)
         )
@@ -87,21 +94,27 @@ if ENV:
         )
         # specify command handler that should be used for the plugins
         # this should be a valid "regex" pattern
-        COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", "\.")
-        SUDO_COMMAND_HAND_LER = os.environ.get("SUDO_COMMAND_HAND_LER", "\.")
+        COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", r"\.")
+        SUDO_COMMAND_HAND_LER = os.environ.get("SUDO_COMMAND_HAND_LER", r"\.")
         # specify list of users allowed to use bot
         # WARNING: be careful who you grant access to your bot.
         # malicious users could do ".exec rm -rf /*"
-        SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS", "").split())
+        SUDO_USERS = set(
+            int(x) for x in os.environ.get(
+                "SUDO_USERS", "").split())
         WHITELIST_USERS = set(
             int(x) for x in os.environ.get("WHITELIST_USERS", "").split()
         )
         BLACKLIST_USERS = set(
             int(x) for x in os.environ.get("BLACKLIST_USERS", "").split()
         )
-        DEVLOPERS = set(int(x) for x in os.environ.get("DEVLOPERS", "").split())
+        DEVLOPERS = set(
+            int(x) for x in os.environ.get(
+                "DEVLOPERS", "").split())
         OWNER_ID = set(int(x) for x in os.environ.get("OWNER_ID", "").split())
-        SUPPORT_USERS = set(int(x) for x in os.environ.get("SUPPORT_USERS", "").split())
+        SUPPORT_USERS = set(
+            int(x) for x in os.environ.get(
+                "SUPPORT_USERS", "").split())
         # Very Stream
         VERY_STREAM_LOGIN = os.environ.get("VERY_STREAM_LOGIN", None)
         VERY_STREAM_KEY = os.environ.get("VERY_STREAM_KEY", None)
@@ -122,7 +135,7 @@ if ENV:
         G_DRIVE_CLIENT_SECRET = os.environ.get("G_DRIVE_CLIENT_SECRET", None)
         GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
         AUTH_TOKEN_DATA = os.environ.get("AUTH_TOKEN_DATA", None)
-        if AUTH_TOKEN_DATA != None:
+        if AUTH_TOKEN_DATA is not None:
             os.makedirs(TMP_DOWNLOAD_DIRECTORY)
             t_file = open(TMP_DOWNLOAD_DIRECTORY + "auth_token.txt", "w")
             t_file.write(AUTH_TOKEN_DATA)

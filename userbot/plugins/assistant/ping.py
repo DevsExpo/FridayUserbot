@@ -1,7 +1,7 @@
-# Copyright (C) Midhun KM 
-# 
+# Copyright (C) Midhun KM
+#
 # Please Don't Kang Without Credits
-# A Plugin For Assistant Bot 
+# A Plugin For Assistant Bot
 # x0x
 
 from telethon import events, custom, Button
@@ -22,6 +22,7 @@ from datetime import datetime
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 import time
 from userbot import Lastupdate, bot
+
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -50,7 +51,11 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-@tgbot.on(events.NewMessage(pattern="^/ping", func=lambda e: e.sender_id == bot.uid))
+
+@tgbot.on(
+    events.NewMessage(
+        pattern="^/ping",
+        func=lambda e: e.sender_id == bot.uid))
 async def _(event):
     start = datetime.now()
     end = datetime.now()

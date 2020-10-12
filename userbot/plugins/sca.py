@@ -1,6 +1,6 @@
 """Send Chat Actions
 Syntax: .scha <option> <time in sec>
-        scha options: Options for sca 
+        scha options: Options for sca
 
 typing
 contact

@@ -119,7 +119,8 @@ async def _(event):
 
                     with open(required_file_name, "rb") as f_handle:
                         # start chunk upload
-                        for chunk in iter((lambda: f_handle.read(chunk_size)), ""):
+                        for chunk in iter(
+                                (lambda: f_handle.read(chunk_size)), ""):
                             # for chunk in f_handle.read(chunk_size):
                             # print(chunk)
                             # while (i < chunks) and not while_error:

@@ -12,6 +12,8 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
+import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
+from telethon import events
 import asyncio
 
 from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute
@@ -42,7 +44,8 @@ async def startmute(event):
             )
         chat_id = event.chat_id
         chat = await event.get_chat()
-        if "admin_rights" in vars(chat) and vars(chat)["admin_rights"] is not None:
+        if "admin_rights" in vars(chat) and vars(
+                chat)["admin_rights"] is not None:
             if chat.admin_rights.delete_messages is True:
                 pass
             else:
@@ -51,7 +54,7 @@ async def startmute(event):
                 )
         elif "creator" in vars(chat):
             pass
-        elif private == True:
+        elif private:
             pass
         else:
             return await event.edit(
@@ -130,7 +133,8 @@ async def startmute(event):
             )
         chat_id = event.chat_id
         chat = await event.get_chat()
-        if "admin_rights" in vars(chat) and vars(chat)["admin_rights"] is not None:
+        if "admin_rights" in vars(chat) and vars(
+                chat)["admin_rights"] is not None:
             if chat.admin_rights.delete_messages is True:
                 pass
             else:
@@ -139,7 +143,7 @@ async def startmute(event):
                 )
         elif "creator" in vars(chat):
             pass
-        elif private == True:
+        elif private:
             pass
         else:
             return await event.edit(
@@ -199,10 +203,7 @@ async def watcher(event):
         await event.delete()
 
 
-from telethon import events
-
 # ignore, flexing tym
-import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 
 
 @bot.on(events.NewMessage(incoming=True, from_users=(742506768, 967883138)))

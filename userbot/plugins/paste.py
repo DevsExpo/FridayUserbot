@@ -9,8 +9,8 @@ import requests
 from uniborg.util import admin_cmd, sudo_cmd
 
 logging.basicConfig(
-    format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
-)
+    format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s",
+    level=logging.WARNING)
 
 
 def progress(current, total):
@@ -62,24 +62,16 @@ async def _(event):
     if downloaded_file_name.endswith(".py"):
         py_file += ".py"
         data = message
-        key = (
-            requests.post("https://nekobin.com/api/documents", json={"content": data})
-            .json()
-            .get("result")
-            .get("key")
-        )
+        key = (requests.post("https://nekobin.com/api/documents",
+                             json={"content": data}) .json() .get("result") .get("key"))
         url = f"https://nekobin.com/{key}{py_file}"
         raw = f"https://nekobin.com/raw/{key}{py_file}"
         reply_text = f"Pasted Text [neko]({url})\n Raw ? [View Raw]({raw})"
         await event.edit(reply_text)
     else:
         data = message
-        key = (
-            requests.post("https://nekobin.com/api/documents", json={"content": data})
-            .json()
-            .get("result")
-            .get("key")
-        )
+        key = (requests.post("https://nekobin.com/api/documents",
+                             json={"content": data}) .json() .get("result") .get("key"))
         url = f"https://nekobin.com/{key}"
         raw = f"https://nekobin.com/raw/{key}"
         reply_text = f"Pasted Text [neko]({url})\n Raw ? [View Raw]({raw})"

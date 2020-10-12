@@ -543,10 +543,10 @@ SHGS = [
     "ヽ(~～~ )ノ",
     "┐(~ー~;)┌",
     "┐(-。ー;)┌",
-    "¯\_(ツ)_/¯",
-    "¯\_(⊙_ʖ⊙)_/¯",
+    r"¯\_(ツ)_/¯",
+    r"¯\_(⊙_ʖ⊙)_/¯",
     "乁ʕ •̀ ۝ •́ ʔㄏ",
-    "¯\_༼ ಥ ‿ ಥ ༽_/¯",
+    r"¯\_༼ ಥ ‿ ಥ ༽_/¯",
     "乁( ⁰͡  Ĺ̯ ⁰͡ ) ㄏ",
 ]
 
@@ -651,7 +651,8 @@ HIT = [
 @register(outgoing=True, pattern=r"^.(\w+)say (.*)")
 async def univsaye(cowmsg):
     """ For .cowsay module, userbot wrapper for cow which says things. """
-    if not cowmsg.text[0].isalpha() and cowmsg.text[0] not in ("/", "#", "@", "!"):
+    if not cowmsg.text[0].isalpha() and cowmsg.text[0] not in (
+            "/", "#", "@", "!"):
         arg = cowmsg.pattern_match.group(1).lower()
         text = cowmsg.pattern_match.group(2)
 
@@ -677,7 +678,8 @@ async def kek(keks):
 
 @register(outgoing=True, pattern=r"^.coinflip (.*)")
 async def _(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+    if not event.text[0].isalpha() and event.text[0] not in (
+            "/", "#", "@", "!"):
         if event.fwd_from:
             return
         r = random.randint(1, 100)
@@ -708,7 +710,8 @@ async def _(event):
 
 @register(pattern="^.slap(?: |$)(.*)", outgoing=True)
 async def who(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+    if not event.text[0].isalpha() and event.text[0] not in (
+            "/", "#", "@", "!"):
         """ slaps a user, or get slapped if not a reply. """
         if event.fwd_from:
             return
@@ -723,7 +726,7 @@ async def who(event):
         try:
             await event.edit(caption)
 
-        except:
+        except BaseException:
             await event.edit(
                 "`Can't slap this person, need to fetch some sticks and stones !!`"
             )
@@ -747,7 +750,9 @@ async def get_user(event):
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
 
-            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
+            if isinstance(
+                    probable_user_mention_entity,
+                    MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 replied_user = await event.client(GetFullUserRequest(user_id))
                 return replied_user
@@ -778,7 +783,8 @@ async def slap(replied_user, event):
     hit = random.choice(HIT)
     throw = random.choice(THROW)
 
-    caption = "..." + temp.format(victim=slapped, item=item, hits=hit, throws=throw)
+    caption = "..." + temp.format(victim=slapped,
+                                  item=item, hits=hit, throws=throw)
 
     return caption
 
@@ -795,7 +801,8 @@ async def lol(lel):
 
 @register(outgoing=True, pattern="^.decide$")
 async def _(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+    if not event.text[0].isalpha() and event.text[0] not in (
+            "/", "#", "@", "!"):
         if event.fwd_from:
             return
         message_id = event.message.id
@@ -850,9 +857,8 @@ async def copypasta(cp_e):
             return
 
         reply_text = random.choice(EMOJIS)
-        b_char = random.choice(
-            message
-        ).lower()  # choose a random character in the message to be substituted with 🅱️
+        # choose a random character in the message to be substituted with 🅱️
+        b_char = random.choice(message).lower()
         for owo in message:
             if owo == " ":
                 reply_text += random.choice(EMOJIS)
@@ -907,7 +913,8 @@ async def source(e):
 @register(outgoing=True, pattern="^.str(?: |$)(.*)")
 async def stretch(stret):
     """ Stretch it."""
-    if not stret.text[0].isalpha() and stret.text[0] not in ("/", "#", "@", "!"):
+    if not stret.text[0].isalpha() and stret.text[0] not in (
+            "/", "#", "@", "!"):
         textx = await stret.get_reply_message()
         message = stret.text
         message = stret.pattern_match.group(1)
@@ -952,11 +959,14 @@ async def zal(zgfy):
                 randint = random.randint(0, 2)
 
                 if randint == 0:
-                    charac = charac.strip() + random.choice(ZALG_LIST[0]).strip()
+                    charac = charac.strip() + \
+                        random.choice(ZALG_LIST[0]).strip()
                 elif randint == 1:
-                    charac = charac.strip() + random.choice(ZALG_LIST[1]).strip()
+                    charac = charac.strip() + \
+                        random.choice(ZALG_LIST[1]).strip()
                 else:
-                    charac = charac.strip() + random.choice(ZALG_LIST[2]).strip()
+                    charac = charac.strip() + \
+                        random.choice(ZALG_LIST[2]).strip()
 
             reply_text.append(charac)
 
@@ -966,14 +976,16 @@ async def zal(zgfy):
 @register(outgoing=True, pattern="^.hi$")
 async def hoi(hello):
     """ Greet everyone! """
-    if not hello.text[0].isalpha() and hello.text[0] not in ("/", "#", "@", "!"):
+    if not hello.text[0].isalpha() and hello.text[0] not in (
+            "/", "#", "@", "!"):
         await hello.edit(random.choice(HELLOSTR))
 
 
 @register(outgoing=True, pattern="^.kill$")
 async def killing(killed):
     """ Dont Kill Too much -_-"""
-    if not killed.text[0].isalpha() and killed.text[0] not in ("/", "#", "@", "!"):
+    if not killed.text[0].isalpha() and killed.text[0] not in (
+            "/", "#", "@", "!"):
         if await killed.get_reply_message():
             await killed.edit(
                 "`Targeted user killed by Headshot 😈......`\n" "#Sad_Reacts_Onli\n"
@@ -994,7 +1006,8 @@ async def bluetext(bte):
 @register(outgoing=True, pattern="^.rape$")
 async def raping(raped):
     """ Dont Rape Too much -_-"""
-    if not raped.text[0].isalpha() and raped.text[0] not in ("/", "#", "@", "!"):
+    if not raped.text[0].isalpha() and raped.text[0] not in (
+            "/", "#", "@", "!"):
         index = random.randint(0, len(RAPE_STRINGS) - 1)
         reply_text = RAPE_STRINGS[index]
         await raped.edit(reply_text)
@@ -1030,7 +1043,8 @@ async def chutiya(chus):
 @register(outgoing=True, pattern="^.thanos$")
 async def thanos(thanos):
     """ String for thanos only -_-"""
-    if not thanos.text[0].isalpha() and thanos.text[0] not in ("/", "#", "@", "!"):
+    if not thanos.text[0].isalpha() and thanos.text[0] not in (
+            "/", "#", "@", "!"):
         index = random.randint(0, len(THANOS_STRINGS) - 1)
         reply_text = THANOS_STRINGS[index]
         await thanos.edit(reply_text)
@@ -1053,7 +1067,8 @@ async def fuckedd(abusehard):
 @register(outgoing=True, pattern="^.gey$")
 async def geys(geyed):
     """ Use only for gey ppl -_-"""
-    if not geyed.text[0].isalpha() and geyed.text[0] not in ("/", "#", "@", "!"):
+    if not geyed.text[0].isalpha() and geyed.text[0] not in (
+            "/", "#", "@", "!"):
         index = random.randint(0, len(GEY_STRINGS) - 1)
         reply_text = GEY_STRINGS[index]
         await geyed.edit(reply_text)
@@ -1062,7 +1077,8 @@ async def geys(geyed):
 @register(outgoing=True, pattern="^.abuse$")
 async def abusing(abused):
     """ Dont Abuse Too much bsdk -_-"""
-    if not abused.text[0].isalpha() and abused.text[0] not in ("/", "#", "@", "!"):
+    if not abused.text[0].isalpha() and abused.text[0] not in (
+            "/", "#", "@", "!"):
         index = random.randint(0, len(ABUSE_STRINGS) - 1)
         reply_text = ABUSE_STRINGS[index]
         await abused.edit(reply_text)
@@ -1095,7 +1111,8 @@ async def faces(owo):
 @register(outgoing=True, pattern="^.react$")
 async def react_meme(react):
     """ Make your userbot react to everything. """
-    if not react.text[0].isalpha() and react.text[0] not in ("/", "#", "@", "!"):
+    if not react.text[0].isalpha() and react.text[0] not in (
+            "/", "#", "@", "!"):
         await react.edit(random.choice(FACEREACTS))
 
 
@@ -1116,14 +1133,16 @@ async def runner_lol(run):
 @register(outgoing=True, pattern="^.noob$")
 async def metoo(hahayes):
     """ Haha yes """
-    if not hahayes.text[0].isalpha() and hahayes.text[0] not in ("/", "#", "@", "!"):
+    if not hahayes.text[0].isalpha() and hahayes.text[0] not in (
+            "/", "#", "@", "!"):
         await hahayes.edit(random.choice(NOOBSTR))
 
 
 @register(outgoing=True, pattern="^.rendi$")
 async def metoo(hahayes):
     """ Haha yes """
-    if not hahayes.text[0].isalpha() and hahayes.text[0] not in ("/", "#", "@", "!"):
+    if not hahayes.text[0].isalpha() and hahayes.text[0] not in (
+            "/", "#", "@", "!"):
         await hahayes.edit(random.choice(RENDISTR))
 
 
@@ -1144,7 +1163,8 @@ async def iqless(e):
 
 @register(outgoing=True, pattern="^.moon$")
 async def _(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+    if not event.text[0].isalpha() and event.text[0] not in (
+            "/", "#", "@", "!"):
         if event.fwd_from:
             return
         deq = deque(list("🌗🌘🌑🌒🌓🌔🌕🌖"))
@@ -1156,7 +1176,8 @@ async def _(event):
 
 @register(outgoing=True, pattern="^.clock$")
 async def _(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+    if not event.text[0].isalpha() and event.text[0] not in (
+            "/", "#", "@", "!"):
         if event.fwd_from:
             return
         deq = deque(list("🕙🕘🕗🕖🕕🕔🕓🕒🕑🕐🕛"))
@@ -1266,7 +1287,8 @@ async def payf(e):
     pattern="^.lfy (.*)",
 )
 async def let_me_google_that_for_you(lmgtfy_q):
-    if not lmgtfy_q.text[0].isalpha() and lmgtfy_q.text[0] not in ("/", "#", "@", "!"):
+    if not lmgtfy_q.text[0].isalpha(
+    ) and lmgtfy_q.text[0] not in ("/", "#", "@", "!"):
         textx = await lmgtfy_q.get_reply_message()
         query = lmgtfy_q.text
         if query[5:]:
@@ -1289,7 +1311,8 @@ async def let_me_google_that_for_you(lmgtfy_q):
 @register(outgoing=True, pattern=r".yt_dl (\S*) ?(\S*)")
 async def download_video(v_url):
     """ For .yt_dl command, download videos from YouTube. """
-    if not v_url.text[0].isalpha() and v_url.text[0] not in ("/", "#", "@", "!"):
+    if not v_url.text[0].isalpha() and v_url.text[0] not in (
+            "/", "#", "@", "!"):
         url = v_url.pattern_match.group(1)
         quality = v_url.pattern_match.group(2)
 
@@ -1302,10 +1325,12 @@ async def download_video(v_url):
                 progressive=True, subtype="mp4", res=quality
             ).first()
         else:
-            video_stream = video.streams.filter(progressive=True, subtype="mp4").first()
+            video_stream = video.streams.filter(
+                progressive=True, subtype="mp4").first()
 
         if video_stream is None:
-            all_streams = video.streams.filter(progressive=True, subtype="mp4").all()
+            all_streams = video.streams.filter(
+                progressive=True, subtype="mp4").all()
             available_qualities = ""
 
             for item in all_streams[:-1]:
@@ -1357,7 +1382,8 @@ async def download_video(v_url):
 @register(pattern=".type(?: |$)(.*)")
 async def typewriter(typew):
     """ Just a small command to make your keyboard become a typewriter! """
-    if not typew.text[0].isalpha() and typew.text[0] not in ("/", "#", "@", "!"):
+    if not typew.text[0].isalpha() and typew.text[0] not in (
+            "/", "#", "@", "!"):
         textx = await typew.get_reply_message()
         message = typew.pattern_match.group(1)
         if message:

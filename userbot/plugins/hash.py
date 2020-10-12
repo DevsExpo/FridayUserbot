@@ -64,9 +64,8 @@ async def gethash(hash_q):
 async def endecrypt(query):
     """ For .base64 command, find the base64 encoding of the given string. """
     if query.pattern_match.group(1) == "en":
-        lething = str(pybase64.b64encode(bytes(query.pattern_match.group(2), "utf-8")))[
-            2:
-        ]
+        lething = str(pybase64.b64encode(
+            bytes(query.pattern_match.group(2), "utf-8")))[2:]
         await query.reply("Shhh! It's Encoded: `" + lething[:-1] + "`")
     else:
         lething = str(

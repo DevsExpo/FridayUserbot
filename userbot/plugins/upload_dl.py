@@ -36,8 +36,7 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
             round(percentage, 2),
         )
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
-            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
-        )
+            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time))
         if file_name:
             await event.edit(
                 "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
@@ -127,7 +126,9 @@ async def download(target_file):
                 \n{humanbytes(downloaded)} of {humanbytes(total_length)}\
                 \nETA: {estimated_total_time}"
 
-                if round(diff % 10.00) == 0 and current_message != display_message:
+                if round(
+                        diff %
+                        10.00) == 0 and current_message != display_message:
                     await friday.edit(current_message)
                     display_message = current_message
             except Exception as e:
@@ -272,24 +273,21 @@ async def upload(u_event):
 def get_video_thumb(file, output=None, width=90):
     """ Get video thumbnail """
     metadata = extractMetadata(createParser(file))
-    popen = subprocess.Popen(
-        [
-            "ffmpeg",
-            "-i",
-            file,
-            "-ss",
-            str(
-                int((0, metadata.get("duration").seconds)[metadata.has("duration")] / 2)
-            ),
-            "-filter:v",
-            "scale={}:-1".format(width),
-            "-vframes",
-            "1",
-            output,
-        ],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.DEVNULL,
-    )
+    popen = subprocess.Popen(["ffmpeg",
+                              "-i",
+                              file,
+                              "-ss",
+                              str(int((0,
+                                       metadata.get("duration").seconds)[metadata.has("duration")] / 2)),
+                              "-filter:v",
+                              "scale={}:-1".format(width),
+                              "-vframes",
+                              "1",
+                              output,
+                              ],
+                             stdout=subprocess.PIPE,
+                             stderr=subprocess.DEVNULL,
+                             )
     if not popen.returncode and os.path.lexists(file):
         return output
     return None
@@ -309,7 +307,8 @@ def extract_w_h(file):
     ]
     # https://stackoverflow.com/a/11236144/4723940
     try:
-        t_response = subprocess.check_output(command_to_run, stderr=subprocess.STDOUT)
+        t_response = subprocess.check_output(
+            command_to_run, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as exc:
         LOGS.warning(exc)
     else:

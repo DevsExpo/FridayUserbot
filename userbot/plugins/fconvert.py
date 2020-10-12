@@ -25,8 +25,7 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
             round(percentage, 2),
         )
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
-            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
-        )
+            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time))
         if file_name:
             await event.edit(
                 "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
@@ -105,7 +104,8 @@ async def _(event):
         voice_note = False
         supports_streaming = False
         if input_str == "voice":
-            new_required_file_caption = "NLFC_" + str(round(time.time())) + ".opus"
+            new_required_file_caption = "NLFC_" + \
+                str(round(time.time())) + ".opus"
             new_required_file_name = (
                 Config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
             )
@@ -126,7 +126,8 @@ async def _(event):
             voice_note = True
             supports_streaming = True
         elif input_str == "mp3":
-            new_required_file_caption = "NLFC_" + str(round(time.time())) + ".mp3"
+            new_required_file_caption = "NLFC_" + \
+                str(round(time.time())) + ".mp3"
             new_required_file_name = (
                 Config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
             )

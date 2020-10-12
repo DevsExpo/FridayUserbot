@@ -19,7 +19,7 @@ ghdb.__table__.create(checkfirst=True)
 def in_channels(chat_id):
     try:
         return SESSION.query(ghdb).filter(ghdb.chat_id == str(chat_id)).one()
-    except:
+    except BaseException:
         return None
     finally:
         SESSION.close()

@@ -16,7 +16,7 @@ from userbot.utils import admin_cmd, sudo_cmd
 # RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 
 
-@borg.on(admin_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
 async def sticklet(event):
     R = random.randint(0, 256)
     G = random.randint(0, 256)
@@ -53,8 +53,14 @@ async def sticklet(event):
         font = ImageFont.truetype(FONT_FILE, size=fontsize)
     width, height = draw.multiline_textsize(sticktext, font=font)
     draw.multiline_text(
-        ((512 - width) / 2, (512 - height) / 2), sticktext, font=font, fill=(R, G, B)
-    )
+        ((512 - width) / 2,
+         (512 - height) / 2),
+        sticktext,
+        font=font,
+        fill=(
+            R,
+            G,
+            B))
     image_stream = io.BytesIO()
     image_stream.name = "@friday.webp"
     image.save(image_stream, "WebP")
@@ -69,11 +75,11 @@ async def sticklet(event):
     # cleanup
     try:
         os.remove(FONT_FILE)
-    except:
+    except BaseException:
         pass
 
 
-@borg.on(sudo_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", allow_sudo=True))
+@borg.on(sudo_cmd(pattern=r"stcr ?(?:(.*?) \| )?(.*)", allow_sudo=True))
 async def sticklet(event):
     R = random.randint(0, 256)
     G = random.randint(0, 256)
@@ -110,8 +116,14 @@ async def sticklet(event):
         font = ImageFont.truetype(FONT_FILE, size=fontsize)
     width, height = draw.multiline_textsize(sticktext, font=font)
     draw.multiline_text(
-        ((512 - width) / 2, (512 - height) / 2), sticktext, font=font, fill=(R, G, B)
-    )
+        ((512 - width) / 2,
+         (512 - height) / 2),
+        sticktext,
+        font=font,
+        fill=(
+            R,
+            G,
+            B))
     image_stream = io.BytesIO()
     image_stream.name = "@friday.webp"
     image.save(image_stream, "WebP")
@@ -126,7 +138,7 @@ async def sticklet(event):
     # cleanup
     try:
         os.remove(FONT_FILE)
-    except:
+    except BaseException:
         pass
 
 

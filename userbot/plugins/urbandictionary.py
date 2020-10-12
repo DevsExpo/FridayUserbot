@@ -29,5 +29,5 @@ async def _(event):
             )
         else:
             await event.edit("No result found for **" + str + "**")
-    except:
+    except BaseException:
         await event.edit("No result found for **" + str + "**")

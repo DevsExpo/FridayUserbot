@@ -32,4 +32,4 @@ async def _(event):
         else:
             await event.edit("The coin landed on: **Tails**.")
     else:
-        await event.edit("¯\_(ツ)_/¯")
+        await event.edit(r"¯\_(ツ)_/¯")

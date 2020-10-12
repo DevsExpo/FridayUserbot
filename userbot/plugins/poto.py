@@ -59,7 +59,7 @@ if 1 == 1:
 
                     return
 
-            except:
+            except BaseException:
 
                 await event.edit("`Are you Comedy Me ?`")
 

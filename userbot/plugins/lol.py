@@ -1,4 +1,5 @@
-# if u steal credits u wil be the gayest gay in the world. i will fban u from 100 feds and u will leave tg
+# if u steal credits u wil be the gayest gay in the world. i will fban u
+# from 100 feds and u will leave tg
 """
 Pulls Up A Random string created by Indian Bhai.
 cmd: .lol
@@ -33,7 +34,7 @@ async def _(event):
     if x == 5:
         await event.edit("/lol/*")
     if x == 6:
-        await event.edit("\lol")
+        await event.edit(r"\lol")
     if x == 7:
         await event.edit("lllolll")
     if x == 8:

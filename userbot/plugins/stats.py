@@ -19,14 +19,14 @@ async def _(event):
     dialogs = await bot.get_dialogs(limit=None, ignore_migrated=True)
     for d in dialogs:
         currrent_entity = d.entity
-        if type(currrent_entity) is User:
+        if isinstance(currrent_entity, User):
             if currrent_entity.bot:
                 b += 1
             else:
                 u += 1
-        elif type(currrent_entity) is Chat:
+        elif isinstance(currrent_entity, Chat):
             g += 1
-        elif type(currrent_entity) is Channel:
+        elif isinstance(currrent_entity, Channel):
             if currrent_entity.broadcast:
                 bc += 1
             else:

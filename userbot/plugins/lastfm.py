@@ -52,7 +52,8 @@ LastLog = False
 @register(outgoing=True, pattern="^.lastfm$")
 async def last_fm(lastFM):
     """ For .lastfm command, fetch scrobble data from last.fm. """
-    if not lastFM.text[0].isalpha() and lastFM.text[0] not in ("/", "#", "@", "!"):
+    if not lastFM.text[0].isalpha() and lastFM.text[0] not in (
+            "/", "#", "@", "!"):
         await lastFM.edit("Processing...")
         preview = None
         playing = User(LASTFM_USERNAME, lastfm).get_now_playing()
@@ -60,8 +61,9 @@ async def last_fm(lastFM):
         if playing is not None:
             try:
                 image = (
-                    User(LASTFM_USERNAME, lastfm).get_now_playing().get_cover_image()
-                )
+                    User(
+                        LASTFM_USERNAME,
+                        lastfm).get_now_playing().get_cover_image())
             except IndexError:
                 image = None
             tags = gettags(isNowPlaying=True, playing=playing)
@@ -84,8 +86,9 @@ async def last_fm(lastFM):
                 tags = gettags(track)
                 rectrack = parse.quote_plus(str(printable))
                 rectrack = sub(
-                    "^", "https://www.youtube.com/results?search_query=", rectrack
-                )
+                    "^",
+                    "https://www.youtube.com/results?search_query=",
+                    rectrack)
                 output += f"• [{printable}]({rectrack})\n"
                 if tags:
                     output += f"`{tags}`\n\n"
@@ -184,7 +187,8 @@ async def get_curr_track(lfmbio):
 
 @register(outgoing=True, pattern=r"^.lastbio (\S*)")
 async def lastbio(lfmbio):
-    if not lfmbio.text[0].isalpha() and lfmbio.text[0] not in ("/", "#", "@", "!"):
+    if not lfmbio.text[0].isalpha() and lfmbio.text[0] not in (
+            "/", "#", "@", "!"):
         arg = lfmbio.pattern_match.group(1)
         global LASTFMCHECK
         global RUNNING
@@ -209,7 +213,8 @@ async def lastbio(lfmbio):
 
 @register(outgoing=True, pattern=r"^.lastlog (\S*)")
 async def lastlog(lstlog):
-    if not lstlog.text[0].isalpha() and lstlog.text[0] not in ("/", "#", "@", "!"):
+    if not lstlog.text[0].isalpha() and lstlog.text[0] not in (
+            "/", "#", "@", "!"):
         arg = lstlog.pattern_match.group(1)
         global LastLog
         LastLog = False

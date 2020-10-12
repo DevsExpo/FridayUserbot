@@ -1,6 +1,6 @@
-""" 
-Credit :- Unknown 
-Just Kidding Credit To X-Tra Telegram For Base 
+"""
+Credit :- Unknown
+Just Kidding Credit To X-Tra Telegram For Base
 And A Noob @StarkxD For This Fucking Waste Plugin
 """
 import os

@@ -6,4 +6,4 @@ from pathlib import Path
 
 
 # Copyright (C) By @StarkGang
-# FridayUserbot 🇮🇳 
+# FridayUserbot 🇮🇳

@@ -38,7 +38,7 @@ Filters.__table__.create(checkfirst=True)
 def get_filter(chat_id, keyword):
     try:
         return SESSION.query(Filters).get((str(chat_id), keyword))
-    except:
+    except BaseException:
         return None
     finally:
         SESSION.close()
@@ -46,8 +46,9 @@ def get_filter(chat_id, keyword):
 
 def get_all_filters(chat_id):
     try:
-        return SESSION.query(Filters).filter(Filters.chat_id == str(chat_id)).all()
-    except:
+        return SESSION.query(Filters).filter(
+            Filters.chat_id == str(chat_id)).all()
+    except BaseException:
         return None
     finally:
         SESSION.close()
@@ -91,7 +92,8 @@ def remove_filter(chat_id, keyword):
 
 
 def remove_all_filters(chat_id):
-    saved_filter = SESSION.query(Filters).filter(Filters.chat_id == str(chat_id))
+    saved_filter = SESSION.query(Filters).filter(
+        Filters.chat_id == str(chat_id))
     if saved_filter:
         saved_filter.delete()
         SESSION.commit()

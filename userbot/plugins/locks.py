@@ -9,8 +9,8 @@ from userbot.plugins.sql_helper.locks_sql import get_locks, is_locked, update_lo
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@borg.on(admin_cmd("lock( (?P<target>\S+)|$)"))
-@borg.on(sudo_cmd("lock( (?P<target>\S+)|$)", allow_sudo=True))
+@borg.on(admin_cmd(r"lock( (?P<target>\S+)|$)"))
+@borg.on(sudo_cmd(r"lock( (?P<target>\S+)|$)", allow_sudo=True))
 async def _(event):
     mrhackerguy = await edit_or_reply(event, "Processing")
     # Space weirdness in regex required because argument is optional and other
@@ -184,8 +184,9 @@ async def check_incoming_messages(event):
         if entities:
             for entity in entities:
                 if isinstance(
-                    entity, (types.MessageEntityTextUrl, types.MessageEntityUrl)
-                ):
+                    entity,
+                    (types.MessageEntityTextUrl,
+                     types.MessageEntityUrl)):
                     is_url = True
         if is_url:
             try:
@@ -207,7 +208,8 @@ async def _(event):
         if event.user_added:
             users_added_by = event.action_message.from_id
             is_ban_able = False
-            rights = types.ChatBannedRights(until_date=None, view_messages=True)
+            rights = types.ChatBannedRights(
+                until_date=None, view_messages=True)
             added_users = event.action_message.action.users
             for user_id in added_users:
                 user_obj = await borg.get_entity(user_id)

@@ -58,7 +58,7 @@ async def timer_blankx(e):
         await e.edit(txt + "NaN")
 
 
-@borg.on(events.NewMessage(outgoing=True, pattern="^\.(f?p)an "))
+@borg.on(events.NewMessage(outgoing=True, pattern=r"^\.(f?p)an "))
 async def timer_blankx(e):
 
     txt = e.text[7:] + "\n\n`Promoting You As Admin In` "

@@ -31,7 +31,8 @@ async def telegraphs(grop):
                     functions.messages.CreateChatRequest(  # pylint:disable=E0602
                         users=["@meikobot"],
                         # Not enough users (to create a chat, for example)
-                        # Telegram, no longer allows creating a chat with ourselves
+                        # Telegram, no longer allows creating a chat with
+                        # ourselves
                         title=group_name,
                     )
                 )

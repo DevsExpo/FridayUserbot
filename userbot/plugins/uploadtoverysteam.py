@@ -93,14 +93,18 @@ async def _(event):
                     url = step_one_response_text["result"]["url"]
                     await mone.edit(f"Start Uploading to {url}")
                     start = datetime.now()
-                    files = {"file1": (file_name, open(required_file_name, "rb"))}
+                    files = {
+                        "file1": (
+                            file_name,
+                            open(
+                                required_file_name,
+                                "rb"))}
                     resp = requests.post(url, files=files)
                     step_two_response_text = resp.json()
                     # logger.info(step_two_response_text)
                     if step_two_response_text["status"] == 200:
                         output_str = json.dumps(
-                            step_two_response_text["result"], sort_keys=True, indent=4
-                        )
+                            step_two_response_text["result"], sort_keys=True, indent=4)
                         stream_url = step_two_response_text["result"]["url"]
                         end = datetime.now()
                         ms = (end - start).seconds
@@ -111,7 +115,7 @@ async def _(event):
                         await event.delete()
                         try:
                             os.remove(required_file_name)
-                        except:
+                        except BaseException:
                             pass
                     else:
                         await mone.edit(

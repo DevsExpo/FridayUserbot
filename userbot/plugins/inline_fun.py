@@ -2,9 +2,6 @@ from userbot.utils import admin_cmd, sudo_cmd, edit_or_reply
 from var import Var
 
 
-
-
-
 @borg.on(admin_cmd(pattern="stat$"))
 async def stats(event):
     if event.fwd_from:
@@ -13,7 +10,7 @@ async def stats(event):
     noob = "stats"
     if event.reply_to_msg_id:
         reply_to_id = await event.get_reply_message()
-    tap = await bot.inline_query(botusername, noob) 
+    tap = await bot.inline_query(botusername, noob)
     await tap[0].click(event.chat_id)
     await event.delete()
 
@@ -26,9 +23,10 @@ async def gamez(event):
     noob = "play"
     if event.reply_to_msg_id:
         reply_to_id = await event.get_reply_message()
-    tap = await bot.inline_query(botusername, noob) 
+    tap = await bot.inline_query(botusername, noob)
     await tap[0].click(event.chat_id)
     await event.delete()
+
 
 @borg.on(admin_cmd(pattern="wspr ?(.*)"))
 async def wspr(event):
@@ -38,9 +36,10 @@ async def wspr(event):
     botusername = "@whisperBot"
     if event.reply_to_msg_id:
         reply_to_id = await event.get_reply_message()
-    tap = await bot.inline_query(botusername, wwwspr) 
+    tap = await bot.inline_query(botusername, wwwspr)
     await tap[0].click(event.chat_id)
     await event.delete()
+
 
 @borg.on(admin_cmd(pattern="mod ?(.*)"))
 async def mod(event):
@@ -50,7 +49,6 @@ async def mod(event):
     botusername = "@PremiumAppBot"
     if event.reply_to_msg_id:
         reply_to_id = await event.get_reply_message()
-    tap = await bot.inline_query(botusername, modr) 
+    tap = await bot.inline_query(botusername, modr)
     await tap[0].click(event.chat_id)
     await event.delete()
-

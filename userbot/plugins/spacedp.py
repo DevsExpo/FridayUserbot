@@ -27,7 +27,7 @@ async def animepp():
 
     pc = requests.get("http://getwallpapers.com/collection/" + pack).text
 
-    f = re.compile("/\w+/full.+.jpg")
+    f = re.compile(r"/\w+/full.+.jpg")
 
     f = f.findall(pc)
 

@@ -1,3 +1,10 @@
+from userbot import bot
+from time import gmtime, strftime
+import traceback
+import sys
+import math
+import datetime
+import asyncio
 import inspect
 import logging
 import re
@@ -31,25 +38,30 @@ def command(**args):
         try:
             if pattern is not None and not pattern.startswith("(?i)"):
                 args["pattern"] = "(?i)" + pattern
-        except:
+        except BaseException:
             pass
 
         reg = re.compile("(.*)")
-        if not pattern == None:
+        if pattern is not None:
             try:
                 cmd = re.search(reg, pattern)
                 try:
                     cmd = (
-                        cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
-                    )
-                except:
+                        cmd.group(1).replace(
+                            "$",
+                            "").replace(
+                            "\\",
+                            "").replace(
+                            "^",
+                            ""))
+                except BaseException:
                     pass
 
                 try:
                     CMD_LIST[file_test].append(cmd)
-                except:
+                except BaseException:
                     CMD_LIST.update({file_test: [cmd]})
-            except:
+            except BaseException:
                 pass
 
         if allow_sudo:
@@ -59,7 +71,7 @@ def command(**args):
         del allow_sudo
         try:
             del args["allow_sudo"]
-        except:
+        except BaseException:
             pass
 
         if "allow_edited_updates" in args:
@@ -71,7 +83,7 @@ def command(**args):
             bot.add_event_handler(func, events.NewMessage(**args))
             try:
                 LOAD_PLUG[file_test].append(func)
-            except:
+            except BaseException:
                 LOAD_PLUG.update({file_test: [func]})
             return func
 
@@ -131,14 +143,14 @@ def remove_plugin(shortname):
                 bot.remove_event_handler(i)
             del LOAD_PLUG[shortname]
 
-        except:
+        except BaseException:
             name = f"userbot.plugins.{shortname}"
 
             for i in reversed(range(len(bot._event_builders))):
                 ev, cb = bot._event_builders[i]
                 if cb.__module__ == name:
                     del bot._event_builders[i]
-    except:
+    except BaseException:
         raise ValueError
 
 
@@ -153,15 +165,15 @@ def admin_cmd(pattern=None, **args):
 
     # get the pattern from the decorator
     if pattern is not None:
-        if pattern.startswith("\#"):
+        if pattern.startswith(r"\#"):
             # special fix for snip.py
             args["pattern"] = re.compile(pattern)
         else:
-            args["pattern"] = re.compile("\." + pattern)
+            args["pattern"] = re.compile(r"\." + pattern)
             cmd = "." + pattern
             try:
                 CMD_LIST[file_test].append(cmd)
-            except:
+            except BaseException:
                 CMD_LIST.update({file_test: [cmd]})
 
     args["outgoing"] = True
@@ -189,17 +201,6 @@ def admin_cmd(pattern=None, **args):
 """ Userbot module for managing events.
  One of the main components of the userbot. """
 
-import asyncio
-import datetime
-import math
-import sys
-import traceback
-from time import gmtime, strftime
-
-from telethon import events
-
-from userbot import bot
-
 
 def register(**args):
     """ Register a new event. """
@@ -219,19 +220,25 @@ def register(**args):
         del args["disable_edited"]
 
     reg = re.compile("(.*)")
-    if not pattern == None:
+    if pattern is not None:
         try:
             cmd = re.search(reg, pattern)
             try:
-                cmd = cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
-            except:
+                cmd = cmd.group(1).replace(
+                    "$",
+                    "").replace(
+                    "\\",
+                    "").replace(
+                    "^",
+                    "")
+            except BaseException:
                 pass
 
             try:
                 CMD_LIST[file_test].append(cmd)
-            except:
+            except BaseException:
                 CMD_LIST.update({file_test: [cmd]})
-        except:
+        except BaseException:
             pass
 
     def decorator(func):
@@ -255,7 +262,10 @@ def errors_handler(func):
         except BaseException:
 
             date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-            new = {"error": str(sys.exc_info()[1]), "date": datetime.datetime.now()}
+            new = {
+                "error": str(
+                    sys.exc_info()[1]),
+                "date": datetime.datetime.now()}
 
             text = "**USERBOT CRASH REPORT**\n\n"
 
@@ -290,7 +300,8 @@ def errors_handler(func):
                 command, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
             )
             stdout, stderr = await process.communicate()
-            result = str(stdout.decode().strip()) + str(stderr.decode().strip())
+            result = str(stdout.decode().strip()) + \
+                str(stderr.decode().strip())
 
             ftext += result
 
@@ -314,8 +325,7 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
             round(percentage, 2),
         )
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
-            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
-        )
+            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time))
         if file_name:
             await event.edit(
                 "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
@@ -372,16 +382,25 @@ def sudo_cmd(pattern=None, **args):
     allow_sudo = args.get("allow_sudo", False)
     # get the pattern from the decorator
     if pattern is not None:
-        if pattern.startswith("\#"):
+        if pattern.startswith(r"\#"):
             # special fix for snip.py
             args["pattern"] = re.compile(pattern)
         else:
-            args["pattern"] = re.compile(Config.SUDO_COMMAND_HAND_LER + pattern)
+            args["pattern"] = re.compile(
+                Config.SUDO_COMMAND_HAND_LER + pattern)
             reg = Config.SUDO_COMMAND_HAND_LER[1]
-            cmd = (reg + pattern).replace("$", "").replace("\\", "").replace("^", "")
+            cmd = (
+                reg +
+                pattern).replace(
+                "$",
+                "").replace(
+                "\\",
+                "").replace(
+                "^",
+                "")
             try:
                 SUDO_LIST[file_test].append(cmd)
-            except:
+            except BaseException:
                 SUDO_LIST.update({file_test: [cmd]})
     args["outgoing"] = True
     # should this command be available for other users?
@@ -415,10 +434,7 @@ async def edit_or_reply(event, text):
     return await event.edit(text)
 
 
-
-
-
-# Assistant 
+# Assistant
 def start_assistant(shortname):
     if shortname.startswith("__"):
         pass

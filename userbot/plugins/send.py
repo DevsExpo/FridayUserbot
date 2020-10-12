@@ -5,6 +5,7 @@ from datetime import datetime
 from pathlib import Path
 fridaythumb = './resources/IMG_20200929_103719_628.jpg'
 
+
 @borg.on(admin_cmd(pattern="send ?(.*)"))
 @borg.on(sudo_cmd(pattern="send ?(.*)", allow_sudo=True))
 async def send(event):
