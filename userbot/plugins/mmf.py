@@ -2,13 +2,15 @@
 # By Priyam Kalra
 # Parts of the code below is taken from other sources, the links to the
 # sources is commented above the taken code
-
 import os
 import textwrap
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
 
-from userbot.utils import admin_cmd, sudo_cmd
+from userbot.utils import admin_cmd
+from userbot.utils import sudo_cmd
 from var import Var
 
 # how a lazy guy ports.

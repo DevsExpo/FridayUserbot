@@ -1,5 +1,4 @@
 """use command .ducduckgo"""
-
 from uniborg.util import admin_cmd
 
 

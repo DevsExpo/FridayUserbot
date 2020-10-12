@@ -3,8 +3,6 @@
 """Self Destruct Plugin
 .sd <time in seconds> <text>
 """
-
-
 import time
 
 from userbot.utils import admin_cmd

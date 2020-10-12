@@ -3,12 +3,13 @@ Syntax: .eval PythonCode"""
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
 import io
 import sys
 import traceback
 
-from uniborg.util import admin_cmd, edit_or_reply, sudo_cmd
+from uniborg.util import admin_cmd
+from uniborg.util import edit_or_reply
+from uniborg.util import sudo_cmd
 
 
 @borg.on(admin_cmd("eval"))

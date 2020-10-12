@@ -1,7 +1,6 @@
 """Upload local Files to Mirrors
 Syntax:
 .verystream"""
-
 import asyncio
 import hashlib
 import json
@@ -12,7 +11,8 @@ from datetime import datetime
 import aiohttp
 import magic
 import requests
-from uniborg.util import admin_cmd, progress
+from uniborg.util import admin_cmd
+from uniborg.util import progress
 
 
 @borg.on(admin_cmd(pattern="verystream ?(.*)", allow_sudo=True))

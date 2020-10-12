@@ -1,6 +1,5 @@
 """Create Button Posts
 """
-
 import re
 
 from telethon import custom

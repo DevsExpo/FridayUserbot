@@ -3,7 +3,6 @@ Available Commands:
 .savethumbnail
 .clearthumbnail
 .getthumbnail"""
-
 import os
 import subprocess
 

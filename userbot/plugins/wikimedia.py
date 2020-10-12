@@ -1,7 +1,9 @@
 """WikiMedia.ORG
 Syntax: .wikimedia Query"""
 import requests
-from uniborg.util import admin_cmd, edit_or_reply, sudo_cmd
+from uniborg.util import admin_cmd
+from uniborg.util import edit_or_reply
+from uniborg.util import sudo_cmd
 
 
 @borg.on(admin_cmd(pattern="wikimedia (.*)"))

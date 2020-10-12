@@ -5,17 +5,19 @@
 #
 """ Userbot module for managing events.
  One of the main components of the userbot. """
-
 import sys
 from asyncio import create_subprocess_shell as asyncsubshell
 from asyncio import subprocess as asyncsub
 from os import remove
-from time import gmtime, strftime
+from time import gmtime
+from time import strftime
 from traceback import format_exc
 
 from telethon import events
 
-from userbot import LOGSPAMMER, PRIVATE_GROUP_ID, bot
+from userbot import bot
+from userbot import LOGSPAMMER
+from userbot import PRIVATE_GROUP_ID
 
 
 def register(**args):

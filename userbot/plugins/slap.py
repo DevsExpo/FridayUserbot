@@ -3,7 +3,6 @@ SLAP Plugin For Userbot
 usage:- .slap in reply to any message, or u gonna slap urself.
 
 """
-
 import random
 
 from telethon.tl.functions.users import GetFullUserRequest

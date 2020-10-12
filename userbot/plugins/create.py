@@ -1,7 +1,6 @@
 """
 for bot credits to @pureindialover
 """
-
 from telethon.tl import functions
 
 from userbot import CMD_HELP

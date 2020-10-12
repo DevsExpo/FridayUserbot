@@ -4,7 +4,6 @@ cmd : .sch search_query
 By: @Zero_cool7870
 
 """
-
 import json
 import os
 

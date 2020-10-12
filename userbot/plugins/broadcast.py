@@ -1,27 +1,25 @@
 #    Copyright (C) By @HeisenbergTheDanger
-
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
 #    (at your option) any later version.
-
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #    GNU Affero General Public License for more details.
-
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
 import asyncio
 
 from telethon.tl.types import InputMediaUploadedPhoto
-from uniborg.util import admin_cmd, edit_or_reply, sudo_cmd
+from uniborg.util import admin_cmd
+from uniborg.util import edit_or_reply
+from uniborg.util import sudo_cmd
 
-from userbot.plugins.sql_helper.broadcast_sql import (add_channel,
-                                                      get_all_channels,
-                                                      in_channels, rm_channel)
+from userbot.plugins.sql_helper.broadcast_sql import add_channel
+from userbot.plugins.sql_helper.broadcast_sql import get_all_channels
+from userbot.plugins.sql_helper.broadcast_sql import in_channels
+from userbot.plugins.sql_helper.broadcast_sql import rm_channel
 from var import Var
 
 logs_id = Var.PRIVATE_GROUP_ID

@@ -1,11 +1,12 @@
 """ It does not do to dwell on dreams and forget to live
 Syntax: .getime"""
-
 import asyncio
 import os
 from datetime import datetime
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
 
 from userbot.utils import admin_cmd
 

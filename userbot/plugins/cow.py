@@ -1,8 +1,6 @@
 """.cowsay, .tuxsay, .milksay, .kisssay, .wwwsay, .defaultsay, .bunnysay,
 .moosesay, .sheepsay, .rensay, .cheesesay, .ghostbusterssay, .skeletonsay,
 and may cmd would be added soon."""
-
-
 from cowpy import cow
 from telethon import events
 

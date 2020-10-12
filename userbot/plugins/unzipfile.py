@@ -2,7 +2,6 @@
 coded by @By_Azade
 code rewritten my SnapDragon7410
 """
-
 import os
 import time
 import zipfile

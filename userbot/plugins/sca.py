@@ -12,7 +12,6 @@ video
 photo
 document
 cancel"""
-
 import asyncio
 
 from uniborg.util import admin_cmd

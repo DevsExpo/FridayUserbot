@@ -5,7 +5,6 @@
 Imdb Module
 .imdb
 """
-
 import re
 
 import bs4

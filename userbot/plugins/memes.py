@@ -4,9 +4,7 @@
 # you may not use this file except in compliance with the License.
 #
 #
-
 """ Userbot module for having some fun with people. """
-
 import asyncio
 import random
 import re

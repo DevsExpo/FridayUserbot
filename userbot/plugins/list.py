@@ -6,10 +6,10 @@ cmd: .ls // will return files from current working directory
 By:- @Zero_cool7870
 
 """
-
 import os
 
-from uniborg.util import admin_cmd, edit_or_reply
+from uniborg.util import admin_cmd
+from uniborg.util import edit_or_reply
 
 
 @borg.on(admin_cmd(pattern="ls ?(.*)"))

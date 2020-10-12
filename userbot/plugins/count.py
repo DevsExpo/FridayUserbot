@@ -5,7 +5,9 @@ import time
 
 from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
-from telethon.tl.types import Channel, Chat, User
+from telethon.tl.types import Channel
+from telethon.tl.types import Chat
+from telethon.tl.types import User
 
 from userbot.utils import admin_cmd
 

@@ -1,7 +1,5 @@
 """Take screenshot of any website
 Syntax: .screencapture <Website URL>"""
-
-
 import io
 
 import requests

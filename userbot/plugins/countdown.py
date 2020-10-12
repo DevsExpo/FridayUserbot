@@ -1,5 +1,4 @@
 """COMMAND : .cd, .scd, .padmin"""
-
 import asyncio
 
 from telethon import events
