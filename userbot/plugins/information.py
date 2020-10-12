@@ -35,8 +35,9 @@ async def _(event):
     if first_name is not None:
         first_name = first_name.replace("\u2060", "")
     last_name = replied_user.user.last_name
-    last_name = (last_name.replace("\u2060", "")
-                 if last_name else ("Last Name not found"))
+    last_name = (
+        last_name.replace("\u2060", "") if last_name else ("Last Name not found")
+    )
     user_bio = replied_user.about
     if user_bio is not None:
         user_bio = html.escape(replied_user.about)
@@ -111,9 +112,7 @@ async def get_full_user(event):
         if event.message.entities is not None:
             mention_entity = event.message.entities
             probable_user_mention_entity = mention_entity[0]
-            if isinstance(
-                    probable_user_mention_entity,
-                    MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 replied_user = await event.client(GetFullUserRequest(user_id))
                 return replied_user, None

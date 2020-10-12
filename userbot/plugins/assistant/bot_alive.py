@@ -2,11 +2,7 @@ from telethon.utils import pack_bot_file_id
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot import bot
 from telethon import events, custom, Button
-from telethon.tl.types import (
-    Channel,
-    Chat,
-    User
-)
+from telethon.tl.types import Channel, Chat, User
 
 import emoji
 import asyncio
@@ -55,9 +51,6 @@ pm_caption += "[Assistant By Friday 🇮🇳](https://telegra.ph/FRIDAY-06-15)"
 # only Owner Can Use it
 
 
-@tgbot.on(
-    events.NewMessage(
-        pattern="^/alive",
-        func=lambda e: e.sender_id == bot.uid))
+@tgbot.on(events.NewMessage(pattern="^/alive", func=lambda e: e.sender_id == bot.uid))
 async def friday(event):
     await tgbot.send_file(event.chat_id, PM_IMG, caption=pm_caption)

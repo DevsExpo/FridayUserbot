@@ -18,13 +18,11 @@ heroku_api = "https://api.heroku.com"
 
 
 @borg.on(
-    admin_cmd(
-        pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)",
-        outgoing=True))
+    admin_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True)
+)
 @borg.on(
-    sudo_cmd(
-        pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)",
-        allow_sudo=True))
+    sudo_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True)
+)
 async def variable(var):
     """
     Manage most of ConfigVars setting, set new var, get current var,

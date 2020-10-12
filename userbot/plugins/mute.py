@@ -44,8 +44,7 @@ async def startmute(event):
             )
         chat_id = event.chat_id
         chat = await event.get_chat()
-        if "admin_rights" in vars(chat) and vars(
-                chat)["admin_rights"] is not None:
+        if "admin_rights" in vars(chat) and vars(chat)["admin_rights"] is not None:
             if chat.admin_rights.delete_messages is True:
                 pass
             else:
@@ -133,8 +132,7 @@ async def startmute(event):
             )
         chat_id = event.chat_id
         chat = await event.get_chat()
-        if "admin_rights" in vars(chat) and vars(
-                chat)["admin_rights"] is not None:
+        if "admin_rights" in vars(chat) and vars(chat)["admin_rights"] is not None:
             if chat.admin_rights.delete_messages is True:
                 pass
             else:

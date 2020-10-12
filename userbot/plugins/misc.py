@@ -16,8 +16,7 @@ from userbot.events import register
 @register(outgoing=True, pattern="^.random")
 async def randomise(items):
     """ For .random command, get a random item from the list of items. """
-    if not items.text[0].isalpha() and items.text[0] not in (
-            "/", "#", "@", "!"):
+    if not items.text[0].isalpha() and items.text[0] not in ("/", "#", "@", "!"):
         itemo = (items.text[8:]).split()
         index = randint(1, len(itemo) - 1)
         await items.edit(
@@ -43,7 +42,6 @@ async def sleepybot(time):
             if LOGGER:
                 await time.client.send_message(
                     LOGGER_GROUP,
-                    "You put the bot to sleep for " +
-                    str(counter) + " seconds",
+                    "You put the bot to sleep for " + str(counter) + " seconds",
                 )
             sleep(counter)

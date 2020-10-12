@@ -12,15 +12,8 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from sqlalchemy import (
-    Column,
-    String,
-    Integer
-)
-from . import (
-    SESSION,
-    BASE
-)
+from sqlalchemy import Column, String, Integer
+from . import SESSION, BASE
 
 
 class Blockedid(BASE):
@@ -48,8 +41,7 @@ def get_all_nibba():
 
 def is_he_added(chat_id):
     try:
-        return SESSION.query(Blockedid).filter(
-            Blockedid.chat_id == str(chat_id)).one()
+        return SESSION.query(Blockedid).filter(Blockedid.chat_id == str(chat_id)).one()
     except BaseException:
         return None
     finally:

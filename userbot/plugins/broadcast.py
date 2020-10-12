@@ -179,7 +179,9 @@ async def _(event):
                             == "The message cannot be empty unless a file is provided"
                         ):
                             edit_or_reply(
-                                event, "For sending files, upload in Saved Messages and reply .forward to in.", )
+                                event,
+                                "For sending files, upload in Saved Messages and reply .forward to in.",
+                            )
                             return
                     except BaseException:
                         pass

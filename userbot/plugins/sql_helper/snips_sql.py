@@ -51,12 +51,8 @@ def get_all_snips():
 
 
 def add_snip(
-        keyword,
-        reply,
-        snip_type,
-        media_id,
-        media_access_hash,
-        media_file_reference):
+    keyword, reply, snip_type, media_id, media_access_hash, media_file_reference
+):
     adder = SESSION.query(Snips).get(keyword)
     if adder:
         adder.reply = reply
@@ -66,12 +62,8 @@ def add_snip(
         adder.media_file_reference = media_file_reference
     else:
         adder = Snips(
-            keyword,
-            reply,
-            snip_type,
-            media_id,
-            media_access_hash,
-            media_file_reference)
+            keyword, reply, snip_type, media_id, media_access_hash, media_file_reference
+        )
     SESSION.add(adder)
     SESSION.commit()
 

@@ -5,11 +5,7 @@
 # x0x
 
 from telethon import events, custom, Button
-from telethon.tl.types import (
-    Channel,
-    Chat,
-    User
-)
+from telethon.tl.types import Channel, Chat, User
 
 import emoji
 from googletrans import Translator
@@ -52,13 +48,13 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-@tgbot.on(
-    events.NewMessage(
-        pattern="^/ping",
-        func=lambda e: e.sender_id == bot.uid))
+@tgbot.on(events.NewMessage(pattern="^/ping", func=lambda e: e.sender_id == bot.uid))
 async def _(event):
     start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - Lastupdate))
-    await tgbot.send_message(event.chat_id, f"**█▀█ █▀█ █▄░█ █▀▀ █ \n█▀▀ █▄█ █░▀█ █▄█ ▄**\n ➲ `{ms}` \n ➲ `{uptime}`")
+    await tgbot.send_message(
+        event.chat_id,
+        f"**█▀█ █▀█ █▄░█ █▀▀ █ \n█▀▀ █▄█ █░▀█ █▄█ ▄**\n ➲ `{ms}` \n ➲ `{uptime}`",
+    )

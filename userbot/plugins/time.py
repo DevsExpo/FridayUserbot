@@ -27,8 +27,7 @@ async def _(event):
     elif event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         reply_msg_id = previous_message.id
-    if not os.path.isdir(
-            Config.TMP_DOWNLOAD_DIRECTORY):  # pylint:disable=E0602
+    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):  # pylint:disable=E0602
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)  # pylint:disable=E0602
     # pylint:disable=E0602
     required_file_name = (

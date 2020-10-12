@@ -20,10 +20,8 @@ async def _(event):
         else:
             xkcd_search_url = "https://relevantxkcd.appspot.com/process?"
             queryresult = requests.get(
-                xkcd_search_url,
-                params={
-                    "action": "xkcd",
-                    "query": quote(input_str)}).text
+                xkcd_search_url, params={"action": "xkcd", "query": quote(input_str)}
+            ).text
             xkcd_id = queryresult.split(" ")[2].lstrip("\n")
     if xkcd_id is None:
         xkcd_url = "https://xkcd.com/info.0.json"

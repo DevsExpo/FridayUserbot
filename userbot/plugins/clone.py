@@ -53,8 +53,7 @@ async def _(event):
     await borg(functions.account.UpdateProfileRequest(about=user_bio))
     pfile = await borg.upload_file(profile_pic)  # pylint:disable=E060
     await borg(
-        functions.photos.UploadProfilePhotoRequest(
-            pfile)  # pylint:disable=E0602
+        functions.photos.UploadProfilePhotoRequest(pfile)  # pylint:disable=E0602
     )
     # message_id_to_reply = event.message.reply_to_msg_id
     # if not message_id_to_reply:
@@ -95,9 +94,7 @@ async def get_full_user(event):
         if event.message.entities is not None:
             mention_entity = event.message.entities
             probable_user_mention_entity = mention_entity[0]
-            if isinstance(
-                    probable_user_mention_entity,
-                    MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 replied_user = await event.client(GetFullUserRequest(user_id))
                 return replied_user, None

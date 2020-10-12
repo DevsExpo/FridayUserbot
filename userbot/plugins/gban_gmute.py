@@ -10,7 +10,7 @@ from telethon.events import ChatAction
 
 
 async def get_full_user(event):
-    args = event.pattern_match.group(1).split(':', 1)
+    args = event.pattern_match.group(1).split(":", 1)
     extra = None
     if event.reply_to_msg_id and not len(args) == 2:
         previous_message = await event.get_reply_message()
@@ -27,8 +27,7 @@ async def get_full_user(event):
             return
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
-            if isinstance(probable_user_mention_entity,
-                          MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 user_obj = await event.client.get_entity(user_id)
                 return user_obj
@@ -185,6 +184,7 @@ async def handler(rkG):
     if rkG.user_joined or rkG.user_added:
         try:
             from userbot.modules.sql_helper.gmute_sql import is_gmuted
+
             guser = await rkG.get_user()
             gmuted = is_gmuted(guser.id)
         except BaseException:
@@ -197,11 +197,14 @@ async def handler(rkG):
                     creator = chat.creator
                     if admin or creator:
                         try:
-                            await client.edit_permissions(rkG.chat_id, guser.id, view_messages=False)
+                            await client.edit_permissions(
+                                rkG.chat_id, guser.id, view_messages=False
+                            )
                             await rkG.reply(
                                 f"**Gbanned User Joined!!** \n"
                                 f"**Victim Id**: [{guser.id}](tg://user?id={guser.id})\n"
-                                f"**Action **  : `Banned`")
+                                f"**Action **  : `Banned`"
+                            )
                         except BaseException:
                             rkG.reply("`No Permission To Ban`")
                             return

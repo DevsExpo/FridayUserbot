@@ -64,8 +64,7 @@ async def _(event):
                 file_name = "meme.png"
                 reply_message = await event.get_reply_message()
                 to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
-                downloaded_file_name = os.path.join(
-                    to_download_directory, file_name)
+                downloaded_file_name = os.path.join(to_download_directory, file_name)
                 downloaded_file_name = await borg.download_media(
                     reply_message,
                     downloaded_file_name,
@@ -85,8 +84,7 @@ async def _(event):
             response = await bot_conv.get_response()
             the_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
             files_name = "memes.webp"
-            download_file_name = os.path.join(
-                the_download_directory, files_name)
+            download_file_name = os.path.join(the_download_directory, files_name)
             await borg.download_media(
                 response.media,
                 download_file_name,

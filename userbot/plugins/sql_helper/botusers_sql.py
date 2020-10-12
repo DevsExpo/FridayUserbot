@@ -16,19 +16,13 @@
 
 """ users Table """
 
-from sqlalchemy import (
-    Column,
-    String,
-    Integer
-)
-from . import (
-    SESSION,
-    BASE
-)
+from sqlalchemy import Column, String, Integer
+from . import SESSION, BASE
 
 
 class Users(BASE):
     """ Table to store the received messages """
+
     __tablename__ = "users"
     message_id = Column(Integer, primary_key=True)
     chat_id = Column(String(14))

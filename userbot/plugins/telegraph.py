@@ -46,8 +46,7 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             await event.edit(
-                "Downloaded to {} in {} seconds.".format(
-                    downloaded_file_name, ms)
+                "Downloaded to {} in {} seconds.".format(downloaded_file_name, ms)
             )
             if downloaded_file_name.endswith((".webp")):
                 resize_image(downloaded_file_name)
@@ -87,8 +86,7 @@ async def _(event):
                     page_content += m.decode("UTF-8") + "\n"
                 os.remove(downloaded_file_name)
             page_content = page_content.replace("\n", "<br>")
-            response = telegraph.create_page(
-                title_of_page, html_content=page_content)
+            response = telegraph.create_page(title_of_page, html_content=page_content)
             end = datetime.now()
             ms = (end - start).seconds
             await event.edit(

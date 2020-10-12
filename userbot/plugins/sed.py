@@ -43,7 +43,7 @@ def doit(chat_id, match, original):
         try:
             s = original.message
             if s.startswith(HEADER):
-                s = s[len(HEADER):]
+                s = s[len(HEADER) :]
             s, i = regex.subn(fr, to, s, count=count, flags=flags)
             if i > 0:
                 return original, s
@@ -85,9 +85,7 @@ async def on_edit(event):
             break
 
 
-@command(
-    pattern=re.compile(r"^s/((?:\\/|[^/])+)/((?:\\/|[^/])*)(/.*)?"),
-    outgoing=True)
+@command(pattern=re.compile(r"^s/((?:\\/|[^/])+)/((?:\\/|[^/])*)(/.*)?"), outgoing=True)
 async def on_regex(event):
     if event.fwd_from:
         return

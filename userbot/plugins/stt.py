@@ -50,8 +50,7 @@ async def _(event):
                 transcript_confidence = ""
                 for alternative in results:
                     alternatives = alternative["alternatives"][0]
-                    transcript_response += " " + \
-                        str(alternatives["transcript"]) + " + "
+                    transcript_response += " " + str(alternatives["transcript"]) + " + "
                     transcript_confidence += (
                         " " + str(alternatives["confidence"]) + " + "
                     )
@@ -59,10 +58,12 @@ async def _(event):
                 ms = (end - start).seconds
                 if transcript_response != "":
                     string_to_show = "Language: `{}`\nTRANSCRIPT: `{}`\nTime Taken: {} seconds\nConfidence: `{}`".format(
-                        lan, transcript_response, ms, transcript_confidence)
+                        lan, transcript_response, ms, transcript_confidence
+                    )
                 else:
                     string_to_show = "Language: `{}`\nTime Taken: {} seconds\n**No Results Found**".format(
-                        lan, ms)
+                        lan, ms
+                    )
                 await event.edit(string_to_show)
             else:
                 await event.edit(r["error"])

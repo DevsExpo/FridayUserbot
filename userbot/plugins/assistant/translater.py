@@ -5,11 +5,7 @@
 # x0x
 
 from telethon import events, custom, Button
-from telethon.tl.types import (
-    Channel,
-    Chat,
-    User
-)
+from telethon.tl.types import Channel, Chat, User
 
 import emoji
 from googletrans import Translator
@@ -35,7 +31,9 @@ async def _(event):
     elif "|" in input_str:
         lan, text = input_str.split("|")
     else:
-        await tgbot.send_message(event.chat_id, "`.tr LanguageCode` as reply to a message")
+        await tgbot.send_message(
+            event.chat_id, "`.tr LanguageCode` as reply to a message"
+        )
         return
     text = emoji.demojize(text.strip())
     lan = lan.strip()
@@ -44,7 +42,8 @@ async def _(event):
     after_tr_text = translated.text
     output_str = (
         f"**Translated By Friday Assistant Bot** \n"
-        f"Source {translated.src} \nTranslation {lan} \nWhat I Can Translate From This {after_tr_text}")
+        f"Source {translated.src} \nTranslation {lan} \nWhat I Can Translate From This {after_tr_text}"
+    )
     try:
         await tgbot.send_message(event.chat_id, output_str)
     except Exception as exc:

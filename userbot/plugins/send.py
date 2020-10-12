@@ -3,7 +3,8 @@ import asyncio
 import os
 from datetime import datetime
 from pathlib import Path
-fridaythumb = './resources/IMG_20200929_103719_628.jpg'
+
+fridaythumb = "./resources/IMG_20200929_103719_628.jpg"
 
 
 @borg.on(admin_cmd(pattern="send ?(.*)"))
@@ -17,7 +18,7 @@ async def send(event):
     the_plugin_file = "./userbot/plugins/{}.py".format(input_str)
     end = datetime.now()
     time_taken_in_ms = (end - start).seconds
-    men = (f"Plugin Name - {input_str}.py \nUploaded By Friday")
+    men = f"Plugin Name - {input_str}.py \nUploaded By Friday"
     await event.client.send_file(  # pylint:disable=E0602
         event.chat_id,
         the_plugin_file,

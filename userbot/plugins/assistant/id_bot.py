@@ -2,11 +2,7 @@ from telethon.utils import pack_bot_file_id
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot import bot
 from telethon import events, custom, Button
-from telethon.tl.types import (
-    Channel,
-    Chat,
-    User
-)
+from telethon.tl.types import Channel, Chat, User
 
 import emoji
 import asyncio
@@ -43,14 +39,16 @@ async def _(event):
                 event.chat_id,
                 "Current Chat ID: `{}`\nFrom User ID: `{}`\nBot API File ID: `{}`".format(
                     str(event.chat_id), str(r_msg.from_id), bot_api_file_id
-                )
+                ),
             )
         else:
             await tgbot.send_message(
                 event.chat_id,
                 "Current Chat ID: `{}`\nFrom User ID: `{}`".format(
                     str(event.chat_id), str(r_msg.from_id)
-                )
+                ),
             )
     else:
-        await tgbot.send_message(event.chat_id, "Current Chat ID: `{}`".format(str(event.chat_id)))
+        await tgbot.send_message(
+            event.chat_id, "Current Chat ID: `{}`".format(str(event.chat_id))
+        )

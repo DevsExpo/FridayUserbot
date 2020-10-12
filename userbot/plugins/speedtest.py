@@ -90,12 +90,7 @@ __With the Following ERRORs__
 def convert_from_bytes(size):
     power = 2 ** 10
     n = 0
-    units = {
-        0: "",
-        1: "kilobytes",
-        2: "megabytes",
-        3: "gigabytes",
-        4: "terabytes"}
+    units = {0: "", 1: "kilobytes", 2: "megabytes", 3: "gigabytes", 4: "terabytes"}
     while size > power:
         size /= power
         n += 1

@@ -65,8 +65,7 @@ async def _(event):
             ms = (end - start).seconds
             required_file_name = downloaded_file_name
             await mone.edit(
-                "Downloaded to `{}` in {} seconds.".format(
-                    downloaded_file_name, ms)
+                "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
             )
     elif input_str:
         input_str = input_str.strip()
@@ -147,8 +146,7 @@ async def sch(event):
     input_str = event.pattern_match.group(1).strip()
     await event.edit("Searching for {} in G-Drive.".format(input_str))
     if parent_id is not None:
-        query = "'{}' in parents and (title contains '{}')".format(
-            parent_id, input_str)
+        query = "'{}' in parents and (title contains '{}')".format(parent_id, input_str)
     else:
         query = "title contains '{}'".format(input_str)
     query = "'{}' in parents and (title contains '{}')".format(
@@ -248,22 +246,16 @@ async def _(event):
 
 async def create_directory(http, directory_name, parent_id):
     drive_service = build("drive", "v2", http=http, cache_discovery=False)
-    permissions = {
-        "role": "reader",
-        "type": "anyone",
-        "value": None,
-        "withLink": True}
-    file_metadata = {
-        "title": directory_name,
-        "mimeType": G_DRIVE_DIR_MIME_TYPE}
+    permissions = {"role": "reader", "type": "anyone", "value": None, "withLink": True}
+    file_metadata = {"title": directory_name, "mimeType": G_DRIVE_DIR_MIME_TYPE}
     if parent_id is not None:
         file_metadata["parents"] = [{"id": parent_id}]
     file = drive_service.files().insert(body=file_metadata).execute()
     file_id = file.get("id")
     drive_service.permissions().insert(fileId=file_id, body=permissions).execute()
     logger.info(
-        "Created Gdrive Folder:\nName: {}\nID: {} ".format(
-            file.get("title"), file_id))
+        "Created Gdrive Folder:\nName: {}\nID: {} ".format(file.get("title"), file_id)
+    )
     return file_id
 
 
@@ -344,11 +336,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
     # Permissions body description: anyone who has link can upload
     # Other permissions can be found at
     # https://developers.google.com/drive/v2/reference/permissions
-    permissions = {
-        "role": "reader",
-        "type": "anyone",
-        "value": None,
-        "withLink": True}
+    permissions = {"role": "reader", "type": "anyone", "value": None, "withLink": True}
     # Insert a file
     file = drive_service.files().insert(body=body, media_body=media_body)
     response = None
@@ -356,7 +344,10 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
     while response is None:
         # Credits:
         # https://github.com/AvinashReddy3108/PaperplaneExtended/commit/df65da55d16a6563aa9023cac2bedf43248379f5
-        (status, response, ) = (file.next_chunk())
+        (
+            status,
+            response,
+        ) = file.next_chunk()
         await asyncio.sleep(1)
         if status:
             percentage = int(status.progress() * 100)

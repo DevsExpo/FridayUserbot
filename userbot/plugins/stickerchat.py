@@ -96,8 +96,9 @@ if 1 == 1:
                         message.chat_id, reply.from_id
                     )
                 )
-                if isinstance(user.participant,
-                              telethon.tl.types.ChannelParticipantCreator):
+                if isinstance(
+                    user.participant, telethon.tl.types.ChannelParticipantCreator
+                ):
                     admintitle = user.participant.rank or strings["creator"]
                 elif isinstance(
                     user.participant, telethon.tl.types.ChannelParticipantAdmin
@@ -112,13 +113,9 @@ if 1 == 1:
             )
             participants = chat.full_chat.participants.participants
             participant = next(
-                filter(
-                    lambda x: x.user_id == reply.from_id,
-                    participants),
-                None)
-            if isinstance(
-                    participant,
-                    telethon.tl.types.ChatParticipantCreator):
+                filter(lambda x: x.user_id == reply.from_id, participants), None
+            )
+            if isinstance(participant, telethon.tl.types.ChatParticipantCreator):
                 admintitle = strings["creator"]
             elif isinstance(participant, telethon.tl.types.ChatParticipantAdmin):
                 admintitle = strings["admin"]
@@ -137,8 +134,7 @@ if 1 == 1:
             elif reply.fwd_from.from_name:
                 username = reply.fwd_from.from_name
             elif reply.forward.sender:
-                username = telethon.utils.get_display_name(
-                    reply.forward.sender)
+                username = telethon.utils.get_display_name(reply.forward.sender)
             elif reply.forward.chat:
                 username = telethon.utils.get_display_name(reply.forward.chat)
 

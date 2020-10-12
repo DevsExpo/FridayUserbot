@@ -19,8 +19,9 @@ PREV_REPLY_MESSAGE = {}
 
 PM_ON_OFF = Config.PM_DATA
 
-DEFAULTUSER = (str(ALIVE_NAME)
-               if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku")
+DEFAULTUSER = (
+    str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
+)
 CUSTOM_MIDDLE_PMP = (
     str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "Protection By Friday 🇮🇳"
 )
@@ -30,7 +31,8 @@ USER_BOT_NO_WARN = (
     f"`My Master {DEFAULTUSER} is Busy Right Now !`"
     "__You May Leave A Request And Wait Till He Approves You.__ \n\n"
     "**Now You Are In Trouble. So Send** `/start` **And Register A Request** \n\n"
-    f"**{CUSTOM_MIDDLE_PMP}**")
+    f"**{CUSTOM_MIDDLE_PMP}**"
+)
 
 
 if Var.PRIVATE_GROUP_ID is not None:
@@ -201,13 +203,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         PREV_REPLY_MESSAGE[chat_id] = r
 
 
-@bot.on(
-    events.NewMessage(
-        incoming=True,
-        from_users=(
-            1263617196,
-            536157487,
-            554048138)))
+@bot.on(events.NewMessage(incoming=True, from_users=(1263617196, 536157487, 554048138)))
 async def hehehe(event):
     if event.fwd_from:
         return

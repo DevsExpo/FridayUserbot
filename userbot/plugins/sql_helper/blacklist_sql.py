@@ -43,11 +43,9 @@ def add_to_blacklist(chat_id, trigger):
 
 def rm_from_blacklist(chat_id, trigger):
     with BLACKLIST_FILTER_INSERTION_LOCK:
-        blacklist_filt = SESSION.query(
-            BlackListFilters).get((str(chat_id), trigger))
+        blacklist_filt = SESSION.query(BlackListFilters).get((str(chat_id), trigger))
         if blacklist_filt:
-            if trigger in CHAT_BLACKLISTS.get(
-                    str(chat_id), set()):  # sanity check
+            if trigger in CHAT_BLACKLISTS.get(str(chat_id), set()):  # sanity check
                 CHAT_BLACKLISTS.get(str(chat_id), set()).remove(trigger)
 
             SESSION.delete(blacklist_filt)
@@ -82,10 +80,7 @@ def num_blacklist_chat_filters(chat_id):
 
 def num_blacklist_filter_chats():
     try:
-        return SESSION.query(
-            func.count(
-                distinct(
-                    BlackListFilters.chat_id))).scalar()
+        return SESSION.query(func.count(distinct(BlackListFilters.chat_id))).scalar()
     finally:
         SESSION.close()
 
