@@ -8,7 +8,7 @@ from userbot import Lastupdate
 from userbot.plugins import currentversion
 
 PM_IMG = Config.ALIVE_PIC
-if ALIVE_PIC is None:
+if PM_IMG is None:
     PM_IMG = "https://telegra.ph/file/22535f8051a58af113586.jpg"
 
 #Functions
