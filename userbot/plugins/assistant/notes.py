@@ -90,7 +90,8 @@ async def _(event):
             snip.get("fr"),
         )
         await event.reply(
-            "Note {name} saved successfully. Get it with ?{name}".format(name=name)
+            "Note {name} saved successfully. Get it with ?{name}".format(
+                name=name)
         )
     else:
         await event.reply("Reply to a message with `snips keyword` to save the snip")

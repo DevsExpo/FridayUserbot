@@ -365,7 +365,8 @@ async def fetch_info(replied_user, **kwargs):
         KeyValueItem("bot_chat_history", Code(user.bot_chat_history)),
         KeyValueItem("bot_info_version", Code(user.bot_info_version)),
         KeyValueItem("bot_inline_geo", Code(user.bot_inline_geo)),
-        KeyValueItem("bot_inline_placeholder", Code(user.bot_inline_placeholder)),
+        KeyValueItem("bot_inline_placeholder",
+                     Code(user.bot_inline_placeholder)),
         KeyValueItem("bot_nochats", Code(user.bot_nochats)),
     )
 

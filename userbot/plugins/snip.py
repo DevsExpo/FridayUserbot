@@ -77,7 +77,8 @@ async def on_snip_save(event):
             snip.get("fr"),
         )
         await event.edit(
-            "snip {name} saved successfully. Get it with #{name}".format(name=name)
+            "snip {name} saved successfully. Get it with #{name}".format(
+                name=name)
         )
     else:
         await event.edit("Reply to a message with `snips keyword` to save the snip")

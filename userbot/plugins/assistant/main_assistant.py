@@ -59,8 +59,10 @@ async def start(event):
             message=f"Hi Master, It's Me {bot_id}, Your Assistant ! \nWhat You Wanna Do today ?",
             buttons=[
                 [custom.Button.inline("Show Users 🔥", data="users")],
-                [custom.Button.inline("Commands For Assistant", data="gibcmd")],
-                [Button.url("Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true")]
+                [custom.Button.inline(
+                    "Commands For Assistant", data="gibcmd")],
+                [Button.url("Add Me to Group 👥",
+                            f"t.me/{bot_username}?startgroup=true")]
             ]
         )
     else:
@@ -91,7 +93,8 @@ async def help(event):
             event.chat_id,
             message="You Can Deploy Friday In Heroku By Following Steps Bellow, You Can See Some Quick Guides On Support Channel Or On Your Own Assistant Bot. \nThank You For Contacting Me.",
             buttons=[
-                [Button.url("Deploy Tutorial 📺", "https://youtu.be/xfHcm_e92eQ")],
+                [Button.url("Deploy Tutorial 📺",
+                            "https://youtu.be/xfHcm_e92eQ")],
                 [Button.url("Need Help ❓", "t.me/FridaySupportOfficial")]
             ]
         )

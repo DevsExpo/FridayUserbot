@@ -46,7 +46,8 @@ async def _(event):
             ms = (end - start).seconds
             required_file_name = downloaded_file_name
             await mone.edit(
-                "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+                "Downloaded to `{}` in {} seconds.".format(
+                    downloaded_file_name, ms)
             )
     elif input_str:
         input_str = input_str.strip()

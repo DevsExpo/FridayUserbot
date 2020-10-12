@@ -151,7 +151,8 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                    "I don't seem to have ADMIN permission here. \n`{}`".format(
+                        str(e))
                 )
                 update_lock(peer_id, "commands", False)
     if is_locked(peer_id, "forward"):
@@ -160,7 +161,8 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                    "I don't seem to have ADMIN permission here. \n`{}`".format(
+                        str(e))
                 )
                 update_lock(peer_id, "forward", False)
     if is_locked(peer_id, "email"):
@@ -175,7 +177,8 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                    "I don't seem to have ADMIN permission here. \n`{}`".format(
+                        str(e))
                 )
                 update_lock(peer_id, "email", False)
     if is_locked(peer_id, "url"):
@@ -193,7 +196,8 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                    "I don't seem to have ADMIN permission here. \n`{}`".format(
+                        str(e))
                 )
                 update_lock(peer_id, "url", False)
 

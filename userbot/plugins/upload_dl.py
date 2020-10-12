@@ -135,7 +135,8 @@ async def download(target_file):
                 LOGS.info(str(e))
         if downloader.isSuccessful():
             await friday.edit(
-                "Downloaded to `{}` successfully !!".format(downloaded_file_name)
+                "Downloaded to `{}` successfully !!".format(
+                    downloaded_file_name)
             )
         else:
             await friday.edit("Incorrect URL\n{}".format(url))
@@ -153,7 +154,8 @@ async def download(target_file):
             await friday.edit(str(e))
         else:
             await friday.edit(
-                "Downloaded to `{}` successfully !!".format(downloaded_file_name)
+                "Downloaded to `{}` successfully !!".format(
+                    downloaded_file_name)
             )
     else:
         await friday.edit("Reply to a message to download to my local server.")
@@ -376,7 +378,8 @@ async def uploadas(uas_event):
                         )
                     ],
                     progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                        progress(d, t, uas_event, c_time, "Uploading...", file_name)
+                        progress(d, t, uas_event, c_time,
+                                 "Uploading...", file_name)
                     ),
                 )
             elif round_message:
@@ -398,7 +401,8 @@ async def uploadas(uas_event):
                         )
                     ],
                     progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                        progress(d, t, uas_event, c_time, "Uploading...", file_name)
+                        progress(d, t, uas_event, c_time,
+                                 "Uploading...", file_name)
                     ),
                 )
             elif spam_big_messages:

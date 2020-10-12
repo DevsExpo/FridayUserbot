@@ -13,7 +13,8 @@ async def _(event):
     if sample_url:
         link = sample_url.rstrip()
         await event.edit(
-            "Let me 🦆 DuckDuckGo that for you:\n🔎 [{}]({})".format(input_str, link)
+            "Let me 🦆 DuckDuckGo that for you:\n🔎 [{}]({})".format(
+                input_str, link)
         )
     else:
         await event.edit("something is wrong. please try again later.")

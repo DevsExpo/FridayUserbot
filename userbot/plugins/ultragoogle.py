@@ -47,7 +47,8 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).seconds
     await stark.edit(
-        "searched Google for {} in {} seconds. \n{}".format(input_str, ms, output_str),
+        "searched Google for {} in {} seconds. \n{}".format(
+            input_str, ms, output_str),
         link_preview=False,
     )
     await asyncio.sleep(5)

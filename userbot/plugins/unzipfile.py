@@ -42,7 +42,8 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             await mone.edit(
-                "Stored the zip to `{}` in {} seconds.".format(downloaded_file_name, ms)
+                "Stored the zip to `{}` in {} seconds.".format(
+                    downloaded_file_name, ms)
             )
 
         with zipfile.ZipFile(downloaded_file_name, "r") as zip_ref:

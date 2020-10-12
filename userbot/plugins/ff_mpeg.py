@@ -35,7 +35,8 @@ async def ff_mpeg_trim_cmd(event):
                 end = datetime.now()
                 ms = (end - start).seconds
                 await event.edit(
-                    "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+                    "Downloaded to `{}` in {} seconds.".format(
+                        downloaded_file_name, ms)
                 )
         else:
             await event.edit("Reply to a Telegram media file")
