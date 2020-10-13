@@ -8,8 +8,7 @@ from telethon import events
 @borg.on(events.NewMessage(pattern=r"^.(\w+)say (.*)", outgoing=True))
 async def univsaye(cowmsg):
     """ For .cowsay module, uniborg wrapper for cow which says things. """
-    if not cowmsg.text[0].isalpha() and cowmsg.text[0] not in ("/", "#", "@",
-                                                               "!"):
+    if not cowmsg.text[0].isalpha() and cowmsg.text[0] not in ("/", "#", "@", "!"):
         arg = cowmsg.pattern_match.group(1).lower()
         text = cowmsg.pattern_match.group(2)
 

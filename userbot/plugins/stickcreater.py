@@ -54,10 +54,9 @@ async def sticklet(event):
         fontsize -= 3
         font = ImageFont.truetype(FONT_FILE, size=fontsize)
     width, height = draw.multiline_textsize(sticktext, font=font)
-    draw.multiline_text(((512 - width) / 2, (512 - height) / 2),
-                        sticktext,
-                        font=font,
-                        fill=(R, G, B))
+    draw.multiline_text(
+        ((512 - width) / 2, (512 - height) / 2), sticktext, font=font, fill=(R, G, B)
+    )
     image_stream = io.BytesIO()
     image_stream.name = "@friday.webp"
     image.save(image_stream, "WebP")
@@ -112,10 +111,9 @@ async def sticklet(event):
         fontsize -= 3
         font = ImageFont.truetype(FONT_FILE, size=fontsize)
     width, height = draw.multiline_textsize(sticktext, font=font)
-    draw.multiline_text(((512 - width) / 2, (512 - height) / 2),
-                        sticktext,
-                        font=font,
-                        fill=(R, G, B))
+    draw.multiline_text(
+        ((512 - width) / 2, (512 - height) / 2), sticktext, font=font, fill=(R, G, B)
+    )
     image_stream = io.BytesIO()
     image_stream.name = "@friday.webp"
     image.save(image_stream, "WebP")
