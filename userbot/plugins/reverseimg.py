@@ -112,8 +112,8 @@ async def ParseSauce(googleurl):
 
     try:
         for similar_image in soup.findAll("input", {"class": "gLFyf"}):
-            url = "https://www.google.com/search?tbm=isch&q=" + urllib.parse.quote_plus(
-                similar_image.get("value"))
+            url = "https://www.google.com/search?tbm=isch&q=" + \
+                urllib.parse.quote_plus(similar_image.get("value"))
             results["similar_images"] = url
     except BaseException:
         pass
