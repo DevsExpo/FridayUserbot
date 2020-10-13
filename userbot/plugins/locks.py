@@ -2,16 +2,11 @@
 Available Commands: .lock <option>, .unlock <option>, .locks
 API Options: msg, media, sticker, gif, gamee, ainline, gpoll, adduser, cpin, changeinfo
 DB Options: bots, commands, email, forward, url"""
-from telethon import events
-from telethon import functions
-from telethon import types
+from telethon import events, functions, types
 
-from userbot.plugins.sql_helper.locks_sql import get_locks
-from userbot.plugins.sql_helper.locks_sql import is_locked
-from userbot.plugins.sql_helper.locks_sql import update_lock
-from userbot.utils import admin_cmd
-from userbot.utils import edit_or_reply
-from userbot.utils import sudo_cmd
+from userbot.plugins.sql_helper.locks_sql import (get_locks, is_locked,
+                                                  update_lock)
+from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @borg.on(admin_cmd(r"lock( (?P<target>\S+)|$)"))
