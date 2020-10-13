@@ -32,28 +32,21 @@ async def telegraphs(grop):
                         # Telegram, no longer allows creating a chat with
                         # ourselves
                         title=group_name,
-                    )
-                )
+                    ))
 
                 created_chat_id = result.chats[0].id
 
                 await grop.client(
                     functions.messages.DeleteChatUserRequest(
-                        chat_id=created_chat_id, user_id="@Serena_Robot"
-                    )
-                )
+                        chat_id=created_chat_id, user_id="@Serena_Robot"))
 
                 result = await grop.client(
                     functions.messages.ExportChatInviteRequest(
-                        peer=created_chat_id,
-                    )
-                )
+                        peer=created_chat_id, ))
 
                 await grop.edit(
                     "Your `{}` Group Made Boss!. Join [{}]({})".format(
-                        group_name, group_name, result.link
-                    )
-                )
+                        group_name, group_name, result.link))
 
             except Exception as e:  # pylint:disable=C0103,W0703
 
@@ -68,31 +61,26 @@ async def telegraphs(grop):
                         title=group_name,
                         about="Welcome to this Channel boss",
                         megagroup=False if type_of_group == "c" else True,
-                    )
-                )
+                    ))
 
                 created_chat_id = r.chats[0].id
 
                 result = await grop.client(
                     functions.messages.ExportChatInviteRequest(
-                        peer=created_chat_id,
-                    )
-                )
+                        peer=created_chat_id, ))
 
                 await grop.edit(
-                    "Your `{}` Group/Channel Has been made Boss!. Join [{}]({})".format(
-                        group_name, group_name, result.link
-                    )
-                )
+                    "Your `{}` Group/Channel Has been made Boss!. Join [{}]({})"
+                    .format(group_name, group_name, result.link))
 
             except Exception as e:  # pylint:disable=C0103,W0703
 
                 await grop.edit(str(e))
 
 
-CMD_HELP.update(
-    {
-        "create": "\
+CMD_HELP.update({
+    "create":
+    "\
 Create\
 \nUsage: Create Channel, Group & Group With Bot.\
 \n\n.create g\
@@ -102,5 +90,4 @@ Create\
 \n\n.create c\
 \nUsage: Create a Channel.\
 "
-    }
-)
+})
