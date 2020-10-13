@@ -6,27 +6,42 @@ from os import remove
 
 import emoji
 from googletrans import Translator
-from telethon import Button, custom, events
-from telethon.errors import (BadRequestError, ChatAdminRequiredError,
-                             ImageProcessFailedError, PhotoCropSizeSmallError,
-                             UserAdminInvalidError)
-from telethon.errors.rpcerrorlist import (MessageDeleteForbiddenError,
-                                          MessageTooLongError,
-                                          UserIdInvalidError)
-from telethon.tl.functions.channels import (EditAdminRequest,
-                                            EditBannedRequest,
-                                            EditPhotoRequest)
+from telethon import Button
+from telethon import custom
+from telethon import events
+from telethon.errors import BadRequestError
+from telethon.errors import ChatAdminRequiredError
+from telethon.errors import ImageProcessFailedError
+from telethon.errors import PhotoCropSizeSmallError
+from telethon.errors import UserAdminInvalidError
+from telethon.errors.rpcerrorlist import MessageDeleteForbiddenError
+from telethon.errors.rpcerrorlist import MessageTooLongError
+from telethon.errors.rpcerrorlist import UserIdInvalidError
+from telethon.tl.functions.channels import EditAdminRequest
+from telethon.tl.functions.channels import EditBannedRequest
+from telethon.tl.functions.channels import EditPhotoRequest
 from telethon.tl.functions.messages import UpdatePinnedMessageRequest
-from telethon.tl.types import (Channel, ChannelParticipantsAdmins, Chat,
-                               ChatAdminRights, ChatBannedRights,
-                               MessageEntityMentionName, MessageMediaPhoto,
-                               User)
+from telethon.tl.types import Channel
+from telethon.tl.types import ChannelParticipantsAdmins
+from telethon.tl.types import Chat
+from telethon.tl.types import ChatAdminRights
+from telethon.tl.types import ChatBannedRights
+from telethon.tl.types import MessageEntityMentionName
+from telethon.tl.types import MessageMediaPhoto
+from telethon.tl.types import User
 from telethon.utils import get_display_name
 
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, Lastupdate, bot
+from userbot import bot
+from userbot import BOTLOG
+from userbot import BOTLOG_CHATID
+from userbot import CMD_HELP
+from userbot import Lastupdate
 from userbot.uniborgConfig import Config
-from userbot.utils import (admin_cmd, edit_or_reply, errors_handler, register,
-                           sudo_cmd)
+from userbot.utils import admin_cmd
+from userbot.utils import edit_or_reply
+from userbot.utils import errors_handler
+from userbot.utils import register
+from userbot.utils import sudo_cmd
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"
