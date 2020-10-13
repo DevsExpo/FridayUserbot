@@ -40,9 +40,8 @@ async def _(event):
         else:
             end = datetime.now()
             ms = (end - start).seconds
-            await mone.edit(
-                "Stored the zip to `{}` in {} seconds.".format(downloaded_file_name, ms)
-            )
+            await mone.edit("Stored the zip to `{}` in {} seconds.".format(
+                downloaded_file_name, ms))
 
         with zipfile.ZipFile(downloaded_file_name, "r") as zip_ref:
             zip_ref.extractall(extracted)
@@ -65,7 +64,8 @@ async def _(event):
                     if metadata.has("duration"):
                         duration = metadata.get("duration").seconds
                     if os.path.exists(thumb_image_path):
-                        metadata = extractMetadata(createParser(thumb_image_path))
+                        metadata = extractMetadata(
+                            createParser(thumb_image_path))
                         if metadata.has("width"):
                             width = metadata.get("width")
                         if metadata.has("height"):
