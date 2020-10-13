@@ -15,9 +15,9 @@ FONT_FILE_TO_USE = "Fonts/digital.ttf"
 @command(pattern="^.autopic", outgoing=True)
 async def autopic(event):
     downloaded_file_name = "userbot/original_pic.png"
-    downloader = SmartDL(Var.DOWNLOAD_PFP_URL_CLOCK,
-                         downloaded_file_name,
-                         progress_bar=False)
+    downloader = SmartDL(
+        Var.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=False
+    )
     downloader.start(blocking=False)
     photo = "userbot/photo_pfp.png"
     while not downloader.isFinished():
@@ -31,16 +31,12 @@ async def autopic(event):
         img = Image.open(photo)
         drawn_text = ImageDraw.Draw(img)
         fnt = ImageFont.truetype(FONT_FILE_TO_USE, 30)
-        drawn_text.text((95, 250),
-                        current_time,
-                        font=fnt,
-                        fill=(255, 255, 255))
+        drawn_text.text((95, 250), current_time, font=fnt, fill=(255, 255, 255))
         img.save(photo)
         file = await bot.upload_file(photo)  # pylint:disable=E0602
         try:
             await bot(
-                functions.photos.UploadProfilePhotoRequest(
-                    file)  # pylint:disable=E0602
+                functions.photos.UploadProfilePhotoRequest(file)  # pylint:disable=E0602
             )
             os.remove(photo)
             counter -= 30

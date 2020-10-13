@@ -9,8 +9,7 @@ BALL_E_MOJI = "🏀"
 # EMOJI CONSTANTS
 
 
-@borg.on(
-    admin_cmd(pattern=f"({DART_E_MOJI}|{DICE_E_MOJI}|{BALL_E_MOJI}) ?(.*)"))
+@borg.on(admin_cmd(pattern=f"({DART_E_MOJI}|{DICE_E_MOJI}|{BALL_E_MOJI}) ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -26,7 +25,6 @@ async def _(event):
             required_number = int(input_str)
             while not r.media.value == required_number:
                 await r.delete()
-                r = await reply_message.reply(file=InputMediaDice(
-                    emoticon=emoticon))
+                r = await reply_message.reply(file=InputMediaDice(emoticon=emoticon))
         except BaseException:
             pass
