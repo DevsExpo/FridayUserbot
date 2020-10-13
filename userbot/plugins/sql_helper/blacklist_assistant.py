@@ -43,7 +43,8 @@ def get_all_nibba():
 
 def is_he_added(chat_id):
     try:
-        return SESSION.query(Blockedid).filter(Blockedid.chat_id == str(chat_id)).one()
+        return SESSION.query(Blockedid).filter(
+            Blockedid.chat_id == str(chat_id)).one()
     except BaseException:
         return None
     finally:

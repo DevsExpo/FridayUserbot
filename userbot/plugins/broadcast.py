@@ -53,8 +53,7 @@ async def forw(event):
         except Exception as error:
             try:
                 await borg.send_message(
-                    logs_id, f"Error in sending at {channel.chat_id}."
-                )
+                    logs_id, f"Error in sending at {channel.chat_id}.")
                 await borg.send_message(logs_id, "Error! " + str(error))
                 if error == "The message cannot be empty unless a file is provided":
                     edit_or_reply(
@@ -65,13 +64,16 @@ async def forw(event):
             except BaseException:
                 pass
             error_count += 1
-            await edit_or_reply(event, f"Sent : {sent_count}\nError : {error_count}")
-    await edit_or_reply(event, f"{sent_count} messages sent with {error_count} errors.")
+            await edit_or_reply(event,
+                                f"Sent : {sent_count}\nError : {error_count}")
+    await edit_or_reply(
+        event, f"{sent_count} messages sent with {error_count} errors.")
     if error_count > 0:
         try:
             await borg.send_message(logs_id, f"{error_count} Errors")
         except BaseException:
-            await edit_or_reply(event, "Set up log channel for checking errors.")
+            await edit_or_reply(event,
+                                "Set up log channel for checking errors.")
 
 
 @borg.on(admin_cmd("broadcast ?(.*)"))
@@ -89,19 +91,14 @@ async def _(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         if previous_message.sticker or previous_message.poll:
-            await edit_or_reply(event, "Reply .forward for stickers and polls.")
+            await edit_or_reply(event,
+                                "Reply .forward for stickers and polls.")
             return
-        if (
-            previous_message.gif
-            or previous_message.audio
-            or previous_message.voice
-            or previous_message.video
-            or previous_message.video_note
-            or previous_message.contact
-            or previous_message.game
-            or previous_message.geo
-            or previous_message.invoice
-        ):  # Written by @HeisenbergTheDanger
+        if (previous_message.gif or previous_message.audio
+                or previous_message.voice or previous_message.video
+                or previous_message.video_note or previous_message.contact
+                or previous_message.game or previous_message.geo or
+                previous_message.invoice):  # Written by @HeisenbergTheDanger
             await edit_or_reply(event, "Not supported. Try .forward")
             return
         if not previous_message.web_preview and previous_message.photo:
@@ -127,13 +124,12 @@ async def _(event):
                 except Exception as error:
                     try:
                         await borg.send_message(
-                            logs_id, f"Error in sending at {chat_id}."
-                        )
-                        await borg.send_message(logs_id, "Error! " + str(error))
-                        if (
-                            error
-                            == "The message cannot be empty unless a file is provided"
-                        ):
+                            logs_id, f"Error in sending at {chat_id}.")
+                        await borg.send_message(logs_id,
+                                                "Error! " + str(error))
+                        if (error ==
+                                "The message cannot be empty unless a file is provided"
+                            ):
                             event.edit(
                                 "For sending files, upload in Saved Messages and reply .forward to in."
                             )
@@ -145,8 +141,8 @@ async def _(event):
                         f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}"
                     )
             await edit_or_reply(
-                event, f"{sent_count} messages sent with {error_count} errors."
-            )
+                event,
+                f"{sent_count} messages sent with {error_count} errors.")
             if error_count > 0:
                 try:
                     await borg.send_message(logs_id, f"{error_count} Errors")
@@ -156,9 +152,9 @@ async def _(event):
             raw_text = previous_message.text
             for channel in channels:
                 try:
-                    await borg.send_message(
-                        int(channel.chat_id), raw_text, link_preview=False
-                    )
+                    await borg.send_message(int(channel.chat_id),
+                                            raw_text,
+                                            link_preview=False)
                     sent_count += 1
                     await edit_or_reply(
                         event,
@@ -167,13 +163,12 @@ async def _(event):
                 except Exception as error:
                     try:
                         await borg.send_message(
-                            logs_id, f"Error in sending at {channel.chat_id}."
-                        )
-                        await borg.send_message(logs_id, "Error! " + str(error))
-                        if (
-                            error
-                            == "The message cannot be empty unless a file is provided"
-                        ):
+                            logs_id, f"Error in sending at {channel.chat_id}.")
+                        await borg.send_message(logs_id,
+                                                "Error! " + str(error))
+                        if (error ==
+                                "The message cannot be empty unless a file is provided"
+                            ):
                             edit_or_reply(
                                 event,
                                 "For sending files, upload in Saved Messages and reply .forward to in.",
@@ -186,15 +181,14 @@ async def _(event):
                         f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}"
                     )
             await edit_or_reply(
-                event, f"{sent_count} messages sent with {error_count} errors."
-            )
+                event,
+                f"{sent_count} messages sent with {error_count} errors.")
             if error_count > 0:
                 try:
                     await borg.send_message(logs_id, f"{error_count} Errors")
                 except BaseException:
                     await edit_or_reply(
-                        event, "Set up log channel for checking errors."
-                    )
+                        event, "Set up log channel for checking errors.")
 
 
 # Written by @HeisenbergTheDanger
@@ -261,7 +255,8 @@ async def remove_ch(event):
         await asyncio.sleep(3)
         await event.delete()
     elif not in_channels(event.chat_id):
-        await edit_or_reply(event, "Channel is already removed from database. ")
+        await edit_or_reply(event,
+                            "Channel is already removed from database. ")
         await asyncio.sleep(3)
         await event.delete()
 
