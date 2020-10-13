@@ -32,12 +32,10 @@ def subprocess_run(cmd):
     talk = subproc.communicate()
     exitCode = subproc.returncode
     if exitCode != 0:
-        reply += (
-            "```An error was detected while running the subprocess:\n"
-            f"exit code: {exitCode}\n"
-            f"stdout: {talk[0]}\n"
-            f"stderr: {talk[1]}```"
-        )
+        reply += ("```An error was detected while running the subprocess:\n"
+                  f"exit code: {exitCode}\n"
+                  f"stdout: {talk[0]}\n"
+                  f"stderr: {talk[1]}```")
         return reply
     return talk
 
@@ -78,7 +76,8 @@ async def direct_link_generator(request):
         elif "androidfilehost.com" in link:
             reply += androidfilehost(link)
         else:
-            reply += re.findall(r"\bhttps?://(.*?[^/]+)", link)[0] + "is not supported"
+            reply += re.findall(r"\bhttps?://(.*?[^/]+)",
+                                link)[0] + "is not supported"
     await request.edit(reply)
 
 
@@ -113,9 +112,10 @@ def gdrive(url: str) -> str:
         page = BeautifulSoup(download.content, "lxml")
         export = drive + page.find("a", {"id": "uc-download-link"}).get("href")
         name = page.find("span", {"class": "uc-name-size"}).text
-        response = requests.get(
-            export, stream=True, allow_redirects=False, cookies=cookies
-        )
+        response = requests.get(export,
+                                stream=True,
+                                allow_redirects=False,
+                                cookies=cookies)
         dl_url = response.headers["location"]
         if "accounts.google.com" in dl_url:
             reply += "Link is not public!"
@@ -141,12 +141,10 @@ def zippy_share(url: str) -> str:
     scripts = page_soup.find_all("script", {"type": "text/javascript"})
     for script in scripts:
         if "getElementById('dlbutton')" in script.text:
-            url_raw = re.search(
-                r"= (?P<url>\".+\" \+ (?P<math>\(.+\)) .+);", script.text
-            ).group("url")
-            math = re.search(
-                r"= (?P<url>\".+\" \+ (?P<math>\(.+\)) .+);", script.text
-            ).group("math")
+            url_raw = re.search(r"= (?P<url>\".+\" \+ (?P<math>\(.+\)) .+);",
+                                script.text).group("url")
+            math = re.search(r"= (?P<url>\".+\" \+ (?P<math>\(.+\)) .+);",
+                             script.text).group("math")
             dl_url = url_raw.replace(math, '"' + str(eval(math)) + '"')
             break
     dl_url = base_url + eval(dl_url)
@@ -228,10 +226,8 @@ def sourceforge(url: str) -> str:
     file_path = re.findall(r"files(.*)/download", link)[0]
     reply = f"Mirrors for __{file_path.split('/')[-1]}__\n"
     project = re.findall(r"projects?/(.*?)/files", link)[0]
-    mirrors = (
-        f"https://sourceforge.net/settings/mirror_choices?"
-        f"projectname={project}&filename={file_path}"
-    )
+    mirrors = (f"https://sourceforge.net/settings/mirror_choices?"
+               f"projectname={project}&filename={file_path}")
     page = BeautifulSoup(requests.get(mirrors).content, "html.parser")
     info = page.find("ul", {"id": "mirrorList"}).findAll("li")
     for mirror in info[1:]:
@@ -251,7 +247,8 @@ def osdn(url: str) -> str:
     except IndexError:
         reply = "`No OSDN links found`\n"
         return reply
-    page = BeautifulSoup(requests.get(link, allow_redirects=True).content, "lxml")
+    page = BeautifulSoup(
+        requests.get(link, allow_redirects=True).content, "lxml")
     info = page.find("a", {"class": "mirror_link"})
     link = urllib.parse.unquote(osdn_link + info["href"])
     reply = f"Mirrors for __{link.split('/')[-1]}__\n"
@@ -288,7 +285,11 @@ def androidfilehost(url: str) -> str:
         "authority": "androidfilehost.com",
         "x-requested-with": "XMLHttpRequest",
     }
-    data = {"submit": "submit", "action": "getdownloadmirrors", "fid": f"{fid}"}
+    data = {
+        "submit": "submit",
+        "action": "getdownloadmirrors",
+        "fid": f"{fid}"
+    }
     mirrors = None
     reply = ""
     error = "`Error: Can't find Mirrors for the link`\n"
@@ -319,20 +320,18 @@ def useragent():
     useragents = BeautifulSoup(
         requests.get(
             "https://developers.whatismybrowser.com/"
-            "useragents/explore/operating_system_name/android/"
-        ).content,
+            "useragents/explore/operating_system_name/android/").content,
         "lxml",
     ).findAll("td", {"class": "useragent"})
     user_agent = choice(useragents)
     return user_agent.text
 
 
-CMD_HELP.update(
-    {
-        "direct": ".direct <url> <url>\n"
-        "Usage: Generate direct download link from supported URL(s)\n"
-        "Supported websites:\n"
-        "`Google Drive - MEGA.nz - Cloud Mail - Yandex.Disk - AFH - "
-        "ZippyShare - MediaFire - SourceForge - OSDN - GitHub`"
-    }
-)
+CMD_HELP.update({
+    "direct":
+    ".direct <url> <url>\n"
+    "Usage: Generate direct download link from supported URL(s)\n"
+    "Supported websites:\n"
+    "`Google Drive - MEGA.nz - Cloud Mail - Yandex.Disk - AFH - "
+    "ZippyShare - MediaFire - SourceForge - OSDN - GitHub`"
+})
