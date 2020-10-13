@@ -20,8 +20,10 @@ async def _(event):
     sample_url = "https://api.screenshotlayer.com/api/capture?access_key={}&url={}&fullpage={}&viewport={}&format={}&force={}"
     input_str = event.pattern_match.group(1)
     response_api = requests.get(
-        sample_url.format(Config.SCREEN_SHOT_LAYER_ACCESS_KEY, input_str, "1",
-                          "2560x1440", "PNG", "1"))
+        sample_url.format(
+            Config.SCREEN_SHOT_LAYER_ACCESS_KEY, input_str, "1", "2560x1440", "PNG", "1"
+        )
+    )
     # https://stackoverflow.com/a/23718458/4723940
     contentType = response_api.headers["content-type"]
     if "image" in contentType:
