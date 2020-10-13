@@ -12,12 +12,9 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """ users Table """
-from sqlalchemy import Column
-from sqlalchemy import Integer
-from sqlalchemy import String
+from sqlalchemy import Column, Integer, String
 
-from . import BASE
-from . import SESSION
+from . import BASE, SESSION
 
 
 class Users(BASE):
