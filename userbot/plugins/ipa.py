@@ -8,7 +8,8 @@ from pathlib import Path
 
 from telethon.tl.types import InputMessagesFilterDocument
 
-from userbot.utils import admin_cmd, load_module
+from userbot.utils import admin_cmd
+from userbot.utils import load_module
 
 
 @borg.on(admin_cmd("ipa (.*)"))
