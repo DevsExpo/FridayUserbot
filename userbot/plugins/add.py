@@ -5,6 +5,7 @@ from telethon import functions
 from userbot.utils import admin_cmd
 from userbot.utils import edit_or_reply
 from userbot.utils import sudo_cmd
+
 """Invite the user(s) to the current chat
 Syntax: .invite <User(s)>"""
 
@@ -17,7 +18,8 @@ async def _(event):
     to_add_users = event.pattern_match.group(1)
     if event.is_private:
         await edit_or_reply(
-            event, "`.invite` users to a chat, not to a Private Message")
+            event, "`.invite` users to a chat, not to a Private Message"
+        )
     else:
         logger.info(to_add_users)
         if not event.is_channel and event.is_group:
@@ -26,9 +28,9 @@ async def _(event):
                 try:
                     await borg(
                         functions.messages.AddChatUserRequest(
-                            chat_id=event.chat_id,
-                            user_id=user_id,
-                            fwd_limit=1000000))
+                            chat_id=event.chat_id, user_id=user_id, fwd_limit=1000000
+                        )
+                    )
                 except Exception as e:
                     await event.reply(str(e))
             await event.edit("Invited Successfully")
@@ -38,7 +40,9 @@ async def _(event):
                 try:
                     await borg(
                         functions.channels.InviteToChannelRequest(
-                            channel=event.chat_id, users=[user_id]))
+                            channel=event.chat_id, users=[user_id]
+                        )
+                    )
                 except Exception as e:
                     await event.reply(str(e))
             await edit_or_reply(event, "Invited Successfully")

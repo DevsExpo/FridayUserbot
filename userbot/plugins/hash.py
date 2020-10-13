@@ -31,8 +31,19 @@ async def gethash(hash_q):
     sha512 = runapp(["sha512sum", "hashdis.txt"], stdout=PIPE)
     runapp(["rm", "hashdis.txt"], stdout=PIPE)
     sha512 = sha512.stdout.decode()
-    ans = ("Text: `" + hashtxt_ + "`\nMD5: `" + md5 + "`SHA1: `" + sha1 +
-           "`SHA256: `" + sha256 + "`SHA512: `" + sha512[:-1] + "`")
+    ans = (
+        "Text: `"
+        + hashtxt_
+        + "`\nMD5: `"
+        + md5
+        + "`SHA1: `"
+        + sha1
+        + "`SHA256: `"
+        + sha256
+        + "`SHA512: `"
+        + sha512[:-1]
+        + "`"
+    )
     if len(ans) > 4096:
         hashfile = open("hashes.txt", "w+")
         hashfile.write(ans)
@@ -53,20 +64,23 @@ async def gethash(hash_q):
 async def endecrypt(query):
     """ For .base64 command, find the base64 encoding of the given string. """
     if query.pattern_match.group(1) == "en":
-        lething = str(
-            pybase64.b64encode(bytes(query.pattern_match.group(2),
-                                     "utf-8")))[2:]
+        lething = str(pybase64.b64encode(bytes(query.pattern_match.group(2), "utf-8")))[
+            2:
+        ]
         await query.reply("Shhh! It's Encoded: `" + lething[:-1] + "`")
     else:
         lething = str(
-            pybase64.b64decode(bytes(query.pattern_match.group(2), "utf-8"),
-                               validate=True))[2:]
+            pybase64.b64decode(
+                bytes(query.pattern_match.group(2), "utf-8"), validate=True
+            )
+        )[2:]
         await query.reply("Decoded: `" + lething[:-1] + "`")
 
 
 CMD_HELP.update({"base64": "Find the base64 encoding of the given string"})
 
-CMD_HELP.update({
-    "hash":
-    "Find the md5, sha1, sha256, sha512 of the string when written into a txt file."
-})
+CMD_HELP.update(
+    {
+        "hash": "Find the md5, sha1, sha256, sha512 of the string when written into a txt file."
+    }
+)
