@@ -28,8 +28,7 @@ async def handler(event):
     if not reply_message.media:
         await event.edit("```Reply to a image/sticker.```")
         return
-    file = await client.download_media(reply_message,
-                                       Var.TEMP_DOWNLOAD_DIRECTORY)
+    file = await client.download_media(reply_message, Var.TEMP_DOWNLOAD_DIRECTORY)
     await event.edit("```Memifying this image! (」ﾟﾛﾟ)｣ ```")
     text = str(event.pattern_match.group(1)).strip()
     if len(text) < 1:
@@ -64,29 +63,25 @@ async def drawText(image_path, text):
         for u_text in textwrap.wrap(upper_text, width=15):
             u_width, u_height = draw.textsize(u_text, font=m_font)
             draw.text(
-                xy=(((i_width - u_width) / 2) - 2,
-                    int((current_h / 640) * i_width)),
+                xy=(((i_width - u_width) / 2) - 2, int((current_h / 640) * i_width)),
                 text=u_text,
                 font=m_font,
                 fill=(0, 0, 0),
             )
             draw.text(
-                xy=(((i_width - u_width) / 2) + 2,
-                    int((current_h / 640) * i_width)),
+                xy=(((i_width - u_width) / 2) + 2, int((current_h / 640) * i_width)),
                 text=u_text,
                 font=m_font,
                 fill=(0, 0, 0),
             )
             draw.text(
-                xy=((i_width - u_width) / 2, int(
-                    ((current_h / 640) * i_width)) - 2),
+                xy=((i_width - u_width) / 2, int(((current_h / 640) * i_width)) - 2),
                 text=u_text,
                 font=m_font,
                 fill=(0, 0, 0),
             )
             draw.text(
-                xy=(((i_width - u_width) / 2),
-                    int(((current_h / 640) * i_width)) + 2),
+                xy=(((i_width - u_width) / 2), int(((current_h / 640) * i_width)) + 2),
                 text=u_text,
                 font=m_font,
                 fill=(0, 0, 0),
