@@ -10,9 +10,12 @@
 #
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column
+from sqlalchemy import Integer
+from sqlalchemy import String
 
-from . import BASE, SESSION
+from . import BASE
+from . import SESSION
 
 
 class Blockedid(BASE):
