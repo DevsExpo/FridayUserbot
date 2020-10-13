@@ -128,7 +128,7 @@ async def _(event):
                         await borg.send_message(logs_id,
                                                 "Error! " + str(error))
                         if (error ==
-                                "The message cannot be empty unless a file is provided"
+                            "The message cannot be empty unless a file is provided"
                             ):
                             event.edit(
                                 "For sending files, upload in Saved Messages and reply .forward to in."
@@ -167,12 +167,10 @@ async def _(event):
                         await borg.send_message(logs_id,
                                                 "Error! " + str(error))
                         if (error ==
-                                "The message cannot be empty unless a file is provided"
+                            "The message cannot be empty unless a file is provided"
                             ):
                             edit_or_reply(
-                                event,
-                                "For sending files, upload in Saved Messages and reply .forward to in.",
-                            )
+                                event, "For sending files, upload in Saved Messages and reply .forward to in.", )
                             return
                     except BaseException:
                         pass
