@@ -27,8 +27,7 @@ async def labstack(event):
         filebase = input_str
     elif reply:
         filebase = await event.client.download_media(
-            reply.media, Var.TEMP_DOWNLOAD_DIRECTORY
-        )
+            reply.media, Var.TEMP_DOWNLOAD_DIRECTORY)
     else:
         await event.edit(
             "Reply to a media file or provide a directory to upload the file to labstack"
@@ -39,11 +38,15 @@ async def labstack(event):
     headers2 = {"Up-User-ID": "IZfFbjUcgoo3Ao3m"}
     files2 = {
         "ttl": 604800,
-        "files": [{"name": filename, "type": "", "size": filesize}],
+        "files": [{
+            "name": filename,
+            "type": "",
+            "size": filesize
+        }],
     }
-    r2 = requests.post(
-        "https://up.labstack.com/api/v1/links", json=files2, headers=headers2
-    )
+    r2 = requests.post("https://up.labstack.com/api/v1/links",
+                       json=files2,
+                       headers=headers2)
     r2json = json.loads(r2.text)
 
     url = "https://up.labstack.com/api/v1/links/{}/send".format(r2json["code"])
@@ -60,7 +63,8 @@ async def labstack(event):
     ]
     try:
         logger.info(command_to_exec)
-        t_response = subprocess.check_output(command_to_exec, stderr=subprocess.STDOUT)
+        t_response = subprocess.check_output(command_to_exec,
+                                             stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as exc:
         logger.info("Status : FAIL", exc.returncode, exc.output)
         await event.edit(exc.output.decode("UTF-8"))
@@ -68,8 +72,6 @@ async def labstack(event):
     else:
         logger.info(t_response)
         t_response_arry = "https://up.labstack.com/api/v1/links/{}/receive".format(
-            r2json["code"]
-        )
-    await event.edit(
-        t_response_arry + "\nMax Days:" + str(max_days), link_preview=False
-    )
+            r2json["code"])
+    await event.edit(t_response_arry + "\nMax Days:" + str(max_days),
+                     link_preview=False)

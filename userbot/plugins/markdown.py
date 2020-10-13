@@ -17,9 +17,9 @@ from telethon.utils import del_surrogate
 
 
 def parse_url_match(m):
-    entity = MessageEntityTextUrl(
-        offset=m.start(), length=len(m.group(1)), url=del_surrogate(m.group(2))
-    )
+    entity = MessageEntityTextUrl(offset=m.start(),
+                                  length=len(m.group(1)),
+                                  url=del_surrogate(m.group(2)))
     return m.group(1), entity
 
 
@@ -50,9 +50,9 @@ def parse_aesthetics(m):
 
 def parse_subreddit(m):
     text = "/" + m.group(3)
-    entity = MessageEntityTextUrl(
-        offset=m.start(2), length=len(text), url=f"reddit.com{text}"
-    )
+    entity = MessageEntityTextUrl(offset=m.start(2),
+                                  length=len(text),
+                                  url=f"reddit.com{text}")
     return m.group(1) + text, entity
 
 
@@ -79,7 +79,8 @@ MATCHERS = [
     (get_tag_parser("`", MessageEntityCode)),
     (re.compile(r"\+\+(.+?)\+\+"), parse_aesthetics),
     (re.compile(r"([^/\w]|^)(/?(r/\w+))"), parse_subreddit),
-    (re.compile(r"(?<!\w)(~{2})(?!~~)(.+?)(?<!~)\1(?!\w)"), parse_strikethrough),
+    (re.compile(r"(?<!\w)(~{2})(?!~~)(.+?)(?<!~)\1(?!\w)"),
+     parse_strikethrough),
 ]
 
 
@@ -117,7 +118,8 @@ def parse(message, old_entities=None):
                 e.offset += shift
 
         # Replace whole match with text from parser
-        message = "".join((message[: match.start()], text, message[match.end() :]))
+        message = "".join(
+            (message[:match.start()], text, message[match.end():]))
 
         # Append entity if we got one
         if entity:
@@ -134,7 +136,8 @@ def parse(message, old_entities=None):
 async def reparse(event):
     old_entities = event.message.entities or []
     parser = partial(parse, old_entities=old_entities)
-    message, msg_entities = await borg._parse_message_text(event.raw_text, parser)
+    message, msg_entities = await borg._parse_message_text(
+        event.raw_text, parser)
     if len(old_entities) >= len(msg_entities) and event.raw_text == message:
         return
 
@@ -145,6 +148,5 @@ async def reparse(event):
             message=message,
             no_webpage=not bool(event.message.media),
             entities=msg_entities,
-        )
-    )
+        ))
     raise events.StopPropagation
