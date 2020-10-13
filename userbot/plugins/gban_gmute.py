@@ -2,7 +2,8 @@ import html
 
 from telethon import events
 from telethon.events import ChatAction
-from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
+from telethon.tl.functions.contacts import BlockRequest
+from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.functions.photos import GetUserPhotosRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
