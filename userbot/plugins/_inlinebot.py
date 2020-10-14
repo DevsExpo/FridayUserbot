@@ -1,6 +1,6 @@
 import re
 from math import ceil
-
+from telethon.tl.functions.users import GetFullUserRequest
 from telethon import Button
 from telethon import custom
 from telethon import events
