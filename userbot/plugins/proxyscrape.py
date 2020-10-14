@@ -25,11 +25,8 @@ sedpng = "https://soon.proxyscrape.com/asset/img/service/downloadicon.svg"
 async def starkxD(event):
     await event.get_chat()
     file_name = "proxy_http.txt"
-    downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY,
-                                        file_name)
-    downloader = SmartDL(f"{STARK_HTTP}",
-                         downloaded_file_name,
-                         progress_bar=False)
+    downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
+    downloader = SmartDL(f"{STARK_HTTP}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
     await event.client.send_file(
         event.chat_id,
@@ -45,11 +42,8 @@ async def starkxD(event):
 async def starkgang(event):
     await event.get_chat()
     file_name = "proxy_socks4.txt"
-    downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY,
-                                        file_name)
-    downloader = SmartDL(f"{STARK_SOCKS4}",
-                         downloaded_file_name,
-                         progress_bar=False)
+    downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
+    downloader = SmartDL(f"{STARK_SOCKS4}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
     # await borg.send_message(event.chat_id , SOCKS4_TXT)
     await event.client.send_file(
@@ -67,11 +61,8 @@ async def starkgang(event):
 async def friday(event):
     await event.get_chat()
     file_name = "proxy_socks5.txt"
-    downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY,
-                                        file_name)
-    downloader = SmartDL(f"{STARK_SOCKS5}",
-                         downloaded_file_name,
-                         progress_bar=False)
+    downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
+    downloader = SmartDL(f"{STARK_SOCKS5}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
     # await borg.send_message(event.chat_id , SOCKS5_TXT)
     await event.client.send_file(

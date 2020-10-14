@@ -5,8 +5,7 @@ from userbot.utils import admin_cmd
 
 @borg.on(admin_cmd("gangasta ?(.*)"))
 async def _(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@",
-                                                             "!"):
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit("EVERyBOdy")
         await asyncio.sleep(0.3)
         await event.edit("iZ")
