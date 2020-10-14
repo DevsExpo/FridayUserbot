@@ -44,12 +44,12 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 ],
             )
         if event.query.user_id == bot.uid and query == "dontpm":
-            replied_user = await event.client(GetFullUserRequest(event.chat_id)
+            replied_user = await event.client(GetFullUserRequest(event.query.user_id)
                                               )
             firstname = replied_user.user.first_name
             result = builder.article(
                 title="PM Test",
-                text=f"Hello {firstname}, This is Friday Security Service. Please Click A Valid Reason Why You Are Here.",
+                text=f"Hello {firstname}, This is Friday Security Service Of My Master [{DEFAULTUSER}](tg://user?id={bot.uid}). Please Click A Valid Reason Why You Are Here.",
                 buttons=[
                     [
                         custom.Button.inline("I Am Here For Spamming",
@@ -165,7 +165,6 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         await event.edit("Choice Accepted ✔️")
         text3 = "Ok, Wait. You can Ask After Master Approves You. Kindly, Wait."
         await borg.send_message(event.query.user_id, text3)
-
 
 def paginate_help(page_number, loaded_plugins, prefix):
     number_of_rows = 8
