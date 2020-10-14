@@ -14,13 +14,9 @@ from hachoir.parser import createParser
 from pySmartDL import SmartDL
 from telethon.tl.types import DocumentAttributeVideo
 
-from userbot import CMD_HELP
-from userbot import LOGS
-from userbot import TEMP_DOWNLOAD_DIRECTORY
+from userbot import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import register
-from userbot.utils import admin_cmd
-from userbot.utils import edit_or_reply
-from userbot.utils import sudo_cmd
+from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):

@@ -5,21 +5,17 @@
 #
 """ Userbot module for getting info
     about any user on Telegram(including you!). """
-from re import findall
-from re import match
-from typing import List
-from typing import Union
+from re import findall, match
+from typing import List, Union
 
 from telethon.events import NewMessage
 from telethon.tl.custom import Message
 from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.functions.messages import GetFullChatRequest
 from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import ChannelParticipantsAdmins
-from telethon.tl.types import ChannelParticipantsBots
-from telethon.tl.types import InputPeerChannel
-from telethon.tl.types import InputPeerChat
-from telethon.tl.types import MessageEntityMentionName
+from telethon.tl.types import (ChannelParticipantsAdmins,
+                               ChannelParticipantsBots, InputPeerChannel,
+                               InputPeerChat, MessageEntityMentionName)
 
 from userbot import CMD_HELP
 from userbot.events import register
