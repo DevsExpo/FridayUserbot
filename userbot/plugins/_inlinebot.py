@@ -140,8 +140,8 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         events.callbackquery.CallbackQuery(data=re.compile(b"dontspamnigga")))
     async def rip(event):
         chat_k = await event.get_chat()
-        text1 = "Lmao x. You Have Been Blocked :)"
-        await event.edit("Request Received")
+        text1 = "Lmao 🤣. You Have Been Blocked :)"
+        await event.edit("User Chosed A Choice")
         await borg.send_message(event.query.user_id, text1)
         await borg(functions.contacts.BlockRequest(event.query.user_id))
 
@@ -149,15 +149,15 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
     async def rip(event):
         chat_m = await event.get_chat()
         await tgbot.delete(event.chat_id)
-        text2 = "Ok. Please Wait Until My Master Approves"
-        await borg.send_message(chat_m.id, text2)
+        text2 = "Ok. Please Wait Until My Master Approves. Don't Send Another Message"
+        await borg.send_message(event.query.user_id, text2)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"askme")))
     async def rip(event):
         chat_s = await event.get_chat()
         await event.edit("Request Received.")
         text3 = "Ok, Wait. You can Ask After Master Approves You"
-        await borg.send_message(chat_s.id, text3)
+        await borg.send_message(event.query.user_id, text3)
 
 
 def paginate_help(page_number, loaded_plugins, prefix):
