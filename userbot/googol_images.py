@@ -285,8 +285,7 @@ def user_input():
         parser.add_argument(
             "-wr",
             "--time_range",
-            help=
-            'time range for the age of the image. should be in the format {"time_min":"MM/DD/YYYY","time_max":"MM/DD/YYYY"}',
+            help='time range for the age of the image. should be in the format {"time_min":"MM/DD/YYYY","time_max":"MM/DD/YYYY"}',
             type=str,
             required=False,
         )
@@ -372,8 +371,7 @@ def user_input():
             "-la",
             "--language",
             default=False,
-            help=
-            "Defines the language filter. The search results are authomatically returned in that language",
+            help="Defines the language filter. The search results are authomatically returned in that language",
             type=str,
             required=False,
             choices=[
@@ -411,8 +409,7 @@ def user_input():
             "-pr",
             "--prefix",
             default=False,
-            help=
-            "A word that you would want to prefix in front of each image name",
+            help="A word that you would want to prefix in front of each image name",
             type=str,
             required=False,
         )
@@ -426,8 +423,7 @@ def user_input():
         parser.add_argument(
             "-cd",
             "--chromedriver",
-            help=
-            "specify the path to chromedriver executable in your local machine",
+            help="specify the path to chromedriver executable in your local machine",
             type=str,
             required=False,
         )
@@ -463,8 +459,7 @@ def user_input():
             "-nd",
             "--no_download",
             default=False,
-            help=
-            "Prints the URLs of the images and/or thumbnails without downloading them",
+            help="Prints the URLs of the images and/or thumbnails without downloading them",
             action="store_true",
         )
         parser.add_argument(
@@ -478,15 +473,13 @@ def user_input():
             "-sil",
             "--silent_mode",
             default=False,
-            help=
-            "Remains silent. Does not print notification messages on the terminal",
+            help="Remains silent. Does not print notification messages on the terminal",
             action="store_true",
         )
         parser.add_argument(
             "-is",
             "--save_source",
-            help=
-            "creates a text file containing a list of downloaded images along with source page url",
+            help="creates a text file containing a list of downloaded images along with source page url",
             type=str,
             required=False,
         )
@@ -518,8 +511,7 @@ class googleimagesdownload:
             except Exception:
                 print(
                     "Could not open URL. Please check your internet connection and/or ssl settings \n"
-                    "If you are using proxy, make sure your proxy settings is configured correctly"
-                )
+                    "If you are using proxy, make sure your proxy settings is configured correctly")
                 sys.exit()
         else:  # If the Current Version of Python is 2.x
             try:
@@ -537,8 +529,7 @@ class googleimagesdownload:
             except BaseException:
                 print(
                     "Could not open URL. Please check your internet connection and/or ssl settings \n"
-                    "If you are using proxy, make sure your proxy settings is configured correctly"
-                )
+                    "If you are using proxy, make sure your proxy settings is configured correctly")
                 sys.exit()
                 return "Page Not found"
 
@@ -560,7 +551,8 @@ class googleimagesdownload:
             print(
                 "Looks like we cannot locate the path the 'chromedriver' (use the '--chromedriver' "
                 "argument to specify the path to the executable.) or google chrome browser is not "
-                "installed on your machine (exception: %s)" % e)
+                "installed on your machine (exception: %s)" %
+                e)
             sys.exit()
         browser.set_window_size(1024, 768)
 
@@ -718,8 +710,8 @@ class googleimagesdownload:
         if cur_version >= version:  # If the Current Version of Python is 3.0 or above
             try:
                 searchUrl = (
-                    "https://www.google.com/searchbyimage?site=search&sa=X&image_url="
-                    + similar_images)
+                    "https://www.google.com/searchbyimage?site=search&sa=X&image_url=" +
+                    similar_images)
                 headers = {}
                 headers[
                     "User-Agent"] = "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
@@ -744,8 +736,8 @@ class googleimagesdownload:
         else:  # If the Current Version of Python is 2.x
             try:
                 searchUrl = (
-                    "https://www.google.com/searchbyimage?site=search&sa=X&image_url="
-                    + similar_images)
+                    "https://www.google.com/searchbyimage?site=search&sa=X&image_url=" +
+                    similar_images)
                 headers = {}
                 headers[
                     "User-Agent"] = "Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.27 Safari/537.17"
@@ -951,9 +943,9 @@ class googleimagesdownload:
             print(similar_images)
             keywordem = self.similar_images(similar_images)
             url = (
-                "https://www.google.com/search?q=" + keywordem +
-                "&espv=2&biw=1366&bih=667&site=webhp&source=lnms&tbm=isch&sa=X&ei=XosDVaCXD8TasATItgE&ved=0CAcQ_AUoAg"
-            )
+                "https://www.google.com/search?q=" +
+                keywordem +
+                "&espv=2&biw=1366&bih=667&site=webhp&source=lnms&tbm=isch&sa=X&ei=XosDVaCXD8TasATItgE&ved=0CAcQ_AUoAg")
         elif specific_site:
             url = ("https://www.google.com/search?q=" +
                    quote(search_term.encode("utf-8")) + "&as_sitesearch=" +
@@ -1464,10 +1456,12 @@ class googleimagesdownload:
                     time.sleep(int(arguments["delay"]))
             i += 1
         if count < limit:
-            print(
-                "\n\nUnfortunately all " + str(limit) +
-                " could not be downloaded because some images were not downloadable. "
-                + str(count - 1) + " is all we got for this search filter!")
+            print("\n\nUnfortunately all " +
+                  str(limit) +
+                  " could not be downloaded because some images were not downloadable. " +
+                  str(count -
+                      1) +
+                  " is all we got for this search filter!")
         return items, errorCount, abs_path
 
     # Bulk Download
