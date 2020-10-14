@@ -3,19 +3,22 @@ import os
 import sys
 import time
 from distutils.util import strtobool as sb
-from logging import DEBUG, INFO, basicConfig, getLogger
+from logging import basicConfig
+from logging import DEBUG
+from logging import getLogger
+from logging import INFO
 
 import pylast
 from dotenv import load_dotenv
-from pylast import LastFMNetwork, md5
+from pylast import LastFMNetwork
+from pylast import md5
 from pySmartDL import SmartDL
 from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 
-from var import Var
-
 from .function import fridayfunction as topfunc
+from var import Var
 
 Lastupdate = time.time()
 

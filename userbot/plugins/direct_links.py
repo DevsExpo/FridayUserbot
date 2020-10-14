@@ -8,7 +8,8 @@ import json
 import re
 import urllib.parse
 from random import choice
-from subprocess import PIPE, Popen
+from subprocess import PIPE
+from subprocess import Popen
 
 import requests
 from bs4 import BeautifulSoup
