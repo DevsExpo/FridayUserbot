@@ -13,11 +13,7 @@
 
 
 from telethon import events, custom, Button
-from telethon.tl.types import (
-    Channel,
-    Chat,
-    User
-)
+from telethon.tl.types import Channel, Chat, User
 
 import emoji
 from googletrans import Translator
@@ -63,21 +59,23 @@ from telethon.tl.types import (
 
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from userbot.utils import admin_cmd, errors_handler, register, sudo_cmd
+
 OWNER_ID = bot.uid
 # Check if user has admin rights
 
 
 async def is_administrator(user_id: int, message):
     admin = False
-    async for user in tgbot.iter_participants(message.chat_id,
-                                              filter=ChannelParticipantsAdmins):
+    async for user in tgbot.iter_participants(
+        message.chat_id, filter=ChannelParticipantsAdmins
+    ):
         if user_id == user.id or OWNER_ID:
             admin = True
             break
     return admin
 
 
-@tgbot.on(events.NewMessage(pattern='^/purge'))
+@tgbot.on(events.NewMessage(pattern="^/purge"))
 async def purge(event):
     chat = event.chat_id
     msgs = []
@@ -106,7 +104,8 @@ async def purge(event):
 
         await tgbot.delete_messages(chat, msgs)
         del_res = await tgbot.send_message(
-            event.chat_id, f"Fast Purged {count} messages.")
+            event.chat_id, f"Fast Purged {count} messages."
+        )
 
         await asyncio.sleep(4)
         await del_res.delete()
@@ -114,7 +113,7 @@ async def purge(event):
     except MessageDeleteForbiddenError:
         text = "Failed to delete messages.\n"
         text += "Messages maybe too old or I'm not admin! or dont have delete rights!"
-        del_res = await respond(text, parse_mode='md')
+        del_res = await respond(text, parse_mode="md")
         await asyncio.sleep(5)
         await del_res.delete()
 
