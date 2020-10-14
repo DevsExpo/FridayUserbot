@@ -19,11 +19,11 @@ heroku_api = "https://api.heroku.com"
 
 
 @borg.on(
-    admin_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)",
-              outgoing=True))
+    admin_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True)
+)
 @borg.on(
-    sudo_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)",
-             allow_sudo=True))
+    sudo_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True)
+)
 async def variable(var):
     """
     Manage most of ConfigVars setting, set new var, get current var,
@@ -33,8 +33,8 @@ async def variable(var):
         app = Heroku.app(Var.HEROKU_APP_NAME)
     else:
         return await edit_or_reply(
-            var, "`[HEROKU]:"
-            "\nPlease setup your` **HEROKU_APP_NAME**")
+            var, "`[HEROKU]:" "\nPlease setup your` **HEROKU_APP_NAME**"
+        )
     exe = var.pattern_match.group(1)
     heroku_var = app.config()
     if exe == "get":
@@ -45,13 +45,12 @@ async def variable(var):
             if variable in heroku_var:
                 return await edit_or_reply(
                     var,
-                    "**ConfigVars**:"
-                    f"\n\n`{variable} = {heroku_var[variable]}`\n",
+                    "**ConfigVars**:" f"\n\n`{variable} = {heroku_var[variable]}`\n",
                 )
             else:
                 return await edit_or_reply(
-                    var, "**ConfigVars**:"
-                    f"\n\n`Error:\n-> {variable} don't exists`")
+                    var, "**ConfigVars**:" f"\n\n`Error:\n-> {variable} don't exists`"
+                )
         except IndexError:
             configs = prettyjson(heroku_var.to_dict(), indent=2)
             with open("configs.json", "w") as fp:
@@ -79,35 +78,32 @@ async def variable(var):
         await edit_or_reply(var, "`Setting information...`")
         variable = var.pattern_match.group(2)
         if not variable:
-            return await edit_or_reply(
-                var, ">`.set var <ConfigVars-name> <value>`")
+            return await edit_or_reply(var, ">`.set var <ConfigVars-name> <value>`")
         value = var.pattern_match.group(3)
         if not value:
             variable = variable.split()[0]
             try:
                 value = var.pattern_match.group(2).split()[1]
             except IndexError:
-                return await edit_or_reply(
-                    var, ">`.set var <ConfigVars-name> <value>`")
+                return await edit_or_reply(var, ">`.set var <ConfigVars-name> <value>`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await edit_or_reply(
-                var,
-                f"**{variable}**  `successfully changed to`  ->  **{value}**")
+                var, f"**{variable}**  `successfully changed to`  ->  **{value}**"
+            )
         else:
             await edit_or_reply(
-                var,
-                f"**{variable}**  `successfully added with value`  ->  **{value}**"
+                var, f"**{variable}**  `successfully added with value`  ->  **{value}**"
             )
         heroku_var[variable] = value
     elif exe == "del":
-        await edit_or_reply(var,
-                            "`Getting information to deleting variable...`")
+        await edit_or_reply(var, "`Getting information to deleting variable...`")
         try:
             variable = var.pattern_match.group(2).split()[0]
         except IndexError:
             return await edit_or_reply(
-                var, "`Please specify ConfigVars you want to delete`")
+                var, "`Please specify ConfigVars you want to delete`"
+            )
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await edit_or_reply(var, f"**{variable}**  `successfully deleted`")
@@ -123,9 +119,11 @@ async def dyno_usage(dyno):
     Get your account Dyno Usage
     """
     await edit_or_reply(dyno, "`Trying To Fetch Dyno Usage....`")
-    useragent = ("Mozilla/5.0 (Linux; Android 10; SM-G975F) "
-                 "AppleWebKit/537.36 (KHTML, like Gecko) "
-                 "Chrome/80.0.3987.149 Mobile Safari/537.36")
+    useragent = (
+        "Mozilla/5.0 (Linux; Android 10; SM-G975F) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/80.0.3987.149 Mobile Safari/537.36"
+    )
     user_id = Heroku.account().id
     headers = {
         "User-Agent": useragent,
@@ -136,8 +134,8 @@ async def dyno_usage(dyno):
     r = requests.get(heroku_api + path, headers=headers)
     if r.status_code != 200:
         return await edit_or_reply(
-            dyno, "`Error: something bad happened`\n\n"
-            f">.`{r.reason}`\n")
+            dyno, "`Error: something bad happened`\n\n" f">.`{r.reason}`\n"
+        )
     result = r.json()
     quota = result["account_quota"]
     quota_used = result["quota_used"]
