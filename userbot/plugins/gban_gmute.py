@@ -30,8 +30,7 @@ async def get_full_user(event):
             return
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
-            if isinstance(probable_user_mention_entity,
-                          MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 user_obj = await event.client.get_entity(user_id)
                 return user_obj
@@ -85,7 +84,8 @@ async def gspider(userbot):
     if user:
         if user.id == 1263617196:
             return await friday.edit(
-                f"**Didn't , Your Father Teach You ? That You Cant Gban Dev**")
+                f"**Didn't , Your Father Teach You ? That You Cant Gban Dev**"
+            )
         try:
             from userbot.modules.sql_helper.gmute_sql import gmute
         except BaseException:
@@ -95,25 +95,22 @@ async def gspider(userbot):
         except BaseException:
             pass
         testuserbot = [
-            d.entity.id for d in await userbot.client.get_dialogs()
+            d.entity.id
+            for d in await userbot.client.get_dialogs()
             if (d.is_group or d.is_channel)
         ]
         for i in testuserbot:
             try:
-                await userbot.client.edit_permissions(i,
-                                                      user,
-                                                      view_messages=False)
+                await userbot.client.edit_permissions(i, user, view_messages=False)
                 a += 1
-                await friday.edit(
-                    f"**GBANNED // Total Affected Chats **: `{a}`")
+                await friday.edit(f"**GBANNED // Total Affected Chats **: `{a}`")
             except BaseException:
                 b += 1
     else:
         await friday.edit(f"**Reply to a user !!**")
     try:
         if gmute(user.id) is False:
-            return await friday.edit(
-                f"**Error! User probably already gbanned.**")
+            return await friday.edit(f"**Error! User probably already gbanned.**")
     except BaseException:
         pass
     return await friday.edit(
@@ -162,14 +159,13 @@ async def gspider(userbot):
         except BaseException:
             pass
         testuserbot = [
-            d.entity.id for d in await userbot.client.get_dialogs()
+            d.entity.id
+            for d in await userbot.client.get_dialogs()
             if (d.is_group or d.is_channel)
         ]
         for i in testuserbot:
             try:
-                await userbot.client.edit_permissions(i,
-                                                      user,
-                                                      send_messages=True)
+                await userbot.client.edit_permissions(i, user, send_messages=True)
                 a += 1
                 await friday.edit(f"**UNGBANNING // AFFECTED CHATS - {a} **")
             except BaseException:
@@ -178,8 +174,7 @@ async def gspider(userbot):
         await friday.edit("**Reply to a user !!**")
     try:
         if ungmute(user.id) is False:
-            return await friday.edit(
-                "**Error! User probably already ungbanned.**")
+            return await friday.edit("**Error! User probably already ungbanned.**")
     except BaseException:
         pass
     return await friday.edit(
@@ -205,13 +200,14 @@ async def handler(rkG):
                     creator = chat.creator
                     if admin or creator:
                         try:
-                            await client.edit_permissions(rkG.chat_id,
-                                                          guser.id,
-                                                          view_messages=False)
+                            await client.edit_permissions(
+                                rkG.chat_id, guser.id, view_messages=False
+                            )
                             await rkG.reply(
                                 f"**Gbanned User Joined!!** \n"
                                 f"**Victim Id**: [{guser.id}](tg://user?id={guser.id})\n"
-                                f"**Action **  : `Banned`")
+                                f"**Action **  : `Banned`"
+                            )
                         except BaseException:
                             rkG.reply("`No Permission To Ban`")
                             return
