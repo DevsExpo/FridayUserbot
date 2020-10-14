@@ -56,7 +56,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await asyncio.sleep(3)
                 await event.delete()
 
-    @command(pattern="^.block$")
+    @command(pattern=".block$")
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -194,8 +194,11 @@ if Var.PRIVATE_GROUP_ID is not None:
         botusername = Var.TG_BOT_USER_NAME_BF_HER
         noob = "dontpm"
         tap = await bot.inline_query(botusername, noob)
-        await tap[0].click(event.chat_id)
-
+        sed = await tap[0].click(event.chat_id)
+        PM_WARNS[chat_id] += 1
+        if chat_id in PREV_REPLY_MESSAGE:
+            await PREV_REPLY_MESSAGE[chat_id].delete()
+        PREV_REPLY_MESSAGE[chat_id] = sed
 
 @bot.on(
     events.NewMessage(incoming=True,
