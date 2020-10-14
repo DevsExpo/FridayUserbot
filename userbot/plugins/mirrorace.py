@@ -34,9 +34,9 @@ async def _(event):
             downloaded_file_name = await borg.download_media(
                 reply_message,
                 Config.TMP_DOWNLOAD_DIRECTORY,
-                progress_callback=lambda d, t: asyncio.get_event_loop(
-                ).create_task(
-                    progress(d, t, mone, c_time, "trying to download")),
+                progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
+                    progress(d, t, mone, c_time, "trying to download")
+                ),
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))
@@ -45,8 +45,9 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             required_file_name = downloaded_file_name
-            await mone.edit("Downloaded to `{}` in {} seconds.".format(
-                downloaded_file_name, ms))
+            await mone.edit(
+                "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+            )
     elif input_str:
         input_str = input_str.strip()
         if os.path.exists(input_str):
@@ -55,8 +56,7 @@ async def _(event):
             required_file_name = input_str
             await mone.edit("Found `{}` in {} seconds.".format(input_str, ms))
         else:
-            await mone.edit(
-                "File Not found in local server. Give me a file path :((")
+            await mone.edit("File Not found in local server. Give me a file path :((")
             return False
     # logger.info(required_file_name)
     if required_file_name:
@@ -81,15 +81,15 @@ async def _(event):
                     # /* STEP 2: Upload file */
                     # step one: response vars
                     step_two_upload_url = step_one_response_json["result"][
-                        "server_file"]
+                        "server_file"
+                    ]
                     cTracker = step_one_response_json["result"]["cTracker"]
                     upload_key = step_one_response_json["result"]["upload_key"]
                     default_mirrors = step_one_response_json["result"][
-                        "default_mirrors"]
-                    max_chunk_size = step_one_response_json["result"][
-                        "max_chunk_size"]
-                    max_file_size = step_one_response_json["result"][
-                        "max_file_size"]
+                        "default_mirrors"
+                    ]
+                    max_chunk_size = step_one_response_json["result"]["max_chunk_size"]
+                    max_file_size = step_one_response_json["result"]["max_file_size"]
                     step_one_response_json["result"]["max_mirrors"]
 
                     # check file size limit
@@ -119,8 +119,7 @@ async def _(event):
 
                     with open(required_file_name, "rb") as f_handle:
                         # start chunk upload
-                        for chunk in iter((lambda: f_handle.read(chunk_size)),
-                                          ""):
+                        for chunk in iter((lambda: f_handle.read(chunk_size)), ""):
                             # for chunk in f_handle.read(chunk_size):
                             # print(chunk)
                             # while (i < chunks) and not while_error:
@@ -128,10 +127,10 @@ async def _(event):
                             if not chunk:
                                 break
                             headers = {
-                                "Content-Range":
-                                str(len(chunk)),
-                                "Content-Length":
-                                str(len(step_two_params) + len(chunk)),
+                                "Content-Range": str(len(chunk)),
+                                "Content-Length": str(
+                                    len(step_two_params) + len(chunk)
+                                ),
                                 # "Content-Type": "multipart/form-data"
                             }
 
@@ -150,8 +149,7 @@ async def _(event):
                         end = datetime.now()
                         ms = (end - start).seconds
                         final_url = final_response["result"]["url"]
-                        await mone.edit(f"Added to {final_url} in {ms} seconds"
-                                        )
+                        await mone.edit(f"Added to {final_url} in {ms} seconds")
                     else:
                         await mone.edit(
                             f"MirrorAce returned {final_response['status']} => {final_response['result']}"
@@ -165,5 +163,4 @@ async def _(event):
                     f"MirrorAce returned {resp['status']} => {resp['result']}, after STEP ONE"
                 )
     else:
-        await mone.edit(
-            "File Not found in local server. Give me a file path :((")
+        await mone.edit("File Not found in local server. Give me a file path :((")
