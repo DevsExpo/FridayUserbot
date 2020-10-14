@@ -92,31 +92,31 @@ async def get_user_from_event(event: NewMessage.Event, **kwargs):
         elif event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
 
-            if isinstance(probable_user_mention_entity,
-                          MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 replied_user = await event.client(GetFullUserRequest(user_id))
                 return replied_user
 
         try:
             user_object = await event.client.get_entity(user)
-            replied_user = await event.client(
-                GetFullUserRequest(user_object.id))
+            replied_user = await event.client(GetFullUserRequest(user_object.id))
         except (TypeError, ValueError):
             return None
 
     # Check for a forwarded message
-    elif (reply_msg and reply_msg.forward and reply_msg.forward.sender_id
-          and kwargs["forward"]):
+    elif (
+        reply_msg
+        and reply_msg.forward
+        and reply_msg.forward.sender_id
+        and kwargs["forward"]
+    ):
         forward = reply_msg.forward
-        replied_user = await event.client(GetFullUserRequest(forward.sender_id)
-                                          )
+        replied_user = await event.client(GetFullUserRequest(forward.sender_id))
 
     # Check for a replied to message
     elif event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        replied_user = await event.client(
-            GetFullUserRequest(previous_message.from_id))
+        replied_user = await event.client(GetFullUserRequest(previous_message.from_id))
 
     # Last case scenario is to get the current user
     else:
@@ -135,10 +135,10 @@ async def get_chat_from_event(event: NewMessage.Event, **kwargs):
             input_entity = await event.client.get_input_entity(chat)
             if isinstance(input_entity, InputPeerChannel):
                 return await event.client(
-                    GetFullChannelRequest(input_entity.channel_id))
+                    GetFullChannelRequest(input_entity.channel_id)
+                )
             elif isinstance(input_entity, InputPeerChat):
-                return await event.client(
-                    GetFullChatRequest(input_entity.chat_id))
+                return await event.client(GetFullChatRequest(input_entity.chat_id))
             else:
                 return None
         except (TypeError, ValueError):
@@ -152,15 +152,17 @@ async def get_chat_from_event(event: NewMessage.Event, **kwargs):
 
 async def list_admins(event):
     adms = await event.client.get_participants(
-        event.chat, filter=ChannelParticipantsAdmins)
+        event.chat, filter=ChannelParticipantsAdmins
+    )
     adms = map(lambda x: x if not x.bot else None, adms)
     adms = [i for i in list(adms) if i]
     return adms
 
 
 async def list_bots(event):
-    bots = await event.client.get_participants(event.chat,
-                                               filter=ChannelParticipantsBots)
+    bots = await event.client.get_participants(
+        event.chat, filter=ChannelParticipantsBots
+    )
     return bots
 
 
@@ -232,8 +234,9 @@ class Mention(Link):
 
 
 class KeyValueItem(FormattedBase):
-    def __init__(self, key: Union[str, FormattedBase],
-                 value: Union[str, FormattedBase]) -> None:
+    def __init__(
+        self, key: Union[str, FormattedBase], value: Union[str, FormattedBase]
+    ) -> None:
         self.key = key
         self.value = value
         self.text = f"{key}: {value}"
@@ -245,10 +248,9 @@ class Item(FormattedBase):
 
 
 class Section:
-    def __init__(self,
-                 *args: Union[String, "FormattedBase"],
-                 spacing: int = 1,
-                 indent: int = 4) -> None:
+    def __init__(
+        self, *args: Union[String, "FormattedBase"], spacing: int = 1, indent: int = 4
+    ) -> None:
         self.header = args[0]
         self.items = list(args[1:])
         self.indent = indent
@@ -258,15 +260,14 @@ class Section:
         return str(self) + "\n\n" + str(other)
 
     def __str__(self) -> str:
-        return ("\n" * self.spacing).join([str(self.header)] + [
-            " " * self.indent + str(item)
-            for item in self.items if item is not None
-        ])
+        return ("\n" * self.spacing).join(
+            [str(self.header)]
+            + [" " * self.indent + str(item) for item in self.items if item is not None]
+        )
 
 
 class SubSection(Section):
-    def __init__(self, *args: Union[String, "SubSubSection"],
-                 indent: int = 8) -> None:
+    def __init__(self, *args: Union[String, "SubSubSection"], indent: int = 8) -> None:
         super().__init__(*args, indent=indent)
 
 
@@ -355,8 +356,7 @@ async def fetch_info(replied_user, **kwargs):
         KeyValueItem("bot_chat_history", Code(user.bot_chat_history)),
         KeyValueItem("bot_info_version", Code(user.bot_info_version)),
         KeyValueItem("bot_inline_geo", Code(user.bot_inline_geo)),
-        KeyValueItem("bot_inline_placeholder",
-                     Code(user.bot_inline_placeholder)),
+        KeyValueItem("bot_inline_placeholder", Code(user.bot_inline_placeholder)),
         KeyValueItem("bot_nochats", Code(user.bot_nochats)),
     )
 
@@ -378,17 +378,18 @@ async def fetch_info(replied_user, **kwargs):
     )
 
 
-CMD_HELP.update({
-    "android":
-    "`.u(ser) [options] (username|id)`"
-    "Or, in response to a message"
-    "`.u(ser) [options]`"
-    "Options:"
-    "`.id`: Show only the user's ID"
-    "`.general`: Show general user info"
-    "`.bot`: Show bot related info"
-    "`.misc`: Show miscelanious info"
-    "`.all`: Show all info (overrides other options)"
-    "`.mention`: Inline mention the user"
-    "`.forward`: Follow forwarded message"
-})
+CMD_HELP.update(
+    {
+        "android": "`.u(ser) [options] (username|id)`"
+        "Or, in response to a message"
+        "`.u(ser) [options]`"
+        "Options:"
+        "`.id`: Show only the user's ID"
+        "`.general`: Show general user info"
+        "`.bot`: Show bot related info"
+        "`.misc`: Show miscelanious info"
+        "`.all`: Show all info (overrides other options)"
+        "`.mention`: Inline mention the user"
+        "`.forward`: Follow forwarded message"
+    }
+)
