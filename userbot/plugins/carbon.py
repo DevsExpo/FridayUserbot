@@ -53,7 +53,8 @@ async def carbon_api(e):
         chrome_options.add_argument("--disable-gpu")
         prefs = {"download.default_directory": "./"}
         chrome_options.add_experimental_option("prefs", prefs)
-        driver = webdriver.Chrome(executable_path=CHROME_DRIVER, options=chrome_options)
+        driver = webdriver.Chrome(executable_path=CHROME_DRIVER,
+                                  options=chrome_options)
         driver.get(url)
         await e.edit("`Be Patient...\n50%`")
         download_path = "./"
@@ -63,7 +64,10 @@ async def carbon_api(e):
         )
         params = {
             "cmd": "Page.setDownloadBehavior",
-            "params": {"behavior": "allow", "downloadPath": download_path},
+            "params": {
+                "behavior": "allow",
+                "downloadPath": download_path
+            },
         }
         driver.execute("send_command", params)
         driver.find_element_by_xpath(
@@ -78,10 +82,12 @@ async def carbon_api(e):
             k_skeme.send_keys(Keys.ENTER)
         else:
             color_scheme = str(random.randint(1, 29))
-            driver.find_element_by_id(("downshift-0-item-" + color_scheme)).click()
+            driver.find_element_by_id(
+                ("downshift-0-item-" + color_scheme)).click()
         driver.find_element_by_id("export-menu").click()
         driver.find_element_by_xpath("//button[contains(text(),'4x')]").click()
-        driver.find_element_by_xpath("//button[contains(text(),'PNG')]").click()
+        driver.find_element_by_xpath(
+            "//button[contains(text(),'PNG')]").click()
         await e.edit("`Processing..\n75%`")
         # Waiting for downloading
         sleep(2.5)
@@ -94,9 +100,9 @@ async def carbon_api(e):
         await e.client.send_file(
             e.chat_id,
             file,
-            caption="<< `Here's your carbon!` \n **Carbonised Using** [Friday](https://github.com/Starkgang/FridayUserbot)>>\n**Colour Scheme: **`{}`".format(
-                color_name
-            ),
+            caption=
+            "<< `Here's your carbon!` \n **Carbonised Using** [Friday](https://github.com/Starkgang/FridayUserbot)>>\n**Colour Scheme: **`{}`"
+            .format(color_name),
             force_document=True,
             reply_to=e.message.reply_to_msg_id,
         )
