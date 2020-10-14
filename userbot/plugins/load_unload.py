@@ -3,10 +3,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-from userbot.utils import admin_cmd
-from userbot.utils import load_module
-from userbot.utils import remove_plugin
-from userbot.utils import sudo_cmd
+from userbot.utils import admin_cmd, load_module, remove_plugin, sudo_cmd
 
 
 @borg.on(admin_cmd(pattern="load ?(.*)", outgoing=True))

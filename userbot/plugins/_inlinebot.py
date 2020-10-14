@@ -1,13 +1,9 @@
 import re
 from math import ceil
 
-from telethon import Button
-from telethon import custom
-from telethon import events
-from telethon import functions
+from telethon import Button, custom, events, functions
 
-from userbot import ALIVE_NAME
-from userbot import CMD_LIST
+from userbot import ALIVE_NAME, CMD_LIST
 from userbot.plugins import inlinestats
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Friday"
