@@ -166,6 +166,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         text3 = "Ok, Wait. You can Ask After Master Approves You. Kindly, Wait."
         await borg.send_message(event.query.user_id, text3)
 
+
 def paginate_help(page_number, loaded_plugins, prefix):
     number_of_rows = 8
     number_of_cols = 2
