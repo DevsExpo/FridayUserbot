@@ -13,9 +13,7 @@ import asyncio
 from telethon import events
 
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
-from userbot.plugins.sql_helper.mute_sql import is_muted
-from userbot.plugins.sql_helper.mute_sql import mute
-from userbot.plugins.sql_helper.mute_sql import unmute
+from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute
 
 
 @command(outgoing=True, pattern=r"^.mute ?(\d+)?")

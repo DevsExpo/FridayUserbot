@@ -1,11 +1,6 @@
-from sqlalchemy import Column
-from sqlalchemy import LargeBinary
-from sqlalchemy import Numeric
-from sqlalchemy import String
-from sqlalchemy import UnicodeText
+from sqlalchemy import Column, LargeBinary, Numeric, String, UnicodeText
 
-from userbot.plugins.sql_helper import BASE
-from userbot.plugins.sql_helper import SESSION
+from userbot.plugins.sql_helper import BASE, SESSION
 
 
 class Filters(BASE):
