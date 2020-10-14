@@ -43,7 +43,8 @@ async def startmute(event):
             )
         chat_id = event.chat_id
         chat = await event.get_chat()
-        if "admin_rights" in vars(chat) and vars(chat)["admin_rights"] is not None:
+        if "admin_rights" in vars(
+                chat) and vars(chat)["admin_rights"] is not None:
             if chat.admin_rights.delete_messages is True:
                 pass
             else:
@@ -56,18 +57,17 @@ async def startmute(event):
             pass
         else:
             return await event.edit(
-                "`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  "
-            )
+                "`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  ")
         if is_muted(userid, chat_id):
             return await event.edit(
-                "This user is already muted in this chat ~~lmfao sed rip~~"
-            )
+                "This user is already muted in this chat ~~lmfao sed rip~~")
         try:
             mute(userid, chat_id)
         except Exception as e:
             await event.edit("Error occured!\nError is " + str(e))
         else:
-            await event.edit("Successfully muted that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **")
+            await event.edit(
+                "Successfully muted that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **")
 
 
 @command(outgoing=True, pattern=r"^.unmute ?(\d+)?")
@@ -96,14 +96,14 @@ async def endmute(event):
         chat_id = event.chat_id
         if not is_muted(userid, chat_id):
             return await event.edit(
-                "__This user is not muted in this chat__\n（ ^_^）o自自o（^_^ ）"
-            )
+                "__This user is not muted in this chat__\n（ ^_^）o自自o（^_^ ）")
         try:
             unmute(userid, chat_id)
         except Exception as e:
             await event.edit("Error occured!\nError is " + str(e))
         else:
-            await event.edit("Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍")
+            await event.edit(
+                "Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍")
 
 
 @command(outgoing=True, pattern=r"^.mute ?(\d+)?", allow_sudo=True)
@@ -131,7 +131,8 @@ async def startmute(event):
             )
         chat_id = event.chat_id
         chat = await event.get_chat()
-        if "admin_rights" in vars(chat) and vars(chat)["admin_rights"] is not None:
+        if "admin_rights" in vars(
+                chat) and vars(chat)["admin_rights"] is not None:
             if chat.admin_rights.delete_messages is True:
                 pass
             else:
@@ -144,18 +145,17 @@ async def startmute(event):
             pass
         else:
             return await event.edit(
-                "`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  "
-            )
+                "`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  ")
         if is_muted(userid, chat_id):
             return await event.edit(
-                "This user is already muted in this chat ~~lmfao sed rip~~"
-            )
+                "This user is already muted in this chat ~~lmfao sed rip~~")
         try:
             mute(userid, chat_id)
         except Exception as e:
             await event.edit("Error occured!\nError is " + str(e))
         else:
-            await event.edit("Successfully muted that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **")
+            await event.edit(
+                "Successfully muted that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **")
 
 
 @command(outgoing=True, pattern=r"^.unmute ?(\d+)?", allow_sudo=True)
@@ -184,14 +184,14 @@ async def endmute(event):
         chat_id = event.chat_id
         if not is_muted(userid, chat_id):
             return await event.edit(
-                "__This user is not muted in this chat__\n（ ^_^）o自自o（^_^ ）"
-            )
+                "__This user is not muted in this chat__\n（ ^_^）o自自o（^_^ ）")
         try:
             unmute(userid, chat_id)
         except Exception as e:
             await event.edit("Error occured!\nError is " + str(e))
         else:
-            await event.edit("Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍")
+            await event.edit(
+                "Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍")
 
 
 @command(incoming=True)

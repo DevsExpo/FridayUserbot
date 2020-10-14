@@ -60,14 +60,17 @@ async def start(event):
     if event.from_id == bot.uid:
         await tgbot.send_message(
             vent,
-            message=f"Hi Master, It's Me {bot_id}, Your Assistant ! \nWhat You Wanna Do today ?",
+            message=
+            f"Hi Master, It's Me {bot_id}, Your Assistant ! \nWhat You Wanna Do today ?",
             buttons=[
                 [custom.Button.inline("Show Users 🔥", data="users")],
-                [custom.Button.inline("Commands For Assistant", data="gibcmd")],
                 [
-                    Button.url(
-                        "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
-                    )
+                    custom.Button.inline("Commands For Assistant",
+                                         data="gibcmd")
+                ],
+                [
+                    Button.url("Add Me to Group 👥",
+                               f"t.me/{bot_username}?startgroup=true")
                 ],
             ],
         )
@@ -96,9 +99,13 @@ async def help(event):
     if event.query.user_id is not bot.uid:
         await tgbot.send_message(
             event.chat_id,
-            message="You Can Deploy Friday In Heroku By Following Steps Bellow, You Can See Some Quick Guides On Support Channel Or On Your Own Assistant Bot. \nThank You For Contacting Me.",
+            message=
+            "You Can Deploy Friday In Heroku By Following Steps Bellow, You Can See Some Quick Guides On Support Channel Or On Your Own Assistant Bot. \nThank You For Contacting Me.",
             buttons=[
-                [Button.url("Deploy Tutorial 📺", "https://youtu.be/xfHcm_e92eQ")],
+                [
+                    Button.url("Deploy Tutorial 📺",
+                               "https://youtu.be/xfHcm_e92eQ")
+                ],
                 [Button.url("Need Help ❓", "t.me/FridaySupportOfficial")],
             ],
         )
@@ -167,10 +174,8 @@ async def sed(event):
 
 
 @tgbot.on(
-    events.NewMessage(
-        pattern="^/broadcast ?(.*)", func=lambda e: e.sender_id == bot.uid
-    )
-)
+    events.NewMessage(pattern="^/broadcast ?(.*)",
+                      func=lambda e: e.sender_id == bot.uid))
 async def sedlyfsir(event):
     msgtobroadcast = event.pattern_match.group(1)
     userstobc = get_all_users()
@@ -183,7 +188,8 @@ async def sedlyfsir(event):
             await asyncio.sleep(0.2)
         except Exception as e:
             try:
-                logger.info(f"Error : {error_count}\nError : {e} \nUsers : {chat_id}")
+                logger.info(
+                    f"Error : {error_count}\nError : {e} \nUsers : {chat_id}")
             except BaseException:
                 pass
     await tgbot.send_message(
@@ -193,24 +199,24 @@ async def sedlyfsir(event):
 
 
 @tgbot.on(
-    events.NewMessage(pattern="^/stats ?(.*)", func=lambda e: e.sender_id == bot.uid)
-)
+    events.NewMessage(pattern="^/stats ?(.*)",
+                      func=lambda e: e.sender_id == bot.uid))
 async def starkisnoob(event):
     starkisnoob = get_all_users()
     await event.reply(
-        f"**Stats Of Your Bot** \nTotal Users In Bot => {len(starkisnoob)}"
-    )
+        f"**Stats Of Your Bot** \nTotal Users In Bot => {len(starkisnoob)}")
 
 
-@tgbot.on(events.NewMessage(pattern="^/help", func=lambda e: e.sender_id == bot.uid))
+@tgbot.on(
+    events.NewMessage(pattern="^/help", func=lambda e: e.sender_id == bot.uid))
 async def starkislub(event):
     grabonx = "Hello Here Are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot"
     await event.reply(grabonx)
 
 
 @tgbot.on(
-    events.NewMessage(pattern="^/block ?(.*)", func=lambda e: e.sender_id == bot.uid)
-)
+    events.NewMessage(pattern="^/block ?(.*)",
+                      func=lambda e: e.sender_id == bot.uid))
 async def starkisnoob(event):
     if event.from_id == bot.uid:
         msg = await event.get_reply_message()
@@ -223,13 +229,13 @@ async def starkisnoob(event):
         add_nibba_in_db(user_id)
         await event.reply("Blacklisted This Dumb Person")
         await tgbot.send_message(
-            user_id, "You Have Been Blacklisted And You Can't Message My Master Now."
-        )
+            user_id,
+            "You Have Been Blacklisted And You Can't Message My Master Now.")
 
 
 @tgbot.on(
-    events.NewMessage(pattern="^/unblock ?(.*)", func=lambda e: e.sender_id == bot.uid)
-)
+    events.NewMessage(pattern="^/unblock ?(.*)",
+                      func=lambda e: e.sender_id == bot.uid))
 async def starkisnoob(event):
     if event.from_id == bot.uid:
         msg = await event.get_reply_message()
@@ -242,5 +248,4 @@ async def starkisnoob(event):
         removenibba(user_id)
         await event.reply("DisBlacklisted This Dumb Person")
         await tgbot.send_message(
-            user_id, "Congo! You Have Been Unblacklisted By My Master."
-        )
+            user_id, "Congo! You Have Been Unblacklisted By My Master.")
