@@ -19,7 +19,8 @@ async def _(event):
             await event.edit("Usage: .singer Duman - Haberin Yok Ölüyorum")
         else:
             await event.edit("🔍︎Searching lyrics By Friday")
-            lyrics = PyLyrics.getLyrics(song[0].strip(), song[1].strip()).split("\n")
+            lyrics = PyLyrics.getLyrics(song[0].strip(),
+                                        song[1].strip()).split("\n")
             lyric_message = f"Singing {song[0].strip()} from {song[1].strip()} 🎙"
             lyric_message += "\n\n" + "\n".join(lyrics)
             try:

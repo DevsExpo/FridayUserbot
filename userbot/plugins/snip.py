@@ -43,9 +43,10 @@ async def on_snip(event):
         message_id = event.message.id
         if event.reply_to_msg_id:
             message_id = event.reply_to_msg_id
-        await borg.send_message(
-            event.chat_id, snip.reply, reply_to=message_id, file=media
-        )
+        await borg.send_message(event.chat_id,
+                                snip.reply,
+                                reply_to=message_id,
+                                file=media)
         await event.delete()
 
 
@@ -76,10 +77,11 @@ async def on_snip_save(event):
             snip.get("fr"),
         )
         await event.edit(
-            "snip {name} saved successfully. Get it with #{name}".format(name=name)
-        )
+            "snip {name} saved successfully. Get it with #{name}".format(
+                name=name))
     else:
-        await event.edit("Reply to a message with `snips keyword` to save the snip")
+        await event.edit(
+            "Reply to a message with `snips keyword` to save the snip")
 
 
 @borg.on(admin_cmd("snipl"))
