@@ -20,18 +20,16 @@ async def _(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         required_file_name = await borg.download_media(
-            previous_message, Config.TMP_DOWNLOAD_DIRECTORY
-        )
+            previous_message, Config.TMP_DOWNLOAD_DIRECTORY)
         lan = input_str
-        if (
-            Config.IBM_WATSON_CRED_URL is None
-            or Config.IBM_WATSON_CRED_PASSWORD is None
-        ):
+        if (Config.IBM_WATSON_CRED_URL is None
+                or Config.IBM_WATSON_CRED_PASSWORD is None):
             await event.edit(
                 "You need to set the required ENV variables for this module. \nModule stopping"
             )
         else:
-            await event.edit("Starting analysis, using IBM WatSon Speech To Text")
+            await event.edit(
+                "Starting analysis, using IBM WatSon Speech To Text")
             headers = {
                 "Content-Type": previous_message.media.document.mime_type,
             }
@@ -50,24 +48,24 @@ async def _(event):
                 transcript_confidence = ""
                 for alternative in results:
                     alternatives = alternative["alternatives"][0]
-                    transcript_response += " " + str(alternatives["transcript"]) + " + "
-                    transcript_confidence += (
-                        " " + str(alternatives["confidence"]) + " + "
-                    )
+                    transcript_response += " " + str(
+                        alternatives["transcript"]) + " + "
+                    transcript_confidence += (" " +
+                                              str(alternatives["confidence"]) +
+                                              " + ")
                 end = datetime.now()
                 ms = (end - start).seconds
                 if transcript_response != "":
                     string_to_show = "Language: `{}`\nTRANSCRIPT: `{}`\nTime Taken: {} seconds\nConfidence: `{}`".format(
-                        lan, transcript_response, ms, transcript_confidence
-                    )
+                        lan, transcript_response, ms, transcript_confidence)
                 else:
                     string_to_show = "Language: `{}`\nTime Taken: {} seconds\n**No Results Found**".format(
-                        lan, ms
-                    )
+                        lan, ms)
                 await event.edit(string_to_show)
             else:
                 await event.edit(r["error"])
             # now, remove the temporary file
             os.remove(required_file_name)
     else:
-        await event.edit("Reply to a voice message, to get the relevant transcript.")
+        await event.edit(
+            "Reply to a voice message, to get the relevant transcript.")
