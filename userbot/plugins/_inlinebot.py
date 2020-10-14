@@ -44,7 +44,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 ],
             )
         if event.query.user_id == bot.uid and query == "dontpm":
-            replied_user = await event.client(GetFullUserRequest(event.from_id)
+            replied_user = await event.client(GetFullUserRequest(event.chat_id)
                                               )
             firstname = replied_user.user.first_name
             result = builder.article(
