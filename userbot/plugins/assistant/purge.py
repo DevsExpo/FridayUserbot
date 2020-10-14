@@ -57,14 +57,13 @@ from userbot.utils import register
 from userbot.utils import sudo_cmd
 
 OWNER_ID = bot.uid
+
+
 # Check if user has admin rights
-
-
 async def is_administrator(user_id: int, message):
     admin = False
     async for user in tgbot.iter_participants(
-        message.chat_id, filter=ChannelParticipantsAdmins
-    ):
+            message.chat_id, filter=ChannelParticipantsAdmins):
         if user_id == user.id or OWNER_ID:
             admin = True
             break
@@ -82,7 +81,8 @@ async def purge(event):
 
     msg = await event.get_reply_message()
     if not msg:
-        await event.reply("Reply to a message to select where to start purging from.")
+        await event.reply(
+            "Reply to a message to select where to start purging from.")
         return
 
     try:
@@ -99,9 +99,8 @@ async def purge(event):
                 msgs = []
 
         await tgbot.delete_messages(chat, msgs)
-        del_res = await tgbot.send_message(
-            event.chat_id, f"Fast Purged {count} messages."
-        )
+        del_res = await tgbot.send_message(event.chat_id,
+                                           f"Fast Purged {count} messages.")
 
         await asyncio.sleep(4)
         await del_res.delete()
