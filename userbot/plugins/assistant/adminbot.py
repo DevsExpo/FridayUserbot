@@ -53,11 +53,9 @@ NO_PERM = (
 NO_SQL = "`Running on Non-SQL mode!`"
 
 CHAT_PP_CHANGED = "`Chat Picture Changed`"
-CHAT_PP_ERROR = (
-    "`Some issue with updating the pic,`"
-    "`maybe coz I'm not an admin,`"
-    "`or don't have enough rights.`"
-)
+CHAT_PP_ERROR = ("`Some issue with updating the pic,`"
+                 "`maybe coz I'm not an admin,`"
+                 "`or don't have enough rights.`")
 INVALID_MEDIA = "`Invalid Extension`"
 
 BANNED_RIGHTS = ChatBannedRights(
@@ -93,8 +91,7 @@ async def ban(event):
     noob = event.from_id
     userids = []
     async for user in tgbot.iter_participants(
-        event.chat_id, filter=ChannelParticipantsAdmins
-    ):
+            event.chat_id, filter=ChannelParticipantsAdmins):
         userids.append(user.id)
     if noob not in userids:
         await event.reply("You're not an admin!")
@@ -112,7 +109,8 @@ async def ban(event):
     else:
         return
     try:
-        await event.client(EditBannedRequest(event.chat_id, user.id, BANNED_RIGHTS))
+        await event.client(
+            EditBannedRequest(event.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
         await event.reply("No Permission Sar 🤭.")
         return
@@ -123,8 +121,7 @@ async def ban(event):
             pass
     except BadRequestError:
         await event.reply(
-            "`I dont have message nuking rights! But still he was banned!`"
-        )
+            "`I dont have message nuking rights! But still he was banned!`")
         return
     if reason:
         await event.reply(f"Banned `{str(user.id)}` \nReason: {reason}")
@@ -137,8 +134,7 @@ async def nothanos(event):
     userids = []
     noob = event.from_id
     async for user in tgbot.iter_participants(
-        event.chat_id, filter=ChannelParticipantsAdmins
-    ):
+            event.chat_id, filter=ChannelParticipantsAdmins):
         userids.append(user.id)
     if noob not in userids:
         await event.reply("You're not an admin!")
@@ -156,7 +152,8 @@ async def nothanos(event):
     else:
         return
     try:
-        await event.client(EditBannedRequest(event.chat_id, user.id, UNBAN_RIGHTS))
+        await event.client(
+            EditBannedRequest(event.chat_id, user.id, UNBAN_RIGHTS))
         await event.reply("`Unbanned Successfully. Granting another chance.🚶`")
     except BadRequestError:
         await event.reply("`No Permission 🤭`")
@@ -168,8 +165,7 @@ async def promote(event):
     userids = []
     noob = event.from_id
     async for user in tgbot.iter_participants(
-        event.chat_id, filter=ChannelParticipantsAdmins
-    ):
+            event.chat_id, filter=ChannelParticipantsAdmins):
         userids.append(user.id)
     if noob not in userids:
         await event.reply("You're not an admin!")
@@ -202,7 +198,8 @@ async def promote(event):
         return
     # Try to promote if current user is admin or creator
     try:
-        await event.client(EditAdminRequest(event.chat_id, user.id, new_rights, rank))
+        await event.client(
+            EditAdminRequest(event.chat_id, user.id, new_rights, rank))
         await event.reply("`Promoted Successfully! Now gib Party`")
 
     # If Telethon spit BadRequestError, assume
@@ -217,8 +214,7 @@ async def demote(event):
     userids = []
     noob = event.from_id
     async for user in tgbot.iter_participants(
-        event.chat_id, filter=ChannelParticipantsAdmins
-    ):
+            event.chat_id, filter=ChannelParticipantsAdmins):
         userids.append(user.id)
     if noob not in userids:
         await event.reply("You're not an admin!")
@@ -251,7 +247,8 @@ async def demote(event):
     )
     # Edit Admin Permission
     try:
-        await event.client(EditAdminRequest(event.chat_id, user.id, newrights, rank))
+        await event.client(
+            EditAdminRequest(event.chat_id, user.id, newrights, rank))
 
     # If we catch BadRequestError from Telethon
     # Assume we don't have permission to demote
@@ -266,8 +263,7 @@ async def pin(event):
     userids = []
     noob = event.from_id
     async for user in tgbot.iter_participants(
-        event.chat_id, filter=ChannelParticipantsAdmins
-    ):
+            event.chat_id, filter=ChannelParticipantsAdmins):
         userids.append(user.id)
     if noob not in userids:
         await event.reply("You're not an admin!")
@@ -294,7 +290,8 @@ async def pin(event):
     if options.lower() == "loud":
         is_silent = False
     try:
-        await event.client(UpdatePinnedMessageRequest(event.to_id, to_pin, is_silent))
+        await event.client(
+            UpdatePinnedMessageRequest(event.to_id, to_pin, is_silent))
     except BadRequestError:
         await event.reply("No Permission 🥺")
         return
@@ -325,7 +322,8 @@ async def get_user_from_event(event):
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
 
-            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity,
+                          MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 user_obj = await event.client.get_entity(user_id)
                 return user_obj
