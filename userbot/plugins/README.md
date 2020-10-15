@@ -1,14 +1,20 @@
 ## Mandatory Imports SeD
+
 ```python3
 None
 ```
-There is None Mandatory Imports. Because Var, bot and command are already automatically imported.
+
+There is None Mandatory Imports. Because Var, bot and command are already
+automatically imported.
 
 ## Explanation
+
 The Mandatory Imports are now automatically imported.
 
 ### Formation
+
 Now I will show a short script to show the formation of the desired script.
+
 ```python3
 @command(pattern="^.alive", outgoing=True)
 async def world_world(event):
