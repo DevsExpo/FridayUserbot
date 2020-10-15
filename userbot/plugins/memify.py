@@ -43,7 +43,8 @@ async def _(event):
             await borg.send_file(chat, reply_message.media)
             response = await bot_conv.get_response()
         except YouBlockedUserError:
-            await event.reply("```Please unblock @MemeCreatorBot and try again```")
+            await event.reply(
+                "```Please unblock @MemeCreatorBot and try again```")
             return
         if response.text.startswith("Forward"):
             await event.edit(
@@ -63,7 +64,8 @@ async def _(event):
                 file_name = "meme.png"
                 reply_message = await event.get_reply_message()
                 to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
-                downloaded_file_name = os.path.join(to_download_directory, file_name)
+                downloaded_file_name = os.path.join(to_download_directory,
+                                                    file_name)
                 downloaded_file_name = await borg.download_media(
                     reply_message,
                     downloaded_file_name,
@@ -83,7 +85,8 @@ async def _(event):
             response = await bot_conv.get_response()
             the_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
             files_name = "memes.webp"
-            download_file_name = os.path.join(the_download_directory, files_name)
+            download_file_name = os.path.join(the_download_directory,
+                                              files_name)
             await borg.download_media(
                 response.media,
                 download_file_name,
@@ -102,8 +105,7 @@ async def _(event):
             sax.delete()
         elif not is_message_image(reply_message):
             await event.edit(
-                "Invalid message type. Plz choose right message type u NIBBA."
-            )
+                "Invalid message type. Plz choose right message type u NIBBA.")
             return
         else:
             await borg.send_file(event.chat_id, response.media)

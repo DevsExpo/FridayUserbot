@@ -20,5 +20,5 @@ async def spammer(e):
         await e.delete()
         if LOGGER:
             await e.client.send_message(
-                LOGGER_GROUP, "#SPAM \n\n" "Spam was executed successfully"
-            )
+                LOGGER_GROUP, "#SPAM \n\n"
+                "Spam was executed successfully")

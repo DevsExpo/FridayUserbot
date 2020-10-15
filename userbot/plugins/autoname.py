@@ -34,9 +34,7 @@ async def _(event):
 
             await borg(
                 functions.account.UpdateProfileRequest(  # pylint:disable=E0602
-                    first_name=name
-                )
-            )
+                    first_name=name))
 
         except FloodWaitError as ex:
 

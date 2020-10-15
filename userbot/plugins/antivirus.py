@@ -25,12 +25,12 @@ async def _(event):
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=161163358)
-            )
+                events.NewMessage(incoming=True, from_users=161163358))
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+            await event.reply(
+                "```Please unblock @sangmatainfo_bot and try again```")
             return
         if response.text.startswith("Forward"):
             await event.edit(
@@ -38,7 +38,8 @@ async def _(event):
             )
         else:
             if response.text.startswith("Select"):
-                await event.edit("`Please go to` @DrWebBot `and select your language.`")
+                await event.edit(
+                    "`Please go to` @DrWebBot `and select your language.`")
             else:
                 await event.edit(
                     f"**Antivirus scan was completed. I got dem final results.**\n {response.message.message}"

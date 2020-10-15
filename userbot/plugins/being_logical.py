@@ -85,7 +85,8 @@ async def _(event):
 
     if x == 11:
 
-        await event.edit('`"A folder is for things that you don\'t want to fold."`')
+        await event.edit(
+            '`"A folder is for things that you don\'t want to fold."`')
 
     if x == 12:
 
@@ -137,7 +138,8 @@ async def _(event):
 
     if x == 20:
 
-        await event.edit('`"Technically, no one has ever been in an empty room."`')
+        await event.edit(
+            '`"Technically, no one has ever been in an empty room."`')
 
     if x == 21:
 
@@ -283,7 +285,8 @@ async def _(event):
 
     if x == 45:
 
-        await event.edit('`"If Greenland actually turns green, we\'re all screwed."`')
+        await event.edit(
+            '`"If Greenland actually turns green, we\'re all screwed."`')
 
     if x == 46:
 
@@ -305,7 +308,8 @@ async def _(event):
 
     if x == 49:
 
-        await event.edit('`"Ask yourself why the the brain ignores the second the."`')
+        await event.edit(
+            '`"Ask yourself why the the brain ignores the second the."`')
 
     if x == 50:
 
@@ -373,7 +377,8 @@ async def _(event):
 
     if x == 61:
 
-        await event.edit('`"6 to 6:30 feels more half-an-hour than 5:50 to 6:20"`')
+        await event.edit(
+            '`"6 to 6:30 feels more half-an-hour than 5:50 to 6:20"`')
 
     if x == 62:
 
@@ -395,7 +400,8 @@ async def _(event):
 
     if x == 65:
 
-        await event.edit('`"A ton of whales is really only like half a whale."`')
+        await event.edit(
+            '`"A ton of whales is really only like half a whale."`')
 
     if x == 66:
 
@@ -435,7 +441,8 @@ async def _(event):
 
     if x == 72:
 
-        await event.edit('`"The most effective alarm clock is a full bladder."`')
+        await event.edit(
+            '`"The most effective alarm clock is a full bladder."`')
 
     if x == 73:
 
@@ -457,13 +464,13 @@ async def _(event):
 
     if x == 76:
 
-        await event.edit('`"We put paper in a folder to keep it from folding."`')
+        await event.edit(
+            '`"We put paper in a folder to keep it from folding."`')
 
     if x == 77:
 
         await event.edit(
-            '`"Somewhere, two best friends are meeting for the first time."`'
-        )
+            '`"Somewhere, two best friends are meeting for the first time."`')
 
     if x == 78:
 
@@ -559,11 +566,13 @@ async def _(event):
 
     if x == 94:
 
-        await event.edit('`"A comma is a short pause, a coma is a long pause."`')
+        await event.edit(
+            '`"A comma is a short pause, a coma is a long pause."`')
 
     if x == 95:
 
-        await event.edit('`"Someday you will either not wake up or not go to sleep."`')
+        await event.edit(
+            '`"Someday you will either not wake up or not go to sleep."`')
 
     if x == 96:
 

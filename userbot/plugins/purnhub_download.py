@@ -28,13 +28,12 @@ async def _(event):
     temporary_variable_to_use = temp.find("img")
     temporary_variable_to_use["data-src"]
     if "pornhub" not in d_link:
-        await event.edit("` I need a link to download something pro.`**(._.)**")
+        await event.edit("` I need a link to download something pro.`**(._.)**"
+                         )
     else:
         await event.edit(
-            "**💦Preparing to upload Video💦 **\n**Title**:  `{}`\n**Total Views**: `{}`".format(
-                title, views
-            )
-        )
+            "**💦Preparing to upload Video💦 **\n**Title**:  `{}`\n**Total Views**: `{}`"
+            .format(title, views))
     await asyncio.sleep(2)
 
     async with event.client.conversation("@phsavebot") as conv:
@@ -62,9 +61,9 @@ async def _(event):
                 await borg.send_file(
                     event.chat_id,
                     video_hehe,
-                    caption="`🤤 Video Uploaded by` [@anubisxx](https://github.com/Dark-Princ3/X-tra-Telegram)!🤤\n**Title:** `{}`".format(
-                        title
-                    ),
+                    caption=
+                    "`🤤 Video Uploaded by` [@anubisxx](https://github.com/Dark-Princ3/X-tra-Telegram)!🤤\n**Title:** `{}`"
+                    .format(title),
                 )
             elif "Unfortunately" in response.text:
                 await event.edit(
@@ -73,5 +72,6 @@ async def _(event):
             elif "correct" in response.text:
                 await borg.send_message(event.chat_id, response.text)
         except YouBlockedUserError:
-            await event.reply("**Please unblock** @phsavebot **and try again**")
+            await event.reply("**Please unblock** @phsavebot **and try again**"
+                              )
             return

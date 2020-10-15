@@ -20,12 +20,8 @@ async def _(event):
         ext_details = soup.find_all("td", {"colspan": "3"})[-1].text
         await event.edit(
             "**File Extension**: `{}`\n**Description**: `{}`".format(
-                input_str, ext_details
-            )
-        )
+                input_str, ext_details))
     else:
         await event.edit(
             "https://www.fileext.com/ responded with {} for query: {}".format(
-                status_code, input_str
-            )
-        )
+                status_code, input_str))

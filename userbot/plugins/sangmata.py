@@ -23,13 +23,13 @@ async def _(event):
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=461843263)
-            )
+                events.NewMessage(incoming=True, from_users=461843263))
             # await borg.forward_messages(chat, reply_message)
             await silently_send_message(chat, "/generate")
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+            await event.reply(
+                "```Please unblock @sangmatainfo_bot and try again```")
             return
         if response.text.startswith("Forward"):
             await event.edit(
@@ -59,12 +59,12 @@ async def _(event):
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=177914997)
-            )
+                events.NewMessage(incoming=True, from_users=177914997))
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+            await event.reply(
+                "```Please unblock @sangmatainfo_bot and try again```")
             return
         if response.text.startswith("send"):
             await event.edit(
@@ -94,12 +94,12 @@ async def _(event):
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=97342984)
-            )
+                events.NewMessage(incoming=True, from_users=97342984))
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+            await event.reply(
+                "```Please unblock @sangmatainfo_bot and try again```")
             return
         if response.text.startswith("Hi!,"):
             await event.edit(
@@ -129,8 +129,7 @@ async def _(event):
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=186675376)
-            )
+                events.NewMessage(incoming=True, from_users=186675376))
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
@@ -164,8 +163,7 @@ async def _(event):
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=185693644)
-            )
+                events.NewMessage(incoming=True, from_users=185693644))
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:

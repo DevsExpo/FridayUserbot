@@ -54,8 +54,7 @@ async def _(event):
             time.time()
             await mone.edit("Downloading to Local...")
             downloaded_file_name = await bot.download_media(
-                reply_message, Var.TEMP_DOWNLOAD_DIRECTORY
-            )
+                reply_message, Var.TEMP_DOWNLOAD_DIRECTORY)
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))
             return False
@@ -63,9 +62,8 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             required_file_name = downloaded_file_name
-            await mone.edit(
-                "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
-            )
+            await mone.edit("Downloaded to `{}` in {} seconds.".format(
+                downloaded_file_name, ms))
     elif input_str:
         input_str = input_str.strip()
         if os.path.exists(input_str):
@@ -74,7 +72,8 @@ async def _(event):
             required_file_name = input_str
             await mone.edit("Found `{}` in {} seconds.".format(input_str, ms))
         else:
-            await mone.edit("File Not found in local server. Give me a file path :((")
+            await mone.edit(
+                "File Not found in local server. Give me a file path :((")
             return False
     # logger.info(required_file_name)
     if required_file_name:
@@ -91,8 +90,7 @@ async def _(event):
             await event.client.send_message(
                 int(Var.PRIVATE_GROUP_ID),
                 "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`"
-                + token_file_data
-                + "`",
+                + token_file_data + "`",
             )
         # Authorize, get file parameters, upload file and print out result URL
         # for download
@@ -101,18 +99,18 @@ async def _(event):
         # required_file_name will have the full path
         # Sometimes API fails to retrieve starting URI, we wrap it.
         try:
-            g_drive_link = await upload_file(
-                http, required_file_name, file_name, mime_type, mone, parent_id
-            )
+            g_drive_link = await upload_file(http, required_file_name,
+                                             file_name, mime_type, mone,
+                                             parent_id)
             await mone.edit(
                 "__Successfully Uploaded File on G-Drive :__\n[{}]({})".format(
-                    file_name, g_drive_link
-                )
-            )
+                    file_name, g_drive_link))
         except Exception as e:
-            await mone.edit(f"Exception occurred while uploading to gDrive {e}")
+            await mone.edit(f"Exception occurred while uploading to gDrive {e}"
+                            )
     else:
-        await mone.edit("File Not found in local server. Give me a file path :((")
+        await mone.edit(
+            "File Not found in local server. Give me a file path :((")
 
 
 # @command(pattern="^.drivesch ?(.*)")
@@ -136,8 +134,7 @@ async def sch(event):
         await event.client.send_message(
             int(Var.PRIVATE_GROUP_ID),
             "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`"
-            + token_file_data
-            + "`",
+            + token_file_data + "`",
         )
         # Authorize, get file parameters, upload file and print out result URL
         # for download
@@ -145,12 +142,12 @@ async def sch(event):
     input_str = event.pattern_match.group(1).strip()
     await event.edit("Searching for {} in G-Drive.".format(input_str))
     if parent_id is not None:
-        query = "'{}' in parents and (title contains '{}')".format(parent_id, input_str)
+        query = "'{}' in parents and (title contains '{}')".format(
+            parent_id, input_str)
     else:
         query = "title contains '{}'".format(input_str)
     query = "'{}' in parents and (title contains '{}')".format(
-        parent_id, input_str
-    )  # search_query(parent_id,input_str)
+        parent_id, input_str)  # search_query(parent_id,input_str)
     msg = await gsearch(http, query, input_str)
     await event.edit(str(msg))
 
@@ -160,32 +157,22 @@ async def gsearch(http, query, filename):
     page_token = None
     msg = "**G-Drive Search Query**\n`" + filename + "`\n**Results**\n"
     while True:
-        response = (
-            drive_service.files()
-            .list(
-                q=query,
-                spaces="drive",
-                fields="nextPageToken, items(id, title, mimeType)",
-                pageToken=page_token,
-            )
-            .execute()
-        )
+        response = (drive_service.files().list(
+            q=query,
+            spaces="drive",
+            fields="nextPageToken, items(id, title, mimeType)",
+            pageToken=page_token,
+        ).execute())
         for file in response.get("items", []):
             if file.get("mimeType") == "application/vnd.google-apps.folder":
                 msg += (
-                    "⁍ [{}](https://drive.google.com/drive/folders/{}) (folder)".format(
-                        file.get("title"), file.get("id")
-                    )
-                    + "\n"
-                )
+                    "⁍ [{}](https://drive.google.com/drive/folders/{}) (folder)"
+                    .format(file.get("title"), file.get("id")) + "\n")
             # Process change
             else:
                 msg += (
-                    "⁍ [{}](https://drive.google.com/uc?id={}&export=download)".format(
-                        file.get("title"), file.get("id")
-                    )
-                    + "\n"
-                )
+                    "⁍ [{}](https://drive.google.com/uc?id={}&export=download)"
+                    .format(file.get("title"), file.get("id")) + "\n")
         page_token = response.get("nextPageToken", None)
         if page_token is None:
             break
@@ -225,15 +212,13 @@ async def _(event):
         await event.client.send_message(
             int(Var.PRIVATE_GROUP_ID),
             "Please add Var AUTH_TOKEN_DATA with the following as the value:\n\n`"
-            + token_file_data
-            + "`",
+            + token_file_data + "`",
         )
         # Authorize, get file parameters, upload file and print out result URL for download
         # first, create a sub-directory
         await event.edit("Uploading `{}` to G-Drive...".format(input_str))
         dir_id = await create_directory(
-            http, os.path.basename(os.path.abspath(input_str)), parent_id
-        )
+            http, os.path.basename(os.path.abspath(input_str)), parent_id)
         await DoTeskWithDir(http, input_str, event, dir_id)
         dir_link = "https://drive.google.com/folderview?id={}".format(dir_id)
         await event.edit(
@@ -245,16 +230,24 @@ async def _(event):
 
 async def create_directory(http, directory_name, parent_id):
     drive_service = build("drive", "v2", http=http, cache_discovery=False)
-    permissions = {"role": "reader", "type": "anyone", "value": None, "withLink": True}
-    file_metadata = {"title": directory_name, "mimeType": G_DRIVE_DIR_MIME_TYPE}
+    permissions = {
+        "role": "reader",
+        "type": "anyone",
+        "value": None,
+        "withLink": True
+    }
+    file_metadata = {
+        "title": directory_name,
+        "mimeType": G_DRIVE_DIR_MIME_TYPE
+    }
     if parent_id is not None:
         file_metadata["parents"] = [{"id": parent_id}]
     file = drive_service.files().insert(body=file_metadata).execute()
     file_id = file.get("id")
-    drive_service.permissions().insert(fileId=file_id, body=permissions).execute()
-    logger.info(
-        "Created Gdrive Folder:\nName: {}\nID: {} ".format(file.get("title"), file_id)
-    )
+    drive_service.permissions().insert(fileId=file_id,
+                                       body=permissions).execute()
+    logger.info("Created Gdrive Folder:\nName: {}\nID: {} ".format(
+        file.get("title"), file_id))
     return file_id
 
 
@@ -266,14 +259,15 @@ async def DoTeskWithDir(http, input_directory, event, parent_id):
     for a_c_f_name in list_dirs:
         current_file_name = os.path.join(input_directory, a_c_f_name)
         if os.path.isdir(current_file_name):
-            current_dir_id = await create_directory(http, a_c_f_name, parent_id)
-            r_p_id = await DoTeskWithDir(http, current_file_name, event, current_dir_id)
+            current_dir_id = await create_directory(http, a_c_f_name,
+                                                    parent_id)
+            r_p_id = await DoTeskWithDir(http, current_file_name, event,
+                                         current_dir_id)
         else:
             file_name, mime_type = file_ops(current_file_name)
             # current_file_name will have the full path
-            await upload_file(
-                http, current_file_name, file_name, mime_type, event, parent_id
-            )
+            await upload_file(http, current_file_name, file_name, mime_type,
+                              event, parent_id)
             r_p_id = parent_id
     # TODO: there is a #bug here :(
     return r_p_id
@@ -289,17 +283,17 @@ def file_ops(file_path):
 
 async def create_token_file(token_file, event):
     # Run through the OAuth flow and retrieve credentials
-    flow = OAuth2WebServerFlow(
-        CLIENT_ID, CLIENT_SECRET, OAUTH_SCOPE, redirect_uri=REDIRECT_URI
-    )
+    flow = OAuth2WebServerFlow(CLIENT_ID,
+                               CLIENT_SECRET,
+                               OAUTH_SCOPE,
+                               redirect_uri=REDIRECT_URI)
     authorize_url = flow.step1_get_authorize_url()
     async with bot.conversation(int(Var.PRIVATE_GROUP_ID)) as conv:
         await conv.send_message(
             f"Go to the following link in your browser: {authorize_url} and reply the code"
         )
         response = conv.wait_event(
-            events.NewMessage(outgoing=True, chats=int(Var.PRIVATE_GROUP_ID))
-        )
+            events.NewMessage(outgoing=True, chats=int(Var.PRIVATE_GROUP_ID)))
         response = await response
         code = response.message.message.strip()
         credentials = flow.step2_exchange(code)
@@ -335,7 +329,12 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
     # Permissions body description: anyone who has link can upload
     # Other permissions can be found at
     # https://developers.google.com/drive/v2/reference/permissions
-    permissions = {"role": "reader", "type": "anyone", "value": None, "withLink": True}
+    permissions = {
+        "role": "reader",
+        "type": "anyone",
+        "value": None,
+        "withLink": True
+    }
     # Insert a file
     file = drive_service.files().insert(body=body, media_body=media_body)
     response = None
@@ -366,7 +365,8 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
                     logger.info(str(e))
     file_id = response.get("id")
     # Insert new permissions
-    drive_service.permissions().insert(fileId=file_id, body=permissions).execute()
+    drive_service.permissions().insert(fileId=file_id,
+                                       body=permissions).execute()
     # Define file instance and get url for download
     file = drive_service.files().get(fileId=file_id).execute()
     download_url = file.get("webContentLink")

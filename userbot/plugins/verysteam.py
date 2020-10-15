@@ -37,9 +37,9 @@ async def _(event):
             downloaded_file_name = await borg.download_media(
                 reply_message,
                 Config.TMP_DOWNLOAD_DIRECTORY,
-                progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, mone, c_time, "trying to download")
-                ),
+                progress_callback=lambda d, t: asyncio.get_event_loop(
+                ).create_task(
+                    progress(d, t, mone, c_time, "trying to download")),
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))
@@ -48,9 +48,8 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             required_file_name = downloaded_file_name
-            await mone.edit(
-                "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
-            )
+            await mone.edit("Downloaded to `{}` in {} seconds.".format(
+                downloaded_file_name, ms))
     elif input_str:
         input_str = input_str.strip()
         if os.path.exists(input_str):
@@ -59,7 +58,8 @@ async def _(event):
             required_file_name = input_str
             await mone.edit("Found `{}` in {} seconds.".format(input_str, ms))
         else:
-            await mone.edit("File Not found in local server. Give me a file path :((")
+            await mone.edit(
+                "File Not found in local server. Give me a file path :((")
             return False
     # logger.info(required_file_name)
     if required_file_name:
@@ -93,14 +93,17 @@ async def _(event):
                     url = step_one_response_text["result"]["url"]
                     await mone.edit(f"Start Uploading to {url}")
                     start = datetime.now()
-                    files = {"file1": (file_name, open(required_file_name, "rb"))}
+                    files = {
+                        "file1": (file_name, open(required_file_name, "rb"))
+                    }
                     resp = requests.post(url, files=files)
                     step_two_response_text = resp.json()
                     # logger.info(step_two_response_text)
                     if step_two_response_text["status"] == 200:
                         output_str = json.dumps(
-                            step_two_response_text["result"], sort_keys=True, indent=4
-                        )
+                            step_two_response_text["result"],
+                            sort_keys=True,
+                            indent=4)
                         stream_url = step_two_response_text["result"]["url"]
                         end = datetime.now()
                         ms = (end - start).seconds
@@ -126,7 +129,8 @@ async def _(event):
                     f"VeryStream returned {step_zero_response_text['status']} => {step_zero_response_text['msg']}, after STEP INIT"
                 )
     else:
-        await mone.edit("File Not found in local server. Give me a file path :((")
+        await mone.edit(
+            "File Not found in local server. Give me a file path :((")
 
 
 def get_sha_one_hash(input_file, chunk_size):

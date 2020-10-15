@@ -50,10 +50,9 @@ async def _(event):
             ms_two = (end_two - end).seconds
             await event.edit(
                 "Downloaded in {} seconds. Uploaded in {} seconds.".format(
-                    ms_one, ms_two
-                )
-            )
+                    ms_one, ms_two))
         else:
             await event.edit("File Not Found {}".format(input_str))
     else:
-        await event.edit("Syntax // .rnupload file.name as reply to a Telegram media")
+        await event.edit(
+            "Syntax // .rnupload file.name as reply to a Telegram media")

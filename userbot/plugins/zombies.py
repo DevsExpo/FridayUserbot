@@ -36,7 +36,6 @@ BANNED_RIGHTS = ChatBannedRights(
     embed_links=True,
 )
 
-
 UNBAN_RIGHTS = ChatBannedRights(
     until_date=None,
     send_messages=None,
@@ -67,6 +66,7 @@ async def rm_deletedacc(show):
         if del_u > 0:
             del_status = f"`Found` **{del_u}** ghost/deleted/zombie account(s) in this group,\
             \nclean them by using `.zombies clean`"
+
         await show.edit(del_status)
         return
 
@@ -88,15 +88,15 @@ async def rm_deletedacc(show):
         if user.deleted:
             try:
                 await show.client(
-                    EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS)
-                )
+                    EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS))
             except ChatAdminRequiredError:
                 await show.edit("`I don't have ban rights in this group`")
                 return
             except UserAdminInvalidError:
                 del_u -= 1
                 del_a += 1
-            await show.client(EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
+            await show.client(
+                EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
             del_u += 1
 
     if del_u > 0:
@@ -130,7 +130,8 @@ async def rm_deletedacc(show):
     del_status = "`No deleted accounts found, Group is clean`"
 
     if con != "clean":
-        avengers = await show.reply("`Searching for ghost/deleted/zombie accounts...`")
+        avengers = await show.reply(
+            "`Searching for ghost/deleted/zombie accounts...`")
         await asyncio.sleep(2)
         await avengers.delete()
         async for user in show.client.iter_participants(show.chat_id):
@@ -141,6 +142,7 @@ async def rm_deletedacc(show):
         if del_u > 0:
             del_status = f"`Found` **{del_u}** ghost/deleted/zombie account(s) in this group,\
             \nclean them by using `.zombies clean`"
+
         await show.reply(del_status)
         return
 
@@ -154,7 +156,8 @@ async def rm_deletedacc(show):
         await show.reply("`I am not an admin here!`")
         return
 
-    avengers2 = await show.reply("`Deleting deleted accounts...\nOh I can do that?!?!`")
+    avengers2 = await show.reply(
+        "`Deleting deleted accounts...\nOh I can do that?!?!`")
     await asyncio.sleep(2)
     await avengers2.delete()
     del_u = 0
@@ -164,15 +167,15 @@ async def rm_deletedacc(show):
         if user.deleted:
             try:
                 await show.client(
-                    EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS)
-                )
+                    EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS))
             except ChatAdminRequiredError:
                 await show.reply("`I don't have ban rights in this group`")
                 return
             except UserAdminInvalidError:
                 del_u -= 1
                 del_a += 1
-            await show.client(EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
+            await show.client(
+                EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
             del_u += 1
 
     if del_u > 0:
@@ -187,10 +190,9 @@ async def rm_deletedacc(show):
     await avengers3.delete()
 
 
-CMD_HELP.update(
-    {
-        "zombies": ".zombies\
+CMD_HELP.update({
+    "zombies":
+    ".zombies\
 \nUsage: Searches for deleted accounts in a group. Use .delusers clean to remove deleted accounts from the group.\
 "
-    }
-)
+})

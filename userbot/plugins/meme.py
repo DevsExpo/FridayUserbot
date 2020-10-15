@@ -54,34 +54,12 @@ async def meme(event):
     await event.edit(flower + flower + flower + "      ")
     await event.edit(flower + flower + flower + flower + "     ")
     await event.edit(flower + flower + flower + flower + flower + "    ")
-    await event.edit(
-        flower + flower + flower + flower + flower + flower + flower + "   "
-    )
-    await event.edit(
-        flower + flower + flower + flower + flower + flower + flower + flower + "  "
-    )
-    await event.edit(
-        flower
-        + flower
-        + flower
-        + flower
-        + flower
-        + flower
-        + flower
-        + flower
-        + flower
-        + " "
-    )
-    await event.edit(
-        flower
-        + flower
-        + flower
-        + flower
-        + flower
-        + flower
-        + flower
-        + flower
-        + flower
-        + flower
-    )
+    await event.edit(flower + flower + flower + flower + flower + flower +
+                     flower + "   ")
+    await event.edit(flower + flower + flower + flower + flower + flower +
+                     flower + flower + "  ")
+    await event.edit(flower + flower + flower + flower + flower + flower +
+                     flower + flower + flower + " ")
+    await event.edit(flower + flower + flower + flower + flower + flower +
+                     flower + flower + flower + flower)
     await asyncio.sleep(sleepValue)
