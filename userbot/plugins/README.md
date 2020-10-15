@@ -11,7 +11,7 @@ The Mandatory Imports are now automatically imported.
 Now I will show a short script to show the formation of the desired script.
 ```python3
 @command(pattern="^.alive", outgoing=True)
-async def hello_world(event):
+async def world_world(event):
     if event.fwd_from:
         return
     await event.edit("**HELLO WORLD**\n\nThe following is controlling me too!\n" + Var.SUDO_USERS)

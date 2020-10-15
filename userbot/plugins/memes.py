@@ -973,11 +973,11 @@ async def zal(zgfy):
 
 
 @register(outgoing=True, pattern="^.hi$")
-async def hoi(hello):
+async def hoi(world):
     """ Greet everyone! """
-    if not hello.text[0].isalpha() and hello.text[0] not in ("/", "#", "@",
+    if not world.text[0].isalpha() and world.text[0] not in ("/", "#", "@",
                                                              "!"):
-        await hello.edit(random.choice(HELLOSTR))
+        await world.edit(random.choice(HELLOSTR))
 
 
 @register(outgoing=True, pattern="^.kill$")
