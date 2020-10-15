@@ -2,7 +2,9 @@ import time
 from datetime import datetime
 
 from userbot import Lastupdate
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot.utils import admin_cmd
+from userbot.utils import edit_or_reply
+from userbot.utils import sudo_cmd
 
 
 def get_readable_time(seconds: int) -> str:

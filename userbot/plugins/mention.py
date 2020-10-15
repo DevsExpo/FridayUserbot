@@ -1,6 +1,5 @@
 # For Uniborg
 # (c) @INF1N17Y
-
 from uniborg.util import admin_cmd
 
 

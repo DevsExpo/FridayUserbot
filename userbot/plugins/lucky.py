@@ -4,8 +4,6 @@
 Available Commands:
 
 .lucky"""
-
-
 import asyncio
 
 from uniborg.util import admin_cmd

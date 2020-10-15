@@ -1,6 +1,5 @@
 """Take screenshot of any website
 Syntax: .screenlong <Website URL>"""
-
 import io
 import traceback
 from datetime import datetime

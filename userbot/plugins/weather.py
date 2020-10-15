@@ -1,7 +1,6 @@
 """Get weather data using OpenWeatherMap
 Syntax: .weather <Location>
 .wttr <location> """
-
 import io
 import time
 

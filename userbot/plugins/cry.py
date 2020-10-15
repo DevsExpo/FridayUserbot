@@ -1,5 +1,4 @@
 """Use cmd `.cry` to cry"""
-
 import asyncio
 
 from uniborg.util import admin_cmd

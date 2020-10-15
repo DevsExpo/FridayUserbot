@@ -2,7 +2,6 @@
 """Rename Telegram Files
 Syntax:
 .rnupload file.name"""
-
 import os
 import time
 from datetime import datetime

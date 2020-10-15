@@ -1,7 +1,6 @@
 # For UniBorg
 # By Priyam Kalra
 # Syntax (.hl <link>)
-
 from userbot.utils import admin_cmd
 
 

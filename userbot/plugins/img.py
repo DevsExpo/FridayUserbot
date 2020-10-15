@@ -2,13 +2,14 @@
 Syntax: `.img <Name>` or `.img (replied message)`
 \n Upgraded and Google Image Error Fixed
 """
-
 import os
 import shutil
 from re import findall
 
 from userbot.googol_images import googleimagesdownload
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot.utils import admin_cmd
+from userbot.utils import edit_or_reply
+from userbot.utils import sudo_cmd
 
 
 @friday.on(admin_cmd(pattern="img ?(.*)"))

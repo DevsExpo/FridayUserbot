@@ -6,8 +6,8 @@ import asyncio
 
 import requests
 from bs4 import BeautifulSoup
-from telethon.errors.rpcerrorlist import (UserAlreadyParticipantError,
-                                          YouBlockedUserError)
+from telethon.errors.rpcerrorlist import UserAlreadyParticipantError
+from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
 from userbot.utils import admin_cmd

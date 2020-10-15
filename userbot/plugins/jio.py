@@ -4,8 +4,6 @@ Available Commands:
 .emoji apple
 .emoji :/
 .emoji -_-"""
-
-
 import asyncio
 
 from uniborg.util import admin_cmd

@@ -2,14 +2,12 @@
 Pornhub downloader by @anubisxx
 Syntax: .phd link
 """
-
-
 import asyncio
 
 import requests
 from bs4 import BeautifulSoup
-from telethon.errors.rpcerrorlist import (UserAlreadyParticipantError,
-                                          YouBlockedUserError)
+from telethon.errors.rpcerrorlist import UserAlreadyParticipantError
+from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 

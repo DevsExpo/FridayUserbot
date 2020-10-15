@@ -9,8 +9,6 @@ Syntax: .qt
   edited by : @mahshook_bot
 
 """
-
-
 import asyncio
 import random
 

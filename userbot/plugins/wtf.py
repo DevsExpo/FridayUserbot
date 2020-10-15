@@ -3,8 +3,6 @@
 Available Commands:
 
 .wtf"""
-
-
 import asyncio
 
 from userbot.utils import admin_cmd

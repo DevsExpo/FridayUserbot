@@ -6,7 +6,9 @@ from datetime import datetime
 
 import requests
 
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot.utils import admin_cmd
+from userbot.utils import edit_or_reply
+from userbot.utils import sudo_cmd
 
 
 def progress(current, total):

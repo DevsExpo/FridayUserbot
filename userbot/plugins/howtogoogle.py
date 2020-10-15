@@ -4,7 +4,6 @@ Animate How To Google
 Command .ggl Search Query
 By @loxxi
 """
-
 import requests
 
 from userbot.utils import admin_cmd

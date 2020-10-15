@@ -2,7 +2,8 @@
 Syntax: .color <color_code>"""
 import os
 
-from PIL import Image, ImageColor
+from PIL import Image
+from PIL import ImageColor
 
 from userbot.utils import admin_cmd
 

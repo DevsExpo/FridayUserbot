@@ -7,10 +7,13 @@ from functools import partial
 from telethon import events
 from telethon.extensions.markdown import DEFAULT_URL_RE
 from telethon.tl.functions.messages import EditMessageRequest
-from telethon.tl.types import (MessageEntityBold, MessageEntityCode,
-                               MessageEntityItalic, MessageEntityPre,
-                               MessageEntityTextUrl)
-from telethon.utils import add_surrogate, del_surrogate
+from telethon.tl.types import MessageEntityBold
+from telethon.tl.types import MessageEntityCode
+from telethon.tl.types import MessageEntityItalic
+from telethon.tl.types import MessageEntityPre
+from telethon.tl.types import MessageEntityTextUrl
+from telethon.utils import add_surrogate
+from telethon.utils import del_surrogate
 
 
 def parse_url_match(m):

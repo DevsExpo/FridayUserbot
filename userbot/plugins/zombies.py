@@ -6,16 +6,17 @@
 Usage: Searches for deleted accounts in a groups and channels.
 Use .zombies clean to remove deleted accounts from the groups and channels.
 \nPorted by ©[NIKITA](t.me/kirito6969) and ©[EYEPATCH](t.me/NeoMatrix90)"""
-
 import asyncio
 from asyncio import sleep
 
-from telethon.errors import ChatAdminRequiredError, UserAdminInvalidError
+from telethon.errors import ChatAdminRequiredError
+from telethon.errors import UserAdminInvalidError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 
 from userbot import CMD_HELP
-from userbot.utils import admin_cmd, sudo_cmd
+from userbot.utils import admin_cmd
+from userbot.utils import sudo_cmd
 
 #
 BOTLOG = True

@@ -1,6 +1,8 @@
 import random
 
-from uniborg.util import admin_cmd, edit_or_reply, sudo_cmd
+from uniborg.util import admin_cmd
+from uniborg.util import edit_or_reply
+from uniborg.util import sudo_cmd
 
 METOOSTR = [
     "`Me too thanks`",

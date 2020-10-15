@@ -1,6 +1,4 @@
 """COMMAND : .eye"""
-
-
 import asyncio
 
 from userbot.utils import admin_cmd

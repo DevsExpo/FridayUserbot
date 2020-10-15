@@ -3,8 +3,6 @@ Available Commands:
 .support
 Credits to noone
 """
-
-
 import asyncio
 
 from userbot.utils import admin_cmd

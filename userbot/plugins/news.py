@@ -2,10 +2,11 @@
 # Don't edit credits
 # Works On Bases Of Cyberboysumanjay's Inshorts News Api
 # Test
-
 import requests
 
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot.utils import admin_cmd
+from userbot.utils import edit_or_reply
+from userbot.utils import sudo_cmd
 from var import Var
 
 newslog = Var.NEWS_CHANNEL_ID
