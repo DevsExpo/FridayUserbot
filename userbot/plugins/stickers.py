@@ -48,7 +48,7 @@ async def _(event):
     if not user.username:
         user.username = user.id
     pack = 1
-    userid = event.from_id
+    userid = event.sender_id
     # packname = f"FRIDAY PACK"
     # packshortname = f"FRIDAY_{userid}_ns"  # format: Uni_Borg_userid
     if userid == 1263617196:

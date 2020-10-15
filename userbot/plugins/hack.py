@@ -20,7 +20,7 @@ async def _(event):
             GetFullUserRequest(reply_message.from_id))
         firstname = replied_user.user.first_name
         usname = replied_user.user.username
-        useri_d = event.from_id
+        useri_d = event.sender_id
         if useri_d == 1263617196:
             await event.edit(
                 "This is My Master\nI can't hack my master's Account\n**How dare you trying to hack my master's account nigger!**\n\n__Your account has been hacked! Pay 69$ to my master__ @StarkxD __to release your account__"
