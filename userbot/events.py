@@ -117,12 +117,11 @@ def register(**args):
 
                     ftext += "\n\n\nLast 10 commits:\n"
 
-                    process = await asyncsubshell(command,
-                                                  stdout=asyncsub.PIPE,
-                                                  stderr=asyncsub.PIPE)
+                    process = await asyncsubshell(
+                        command, stdout=asyncsub.PIPE, stderr=asyncsub.PIPE
+                    )
                     stdout, stderr = await process.communicate()
-                    result = str(stdout.decode().strip()) + str(
-                        stderr.decode().strip())
+                    result = str(stdout.decode().strip()) + str(stderr.decode().strip())
 
                     ftext += result
 
@@ -136,9 +135,7 @@ def register(**args):
                         \nThe error logs are stored in the userbot's log chat.`"
                         )
 
-                    await check.client.send_file(send_to,
-                                                 "error.log",
-                                                 caption=text)
+                    await check.client.send_file(send_to, "error.log", caption=text)
                     remove("error.log")
             else:
                 pass
