@@ -20,10 +20,10 @@ heroku_api = "https://api.heroku.com"
 
 @friday.on(
     friday_on_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)",
-              outgoing=True))
+                  outgoing=True))
 @friday.on(
     friday_friday_sudo_cmd(pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)",
-             allow_sudo=True))
+                           allow_sudo=True))
 async def variable(var):
     """
     Manage most of ConfigVars setting, set new var, get current var,
@@ -215,8 +215,7 @@ async def _(givelogs):
         givelogs.chat_id,
         "logs.txt",
         reply_to=givelogs.id,
-        caption=
-        "Logs Collected Using Heroku \n For More Support Visit @FridayOT",
+        caption="Logs Collected Using Heroku \n For More Support Visit @FridayOT",
     )
     await edit_or_reply(givelogs, "`Logs Send Sucessfully ! `")
     await asyncio.sleep(5)

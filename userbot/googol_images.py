@@ -285,8 +285,7 @@ def user_input():
         parser.add_argument(
             "-wr",
             "--time_range",
-            help=
-            'time range for the age of the image. should be in the format {"time_min":"MM/DD/YYYY","time_max":"MM/DD/YYYY"}',
+            help='time range for the age of the image. should be in the format {"time_min":"MM/DD/YYYY","time_max":"MM/DD/YYYY"}',
             type=str,
             required=False,
         )
@@ -372,8 +371,7 @@ def user_input():
             "-la",
             "--language",
             default=False,
-            help=
-            "Defines the language filter. The search results are authomatically returned in that language",
+            help="Defines the language filter. The search results are authomatically returned in that language",
             type=str,
             required=False,
             choices=[
@@ -411,8 +409,7 @@ def user_input():
             "-pr",
             "--prefix",
             default=False,
-            help=
-            "A word that you would want to prefix in front of each image name",
+            help="A word that you would want to prefix in front of each image name",
             type=str,
             required=False,
         )
@@ -426,8 +423,7 @@ def user_input():
         parser.add_argument(
             "-cd",
             "--chromedriver",
-            help=
-            "specify the path to chromedriver executable in your local machine",
+            help="specify the path to chromedriver executable in your local machine",
             type=str,
             required=False,
         )
@@ -463,8 +459,7 @@ def user_input():
             "-nd",
             "--no_download",
             default=False,
-            help=
-            "Prints the URLs of the images and/or thumbnails without downloading them",
+            help="Prints the URLs of the images and/or thumbnails without downloading them",
             action="store_true",
         )
         parser.add_argument(
@@ -478,15 +473,13 @@ def user_input():
             "-sil",
             "--silent_mode",
             default=False,
-            help=
-            "Remains silent. Does not print notification messages on the terminal",
+            help="Remains silent. Does not print notification messages on the terminal",
             action="store_true",
         )
         parser.add_argument(
             "-is",
             "--save_source",
-            help=
-            "creates a text file containing a list of downloaded images along with source page url",
+            help="creates a text file containing a list of downloaded images along with source page url",
             type=str,
             required=False,
         )

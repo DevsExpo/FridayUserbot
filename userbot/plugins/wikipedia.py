@@ -20,5 +20,6 @@ async def _(event):
         url = page.url
         result += f"> [{s}]({url}) \n"
     await event.edit(
-        "WikiPedia **Search**: {} \n\n **Result**: \n\n{}".format(input_str, result)
+        "WikiPedia **Search**: {} \n\n **Result**: \n\n{}".format(
+            input_str, result)
     )

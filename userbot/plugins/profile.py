@@ -15,7 +15,8 @@ async def _(event):
     bio = event.pattern_match.group(1)
     try:
         await borg(
-            functions.account.UpdateProfileRequest(about=bio)  # pylint:disable=E0602
+            functions.account.UpdateProfileRequest(
+                about=bio)  # pylint:disable=E0602
         )
         await event.edit("Succesfully changed my profile bio")
     except Exception as e:  # pylint:disable=C0103,W0703

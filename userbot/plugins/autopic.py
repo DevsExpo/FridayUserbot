@@ -39,7 +39,8 @@ async def autopic(event):
         file = await bot.upload_file(photo)  # pylint:disable=E0602
         try:
             await bot(
-                functions.photos.UploadProfilePhotoRequest(file)  # pylint:disable=E0602
+                functions.photos.UploadProfilePhotoRequest(
+                    file)  # pylint:disable=E0602
             )
             os.remove(photo)
             counter -= 30
