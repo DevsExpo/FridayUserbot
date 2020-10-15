@@ -27,8 +27,7 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=830109936)
-            )
+                events.NewMessage(incoming=True, from_users=830109936))
             message = await event.client.forward_messages(chat, reply_message)
             await message.reply("🔋 Battery")
 
@@ -46,8 +45,9 @@ async def _(event):
         else:
             await event.delete()
             await event.client.send_message(
-                event.chat_id, response.message, reply_to=event.message.reply_to_msg_id
-            )
+                event.chat_id,
+                response.message,
+                reply_to=event.message.reply_to_msg_id)
 
 
 @friday.on(friday_on_cmd(pattern="pmute ?(.*)", allow_sudo=True))
@@ -71,8 +71,7 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=830109936)
-            )
+                events.NewMessage(incoming=True, from_users=830109936))
             message = await event.client.forward_messages(chat, reply_message)
             await message.reply("/ring_mode silent")
 
@@ -90,8 +89,9 @@ async def _(event):
         else:
             await event.delete()
             await event.client.send_message(
-                event.chat_id, response.message, reply_to=event.message.reply_to_msg_id
-            )
+                event.chat_id,
+                response.message,
+                reply_to=event.message.reply_to_msg_id)
 
 
 @friday.on(friday_on_cmd(pattern="pring ?(.*)", allow_sudo=True))
@@ -115,8 +115,7 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=830109936)
-            )
+                events.NewMessage(incoming=True, from_users=830109936))
             message = await event.client.forward_messages(chat, reply_message)
             await message.reply("/ring_mode normal")
 
@@ -134,8 +133,9 @@ async def _(event):
         else:
             await event.delete()
             await event.client.send_message(
-                event.chat_id, response.message, reply_to=event.message.reply_to_msg_id
-            )
+                event.chat_id,
+                response.message,
+                reply_to=event.message.reply_to_msg_id)
 
 
 @friday.on(friday_on_cmd(pattern="pvibrate ?(.*)", allow_sudo=True))
@@ -159,8 +159,7 @@ async def _(event):
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=830109936)
-            )
+                events.NewMessage(incoming=True, from_users=830109936))
             message = await event.client.forward_messages(chat, reply_message)
             await message.reply("/ring_mode vibrate")
 
@@ -178,5 +177,6 @@ async def _(event):
         else:
             await event.delete()
             await event.client.send_message(
-                event.chat_id, response.message, reply_to=event.message.reply_to_msg_id
-            )
+                event.chat_id,
+                response.message,
+                reply_to=event.message.reply_to_msg_id)

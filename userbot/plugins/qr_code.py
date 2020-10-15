@@ -12,11 +12,8 @@ from uniborg.util import friday_on_cmd
 
 
 def progress(current, total):
-    logger.info(
-        "Downloaded {} of {}\nCompleted {}".format(
-            current, total, (current / total) * 100
-        )
-    )
+    logger.info("Downloaded {} of {}\nCompleted {}".format(
+        current, total, (current / total) * 100))
 
 
 @friday.on(friday_on_cmd(pattern="getqr"))
@@ -54,15 +51,15 @@ async def _(event):
     if not t_response:
         logger.info(e_response)
         logger.info(t_response)
-        await event.edit("@oo0pps .. something wrongings. Failed to decode QRCode")
+        await event.edit(
+            "@oo0pps .. something wrongings. Failed to decode QRCode")
         return
     soup = BeautifulSoup(t_response, "html.parser")
     qr_contents = soup.find_all("pre")[0].text
     end = datetime.now()
     ms = (end - start).seconds
-    await event.edit(
-        "Obtained QRCode contents in {} seconds.\n{}".format(ms, qr_contents)
-    )
+    await event.edit("Obtained QRCode contents in {} seconds.\n{}".format(
+        ms, qr_contents))
     await asyncio.sleep(5)
     await event.edit(qr_contents)
 

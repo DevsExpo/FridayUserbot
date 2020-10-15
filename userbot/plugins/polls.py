@@ -22,16 +22,13 @@ async def _(event):
         question = poll.question
         edit_caption = """Poll is Closed: {}
 Question: {}
-Answers: \n""".format(
-            closed_status, question
-        )
+Answers: \n""".format(closed_status, question)
         if closed_status:
             results = media.results
             i = 0
             for result in results.results:
                 edit_caption += "{}> {}    {}\n".format(
-                    result.option, answers[i].text, result.voters
-                )
+                    result.option, answers[i].text, result.voters)
                 i += 1
             edit_caption += "Total Voters: {}".format(results.total_voters)
         else:

@@ -301,48 +301,39 @@ async def checker(e):
                 # out_msg.append("Region: "+region)
                 # out_msg.append("\nlatestVersion: "+latestVersion[:16])
                 if outandroid != 0 and flagship != True:
-                    data.append(
-                        "<br/>"
-                        + "<b>Model</b> : "
-                        + model
-                        + "<br/>"
-                        + "<b>Region</b> : "
-                        + region
-                        + "<br/>"
-                        + "<b>Latest Version</b> : "
-                        + str(latestVersion[:16])
-                        + "<br/>"
-                    )
+                    data.append("<br/>" + "<b>Model</b> : " + model + "<br/>" +
+                                "<b>Region</b> : " + region + "<br/>" +
+                                "<b>Latest Version</b> : " +
+                                str(latestVersion[:16]) + "<br/>")
                     if latestVersion[9] == "C" or latestVersion[10] == "C":
                         if outandroid == 7:
                             piecount = piecount + 1
                         outandroid = outandroid + 2
-                        data.append(
-                            "<b>Android Version</b> : " + str(outandroid) + "<br/>"
-                        )
+                        data.append("<b>Android Version</b> : " +
+                                    str(outandroid) + "<br/>")
                         # bot.reply_to(message,'Region : {}\nLatest Version : {}\nAndroid Version : {}\nNumber of Pie Testing Regions : {}'.format(region,latestVersion[:16],str(outandroid),piecount))
                     elif latestVersion[9] == "B" or latestVersion[10] == "B":
                         if outandroid == 8:
                             piecount = piecount + 1
                         outandroid = outandroid + 1
-                        data.append(
-                            "<b>Android Version</b> : " + str(outandroid) + "<br/>"
-                        )
+                        data.append("<b>Android Version</b> : " +
+                                    str(outandroid) + "<br/>")
                         # bot.reply_to(message,'Region : {}\nLatest Version : {}\nAndroid Version : {}\nNumber of Pie Testing Regions : {}'.format(region,latestVersion[:16],str(outandroid+1),piecount))
                     else:
                         if outandroid == 9:
                             piecount = piecount + 1
-                        data.append(
-                            "<b>Android Version</b> : " + str(outandroid) + "<br/>"
-                        )
+                        data.append("<b>Android Version</b> : " +
+                                    str(outandroid) + "<br/>")
                     # bot.reply_to(message,'Region : {}\nLatest Version : {}\nAndroid Version : {}\nNumber of Pie Testing Regions : {}'.format(region,latestVersion[:16],str(outandroid),piecount))
                     # print("\nAndroid Version : " + str(outandroid)+"\n")
                 # bot.reply_to(message,'Region : {}\nLatest Version : {}'.format(region,latestVersion[:16]))
-                data.append("--------------------------------------------------")
+                data.append(
+                    "--------------------------------------------------")
             except IndexError:
                 gc.collect()
             outandroid = temp
-        data.append("<br/><b>Number of Pie Tests</b> : " + str(piecount) + "<br/>")
+        data.append("<br/><b>Number of Pie Tests</b> : " + str(piecount) +
+                    "<br/>")
         data = str(data)
         data = data.replace("['", "")
         data = data.replace(",", "")
@@ -351,16 +342,11 @@ async def checker(e):
         response = telegraph.create_page(modelnum[9:], html_content=data)
 
         await e.edit("All Done !")
-        await wait(
-            [
-                e.respond(
-                    "Here is The Complete List of Firmwares for "
-                    + modelnum[9:]
-                    + " That are currently in testing "
-                    + ": \nhttps://telegra.ph/{}".format(response["path"])
-                )
-            ]
-        )
+        await wait([
+            e.respond("Here is The Complete List of Firmwares for " +
+                      modelnum[9:] + " That are currently in testing " +
+                      ": \nhttps://telegra.ph/{}".format(response["path"]))
+        ])
         print("ALL DONE! Kthxbye now")
         await e.delete()
 
@@ -404,48 +390,39 @@ async def checker(e):
                 # out_msg.append("Region: "+region)
                 # out_msg.append("\nlatestVersion: "+latestVersion[:16])
                 if outandroid != 0 and flagship != True:
-                    data.append(
-                        "<br/>"
-                        + "<b>Model</b> : "
-                        + model
-                        + "<br/>"
-                        + "<b>Region</b> : "
-                        + region
-                        + "<br/>"
-                        + "<b>Latest Version</b> : "
-                        + str(latestVersion[:16])
-                        + "<br/>"
-                    )
+                    data.append("<br/>" + "<b>Model</b> : " + model + "<br/>" +
+                                "<b>Region</b> : " + region + "<br/>" +
+                                "<b>Latest Version</b> : " +
+                                str(latestVersion[:16]) + "<br/>")
                     if latestVersion[9] == "C" or latestVersion[10] == "C":
                         if outandroid == 7:
                             piecount = piecount + 1
                         outandroid = outandroid + 2
-                        data.append(
-                            "<b>Android Version</b> : " + str(outandroid) + "<br/>"
-                        )
+                        data.append("<b>Android Version</b> : " +
+                                    str(outandroid) + "<br/>")
                         # bot.reply_to(message,'Region : {}\nLatest Version : {}\nAndroid Version : {}\nNumber of Pie Testing Regions : {}'.format(region,latestVersion[:16],str(outandroid),piecount))
                     elif latestVersion[9] == "B" or latestVersion[10] == "B":
                         if outandroid == 8:
                             piecount = piecount + 1
                         outandroid = outandroid + 1
-                        data.append(
-                            "<b>Android Version</b> : " + str(outandroid) + "<br/>"
-                        )
+                        data.append("<b>Android Version</b> : " +
+                                    str(outandroid) + "<br/>")
                         # bot.reply_to(message,'Region : {}\nLatest Version : {}\nAndroid Version : {}\nNumber of Pie Testing Regions : {}'.format(region,latestVersion[:16],str(outandroid+1),piecount))
                     else:
                         if outandroid == 9:
                             piecount = piecount + 1
-                        data.append(
-                            "<b>Android Version</b> : " + str(outandroid) + "<br/>"
-                        )
+                        data.append("<b>Android Version</b> : " +
+                                    str(outandroid) + "<br/>")
                     # bot.reply_to(message,'Region : {}\nLatest Version : {}\nAndroid Version : {}\nNumber of Pie Testing Regions : {}'.format(region,latestVersion[:16],str(outandroid),piecount))
                     # print("\nAndroid Version : " + str(outandroid)+"\n")
                 # bot.reply_to(message,'Region : {}\nLatest Version : {}'.format(region,latestVersion[:16]))
-                data.append("--------------------------------------------------")
+                data.append(
+                    "--------------------------------------------------")
             except IndexError:
                 gc.collect()
             outandroid = temp
-        data.append("<br/><b>Number of Pie Tests</b> : " + str(piecount) + "<br/>")
+        data.append("<br/><b>Number of Pie Tests</b> : " + str(piecount) +
+                    "<br/>")
         data = str(data)
         data = data.replace("['", "")
         data = data.replace(",", "")
@@ -454,14 +431,10 @@ async def checker(e):
         response = telegraph.create_page(modelnum[9:], html_content=data)
 
         await e.edit("All Done !")
-        await wait(
-            [
-                e.respond(
-                    "Here is The Complete List of Firmwares for "
-                    + modelnum[9:]
-                    + ": \nhttps://telegra.ph/{}".format(response["path"])
-                )
-            ]
-        )
+        await wait([
+            e.respond("Here is The Complete List of Firmwares for " +
+                      modelnum[9:] +
+                      ": \nhttps://telegra.ph/{}".format(response["path"]))
+        ])
         print("ALL DONE! Kthxbye now")
         await e.delete()

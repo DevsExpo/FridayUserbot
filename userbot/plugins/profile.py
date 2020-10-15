@@ -34,9 +34,8 @@ async def _(event):
     try:
         await borg(
             functions.account.UpdateProfileRequest(  # pylint:disable=E0602
-                first_name=first_name, last_name=last_name
-            )
-        )
+                first_name=first_name,
+                last_name=last_name))
         await event.edit("My name was changed successfully")
     except Exception as e:  # pylint:disable=C0103,W0703
         await event.edit(str(e))
@@ -53,7 +52,8 @@ async def _(event):
     photo = None
     try:
         photo = await borg.download_media(  # pylint:disable=E0602
-            reply_message, Config.TMP_DOWNLOAD_DIRECTORY  # pylint:disable=E0602
+            reply_message,
+            Config.TMP_DOWNLOAD_DIRECTORY  # pylint:disable=E0602
         )
     except Exception as e:  # pylint:disable=C0103,W0703
         await event.edit(str(e))
@@ -64,9 +64,7 @@ async def _(event):
             try:
                 await borg(
                     functions.photos.UploadProfilePhotoRequest(  # pylint:disable=E0602
-                        file
-                    )
-                )
+                        file))
             except Exception as e:  # pylint:disable=C0103,W0703
                 await event.edit(str(e))
             else:

@@ -9,7 +9,8 @@ async def _(event):
         return
     mentions = "@admin: **Spam Spotted**"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
+    async for x in borg.iter_participants(chat,
+                                          filter=ChannelParticipantsAdmins):
         mentions += f"[\u2063](tg://user?id={x.id})"
     reply_message = None
     if event.reply_to_msg_id:

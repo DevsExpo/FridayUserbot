@@ -18,14 +18,14 @@ async def _(event):
             currency_from = input_sgra[1].upper()
             currency_to = input_sgra[2].upper()
             request_url = "https://api.exchangeratesapi.io/latest?base={}".format(
-                currency_from
-            )
+                currency_from)
             current_response = requests.get(request_url).json()
             if currency_to in current_response["rates"]:
                 current_rate = float(current_response["rates"][currency_to])
                 rebmun = round(number * current_rate, 2)
                 await event.edit(
-                    "**According to current rates,**\n {} **{}** = {} **{}**\n \n●▬▬▬▬▬ஜ۩❀۩ஜ▬▬▬▬▬●\n\n**Current Conversion Rates:**\n 1 **{}** = {} **{}**".format(
+                    "**According to current rates,**\n {} **{}** = {} **{}**\n \n●▬▬▬▬▬ஜ۩❀۩ஜ▬▬▬▬▬●\n\n**Current Conversion Rates:**\n 1 **{}** = {} **{}**"
+                    .format(
                         number,
                         currency_from,
                         rebmun,
@@ -33,8 +33,7 @@ async def _(event):
                         currency_from,
                         current_rate,
                         currency_to,
-                    )
-                )
+                    ))
             else:
                 await event.edit(
                     "Welp, Hate to tell yout this but this Currency isn't supported **yet**.\n__Try__ `.currencies` __for a list of supported currencies.__"
@@ -59,7 +58,6 @@ async def list(ups):
     for key, value in dil_wale_puch_de_na_chaaa.items():
         await borg.send_message(
             ups.chat_id,
-            "**List of currencies:**\n {}\n*Tip:** Use `.gs` currency_code for more details on the currency.".format(
-                key
-            ),
+            "**List of currencies:**\n {}\n*Tip:** Use `.gs` currency_code for more details on the currency."
+            .format(key),
         )

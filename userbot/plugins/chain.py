@@ -18,10 +18,9 @@ async def _(event):
         reply = await message.get_reply_message()
         if reply is None:
             await borg(
-                SaveDraftRequest(
-                    await event.get_input_chat(), "", reply_to_msg_id=message.id
-                )
-            )
+                SaveDraftRequest(await event.get_input_chat(),
+                                 "",
+                                 reply_to_msg_id=message.id))
         message = reply
         count += 1
     await pokemonlub.edit(f"Chain length: {count}")

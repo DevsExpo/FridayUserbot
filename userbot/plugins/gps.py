@@ -34,9 +34,9 @@ async def gps(event):
     if geoloc:
         lon = geoloc.longitude
         lat = geoloc.latitude
-        await reply_to_id.reply(
-            input_str, file=types.InputMediaGeoPoint(types.InputGeoPoint(lat, lon))
-        )
+        await reply_to_id.reply(input_str,
+                                file=types.InputMediaGeoPoint(
+                                    types.InputGeoPoint(lat, lon)))
         await event.delete()
     else:
         await starkislub.edit("i coudn't find it")
