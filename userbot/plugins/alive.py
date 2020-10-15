@@ -3,7 +3,7 @@
 import time
 from datetime import datetime
 
-from uniborg.util import friday_friday_sudo_cmd
+from uniborg.util import friday_friday_friday_sudo_cmd
 from uniborg.util import friday_on_cmd
 
 from userbot import ALIVE_NAME
@@ -61,7 +61,7 @@ pm_caption += "[🇮🇳 Deploy FridayUserbot 🇮🇳](https://telegra.ph/FRIDA
 
 
 @friday.on(friday_on_cmd(pattern=r"alive"))
-@friday.on(friday_friday_sudo_cmd(pattern=r"alive", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern=r"alive", allow_sudo=True))
 async def friday(alive):
     await alive.get_chat()
     """ For .alive command, check if the bot is running.  """

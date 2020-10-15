@@ -5,12 +5,12 @@ from telethon.tl.types import ChannelParticipantCreator
 from telethon.tl.types import ChannelParticipantsAdmins
 
 from userbot.utils import edit_or_reply
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 
 
 @friday.on(friday_on_cmd("get_ad?(m)in ?(.*)"))
-@friday.on(friday_friday_sudo_cmd("get_ad?(m)in ?(.*)", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd("get_ad?(m)in ?(.*)", allow_sudo=True))
 async def _(event):
     admeme = await edit_or_reply(event, "Processing")
     if event.fwd_from:

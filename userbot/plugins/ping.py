@@ -3,7 +3,7 @@ from datetime import datetime
 
 from userbot import Lastupdate
 from userbot.utils import edit_or_reply
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 
 
@@ -36,7 +36,7 @@ def get_readable_time(seconds: int) -> str:
 
 
 @friday.on(friday_on_cmd(pattern="ping$"))
-@friday.on(friday_friday_sudo_cmd(pattern="ping$", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern="ping$", allow_sudo=True))
 async def _(event):
     starkislub = await edit_or_reply(event, "`Pong !`")
     if event.fwd_from:

@@ -17,7 +17,7 @@ from userbot.plugins.sql_helper.filter_sql import get_all_filters
 from userbot.plugins.sql_helper.filter_sql import remove_all_filters
 from userbot.plugins.sql_helper.filter_sql import remove_filter
 from userbot.utils import edit_or_reply
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 
 DELETE_TIMEOUT = 0
@@ -69,7 +69,7 @@ async def on_snip(event):
 
 
 @friday.on(friday_on_cmd(pattern="filter (.*)"))
-@friday.on(friday_friday_sudo_cmd(pattern="filter (.*)", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern="filter (.*)", allow_sudo=True))
 async def on_snip_save(event):
     hitler = await edit_or_reply(event, "Processing....")
     name = event.pattern_match.group(1)
@@ -105,7 +105,7 @@ async def on_snip_save(event):
 
 
 @friday.on(friday_on_cmd(pattern="filters$"))
-@friday.on(friday_friday_sudo_cmd(pattern="filters$", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern="filters$", allow_sudo=True))
 async def on_snip_list(event):
     indiaislove = await edit_or_reply(event, "Processing....")
     all_snips = get_all_filters(event.chat_id)
@@ -132,7 +132,7 @@ async def on_snip_list(event):
 
 
 @friday.on(friday_on_cmd(pattern="stop (.*)"))
-@friday.on(friday_friday_sudo_cmd(pattern="stop (.*)", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern="stop (.*)", allow_sudo=True))
 async def on_snip_delete(event):
     iloveindia = await edit_or_reply(event, "Processing...")
     name = event.pattern_match.group(1)
@@ -141,7 +141,7 @@ async def on_snip_delete(event):
 
 
 @friday.on(friday_on_cmd(pattern="rmfilters$"))
-@friday.on(friday_friday_sudo_cmd(pattern="rmfilters$", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern="rmfilters$", allow_sudo=True))
 async def on_all_snip_delete(event):
     await edit_or_reply(event, "Processing....")
     remove_all_filters(event.chat_id)

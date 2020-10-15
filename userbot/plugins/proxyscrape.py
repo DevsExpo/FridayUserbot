@@ -8,7 +8,7 @@ import os
 
 from pySmartDL import SmartDL
 
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 
 STARK_HTTP = "https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=10000&country=all&ssl=all&anonymity=all"
@@ -21,7 +21,7 @@ sedpng = "https://soon.proxyscrape.com/asset/img/service/downloadicon.svg"
 
 
 @friday.on(friday_on_cmd(pattern="http$"))
-@friday.on(friday_friday_sudo_cmd(pattern="http$", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern="http$", allow_sudo=True))
 async def starkxD(event):
     await event.get_chat()
     file_name = "proxy_http.txt"

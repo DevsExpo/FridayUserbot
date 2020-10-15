@@ -22,7 +22,7 @@ from telethon.tl.types import MessageMediaPhoto
 
 from userbot import ALIVE_NAME
 from userbot.utils import edit_or_reply
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Who is this"
@@ -30,7 +30,7 @@ FILLED_UP_DADDY = "Invalid pack selected."
 
 
 @friday.on(friday_on_cmd(pattern="kang ?(.*)"))
-@friday.on(friday_friday_sudo_cmd(pattern="kang ?(.*)", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern="kang ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -220,7 +220,7 @@ async def _(event):
 
 
 @friday.on(friday_on_cmd(pattern="packinfo"))
-@friday.on(friday_friday_sudo_cmd(pattern="packinfo ?(.*)", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern="packinfo ?(.*)", allow_sudo=True))
 async def _(event):
     moods = await edit_or_reply("`HeHe , Me Gonna Leech Pack Info`")
     if event.fwd_from:

@@ -29,7 +29,7 @@ from userbot import BOTLOG
 from userbot import BOTLOG_CHATID
 from userbot import CMD_HELP
 from userbot.utils import errors_handler
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 from userbot.utils import register
 
@@ -78,7 +78,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 
 @friday.on(friday_on_cmd(pattern=r"setgpic"))
-@friday.on(friday_friday_sudo_cmd(pattern=r"setgpic", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern=r"setgpic", allow_sudo=True))
 @errors_handler
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
@@ -118,7 +118,7 @@ async def set_group_photo(gpic):
 
 @friday.on(friday_on_cmd(pattern=r"promote(?: |$)(.*)"))
 @friday.on(
-    friday_friday_sudo_cmd(pattern=r"promote(?: |$)(.*)", allow_sudo=True))
+    friday_friday_friday_sudo_cmd(pattern=r"promote(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def promote(promt):
     """ For .promote command, promotes the replied/tagged person """

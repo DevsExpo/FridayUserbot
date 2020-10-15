@@ -12,7 +12,7 @@ from telethon import events
 
 import userbot.plugins.sql_helper.blacklist_sql as sql
 from userbot.utils import edit_or_reply
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 
 
@@ -34,7 +34,7 @@ async def on_new_message(event):
 
 
 @friday.on(friday_on_cmd("textblacklist ((.|\n)*)"))
-@friday.on(friday_friday_sudo_cmd("textblacklist ((.|\n)*)", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd("textblacklist ((.|\n)*)", allow_sudo=True))
 async def on_add_black_list(event):
     starksayxd = await edit_or_reply(
         event, "Trying To Set This Text As Blacklist xD")
@@ -50,7 +50,7 @@ async def on_add_black_list(event):
 
 
 @friday.on(friday_on_cmd("listblacklist"))
-@friday.on(friday_friday_sudo_cmd("listblacklist", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd("listblacklist", allow_sudo=True))
 async def on_view_blacklist(event):
     sensibleleecher = await edit_or_reply(event, "Listing Blacklist xD")
     all_blacklisted = sql.get_chat_blacklist(event.chat_id)
@@ -77,7 +77,7 @@ async def on_view_blacklist(event):
 
 
 @friday.on(friday_on_cmd("rmblacklist ((.|\n)*)"))
-@friday.on(friday_friday_sudo_cmd("rmblacklist ((.|\n)*)", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd("rmblacklist ((.|\n)*)", allow_sudo=True))
 async def on_delete_blacklist(event):
     sensibleisleecher = await edit_or_reply(event,
                                             "Ok Removing This Blacklist xD")

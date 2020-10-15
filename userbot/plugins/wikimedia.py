@@ -2,12 +2,12 @@
 Syntax: .wikimedia Query"""
 import requests
 from uniborg.util import edit_or_reply
-from uniborg.util import friday_friday_sudo_cmd
+from uniborg.util import friday_friday_friday_sudo_cmd
 from uniborg.util import friday_on_cmd
 
 
 @friday.on(friday_on_cmd(pattern="wikimedia (.*)"))
-@friday.on(friday_friday_sudo_cmd(pattern="wikimedia (.*)", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern="wikimedia (.*)", allow_sudo=True))
 async def _(event):
     wowsosmart = await edit_or_reply(event,
                                      "Wait Finding This Bleeding Media xD")

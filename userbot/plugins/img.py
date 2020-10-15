@@ -8,12 +8,12 @@ from re import findall
 
 from userbot.googol_images import googleimagesdownload
 from userbot.utils import edit_or_reply
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 
 
 @friday.on(friday_on_cmd(pattern="img ?(.*)"))
-@friday.on(friday_friday_sudo_cmd(pattern="img ?(.*)", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern="img ?(.*)", allow_sudo=True))
 async def img_sampler(event):
     await edit_or_reply(event, "`Processing...`")
     reply = await event.get_reply_message()

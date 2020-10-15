@@ -366,7 +366,7 @@ class Loader:
         bot.add_event_handler(func, events.NewMessage(**args))
 
 
-def friday_friday_sudo_cmd(pattern=None, **args):
+def friday_friday_friday_sudo_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
     stack = inspect.stack()
     previous_stack_frame = stack[1]

@@ -8,14 +8,14 @@ from tswift import Song
 
 from userbot import CMD_HELP
 from userbot.utils import edit_or_reply
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 
 GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
 
 
 @friday.on(friday_on_cmd(outgoing=True, pattern="lyrics (.*)"))
-@friday.on(friday_friday_sudo_cmd(pattern="lyrics (.*)", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern="lyrics (.*)", allow_sudo=True))
 async def _(event):
     await edit_or_reply(event, "Searching For Lyrics.....")
     reply_to_id = event.message.id

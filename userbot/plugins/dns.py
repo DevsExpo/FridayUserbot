@@ -7,12 +7,12 @@ Available Commands:
 import requests
 
 from userbot.utils import edit_or_reply
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 
 
 @friday.on(friday_on_cmd("dns (.*)"))
-@friday.on(friday_friday_sudo_cmd("dns (.*)", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd("dns (.*)", allow_sudo=True))
 async def _(event):
     starky = await edit_or_reply(event, "Processing.....")
     if event.fwd_from:
@@ -29,7 +29,7 @@ async def _(event):
 
 
 @friday.on(friday_on_cmd("url (.*)"))
-@friday.on(friday_friday_sudo_cmd("dns (.*)", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd("dns (.*)", allow_sudo=True))
 async def _(event):
     starkxd = await edit_or_reply(event, "Processing....")
     if event.fwd_from:

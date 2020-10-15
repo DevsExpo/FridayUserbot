@@ -19,7 +19,7 @@ from userbot import LOGS
 from userbot import TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import register
 from userbot.utils import edit_or_reply
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 
 
@@ -81,7 +81,7 @@ def time_formatter(milliseconds: int) -> str:
 
 @friday.on(friday_on_cmd(pattern="download(?: |$)(.*)", outgoing=True))
 @friday.on(
-    friday_friday_sudo_cmd(pattern="download(?: |$)(.*)", allow_sudo=True))
+    friday_friday_friday_sudo_cmd(pattern="download(?: |$)(.*)", allow_sudo=True))
 async def download(target_file):
     """ For .dl command, download files to the userbot's server. """
     friday = await edit_or_reply(target_file, "`Processing ...`")

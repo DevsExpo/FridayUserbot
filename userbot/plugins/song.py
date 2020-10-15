@@ -16,7 +16,7 @@ from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot import bot
 from userbot import CMD_HELP
 from userbot.events import register
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 
 try:

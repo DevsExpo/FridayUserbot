@@ -5,7 +5,7 @@ import time
 
 from telethon.errors import FloodWaitError
 from telethon.tl import functions
-from uniborg.util import edit_or_reply, friday_friday_sudo_cmd, friday_on_cmd
+from uniborg.util import edit_or_reply, friday_friday_friday_sudo_cmd, friday_on_cmd
 
 from userbot import ALIVE_NAME
 
@@ -14,7 +14,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "FridayUserbot"
 
 
 @friday.on(friday_on_cmd(pattern="autoname"))  # pylint:disable=E0602
-@friday.on(friday_friday_sudo_cmd(pattern="autoname", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd(pattern="autoname", allow_sudo=True))
 async def _(event):
     sed = await edit_or_reply(event, "`Starting AutoName Please Wait`")
     if event.fwd_from:

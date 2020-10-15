@@ -8,12 +8,12 @@ import time
 from telethon.tl.functions.channels import LeaveChannelRequest
 
 from userbot.utils import edit_or_reply
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_friday_sudo_cmd
 from userbot.utils import friday_on_cmd
 
 
 @friday.on(friday_on_cmd("bye", outgoing=True))
-@friday.on(friday_friday_sudo_cmd("bye", allow_sudo=True))
+@friday.on(friday_friday_friday_sudo_cmd("bye", allow_sudo=True))
 async def leave(e):
     starkgang = await edit_or_reply(e, "Bye Kek")
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
