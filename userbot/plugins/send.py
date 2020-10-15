@@ -3,8 +3,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-from userbot.utils import friday_on_cmd
-from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_friday_sudo_cmd, friday_on_cmd
 
 fridaythumb = "./resources/IMG_20200929_103719_628.jpg"
 

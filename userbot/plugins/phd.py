@@ -8,10 +8,8 @@ import asyncio
 
 import requests
 from bs4 import BeautifulSoup
-from telethon.errors.rpcerrorlist import (
-    UserAlreadyParticipantError,
-    YouBlockedUserError,
-)
+from telethon.errors.rpcerrorlist import (UserAlreadyParticipantError,
+                                          YouBlockedUserError)
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 

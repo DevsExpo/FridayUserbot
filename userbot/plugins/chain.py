@@ -4,7 +4,7 @@
 
 from telethon.tl.functions.messages import SaveDraftRequest
 
-from userbot.utils import friday_on_cmd, edit_or_reply, friday_friday_sudo_cmd
+from userbot.utils import edit_or_reply, friday_friday_sudo_cmd, friday_on_cmd
 
 
 @friday.on(friday_on_cmd(pattern="chain"))

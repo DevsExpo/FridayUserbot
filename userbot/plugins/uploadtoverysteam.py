@@ -11,8 +11,7 @@ from datetime import datetime
 import aiohttp
 import magic
 import requests
-from uniborg.util import friday_on_cmd
-from uniborg.util import progress
+from uniborg.util import friday_on_cmd, progress
 
 
 @friday.on(friday_on_cmd(pattern="verystream ?(.*)", allow_sudo=True))

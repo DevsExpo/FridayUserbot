@@ -15,7 +15,7 @@ from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 
 from userbot import CMD_HELP
-from userbot.utils import friday_on_cmd, friday_friday_sudo_cmd
+from userbot.utils import friday_friday_sudo_cmd, friday_on_cmd
 
 #
 BOTLOG = True

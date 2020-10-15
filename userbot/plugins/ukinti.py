@@ -7,16 +7,10 @@ import asyncio
 from time import sleep
 
 from telethon.tl import functions
-from telethon.tl.types import (
-    ChannelParticipantsKicked,
-    ChatBannedRights,
-    UserStatusEmpty,
-    UserStatusLastMonth,
-    UserStatusLastWeek,
-    UserStatusOffline,
-    UserStatusOnline,
-    UserStatusRecently,
-)
+from telethon.tl.types import (ChannelParticipantsKicked, ChatBannedRights,
+                               UserStatusEmpty, UserStatusLastMonth,
+                               UserStatusLastWeek, UserStatusOffline,
+                               UserStatusOnline, UserStatusRecently)
 from uniborg.util import friday_on_cmd
 
 

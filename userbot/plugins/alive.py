@@ -3,11 +3,9 @@
 import time
 from datetime import datetime
 
-from uniborg.util import friday_on_cmd
-from uniborg.util import friday_friday_sudo_cmd
+from uniborg.util import friday_friday_sudo_cmd, friday_on_cmd
 
-from userbot import ALIVE_NAME
-from userbot import Lastupdate
+from userbot import ALIVE_NAME, Lastupdate
 from userbot.plugins import currentversion
 
 # Functions

@@ -10,9 +10,7 @@ from bs4 import BeautifulSoup
 from requests import get
 
 from .. import CMD_HELP
-from ..utils import friday_on_cmd
-from ..utils import edit_or_reply
-from ..utils import friday_friday_sudo_cmd
+from ..utils import edit_or_reply, friday_friday_sudo_cmd, friday_on_cmd
 
 GITHUB = "https://github.com"
 DEVICES_DATA = (
