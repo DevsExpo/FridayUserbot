@@ -1,15 +1,11 @@
 import re
 from math import ceil
 
-from telethon import Button
-from telethon import custom
-from telethon import events
-from telethon import functions
+from telethon import Button, custom, events, functions
 from telethon.tl.functions.users import GetFullUserRequest
 
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
-from userbot import ALIVE_NAME
-from userbot import CMD_LIST
+from userbot import ALIVE_NAME, CMD_LIST
 from userbot.plugins import inlinestats
 
 sed = "https://telegra.ph/file/7368645fc8213d4840ee6.jpg"
