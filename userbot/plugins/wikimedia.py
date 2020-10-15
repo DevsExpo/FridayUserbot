@@ -9,7 +9,8 @@ from uniborg.util import sudo_cmd
 @borg.on(admin_cmd(pattern="wikimedia (.*)"))
 @borg.on(sudo_cmd(pattern="wikimedia (.*)", allow_sudo=True))
 async def _(event):
-    wowsosmart = await edit_or_reply(event, "Wait Finding This Bleeding Media xD")
+    wowsosmart = await edit_or_reply(event,
+                                     "Wait Finding This Bleeding Media xD")
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
@@ -41,9 +42,7 @@ async def _(event):
         user: [{}]({})
         mime: {}
         mediatype: {}
-        """.format(
-            pageid, title, timestamp, user, descriptionurl, mime, mediatype
-        )
-    await wowsosmart.edit(
-        "**Search**: {} \n\n **Results**: {}".format(input_str, result)
-    )
+        """.format(pageid, title, timestamp, user, descriptionurl, mime,
+                   mediatype)
+    await wowsosmart.edit("**Search**: {} \n\n **Results**: {}".format(
+        input_str, result))
