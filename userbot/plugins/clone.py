@@ -51,7 +51,8 @@ async def _(event):
     await borg(functions.account.UpdateProfileRequest(about=user_bio))
     pfile = await borg.upload_file(profile_pic)  # pylint:disable=E060
     await borg(
-        functions.photos.UploadProfilePhotoRequest(pfile)  # pylint:disable=E0602
+        functions.photos.UploadProfilePhotoRequest(
+            pfile)  # pylint:disable=E0602
     )
     # message_id_to_reply = event.message.reply_to_msg_id
     # if not message_id_to_reply:

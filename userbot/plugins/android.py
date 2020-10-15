@@ -114,7 +114,7 @@ async def codename_info(request):
 
 
 @friday.on(admin_cmd(outgoing=True,
-                   pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)"))
+                     pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)"))
 @friday.on(
     sudo_cmd(pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)", allow_sudo=True))
 async def devices_specifications(request):
