@@ -96,8 +96,7 @@ async def who(event):
 async def get_user(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        replied_user = await event.client(
-            GetFullUserRequest(previous_message.from_id))
+        replied_user = await event.client(GetFullUserRequest(previous_message.from_id))
     else:
         user = event.pattern_match.group(1)
 
@@ -111,15 +110,13 @@ async def get_user(event):
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
 
-            if isinstance(probable_user_mention_entity,
-                          MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 replied_user = await event.client(GetFullUserRequest(user_id))
                 return replied_user
         try:
             user_object = await event.client.get_entity(user)
-            replied_user = await event.client(
-                GetFullUserRequest(user_object.id))
+            replied_user = await event.client(GetFullUserRequest(user_object.id))
 
         except (TypeError, ValueError):
             await event.edit("`I don't slap strangers !!`")
@@ -142,10 +139,8 @@ async def slap(replied_user, event):
     hit = random.choice(HIT)
     throw = random.choice(THROW)
 
-    caption = temp.format(user1=DEFAULTUSER,
-                          user2=slapped,
-                          item=item,
-                          hits=hit,
-                          throws=throw)
+    caption = temp.format(
+        user1=DEFAULTUSER, user2=slapped, item=item, hits=hit, throws=throw
+    )
 
     return caption

@@ -13,8 +13,7 @@ async def _(event):
         "`You Have  1/3  warnings...\nWatch out!....\nReason for warn: Not given`"
     )
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat,
-                                          filter=ChannelParticipantsAdmins):
+    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -36,8 +35,7 @@ async def _(event):
         "`You Have  2/3  warnings...\nWatch out!....\nReason for last warn: Not given`"
     )
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat,
-                                          filter=ChannelParticipantsAdmins):
+    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -57,8 +55,7 @@ async def _(event):
         return
     mentions = "`You Have  3/3  warnings...\nBanned!!!....\nReason for ban: Not given`"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat,
-                                          filter=ChannelParticipantsAdmins):
+    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -78,8 +75,7 @@ async def _(event):
         return
     mentions = "`Warning Resetted By Admin...\nYou Have  0/3  warnings`"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat,
-                                          filter=ChannelParticipantsAdmins):
+    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -99,8 +95,7 @@ async def _(event):
         return
     mentions = "**Warning..\n\nBattery Low, Please Charge Your Phone**"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat,
-                                          filter=ChannelParticipantsAdmins):
+    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -117,8 +112,7 @@ async def _(event):
         return
     mentions = "`U Got A FloodWait:\nReason:telethon.errors.rpcerrorlist.FloodWaitError: A wait of 546578265716823 seconds is required (caused by EditMessageRequest)`"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat,
-                                          filter=ChannelParticipantsAdmins):
+    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:

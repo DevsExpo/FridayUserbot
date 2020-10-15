@@ -45,11 +45,9 @@ async def _(event):
     r = requests.get(input_str, allow_redirects=False)
     if str(r.status_code).startswith("3"):
         await event.edit(
-            "Input URL: {}\nReDirected URL: {}".format(
-                input_str, r.headers["Location"])
+            "Input URL: {}\nReDirected URL: {}".format(input_str, r.headers["Location"])
         )
     else:
         await event.edit(
-            "Input URL {} returned status_code {}".format(
-                input_str, r.status_code)
+            "Input URL {} returned status_code {}".format(input_str, r.status_code)
         )

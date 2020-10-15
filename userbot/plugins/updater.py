@@ -15,12 +15,13 @@ IS_SELECTED_DIFFERENT_BRANCH = (
     "looks like a custom branch {branch_name} "
     "is being used:\n"
     "in this case, Updater is unable to identify the branch to be updated."
-    "please check out to an official branch, and re-start the updater.")
+    "please check out to an official branch, and re-start the updater."
+)
 OFFICIAL_UPSTREAM_REPO = "https://github.com/Starkgang/FridayUserbot"
 BOT_IS_UP_TO_DATE = "`The userbot is up-to-date.\nThank you for Using this Service.`"
-NEW_BOT_UP_DATE_FOUND = ("new update found for {branch_name}\n"
-                         "changelog: \n\n{changelog}\n"
-                         "updating ...")
+NEW_BOT_UP_DATE_FOUND = (
+    "new update found for {branch_name}\n" "changelog: \n\n{changelog}\n" "updating ..."
+)
 NEW_UP_DATE_FOUND = "New update found for {branch_name}\n" "`updating ...`"
 REPO_REMOTE_NAME = "temponame"
 IFFUCI_ACTIVE_BRANCH_NAME = "master"
@@ -59,24 +60,26 @@ async def updater(message):
 
     changelog = generate_change_log(
         repo,
-        DIFF_MARKER.format(remote_name=REPO_REMOTE_NAME,
-                           branch_name=active_branch_name),
+        DIFF_MARKER.format(
+            remote_name=REPO_REMOTE_NAME, branch_name=active_branch_name
+        ),
     )
 
     if not changelog:
         await message.edit("`Updation in Progress......`")
         await asyncio.sleep(8)
 
-    message_one = NEW_BOT_UP_DATE_FOUND.format(branch_name=active_branch_name,
-                                               changelog=changelog)
+    message_one = NEW_BOT_UP_DATE_FOUND.format(
+        branch_name=active_branch_name, changelog=changelog
+    )
     message_two = NEW_UP_DATE_FOUND.format(branch_name=active_branch_name)
 
     if len(message_one) > 4095:
         with open("change.log", "w+", encoding="utf8") as out_file:
             out_file.write(str(message_one))
-        await tgbot.send_message(message.chat_id,
-                                 document="change.log",
-                                 caption=message_two)
+        await tgbot.send_message(
+            message.chat_id, document="change.log", caption=message_two
+        )
         os.remove("change.log")
     else:
         await message.edit(message_one)
@@ -101,14 +104,16 @@ async def updater(message):
                     )
                     return
                 heroku_git_url = heroku_app.git_url.replace(
-                    "https://", "https://api:" + Var.HEROKU_API_KEY + "@")
+                    "https://", "https://api:" + Var.HEROKU_API_KEY + "@"
+                )
                 if "heroku" in repo.remotes:
                     remote = repo.remote("heroku")
                     remote.set_url(heroku_git_url)
                 else:
                     remote = repo.create_remote("heroku", heroku_git_url)
                 asyncio.get_event_loop().create_task(
-                    deploy_start(tgbot, message, HEROKU_GIT_REF_SPEC, remote))
+                    deploy_start(tgbot, message, HEROKU_GIT_REF_SPEC, remote)
+                )
 
             else:
                 await message.edit(
