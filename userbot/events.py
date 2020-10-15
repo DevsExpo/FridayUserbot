@@ -9,15 +9,12 @@ import sys
 from asyncio import create_subprocess_shell as asyncsubshell
 from asyncio import subprocess as asyncsub
 from os import remove
-from time import gmtime
-from time import strftime
+from time import gmtime, strftime
 from traceback import format_exc
 
 from telethon import events
 
-from userbot import bot
-from userbot import LOGSPAMMER
-from userbot import PRIVATE_GROUP_ID
+from userbot import LOGSPAMMER, PRIVATE_GROUP_ID, bot
 
 
 def register(**args):
