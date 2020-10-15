@@ -1,6 +1,9 @@
-from sqlalchemy import Column, String, UnicodeText
+from sqlalchemy import Column
+from sqlalchemy import String
+from sqlalchemy import UnicodeText
 
-from . import BASE, SESSION
+from . import BASE
+from . import SESSION
 
 
 class Fban(BASE):

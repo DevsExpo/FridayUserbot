@@ -1,6 +1,8 @@
 from datetime import datetime
 
-from telethon.tl.types import Channel, Chat, User
+from telethon.tl.types import Channel
+from telethon.tl.types import Chat
+from telethon.tl.types import User
 from uniborg.util import admin_cmd
 
 from userbot import bot
