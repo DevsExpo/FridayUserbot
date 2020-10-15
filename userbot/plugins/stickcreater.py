@@ -7,13 +7,10 @@ import os
 import random
 import textwrap
 
-from PIL import Image
-from PIL import ImageDraw
-from PIL import ImageFont
+from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
 
-from userbot.utils import admin_cmd
-from userbot.utils import sudo_cmd
+from userbot.utils import admin_cmd, sudo_cmd
 
 # RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 

@@ -12,14 +12,11 @@
 import asyncio
 
 from telethon.tl.types import InputMediaUploadedPhoto
-from uniborg.util import admin_cmd
-from uniborg.util import edit_or_reply
-from uniborg.util import sudo_cmd
+from uniborg.util import admin_cmd, edit_or_reply, sudo_cmd
 
-from userbot.plugins.sql_helper.broadcast_sql import add_channel
-from userbot.plugins.sql_helper.broadcast_sql import get_all_channels
-from userbot.plugins.sql_helper.broadcast_sql import in_channels
-from userbot.plugins.sql_helper.broadcast_sql import rm_channel
+from userbot.plugins.sql_helper.broadcast_sql import (add_channel,
+                                                      get_all_channels,
+                                                      in_channels, rm_channel)
 from var import Var
 
 logs_id = Var.PRIVATE_GROUP_ID

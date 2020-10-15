@@ -10,18 +10,12 @@ import os
 import time
 
 from telethon.tl.types import DocumentAttributeAudio
-from uniborg.util import admin_cmd
-from uniborg.util import edit_or_reply
-from uniborg.util import sudo_cmd
+from uniborg.util import admin_cmd, edit_or_reply, sudo_cmd
 from youtube_dl import YoutubeDL
-from youtube_dl.utils import ContentTooShortError
-from youtube_dl.utils import DownloadError
-from youtube_dl.utils import ExtractorError
-from youtube_dl.utils import GeoRestrictedError
-from youtube_dl.utils import MaxDownloadsReached
-from youtube_dl.utils import PostProcessingError
-from youtube_dl.utils import UnavailableVideoError
-from youtube_dl.utils import XAttrMetadataError
+from youtube_dl.utils import (ContentTooShortError, DownloadError,
+                              ExtractorError, GeoRestrictedError,
+                              MaxDownloadsReached, PostProcessingError,
+                              UnavailableVideoError, XAttrMetadataError)
 
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):

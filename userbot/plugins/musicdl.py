@@ -1,10 +1,8 @@
 """ Spotify / Deezer downloader plugin by @anubisxx | Syntax: .sdd link"""
 import asyncio
 
-from telethon.errors.rpcerrorlist import (
-    UserAlreadyParticipantError,
-    YouBlockedUserError,
-)
+from telethon.errors.rpcerrorlist import (UserAlreadyParticipantError,
+                                          YouBlockedUserError)
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
 from userbot.utils import admin_cmd

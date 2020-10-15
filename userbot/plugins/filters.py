@@ -12,12 +12,9 @@ import re
 from telethon import utils
 from telethon.tl import types
 
-from userbot.plugins.sql_helper.filter_sql import (
-    add_filter,
-    get_all_filters,
-    remove_all_filters,
-    remove_filter,
-)
+from userbot.plugins.sql_helper.filter_sql import (add_filter, get_all_filters,
+                                                   remove_all_filters,
+                                                   remove_filter)
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 DELETE_TIMEOUT = 0

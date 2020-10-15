@@ -7,17 +7,14 @@ import subprocess
 import time
 
 from telethon import events
-from telethon.errors import MessageEmptyError
-from telethon.errors import MessageNotModifiedError
-from telethon.errors import MessageTooLongError
+from telethon.errors import (MessageEmptyError, MessageNotModifiedError,
+                             MessageTooLongError)
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 
-from userbot import bot
-from userbot import CMD_HELP
+from userbot import CMD_HELP, bot
 from userbot.events import register
-from userbot.utils import admin_cmd
-from userbot.utils import sudo_cmd
+from userbot.utils import admin_cmd, sudo_cmd
 
 try:
     import subprocess

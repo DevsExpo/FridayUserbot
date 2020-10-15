@@ -10,9 +10,7 @@ import os
 import heroku3
 import requests
 
-from userbot.utils import admin_cmd
-from userbot.utils import edit_or_reply
-from userbot.utils import sudo_cmd
+from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
