@@ -19,16 +19,14 @@ async def _(event):
         mm = input_sgra[1]
         dd = input_sgra[2]
         required_url = "https://calendar.kollavarsham.org/api/years/{}/months/{}/days/{}?lang={}".format(
-            yyyy, mm, dd, "en")
+            yyyy, mm, dd, "en"
+        )
         headers = {"Accept": "application/json"}
         response_content = requests.get(required_url, headers=headers).json()
         a = ""
         if "error" not in response_content:
-            current_date_detail_arraays = response_content["months"][0][
-                "days"][0]
-            a = json.dumps(current_date_detail_arraays,
-                           sort_keys=True,
-                           indent=4)
+            current_date_detail_arraays = response_content["months"][0]["days"][0]
+            a = json.dumps(current_date_detail_arraays, sort_keys=True, indent=4)
         else:
             a = response_content["error"]
         await event.edit(str(a))

@@ -36,5 +36,6 @@ async def unload(event):
         remove_plugin(shortname)
         await event.edit(f"Unloaded {shortname} successfully")
     except Exception as e:
-        await event.edit("Successfully unload {shortname}\n{}".format(
-            shortname, str(e)))
+        await event.edit(
+            "Successfully unload {shortname}\n{}".format(shortname, str(e))
+        )

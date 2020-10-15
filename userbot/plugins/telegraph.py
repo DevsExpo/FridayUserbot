@@ -32,8 +32,9 @@ async def _(event):
     if BOTLOG:
         await borg.send_message(
             Config.PRIVATE_GROUP_ID,
-            "Created New Telegraph account {} for the current session. \n**Do not give this url to anyone, even if they say they are from Telegram!**"
-            .format(auth_url),
+            "Created New Telegraph account {} for the current session. \n**Do not give this url to anyone, even if they say they are from Telegram!**".format(
+                auth_url
+            ),
         )
     optional_title = event.pattern_match.group(2)
     if event.reply_to_msg_id:
@@ -42,11 +43,13 @@ async def _(event):
         input_str = event.pattern_match.group(1)
         if input_str == "media":
             downloaded_file_name = await borg.download_media(
-                r_message, Config.TMP_DOWNLOAD_DIRECTORY)
+                r_message, Config.TMP_DOWNLOAD_DIRECTORY
+            )
             end = datetime.now()
             ms = (end - start).seconds
-            await event.edit("Downloaded to {} in {} seconds.".format(
-                downloaded_file_name, ms))
+            await event.edit(
+                "Downloaded to {} in {} seconds.".format(downloaded_file_name, ms)
+            )
             if downloaded_file_name.endswith((".webp")):
                 resize_image(downloaded_file_name)
             try:
@@ -61,7 +64,8 @@ async def _(event):
                 os.remove(downloaded_file_name)
                 await event.edit(
                     "Uploaded to https://telegra.ph{} in {} seconds.".format(
-                        media_urls[0], (ms + ms_two)),
+                        media_urls[0], (ms + ms_two)
+                    ),
                     link_preview=True,
                 )
         elif input_str == "text":
@@ -75,7 +79,8 @@ async def _(event):
                 if page_content != "":
                     title_of_page = page_content
                 downloaded_file_name = await borg.download_media(
-                    r_message, Config.TMP_DOWNLOAD_DIRECTORY)
+                    r_message, Config.TMP_DOWNLOAD_DIRECTORY
+                )
                 m_list = None
                 with open(downloaded_file_name, "rb") as fd:
                     m_list = fd.readlines()
@@ -83,13 +88,13 @@ async def _(event):
                     page_content += m.decode("UTF-8") + "\n"
                 os.remove(downloaded_file_name)
             page_content = page_content.replace("\n", "<br>")
-            response = telegraph.create_page(title_of_page,
-                                             html_content=page_content)
+            response = telegraph.create_page(title_of_page, html_content=page_content)
             end = datetime.now()
             ms = (end - start).seconds
             await event.edit(
                 "Pasted to https://telegra.ph/{} in {} seconds.".format(
-                    response["path"], ms),
+                    response["path"], ms
+                ),
                 link_preview=True,
             )
     else:

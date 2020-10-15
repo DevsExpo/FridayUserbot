@@ -17,9 +17,16 @@ async def _(event):
     try:
         mean = urbandict.define(str)
         if len(mean) > 0:
-            await event.edit("Text: **" + str + "**\n\nMeaning: **" +
-                             mean[0]["def"] + "**\n\n" + "Example: \n__" +
-                             mean[0]["example"] + "__")
+            await event.edit(
+                "Text: **"
+                + str
+                + "**\n\nMeaning: **"
+                + mean[0]["def"]
+                + "**\n\n"
+                + "Example: \n__"
+                + mean[0]["example"]
+                + "__"
+            )
         else:
             await event.edit("No result found for **" + str + "**")
     except BaseException:
