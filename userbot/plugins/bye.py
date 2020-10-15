@@ -1,6 +1,5 @@
 # For @UniBorg
 # Courtesy @yasirsiddiqui
-
 """
 .bye
 """
@@ -8,7 +7,9 @@ import time
 
 from telethon.tl.functions.channels import LeaveChannelRequest
 
-from userbot.utils import edit_or_reply, friday_friday_sudo_cmd, friday_on_cmd
+from userbot.utils import edit_or_reply
+from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_on_cmd
 
 
 @friday.on(friday_on_cmd("bye", outgoing=True))

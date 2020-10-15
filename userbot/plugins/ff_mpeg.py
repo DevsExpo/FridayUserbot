@@ -5,7 +5,8 @@ import os
 import time
 from datetime import datetime
 
-from userbot.utils import friday_on_cmd, progress
+from userbot.utils import friday_on_cmd
+from userbot.utils import progress
 
 FF_MPEG_DOWN_LOAD_MEDIA_PATH = "uniborg.media.ffmpeg"
 

@@ -1,7 +1,6 @@
 """
 Available Commands
 .muth"""
-
 import asyncio
 
 from telethon import events

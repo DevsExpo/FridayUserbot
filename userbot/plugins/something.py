@@ -1,5 +1,4 @@
 """ Whatever Plugin by Noobs of Telegram i.e. @pureindialover """
-
 from uniborg.util import friday_on_cmd
 
 

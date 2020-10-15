@@ -2,7 +2,6 @@
 usage: .shout message
 originaly from : @corsicanu_bot
 """
-
 from telethon import events
 
 

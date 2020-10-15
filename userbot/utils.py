@@ -7,11 +7,15 @@ import re
 import sys
 import traceback
 from pathlib import Path
-from time import gmtime, strftime
+from time import gmtime
+from time import strftime
 
 from telethon import events
 
-from userbot import CMD_LIST, LOAD_PLUG, SUDO_LIST, bot
+from userbot import bot
+from userbot import CMD_LIST
+from userbot import LOAD_PLUG
+from userbot import SUDO_LIST
 from userbot.uniborgConfig import Config
 from var import Var
 

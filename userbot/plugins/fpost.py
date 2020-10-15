@@ -4,7 +4,6 @@
 """ Command: .fpost word
 
 credit: @pureindialover"""
-
 import string
 
 from uniborg.util import friday_on_cmd

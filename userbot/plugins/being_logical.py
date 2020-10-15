@@ -4,7 +4,6 @@ Syntax: .belo
     by @Deonnn
 Quotes credits: Being logical Channel
 """
-
 import asyncio
 import random
 

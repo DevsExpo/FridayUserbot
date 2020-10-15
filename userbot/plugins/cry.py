@@ -1,5 +1,4 @@
 """Use cmd `.cry` to cry"""
-
 import asyncio
 
 from uniborg.util import friday_on_cmd

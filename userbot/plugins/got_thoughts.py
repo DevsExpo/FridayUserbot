@@ -5,7 +5,6 @@ by @Deonnn
 command .gott
 
 """
-
 import asyncio
 import random
 

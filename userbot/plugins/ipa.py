@@ -8,7 +8,8 @@ from pathlib import Path
 
 from telethon.tl.types import InputMessagesFilterDocument
 
-from userbot.utils import friday_on_cmd, load_module
+from userbot.utils import friday_on_cmd
+from userbot.utils import load_module
 
 
 @friday.on(friday_on_cmd("ipa (.*)"))

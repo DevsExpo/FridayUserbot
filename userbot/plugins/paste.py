@@ -6,7 +6,8 @@ import os
 from datetime import datetime
 
 import requests
-from uniborg.util import friday_friday_sudo_cmd, friday_on_cmd
+from uniborg.util import friday_friday_sudo_cmd
+from uniborg.util import friday_on_cmd
 
 logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING

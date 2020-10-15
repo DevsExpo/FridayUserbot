@@ -3,8 +3,6 @@ Available Commands:
 .nope
 Credits to @mariodevs
 """
-
-
 import asyncio
 
 from userbot.utils import friday_on_cmd

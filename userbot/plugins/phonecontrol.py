@@ -1,5 +1,4 @@
 # New Qoute module by @r4v4n4 😉
-
 import asyncio
 
 from telethon import events

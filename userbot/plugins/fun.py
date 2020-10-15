@@ -1,6 +1,8 @@
 import random
 
-from uniborg.util import edit_or_reply, friday_friday_sudo_cmd, friday_on_cmd
+from uniborg.util import edit_or_reply
+from uniborg.util import friday_friday_sudo_cmd
+from uniborg.util import friday_on_cmd
 
 METOOSTR = [
     "`Me too thanks`",

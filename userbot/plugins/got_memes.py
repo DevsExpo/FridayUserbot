@@ -3,7 +3,6 @@
  command .gotm
  by @Deonnn
 """
-
 import asyncio
 import random
 

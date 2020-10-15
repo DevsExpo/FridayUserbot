@@ -11,12 +11,18 @@
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-from telethon import Button, custom, events
-from telethon.tl.types import Channel, Chat, User
+from telethon import Button
+from telethon import custom
+from telethon import events
+from telethon.tl.types import Channel
+from telethon.tl.types import Chat
+from telethon.tl.types import User
 from telethon.utils import get_display_name
 
 from userbot.uniborgConfig import Config
-from userbot.utils import edit_or_reply, friday_friday_sudo_cmd, friday_on_cmd
+from userbot.utils import edit_or_reply
+from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_on_cmd
 
 
 @friday.on(

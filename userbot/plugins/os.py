@@ -9,7 +9,6 @@ Available Commands:
 .emoji :/
 
 .emoji -_-"""
-
 import asyncio
 
 from telethon import events

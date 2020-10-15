@@ -11,7 +11,9 @@ import re
 from telethon import events
 
 import userbot.plugins.sql_helper.blacklist_sql as sql
-from userbot.utils import edit_or_reply, friday_friday_sudo_cmd, friday_on_cmd
+from userbot.utils import edit_or_reply
+from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_on_cmd
 
 
 @friday.on(events.NewMessage(incoming=True))

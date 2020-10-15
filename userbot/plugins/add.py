@@ -2,7 +2,9 @@
 Syntax: .invite <User(s)>"""
 from telethon import functions
 
-from userbot.utils import edit_or_reply, friday_friday_sudo_cmd, friday_on_cmd
+from userbot.utils import edit_or_reply
+from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_on_cmd
 
 """Invite the user(s) to the current chat
 Syntax: .invite <User(s)>"""

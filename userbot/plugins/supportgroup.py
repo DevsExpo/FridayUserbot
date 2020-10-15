@@ -3,8 +3,6 @@ Available Commands:
 .support
 Credits to noone
 """
-
-
 import asyncio
 
 from userbot.utils import friday_on_cmd

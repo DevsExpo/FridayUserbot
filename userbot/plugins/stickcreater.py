@@ -7,10 +7,13 @@ import os
 import random
 import textwrap
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
 
-from userbot.utils import friday_friday_sudo_cmd, friday_on_cmd
+from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_on_cmd
 
 # RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 

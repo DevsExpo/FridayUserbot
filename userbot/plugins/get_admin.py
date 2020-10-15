@@ -1,10 +1,12 @@
 """Get Administrators of any Chat*
 Syntax: .get_admin"""
-from telethon.tl.types import (ChannelParticipantAdmin,
-                               ChannelParticipantCreator,
-                               ChannelParticipantsAdmins)
+from telethon.tl.types import ChannelParticipantAdmin
+from telethon.tl.types import ChannelParticipantCreator
+from telethon.tl.types import ChannelParticipantsAdmins
 
-from userbot.utils import edit_or_reply, friday_friday_sudo_cmd, friday_on_cmd
+from userbot.utils import edit_or_reply
+from userbot.utils import friday_friday_sudo_cmd
+from userbot.utils import friday_on_cmd
 
 
 @friday.on(friday_on_cmd("get_ad?(m)in ?(.*)"))
