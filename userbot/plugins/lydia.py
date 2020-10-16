@@ -89,7 +89,7 @@ async def remcf(event):
 async def user(event):
     event.text
     try:
-        session = ACC_LYDIA[event.chat_id & event.from_id]
+        session = ACC_LYDIA[event.chat_id & event.sender_id]
         msg = event.text
         async with event.client.action(event.chat_id, "typing"):
             text_rep = session.think_thought(msg)
