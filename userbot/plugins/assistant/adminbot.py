@@ -88,7 +88,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 @tgbot.on(events.NewMessage(pattern="^/bun(?: |$)(.*)"))
 async def ban(event):
-    noob = event.from_id
+    noob = event.sender_id
     userids = []
     async for user in tgbot.iter_participants(
             event.chat_id, filter=ChannelParticipantsAdmins):
@@ -132,7 +132,7 @@ async def ban(event):
 @tgbot.on(events.NewMessage(pattern="^/unbun(?: |$)(.*)"))
 async def nothanos(event):
     userids = []
-    noob = event.from_id
+    noob = event.sender_id
     async for user in tgbot.iter_participants(
             event.chat_id, filter=ChannelParticipantsAdmins):
         userids.append(user.id)
@@ -163,7 +163,7 @@ async def nothanos(event):
 @tgbot.on(events.NewMessage(pattern="^/prumote(?: |$)(.*)"))
 async def promote(event):
     userids = []
-    noob = event.from_id
+    noob = event.sender_id
     async for user in tgbot.iter_participants(
             event.chat_id, filter=ChannelParticipantsAdmins):
         userids.append(user.id)
@@ -212,7 +212,7 @@ async def promote(event):
 @tgbot.on(events.NewMessage(pattern="^/demute(?: |$)(.*)"))
 async def demote(event):
     userids = []
-    noob = event.from_id
+    noob = event.sender_id
     async for user in tgbot.iter_participants(
             event.chat_id, filter=ChannelParticipantsAdmins):
         userids.append(user.id)
@@ -261,7 +261,7 @@ async def demote(event):
 @tgbot.on(events.NewMessage(pattern="^/pin(?: |$)(.*)"))
 async def pin(event):
     userids = []
-    noob = event.from_id
+    noob = event.sender_id
     async for user in tgbot.iter_participants(
             event.chat_id, filter=ChannelParticipantsAdmins):
         userids.append(user.id)
