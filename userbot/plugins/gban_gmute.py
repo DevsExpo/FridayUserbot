@@ -42,7 +42,8 @@ async def get_user_from_event(event):
             return
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
-            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity,
+                          MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 user_obj = await event.client.get_entity(user_id)
                 return user_obj
@@ -82,14 +83,13 @@ async def handler(tele):
                     creator = chat.creator
                     if admin or creator:
                         try:
-                            await client.edit_permissions(
-                                tele.chat_id, guser.id, view_messages=False
-                            )
+                            await client.edit_permissions(tele.chat_id,
+                                                          guser.id,
+                                                          view_messages=False)
                             await tele.reply(
                                 f"** Gbanned User Joined!!** \n"
                                 f"**Victim Id**: [{guser.id}](tg://user?id={guser.id})\n"
-                                f"**Action **  : `Banned`"
-                            )
+                                f"**Action **  : `Banned`")
                         except:
                             return
 
@@ -137,8 +137,7 @@ async def gspider(rk):
         except:
             pass
         testrk = [
-            d.entity.id
-            for d in await rk.client.get_dialogs()
+            d.entity.id for d in await rk.client.get_dialogs()
             if (d.is_group or d.is_channel)
         ]
         for i in testrk:
@@ -203,8 +202,7 @@ async def gspider(rk):
         except:
             pass
         testrk = [
-            d.entity.id
-            for d in await rk.client.get_dialogs()
+            d.entity.id for d in await rk.client.get_dialogs()
             if (d.is_group or d.is_channel)
         ]
         for i in testrk:
@@ -220,7 +218,8 @@ async def gspider(rk):
         await rkp.edit(f"**Reply to a user !! **")
     try:
         if ungmute(user.id) is False:
-            return await rkp.edit(f"**Error! User probably already ungbanned.**")
+            return await rkp.edit(
+                f"**Error! User probably already ungbanned.**")
     except:
         pass
     return await rkp.edit(
@@ -228,12 +227,11 @@ async def gspider(rk):
     )
 
 
-CMD_HELP.update(
-    {
-        "gban": ".gban <username> / <userid> / <reply to a user>\
+CMD_HELP.update({
+    "gban":
+    ".gban <username> / <userid> / <reply to a user>\
 \n**Usage**: Globel ban the person in all groups, channels , block in pm , add gban watch (use with solution) \
 \n\n.ungban <username> / <userid> / <reply to a user>\
 \n**Usage**: unban user from all groups, channels , remove user from gban watch.\
 "
-    }
-)
+})
