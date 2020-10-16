@@ -3,17 +3,26 @@ from userbot import bot, BOTLOG_CHATID, CMD_HELP
 import asyncio
 from telethon import events
 from telethon.tl.functions.channels import EditBannedRequest
-from telethon.tl.types import (PeerChat, PeerChannel, ChannelParticipantsAdmins, ChatAdminRights,
-                               ChatBannedRights, MessageEntityMentionName, MessageMediaPhoto, ChannelParticipantsBots)
+from telethon.tl.types import (
+    PeerChat,
+    PeerChannel,
+    ChannelParticipantsAdmins,
+    ChatAdminRights,
+    ChatBannedRights,
+    MessageEntityMentionName,
+    MessageMediaPhoto,
+    ChannelParticipantsBots,
+)
 from telethon.tl.types import Channel
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.functions.messages import GetCommonChatsRequest
 from telethon.events import ChatAction
+
 client = bot
 
 
 async def get_user_from_event(event):
-    args = event.pattern_match.group(1).split(':', 1)
+    args = event.pattern_match.group(1).split(":", 1)
     extra = None
     if event.reply_to_msg_id and not len(args) == 2:
         previous_message = await event.get_reply_message()
@@ -30,8 +39,7 @@ async def get_user_from_event(event):
             return
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
-            if isinstance(probable_user_mention_entity,
-                          MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 user_obj = await event.client.get_entity(user_id)
                 return user_obj
@@ -58,6 +66,7 @@ async def handler(tele):
     if tele.user_joined or tele.user_added:
         try:
             from userbot.plugins.sql_helper.gmute_sql import is_gmuted
+
             guser = await tele.get_user()
             gmuted = is_gmuted(guser.id)
         except:
@@ -70,11 +79,14 @@ async def handler(tele):
                     creator = chat.creator
                     if admin or creator:
                         try:
-                            await client.edit_permissions(tele.chat_id, guser.id, view_messages=False)
+                            await client.edit_permissions(
+                                tele.chat_id, guser.id, view_messages=False
+                            )
                             await tele.reply(
                                 f"** Gbanned User Joined!!** \n"
                                 f"**Victim Id**: [{guser.id}](tg://user?id={guser.id})\n"
-                                f"**Action **  : `Banned`")
+                                f"**Action **  : `Banned`"
+                            )
                         except:
                             return
 
@@ -97,7 +109,7 @@ async def gspider(rk):
     if rk.is_private:
         user = rk.chat
         reason = rk.pattern_match.group(1)
-        chat_title = 'PM'
+        chat_title = "PM"
     else:
         chat_title = rk.chat.title
     try:
@@ -106,7 +118,7 @@ async def gspider(rk):
         pass
     try:
         if not reason:
-            reason = 'Private'
+            reason = "Private"
     except:
         return await rkp.edit("**Error! Unknown user.**")
     if user:
@@ -118,10 +130,14 @@ async def gspider(rk):
             pass
         try:
             await rk.client(BlockRequest(user))
-            block = 'True'
+            block = "True"
         except:
             pass
-        testrk = [d.entity.id for d in await rk.client.get_dialogs() if (d.is_group or d.is_channel)]
+        testrk = [
+            d.entity.id
+            for d in await rk.client.get_dialogs()
+            if (d.is_group or d.is_channel)
+        ]
         for i in testrk:
             try:
                 await rk.client.edit_permissions(i, user, view_messages=False)
@@ -136,7 +152,9 @@ async def gspider(rk):
             return await rkp.edit(f"**Error! User probably already gbanned.**")
     except:
         pass
-    return await rkp.edit(f"**Gbanned** [{user.first_name}](tg://user?id={user.id}) **in {a} chat(s) , Blocked user and added to Gban watch **")
+    return await rkp.edit(
+        f"**Gbanned** [{user.first_name}](tg://user?id={user.id}) **in {a} chat(s) , Blocked user and added to Gban watch **"
+    )
 
 
 @borg.on(admin_cmd(pattern="ungban(?: |$)(.*)"))
@@ -157,7 +175,7 @@ async def gspider(rk):
     if rk.is_private:
         user = rk.chat
         reason = rk.pattern_match.group(1)
-        chat_title = 'PM'
+        chat_title = "PM"
     else:
         chat_title = rk.chat.title
     try:
@@ -166,7 +184,7 @@ async def gspider(rk):
         pass
     try:
         if not reason:
-            reason = 'Private'
+            reason = "Private"
     except:
         return await rkp.edit(f"**Error! Unknown user.**")
     if user:
@@ -178,15 +196,21 @@ async def gspider(rk):
             pass
         try:
             await rk.client(UnblockRequest(user))
-            block = 'True'
+            block = "True"
         except:
             pass
-        testrk = [d.entity.id for d in await rk.client.get_dialogs() if (d.is_group or d.is_channel)]
+        testrk = [
+            d.entity.id
+            for d in await rk.client.get_dialogs()
+            if (d.is_group or d.is_channel)
+        ]
         for i in testrk:
             try:
                 await rk.client.edit_permissions(i, user, send_messages=True)
                 a += 1
-                await rkp.edit(f"**Requesting  to ungban user!\nUnGbanned in {a} chats.....**")
+                await rkp.edit(
+                    f"**Requesting  to ungban user!\nUnGbanned in {a} chats.....**"
+                )
             except:
                 b += 1
     else:
@@ -196,14 +220,17 @@ async def gspider(rk):
             return await rkp.edit(f"**Error! User probably already ungbanned.**")
     except:
         pass
-    return await rkp.edit(f"**UnGbanned** [{user.first_name}](tg://user?id={user.id}) **in {a} chat(s) , UnBlocked and removed user from Gban watch **")
+    return await rkp.edit(
+        f"**UnGbanned** [{user.first_name}](tg://user?id={user.id}) **in {a} chat(s) , UnBlocked and removed user from Gban watch **"
+    )
 
 
-CMD_HELP.update({
-    "gban":
-    ".gban <username> / <userid> / <reply to a user>\
+CMD_HELP.update(
+    {
+        "gban": ".gban <username> / <userid> / <reply to a user>\
 \n**Usage**: Globel ban the person in all groups, channels , block in pm , add gban watch (use with solution) \
 \n\n.ungban <username> / <userid> / <reply to a user>\
 \n**Usage**: unban user from all groups, channels , remove user from gban watch.\
 "
-})
+    }
+)
