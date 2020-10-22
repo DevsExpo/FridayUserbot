@@ -1,11 +1,11 @@
 # From Javes 05 Userbot ( For Gmute Plugin ) For Test ( I know I have it already but Wait Let Me Do Test )
 
 try:
-    from userbot.plugins.sql_helper import SESSION, BASE
+    from userbot.plugins.sql_helper import BASE, SESSION
 except ImportError:
     raise AttributeError
 
-from sqlalchemy import Column, String, UnicodeText
+from sqlalchemy import Column, String
 
 
 class GLOBELMute(BASE):
