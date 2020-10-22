@@ -15,47 +15,47 @@ from traceback import format_exc
 
 from telethon import events
 
-from userbot import bot, BOTLOG_CHATID, LOGSPAMMER
+from userbot import LOGSPAMMER, PRIVATE_GROUP_ID, bot
 
 
 def register(**args):
     """ Register a new event. """
-    pattern = args.get('pattern', None)
-    disable_edited = args.get('disable_edited', False)
-    ignore_unsafe = args.get('ignore_unsafe', False)
-    unsafe_pattern = r'^[^/!#@\$A-Za-z]'
-    groups_only = args.get('groups_only', False)
-    trigger_on_fwd = args.get('trigger_on_fwd', False)
-    disable_errors = args.get('disable_errors', False)
+    pattern = args.get("pattern", None)
+    disable_edited = args.get("disable_edited", False)
+    ignore_unsafe = args.get("ignore_unsafe", False)
+    unsafe_pattern = r"^[^/!#@\$A-Za-z]"
+    groups_only = args.get("groups_only", False)
+    trigger_on_fwd = args.get("trigger_on_fwd", False)
+    disable_errors = args.get("disable_errors", False)
 
-    if pattern is not None and not pattern.startswith('(?i)'):
-        args['pattern'] = '(?i)' + pattern
+    if pattern is not None and not pattern.startswith("(?i)"):
+        args["pattern"] = "(?i)" + pattern
 
     if "disable_edited" in args:
-        del args['disable_edited']
+        del args["disable_edited"]
 
     if "ignore_unsafe" in args:
-        del args['ignore_unsafe']
+        del args["ignore_unsafe"]
 
     if "groups_only" in args:
-        del args['groups_only']
+        del args["groups_only"]
 
     if "disable_errors" in args:
-        del args['disable_errors']
+        del args["disable_errors"]
 
     if "trigger_on_fwd" in args:
-        del args['trigger_on_fwd']
+        del args["trigger_on_fwd"]
 
     if pattern:
         if not ignore_unsafe:
-            args['pattern'] = pattern.replace('^.', unsafe_pattern, 1)
+            args["pattern"] = pattern.replace("^.", unsafe_pattern, 1)
 
     def decorator(func):
         async def wrapper(check):
-            if not LOGSPAMMER:
+            if not PRIVATE_GROUP_ID:
                 send_to = check.chat_id
             else:
-                send_to = BOTLOG_CHATID
+                send_to = PRIVATE_GROUP_ID
 
             if not trigger_on_fwd and check.fwd_from:
                 return
@@ -67,7 +67,7 @@ def register(**args):
             try:
                 await func(check)
 
-            # Thanks to @kandnub for this HACK.
+            # Thanks to @Hackintush for this HACK.
             # Raise StopPropagation to Raise StopPropagation
             # This needed for AFK to working properly
 
@@ -85,8 +85,8 @@ def register(**args):
                 if not disable_errors:
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
 
-                    text = "**USERBOT ERROR REPORT**\n"
-                    link = "[PaperplaneExtended Support Chat](https://t.me/PaperplaneExtendedSupport)"
+                    text = "**CIPHERXBOT ERROR REPORT**\n"
+                    link = "[CipherX Support Chat](https://t.me/Hackintush)"
                     text += "If you want to, you can report it"
                     text += f"- just forward this message to {link}.\n"
                     text += "Nothing is logged except the fact of error and date\n"
@@ -108,18 +108,17 @@ def register(**args):
                     ftext += str(format_exc())
                     ftext += "\n\nError text:\n"
                     ftext += str(sys.exc_info()[1])
-                    ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+                    ftext += "\n\n--------END CIPHERXBOT TRACEBACK LOG--------"
 
-                    command = "git log --pretty=format:\"%an: %s\" -10"
+                    command = 'git log --pretty=format:"%an: %s" -10'
 
                     ftext += "\n\n\nLast 10 commits:\n"
 
-                    process = await asyncsubshell(command,
-                                                  stdout=asyncsub.PIPE,
-                                                  stderr=asyncsub.PIPE)
+                    process = await asyncsubshell(
+                        command, stdout=asyncsub.PIPE, stderr=asyncsub.PIPE
+                    )
                     stdout, stderr = await process.communicate()
-                    result = str(stdout.decode().strip()) \
-                        + str(stderr.decode().strip())
+                    result = str(stdout.decode().strip()) + str(stderr.decode().strip())
 
                     ftext += result
 
@@ -129,13 +128,11 @@ def register(**args):
 
                     if LOGSPAMMER:
                         await check.client.respond(
-                            "`Sorry, my userbot has crashed.\
-                        \nThe error logs are stored in the userbot's log chat.`"
+                            "`Sorry, my bot has crashed.\
+                        \nThe error logs are stored in the cipherxbot's log chat.`"
                         )
 
-                    await check.client.send_file(send_to,
-                                                 "error.log",
-                                                 caption=text)
+                    await check.client.send_file(send_to, "error.log", caption=text)
                     remove("error.log")
             else:
                 pass
