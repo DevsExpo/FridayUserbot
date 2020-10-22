@@ -1,17 +1,17 @@
 {
-  "name": "FRIDAY",
-  "description": "Userbot created by a @Mariodevs and join https://t.me/fridaySupportOfficial for any problems or support",
-  "logo": "https://telegra.ph/file/c3ba2e9b965f624936358.png",
-    "keywords": [
+  "name": "CipherX-Userbot",
+  "description": "A Userbot Based On Telethon By @Hackintush",
+  "logo": "https://telegra.ph/file/b4e1e36c6b1fcb32dd997.jpg",
+  "keywords": [
     "telegram",
     "userbot",
     "plugin",
-    "modular",
+    "telegram-userbot",
     "productivity"
   ],
-  "repository": "https://github.com/STARKGANG/FridayUserbot/",
-  "website": "#TODO",
-  "success_url": "#TODO",
+  "repository": "https://github.com/CipherX1-ops/FridayUserbot/",
+  "website": "cipherx.ml",
+  "success_url": "t.me/Hackintush",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable heroku.",
@@ -22,52 +22,42 @@
       "value": "./userbot/DOWNLOADS/",
       "required": false
     },
-    "CUSTOM_PMPERMIT": {
-      "description": "Enter Custom Middle Pm Permit To Show When Some One PM You.",
-      "value": "",
-      "required": false
-    },
     "ALIVE_NAME": {
-      "description": "Fill your Full name or Username like @Mariodevs.",
+      "description": "Enter Username Here ",
       "value": ""
     },
     "APP_ID": {
       "description": "Get this value from my.telegram.org! Please do not steal",
       "value": ""
     },
-    "REM_BG_API_KEY": {
-      "description": "Required for Removing image background functionality. Get from https://www.remove.bg/",
-      "value": "",
-      "required": false
-    },
-    "LYDIA_API_KEY": {
-      "description": "Needed for Lydia AI. Follow https://telegra.ph/Lydia-09-05 to get your API.",
-      "value": "",
-      "required": false
-    },
     "API_HASH": {
       "description": "Get this value from my.telegram.org! Please do not steal",
       "value": ""
     },
     "PLUGIN_CHANNEL": {
-      "description": "Create a private group add rose  then type /id. PLUGIN_CHANNEL and PRIVATE_GROUP_ID both values should be same",
+      "description": "Channel Where You Save Your Plugins",
       "value": ""
     },
+    "SUDO_USERS": {
+      "description": "Enter A User Id Which You Would Like to Use To Control Sudo. Don't Give Your Own ID Or ID Of Users You Don't Trust.",
+      "value": "",
+      "required": false
+    },
     "PRIVATE_GROUP_ID": {
-      "description": "Create a private group add rose bot then type /id. PLUGIN_CHANNEL and PRIVATE_GROUP_ID both values should be same",
+      "description": "A Group ID Where You Want Logging Feature",
       "value": ""
     },
     "STRING_SESSION": {
-      "description": "Get this value from https://fridayuserbot.midhunkm1294bit.repl.run",
+      "description": "Get From Repl.run Or Run Locally",
       "value": ""
     },
     "GITHUB_ACCESS_TOKEN": {
-      "description": "Your Github Access Token for gitcommit plugin.Google 'Github access token' to find.",
+      "description": "Your Github Access Token for GitHub Commit Plugin. Google 'Github access token' to find more About It.",
       "value": "",
       "required": false
     },
     "GIT_REPO_NAME": {
-      "description": "Your repo name Example: midhunkm1294/Friday, but GITHUB_ACCESS_TOKEN must be setup first.",
+      "description": "Your repo name Example: Midhunkm1294/FridayUserbot, but GITHUB_ACCESS_TOKEN must be setup first.",
       "value": "",
       "required": false
     },
@@ -85,26 +75,11 @@
       "value": ""
     },
     "TG_BOT_TOKEN_BF_HER": {
-      "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the token of your bot. And Don't Forget To Turn of inline Mode on bot settings. Get it.",
+      "description": "Needed for inline buttons maker. Make a bot at @BotFather and get the token of your bot. Get it.",
       "value": ""
     },
-    "SUDO_USERS": {
-      "description": "Makes your acc and bot stable",
-      "value": "813878981",
-      "required": false
-    },
-    "CHROME_BIN": {
-      "description": "For Carbon.py. Leave as it is. ",
-      "value": "/app/.apt/usr/bin/google-chrome",
-      "required": false
-    },
-    "CHROME_DRIVER": {
-      "description": "For Carbon.py. Leave as it is. ",
-      "value": "/app/.chromedriver/bin/chromedriver",
-      "required": false
-    },
     "TG_BOT_USER_NAME_BF_HER": {
-      "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the username of your bot",
+      "description": "You Telegram Bot API Key Here. Needed For Help Module And Cbutton.",
       "value": ""
     },
     "DOWNLOAD_PFP_URL_CLOCK": {
@@ -112,35 +87,26 @@
       "value": "",
       "required": false
     },
-    "OPEN_WEATHER_MAP_APPID": {
-      "description": "Get your own APPID from https://api.openweathermap.org/data/2.5/weather",
-      "required": false
-    },
-    "PM_LOGGR_BOT_API_ID": {
-      "description": "Enter Valid Id. Required For Pm Logger Plugin Ignore If You Want [Not Usefull]",
-      "required": false
-
-
-    },
     "TZ": {
-      "description": "Required for Correct Time for autopic get from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
-      "value": "",
+      "description": "Required for Correct Time on autopic",
+      "value": "Asia/Kolkata",
       "required": false
     }
-
   },
-  "addons": [{
-    "plan": "heroku-postgresql",
-    "options": {
-      "version": "9.6"
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "12"
+      }
     }
-  }],
-"buildpacks": [
+  ],
+  "buildpacks": [
     {
       "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
     },
     {
-      "url": "https://github.com/amivin/aria2-heroku.git"
+      "url": "heroku/python"
     },
     {
       "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
@@ -150,9 +116,6 @@
     },
     {
       "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
-    },
-    {
-      "url": "heroku/python"
     }
   ]
 }
