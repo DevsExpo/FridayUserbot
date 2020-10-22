@@ -1,5 +1,6 @@
 from userbot import CMD_LIST
 
+
 @command(pattern="^.help ?(.*)")
 async def cmd_list(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
@@ -28,12 +29,12 @@ async def cmd_list(event):
             else:
                 await event.edit(input_str + " is not a valid plugin!")
         else:
-            help_string = """`Help Menu To Show Modules Of Super Technology Bot Made By`\n[CɪᴘʜᴇʀX](t.me/Hackintush) \n__Do .help plugin_name for commands, in case popup doesn't appear.__"""
+            help_string = """CipherX Bot Modules Are Listed Here !\n
+Programmed by My Master [CɪᴘʜᴇʀX](https://t.me/Hackintush)"""
             results = await bot.inline_query(  # pylint:disable=E0602
-                tgbotusername,
-                help_string)
+                tgbotusername, help_string
+            )
             await results[0].click(
-                    event.chat_id,
-                    reply_to=event.reply_to_msg_id,
-                    hide_via=True)
+                event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
+            )
             await event.delete()
