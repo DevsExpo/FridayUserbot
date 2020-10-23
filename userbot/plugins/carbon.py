@@ -1,91 +1,106 @@
-"""Create Button Posts
-"""
+# Copyright (C) 2019 The Raphielscape Company LLC.
+# Fixed Delete After Download Issue by @StarkXD
+# Licensed under the Raphielscape Public License, Version 1.b (the "License");
+# you may not use this file except in compliance with the License.
+#
+# Fixed and made better by @anubisxx
+""" Userbot module containing various scrapers. """
+import os
+import random
+from time import sleep
+from urllib.parse import quote_plus
 
-import re
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
 
-from telethon import custom
-from uniborg.util import friday_on_cmd
+from userbot import CHROME_DRIVER, GOOGLE_CHROME_BIN
+from userbot.utils import register
 
-# regex obtained from: https://github.com/PaulSonOfLars/tgbot/blob/master/tg_bot/modules/helper_funcs/string_handling.py#L23
-BTN_URL_REGEX = re.compile(r"(\{([^\[]+?)\}\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
+CARBONLANG = "auto"
+LANG = "en"
 
 
-@friday.on(friday_on_cmd(pattern="cbutton"))  # pylint:disable=E0602
-async def _(event):
-    if Config.TG_BOT_USER_NAME_BF_HER is None or tgbot is None:
-        await event.edit("need to set up a @BotFather bot for this module to work")
-        return
+@register(outgoing=True, pattern="^.carbon")
+async def carbon_api(e):
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
 
-    if Config.PRIVATE_CHANNEL_BOT_API_ID is None:
-        await event.edit(
-            "need to have a `PRIVATE_CHANNEL_BOT_API_ID` for this module to work"
+        """ A Wrapper for carbon.now.sh """
+        await e.edit("`Processing..`")
+        CARBON = "https://carbon.now.sh/?l={lang}&code={code}"
+        global CARBONLANG
+        textx = await e.get_reply_message()
+        pcode = e.text
+        if pcode[8:]:
+            pcodee = str(pcode[8:])
+            if "|" in pcodee:
+                pcode, skeme = pcodee.split("|")
+            else:
+                pcode = pcodee
+                skeme = None
+        elif textx:
+            pcode = str(textx.message)
+            skeme = None  # Importing message to module
+        code = quote_plus(pcode)  # Converting to urlencoded
+        await e.edit("`Meking Carbon...\n25%`")
+        url = CARBON.format(code=code, lang=CARBONLANG)
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        chrome_options.binary_location = GOOGLE_CHROME_BIN
+        chrome_options.add_argument("--window-size=1920x1080")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-gpu")
+        prefs = {"download.default_directory": "./"}
+        chrome_options.add_experimental_option("prefs", prefs)
+        driver = webdriver.Chrome(executable_path=CHROME_DRIVER, options=chrome_options)
+        driver.get(url)
+        await e.edit("`Be Patient...\n50%`")
+        download_path = "./"
+        driver.command_executor._commands["send_command"] = (
+            "POST",
+            "/session/$sessionId/chromium/send_command",
         )
-        return
-
-    reply_message = await event.get_reply_message()
-    if reply_message is None:
-        await event.edit("reply to a message that I need to parse the magic on")
-        return
-
-    markdown_note = reply_message.text
-    prev = 0
-    note_data = ""
-    buttons = []
-    for match in BTN_URL_REGEX.finditer(markdown_note):
-        # Check if btnurl is escaped
-        n_escapes = 0
-        to_check = match.start(1) - 1
-        while to_check > 0 and markdown_note[to_check] == "\\":
-            n_escapes += 1
-            to_check -= 1
-
-        # if even, not escaped -> create button
-        if n_escapes % 2 == 0:
-            # create a thruple with button label, url, and newline status
-            buttons.append((match.group(2), match.group(3), bool(match.group(4))))
-            note_data += markdown_note[prev : match.start(1)]
-            prev = match.end(1)
-
-        # if odd, escaped -> move along
+        params = {
+            "cmd": "Page.setDownloadBehavior",
+            "params": {"behavior": "allow", "downloadPath": download_path},
+        }
+        driver.execute("send_command", params)
+        driver.find_element_by_xpath(
+            "/html/body/div[1]/main/div[3]/div[2]/div[1]/div[1]/div/span[2]"
+        ).click()
+        if skeme != None:
+            k_skeme = driver.find_element_by_xpath(
+                "/html/body/div[1]/main/div[3]/div[2]/div[1]/div[1]/div/span[2]/input"
+            )
+            k_skeme.send_keys(skeme)
+            k_skeme.send_keys(Keys.DOWN)
+            k_skeme.send_keys(Keys.ENTER)
         else:
-            note_data += markdown_note[prev:to_check]
-            prev = match.start(1) - 1
-
-        note_data += markdown_note[prev:]
-
-    message_text = note_data.strip()
-    tl_ib_buttons = build_keyboard(buttons)
-
-    # logger.info(message_text)
-    # logger.info(tl_ib_buttons)
-
-    tgbot_reply_message = None
-    if reply_message.media is not None:
-        message_id_in_channel = reply_message.id
-        tgbot_reply_message = await tgbot.get_messages(
-            entity=Config.PRIVATE_CHANNEL_BOT_API_ID, ids=message_id_in_channel
+            color_scheme = str(random.randint(1, 29))
+            driver.find_element_by_id(("downshift-0-item-" + color_scheme)).click()
+        driver.find_element_by_id("export-menu").click()
+        driver.find_element_by_xpath("//button[contains(text(),'4x')]").click()
+        driver.find_element_by_xpath("//button[contains(text(),'PNG')]").click()
+        await e.edit("`Processing..\n75%`")
+        # Waiting for downloading
+        sleep(2.5)
+        color_name = driver.find_element_by_xpath(
+            "/html/body/div[1]/main/div[3]/div[2]/div[1]/div[1]/div/span[2]/input"
+        ).get_attribute("value")
+        await e.edit("`Done Dana Done...\n100%`")
+        file = "./carbon.png"
+        await e.edit("`Uploading..`")
+        await e.client.send_file(
+            e.chat_id,
+            file,
+            caption="<< `Here's your carbon` \n Carbonised by [CipherX](https://t.me/Hackintush)>> "\n**Colour Scheme: **`{}`".format(
+                color_name
+            ),
+            force_document=True,
+            reply_to=e.message.reply_to_msg_id,
         )
-        tgbot_reply_message = tgbot_reply_message.media
-
-    await tgbot.send_message(
-        entity=Config.PRIVATE_CHANNEL_BOT_API_ID,
-        message=message_text,
-        parse_mode="html",
-        file=tgbot_reply_message,
-        link_preview=False,
-        buttons=tl_ib_buttons,
-        silent=True,
-    )
-
-
-# Helpers
-
-
-def build_keyboard(buttons):
-    keyb = []
-    for btn in buttons:
-        if btn[2] and keyb:
-            keyb[-1].append(custom.Button.url(btn[0], btn[1]))
-        else:
-            keyb.append([custom.Button.url(btn[0], btn[1])])
-    return keyb
+        os.remove("./carbon.png")
+        driver.quit()
+        # Removing carbon.png after uploading
+        await e.delete()  # Deleting msg
