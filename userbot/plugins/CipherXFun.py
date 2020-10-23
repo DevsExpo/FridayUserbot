@@ -14,8 +14,8 @@ from uniborg.util import admin_cmd
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 
-from userbot import CMD_HELP
-from userbot.utils import register
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
+from userbot.utils import register, errors_handler, admin_cmd
 
 
 @borg.on(events.NewMessage(pattern=r"\.slash", outgoing=True))
@@ -34,7 +34,7 @@ async def kek(keks):
         time.sleep(0.3)
         await keks.edit(":" + uio[i % 2]) 
         
-@borg.on(events.NewMessage(pattern=r"\.q", outgoing=True))
+@borg.on(events.NewMessage(pattern=r"\.question", outgoing=True))
 async def _(event):
         if event.fwd_from:
 	        return
@@ -50,6 +50,13 @@ async def Oof(e):
     t = "Oof"
     for j in range(15):
         t = t[:-1] + "of"
+        await e.edit(t) 
+	
+@borg.on(events.NewMessage(pattern=r"\.ok", outgoing=True))
+async def Ok(e):
+    t = "Ok"
+    for j in range(15):
+        t = t[:-1] + "k"
         await e.edit(t) 
         
 @borg.on(events.NewMessage(pattern=r"\.meme", outgoing=True))
@@ -584,7 +591,7 @@ async def _(event):
     await asyncio.sleep(3)
     await event.delete()
   
-@borg.on(admin_cmd(pattern="lol"))
+@borg.on(admin_cmd(pattern="lalol"))
 async def _(event):
     if event.fwd_from:
         return
@@ -3622,8 +3629,9 @@ CMD_HELP.update({
     "CipherXFun":
     ".slash\
 \n\n.para\
-\n\n.q\
+\n\n.question\
 \n\n.oof\
+\n\n.ok\
 \n\n.meme\
 \n\n.flower\
 \n\n.tlol\
@@ -3653,7 +3661,7 @@ CMD_HELP.update({
 \n\n.rain\
 \n\n.solar\
 \n\n.bombs\
-\n\n.lol\
+\n\n.lalol\
 \n\n.lit\
 \n\n.love\
 \n\n.my\
