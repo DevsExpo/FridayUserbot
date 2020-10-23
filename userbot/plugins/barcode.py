@@ -1,22 +1,23 @@
 """BarCode Generator
 Command .barcode (your text)
-By @snappy101
+By @Hackintush
 """
 
 import asyncio
-import barcode
 import os
-import time
-from barcode.writer import ImageWriter
 from datetime import datetime
-from uniborg.util import admin_cmd
+
+import barcode
+from barcode.writer import ImageWriter
+from uniborg.util import friday_on_cmd, edit_or_reply, sudo_cmd
 
 
-@borg.on(admin_cmd(pattern="barcode ?(.*)", allow_sudo=True))
+@friday.on(friday_on_cmd(pattern="barcode ?(.*)"))
+@friday.on(sudo_cmd(pattern="barcode ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("...")
+    await edit_or_reply(event, "...")
     start = datetime.now()
     input_str = event.pattern_match.group(1)
     message = "SYNTAX: `.barcode <long text to include>`"
@@ -54,10 +55,10 @@ async def _(event):
         )
         os.remove(filename)
     except Exception as e:
-        await event.edit(str(e))
+        await edit_or_reply(str(e))
         return
     end = datetime.now()
     ms = (end - start).seconds
-    await event.edit("Created BarCode in {} seconds".format(ms))
+    await edit_or_reply(event, "Created Barcode in {} seconds".format(ms))
     await asyncio.sleep(5)
     await event.delete()
