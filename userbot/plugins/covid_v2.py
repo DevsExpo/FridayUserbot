@@ -26,7 +26,7 @@ async def _(event):
               await event.reply("```Boss! Please Unblock (@NovelCoronaBot) ```")
               return
           if response.text.startswith("Country"):
-             await event.edit("😶**Country Not Found**😅\n\n[🔴🔴🔴🔴\n ⏩⏩ How to use ⏪⏪\n🔵🔵🔵🔵](https://t.me/FRIDAYSUPPORTOFFICIAL)")
+             await event.edit("😶**Country Not Found**😅")
           else: 
              await event.delete()
              await event.client.send_message(event.chat_id, response.message)
