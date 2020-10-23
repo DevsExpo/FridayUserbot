@@ -1,112 +1,153 @@
 import asyncio
-import datetime
-import asyncio
+
 from telethon import events
-from telethon.errors.rpcerrorlist import YouBlockedUserError, UserAlreadyParticipantError
-from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from uniborg.util import admin_cmd
-from userbot import CMD_HELP
+from telethon.errors.rpcerrorlist import YouBlockedUserError
+
+from userbot.utils import friday_on_cmd
 
 
-@borg.on(admin_cmd(pattern="purl ?(.*)", allow_sudo=True))
+@friday.on(friday_on_cmd(pattern=("sang ?(.*)")))
 async def _(event):
     if event.fwd_from:
-        return 
+        return
     if not event.reply_to_msg_id:
-       await event.edit("**Reply to any document.**")
-       return
-    reply_message = await event.get_reply_message() 
-    chat = "@FiletolinkTGbot"
-    sender = reply_message.sender
-    await event.edit("**Making public url...**")
-    async with event.client.conversation(chat) as conv:
-          try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=1011636686))
-              await event.client.forward_messages(chat, reply_message)
-              response = await response 
-          except YouBlockedUserError: 
-              await event.reply("```Please unblock me (@FiletolinkTGbot) u Nigga```")
-              return
-          await event.delete()
-          await event.client.send_message(event.chat_id, response.message, reply_to=reply_message)
-
-@borg.on(admin_cmd(pattern="sang ?(.*)", allow_sudo=True))
-async def _(event):
-    if event.fwd_from:
-        return 
-    if not event.reply_to_msg_id:
-       await event.edit("**Reply to an user message.**")
-       return
-    reply_message = await event.get_reply_message() 
+        await event.edit("```Reply to any user message.```")
+        return
+    reply_message = await event.get_reply_message()
     if not reply_message.text:
-       await event.edit("**Reply to a message.**")
-       return
-    chat = "@sangmatainfo_bot"
-    sender = reply_message.sender
-    await event.edit("**Getting user's name history..**")
-    async with event.client.conversation(chat) as conv:
-          try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=461843263))
-              await event.client.forward_messages(chat, reply_message)
-              response = await response 
-          except YouBlockedUserError: 
-              await event.reply("```Please unblock me (@SangMataInfo_bot) u Nigga```")
-              return
-          await event.delete()
-          await event.client.send_message(event.chat_id, response.message, reply_to=reply_message)
-
-@borg.on(admin_cmd(pattern="reader ?(.*)", allow_sudo=True))
-async def _(event):
-    if event.fwd_from:
-        return 
-    if not event.reply_to_msg_id:
-       await event.edit("**Reply to a URL.**")
-       return
-    reply_message = await event.get_reply_message() 
-    if not reply_message.text:
-       await event.edit("**Reply to a url message.**")
-       return
-    chat = "@chotamreaderbot"
-    sender = reply_message.sender
-    await event.edit("**Making instant view...**")
-    async with event.client.conversation(chat) as conv:
-          try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=272572121))
-              await event.client.forward_messages(chat, reply_message)
-              response = await response 
-          except YouBlockedUserError: 
-              await event.reply("```Please unblock me (@chotamreaderbot) u Nigga```")
-              return
-          await event.delete()
-          await event.client.send_message(event.chat_id, response.message, reply_to=reply_message)
-        
-        
-@borg.on(admin_cmd(pattern="ad ?(.*)"))
-async def _(event):
-    if event.fwd_from:
-        return 
-    if not event.reply_to_msg_id:
-       await event.edit("```Reply to any user message.```")
-       return
-    reply_message = await event.get_reply_message() 
-    if not reply_message.media:
-       await event.edit("```reply to media message```")
-       return
-    chat = "@audiotubebot"
-    sender = reply_message.sender
+        await event.edit("```reply to text message```")
+        return
+    chat = "@SangMataInfo_bot"
+    reply_message.sender
     if reply_message.sender.bot:
-       await event.edit("```Reply to actual users message.```")
-       return
+        await event.edit("```Reply to actual users message.```")
+        return
     await event.edit("```Processing```")
     async with borg.conversation(chat) as conv:
-          try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=507379365))
-              await borg.send_message(chat, reply_message)
-              response = await response 
-          except YouBlockedUserError: 
-              await event.reply("```Please unblock @AudioTubeBot and try again```")
-              return
-          await event.delete()
-          await borg.send_file(event.chat_id, response.message.media)
+        try:
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=461843263)
+            )
+            await borg.forward_messages(chat, reply_message)
+            response = await response
+        except YouBlockedUserError:
+            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+            return
+        if response.text.startswith("Forward"):
+            await event.edit(
+                "The user have enabled privacy settings you cant get name history"
+            )
+        else:
+            await event.edit(f"{response.message.message}")
 
 
+@friday.on(friday_on_cmd(pattern=("fakemail ?(.*)")))
+async def _(event):
+    if event.fwd_from:
+        return
+    chat = "@fakemailbot"
+    await event.edit("```Fakemail Creating, wait```")
+    async with borg.conversation(chat) as conv:
+        try:
+            await event.client.send_message("@fakemailbot", "/generate")
+            await asyncio.sleep(5)
+            k = await event.client.get_messages(
+                entity="@fakemailbot", limit=1, reverse=False
+            )
+            mail = k[0].text
+            # print(k[0].text)
+        except YouBlockedUserError:
+            await event.reply("```Please unblock @fakemailbot and try again```")
+            return
+        await event.edit(mail)
+
+
+@friday.on(friday_on_cmd(pattern=("mailid ?(.*)")))
+async def _(event):
+    if event.fwd_from:
+        return
+    chat = "@fakemailbot"
+    await event.edit("```Fakemail list getting```")
+    async with borg.conversation(chat) as conv:
+        try:
+            await event.client.send_message("@fakemailbot", "/id")
+            await asyncio.sleep(5)
+            k = await event.client.get_messages(
+                entity="@fakemailbot", limit=1, reverse=False
+            )
+            mail = k[0].text
+            # print(k[0].text)
+        except YouBlockedUserError:
+            await event.reply("```Please unblock @fakemailbot and try again```")
+            return
+        await event.edit(mail)
+
+
+@friday.on(friday_on_cmd(pattern=("ub ?(.*)")))
+async def _(event):
+    if event.fwd_from:
+        return
+    if not event.reply_to_msg_id:
+        await event.edit("```Reply to any user message.```")
+        return
+    reply_message = await event.get_reply_message()
+    if not reply_message.text:
+        await event.edit("```reply to text message```")
+        return
+    chat = "@uploadbot"
+    reply_message.sender
+    if reply_message.sender.bot:
+        await event.edit("```Reply to actual users message.```")
+        return
+    await event.edit("```Processing```")
+    async with borg.conversation(chat) as conv:
+        try:
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=97342984)
+            )
+            await borg.forward_messages(chat, reply_message)
+            response = await response
+        except YouBlockedUserError:
+            await event.reply("```Please unblock @uploadbot and try again```")
+            return
+        if response.text.startswith("Hi!,"):
+            await event.edit(
+                "```can you kindly disable your forward privacy settings for good?```"
+            )
+        else:
+            await event.edit(f"{response.message.message}")
+
+
+@friday.on(friday_on_cmd(pattern=("gid ?(.*)")))
+async def _(event):
+    if event.fwd_from:
+        return
+    if not event.reply_to_msg_id:
+        await event.edit("```Reply to any user message.```")
+        return
+    reply_message = await event.get_reply_message()
+    if not reply_message.text:
+        await event.edit("```reply to text message```")
+        return
+    chat = "@getidsbot"
+    reply_message.sender
+    if reply_message.sender.bot:
+        await event.edit("```Reply to actual users message.```")
+        return
+    await event.edit("```Processing```")
+    async with borg.conversation(chat) as conv:
+        try:
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=186675376)
+            )
+            await borg.forward_messages(chat, reply_message)
+            response = await response
+        except YouBlockedUserError:
+            await event.reply("```you blocked bot```")
+            return
+        if response.text.startswith("Hello,"):
+            await event.edit(
+                "```can you kindly disable your forward privacy settings for good?```"
+            )
+        else:
+            await event.edit(f"{response.message.message}")
