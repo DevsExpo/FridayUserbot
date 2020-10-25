@@ -94,7 +94,9 @@ async def carbon_api(e):
         await e.client.send_file(
             e.chat_id,
             file,
-            caption="<< Here's your carbon \n Carbonised by [CipherX](https://t.me/Hackintush)>>,
+            caption="<< `Here's your carbon!` \n **Carbonised Using** [CɪᴘʜᴇʀX](https://t.me/Hackintush)>>\n**Colour Scheme: **`{}`".format(
+                color_name
+            ), 
             force_document=True,
             reply_to=e.message.reply_to_msg_id,
         )
