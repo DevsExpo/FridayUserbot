@@ -1,7 +1,7 @@
-from telethon import events
 from datetime import datetime
+from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
 import time
-from userbot import Lastupdate, bot
+from userbot import Lastupdate
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -30,13 +30,14 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-@command(pattern="^.ping")
+@friday.on(friday_on_cmd(pattern="ping$"))
+@friday.on(sudo_cmd(pattern="ping$", allow_sudo=True))
 async def _(event):
+    starkislub = await edit_or_reply(event, "`Pong !`")
     if event.fwd_from:
         return
     start = datetime.now()
-    await event.edit("P I N G")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - Lastupdate))
-    await event.edit("P I N G\n{}".format(ms)\n ➲ `{uptime}`)
+    await starkislub.edit(f"**P I N G**\n ➲ `{ms}` \n ➲ `{uptime}`")
