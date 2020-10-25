@@ -12,7 +12,7 @@ from userbot import CMD_LIST
 from userbot.plugins import inlinestats
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
-    WARN_PIC = "https://telegra.ph/file/53aed76a90e38779161b1.jpg"
+    WARN_PIC = "https://telegra.ph/file/82c595986872349e5ba1a.jpg"
 else:
     WARN_PIC = PMPERMIT_PIC
 LOG_CHAT = Config.PRIVATE_GROUP_ID
