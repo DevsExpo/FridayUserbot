@@ -3,13 +3,11 @@
 and may cmd would be added soon."""
 
 
-import asyncio
-from telethon import events
 from cowpy import cow
-from uniborg.util import admin_cmd
+from telethon import events
 
 
-@borg.on(events.NewMessage(pattern=r"^.(\w+)say (.*)", outgoing=True))
+@friday.on(events.NewMessage(pattern=r"^.(\w+)say (.*)", outgoing=True))
 async def univsaye(cowmsg):
     """ For .cowsay module, uniborg wrapper for cow which says things. """
     if not cowmsg.text[0].isalpha() and cowmsg.text[0] not in ("/", "#", "@", "!"):
