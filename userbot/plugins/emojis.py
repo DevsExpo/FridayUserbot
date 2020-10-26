@@ -4,12 +4,12 @@ Available Commands:
 .emoji apple
 .emoji :/
 .emoji -_-"""
-from telethon import events
 import asyncio
-from uniborg.util import admin_cmd
+
+from uniborg.util import friday_on_cmd
 
 
-@borg.on(admin_cmd(pattern="emoji (.*)"))
+@friday.on(friday_on_cmd(pattern="emoji (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -22,19 +22,13 @@ async def _(event):
         await event.edit("\uF8FF")
     elif input_str == ":/":
         await event.edit(input_str)
-        animation_chars = [
-            ":\\",
-            ":/"
-        ]
+        animation_chars = [":\\", ":/"]
         for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 2])
     elif input_str == "-_-":
         await event.edit(input_str)
-        animation_chars = [
-            "-__-",
-            "-_-"
-        ]
+        animation_chars = ["-__-", "-_-"]
         for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 2])
