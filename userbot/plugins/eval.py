@@ -4,20 +4,21 @@ Syntax: .eval PythonCode"""
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-from telethon import events, errors, functions, types
 import inspect
-import traceback
 import asyncio
-import sys
 import io
-from uniborg.util import admin_cmd
+import sys
+import traceback
+from telethon import events, errors, functions, types
+from uniborg.util import friday_on_cmd, edit_or_reply, sudo_cmd
 
 
-@borg.on(admin_cmd("eval"))
+@friday.on(friday_on_cmd("eval"))
+@friday.on(sudo_cmd("eval", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("Processing ...")
+    await edit_or_reply(event, "Processing ...")
     cmd = event.text.split(" ", maxsplit=1)[1]
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
@@ -60,16 +61,13 @@ async def _(event):
                 force_document=True,
                 allow_cache=False,
                 caption=cmd,
-                reply_to=reply_to_id
+                reply_to=reply_to_id,
             )
             await event.delete()
     else:
-        await event.edit(final_output)
+        await edit_or_reply(event, final_output)
 
 
 async def aexec(code, event):
-    exec(
-        f'async def __aexec(event): ' +
-        ''.join(f'\n {l}' for l in code.split('\n'))
-    )
-    return await locals()['__aexec'](event)
+    exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
+    return await locals()["__aexec"](event)
