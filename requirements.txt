@@ -1,5 +1,9 @@
 Pillow>=5.3.0
 PyGithub
+youtube-dl
+git+https://github.com/StarkGang/Telethon.git
+iplookup
+git+https://github.com/Starkgangs/pydl.git
 aiofiles
 aiohttp
 aria2p
@@ -40,7 +44,6 @@ pymongo
 python-barcode
 python-dotenv
 python-magic
-pytube
 pytz
 qrcode
 regex
@@ -56,5 +59,6 @@ wikipedia>=1.4.0
 youtube-dl
 covid
 validators
-git+https://github.com/StarkGang/Telethon.git
-iplookup
+youtube-search
+youtube-search-python
+wget
