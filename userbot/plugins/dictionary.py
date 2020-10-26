@@ -2,12 +2,13 @@
 Syntax: .meaning <word>"""
 
 import requests
-from telethon import events
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd, edit_or_reply, sudo_cmd
 
 
-@borg.on(admin_cmd("meaning (.*)"))
+@friday.on(friday_on_cmd("meaning (.*)"))
+@friday.on(sudo_cmd("meaning (.*)", allow_sudo=True))
 async def _(event):
+    stark = await edit_or_reply(event, "Finding Meaning.....")
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
@@ -21,7 +22,9 @@ async def _(event):
         for current_meaning in meaning_dict:
             current_meaning_type = current_meaning.get("type")
             current_meaning_definition = current_meaning.get("definition")
-            caption_str += f"**{current_meaning_type}**: {current_meaning_definition}\n\n"
+            caption_str += (
+                f"**{current_meaning_type}**: {current_meaning_definition}\n\n"
+            )
     except Exception as e:
         caption_str = str(e)
     reply_msg_id = event.message.id
@@ -37,8 +40,8 @@ async def _(event):
             allow_cache=True,
             voice_note=True,
             silent=True,
-            supports_streaming=True
+            supports_streaming=True,
         )
     except:
         pass
-    await event.edit(caption_str)
+    await stark.edit(caption_str)
