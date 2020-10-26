@@ -29,7 +29,7 @@ if ENV:
             "HASH_TO_TORRENT_API", "https://example.com/torrent/{}"
         )
         # This is required for the @telegraph functionality.
-        TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "CipherX")
+        TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "Friday")
         # Get a Free API Key from OCR.Space
         OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
         # Send .get_id in any group with all your administration bots (added)
@@ -137,7 +137,7 @@ if ENV:
         PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", False))
         NEWS_CHANNEL_ID = int(os.environ.get("NEWS_CHANNEL_ID", False))
         PM_DATA = os.environ.get("PM_DATA", "ENABLE")
-        TAG_FEATURE = os.environ.get("TAG_FEATURE", "ENABLE")
+        TAG_FEATURE = os.environ.get("TAG_FEATURE", "DISABLE")
         ASSISTANT_LOG = int(os.environ.get("ASSISTANT_LOG", False))
 else:
     class Config(object):
