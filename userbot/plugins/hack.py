@@ -5,12 +5,12 @@ Available Commands:
 from telethon import events
 
 import asyncio
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd 
 from telethon.tl.functions.users import GetFullUserRequest
 
 
 
-@borg.on(admin_cmd(pattern=r"hack"))
+@friday.on(friday_on_cmd(pattern=r"hack")) 
 
 async def _(event):
 
