@@ -3,18 +3,16 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 """ Command: .fpost word
 
-credit: @pureindialover"""
+credit: @Hackintush"""
 
 import string
 
-from telethon import events
-from telethon.tl import types
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd
 
 msg_cache = {}
 
 
-@borg.on(admin_cmd(pattern=r"fpost\s+(.*)"))
+@friday.on(friday_on_cmd(pattern=r"fpost\s+(.*)"))
 async def _(event):
     await event.delete()
     text = event.pattern_match.group(1)
