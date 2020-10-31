@@ -5,7 +5,9 @@ import asyncio
 import os
 import time
 from datetime import datetime
-from userbot.utils import admin_cmd, progress
+
+from fridaybot.utils import friday_on_cmd, progress
+
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for uploads and downloads."""
@@ -18,18 +20,17 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "[{0}{1}] {2}%\n".format(
-            ''.join(["▰" for i in range(math.floor(percentage / 10))]),
-            ''.join(["▱" for i in range(10 - math.floor(percentage / 10))]),
-            round(percentage, 2))
-        tmp = progress_str + \
-            "{0} of {1}\nETA: {2}".format(
-                humanbytes(current),
-                humanbytes(total),
-                time_formatter(estimated_total_time)
-            )
+            "".join(["▰" for i in range(math.floor(percentage / 10))]),
+            "".join(["▱" for i in range(10 - math.floor(percentage / 10))]),
+            round(percentage, 2),
+        )
+        tmp = progress_str + "{0} of {1}\nETA: {2}".format(
+            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
+        )
         if file_name:
-            await event.edit("{}\nFile Name: `{}`\n{}".format(
-                type_of_ps, file_name, tmp))
+            await event.edit(
+                "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
+            )
         else:
             await event.edit("{}\n{}".format(type_of_ps, tmp))
 
@@ -41,7 +42,7 @@ def humanbytes(size):
     if not size:
         return ""
     # 2 ** 10 = 1024
-    power = 2**10
+    power = 2 ** 10
     raised_to_pow = 0
     dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
     while size > power:
@@ -57,41 +58,46 @@ def time_formatter(milliseconds: int) -> str:
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
-    tmp = ((str(days) + " day(s), ") if days else "") + \
-        ((str(hours) + " hour(s), ") if hours else "") + \
-        ((str(minutes) + " minute(s), ") if minutes else "") + \
-        ((str(seconds) + " second(s), ") if seconds else "") + \
-        ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
+    tmp = (
+        ((str(days) + " day(s), ") if days else "")
+        + ((str(hours) + " hour(s), ") if hours else "")
+        + ((str(minutes) + " minute(s), ") if minutes else "")
+        + ((str(seconds) + " second(s), ") if seconds else "")
+        + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
+    )
     return tmp[:-2]
 
 
-
-@borg.on(admin_cmd(pattern="nfc (.*)"))  # pylint:disable=E0602
+@friday.on(friday_on_cmd(pattern="nfc (.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     if reply_message is None:
-        await event.edit("reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot")
+        await event.edit(
+            "reply to a media to use the `nfc` operation.\nInspired by CɪᴘʜᴇʀX"
+        )
         return
     await event.edit("trying to download media file, to my local")
     try:
         start = datetime.now()
-        #c_time = time.ctime()
+        # c_time = time.ctime()
         downloaded_file_name = await borg.download_media(
             reply_message,
             Config.TMP_DOWNLOAD_DIRECTORY,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                 progress(d, t, event, c_time, "trying to download")
-            )
+            ),
         )
     except Exception as e:  # pylint:disable=C0103,W0703
         await event.edit(str(e))
     else:
         end = datetime.now()
         ms = (end - start).seconds
-        await event.edit("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms))
+        await event.edit(
+            "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+        )
         new_required_file_name = ""
         new_required_file_caption = ""
         command_to_run = []
@@ -100,7 +106,9 @@ async def _(event):
         supports_streaming = False
         if input_str == "voice":
             new_required_file_caption = "NLFC_" + str(round(time.time())) + ".opus"
-            new_required_file_name = Config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
+            new_required_file_name = (
+                Config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
+            )
             command_to_run = [
                 "ffmpeg",
                 "-i",
@@ -113,19 +121,21 @@ async def _(event):
                 "100k",
                 "-vbr",
                 "on",
-                new_required_file_name
+                new_required_file_name,
             ]
             voice_note = True
             supports_streaming = True
         elif input_str == "mp3":
             new_required_file_caption = "NLFC_" + str(round(time.time())) + ".mp3"
-            new_required_file_name = Config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
+            new_required_file_name = (
+                Config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
+            )
             command_to_run = [
                 "ffmpeg",
                 "-i",
                 downloaded_file_name,
                 "-vn",
-                new_required_file_name
+                new_required_file_name,
             ]
             voice_note = False
             supports_streaming = True
@@ -143,8 +153,8 @@ async def _(event):
         )
         # Wait for the subprocess to finish
         stdout, stderr = await process.communicate()
-        e_response = stderr.decode().strip()
-        t_response = stdout.decode().strip()
+        stderr.decode().strip()
+        stdout.decode().strip()
         os.remove(downloaded_file_name)
         if os.path.exists(new_required_file_name):
             end_two = datetime.now()
@@ -159,7 +169,7 @@ async def _(event):
                 supports_streaming=supports_streaming,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(d, t, event, c_time, "trying to upload")
-                )
+                ),
             )
             ms_two = (end_two - end).seconds
             os.remove(new_required_file_name)
