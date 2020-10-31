@@ -1,27 +1,23 @@
-""".gangestar Plugin"""
+import asyncio
 
-from telethon import events
-import random, re
-from uniborg.util import admin_cmd
-import asyncio 
+from userbot.utils import friday_on_cmd
 
 
-
-@borg.on(admin_cmd("gangestar ?(.*)"))
+@friday.on(friday_on_cmd("gangastar ?(.*)"))
 async def _(event):
-     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
-        await event.edit("EVERyBOdy")
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+        await event.edit("Everybody")
         await asyncio.sleep(0.3)
-        await event.edit("wAs")
+        await event.edit("was")
         await asyncio.sleep(0.2)
-        await event.edit("GanGeSTar")
+        await event.edit("Gangestar")
         await asyncio.sleep(0.5)
-        await event.edit("UNtIL ")
+        await event.edit("Until ")
         await asyncio.sleep(0.2)
         await event.edit("I")
         await asyncio.sleep(0.3)
-        await event.edit("ArRivEd")
+        await event.edit("Arrived")
         await asyncio.sleep(0.3)
-        await event.edit("😎😎😎")
+        await event.edit("🔥🔥🔥")
         await asyncio.sleep(0.3)
-        await event.edit("EVERyBOdy wAs GanGeSTar UNtIL I ArRivEd 😎😎😎")
+        await event.edit("Everybody was Gangestar Until I Arrived 🔥🔥🔥")
