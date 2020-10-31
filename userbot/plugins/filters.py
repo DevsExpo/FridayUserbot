@@ -8,10 +8,17 @@ Available Commands:
 .clearfilter"""
 import asyncio
 import re
-from telethon import events, utils
-from telethon.tl import types
-from userbot.plugins.sql_helper.filter_sql import get_filter, add_filter, remove_filter, get_all_filters, remove_all_filters
 
+from telethon import utils
+from telethon.tl import types
+
+from userbot.plugins.sql_helper.filter_sql import (
+    add_filter,
+    get_all_filters,
+    remove_all_filters,
+    remove_filter,
+)
+from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
 
 DELETE_TIMEOUT = 0
 TYPE_TEXT = 0
@@ -29,7 +36,7 @@ async def on_snip(event):
     name = event.raw_text
     if event.chat_id in last_triggered_filters:
         if name in last_triggered_filters[event.chat_id]:
-            # avoid userbot spam
+            # avoid fridaybot spam
             # "I demand rights for us bots, we are equal to you humans." -Henri Koivuneva (t.me/UserbotTesting/2698)
             return False
     snips = get_all_filters(event.chat_id)
@@ -41,23 +48,20 @@ async def on_snip(event):
                     media = types.InputPhoto(
                         int(snip.media_id),
                         int(snip.media_access_hash),
-                        snip.media_file_reference
+                        snip.media_file_reference,
                     )
                 elif snip.snip_type == TYPE_DOCUMENT:
                     media = types.InputDocument(
                         int(snip.media_id),
                         int(snip.media_access_hash),
-                        snip.media_file_reference
+                        snip.media_file_reference,
                     )
                 else:
                     media = None
-                message_id = event.message.id
+                event.message.id
                 if event.reply_to_msg_id:
-                    message_id = event.reply_to_msg_id
-                await event.reply(
-                    snip.reply,
-                    file=media
-                )
+                    event.reply_to_msg_id
+                await event.reply(snip.reply, file=media)
                 if event.chat_id not in last_triggered_filters:
                     last_triggered_filters[event.chat_id] = []
                 last_triggered_filters[event.chat_id].append(name)
@@ -65,32 +69,46 @@ async def on_snip(event):
                 last_triggered_filters[event.chat_id].remove(name)
 
 
-@command(pattern="^.savefilter (.*)")
+@friday.on(friday_on_cmd(pattern="filter (.*)"))
+@friday.on(sudo_cmd(pattern="filter (.*)", allow_sudo=True))
 async def on_snip_save(event):
+    hitler = await edit_or_reply(event, "Processing....")
     name = event.pattern_match.group(1)
     msg = await event.get_reply_message()
     if msg:
-        snip = {'type': TYPE_TEXT, 'text': msg.message or ''}
+        snip = {"type": TYPE_TEXT, "text": msg.message or ""}
         if msg.media:
             media = None
             if isinstance(msg.media, types.MessageMediaPhoto):
                 media = utils.get_input_photo(msg.media.photo)
-                snip['type'] = TYPE_PHOTO
+                snip["type"] = TYPE_PHOTO
             elif isinstance(msg.media, types.MessageMediaDocument):
                 media = utils.get_input_document(msg.media.document)
-                snip['type'] = TYPE_DOCUMENT
+                snip["type"] = TYPE_DOCUMENT
             if media:
-                snip['id'] = media.id
-                snip['hash'] = media.access_hash
-                snip['fr'] = media.file_reference
-        add_filter(event.chat_id, name, snip['text'], snip['type'], snip.get('id'), snip.get('hash'), snip.get('fr'))
-        await event.edit(f"filter {name} saved successfully. Get it with {name}")
+                snip["id"] = media.id
+                snip["hash"] = media.access_hash
+                snip["fr"] = media.file_reference
+        add_filter(
+            event.chat_id,
+            name,
+            snip["text"],
+            snip["type"],
+            snip.get("id"),
+            snip.get("hash"),
+            snip.get("fr"),
+        )
+        await hitler.edit(f"filter {name} saved successfully. Get it with {name}")
     else:
-        await event.edit("Reply to a message with `savefilter keyword` to save the filter")
+        await hitler.edit(
+            "Reply to a message with `savefilter keyword` to save the filter"
+        )
 
 
-@command(pattern="^.listfilters$")
+@friday.on(friday_on_cmd(pattern="filters$"))
+@friday.on(sudo_cmd(pattern="filters$", allow_sudo=True))
 async def on_snip_list(event):
+    indiaislove = await edit_or_reply(event, "Processing....")
     all_snips = get_all_filters(event.chat_id)
     OUT_STR = "Available Filters in the Current Chat:\n"
     if len(all_snips) > 0:
@@ -107,21 +125,25 @@ async def on_snip_list(event):
                 force_document=True,
                 allow_cache=False,
                 caption="Available Filters in the Current Chat",
-                reply_to=event
+                reply_to=event,
             )
             await event.delete()
     else:
-        await event.edit(OUT_STR)
+        await indiaislove.edit(OUT_STR)
 
 
-@command(pattern="^.clearfilter (.*)")
+@friday.on(friday_on_cmd(pattern="stop (.*)"))
+@friday.on(sudo_cmd(pattern="stop (.*)", allow_sudo=True))
 async def on_snip_delete(event):
+    iloveindia = await edit_or_reply(event, "Processing...")
     name = event.pattern_match.group(1)
     remove_filter(event.chat_id, name)
-    await event.edit(f"filter {name} deleted successfully")
+    await iloveindia.edit(f"filter {name} deleted successfully")
 
 
-@command(pattern="^.clearallfilters$")
+@friday.on(friday_on_cmd(pattern="rmfilters$"))
+@friday.on(sudo_cmd(pattern="rmfilters$", allow_sudo=True))
 async def on_all_snip_delete(event):
+    await edit_or_reply(event, "Processing....")
     remove_all_filters(event.chat_id)
-    await event.edit(f"filters **in current chat** deleted successfully")
+    await sadness.edit(f"filters **in current chat** deleted successfully")
