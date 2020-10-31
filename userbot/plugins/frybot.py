@@ -3,9 +3,9 @@ import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from userbot.utils import admin_cmd
+from userbot.utils import friday_on_cmd
 
-@borg.on(admin_cmd("frybot ?(.*)"))
+@friday.on(friday_on_cmd(pattern="frybot"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -28,9 +28,9 @@ async def _(event):
               await borg.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
-              await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+              await event.reply("```Please unblock bot and try again```")
               return
           if response.text.startswith("Forward"):
-              await event.edit("```can you kindly disable your forward privacy settings for good?```")
+              await event.edit("```can you kindly disable your forward privacy settings please?```")
           else: 
               await borg.send_file(event.chat_id, response.message.media)
