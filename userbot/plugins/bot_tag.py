@@ -20,7 +20,7 @@ from telethon.tl.types import (
 )
 from telethon.utils import get_display_name
 from userbot.utils import friday_on_cmd, sudo_cmd, edit_or_reply
-from userbot.uniborgConfig import Config
+from userbot.Configs import Config
 
 @friday.on(events.NewMessage(
     incoming=True,
