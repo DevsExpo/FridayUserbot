@@ -30,7 +30,7 @@ from userbot import CMD_LIST
 from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
 from telethon.utils import get_display_name
 from userbot.utils import friday_on_cmd, sudo_cmd
-from userbot.uniborgConfig import Config
+from userbot.Configs import Config
 from telethon import events
 from datetime import datetime
 from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
