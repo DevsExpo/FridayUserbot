@@ -6,7 +6,7 @@ import os
 import time
 from datetime import datetime
 
-from fridaybot.utils import friday_on_cmd, progress
+from userbot.utils import friday_on_cmd, progress
 
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
