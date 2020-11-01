@@ -2,7 +2,7 @@ from youtubesearchpython import SearchVideos
 from pytube import YouTube
 import os
 import wget
-from userbot.uniborgConfig import Config
+from userbot.Configs import Config
 import asyncio
 from userbot.utils import sudo_cmd, friday_on_cmd, edit_or_reply
 
