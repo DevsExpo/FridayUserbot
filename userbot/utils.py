@@ -6,7 +6,7 @@ from pathlib import Path
 from telethon import events
 
 from userbot import CMD_LIST, LOAD_PLUG, SUDO_LIST, bot
-from userbot.uniborgConfig import Config
+from userbot.Configs import Config
 from var import Var
 
 cmdhandler = Config.COMMAND_HAND_LER
