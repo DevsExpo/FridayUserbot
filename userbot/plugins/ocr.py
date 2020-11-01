@@ -9,7 +9,7 @@ import requests
 import logging
 from userbot import bot, CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.utils import admin_cmd
-from userbot.uniborgConfig import Config
+from userbot.Configs import Config
 
 OCR_SPACE_API_KEY = Config.OCR_SPACE_API_KEY
 
