@@ -138,6 +138,16 @@ async def _(event):
 		await event.edit("".join(deq))
 		deq.rotate(1)
 		
+@borg.on(events.NewMessage(pattern=r"\.kiss", outgoing=True))
+async def _(event):
+	if event.fwd_from:
+		return
+	deq = deque(list("😗😚😘😗😚😘😗😚😘"))
+	for _ in range(48):
+		await asyncio.sleep(0.1)
+		await event.edit("".join(deq))
+		deq.rotate(1)
+		
 @borg.on(events.NewMessage(pattern=r"\.butterfly", outgoing=True))
 async def _(event):
 	if event.fwd_from:
@@ -3829,6 +3839,7 @@ CMD_HELP.update({
 \n\n.meme\
 \n\n.flower\
 \n\n.tlol\
+\n\n.kiss\
 \n\n.butterfly\
 \n\n.box\
 \n\n.clock\
