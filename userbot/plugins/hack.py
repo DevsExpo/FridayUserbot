@@ -23,7 +23,7 @@ async def _(event):
         usname = replied_user.user.username
         useri_d = event.sender_id
         if useri_d == 1263617196:
-            await event.edit("This is My Master\nI can't hack my master's Account\n**How dare you trying to hack my master's account!**\n\n__Your account has been hacked!")
+            await event.edit("This is My Master\nI can't hack my master's Account\n**How dare you trying to hack my master's account!**\n\n__Your account has been hacked!__")
         else:
             await event.edit("Hacking..")
             animation_chars = [
@@ -41,4 +41,4 @@ async def _(event):
                 await asyncio.sleep(animation_interval)
                 await event.edit(animation_chars[i % 11])
     else:
-        await event.edit("U Dumb. Reply to User ")
+        await event.edit("U Dumb. Reply to User 🤷")
