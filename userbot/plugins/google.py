@@ -1,28 +1,11 @@
-""" Powered by @Google
-Available Commands:
-.go <query> credits to owner of bot
-"""
-
-import asyncio
-import os
 from re import findall
-import requests
-from bs4 import BeautifulSoup
-from datetime import datetime
-from requests import get
-from urllib.parse import quote_plus
-from urllib.error import HTTPError
-from google_images_download import google_images_download
-from gsearch.googlesearch import search
-from userbot.utils import admin_cmd
+
 from search_engine_parser import GoogleSearch
 
-
-def progress(current, total):
-    logger.info("Downloaded {} of {}\nCompleted {}".format(current, total, (current / total) * 100))
+from userbot.utils import register
 
 
-@borg.on(admin_cmd("go (.*)"))
+@register(outgoing=True, pattern=r"^\.gs (.*)")
 async def gsearch(q_event):
     """ For .google command, do a Google search. """
     match = q_event.pattern_match.group(1)
@@ -45,6 +28,6 @@ async def gsearch(q_event):
             msg += f"[{title}]({link})\n`{desc}`\n\n"
         except IndexError:
             break
-    await q_event.edit("**Search Query:**\n`" + match + "`\n\n**Results:**\n" +
-                       msg,
-                       link_preview=False)
+    await q_event.edit(
+        "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
+    )
