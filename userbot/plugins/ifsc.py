@@ -1,22 +1,65 @@
-"""Query Indian Financial System Code to get address of the relevant bank or branch
-Syntax: .ifsc rp <IFSC CODE>"""
-from telethon import events
+"""iffuci.tk pastebin site
+Code written by @Hackintush {iffuci}
+Syntax: .iffuci"""
+import os
+from datetime import datetime
+
 import requests
-import json
-from uniborg.util import admin_cmd
+
+from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
 
 
-@borg.on(admin_cmd(pattern="ifsc(.*)"))
+def progress(current, total):
+    logger.info(
+        "Downloaded {} of {}\nCompleted {}".format(
+            current, total, (current / total) * 100
+        )
+    )
+
+
+@friday.on(friday_on_cmd(pattern="iffuci ?(.*)"))
+@friday.on(sudo_cmd(pattern="iffuci ?(.*)", allow_sudo=True))
 async def _(event):
+    crackexy = await edit_or_reply(event, "Processing")
     if event.fwd_from:
         return
+    start = datetime.now()
+    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     input_str = event.pattern_match.group(1)
-    url = "https://ifsc.razorpay.com/{}".format(input_str)
-    r = requests.get(url)
-    if r.status_code == 200:
-        b = r.json()
-        a = json.dumps(b, sort_keys=True, indent=4)
-        # https://stackoverflow.com/a/9105132/4723940
-        await event.edit(str(a))
+    message = "SYNTAX: `.iffuci <long text to include>`"
+    if input_str:
+        message = input_str
+    elif event.reply_to_msg_id:
+        previous_message = await event.get_reply_message()
+        if previous_message.media:
+            downloaded_file_name = await borg.download_media(
+                previous_message,
+                Config.TMP_DOWNLOAD_DIRECTORY,
+                progress_callback=progress,
+            )
+            m_list = None
+            with open(downloaded_file_name, "rb") as fd:
+                m_list = fd.readlines()
+            message = ""
+            for m in m_list:
+                message += m.decode("UTF-8") + "\r\n"
+            os.remove(downloaded_file_name)
+        else:
+            message = previous_message.message
     else:
-        await event.edit("`{}`: {}".format(input_str, r.text))
+        message = "SYNTAX: `.iffuci <long text to include>`"
+    url = "https://www.iffuci.tk/documents"
+    r = requests.post(url, data=message.encode("UTF-8")).json()
+    url = f"https://iffuci.tk/{r['key']}"
+    end = datetime.now()
+    ms = (end - start).seconds
+    if r["isUrl"]:
+        nurl = f"https://iffuci.tk/v/{r['key']}"
+        await crackexy.edit(
+            "code is pasted to {} in {} seconds. GoTo Original URL: {}".format(
+                url, ms, nurl
+            )
+        )
+    else:
+        await crackexy.edit("code is pasted to {} in {} seconds".format(url, ms))
