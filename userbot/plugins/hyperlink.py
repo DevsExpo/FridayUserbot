@@ -1,15 +1,13 @@
 # For UniBorg
-# By Priyam Kalra
+# By @Hackintush
 # Syntax (.hl <link>)
 
-from telethon import events
-from userbot.utils import admin_cmd
-import asyncio
-from telethon.tl import functions, types
+from userbot.utils import friday_on_cmd
 
-@borg.on(admin_cmd(pattern="hl ?(.*)"))
+
+@friday.on(friday_on_cmd(pattern="hl ?(.*)"))
 async def _(event):
-        if event.fwd_from:
-            return
-        input = event.pattern_match.group(1)
-        await event.edit("[ㅤㅤㅤㅤㅤㅤㅤ](" + input + ")")
+    if event.fwd_from:
+        return
+    input = event.pattern_match.group(1)
+    await event.edit("[ㅤㅤㅤㅤㅤㅤㅤ](" + input + ")")
