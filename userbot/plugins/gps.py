@@ -1,12 +1,21 @@
-# Credits ;- @mrconfused
+"""
+Syntax : .gps <location name>
+credits :@Hackintush
+"""
+
+# help from @Hackintush
+# don't edit credits
+
 from geopy.geocoders import Nominatim
-from userbot.utils import admin_cmd
 from telethon.tl import types
-from userbot import CMD_HELP 
+
+from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
 
 
-@borg.on(admin_cmd(pattern="gps ?(.*)"))
+@friday.on(friday_on_cmd(pattern="gps ?(.*)"))
+@friday.on(sudo_cmd(pattern="gps ?(.*)", allow_sudo=True))
 async def gps(event):
+    starkislub = await edit_or_reply(event, "Processing")
     if event.fwd_from:
         return
     reply_to_id = event.message
@@ -15,30 +24,19 @@ async def gps(event):
     input_str = event.pattern_match.group(1)
 
     if not input_str:
-        return await event.edit("Boss ! Give A Place To Search 😔 !.")
+        return await starkislub.edit("what should I find! give me location.")
 
-    await event.edit("Finding This Location In Maps Server.....")
+    await starkislub.edit("finding")
 
-    geolocator = Nominatim(user_agent="F.R.I.D.A.Y USERBOT")
+    geolocator = Nominatim(user_agent="catfridaybot")
     geoloc = geolocator.geocode(input_str)
 
     if geoloc:
         lon = geoloc.longitude
         lat = geoloc.latitude
         await reply_to_id.reply(
-            input_str,
-            file=types.InputMediaGeoPoint(
-                types.InputGeoPoint(
-                    lat, lon
-                )
-            )
+            input_str, file=types.InputMediaGeoPoint(types.InputGeoPoint(lat, lon))
         )
         await event.delete()
     else:
-        await event.edit("i coudn't find it")
-
-
-CMD_HELP.update({"gps": "`.gps` <location name> :\
-      \nUSAGE: Sends you the given location name\
-      "
-})
+        await starkislub.edit("i coudn't find it")
