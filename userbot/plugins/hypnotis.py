@@ -30,7 +30,7 @@ async def _(event):
     
     #await event.edit(input_str)
    
-    await event.edit("hypnotysing...")
+    await event.edit("hypnotizing...")
 
     animation_chars = [
         
