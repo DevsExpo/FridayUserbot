@@ -1,12 +1,9 @@
-# Base by @Sur_Vivor And Idea And Created By @StarkxD
-from telethon import events
-from datetime import datetime
-from telethon import events
-from datetime import datetime
-from userbot.utils import admin_cmd
-from userbot.__init__ import Lastupdate
+# Created By @Hackintush
 import time
+from datetime import datetime
 
+from userbot.__init__ import Lastupdate
+from userbot.utils import friday_on_cmd
 
 
 def get_readable_time(seconds: int) -> str:
@@ -37,14 +34,14 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-#@command(pattern="^.latestupdate")
-@borg.on(admin_cmd(pattern="latestupdate"))
+# @command(pattern="^.latestupdate")
+@friday.on(friday_on_cmd(pattern="latestupdate"))
 async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
     await event.edit("Calculating Last Update or Restart Time")
     end = datetime.now()
-    ms = (end - start).microseconds / 1000
+    (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - Lastupdate))
-    await event.edit(f"🔰 Friday Userbot Has Been Restarted Or Updated {uptime} Ago !")
+    await event.edit(f"🔰 CɪᴘʜᴇʀX bot Has Been Restarted Or Updated {uptime} Ago !")
