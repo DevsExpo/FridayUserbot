@@ -4,9 +4,12 @@ youtube-dl
 git+https://github.com/StarkGang/Telethon.git
 iplookup
 git+https://github.com/Starkgangs/pydl.git
+pytesseract
+spotdl
 aiofiles
-aiohttp
 aria2p
+pyshorteners
+aiohttp
 async_generator
 beautifulsoup4
 bs4
