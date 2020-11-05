@@ -30,9 +30,7 @@ async def _(event):
         await event.edit("```Reply to actual users message.```")
         return
     else:
-        await event.edit(
-            "```Transfiguration Time! Memifying this image! (」ﾟﾛﾟ)｣ ```"
-        )
+        await event.edit("```Transfiguration Time! Memifying this image! (」ﾟﾛﾟ)｣ ```")
     await borg.download_file(reply_message.media)
 
     async with borg.conversation("@MemeCreatorBot") as bot_conv:
@@ -102,9 +100,7 @@ async def _(event):
             await asyncio.sleep(4)
             sax.delete()
         elif not is_message_image(reply_message):
-            await event.edit(
-                "Invalid message type. Please choose right message type."
-            )
+            await event.edit("Invalid message type. Please choose right message type.")
             return
         else:
             await borg.send_file(event.chat_id, response.media)
