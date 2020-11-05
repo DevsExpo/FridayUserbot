@@ -6,7 +6,7 @@ import asyncio
 
 import telethon.utils
 from telethon import events
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd
 
 
 async def get_target_message(event):
@@ -32,8 +32,8 @@ async def await_read(chat, message):
     await fut
 
 
-@borg.on(admin_cmd(pattern="(del)(?:ete)?$"))
-@borg.on(admin_cmd(pattern="(edit)(?:\s+(.*))?$"))
+@friday.on(friday_on_cmd(pattern="(del)(?:ete)?$"))
+@friday.on(friday_on_cmd(pattern="(edit)(?:\s+(.*))?$"))
 async def delete(event):
     await event.delete()
     command = event.pattern_match.group(1)
