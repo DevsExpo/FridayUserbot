@@ -32,7 +32,7 @@ async def _(event):
             await event.client.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock me (@QuotLyBot) u Nigga```")
+            await event.reply("```Please unblock me ```")
             return
         if response.text.startswith("Hi!"):
             await event.edit(
