@@ -29,7 +29,7 @@ if ENV:
             "HASH_TO_TORRENT_API", "https://example.com/torrent/{}"
         )
         # This is required for the @telegraph functionality.
-        TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "Friday")
+        TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "CipherX")
         # Get a Free API Key from OCR.Space
         OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
         # Send .get_id in any group with all your administration bots (added)
@@ -47,7 +47,7 @@ if ENV:
         # DO NOT EDIT BELOW THIS LINE IF YOU DO NOT KNOW WHAT YOU ARE DOING
         # TG API limit. A message can have maximum 4096 characters!
         MAX_MESSAGE_SIZE_LIMIT = 4095
-        # set blacklist_chats where you do not want fridaybot's features
+        # set blacklist_chats where you do not want CipherXBot's features
         UB_BLACK_LIST_CHAT = set(
             int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split()
         )
@@ -89,6 +89,7 @@ if ENV:
         # this should be a valid "regex" pattern
         COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", "\.")
         SUDO_COMMAND_HAND_LER = os.environ.get("SUDO_COMMAND_HAND_LER", "\.")
+        BOT_HANDLER = os.environ.get("BOT_HANDLER", "^/")
         # specify list of users allowed to use bot
         # WARNING: be careful who you grant access to your bot.
         # malicious users could do ".exec rm -rf /*"
@@ -139,10 +140,19 @@ if ENV:
         PM_DATA = os.environ.get("PM_DATA", "ENABLE")
         TAG_FEATURE = os.environ.get("TAG_FEATURE", "DISABLE")
         ASSISTANT_LOG = int(os.environ.get("ASSISTANT_LOG", False))
-        UPSTREAM_REPO = os.environ.get("UPSTREAM_REPO", "https://github.com/CipherX1-ops/FridayUserbot/")
-        ALIVE_IMAGE = os.environ.get("ALIVE_IMAGE", "https://filetolinktelegrambot.herokuapp.com/1996057911608/VID_20200723_004420.mp4")
-        TESSDATA_PREFIX = os.environ.get("TESSDATA_PREFIX", "./.apt/usr/share/tesseract-ocr/4.00/tessdata")
+        UPSTREAM_REPO = os.environ.get(
+            "UPSTREAM_REPO", "https://github.com/CipherX1-ops/FridayUserbot"
+        )
+        ALIVE_IMAGE = os.environ.get(
+            "ALIVE_IMAGE", "https://filetolinktelegrambot.herokuapp.com/1996057911608/VID_20200723_004420.mp4"
+        )
+        TESSDATA_PREFIX = os.environ.get(
+            "TESSDATA_PREFIX", "./.apt/usr/share/tesseract-ocr/4.00/tessdata"
+        )
+
+
 else:
+
     class Config(object):
         DB_URI = None
         # Add your UniBorg Vars Here
