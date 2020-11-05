@@ -1,10 +1,10 @@
 import random
 
 import requests
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd
 
 
-@borg.on(admin_cmd(pattern="quote ?(.*)"))
+@friday.on(friday_on_cmd(pattern="quote ?(.*)"))
 async def quote_search(event):
     if event.fwd_from:
         return
