@@ -212,7 +212,7 @@ async def hehehe(event):
     chat = await event.get_chat()
     if event.is_private:
         if not pmpermit_sql.is_approved(chat.id):
-            pmpermit_sql.approve(chat.id, "supreme lord ehehe")
+            pmpermit_sql.approve(chat.id, "Supreme Lord")
             await borg.send_message(
                 chat,
                 "`This inbox has been blessed by my master. Consider yourself lucky.`\n**Increased Stability and Karma** (づ￣ ³￣)づ",
