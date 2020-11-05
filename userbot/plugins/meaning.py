@@ -1,11 +1,11 @@
-"""Dictionary Plugin for @UniBorg
+"""Dictionary Plugin for @Hackintush
 Syntax: .meaning <word>"""
 
 import requests
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd
 
 
-@borg.on(admin_cmd(pattern="meaning (.*)"))
+@friday.on(friday_on_cmd(pattern="meaning (.*)"))
 async def _(event):
     if event.fwd_from:
         return
