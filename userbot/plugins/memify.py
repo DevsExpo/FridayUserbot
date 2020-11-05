@@ -31,6 +31,7 @@ async def _(event):
         return
     else:
         await event.edit("```Transfiguration Time! Memifying this image! (」ﾟﾛﾟ)｣ ```")
+        await event.delete()
     await borg.download_file(reply_message.media)
 
     async with borg.conversation("@MemeCreatorBot") as bot_conv:
