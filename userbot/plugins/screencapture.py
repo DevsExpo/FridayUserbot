@@ -5,10 +5,10 @@ import io
 
 import requests
 
-from userbot.utils import admin_cmd
+from fridaybot.utils import friday_on_cmd
 
 
-@borg.on(admin_cmd("screencapture (.*)"))
+@friday.on(friday_on_cmd("screencapture (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -29,7 +29,7 @@ async def _(event):
     contentType = response_api.headers["content-type"]
     if "image" in contentType:
         with io.BytesIO(response_api.content) as screenshot_image:
-            screenshot_image.name = "screencapture.png"
+            screenshot_image.name = "CipherX.png"
             try:
                 await borg.send_file(
                     event.chat_id,
