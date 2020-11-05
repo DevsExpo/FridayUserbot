@@ -1,4 +1,3 @@
-
 # Copyright (C) 2019 The Raphielscape Company LLC.
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
@@ -7,13 +6,15 @@
 This module updates the userbot based on upstream revision
 Ported from Kensurbot
 """
-import sys
 import asyncio
-from git import Repo
-from .. import CMD_HELP
+import sys
 from os import environ, execle, path, remove
-from ..utils import admin_cmd, sudo_cmd, edit_or_reply
+
+from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
+
+from .. import CMD_HELP
+from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 
 HEROKU_APP_NAME = Var.HEROKU_APP_NAME
 HEROKU_API_KEY = Var.HEROKU_API_KEY
@@ -24,33 +25,39 @@ requirements_path = path.join(
     path.dirname(path.dirname(path.dirname(__file__))), "requirements.txt"
 )
 
+
 async def gen_chlog(repo, diff):
     ch_log = ""
-    d_form = "%d/%m/%y"
     for c in repo.iter_commits(diff):
-        ch_log += (f"#{c.count()} "
+        ch_log += (
+            f"#{c.count()} "
             f"\n📃 [{c.summary}]({UPSTREAM_REPO_URL}/commit/{c})"
-            f"\n👩‍🎨 __{c.author}__\n\n")
+            f"\n👩‍🎨 __{c.author}__\n\n"
+        )
     return ch_log
 
+
 async def print_changelogs(event, ac_br, changelog):
-    changelog_str = (
-        f"**I Have Found Some New Updates For {ac_br} Branch Here Check The Updates 📃\n{changelog}"
-    )
+    changelog_str = f"**I Have Found Some New Updates For {ac_br} Branch Here Check The Updates 📃\n{changelog}"
     if len(changelog_str) > 4096:
         await event.edit("`Changelog is too big, view the file to see it.`")
         file = open("output.txt", "w+")
         file.write(changelog_str)
         file.close()
         await event.client.send_file(
-            event.chat_id, "output.txt", reply_to=event.id,
+            event.chat_id,
+            "output.txt",
+            reply_to=event.id,
         )
         remove("output.txt")
     else:
         await event.client.send_message(
-            event.chat_id, changelog_str, reply_to=event.id,
+            event.chat_id,
+            changelog_str,
+            reply_to=event.id,
         )
     return True
+
 
 async def update_requirements():
     reqs = str(requirements_path)
@@ -65,9 +72,11 @@ async def update_requirements():
     except Exception as e:
         return repr(e)
 
+
 async def deploy(event, repo, ups_rem, ac_br, txt):
     if HEROKU_API_KEY is not None:
         import heroku3
+
         heroku = heroku3.from_key(HEROKU_API_KEY)
         heroku_app = None
         heroku_applications = heroku.apps()
@@ -120,6 +129,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         )
     return
 
+
 async def update(event, repo, ups_rem, ac_br):
     try:
         ups_rem.pull(ac_br)
@@ -134,12 +144,13 @@ async def update(event, repo, ups_rem, ac_br):
     execle(sys.executable, *args, environ)
     return
 
+
 @bot.on(admin_cmd(outgoing=True, pattern=r"update($| (now|deploy))"))
-@borg.on(sudo_cmd(pattern="update($| (now|deploy))",allow_sudo = True))
+@borg.on(sudo_cmd(pattern="update($| (now|deploy))", allow_sudo=True))
 async def upstream(event):
     "For .update command, check if the bot is up to date, update if specified"
     conf = event.pattern_match.group(1).strip()
-    event = await edit_or_reply(event ,"`Checking for updates, please wait....`")
+    event = await edit_or_reply(event, "`Checking for updates, please wait....`")
     off_repo = UPSTREAM_REPO_URL
     force_update = False
     try:
@@ -191,14 +202,15 @@ async def upstream(event):
         return
     if changelog == "" and not force_update:
         await event.edit(
-            "\n`Friday is`  **up-to-date**  `with`  "
-            f"**{UPSTREAM_REPO_BRANCH}**\n"
+            "\n`Friday is`  **up-to-date**  `with`  " f"**{UPSTREAM_REPO_BRANCH}**\n"
         )
         return repo.__del__()
     if conf == "" and force_update is False:
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
-        return await event.respond('do "[`.update now`] or [`.update deploy`]" to update.Check `.info updater` for details')
+        return await event.respond(
+            'do "[`.update now`] or [`.update deploy`]" to update.Check `.info updater` for details'
+        )
 
     if force_update:
         await event.edit(
@@ -209,7 +221,9 @@ async def upstream(event):
         await update(event, repo, ups_rem, ac_br)
     return
 
-CMD_HELP.update({
+
+CMD_HELP.update(
+    {
         "updater": "**Syntax : **`.update`"
         "\n**Usage :** Checks if the main userbot repository has any updates "
         "and shows a changelog if so."
@@ -219,4 +233,5 @@ CMD_HELP.update({
         "\n\n**Syntax : **`.update deploy`"
         "\n**Usage :** Deploy your userbot.So even you restart it doesnt go back to previous version"
         "\nThis will triggered deploy always, even no updates."
-    })
+    }
+)

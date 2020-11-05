@@ -1,7 +1,9 @@
 import asyncio
 import io
 import time
-from userbot.utils import friday_on_cmd, sudo_cmd, edit_or_reply
+
+from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+
 
 @friday.on(friday_on_cmd(pattern="bash ?(.*)"))
 @friday.on(sudo_cmd(pattern="bash ?(.*)", allow_sudo=True))

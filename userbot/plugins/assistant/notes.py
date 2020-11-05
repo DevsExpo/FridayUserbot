@@ -1,32 +1,14 @@
 from telethon import events, utils
 from telethon.tl import types
-from telethon import events, custom, Button
-from telethon.tl.types import (
-    Channel,
-    Chat,
-    User
-)
 
-import emoji
-from googletrans import Translator
-from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
-from telethon.utils import get_display_name
-from userbot.utils import friday_on_cmd, sudo_cmd
+from userbot import bot
 from userbot.Configs import Config
-from telethon import events
-from datetime import datetime
-from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
-import time
-from userbot import Lastupdate, bot
-
-
 from userbot.plugins.sql_helper.snips_sql import (
     add_snip,
     get_all_snips,
     get_snips,
     remove_snip,
 )
-from userbot.utils import friday_on_cmd
 
 TYPE_TEXT = 0
 TYPE_PHOTO = 1
@@ -60,7 +42,9 @@ async def on_snip(event):
         )
 
 
-@tgbot.on(events.NewMessage(pattern="^/addnote ?(.*)", func=lambda e: e.sender_id == bot.uid))
+@tgbot.on(
+    events.NewMessage(pattern="^/addnote ?(.*)", func=lambda e: e.sender_id == bot.uid)
+)
 async def _(event):
     name = event.pattern_match.group(1)
     msg = await event.get_reply_message()
@@ -117,7 +101,9 @@ async def on_snip_list(event):
         await event.reply(OUT_STR)
 
 
-@tgbot.on(events.NewMessage(pattern="^/rmnote (\S+)", func=lambda e: e.sender_id == bot.uid))
+@tgbot.on(
+    events.NewMessage(pattern="^/rmnote (\S+)", func=lambda e: e.sender_id == bot.uid)
+)
 async def on_snip_delete(event):
     name = event.pattern_match.group(1)
     remove_snip(name)

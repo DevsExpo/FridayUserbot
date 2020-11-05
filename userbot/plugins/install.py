@@ -1,9 +1,11 @@
-from userbot.utils import sudo_cmd, friday_on_cmd, edit_or_reply, load_module, remove_plugin
 import asyncio
 import os
-from datetime import datetime
 from pathlib import Path
+
+from userbot.utils import friday_on_cmd, load_module
+
 DELETE_TIMEOUT = 5
+
 
 @friday.on(friday_on_cmd(pattern="install", outgoing=True))
 async def install(event):
@@ -36,4 +38,3 @@ async def install(event):
             os.remove(downloaded_file_name)
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
-

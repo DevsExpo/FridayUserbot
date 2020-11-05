@@ -5,6 +5,7 @@ Available Commands:
 
 import emoji
 from googletrans import Translator
+
 from userbot.utils import admin_cmd
 
 
@@ -37,9 +38,7 @@ async def _(event):
          Source **( {} )**
          Translation **( {} )**
          {}""".format(
-            translated.src,
-            lan,
-            after_tr_text
+            translated.src, lan, after_tr_text
         )
         await event.edit(output_str)
     except Exception as exc:

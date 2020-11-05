@@ -2,7 +2,7 @@
 Syntax: .meaning <word>"""
 
 import requests
-from uniborg.util import friday_on_cmd, edit_or_reply, sudo_cmd
+from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd("meaning (.*)"))

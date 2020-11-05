@@ -144,7 +144,8 @@ if ENV:
             "UPSTREAM_REPO", "https://github.com/CipherX1-ops/FridayUserbot"
         )
         ALIVE_IMAGE = os.environ.get(
-            "ALIVE_IMAGE", "https://filetolinktelegrambot.herokuapp.com/1996057911608/VID_20200723_004420.mp4"
+            "ALIVE_IMAGE",
+            "https://filetolinktelegrambot.herokuapp.com/1996057911608/VID_20200723_004420.mp4",
         )
         TESSDATA_PREFIX = os.environ.get(
             "TESSDATA_PREFIX", "./.apt/usr/share/tesseract-ocr/4.00/tessdata"

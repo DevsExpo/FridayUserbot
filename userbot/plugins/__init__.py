@@ -1,8 +1,7 @@
 from userbot import topfunc
-from userbot.utils import friday_on_cmd
-from var import Var 
 from userbot.Configs import Config
-
+from userbot.utils import friday_on_cmd
+from var import Var
 
 idgen = topfunc.id_generator
 findnemo = topfunc.stark_finder
@@ -55,10 +54,12 @@ if isdbfine:
 else:
     dbstats = "Not Fine ❌"
 
-inlinestats = (f"✘ SHOWING CIPHERX BOT STATS ✘\n"
-               f"VERSION = {currentversion} \n"
-               f"DATABASE = {dbstats} \n"
-               f"SUDO = {amiusingsudo} \n"
-               f"LOG-CHAT = {logchat} \n"
-               f"SERVER = {riplife} \n"
-               f"G-DRIVE = {wearenoob}")
+inlinestats = (
+    f"✘ SHOWING CIPHERX BOT STATS ✘\n"
+    f"VERSION = {currentversion} \n"
+    f"DATABASE = {dbstats} \n"
+    f"SUDO = {amiusingsudo} \n"
+    f"LOG-CHAT = {logchat} \n"
+    f"SERVER = {riplife} \n"
+    f"G-DRIVE = {wearenoob}"
+)

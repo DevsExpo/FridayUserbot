@@ -1,7 +1,9 @@
-from datetime import datetime
-from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
 import time
+from datetime import datetime
+
 from userbot import Lastupdate
+from userbot.utils import friday_on_cmd, sudo_cmd
+
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -29,6 +31,7 @@ def get_readable_time(seconds: int) -> str:
     ping_time += ":".join(time_list)
 
     return ping_time
+
 
 @friday.on(friday_on_cmd(pattern="ping$"))
 @friday.on(sudo_cmd(pattern="ping$", allow_sudo=True))

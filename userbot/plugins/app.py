@@ -8,7 +8,7 @@ import bs4
 import requests
 
 from .. import CMD_HELP
-from ..utils import friday_on_cmd, edit_or_reply, sudo_cmd
+from ..utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd(pattern="app (.*)"))

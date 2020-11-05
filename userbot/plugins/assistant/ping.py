@@ -1,27 +1,16 @@
-# Copyright (C) Midhun KM 
-# 
+# Copyright (C) Midhun KM
+#
 # Please Don't Kang Without Credits
-# A Plugin For Assistant Bot 
+# A Plugin For Assistant Bot
 # x0x
 
-from telethon import events, custom, Button
-from telethon.tl.types import (
-    Channel,
-    Chat,
-    User
-)
-
-import emoji
-from googletrans import Translator
-from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
-from telethon.utils import get_display_name
-from userbot.utils import friday_on_cmd, sudo_cmd
-from userbot.Configs import Config
-from telethon import events
-from datetime import datetime
-from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
 import time
+from datetime import datetime
+
+from telethon import events
+
 from userbot import Lastupdate, bot
+
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -50,10 +39,14 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
+
 @tgbot.on(events.NewMessage(pattern="^/ping", func=lambda e: e.sender_id == bot.uid))
 async def _(event):
     start = datetime.now()
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - Lastupdate))
-    await tgbot.send_message(event.chat_id, f"**█▀█ █▀█ █▄░█ █▀▀ █ \n█▀▀ █▄█ █░▀█ █▄█ ▄**\n ➲ `{ms}` \n ➲ `{uptime}`")
+    await tgbot.send_message(
+        event.chat_id,
+        f"**█▀█ █▀█ █▄░█ █▀▀ █ \n█▀▀ █▄█ █░▀█ █▄█ ▄**\n ➲ `{ms}` \n ➲ `{uptime}`",
+    )

@@ -8,14 +8,15 @@ credit: owner"""
 
 import random
 
-from telethon import events, types, functions, utils
+from telethon import events, functions, types, utils
 
 
 def choser(cmd, pack, blacklist=None):
     if blacklist is None:
         blacklist = {}
     docs = None
-    @borg.on(events.NewMessage(pattern=rf'\.{cmd}', outgoing=True))
+
+    @borg.on(events.NewMessage(pattern=rf"\.{cmd}", outgoing=True))
     async def handler(event):
         await event.delete()
 
@@ -23,27 +24,37 @@ def choser(cmd, pack, blacklist=None):
         if docs is None:
             docs = [
                 utils.get_input_document(x)
-                for x in (await borg(functions.messages.GetStickerSetRequest(types.InputStickerSetShortName(pack)))).documents
+                for x in (
+                    await borg(
+                        functions.messages.GetStickerSetRequest(
+                            types.InputStickerSetShortName(pack)
+                        )
+                    )
+                ).documents
                 if x.id not in blacklist
             ]
 
         await event.respond(file=random.choice(docs))
 
 
-choser('rndm', 'IndianBhai_ke_locker_me')
-choser('animestkr', 'IndianBhai_ke_Animated', {
-    1653974154589768377,
-    1653974154589768312,
-    1653974154589767857,
-    1653974154589768311,
-    1653974154589767816,
-    1653974154589767939,
-    1653974154589767944,
-    1653974154589767912,
-    1653974154589767911,
-    1653974154589767910,
-    1653974154589767909,
-    1653974154589767863,
-    1653974154589767852,
-    1653974154589768677
-})
+choser("rndm", "IndianBhai_ke_locker_me")
+choser(
+    "animestkr",
+    "IndianBhai_ke_Animated",
+    {
+        1653974154589768377,
+        1653974154589768312,
+        1653974154589767857,
+        1653974154589768311,
+        1653974154589767816,
+        1653974154589767939,
+        1653974154589767944,
+        1653974154589767912,
+        1653974154589767911,
+        1653974154589767910,
+        1653974154589767909,
+        1653974154589767863,
+        1653974154589767852,
+        1653974154589768677,
+    },
+)

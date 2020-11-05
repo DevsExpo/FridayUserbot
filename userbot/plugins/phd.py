@@ -3,32 +3,22 @@ Pornhub downloader by @anubisxx
 Syntax: .phd link
 """
 
-import datetime
 
 import asyncio
 
 import requests
-
 from bs4 import BeautifulSoup
-
-import os
-
-from pySmartDL import SmartDL
-
-from telethon import events 
-
+from telethon.errors.rpcerrorlist import (
+    UserAlreadyParticipantError,
+    YouBlockedUserError,
+)
 from telethon.tl.functions.channels import JoinChannelRequest
-
-from telethon.errors.rpcerrorlist import YouBlockedUserError, UserAlreadyParticipantError
-
-from telethon.tl.functions.account import UpdateNotifySettingsRequest
-
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
 from userbot.utils import admin_cmd
 
-@borg.on(admin_cmd("phd ?(.*)"))
 
+@borg.on(admin_cmd("phd ?(.*)"))
 async def _(event):
 
     if event.fwd_from:
@@ -37,11 +27,9 @@ async def _(event):
 
     d_link = event.pattern_match.group(1)
 
-    bot = "@phsavebot"
-
     r = requests.get(d_link)
 
-    soup = BeautifulSoup(r.content, 'html.parser')
+    soup = BeautifulSoup(r.content, "html.parser")
 
     temporary_variable = soup.find("span", {"class": "inlineFree"})
 
@@ -55,7 +43,7 @@ async def _(event):
 
     temporary_variable_to_use = temp.find("img")
 
-    thumb_image_link = temporary_variable_to_use["data-src"]
+    temporary_variable_to_use["data-src"]
 
     if "pornhub" not in d_link:
 
@@ -63,62 +51,75 @@ async def _(event):
 
     else:
 
-        await event.edit("**💦Preparing to upload Video💦 **\n**Title**:  `{}`\n**Total Views**: `{}`".format(title, views))
+        await event.edit(
+            "**💦Preparing to upload Video💦 **\n**Title**:  `{}`\n**Total Views**: `{}`".format(
+                title, views
+            )
+        )
 
     await asyncio.sleep(2)
 
-    
-
     async with event.client.conversation("@phsavebot") as conv:
 
-          try:
+        try:
 
-              await conv.send_message("/start")
+            await conv.send_message("/start")
 
-              oop = await conv.get_response()
+            oop = await conv.get_response()
 
-              if "language" in oop.text:
+            if "language" in oop.text:
 
-                  await borg.send_message(event.chat_id, "**Please go to** @phsavebot **and select your language**")
+                await borg.send_message(
+                    event.chat_id,
+                    "**Please go to** @phsavebot **and select your language**",
+                )
 
-              await asyncio.sleep(2)
+            await asyncio.sleep(2)
 
-              me = await borg.get_me()
+            me = await borg.get_me()
 
-              my_id = me.id
+            me.id
 
-              # Necessary for the bot to work ;-;
+            # Necessary for the bot to work ;-;
 
-              try:
+            try:
 
-                  await borg(JoinChannelRequest('Allsavernews'))
+                await borg(JoinChannelRequest("Allsavernews"))
 
-                  await borg(ImportChatInviteRequest('AAAAAFZPuYvdW1A8mrT8Pg'))
+                await borg(ImportChatInviteRequest("AAAAAFZPuYvdW1A8mrT8Pg"))
 
-              except UserAlreadyParticipantError:
+            except UserAlreadyParticipantError:
 
-                  await asyncio.sleep(0.00000069420)
+                await asyncio.sleep(0.00000069420)
 
-              await conv.send_message(d_link)
+            await conv.send_message(d_link)
 
-              response = await conv.get_response()
+            response = await conv.get_response()
 
-              if "Downloading" in response.text:
+            if "Downloading" in response.text:
 
-                  video_hehe = await conv.get_response()
+                video_hehe = await conv.get_response()
 
-                  await borg.send_file(event.chat_id, video_hehe, caption="`🤤 Video Uploaded by` [@anubisxx](https://github.com/Dark-Princ3/X-tra-Telegram)!🤤\n**Title:** `{}`".format(title))
+                await borg.send_file(
+                    event.chat_id,
+                    video_hehe,
+                    caption="`🤤 Video Uploaded by` [@anubisxx](https://github.com/Dark-Princ3/X-tra-Telegram)!🤤\n**Title:** `{}`".format(
+                        title
+                    ),
+                )
 
-              elif "Unfortunately" in response.text:
+            elif "Unfortunately" in response.text:
 
-                  await event.edit("`Woops, Incorrect link!`\n**Please check and try again.**")
+                await event.edit(
+                    "`Woops, Incorrect link!`\n**Please check and try again.**"
+                )
 
-              elif "correct" in response.text:
+            elif "correct" in response.text:
 
-                  await borg.send_message(event.chat_id, response.text)
+                await borg.send_message(event.chat_id, response.text)
 
-          except YouBlockedUserError: 
+        except YouBlockedUserError:
 
-              await event.reply("**Please unblock** @phsavebot **and try again**")
+            await event.reply("**Please unblock** @phsavebot **and try again**")
 
-              return
+            return

@@ -1,16 +1,14 @@
 """ use cmd .sleep <time in seconds> to make your bot sleep """
 
-from telethon import events
 import asyncio
-import os
-import sys
+
 from uniborg.util import admin_cmd
 
 
 @borg.on(admin_cmd(pattern="sleep( [0-9]+)?$", outgoing=True))
 async def sleepybot(time):
     """ For .sleep command, let the userbot snooze for a few second. """
-    message = time.text
+    time.text
     if " " not in time.pattern_match.group(1):
         await time.reply("Syntax: `.sleep [seconds]`")
     else:

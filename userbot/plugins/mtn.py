@@ -2,16 +2,13 @@
 Available Commands:
 .mtn"""
 
-from telethon import events
 
 import asyncio
 
 from uniborg.util import admin_cmd
 
 
-
 @borg.on(admin_cmd(pattern=r"mtn"))
-
 async def _(event):
 
     if event.fwd_from:
@@ -22,35 +19,33 @@ async def _(event):
 
     animation_ttl = range(0, 19)
 
-   # input_str = event.pattern_match.group(1)
+    # input_str = event.pattern_match.group(1)
 
-   # if input_str == "mtn":
+    # if input_str == "mtn":
 
     await event.edit("mtn")
 
     animation_chars = [
-        
-            "`Connecting To MTN NG ....`",
-            "`█ ▇ ▆ ▅ ▄ ▂ ▁`",
-            "`▒ ▇ ▆ ▅ ▄ ▂ ▁`",
-            "`▒ ▒ ▆ ▅ ▄ ▂ ▁`",
-            "`▒ ▒ ▒ ▅ ▄ ▂ ▁`",    
-            "`▒ ▒ ▒ ▒ ▄ ▂ ▁`",
-            "`▒ ▒ ▒ ▒ ▒ ▂ ▁`",
-            "`▒ ▒ ▒ ▒ ▒ ▒ ▁`",
-            "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
-            "*Optimising Network...*",
-            "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
-            "`▁ ▒ ▒ ▒ ▒ ▒ ▒`",           
-            "`▁ ▂ ▒ ▒ ▒ ▒ ▒`",
-            "`▁ ▂ ▄ ▒ ▒ ▒ ▒`",
-            "`▁ ▂ ▄ ▅ ▒ ▒ ▒`",
-            "`▁ ▂ ▄ ▅ ▆ ▒ ▒`",
-            "`▁ ▂ ▄ ▅ ▆ ▇ ▒`",
-            "`▁ ▂ ▄ ▅ ▆ ▇ █`",
-            "**MTN Network Boosted....**"
-
- ]
+        "`Connecting To MTN NG ....`",
+        "`█ ▇ ▆ ▅ ▄ ▂ ▁`",
+        "`▒ ▇ ▆ ▅ ▄ ▂ ▁`",
+        "`▒ ▒ ▆ ▅ ▄ ▂ ▁`",
+        "`▒ ▒ ▒ ▅ ▄ ▂ ▁`",
+        "`▒ ▒ ▒ ▒ ▄ ▂ ▁`",
+        "`▒ ▒ ▒ ▒ ▒ ▂ ▁`",
+        "`▒ ▒ ▒ ▒ ▒ ▒ ▁`",
+        "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
+        "*Optimising Network...*",
+        "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
+        "`▁ ▒ ▒ ▒ ▒ ▒ ▒`",
+        "`▁ ▂ ▒ ▒ ▒ ▒ ▒`",
+        "`▁ ▂ ▄ ▒ ▒ ▒ ▒`",
+        "`▁ ▂ ▄ ▅ ▒ ▒ ▒`",
+        "`▁ ▂ ▄ ▅ ▆ ▒ ▒`",
+        "`▁ ▂ ▄ ▅ ▆ ▇ ▒`",
+        "`▁ ▂ ▄ ▅ ▆ ▇ █`",
+        "**MTN Network Boosted....**",
+    ]
 
     for i in animation_ttl:
 

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) @Hackintush 
+# (c) @Hackintush
+
+import random
 
 from telethon import events
-import random
-import asyncio
+
 
 @borg.on(events.NewMessage(pattern=r"\.react (.*)", outgoing=True))
 async def _(event):
@@ -54,8 +55,8 @@ async def _(event):
             "(≖͞_≖̥)",
             "(இ﹏இ`｡)",
             "༼ಢ_ಢ༽",
-            "༼ ༎ຶ ෴ ༎ຶ༽", 
-        ] 
+            "༼ ༎ຶ ෴ ༎ຶ༽",
+        ]
     elif input_str in "thinking":
         emoticons = [
             "(҂⌣̀_⌣́)",
@@ -122,7 +123,7 @@ async def _(event):
             "-ᄒᴥᄒ-",
             "◖⚆ᴥ⚆◗",
         ]
-    else:    
+    else:
         emoticons = [
             "( ͡° ͜ʖ ͡°)",
             "¯\_(ツ)_/¯",

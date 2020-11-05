@@ -15,8 +15,9 @@
 
 
 import asyncio
+
 from telethon.tl.types import InputMediaUploadedPhoto
-from uniborg.util import friday_on_cmd, edit_or_reply, sudo_cmd
+from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
 from userbot.plugins.sql_helper.broadcast_sql import (
     add_channel,

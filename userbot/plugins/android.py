@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 from requests import get
 
 from .. import CMD_HELP
-from ..utils import friday_on_cmd, edit_or_reply, sudo_cmd
+from ..utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 GITHUB = "https://github.com"
 DEVICES_DATA = (
@@ -74,7 +74,9 @@ async def device_info(request):
     await edit_or_reply(request, reply)
 
 
-@friday.on(friday_on_cmd(outgoing=True, pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)"))
+@friday.on(
+    friday_on_cmd(outgoing=True, pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)")
+)
 @friday.on(sudo_cmd(pattern="codename(?: |)([\S]*)(?: |)([\s\S]*)", allow_sudo=True))
 async def codename_info(request):
     """ search for android codename """

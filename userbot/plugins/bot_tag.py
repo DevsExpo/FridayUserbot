@@ -12,26 +12,22 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
-from telethon import events, custom, Button
-from telethon.tl.types import (
-    Channel,
-    Chat,
-    User
-)
+from telethon import custom, events
+from telethon.tl.types import Chat
 from telethon.utils import get_display_name
-from userbot.utils import friday_on_cmd, sudo_cmd, edit_or_reply
+
 from userbot.Configs import Config
 
-@friday.on(events.NewMessage(
-    incoming=True,
-    blacklist_chats=Config.UB_BLACK_LIST_CHAT,
-    func=lambda e: (
-        e.mentioned
+
+@friday.on(
+    events.NewMessage(
+        incoming=True,
+        blacklist_chats=Config.UB_BLACK_LIST_CHAT,
+        func=lambda e: (e.mentioned),
     )
-))
+)
 async def all_messages_catcher(event):
     if Config.TAG_FEATURE == "DISABLE":
-        pass
         return
     # the bot might not have the required access_hash to mention the appropriate PM
     await event.forward_to(Config.TG_BOT_USER_NAME_BF_HER)
@@ -40,11 +36,7 @@ async def all_messages_catcher(event):
     ammoca_message = ""
 
     who_ = await event.client.get_entity(event.sender_id)
-    if (
-        who_.bot or
-        who_.verified or
-        who_.support
-    ):
+    if who_.bot or who_.verified or who_.support:
         return
 
     who_m = f"[{get_display_name(who_)}](tg://user?id={who_.id})"
@@ -69,8 +61,5 @@ async def all_messages_catcher(event):
         log_chat,
         message=ammoca_message,
         link_preview=False,
-        buttons=[
-            [custom.Button.url(button_text, message_link)]
-        ]
+        buttons=[[custom.Button.url(button_text, message_link)]],
     )
-

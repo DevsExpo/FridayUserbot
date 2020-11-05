@@ -2,13 +2,10 @@
 Syntax: .corona <country>"""
 
 from covid import Covid
-
 from uniborg.util import admin_cmd
 
 
-
 @borg.on(admin_cmd(pattern="corona (.*)"))
-
 async def _(event):
 
     covid = Covid()
@@ -19,14 +16,15 @@ async def _(event):
 
     country_data = get_country_data(country, data)
 
-    output_text = "" 
+    output_text = ""
 
     for name, value in country_data.items():
 
         output_text += "`{}`: `{}`\n".format(str(name), str(value))
 
-    await event.edit("**CoronaVirus Info in {}**:\n\n{}".format(country.capitalize(), output_text))
-
+    await event.edit(
+        "**CoronaVirus Info in {}**:\n\n{}".format(country.capitalize(), output_text)
+    )
 
 
 def get_country_data(country, world):

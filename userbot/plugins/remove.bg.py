@@ -1,18 +1,20 @@
 """Remove.BG Plugin for @UniBorg
 Syntax: .rmbg https://link.to/image.extension
 Syntax: .rmbg as reply to a media"""
-import asyncio
-from datetime import datetime
 import io
 import os
+from datetime import datetime
+
 import requests
-from telethon import events
-from userbot.utils import progress, admin_cmd
+
+from userbot.utils import admin_cmd
 
 
 @borg.on(admin_cmd("rmbg ?(.*)"))
 async def _(event):
-    HELP_STR = "`.rmbg` as reply to a media, or give a link as an argument to this command"
+    HELP_STR = (
+        "`.rmbg` as reply to a media, or give a link as an argument to this command"
+    )
     if event.fwd_from:
         return
     if Config.REM_BG_API_KEY is None:
@@ -25,11 +27,12 @@ async def _(event):
         message_id = event.reply_to_msg_id
         reply_message = await event.get_reply_message()
         # check if media message
-        await event.edit("Connecting to official CɪᴘʜᴇʀX server and analysing that img ...")
+        await event.edit(
+            "Connecting to official CɪᴘʜᴇʀX server and analysing that img ..."
+        )
         try:
             downloaded_file_name = await borg.download_media(
-                reply_message,
-                Config.TMP_DOWNLOAD_DIRECTORY
+                reply_message, Config.TMP_DOWNLOAD_DIRECTORY
             )
         except Exception as e:
             await event.edit(str(e))
@@ -54,13 +57,21 @@ async def _(event):
                 force_document=True,
                 supports_streaming=False,
                 allow_cache=False,
-                reply_to=message_id
+                reply_to=message_id,
             )
         end = datetime.now()
         ms = (end - start).seconds
-        await event.edit("Removed dat annoying Backgroup in {} seconds, powered by CɪᴘʜᴇʀX ".format(ms))
+        await event.edit(
+            "Removed dat annoying Backgroup in {} seconds, powered by CɪᴘʜᴇʀX ".format(
+                ms
+            )
+        )
     else:
-        await event.edit("ReMove.BG API returned Errors. Please report to CipherX\n`{}".format(output_file_name.content.decode("UTF-8")))
+        await event.edit(
+            "ReMove.BG API returned Errors. Please report to CipherX\n`{}".format(
+                output_file_name.content.decode("UTF-8")
+            )
+        )
 
 
 # this method will call the API, and return in the appropriate format
@@ -77,7 +88,7 @@ def ReTrieveFile(input_file_name):
         headers=headers,
         files=files,
         allow_redirects=True,
-        stream=True
+        stream=True,
     )
     return r
 
@@ -86,14 +97,12 @@ def ReTrieveURL(input_url):
     headers = {
         "X-API-Key": Config.REM_BG_API_KEY,
     }
-    data = {
-      "image_url": input_url
-    }
+    data = {"image_url": input_url}
     r = requests.post(
         "https://api.remove.bg/v1.0/removebg",
         headers=headers,
         data=data,
         allow_redirects=True,
-        stream=True
+        stream=True,
     )
     return r

@@ -1,4 +1,4 @@
-#Hackintush
+# Hackintush
 """Get info about a File Extension
 Syntax: .filext EXTENSION"""
 import requests

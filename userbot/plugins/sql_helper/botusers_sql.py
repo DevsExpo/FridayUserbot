@@ -16,19 +16,14 @@
 
 """ users Table """
 
-from sqlalchemy import (
-    Column,
-    String,
-    Integer
-)
-from . import (
-    SESSION,
-    BASE
-)
+from sqlalchemy import Column, Integer, String
+
+from . import BASE, SESSION
 
 
 class Users(BASE):
     """ Table to store the received messages """
+
     __tablename__ = "users"
     message_id = Column(Integer, primary_key=True)
     chat_id = Column(String(14))
@@ -51,6 +46,7 @@ def add_me_in_db(message_id: int, chat_id: int, um_id: int):
     __user = Users(message_id, str(chat_id), um_id)
     SESSION.add(__user)
     SESSION.commit()
+
 
 def his_userid(message_id: int):
     """ get the user_id from the message_id """

@@ -2,7 +2,7 @@
 Syntax: .get_id"""
 from telethon.utils import pack_bot_file_id
 
-from userbot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
+from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd("get_id"))
