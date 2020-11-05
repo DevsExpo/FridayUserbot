@@ -1,6 +1,6 @@
 """Restart or Terminate the bot from any chat
 Available Commands:
-.restartsys
+.restart
 .shutdown"""
 # This Source Code Form is subject to the terms of the GNU
 # General Public License, v.3.0. If a copy of the GPL was not distributed with this
@@ -8,17 +8,17 @@ Available Commands:
 import os
 import sys
 
-from uniborg.util import admin_cmd
+from userbot.utils import friday_on_cmd
 
 
-@borg.on(admin_cmd(pattern="restart"))
+@friday.on(friday_on_cmd("restart"))
 async def _(event):
     if event.fwd_from:
         return
     # await asyncio.sleep(2)
-    # await event.edit("Restarting [██░] ...\n`.ping` me or `.helpme` to check if I am online")
+    # await event.edit("Restarting [██░] ...\n`.ping` me or `.help` to check if I am online after a lil bit.")
     # await asyncio.sleep(2)
-    # await event.edit("Restarting [███]...\n`.ping` me or `.helpme` to check if I am online")
+    # await event.edit("Restarting [███]...\n`.ping` me or `.help` to check if I am online after a lil bit.")
     # await asyncio.sleep(2)
     await event.edit("Restarted. `.ping` me or `.helpme` to check if I am online")
     await borg.disconnect()
@@ -28,7 +28,7 @@ async def _(event):
     quit()
 
 
-@borg.on(admin_cmd(pattern="shutdown"))
+@friday.on(friday_on_cmd("shutdown"))
 async def _(event):
     if event.fwd_from:
         return
