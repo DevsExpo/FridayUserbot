@@ -115,16 +115,16 @@ def load_module(shortname):
         mod.command = command
         mod.logger = logging.getLogger(shortname)
         # support for uniborg
-        sys.plugins["uniborg.util"] = userbot.utils
-        sys.plugins["userbot.util"] = userbot.utils
+        sys.modules["uniborg.util"] = userbot.utils
+        sys.modules["userbot.util"] = userbot.utils
         mod.Config = Config
         mod.borg = bot
         mod.friday = bot
         # support for paperplaneextended
-        sys.plugins["userbot.events"] = userbot.utils
+        sys.modules["userbot.events"] = userbot.utils
         spec.loader.exec_module(mod)
         # for imports
-        sys.plugins["userbot.plugins." + shortname] = mod
+        sys.modules["userbot.plugins." + shortname] = mod
         print("Successfully imported " + shortname)
 
 
@@ -664,5 +664,5 @@ def start_assistant(shortname):
         mod.peru_only = peru_only()
         mod.only_pvt = only_pvt()
         spec.loader.exec_module(mod)
-        sys.plugins["userbot.plugins.assistant" + shortname] = mod
+        sys.modules["userbot.plugins.assistant" + shortname] = mod
         print("Assistant Has imported " + shortname)
