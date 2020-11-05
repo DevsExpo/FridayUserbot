@@ -9,14 +9,14 @@ import time
 import requests
 from random import choice, randint
 from collections import deque
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd
 
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
-from userbot.utils import register, errors_handler, admin_cmd
-
+from userbot.utils import register, errors_handler, friday_on_cmd
+from userbot.utils import friday_on_cmd
 
 @friday.on(events.NewMessage(pattern=r"\.slash", outgoing=True))
 async def kek(keks):
@@ -52,7 +52,7 @@ async def Oof(e):
         t = t[:-1] + "of"
         await e.edit(t) 
 	
-@friday.on(admin_cmd("bigoof"))
+@friday.on(friday_on_cmd("bigoof"))
 async def _(event):
     if event.fwd_from:
         return
@@ -278,7 +278,7 @@ async def _(event):
 		await event.edit("".join(deq))
 		deq.rotate( 1)
 		
-@friday.on(admin_cmd("cheart ?(.*)"))
+@friday.on(friday_on_cmd("cheart ?(.*)"))
 async def _(event):
   if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
     await event.edit("❤️")
@@ -739,2917 +739,2917 @@ async def _(event):
     await asyncio.sleep(3)
     await event.delete()
   
-@friday.on(admin_cmd(pattern="lalol"))
+@friday.on(friday_on_cmd(pattern="lalol"))
 async def _(event):
     if event.fwd_from:
         return
     await event.edit("😂\n😂\n😂\n😂\n😂😂😂😂\n\n   😂😂😂\n 😂         😂\n😂           😂\n 😂         😂\n   😂😂😂\n\n😂\n😂\n😂\n😂\n😂😂😂😂")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟥🟥🟥🟥🟥🟥🟥🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟩🟩🟨🟧🟥\n🟥🟧🟨🟨🟨🟨🟧🟥\n🟥🟧🟧🟧🟧🟧🟧🟥\n🟥🟥🟥🟥🟥🟥🟥🟥")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟧🟧🟧🟧🟧🟧🟧🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟥🟥🟩🟨🟧\n🟧🟨🟩🟩🟩🟩🟨🟧\n🟧🟨🟨🟨🟨🟨🟨🟧\n🟧🟧🟧🟧🟧🟧🟧🟧")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟨🟨🟨🟨🟨🟨🟨🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟧🟧🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟥🟥🟥🟥🟩🟨\n🟨🟩🟩🟩🟩🟩🟩🟨\n🟨🟨🟨🟨🟨🟨🟨🟨")
 
-@friday.on(admin_cmd(pattern=r"lit"))
+@friday.on(friday_on_cmd(pattern=r"lit"))
 async def lit(event):
     if event.fwd_from:
         return
     await event.edit("🟩🟩🟩🟩🟩🟩🟩🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟨🟨🟧🟥🟩\n🟩🟥🟧🟧🟧🟧🟥🟩\n🟩🟥🟥🟥🟥🟥🟥🟩\n🟩🟩🟩🟩🟩🟩🟩🟩")
 
-@friday.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@friday.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"love"))
+@friday.on(friday_on_cmd(pattern=r"love"))
 async def love(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n🧡💛💚💙💜❤️\n💛💚💙💜❤️🧡\n💚💙💜❤️🧡💛\n💙💜❤️🧡💛💚\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜\n❤️🧡💛💚💙💜")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️\n🧡💛💚💙💜❤️")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡\n💛💚💙💜❤️🧡")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛\n💚💙💜❤️🧡💛")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚\n💙💜❤️🧡💛💚")
 
-@borg.on(admin_cmd(pattern=r"my"))
+@friday.on(friday_on_cmd(pattern=r"my"))
 async def my(event):
     if event.fwd_from:
         return
     await event.edit("💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙\n💜❤️🧡💛💚💙")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️❤️❤️\n🧡🧡🧡🧡\n💛💛💛💛\n💚💚💚💚")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙💙💙\n💜💜💜💜\n🖤🖤🖤🖤\n🤎🤎🤎🤎")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 ")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("ʟᴏᴅɪɴɢ ᴛʏᴘᴇ........𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💓💓𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💓💓")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("❤️❤️𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔❤️❤️")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💓💓𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💓💓")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💜💜𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💜💜")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💓💓𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💓💓")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💛💛𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💛💛")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💓💓𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓??𝒆𝒏𝒅𝒔💓💓")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💚💚𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💚💚")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💓💓𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💓💓")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("🧡🧡𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔🧡🧡")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💓💓𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💓💓")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💙💙")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💜💜𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💜💜")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💚💚𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💚💚")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💛💛𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💛💛")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("🖤🖤𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔🖤🖤")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💙💙𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💙💙")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💜💜𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💜💜")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💚💚𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💚💚")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💛💛𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💛💛")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💝💝𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💝💝")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💕💕𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💕💕")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💖💖𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💖💖")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💕💕𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💕💕")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💝💝𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💝💝")
 
-@borg.on(admin_cmd(pattern=r"hi"))
+@friday.on(friday_on_cmd(pattern=r"hi"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("💕💕𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💕💕")
 
-@borg.on(admin_cmd(pattern=r"car"))
+@friday.on(friday_on_cmd(pattern=r"car"))
 async def car(event):
     if event.fwd_from:
         return
@@ -3880,7 +3880,7 @@ async def gtfo(e):
 "\n............\..............( "
 "\n..............\.............\...")
 
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@friday.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
 
 async def _(event):
 
