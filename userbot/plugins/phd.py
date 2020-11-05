@@ -15,10 +15,10 @@ from telethon.errors.rpcerrorlist import (
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
-from userbot.utils import admin_cmd
+from userbot.utils import friday_on_cmd
 
 
-@borg.on(admin_cmd("phd ?(.*)"))
+@friday.on(friday_on_cmd("phd ?(.*)"))
 async def _(event):
 
     if event.fwd_from:
@@ -103,7 +103,7 @@ async def _(event):
                 await borg.send_file(
                     event.chat_id,
                     video_hehe,
-                    caption="`🤤 Video Uploaded by` [@anubisxx](https://github.com/Dark-Princ3/X-tra-Telegram)!🤤\n**Title:** `{}`".format(
+                    caption="`🤤 Video Uploaded by`CɪᴘʜᴇʀX !🤤\n**Title:** `{}`".format(
                         title
                     ),
                 )
@@ -111,7 +111,7 @@ async def _(event):
             elif "Unfortunately" in response.text:
 
                 await event.edit(
-                    "`Woops, Incorrect link!`\n**Please check and try again.**"
+                    "`Oops, Incorrect link!`\n**Please check and try again.**"
                 )
 
             elif "correct" in response.text:
