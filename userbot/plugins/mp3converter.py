@@ -16,9 +16,7 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     if reply_message is None:
-        await event.edit(
-            "reply to a media to use the `nfc` operation."
-        )
+        await event.edit("reply to a media to use the `nfc` operation.")
         return
     await event.edit("trying to download media file, to my local")
     try:
