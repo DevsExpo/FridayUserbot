@@ -1,4 +1,4 @@
-# New Qoute module by @r4v4n4 😉
+# New Qoute module by @Hackintush 😉
 
 import asyncio
 
@@ -37,7 +37,7 @@ async def _(event):
             response = await response
 
         except YouBlockedUserError:
-            await event.reply("```Please unblock me u Nigga```")
+            await event.reply("```Please unblock me ```")
             return
 
         if response.text.startswith("Hello"):
@@ -81,7 +81,7 @@ async def _(event):
             response = await response
 
         except YouBlockedUserError:
-            await event.reply("```Please unblock me u Nigga```")
+            await event.reply("```Please unblock me ```")
             return
 
         if response.text.startswith("Hello"):
@@ -125,7 +125,7 @@ async def _(event):
             response = await response
 
         except YouBlockedUserError:
-            await event.reply("```Please unblock me u Nigga```")
+            await event.reply("```Please unblock me ```")
             return
 
         if response.text.startswith("Hello"):
@@ -169,7 +169,7 @@ async def _(event):
             response = await response
 
         except YouBlockedUserError:
-            await event.reply("```Please unblock me u Nigga```")
+            await event.reply("```Please unblock me ```")
             return
 
         if response.text.startswith("Hello"):
