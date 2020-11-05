@@ -7,11 +7,8 @@ import os
 
 import requests
 
-from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
-from userbot.Configs import Config
-from userbot.utils import admin_cmd
-
-OCR_SPACE_API_KEY = Config.OCR_SPACE_API_KEY
+from userbot import CMD_HELP, OCR_SPACE_API_KEY, TEMP_DOWNLOAD_DIRECTORY, bot
+from userbot.utils import register
 
 
 async def ocr_space_file(
@@ -44,7 +41,7 @@ async def ocr_space_file(
     return r.json()
 
 
-@borg.on(admin_cmd(pattern="ocr(?: |$)(.*)", outgoing=True))
+@register(pattern="^.ocr(?: |$)(.*)", outgoing=True)
 async def ocr(event):
     await event.edit("`Reading...`")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
