@@ -1,9 +1,9 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd
 
 
-@borg.on(admin_cmd("mask ?(.*)"))
+@friday.on(friday_on_cmd("mask ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -19,7 +19,7 @@ async def _(event):
     if reply_message.sender.bot:
         await event.edit("```Reply to actual users message.```")
         return
-    await event.edit("```Processing```")
+    await event.edit("making mask")
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -28,7 +28,7 @@ async def _(event):
             await borg.send_message(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+            await event.reply("```Please unblock the bot and try again```")
             return
         if response.text.startswith("Forward"):
             await event.edit(
