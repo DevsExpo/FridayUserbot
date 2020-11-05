@@ -14,14 +14,14 @@ from bs4 import BeautifulSoup
 from PIL import Image
 
 from userbot import CMD_HELP, bot
-from userbot.utils import admin_cmd, errors_handler
+from userbot.utils import errors_handler, friday_on_cmd
 
 opener = urllib.request.build_opener()
 useragent = "Mozilla/5.0 (Linux; Android 9; SM-G960F Build/PPR1.180610.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.157 Mobile Safari/537.36"
 opener.addheaders = [("User-agent", useragent)]
 
 
-@borg.on(admin_cmd(outgoing=True, pattern=r"reverse(?: |$)(\d*)"))
+@friday.on(friday_on_cmd(outgoing=True, pattern=r"reverse(?: |$)(\d*)"))
 @errors_handler
 async def okgoogle(img):
     """ For .reverse command, Google search images and stickers. """
@@ -33,7 +33,7 @@ async def okgoogle(img):
         photo = io.BytesIO()
         await bot.download_media(message, photo)
     else:
-        await img.edit("`Reply to photo or sticker nigger.`")
+        await img.edit("`Reply to photo or sticker.`")
         return
 
     if photo:
