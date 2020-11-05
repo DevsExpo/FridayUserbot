@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) @INF1N17Y
+# (c) @Hackintush
 
 import random
 
 from telethon import events
 
 
-@borg.on(events.NewMessage(pattern=r"\.react (.*)", outgoing=True))
+@friday.on(events.NewMessage(pattern=r"\.react (.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
