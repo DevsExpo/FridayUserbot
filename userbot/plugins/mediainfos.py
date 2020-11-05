@@ -1,4 +1,5 @@
 # Originally By @Hackintush
+# Ported - @Hackintush
 
 import asyncio
 import os
@@ -35,7 +36,7 @@ async def _(event):
         return
     reply_message = await event.get_reply_message()
     if reply_message is None:
-        await event.edit("Reply To a Media.")
+        await event.edit("Reply to a Media.")
     await event.edit("`Processing...`")
     file_path = await borg.download_media(reply_message, Config.TMP_DOWNLOAD_DIRECTORY)
     out, err, ret, pid = await runcmd(f"mediainfo '{file_path}'")
