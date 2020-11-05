@@ -15,37 +15,60 @@ CɪᴘʜᴇʀX_Socks5 = "https://api.proxyscrape.com/?request=getproxies&proxyty
 SOCKS5_TXT = "**🔅Proxy List Info** \n🔹Type: __Socks5__ \n🔸TimeOut: __2000__ \n🔹Country: __All__ \n🔸Ssl: __Only For Http Proxy__ \n🔹Anonymity: __Only For Http__ \n🔸Provided By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy List** 👇"
 
 
-@borg.on(admin_cmd(pattern="http"))
+@friday.on(friday_on_cmd(pattern="http$"))
+@friday.on(sudo_cmd(pattern="http$", allow_sudo=True))
 async def CɪᴘʜᴇʀXhttp(event):
     await event.get_chat()
     file_name = "Http_CipherX.txt"
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloader = SmartDL(f"{CɪᴘʜᴇʀX_Http}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
-    await borg.send_message(event.chat_id, HTTP_TXT)
-    await event.client.send_file(event.chat_id, downloaded_file_name)
+    #await borg.send_message(event.chat_id, HTTP_TXT)
     await event.delete()
+     await event.client.send_file(
+        event.chat_id,
+        downloaded_file_name,
+        force_document=False,
+        thumb=sedpng,
+        caption=HTTP_TXT,
+    )
 
 
-@borg.on(admin_cmd(pattern="socks4"))
+@friday.on(friday_on_cmd(pattern="socks4$"))
+@friday.on(friday_on_cmd(pattern="socks4$", allow_sudo=True))
 async def CɪᴘʜᴇʀXsocks4(event):
     await event.get_chat()
     file_name = "Socks4_CipherX.txt"
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloader = SmartDL(f"{CɪᴘʜᴇʀX_Socks4}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
-    await borg.send_message(event.chat_id, SOCKS4_TXT)
-    await event.client.send_file(event.chat_id, downloaded_file_name)
+    #await borg.send_message(event.chat_id, SOCKS4_TXT)
     await event.delete()
+    await event.client.send_file(
+        event.chat_id,
+        downloaded_file_name,
+        thumb=sedpng,
+        caption=SOCKS4_TXT,
+        allow_cache=False,
+        force_document=False,
+    )
 
 
-@borg.on(admin_cmd(pattern="socks5"))
+@friday.on(friday_on_cmd(pattern="socks5$"))
+@friday.on(friday_on_cmd(pattern="socks5$", allow_sudo=True))
 async def CɪᴘʜᴇʀXsocks5(event):
     await event.get_chat()
     file_name = "Socks5_CipherX.txt"
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloader = SmartDL(f"{CɪᴘʜᴇʀX_Socks5}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
-    await borg.send_message(event.chat_id, SOCKS5_TXT)
-    await event.client.send_file(event.chat_id, downloaded_file_name)
+    #await borg.send_message(event.chat_id, SOCKS5_TXT)
     await event.delete()
+   await event.client.send_file(
+        event.chat_id,
+        downloaded_file_name,
+        thumb=sedpng,
+        caption=SOCKS5_TXT,
+        allow_cache=False,
+        force_document=False,
+    )
