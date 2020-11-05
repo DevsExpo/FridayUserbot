@@ -1,3 +1,4 @@
+import functools
 import inspect
 import logging
 import re
@@ -10,6 +11,8 @@ from userbot.Configs import Config
 from var import Var
 
 cmdhandler = Config.COMMAND_HAND_LER
+bothandler = Config.BOT_HANDLER
+
 
 def command(**args):
     args["func"] = lambda e: e.via_bot_id is None
@@ -112,8 +115,8 @@ def load_module(shortname):
         mod.command = command
         mod.logger = logging.getLogger(shortname)
         # support for uniborg
-        sys.modules["uniborg.util"] = userbot.utils
-        sys.modules["friday.util"] = userbot.utils
+        sys.plugins["uniborg.util"] = userbot.utils
+        sys.plugins["userbot.util"] = userbot.utils
         mod.Config = Config
         mod.borg = bot
         mod.friday = bot
@@ -121,7 +124,7 @@ def load_module(shortname):
         sys.modules["userbot.events"] = userbot.utils
         spec.loader.exec_module(mod)
         # for imports
-        sys.modules["userbot.plugins." + shortname] = mod
+        sys.plugins["userbot.plugins." + shortname] = mod
         print("Successfully imported " + shortname)
 
 
@@ -141,6 +144,7 @@ def remove_plugin(shortname):
                     del bot._event_builders[i]
     except:
         raise ValueError
+
 
 def admin_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
@@ -184,7 +188,6 @@ def admin_cmd(pattern=None, **args):
     # check if the plugin should listen for outgoing 'messages'
 
     return events.NewMessage(**args)
-
 
 
 def friday_on_cmd(pattern=None, **args):
@@ -231,8 +234,8 @@ def friday_on_cmd(pattern=None, **args):
     return events.NewMessage(**args)
 
 
-""" CipherXbot module for managing events.
- One of the main components of the bot. """
+""" Userbot module for managing events.
+ One of the main components of the cipherxbot. """
 
 import asyncio
 import datetime
@@ -304,12 +307,12 @@ def errors_handler(func):
 
             text = "**CIPHERXBOT CRASH REPORT**\n\n"
 
-            link = "[Here](https://t.me/Hackintush)"
+            link = "[Here](https://t.me/FridayOT)"
             text += "If you wanna you can report it"
             text += f"- just forward this message {link}.\n"
             text += "Nothing is logged except the fact of error and date\n"
 
-            ftext = "\nDisclaimer:\nThis file uploaded Only here,"
+            ftext = "\nDisclaimer:\nThis file uploaded ONLY here,"
             ftext += "\nwe logged only fact of error and date,"
             ftext += "\nwe respect your privacy,"
             ftext += "\nyou may not report this error if you've"
@@ -460,10 +463,170 @@ async def edit_or_reply(event, text):
     return await event.edit(text)
 
 
+#    Copyright (C) Midhun KM 2020
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
+def assistant_cmd(add_cmd, is_args=False):
+    def cmd(func):
+        serena = bot.tgbot
+        if is_args:
+            pattern = bothandler + add_cmd + "(?: |$)(.*)"
+        elif is_args == "stark":
+            pattern = bothandler + add_cmd + " (.*)"
+        elif is_args == "snips":
+            pattern = bothandler + add_cmd + " (\S+)"
+        else:
+            pattern = bothandler + add_cmd + "$"
+        serena.add_event_handler(
+            func, events.NewMessage(incoming=True, pattern=pattern)
+        )
 
-# Assistant 
+    return cmd
+
+
+def is_admin():
+    def decorator(func):
+        @functools.wraps(func)
+        async def wrapper(event):
+            serena = bot.tgbot
+            sed = await serena.get_permissions(event.chat_id, event.sender_id)
+            user = event.sender_id
+            kek = bot.uid
+            if sed.is_admin:
+                await func(event)
+            if event.sender_id == kek:
+                pass
+            elif not user:
+                pass
+            if not sed.is_admin:
+                await event.reply("Only Admins Can Use it.")
+
+        return wrapper
+
+    return decorator
+
+
+def is_bot_admin():
+    def decorator(func):
+        @functools.wraps(func)
+        async def wrapper(event):
+            serena = bot.tgbot
+            pep = await serena.get_me()
+            sed = await serena.get_permissions(event.chat_id, pep)
+            if sed.is_admin:
+                await func(event)
+            else:
+                await event.reply("I Must Be Admin To Do This.")
+
+        return wrapper
+
+    return decorator
+
+
+def only_pro():
+    def decorator(func):
+        @functools.wraps(func)
+        async def wrapper(event):
+            kek = list(Config.SUDO_USERS)
+            mm = bot.uid
+            if event.sender_id == mm:
+                await func(event)
+            elif event.sender_id == kek:
+                await func(event)
+            else:
+                await event.reply("Only Owners, Sudo Users Can Use This Command.")
+
+        return wrapper
+
+    return decorator
+
+
+def god_only():
+    def decorator(func):
+        @functools.wraps(func)
+        async def wrapper(event):
+            moms = bot.uid
+            if event.sender_id == moms:
+                await func(event)
+            else:
+                pass
+
+        return wrapper
+
+    return decorator
+
+
+def only_groups():
+    def decorator(func):
+        @functools.wraps(func)
+        async def wrapper(event):
+            if event.is_group:
+                await func(event)
+            else:
+                await event.reply("This Command Only Works on Groups.")
+
+        return wrapper
+
+    return decorator
+
+
+def only_group():
+    def decorator(func):
+        @functools.wraps(func)
+        async def wrapper(event):
+            if event.is_group:
+                await func(event)
+            else:
+                pass
+
+        return wrapper
+
+    return decorator
+
+
+def peru_only():
+    def decorator(func):
+        @functools.wraps(func)
+        async def wrapper(event):
+            kek = list(Config.SUDO_USERS)
+            mm = bot.uid
+            if event.sender_id == mm:
+                await func(event)
+            elif event.sender_id == kek:
+                await func(event)
+            else:
+                pass
+
+        return wrapper
+
+    return decorator
+
+
+def only_pvt():
+    def decorator(func):
+        @functools.wraps(func)
+        async def wrapper(event):
+            if event.is_group:
+                pass
+            else:
+                await func(event)
+
+        return wrapper
+
+    return decorator
+
+
 def start_assistant(shortname):
     if shortname.startswith("__"):
         pass
@@ -471,8 +634,6 @@ def start_assistant(shortname):
         import importlib
         import sys
         from pathlib import Path
-
-        import userbot.utils
 
         path = Path(f"userbot/plugins/assistant/{shortname}.py")
         name = "userbot.plugins.assistant.{}".format(shortname)
@@ -486,13 +647,22 @@ def start_assistant(shortname):
         import sys
         from pathlib import Path
 
-        import userbot.utils
-
         path = Path(f"userbot/plugins/assistant/{shortname}.py")
         name = "userbot.plugins.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         mod.tgbot = bot.tgbot
+        mod.serena = bot.tgbot
+        mod.assistant_cmd = assistant_cmd
+        mod.god_only = god_only()
+        mod.only_groups = only_groups()
+        mod.only_pro = only_pro()
+        mod.pro_only = only_pro()
+        mod.only_group = only_group()
+        mod.is_bot_admin = is_bot_admin()
+        mod.is_admin = is_admin()
+        mod.peru_only = peru_only()
+        mod.only_pvt = only_pvt()
         spec.loader.exec_module(mod)
         sys.modules["userbot.plugins.assistant" + shortname] = mod
         print("Assistant Has imported " + shortname)
