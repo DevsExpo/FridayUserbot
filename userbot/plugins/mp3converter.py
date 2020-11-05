@@ -6,10 +6,10 @@ import os
 import time
 from datetime import datetime
 
-from userbot.utils import admin_cmd, progress
+from userbot.utils import friday_on_cmd, progress
 
 
-@borg.on(admin_cmd(pattern="convert (.*)"))  # pylint:disable=E0602
+@friday.on(friday_on_cmd(pattern="convert (.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -17,7 +17,7 @@ async def _(event):
     reply_message = await event.get_reply_message()
     if reply_message is None:
         await event.edit(
-            "reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot"
+            "reply to a media to use the `nfc` operation."
         )
         return
     await event.edit("trying to download media file, to my local")
