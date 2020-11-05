@@ -13,6 +13,7 @@ CɪᴘʜᴇʀX_Socks4 = "https://api.proxyscrape.com/?request=getproxies&proxyty
 SOCKS4_TXT = "**🔅Proxy List Info** \n🔹Type: __Socks4__ \n🔸TimeOut: __3000__ \n🔹Country: __IR__ \n🔸Ssl: __Only For Http Proxy__ \n🔹Anonymity: __Only For Http__ \n🔸Provided By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy List** 👇"
 CɪᴘʜᴇʀX_Socks5 = "https://api.proxyscrape.com/?request=getproxies&proxytype=socks5&timeout=2000&country=all"
 SOCKS5_TXT = "**🔅Proxy List Info** \n🔹Type: __Socks5__ \n🔸TimeOut: __2000__ \n🔹Country: __All__ \n🔸Ssl: __Only For Http Proxy__ \n🔹Anonymity: __Only For Http__ \n🔸Provided By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy List** 👇"
+sedpng = "https://soon.proxyscrape.com/asset/img/service/downloadicon.svg"
 
 
 @friday.on(friday_on_cmd(pattern="http$"))
