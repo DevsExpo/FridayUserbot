@@ -5,7 +5,7 @@ import io
 
 import requests
 
-from fridaybot.utils import friday_on_cmd
+from userbot.utils import friday_on_cmd
 
 
 @friday.on(friday_on_cmd("screencapture (.*)"))
