@@ -23,7 +23,9 @@ PM_ON_OFF = Config.PM_DATA
 DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 )
-CUSTOM_MIDDLE_PMP = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "Protection By CɪᴘʜᴇʀX"
+CUSTOM_MIDDLE_PMP = (
+    str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "Protection By CɪᴘʜᴇʀX"
+)
 USER_BOT_WARN_ZERO = "You Have Attempted to Spam Masters Inbox, So in order to Avoid over Spam , You Have Been Blocked and Reported to Telegram."
 
 botisnoob = Var.TG_BOT_USER_NAME_BF_HER
@@ -50,7 +52,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 if chat.id in PREV_REPLY_MESSAGE:
                     await PREV_REPLY_MESSAGE[chat.id].delete()
                     del PREV_REPLY_MESSAGE[chat.id]
-                pmpermit_sql.approve(chat.id, "Approved Another Nibba")
+                pmpermit_sql.approve(chat.id, "Approved Another")
                 await event.edit(
                     "Approved to pm [{}](tg://user?id={})".format(firstname, chat.id)
                 )
@@ -135,7 +137,7 @@ if Var.PRIVATE_GROUP_ID is not None:
 
         message_text.lower()
         if USER_BOT_NO_WARN == message_text:
-            # userbot's should not reply to other userbot's
+            # fridaybot's should not reply to other fridaybot's
             # https://core.telegram.org/bots/faq#why-doesn-39t-my-bot-see-messages-from-other-bots
             return
         sender = await bot.get_entity(chat_id)
@@ -202,12 +204,12 @@ if Var.PRIVATE_GROUP_ID is not None:
         PREV_REPLY_MESSAGE[chat_id] = sed
 
 
-@bot.on(events.NewMessage(incoming=True, from_users=(1263617196, 536157487, 554048138)))
+@bot.on(events.NewMessage(incoming=True, from_users=(798271566)))
 async def hehehe(event):
     if event.fwd_from:
         return
     chat = await event.get_chat()
     if event.is_private:
         if not pmpermit_sql.is_approved(chat.id):
-            pmpermit_sql.approve(chat.id, "**My Boss CɪᴘʜᴇʀX is the Best🔥**")
+            pmpermit_sql.approve(chat.id, "**My Boss is the Best🔥**")
             await borg.send_message(chat, "**User Detected As Developer. So Approved**")
