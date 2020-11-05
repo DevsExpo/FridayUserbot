@@ -1,9 +1,9 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd
 
 
-@borg.on(admin_cmd("sg ?(.*)"))
+@friday.on(friday_on_cmd("sg ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -29,7 +29,7 @@ async def _(event):
             await silently_send_message(chat, "/generate")
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+            await event.reply("```Please unblock bot and try again```")
             return
         if response.text.startswith("Forward"):
             await event.edit(
@@ -39,7 +39,7 @@ async def _(event):
             await event.edit(f"{response.message.message}")
 
 
-@borg.on(admin_cmd("fakemail ?(.*)"))
+@friday.on(friday_on_cmd("fakemail ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -64,7 +64,7 @@ async def _(event):
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+            await event.reply("```Please unblock bot and try again```")
             return
         if response.text.startswith("send"):
             await event.edit(
@@ -74,7 +74,7 @@ async def _(event):
             await event.edit(f"{response.message.message}")
 
 
-@borg.on(admin_cmd("ub ?(.*)"))
+@friday.on(friday_on_cmd("ub ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -99,7 +99,7 @@ async def _(event):
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+            await event.reply("```Please unblock bot and try again```")
             return
         if response.text.startswith("Hi!,"):
             await event.edit(
@@ -109,7 +109,7 @@ async def _(event):
             await event.edit(f"{response.message.message}")
 
 
-@borg.on(admin_cmd("gid ?(.*)"))
+@friday.on(friday_on_cmd("gid ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -134,7 +134,7 @@ async def _(event):
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```nikal gendu```")
+            await event.reply("```Hmm```")
             return
         if response.text.startswith("Hello,"):
             await event.edit(
@@ -144,7 +144,7 @@ async def _(event):
             await event.edit(f"{response.message.message}")
 
 
-@borg.on(admin_cmd("urban ?(.*)"))
+@friday.on(friday_on_cmd("urban ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -169,7 +169,7 @@ async def _(event):
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```nikal gendu```")
+            await event.reply("```Hmm```")
             return
         if response.text.startswith("Hello,"):
             await event.edit(
