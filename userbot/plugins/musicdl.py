@@ -7,10 +7,10 @@ from telethon.errors.rpcerrorlist import (
 )
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
-from userbot.utils import admin_cmd
+from userbot.utils import friday_on_cmd
 
 
-@borg.on(admin_cmd("sdd ?(.*)"))
+@friday.on(friday_on_cmd("sdd ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -36,8 +36,8 @@ async def _(event):
             await borg.send_file(
                 event.chat_id,
                 songh,
-                caption="🔆**Here's the requested song!**🔆\n Extracted from CipherX Database. ",
+                caption="🔆**Here's the requested song!**🔆\n`Powered by` [CɪᴘʜᴇʀX](https://t.me/798271566)",
             )
             await event.delete()
         except YouBlockedUserError:
-            await event.edit("**Error:** `unblock` @DeezLoadBot `and retry!`")
+            await event.edit("**Error:** `unblock bot and retry!`")
