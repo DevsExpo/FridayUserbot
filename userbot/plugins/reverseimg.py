@@ -5,7 +5,7 @@
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
 #
-""" Userbot module for reverse searching stickers and images on Google """
+""" CipherXbot module for reverse searching stickers and images on Google """
 
 import io
 import os
@@ -16,8 +16,8 @@ import requests
 from bs4 import BeautifulSoup
 from PIL import Image
 
-from userbot import CMD_HELP, bot
-from userbot.utils import errors_handler, register
+from fridaybot import CMD_HELP, bot
+from fridaybot.utils import errors_handler, register
 
 opener = urllib.request.build_opener()
 useragent = "Mozilla/5.0 (Linux; Android 9; SM-G960F Build/PPR1.180610.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.157 Mobile Safari/537.36"
@@ -36,7 +36,7 @@ async def okgoogle(img):
         photo = io.BytesIO()
         await bot.download_media(message, photo)
     else:
-        await img.edit("`Reply to photo or sticker nigger.`")
+        await img.edit("`Reply to photo or sticker.`")
         return
 
     if photo:
