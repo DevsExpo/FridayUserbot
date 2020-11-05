@@ -4,10 +4,10 @@ import asyncio
 
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd
 
 
-@borg.on(admin_cmd(pattern="battery ?(.*)", allow_sudo=True))
+@friday.on(friday_on_cmd(pattern="battery ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -51,7 +51,7 @@ async def _(event):
             )
 
 
-@borg.on(admin_cmd(pattern="pmute ?(.*)", allow_sudo=True))
+@friday.on(friday_on_cmd(pattern="pmute ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -95,7 +95,7 @@ async def _(event):
             )
 
 
-@borg.on(admin_cmd(pattern="pring ?(.*)", allow_sudo=True))
+@friday.on(friday_on_cmd(pattern="pring ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -139,7 +139,7 @@ async def _(event):
             )
 
 
-@borg.on(admin_cmd(pattern="pvibrate ?(.*)", allow_sudo=True))
+@friday.on(friday_on_cmd(pattern="pvibrate ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
