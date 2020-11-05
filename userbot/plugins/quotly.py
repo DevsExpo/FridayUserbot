@@ -2,10 +2,12 @@
 """
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from uniborg.util import admin_cmd
+from userbot import bot
+from userbot.utils import friday_on_cmd
 
 
-@borg.on(admin_cmd(pattern="qbot ?(.*)"))
+# @register(outgoing=True, pattern="^.q(?: |$)(.*)")
+@friday.on(friday_on_cmd(pattern=r"qbot(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
