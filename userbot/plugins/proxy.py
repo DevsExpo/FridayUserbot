@@ -25,7 +25,7 @@ async def CɪᴘʜᴇʀXhttp(event):
     downloader.start(blocking=False)
     #await borg.send_message(event.chat_id, HTTP_TXT)
     await event.delete()
-     await event.client.send_file(
+    await event.client.send_file(
         event.chat_id,
         downloaded_file_name,
         force_document=False,
@@ -64,7 +64,7 @@ async def CɪᴘʜᴇʀXsocks5(event):
     downloader.start(blocking=False)
     #await borg.send_message(event.chat_id, SOCKS5_TXT)
     await event.delete()
-   await event.client.send_file(
+    await event.client.send_file(
         event.chat_id,
         downloaded_file_name,
         thumb=sedpng,
