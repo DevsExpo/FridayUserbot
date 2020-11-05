@@ -4,8 +4,6 @@ from datetime import datetime
 from userbot.utils import friday_on_cmd, sudo_cmd
 
 
-
-
 @friday.on(friday_on_cmd(pattern="send ?(.*)"))
 @friday.on(sudo_cmd(pattern="send ?(.*)", allow_sudo=True))
 async def send(event):

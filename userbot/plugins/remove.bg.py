@@ -41,7 +41,9 @@ async def _(event):
         message_id = event.reply_to_msg_id
         reply_message = await event.get_reply_message()
         # check if media message
-        await event.edit("`Connecting to official CɪᴘʜᴇʀX server and analysing that img ...`")
+        await event.edit(
+            "`Connecting to official CɪᴘʜᴇʀX server and analysing that img ...`"
+        )
         try:
             downloaded_file_name = await borg.download_media(
                 reply_message, Config.TMP_DOWNLOAD_DIRECTORY
@@ -74,7 +76,9 @@ async def _(event):
         end = datetime.now()
         ms = (end - start).seconds
         await event.edit(
-            "Removed dat annoying Backgroup in {} seconds, powered by CɪᴘʜᴇʀX".format(ms)
+            "Removed dat annoying Backgroup in {} seconds, powered by CɪᴘʜᴇʀX".format(
+                ms
+            )
         )
     else:
         await event.edit(
