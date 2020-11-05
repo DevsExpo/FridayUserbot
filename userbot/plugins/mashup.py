@@ -20,7 +20,7 @@ async def _(event):
         reply_to_id = await event.get_reply_message()
     chat = "@vixtbot"
     await event.edit("```Checking...```")
-    await alive.delete()
+    await event.delete()
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
