@@ -34,6 +34,7 @@ else:
 
 
 import glob
+
 path = "userbot/plugins/*.py"
 files = glob.glob(path)
 for name in files:
@@ -50,8 +51,7 @@ for name in files:
         shortname = path1.stem
         start_assistant(shortname.replace(".py", ""))
 
-print("Friday And Assistant Bot Have Been Installed Successfully !")
-print("My Master CipherX is the Best")
+print("CɪᴘʜᴇʀX And Assistant Bot Have Been Installed Successfully !")
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()
