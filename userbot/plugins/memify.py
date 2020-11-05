@@ -1,4 +1,6 @@
 """Reply to an image/sticker with .mmf` 'text on top' ; 'text on bottom
+base by: @Hackintush
+created by: @Hackintush
 """
 
 import asyncio
@@ -6,36 +8,34 @@ import os
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.types import MessageMediaPhoto
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
 
-@borg.on(admin_cmd("mf ?(.*)"))
+@friday.on(friday_on_cmd("mmf ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit(
-            "`Syntax: reply to an image with .mms` 'text on top' ; 'text on bottom' "
-        )
+        await event.edit("`Syntax: reply to an image with .mmf And Text `")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
         await event.edit("```reply to a image/sticker/gif```")
         return
-    chat = "@MemeAutobot"
+    chat = "@MemeCreatorBot"
     reply_message.sender
-    await borg.download_file(reply_message.media)
     if reply_message.sender.bot:
         await event.edit("```Reply to actual users message.```")
         return
     else:
         await event.edit(
-            "```Transfiguration Time! Mwahaha memifying this image! ¯\(◉‿◉)/¯ ```"
+            "```Transfiguration Time! Memifying this image! (」ﾟﾛﾟ)｣ ```"
         )
+    await borg.download_file(reply_message.media)
 
-    async with borg.conversation("@MemeAutobot") as bot_conv:
+    async with borg.conversation("@MemeCreatorBot") as bot_conv:
         try:
             memeVar = event.pattern_match.group(1)
             await silently_send_message(bot_conv, "/start")
@@ -44,15 +44,15 @@ async def _(event):
             await borg.send_file(chat, reply_message.media)
             response = await bot_conv.get_response()
         except YouBlockedUserError:
-            await event.reply("```Please unblock @MemeAutobot and try again```")
+            await event.reply("```Please unblock Bot and try again```")
             return
         if response.text.startswith("Forward"):
             await event.edit(
-                "```can you kindly disable your forward privacy settings for good nibba?```"
+                "```can you kindly disable your forward privacy settings for good?```"
             )
-        if "Okay..." in response.text:
+        if "Send" in response.text:
             await event.edit(
-                "```NANI?! This is not an image! This will take sum tym to convert to image ow !!!```"
+                "```🤨 LOL?! This is not an image! This will take some tume to convert to image owo 🧐```"
             )
             thumb = None
             if os.path.exists(thumb_image_path):
@@ -94,16 +94,16 @@ async def _(event):
                 event.chat_id,
                 requires_file_name,
                 supports_streaming=False,
-                caption="Friday Userbot",
+                caption="@FridayOT",
                 # Courtesy: @A_Dark_Princ3
             )
             await event.delete()
-            await borg.send_message(
-                event.chat_id, "`¯\_༼ ಥ ‿ ಥ ༽_/¯23 Points to @R4N4N4!🔥🔥`"
-            )
+            sax = await borg.send_message(event.chat_id, "Memeify Sucess !")
+            await asyncio.sleep(4)
+            sax.delete()
         elif not is_message_image(reply_message):
             await event.edit(
-                "Invalid message type. Plz choose right message type u NIBBA."
+                "Invalid message type. Please choose right message type."
             )
             return
         else:
