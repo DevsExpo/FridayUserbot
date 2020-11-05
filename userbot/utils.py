@@ -121,7 +121,7 @@ def load_module(shortname):
         mod.borg = bot
         mod.friday = bot
         # support for paperplaneextended
-        sys.modules["userbot.events"] = userbot.utils
+        sys.plugins["userbot.events"] = userbot.utils
         spec.loader.exec_module(mod)
         # for imports
         sys.plugins["userbot.plugins." + shortname] = mod
@@ -664,5 +664,5 @@ def start_assistant(shortname):
         mod.peru_only = peru_only()
         mod.only_pvt = only_pvt()
         spec.loader.exec_module(mod)
-        sys.modules["userbot.plugins.assistant" + shortname] = mod
+        sys.plugins["userbot.plugins.assistant" + shortname] = mod
         print("Assistant Has imported " + shortname)
