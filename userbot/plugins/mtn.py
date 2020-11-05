@@ -26,7 +26,7 @@ async def _(event):
     await event.edit("mtn")
 
     animation_chars = [
-        "`Connecting To MTN NG ....`",
+        "`Connecting To MTN ....`",
         "`█ ▇ ▆ ▅ ▄ ▂ ▁`",
         "`▒ ▇ ▆ ▅ ▄ ▂ ▁`",
         "`▒ ▒ ▆ ▅ ▄ ▂ ▁`",
@@ -35,7 +35,7 @@ async def _(event):
         "`▒ ▒ ▒ ▒ ▒ ▂ ▁`",
         "`▒ ▒ ▒ ▒ ▒ ▒ ▁`",
         "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
-        "*Optimising Network...*",
+        "*Optimizing Network...*",
         "`▒ ▒ ▒ ▒ ▒ ▒ ▒`",
         "`▁ ▒ ▒ ▒ ▒ ▒ ▒`",
         "`▁ ▂ ▒ ▒ ▒ ▒ ▒`",
