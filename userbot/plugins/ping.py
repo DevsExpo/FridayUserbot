@@ -37,7 +37,6 @@ def get_readable_time(seconds: int) -> str:
 @friday.on(sudo_cmd(pattern="ping$", allow_sudo=True))
 async def _(event):
     starkislub = await edit_or_reply(event, f"**█▀█ █▀█ █▄░█ █▀▀ █ \n█▀▀ █▄█ █░▀█ █▄█ ▄**\n ➲ `{ms}` \n ➲ `{uptime}`") 
-    ) )
     if event.fwd_from:
         return
     start = datetime.now()
