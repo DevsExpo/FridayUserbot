@@ -659,7 +659,7 @@ async def _(event):
 
     animation_interval = 0.1
 
-    animation_ttl = range(0, 64)
+    animation_ttl = range(0, 110)
 
     input_str = event.pattern_match.group(1)
 
@@ -682,7 +682,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 64])
+            await event.edit(animation_chars[i % 110])
 
 
 @friday.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
@@ -694,7 +694,7 @@ async def _(event):
 
     animation_interval = 0.1
 
-    animation_ttl = range(0, 64)
+    animation_ttl = range(0, 100)
 
     input_str = event.pattern_match.group(1)
 
@@ -741,9 +741,37 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 64])
+            await event.edit(animation_chars[i % 100])
+
+@friday.on(friday_on_cmd(pattern=r"lmoon"))
+async def test(event):
+    if event.fwd_from:
+        return
+    await event.edit(
+        "🌕🌕🌕🌕🌕🌕🌕🌕\n🌕🌕🌖🌔🌖🌔🌕🌕\n🌕🌕🌗🌔🌖🌓🌕🌕\n🌕🌕🌗🌔🌖🌓🌕🌕\n🌕🌕🌖🌓🌗🌔🌕🌕\n🌕🌕🌗🌑🌑🌓🌕🌕\n🌕🌕🌗👀🌑🌓🌕🌕\n🌕🌕🌘👄🌑🌓🌕🌕\n🌕🌕🌗🌑🌑🌒🌕🌕\n🌕🌖🌑🌑🌑🌑🌔🌕\n🌕🌘🌑🌑🌑🌑🌒🌕\n🌖🌑🌑🌑🌑🌑🌑🌔\n🌕🤜🏻🌑🌑🌑🌑🤛🏻🌕\n🌕🌖🌑🌑🌑🌑🌔🌕\n🌘🌑🌑🌑🌑🌑🌑🌒\n🌕🌕🌕🌕🌕🌕🌕🌕"
+    )
 
 
+@friday.on(friday_on_cmd(pattern=r"city"))
+async def test(event):
+    if event.fwd_from:
+        return
+    await event.edit(
+        """☁☁🌞      ☁           ☁
+       ☁  ✈         ☁    🚁    ☁    ☁        ☁          ☁     ☁   ☁
+
+🏬🏨🏫🏢🏤🏥🏦🏪🏫
+              🌲/     l🚍\🌳👭
+           🌳/  🚘 l  🏃 \🌴 👬                       👬  🌴/            l  🚔    \🌲
+      🌲/   🚖     l               \
+   🌳/🚶           |   🚍         \ 🌴🚴🚴
+🌴/                    |                     \🌲"""
+    )
+
+
+            
+            
+            
 @friday.on(events.NewMessage(pattern=r"\.bombs", outgoing=True))
 async def _(event):
     if event.fwd_from:
@@ -4773,7 +4801,7 @@ async def figdeadfrog(e):
 async def gtfo(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
-            "\n...................................../´¯¯/) "
+            "\n...................................../´¯/) "
             "\n...................................,/¯../ "
             "\n.................................../.../ "
             "\n................................../´.¯/"
@@ -4879,6 +4907,8 @@ CMD_HELP.update(
 \n\n.solar\
 \n\n.smoon\
 \n\n.tmoon\
+\n\n.lmoon\
+\n\n.city\
 \n\n.bombs\
 \n\n.lalol\
 \n\n.lit\
