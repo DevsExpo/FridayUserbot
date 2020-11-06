@@ -1,17 +1,17 @@
 """
 StartPage Search Plugin for Userbot . //Alternative to Google Search
 cmd : .sch search_query 
-By: @Zero_cool7870
+By: @Hackintush
 
 """
 
 import json
 import os
 
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd
 
 
-@borg.on(admin_cmd(pattern="sch ?(.*)", allow_sudo=True))
+@friday.on(friday_on_cmd(pattern="sch ?(.*)", allow_sudo=True))
 async def sp_search(event):
     search_str = event.pattern_match.group(1)
 
