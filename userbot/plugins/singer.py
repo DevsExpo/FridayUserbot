@@ -1,12 +1,12 @@
 """
 command: .singer singer name - song name 
-by @quiec
+by @Hackintush
 """
 from PyLyrics import *
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd
 
 
-@borg.on(admin_cmd(pattern="singer (.*)"))
+@friday.on(friday_on_cmd(pattern="singer (.*)"))
 async def _(event):
     if event.fwd_from:
         return
