@@ -743,6 +743,7 @@ async def _(event):
 
             await event.edit(animation_chars[i % 100])
 
+
 @friday.on(friday_on_cmd(pattern=r"lmoon"))
 async def test(event):
     if event.fwd_from:
@@ -769,9 +770,6 @@ async def test(event):
     )
 
 
-            
-            
-            
 @friday.on(events.NewMessage(pattern=r"\.bombs", outgoing=True))
 async def _(event):
     if event.fwd_from:
