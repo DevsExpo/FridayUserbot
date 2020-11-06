@@ -21,7 +21,7 @@ async def _(event):
         replied_user.user.first_name
         replied_user.user.username
         useri_d = event.sender_id
-        if useri_d == 1263617196:
+        if useri_d == 798271566:
             await event.edit(
                 "This is My Master\nI can't hack my master's Account\n**How dare you trying to hack my master's account!**\n\n__Your account has been hacked!__"
             )
