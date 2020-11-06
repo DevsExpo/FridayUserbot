@@ -66,7 +66,11 @@ async def start(event):
             link_preview=False,
             buttons=[
                 [custom.Button.inline("Commands For Assistant", data="usercmd")],
-                [Button.url("Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true")],
+                [
+                    Button.url(
+                        "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
+                    )
+                ],
             ],
         )
 
@@ -101,14 +105,14 @@ async def users(event):
     grabon = "Here Are Some Commands \n➤ /start - Check if I'm Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot"
     await tgbot.send_message(event.chat_id, grabon)
 
+
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"usercmd")))
 async def users(event):
     await event.delete()
     userbon = "Here are Some Commands Which You Can Use in Groups \n➤ /start - Check if I'm Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message"
     await tgbot.send_message(event.chat_id, userbon)
-    
-    
-    
+
+
 # Bot Permit.
 @tgbot.on(events.NewMessage(func=lambda e: e.is_private))
 async def all_messages_catcher(event):
