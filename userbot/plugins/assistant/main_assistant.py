@@ -40,7 +40,7 @@ async def start(event):
     replied_user = await event.client(GetFullUserRequest(event.sender_id))
     firstname = replied_user.user.first_name
     vent = event.chat_id
-    starttext = f"Hello, {firstname} ! Nice To Meet You, Well I Am {bot_id}, An Powerfull Assistant Bot. \n\nMy [➤ Master](tg://user?id={bot.uid}) \nYou Can Talk/Contact My Master Using This Bot. \n\nPowered By [CipherX](t.me/Hackintush)"
+    starttext = f"Hello, {firstname} ! Nice To Meet You, Well I'm {bot_id}, A Powerfull Assistant Bot.\n\nYou Can Talk/Contact with My Master Using This Bot.\n\nProgrammed and Powered By My Master the ➤ CɪᴘʜᴇʀX\n\n Please Join and Support Our Channel ➤ [Future Technology](https://t.me/FutureTechnologyGuard)"
     if event.sender_id == bot.uid:
         await tgbot.send_message(
             vent,
@@ -65,24 +65,13 @@ async def start(event):
             message=starttext,
             link_preview=False,
             buttons=[
-                [custom.Button.inline("CipherX Exclusive", data="deploy")],
-                [Button.url("Help Me ❓", "t.me/Hackintush")],
+                [custom.Button.inline("Commands For Assistant", data="usercmd")],
+                [Button.url("Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true")],
             ],
         )
 
 
 # Data's
-
-
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"deploy")))
-async def help(event):
-    await event.delete()
-    if event.query.user_id is not bot.uid:
-        await tgbot.send_message(
-            event.chat_id,
-            message="You Can Get your Specialized Bot by Contacting My Master the CipherX",
-            buttons=[[Button.url("Need Help ❓", "t.me/Hackintush")]],
-        )
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
@@ -109,10 +98,17 @@ async def users(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
 async def users(event):
     await event.delete()
-    grabon = "Hello Here Are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot"
+    grabon = "Here Are Some Commands \n➤ /start - Check if I'm Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot"
     await tgbot.send_message(event.chat_id, grabon)
 
-
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"usercmd")))
+async def users(event):
+    await event.delete()
+    userbon = "Here are Some Commands Which You Can Use in Groups \n➤ /start - Check if I'm Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message"
+    await tgbot.send_message(event.chat_id, userbon)
+    
+    
+    
 # Bot Permit.
 @tgbot.on(events.NewMessage(func=lambda e: e.is_private))
 async def all_messages_catcher(event):
@@ -185,7 +181,7 @@ async def starkisnoob(event):
 
 @tgbot.on(events.NewMessage(pattern="^/help", func=lambda e: e.sender_id == bot.uid))
 async def starkislub(event):
-    grabonx = "Hello Here Are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot"
+    grabonx = "Here are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message"
     await event.reply(grabonx)
 
 
@@ -218,10 +214,10 @@ async def starkisnoob(event):
         event.raw_text
         user_id, reply_message_id = his_userid(msg.id)
     if not is_he_added(user_id):
-        await event.reply("Not Even. Blacklisted 🤦🚶")
+        await event.reply("Not Even Blacklisted 🤦🚶")
     elif is_he_added(user_id):
         removenibba(user_id)
-        await event.reply("DisBlacklisted This Dumb Person")
+        await event.reply("Unblacklisted This Dumb Person")
         await tgbot.send_message(
             user_id, "Congragulation! You Have Been Unblacklisted By My Master."
         )
