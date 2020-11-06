@@ -5,10 +5,10 @@ from datetime import datetime
 
 import requests
 
-from userbot.utils import admin_cmd
+from userbot.utils import friday_on_cmd
 
 
-@borg.on(admin_cmd(pattern="stt (.*)"))
+@friday.on(friday_on_cmd(pattern="stt (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -31,7 +31,7 @@ async def _(event):
                 "You need to set the required ENV variables for this module. \nModule stopping"
             )
         else:
-            await event.edit("Starting analysis, using IBM WatSon Speech To Text")
+            await event.edit("Starting analysis, using IBM Speech To Text")
             headers = {
                 "Content-Type": previous_message.media.document.mime_type,
             }
