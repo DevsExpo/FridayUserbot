@@ -1,12 +1,12 @@
 """Shouts a message in MEME way
 usage: .shout message
-originaly from : @corsicanu_bot
+originaly from : @Hackintush
 """
 
 from telethon import events
 
 
-@borg.on(events.NewMessage(pattern=r"\.shouts", outgoing=True))
+@friday.on(events.NewMessage(pattern=r"\.shouts", outgoing=True))
 async def shout(args):
     if args.fwd_from:
         return
