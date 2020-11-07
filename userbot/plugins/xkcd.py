@@ -3,11 +3,13 @@ Syntax: .xkcd <search>"""
 from urllib.parse import quote
 
 import requests
-from uniborg.util import admin_cmd
+from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
-@borg.on(admin_cmd(pattern="xkcd ?(.*)"))
+@friday.on(friday_on_cmd(pattern="xkcd ?(.*)"))
+@friday.on(sudo_cmd(pattern="xkcd ?(.*)", allow_sudo=True))
 async def _(event):
+    livinglegend = await edit_or_reply(event, "Oh, Please Wait...")
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
@@ -46,6 +48,6 @@ Month: {}
 Year: {}""".format(
             img, input_str, xkcd_link, safe_title, alt, day, month, year
         )
-        await event.edit(output_str, link_preview=True)
+        await livinglegend.edit(output_str, link_preview=True)
     else:
-        await event.edit("xkcd n.{} not found!".format(xkcd_id))
+        await livinglegend.edit("xkcd n.{} not found!".format(xkcd_id))
