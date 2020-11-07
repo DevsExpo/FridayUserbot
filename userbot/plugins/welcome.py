@@ -101,4 +101,4 @@ async def _(event):
             + "Your welcome messages is\n\n`{}`.".format(cws.custom_welcome_message)
         )
     else:
-        await event.edit("No Welcome Messages found")
+        await event.edit("No Welcome Messages Found")
