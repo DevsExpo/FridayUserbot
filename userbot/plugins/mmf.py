@@ -23,7 +23,7 @@ async def handler(event):
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await event.edit("```Reply to an image/sticker.```")
+        await event.edit("```Reply to a image/sticker.```")
         return
     file = await client.download_media(reply_message, Var.TEMP_DOWNLOAD_DIRECTORY)
     await event.edit("```Memifying this image! (」ﾟﾛﾟ)｣ ```")
