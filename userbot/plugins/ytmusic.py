@@ -40,7 +40,7 @@ async def _(event):
     if os.path.exists(km):
         await myself_stark.edit("`Song Downloaded Sucessfully. Let Me Upload it Here.`")
     else:
-        await myself_stark.edit("`SomeThing Went Wrong. Try Again After Sometime..`")
+        await myself_stark.edit("`SomeThing Went Wrong. Try Again After Sometimes...`")
     capy = f"**Song Name ➠** `{thum}` \n**Requested For ➠** `{urlissed}` \n**Channel ➠** `{thums}` \n**Link ➠** `{mo}`"
     await borg.send_file(
         event.chat_id,
