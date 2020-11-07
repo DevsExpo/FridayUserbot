@@ -13,7 +13,6 @@ CɪᴘʜᴇʀX_Socks4 = "https://api.proxyscrape.com/?request=getproxies&proxyty
 SOCKS4_TXT = "**🔅Proxy List Info** \n🔹Type: __Socks4__ \n🔸TimeOut: __3000__ \n🔹Country: __IR__ \n🔸Ssl: __Only For Http Proxy__ \n🔹Anonymity: __Only For Http__ \n🔸Provided By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy List** 👇"
 CɪᴘʜᴇʀX_Socks5 = "https://api.proxyscrape.com/?request=getproxies&proxytype=socks5&timeout=2000&country=all"
 SOCKS5_TXT = "**🔅Proxy List Info** \n🔹Type: __Socks5__ \n🔸TimeOut: __2000__ \n🔹Country: __All__ \n🔸Ssl: __Only For Http Proxy__ \n🔹Anonymity: __Only For Http__ \n🔸Provided By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy List** 👇"
-sedpng = "https://soon.proxyscrape.com/asset/img/service/downloadicon.svg"
 
 
 @friday.on(friday_on_cmd(pattern="http$"))
@@ -30,7 +29,6 @@ async def CɪᴘʜᴇʀXhttp(event):
         event.chat_id,
         downloaded_file_name,
         force_document=False,
-        thumb=sedpng,
         caption=HTTP_TXT,
     )
 
@@ -48,7 +46,6 @@ async def CɪᴘʜᴇʀXsocks4(event):
     await event.client.send_file(
         event.chat_id,
         downloaded_file_name,
-        thumb=sedpng,
         caption=SOCKS4_TXT,
         allow_cache=False,
         force_document=False,
@@ -68,7 +65,6 @@ async def CɪᴘʜᴇʀXsocks5(event):
     await event.client.send_file(
         event.chat_id,
         downloaded_file_name,
-        thumb=sedpng,
         caption=SOCKS5_TXT,
         allow_cache=False,
         force_document=False,
