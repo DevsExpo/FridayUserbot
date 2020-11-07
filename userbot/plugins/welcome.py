@@ -98,7 +98,7 @@ async def _(event):
     if hasattr(cws, "custom_welcome_message"):
         await event.edit(
             "Welcome note found. "
-            + "Your welcome message is\n\n`{}`.".format(cws.custom_welcome_message)
+            + "Your welcome messages is\n\n`{}`.".format(cws.custom_welcome_message)
         )
     else:
-        await event.edit("No Welcome Message found")
+        await event.edit("No Welcome Messages found")
