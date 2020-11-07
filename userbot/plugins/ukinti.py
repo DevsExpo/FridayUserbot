@@ -17,10 +17,10 @@ from telethon.tl.types import (
     UserStatusOnline,
     UserStatusRecently,
 )
-from uniborg.util import admin_cmd
+from uniborg.util import friday_on_cmd
 
 
-@borg.on(admin_cmd(pattern="unbanall ?(.*)"))
+@friday.on(friday_on_cmd(pattern="unbanall ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -50,7 +50,7 @@ async def _(event):
         await event.edit("{}: {} unbanned".format(event.chat_id, p))
 
 
-@borg.on(admin_cmd(pattern="ikuck ?(.*)"))
+@friday.on(friday_on_cmd(pattern="ikuck ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -74,7 +74,7 @@ async def _(event):
     o = 0
     q = 0
     r = 0
-    await event.edit("Searching Participant Lists.")
+    await event.edit("Searching Participant Lists...")
     async for i in borg.iter_participants(event.chat_id):
         p = p + 1
         #
