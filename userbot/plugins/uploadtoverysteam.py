@@ -12,10 +12,10 @@ from datetime import datetime
 import aiohttp
 import magic
 import requests
-from uniborg.util import admin_cmd, progress
+from uniborg.util import friday_on_cmd, progress
 
 
-@borg.on(admin_cmd(pattern="verystream ?(.*)", allow_sudo=True))
+@friday.on(friday_on_cmd(pattern="verystream ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
