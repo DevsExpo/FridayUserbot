@@ -15,5 +15,5 @@ async def _(event):
         await event.edit(the_real_message)
     else:
         await event.edit(
-            "Reply to a message with `.whatscrapp` to format @WhatsCRApp messages to @Telegram"
+            "Reply to a message with `.whatscrapp` to format WhatsCRApp messages to Telegram"
         )
