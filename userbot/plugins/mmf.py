@@ -27,12 +27,11 @@ async def handler(event):
         return
     file = await client.download_media(reply_message, Var.TEMP_DOWNLOAD_DIRECTORY)
     await event.edit("```Memifying this image! (」ﾟﾛﾟ)｣ ```")
-    await event.delete()
     text = str(event.pattern_match.group(1)).strip()
     if len(text) < 1:
         return await event.edit("You might want to try `.help memify`")
     meme = await drawText(file, text)
-    await client.send_file(event.chat_id, file=meme, force_document=False, reply_message)
+    await client.send_file(event.chat_id, file=meme, force_document=False)
     os.remove(meme)
 
 
