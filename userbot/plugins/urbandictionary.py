@@ -5,10 +5,10 @@
 Syntax: .ud Query"""
 import urbandict
 
-from userbot.utils import admin_cmd
+from userbot.utils import friday_on_cmd
 
 
-@borg.on(admin_cmd("ud (.*)"))
+@friday.on(friday_on_cmd("ud (.*)"))
 async def _(event):
     if event.fwd_from:
         return
