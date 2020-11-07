@@ -23,7 +23,7 @@ async def _(event):
     await borg.send_file(
         event.chat_id,
         file=imgpath,
-        caption=f"**Webshot of** `{urlissed}` \n**Powered By CɪᴘʜᴇʀX**",
+        caption=f"**Webshot OF** `{urlissed}` \n**Powered By CɪᴘʜᴇʀX**",
     )
 
 
@@ -75,7 +75,7 @@ async def _(event):
         )
         await tfsir.edit(data_is, parse_mode="HTML")
     except:
-        await tfsir.edit("Not a Valid Bin Or Don't Have Enough Info.")
+        await tfsir.edit("Not a Valid Bin or Don't Have Enough Info.")
 
 
 @friday.on(friday_on_cmd(pattern="iban ?(.*)"))
@@ -100,7 +100,7 @@ async def _(event):
         )
         await tfhm.edit(kek, parse_mode="HTML")
     except:
-        await tfhm.edit(f"Invalid IBAN Or Doesn't Have Enough Info")
+        await tfhm.edit(f"Invalid IBAN or Doesn't Have Enough Info")
 
 
 @friday.on(friday_on_cmd(pattern="gitdl ?(.*)"))
@@ -121,9 +121,7 @@ async def _(event):
         link = f"https://github.com/{gitusername}/{gitrepo}/archive/{gitbranch}.zip"
         await kekman.edit("Uploading... Stark Tuned.")
         await event.delete()
-        await borg.send_file(
-            event.chat_id, file=link, caption="Your Repo Achieve File."
-        )
+        await borg.send_file(event.chat_id, file=link, caption="You Repo Achieve File.")
     except:
         await borg.send_message(
             event.chat_id, "**Usage** : `.gitdl <gitusername> <gitrepo> <gitbranch>`"
@@ -156,4 +154,4 @@ async def _(event):
             )
         await stark_result.edit(noob, parse_mode="HTML")
     except:
-        await event.edit("Something Went Wrong.")
+        await event.edit("Something went Wrong.")
