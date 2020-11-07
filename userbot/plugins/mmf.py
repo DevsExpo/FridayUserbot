@@ -11,7 +11,6 @@ from userbot.utils import friday_on_cmd
 from var import Var
 
 # how a lazy guy ports.
-client = borg
 
 
 @friday.on(friday_on_cmd("memify ?(.*)"))
@@ -19,21 +18,22 @@ async def handler(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("You might want to try `.help memify`")
+        await event.reply("Usage:- memify upper text ; lower text")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await event.edit("```Reply to a image/sticker.```")
+        await eor(event, "Reply to a image/sticker.")
         return
-    file = await client.download_media(reply_message, Var.TEMP_DOWNLOAD_DIRECTORY)
-    await event.edit("```Memifying this image! (」ﾟﾛﾟ)｣ ```")
+    file = await borg.download_media(reply_message, Var.TEMP_DOWNLOAD_DIRECTORY)
+    a = await event.reply("Memifying this image! (」ﾟﾛﾟ)｣ ")
     text = str(event.pattern_match.group(1)).strip()
     if len(text) < 1:
-        return await event.edit("You might want to try `.help memify`")
+        return await a.edit("Usage:- memify upper text ; lower text")
     meme = await drawText(file, text)
-    await client.send_file(event.chat_id, file=meme, force_document=False)
+    await event.client.send_file(event.chat_id, file=meme, force_document=False)
     os.remove(meme)
-
+    await event.delete()
+    await a.delete()
 
 # Taken from https://github.com/UsergeTeam/Userge-Plugins/blob/master/modules/memify.py#L64
 # Maybe edited to suit the needs of this module
