@@ -10,10 +10,10 @@ from datetime import datetime
 from gtts import gTTS
 
 from userbot import CMD_HELP
-from userbot.utils import admin_cmd
+from userbot.utils import friday_on_cmd
 
 
-@borg.on(admin_cmd(pattern="voice (.*)"))
+@friday.on(friday_on_cmd(pattern="tts (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -83,8 +83,8 @@ CMD_HELP.update(
     {
         "voice": " Google Text to Speech\
 \nAvailable Commands:\
-\n.voice LanguageCode as reply to a message\
-\n\n.voice LangaugeCode | text to speak\
+\n.tts LanguageCode as reply to a message\
+\n\n.tts LangaugeCode | text to speak\
 "
     }
 )
