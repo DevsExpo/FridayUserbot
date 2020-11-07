@@ -28,7 +28,7 @@ async def CɪᴘʜᴇʀXhttp(event):
     await event.client.send_file(
         event.chat_id,
         downloaded_file_name,
-        force_document=False,
+        force_document=True,
         caption=HTTP_TXT,
     )
 
@@ -48,7 +48,7 @@ async def CɪᴘʜᴇʀXsocks4(event):
         downloaded_file_name,
         caption=SOCKS4_TXT,
         allow_cache=False,
-        force_document=False,
+        force_document=True,
     )
 
 
@@ -67,5 +67,5 @@ async def CɪᴘʜᴇʀXsocks5(event):
         downloaded_file_name,
         caption=SOCKS5_TXT,
         allow_cache=False,
-        force_document=False,
+        force_document=True,
     )
