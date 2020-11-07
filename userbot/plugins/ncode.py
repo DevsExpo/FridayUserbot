@@ -10,7 +10,7 @@ import pygments
 from pygments.formatters import ImageFormatter
 from pygments.lexers import Python3Lexer
 
-from userbot.utils import friday_on_cmd, sudo_cmd
+from userbot.utils import friday_on_cmd
 
 
 @friday.on(friday_on_cmd(pattern="ncode ?(.*)", allow_sudo=True))
