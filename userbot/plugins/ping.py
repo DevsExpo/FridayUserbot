@@ -4,9 +4,7 @@
 import time
 from datetime import datetime
 
-from fridaybot.__init__ import Lastupdate
-from fridaybot import Lastupdate
-from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+from userbot.utils import friday_on_cmd, sudo_cmd
 
 
 def get_readable_time(seconds: int) -> str:
