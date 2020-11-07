@@ -32,7 +32,7 @@ async def handler(event):
     if len(text) < 1:
         return await event.edit("You might want to try `.help memify`")
     meme = await drawText(file, text)
-    await client.send_file(event.chat_id, file=meme, force_document=False, response.message, reply_to=reply_to_id)
+    await client.send_file(event.chat_id, file=meme, force_document=False, reply_message)
     os.remove(meme)
 
 
