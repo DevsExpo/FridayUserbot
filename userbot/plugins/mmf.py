@@ -35,6 +35,7 @@ async def handler(event):
     await event.delete()
     await a.delete()
 
+
 # Taken from https://github.com/UsergeTeam/Userge-Plugins/blob/master/modules/memify.py#L64
 # Maybe edited to suit the needs of this module
 
