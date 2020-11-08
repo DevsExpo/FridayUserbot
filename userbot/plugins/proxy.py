@@ -15,6 +15,7 @@ CIPHERX_SOCKS5 = "https://api.proxyscrape.com/?request=getproxies&proxytype=sock
 SOCKS5_TXT = "**🔅Proxy List Info** \n🔹Type: __Socks5__ \n🔸TimeOut: __2000__ \n🔹Country: __All__ \n🔸Ssl: __Only For Http Proxy__ \n🔹Anonymity: __Only For Http__ \n🔸Provided By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy List** 👇"
 sedpng = "https://telegra.ph/file/6a7f81fb3878d501f87e5.jpg"
 
+
 @friday.on(friday_on_cmd(pattern="http$"))
 @friday.on(sudo_cmd(pattern="http$", allow_sudo=True))
 async def cipherxme(event):
