@@ -21,7 +21,7 @@ async def send(event):
     await event.client.send_file(  # pylint:disable=E0602
         event.chat_id,
         the_plugin_file,
-        thumb=fridaythumb,
+        thumb=cipherxthumb,
         caption=men,
         force_document=True,
         allow_cache=False,
