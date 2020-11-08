@@ -3,7 +3,6 @@ from datetime import datetime
 
 from userbot.utils import friday_on_cmd, sudo_cmd
 
-cipherxthumb = "https://telegra.ph/file/6a7f81fb3878d501f87e5.jpg"
 
 
 @friday.on(friday_on_cmd(pattern="send ?(.*)"))
@@ -21,7 +20,6 @@ async def send(event):
     await event.client.send_file(  # pylint:disable=E0602
         event.chat_id,
         the_plugin_file,
-        thumb=cipherxthumb,
         caption=men,
         force_document=True,
         allow_cache=False,
