@@ -44,7 +44,7 @@ async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()
-    x = await eor(event, "`P I N G`")
+    x = await edit_or_reply(event, "`P I N G`")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - StartTime))
