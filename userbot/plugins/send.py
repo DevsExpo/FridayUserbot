@@ -2,7 +2,9 @@ import asyncio
 from datetime import datetime
 
 from userbot.utils import friday_on_cmd, sudo_cmd
+
 cipherxthumb = "https://telegra.ph/file/6a7f81fb3878d501f87e5.jpg"
+
 
 @friday.on(friday_on_cmd(pattern="send ?(.*)"))
 @friday.on(sudo_cmd(pattern="send ?(.*)", allow_sudo=True))
