@@ -139,7 +139,7 @@ if ENV:
         NEWS_CHANNEL_ID = int(os.environ.get("NEWS_CHANNEL_ID", False))
         PM_DATA = os.environ.get("PM_DATA", "ENABLE")
         TAG_FEATURE = os.environ.get("TAG_FEATURE", "DISABLE")
-        ASSISTANT_LOG = int(os.environ.get("ASSISTANT_LOG", False))
+        ASSISTANT_LOG = int(os.environ.get("ASSISTANT_LOG", True))
         UPSTREAM_REPO = os.environ.get(
             "UPSTREAM_REPO", "https://github.com/CipherX1-ops/FridayUserbot"
         )
