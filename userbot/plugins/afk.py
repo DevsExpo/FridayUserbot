@@ -51,7 +51,7 @@ async def _(event):
             )
         else:
             await borg.send_message(event.chat_id, f"**I Am Busy And I Am Going Afk**.")
-        await asyncio.sleep(5)
+        await asyncio.sleep(3)
         await event.delete()
         try:
             await borg.send_message(  # pylint:disable=E0602
@@ -161,7 +161,7 @@ async def on_afk(event):
             else f"**My Master is Afk**\n AFK : `{total_afk_time}` He Will Comeback Soon"
         )
         msg = await event.reply(message_to_reply)
-        await asyncio.sleep(5)
+        await asyncio.sleep(3)
         if event.chat_id in last_afk_message:  # pylint:disable=E0602
             await last_afk_message[event.chat_id].delete()  # pylint:disable=E0602
         last_afk_message[event.chat_id] = msg  # pylint:disable=E0602
