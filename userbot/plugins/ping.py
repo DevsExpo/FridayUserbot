@@ -1,10 +1,8 @@
-# special thanks to Sur_vivor
-# Re-written for by @Hackintush
-
 import time
 from datetime import datetime
 
-from userbot.utils import friday_on_cmd, sudo_cmd
+from fridaybot import Lastupdate
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 def get_readable_time(seconds: int) -> str:
@@ -35,17 +33,16 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-# @command(pattern="^.ping$")
-
-
 @friday.on(friday_on_cmd(pattern="ping$"))
 @friday.on(sudo_cmd(pattern="ping$", allow_sudo=True))
 async def _(event):
+    starkislub = await edit_or_reply(event, "`Pong !`")
     if event.fwd_from:
         return
     start = datetime.now()
-    x = await edit_or_reply(event, "`P I N G`")
     end = datetime.now()
     ms = (end - start).microseconds / 1000
-    uptime = get_readable_time((time.time() - StartTime))
-    await x.edit(f"Ping speed: {ms}\nCɪᴘʜᴇʀX Bot Uptime: {uptime}")
+    uptime = get_readable_time((time.time() - Lastupdate))
+    await starkislub.edit(
+        f"**█▀█ █▀█ █▄░█ █▀▀ █ \n█▀▀ █▄█ █░▀█ █▄█ ▄**\n ➲`P I N G Speed:` `{ms}` \n ➲`CɪᴘʜᴇʀX Bot Uptime:` `{uptime}`"
+    )
