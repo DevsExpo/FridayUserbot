@@ -3,7 +3,7 @@ from datetime import datetime
 
 from fridaybot.utils import friday_on_cmd, sudo_cmd
 
-fridaythumb = "./resources/IMG_20201108_160133_369-1.jpg"
+fridaythumb = "./resources/2625e0df541009dcda46e40585f5bf38-1.jpg"
 
 
 @friday.on(friday_on_cmd(pattern="send ?(.*)"))
