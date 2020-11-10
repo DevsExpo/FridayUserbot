@@ -7,7 +7,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from fridaybot.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="stickertoimage ?(.*)"))
+@borg.on(admin_cmd(pattern="stoi ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -23,7 +23,7 @@ async def _(event):
     if reply_message.sender.bot:
         await event.edit("```Reply to actual users message.```")
         return
-    await event.edit("```Making a sticker to image```")
+    await event.edit("```⚒️ Coverting sticker to image ⚒️```")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
