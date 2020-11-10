@@ -161,13 +161,12 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         )
         await borg.send_message(event.query.user_id, text2)
         await tgbot.send_message(LOG_CHAT, message=f"Hello, A [New User](tg://user?id={him_id}). Wants To Talk With You.",
-                                buttons=[
-                                Button.url(
-                                "Contact Him",
-                                f"tg://user?id={him_id}")
-                                ]
-                                )
-                                
+                                 buttons=[
+                                     Button.url(
+                                         "Contact Him",
+                                         f"tg://user?id={him_id}")
+                                 ]
+                                 )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"askme")))
     async def rip(event):

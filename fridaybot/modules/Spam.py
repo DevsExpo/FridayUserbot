@@ -10,6 +10,7 @@ from asyncio import wait
 
 from fridaybot.events import register
 
+
 @register(outgoing=True, pattern="^.tspam")
 async def tmeme(e):
     tspam = str(e.text[7:])
@@ -17,6 +18,7 @@ async def tmeme(e):
     for letter in message:
         await e.respond(letter)
     await e.delete()
+
 
 @register(outgoing=True, pattern="^.spam")
 async def spammer(e):
@@ -31,8 +33,9 @@ async def spammer(e):
                 LOGGER_GROUP,
                 "#SPAM \n\n"
                 "Spam was executed successfully"
-                )
-                               
+            )
+
+
 @register(outgoing=True, pattern="^.bigspam")
 async def bigspam(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
@@ -47,9 +50,9 @@ async def bigspam(e):
                 LOGGER_GROUP,
                 "#BIGSPAM \n\n"
                 "Bigspam was executed successfully"
-                )
-        
-        
+            )
+
+
 @register(outgoing=True, pattern="^.picspam")
 async def tiny_pic_spam(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
@@ -65,7 +68,9 @@ async def tiny_pic_spam(e):
                 LOGGER_GROUP,
                 "#PICSPAM \n\n"
                 "PicSpam was executed successfully"
-                )
+            )
+
+
 @register(outgoing=True, pattern="^.delayspam (.*)")
 async def spammer(e):
     spamDelay = float(e.pattern_match.group(1).split(' ', 2)[0])
@@ -79,4 +84,3 @@ async def spammer(e):
         await e.client.send_message(
             LOGGER_GROUP, "#DelaySPAM\n"
             "DelaySpam was executed successfully")
-            

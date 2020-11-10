@@ -5,6 +5,7 @@ from datetime import datetime
 from pathlib import Path
 DELETE_TIMEOUT = 5
 
+
 @friday.on(friday_on_cmd(pattern="use", outgoing=True))
 async def use(event):
     if event.fwd_from:
@@ -36,4 +37,3 @@ async def use(event):
             os.remove(downloaded_file_name)
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
-

@@ -8,7 +8,9 @@ from datetime import datetime
 from fridaybot import Lastupdate
 from fridaybot.modules import currentversion
 
-#Functions
+# Functions
+
+
 def get_readable_time(seconds: int) -> str:
     count = 0
     ping_time = ""
@@ -36,6 +38,7 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
+
 uptime = get_readable_time((time.time() - Lastupdate))
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 PM_IMG = Config.ALIVE_IMAGE
@@ -53,7 +56,6 @@ pm_caption += "➥ **License** : [GNU General Public License v3.0](github.com/St
 pm_caption += "➥ **Copyright** : By [StarkGang@Github](GitHub.com/StarkGang)\n"
 pm_caption += "➥ **Check Stats By Doing** `.stat`. \n\n"
 pm_caption += "[🇮🇳 Deploy FridayUserbot 🇮🇳](https://telegra.ph/FRIDAY-06-15)"
-
 
 
 @friday.on(friday_on_cmd(pattern=r"me"))
