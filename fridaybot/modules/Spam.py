@@ -28,8 +28,8 @@ async def spammer(e):
         await e.delete()
         if LOGGER:
             await e.client.send_message(
-                LOGGER_GROUP, "#SPAM \n\n" "Spam was executed successfully"
-            )
+                LOGGER_GROUP, "#SPAM \n\n"
+                "Spam was executed successfully")
 
 
 @register(outgoing=True, pattern="^.bigspam")
@@ -43,8 +43,8 @@ async def bigspam(e):
         await e.delete()
         if LOGGER:
             await e.client.send_message(
-                LOGGER_GROUP, "#BIGSPAM \n\n" "Bigspam was executed successfully"
-            )
+                LOGGER_GROUP, "#BIGSPAM \n\n"
+                "Bigspam was executed successfully")
 
 
 @register(outgoing=True, pattern="^.picspam")
@@ -59,8 +59,8 @@ async def tiny_pic_spam(e):
         await e.delete()
         if LOGGER:
             await e.client.send_message(
-                LOGGER_GROUP, "#PICSPAM \n\n" "PicSpam was executed successfully"
-            )
+                LOGGER_GROUP, "#PICSPAM \n\n"
+                "PicSpam was executed successfully")
 
 
 @register(outgoing=True, pattern="^.delayspam (.*)")
@@ -74,5 +74,5 @@ async def spammer(e):
         await sleep(spamDelay)
     if LOGGER:
         await e.client.send_message(
-            LOGGER_GROUP, "#DelaySPAM\n" "DelaySpam was executed successfully"
-        )
+            LOGGER_GROUP, "#DelaySPAM\n"
+            "DelaySpam was executed successfully")
