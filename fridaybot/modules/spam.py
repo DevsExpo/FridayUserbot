@@ -8,7 +8,7 @@ import asyncio
 from asyncio import wait
 
 
-from userbot.events import register
+from fridaybot.events import register
 
 @register(outgoing=True, pattern="^.tspam")
 async def tmeme(e):
