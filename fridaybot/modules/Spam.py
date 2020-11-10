@@ -7,7 +7,6 @@
 import asyncio
 from asyncio import wait
 
-
 from fridaybot.events import register
 
 

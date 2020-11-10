@@ -1,14 +1,11 @@
+import os
 import re
 from math import ceil
 
-from telethon import Button
-from telethon import custom
-from telethon import events
-from telethon import functions
+from telethon import Button, custom, events, functions
 from telethon.tl.functions.users import GetFullUserRequest
-import os
-from fridaybot import ALIVE_NAME
-from fridaybot import CMD_LIST
+
+from fridaybot import ALIVE_NAME, CMD_LIST
 from fridaybot.modules import inlinestats
 
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)

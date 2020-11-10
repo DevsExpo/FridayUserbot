@@ -3,9 +3,11 @@ Syntax: .afk REASON"""
 import asyncio
 import datetime
 from datetime import datetime
-from fridaybot.utils import friday_on_cmd
+
 from telethon import events
 from telethon.tl import functions, types
+
+from fridaybot.utils import friday_on_cmd
 
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602

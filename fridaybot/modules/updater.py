@@ -6,9 +6,10 @@ Syntax: .update
 import asyncio
 import os
 import sys
-from fridaybot.Configs import Config
+
 import git
 
+from fridaybot.Configs import Config
 from fridaybot.utils import friday_on_cmd
 
 # -- Constants -- #

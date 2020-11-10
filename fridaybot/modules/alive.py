@@ -1,11 +1,12 @@
 """Check if fridaybot alive. If you change these, you become the gayest gay such that even the gay world will disown you."""
 # CREDITS: @WhySooSerious, @Sur_vivor
 import time
-from uniborg.util import friday_on_cmd, sudo_cmd
-from fridaybot import ALIVE_NAME
-from fridaybot.Configs import Config
 from datetime import datetime
-from fridaybot import Lastupdate
+
+from uniborg.util import friday_on_cmd, sudo_cmd
+
+from fridaybot import ALIVE_NAME, Lastupdate
+from fridaybot.Configs import Config
 from fridaybot.modules import currentversion
 
 # Functions
