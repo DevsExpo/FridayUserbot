@@ -5,7 +5,8 @@ import datetime
 from datetime import datetime
 
 from telethon import events
-from telethon.tl import functions, types
+from telethon.tl import functions
+from telethon.tl import types
 
 from fridaybot.utils import friday_on_cmd
 

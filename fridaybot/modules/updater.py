@@ -2,7 +2,6 @@
 Syntax: .update
 \nAll Credits goes to © @Three_Cube_TeKnoways
 \nFor this awasome plugin.\nPorted from PpaperPlane Extended"""
-
 import asyncio
 import os
 import sys
