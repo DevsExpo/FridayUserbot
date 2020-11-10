@@ -30,9 +30,7 @@ async def spammer(e):
         await e.delete()
         if LOGGER:
             await e.client.send_message(
-                LOGGER_GROUP,
-                "#SPAM \n\n"
-                "Spam was executed successfully"
+                LOGGER_GROUP, "#SPAM \n\n" "Spam was executed successfully"
             )
 
 
@@ -47,9 +45,7 @@ async def bigspam(e):
         await e.delete()
         if LOGGER:
             await e.client.send_message(
-                LOGGER_GROUP,
-                "#BIGSPAM \n\n"
-                "Bigspam was executed successfully"
+                LOGGER_GROUP, "#BIGSPAM \n\n" "Bigspam was executed successfully"
             )
 
 
@@ -65,22 +61,20 @@ async def tiny_pic_spam(e):
         await e.delete()
         if LOGGER:
             await e.client.send_message(
-                LOGGER_GROUP,
-                "#PICSPAM \n\n"
-                "PicSpam was executed successfully"
+                LOGGER_GROUP, "#PICSPAM \n\n" "PicSpam was executed successfully"
             )
 
 
 @register(outgoing=True, pattern="^.delayspam (.*)")
 async def spammer(e):
-    spamDelay = float(e.pattern_match.group(1).split(' ', 2)[0])
-    counter = int(e.pattern_match.group(1).split(' ', 2)[1])
-    spam_message = str(e.pattern_match.group(1).split(' ', 2)[2])
+    spamDelay = float(e.pattern_match.group(1).split(" ", 2)[0])
+    counter = int(e.pattern_match.group(1).split(" ", 2)[1])
+    spam_message = str(e.pattern_match.group(1).split(" ", 2)[2])
     await e.delete()
     for i in range(1, counter):
         await e.respond(spam_message)
         await sleep(spamDelay)
     if LOGGER:
         await e.client.send_message(
-            LOGGER_GROUP, "#DelaySPAM\n"
-            "DelaySpam was executed successfully")
+            LOGGER_GROUP, "#DelaySPAM\n" "DelaySpam was executed successfully"
+        )

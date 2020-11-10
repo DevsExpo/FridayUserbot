@@ -19,7 +19,8 @@ afk_start = {}
 
 
 @friday.on(
-    events.NewMessage(pattern=r"\.afk ?(.*)", outgoing=True))  # pylint:disable=E0602
+    events.NewMessage(pattern=r"\.afk ?(.*)", outgoing=True)
+)  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -38,8 +39,7 @@ async def _(event):
     reason = event.pattern_match.group(1)
     if not USER_AFK:  # pylint:disable=E0602
         last_seen_status = await borg(  # pylint:disable=E0602
-            functions.account.GetPrivacyRequest(
-                types.InputPrivacyKeyStatusTimestamp())
+            functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
             afk_time = datetime.datetime.now()  # pylint:disable=E0602

@@ -2,11 +2,7 @@ from telethon.utils import pack_bot_file_id
 from fridaybot.utils import friday_on_cmd, edit_or_reply, sudo_cmd
 from fridaybot import bot
 from telethon import events, custom, Button
-from telethon.tl.types import (
-    Channel,
-    Chat,
-    User
-)
+from telethon.tl.types import Channel, Chat, User
 
 import emoji
 import asyncio

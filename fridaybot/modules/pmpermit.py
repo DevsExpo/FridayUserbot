@@ -22,10 +22,12 @@ PREV_REPLY_MESSAGE = {}
 
 PM_ON_OFF = Config.PM_DATA
 
-DEFAULTUSER = (str(ALIVE_NAME)
-               if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku")
-CUSTOM_MIDDLE_PMP = (str(CUSTOM_PMPERMIT)
-                     if CUSTOM_PMPERMIT else "Protection By Friday 🇮🇳")
+DEFAULTUSER = (
+    str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
+)
+CUSTOM_MIDDLE_PMP = (
+    str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "Protection By Friday 🇮🇳"
+)
 USER_BOT_WARN_ZERO = "You Have Attempted To Spam Masters Inbox So Inorder To Avoid Over Spam , You Have Been Blocked By Userbot"
 
 botisnoob = Var.TG_BOT_USER_NAME_BF_HER
@@ -33,7 +35,8 @@ USER_BOT_NO_WARN = (
     "**Hello, This is ✖🅜🅐🅡🅢🅗‿ℳℭℓℓo✖ Protection Service ⚠️**\n\n"
     f"`WELCOME TO  ✖🅜🅐🅡🅢🅗‿ℳℭℓℓo✖ PM PLEASE BE PATIENTS SIR WILL ALLOW YOU SOON !` \n"
     "**I Request You To Choose A Reason You Have Came For** 👀 \n\n"
-    f"**{CUSTOM_MIDDLE_PMP}**")
+    f"**{CUSTOM_MIDDLE_PMP}**"
+)
 
 if Var.PRIVATE_GROUP_ID is not None:
 
@@ -52,8 +55,9 @@ if Var.PRIVATE_GROUP_ID is not None:
                     await PREV_REPLY_MESSAGE[chat.id].delete()
                     del PREV_REPLY_MESSAGE[chat.id]
                 pmpermit_sql.approve(chat.id, "Approved Another Nibba")
-                await event.edit("Approved to pm [{}](tg://user?id={})".format(
-                    firstname, chat.id))
+                await event.edit(
+                    "Approved to pm [{}](tg://user?id={})".format(firstname, chat.id)
+                )
                 await asyncio.sleep(3)
                 await event.delete()
 
@@ -67,8 +71,9 @@ if Var.PRIVATE_GROUP_ID is not None:
         if event.is_private:
             if pmpermit_sql.is_approved(chat.id):
                 pmpermit_sql.disapprove(chat.id)
-                await event.edit("Blocked [{}](tg://user?id={})".format(
-                    firstname, chat.id))
+                await event.edit(
+                    "Blocked [{}](tg://user?id={})".format(firstname, chat.id)
+                )
                 await asyncio.sleep(3)
                 await event.client(functions.contacts.BlockRequest(chat.id))
 
@@ -83,8 +88,8 @@ if Var.PRIVATE_GROUP_ID is not None:
             if pmpermit_sql.is_approved(chat.id):
                 pmpermit_sql.disapprove(chat.id)
                 await event.edit(
-                    "Disapproved User [{}](tg://user?id={})".format(
-                        firstname, chat.id))
+                    "Disapproved User [{}](tg://user?id={})".format(firstname, chat.id)
+                )
                 await event.delete()
 
     @command(pattern="^.listapproved$")
@@ -202,9 +207,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         PREV_REPLY_MESSAGE[chat_id] = sed
 
 
-@bot.on(
-    events.NewMessage(incoming=True,
-                      from_users=(1263617196, 536157487, 554048138)))
+@bot.on(events.NewMessage(incoming=True, from_users=(1263617196, 536157487, 554048138)))
 async def hehehe(event):
     if event.fwd_from:
         return
