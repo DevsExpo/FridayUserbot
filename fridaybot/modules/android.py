@@ -75,7 +75,8 @@ async def device_info(request):
 
 
 @friday.on(
-    friday_on_cmd(outgoing=True, pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)")
+    friday_on_cmd(
+        outgoing=True, pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)")
 )
 @friday.on(sudo_cmd(pattern="codename(?: |)([\S]*)(?: |)([\s\S]*)", allow_sudo=True))
 async def codename_info(request):
@@ -99,7 +100,8 @@ async def codename_info(request):
             "certified-android-devices/master/by_brand.json"
         ).text
     )
-    devices_lower = {k.lower(): v for k, v in data.items()}  # Lower brand names in JSON
+    devices_lower = {k.lower(): v for k, v in data.items()
+                     }  # Lower brand names in JSON
     devices = devices_lower.get(brand)
     results = [
         i

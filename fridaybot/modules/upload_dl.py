@@ -36,7 +36,8 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
             round(percentage, 2),
         )
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
-            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
+            humanbytes(current), humanbytes(
+                total), time_formatter(estimated_total_time)
         )
         if file_name:
             await event.edit(
@@ -134,7 +135,8 @@ async def download(target_file):
                 LOGS.info(str(e))
         if downloader.isSuccessful():
             await friday.edit(
-                "Downloaded to `{}` successfully !!".format(downloaded_file_name)
+                "Downloaded to `{}` successfully !!".format(
+                    downloaded_file_name)
             )
         else:
             await friday.edit("Incorrect URL\n{}".format(url))
@@ -152,7 +154,8 @@ async def download(target_file):
             await friday.edit(str(e))
         else:
             await friday.edit(
-                "Downloaded to `{}` successfully !!".format(downloaded_file_name)
+                "Downloaded to `{}` successfully !!".format(
+                    downloaded_file_name)
             )
     else:
         await friday.edit("Reply to a message to download to my local server.")
@@ -279,7 +282,8 @@ def get_video_thumb(file, output=None, width=90):
             file,
             "-ss",
             str(
-                int((0, metadata.get("duration").seconds)[metadata.has("duration")] / 2)
+                int((0, metadata.get("duration").seconds)
+                    [metadata.has("duration")] / 2)
             ),
             "-filter:v",
             "scale={}:-1".format(width),
@@ -309,7 +313,8 @@ def extract_w_h(file):
     ]
     # https://stackoverflow.com/a/11236144/4723940
     try:
-        t_response = subprocess.check_output(command_to_run, stderr=subprocess.STDOUT)
+        t_response = subprocess.check_output(
+            command_to_run, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as exc:
         LOGS.warning(exc)
     else:
@@ -377,7 +382,8 @@ async def uploadas(uas_event):
                         )
                     ],
                     progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                        progress(d, t, uas_event, c_time, "Uploading...", file_name)
+                        progress(d, t, uas_event, c_time,
+                                 "Uploading...", file_name)
                     ),
                 )
             elif round_message:
@@ -399,7 +405,8 @@ async def uploadas(uas_event):
                         )
                     ],
                     progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                        progress(d, t, uas_event, c_time, "Uploading...", file_name)
+                        progress(d, t, uas_event, c_time,
+                                 "Uploading...", file_name)
                     ),
                 )
             elif spam_big_messages:
