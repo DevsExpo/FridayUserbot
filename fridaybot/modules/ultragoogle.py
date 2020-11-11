@@ -48,8 +48,7 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).seconds
     await stark.edit(
-        "searched Google for {} in {} seconds. \n{}".format(
-            input_str, ms, output_str),
+        "searched Google for {} in {} seconds. \n{}".format(input_str, ms, output_str),
         link_preview=False,
     )
     await asyncio.sleep(5)
@@ -133,8 +132,7 @@ async def _(event):
             previous_message_text = previous_message.message
             SEARCH_URL = "{}/searchbyimage?image_url={}"
             request_url = SEARCH_URL.format(BASE_URL, previous_message_text)
-            google_rs_response = requests.get(
-                request_url, allow_redirects=False)
+            google_rs_response = requests.get(request_url, allow_redirects=False)
             the_location = google_rs_response.headers.get("Location")
         await event.edit("Found Google Result. Pouring some soup on it!")
         headers = {

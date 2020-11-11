@@ -59,29 +59,25 @@ async def drawText(image_path, text):
         for u_text in textwrap.wrap(upper_text, width=15):
             u_width, u_height = draw.textsize(u_text, font=m_font)
             draw.text(
-                xy=(((i_width - u_width) / 2) - 2,
-                    int((current_h / 640) * i_width)),
+                xy=(((i_width - u_width) / 2) - 2, int((current_h / 640) * i_width)),
                 text=u_text,
                 font=m_font,
                 fill=(0, 0, 0),
             )
             draw.text(
-                xy=(((i_width - u_width) / 2) + 2,
-                    int((current_h / 640) * i_width)),
+                xy=(((i_width - u_width) / 2) + 2, int((current_h / 640) * i_width)),
                 text=u_text,
                 font=m_font,
                 fill=(0, 0, 0),
             )
             draw.text(
-                xy=((i_width - u_width) / 2,
-                    int(((current_h / 640) * i_width)) - 2),
+                xy=((i_width - u_width) / 2, int(((current_h / 640) * i_width)) - 2),
                 text=u_text,
                 font=m_font,
                 fill=(0, 0, 0),
             )
             draw.text(
-                xy=(((i_width - u_width) / 2),
-                    int(((current_h / 640) * i_width)) + 2),
+                xy=(((i_width - u_width) / 2), int(((current_h / 640) * i_width)) + 2),
                 text=u_text,
                 font=m_font,
                 fill=(0, 0, 0),

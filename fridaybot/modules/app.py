@@ -26,15 +26,12 @@ async def apk(event):
         soup = bs4.BeautifulSoup(page.content, "lxml", from_encoding="utf-8")
         results = soup.findAll("div", "ZmHEEd")
         app_name = (
-            results[0].findNext("div", "Vpfmgd").findNext(
-                "div", "WsMG1c nnK0zc").text
+            results[0].findNext("div", "Vpfmgd").findNext("div", "WsMG1c nnK0zc").text
         )
-        app_dev = results[0].findNext(
-            "div", "Vpfmgd").findNext("div", "KoLSrc").text
+        app_dev = results[0].findNext("div", "Vpfmgd").findNext("div", "KoLSrc").text
         app_dev_link = (
             "https://play.google.com"
-            + results[0].findNext("div",
-                                  "Vpfmgd").findNext("a", "mnKHRc")["href"]
+            + results[0].findNext("div", "Vpfmgd").findNext("a", "mnKHRc")["href"]
         )
         app_rating = (
             results[0]
@@ -99,15 +96,12 @@ async def apkr(event):
         soup = bs4.BeautifulSoup(page.content, "lxml", from_encoding="utf-8")
         results = soup.findAll("div", "ZmHEEd")
         app_name = (
-            results[0].findNext("div", "Vpfmgd").findNext(
-                "div", "WsMG1c nnK0zc").text
+            results[0].findNext("div", "Vpfmgd").findNext("div", "WsMG1c nnK0zc").text
         )
-        app_dev = results[0].findNext(
-            "div", "Vpfmgd").findNext("div", "KoLSrc").text
+        app_dev = results[0].findNext("div", "Vpfmgd").findNext("div", "KoLSrc").text
         app_dev_link = (
             "https://play.google.com"
-            + results[0].findNext("div",
-                                  "Vpfmgd").findNext("a", "mnKHRc")["href"]
+            + results[0].findNext("div", "Vpfmgd").findNext("a", "mnKHRc")["href"]
         )
         app_rating = (
             results[0]

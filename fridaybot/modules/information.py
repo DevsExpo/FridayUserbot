@@ -36,8 +36,7 @@ async def _(event):
         first_name = first_name.replace("\u2060", "")
     last_name = replied_user.user.last_name
     last_name = (
-        last_name.replace("\u2060", "") if last_name else (
-            "Last Name not found")
+        last_name.replace("\u2060", "") if last_name else ("Last Name not found")
     )
     user_bio = replied_user.about
     if user_bio is not None:

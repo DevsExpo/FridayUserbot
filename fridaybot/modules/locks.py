@@ -151,8 +151,7 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(
-                        str(e))
+                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
                 )
                 update_lock(peer_id, "commands", False)
     if is_locked(peer_id, "forward"):
@@ -161,8 +160,7 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(
-                        str(e))
+                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
                 )
                 update_lock(peer_id, "forward", False)
     if is_locked(peer_id, "email"):
@@ -177,8 +175,7 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(
-                        str(e))
+                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
                 )
                 update_lock(peer_id, "email", False)
     if is_locked(peer_id, "url"):
@@ -187,8 +184,7 @@ async def check_incoming_messages(event):
         if entities:
             for entity in entities:
                 if isinstance(
-                    entity, (types.MessageEntityTextUrl,
-                             types.MessageEntityUrl)
+                    entity, (types.MessageEntityTextUrl, types.MessageEntityUrl)
                 ):
                     is_url = True
         if is_url:
@@ -196,8 +192,7 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".format(
-                        str(e))
+                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
                 )
                 update_lock(peer_id, "url", False)
 
@@ -212,8 +207,7 @@ async def _(event):
         if event.user_added:
             users_added_by = event.action_message.from_id
             is_ban_able = False
-            rights = types.ChatBannedRights(
-                until_date=None, view_messages=True)
+            rights = types.ChatBannedRights(until_date=None, view_messages=True)
             added_users = event.action_message.action.users
             for user_id in added_users:
                 user_obj = await borg.get_entity(user_id)

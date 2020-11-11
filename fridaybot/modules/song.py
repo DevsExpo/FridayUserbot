@@ -98,7 +98,6 @@ async def DeezLoader(Deezlod):
             return
         await bot.send_file(Deezlod.chat_id, song, caption=details.text)
         await Deezlod.client.delete_messages(
-            conv.chat_id, [msg_start.id, response.id,
-                           r.id, msg.id, details.id, song.id]
+            conv.chat_id, [msg_start.id, response.id, r.id, msg.id, details.id, song.id]
         )
         await Deezlod.delete()

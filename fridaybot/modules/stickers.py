@@ -233,8 +233,7 @@ async def _(event):
         await moods.edit("Reply to any sticker to get it's pack info.")
         return
     stickerset_attr_s = rep_msg.document.attributes
-    stickerset_attr = find_instance(
-        stickerset_attr_s, DocumentAttributeSticker)
+    stickerset_attr = find_instance(stickerset_attr_s, DocumentAttributeSticker)
     if not stickerset_attr.stickerset:
         await moods.edit("sticker does not belong to a pack.")
         return
@@ -273,8 +272,7 @@ async def _(event):
         if not reply_message.sticker:
             return
         sticker = reply_message.sticker
-        sticker_attrib = find_instance(
-            sticker.attributes, DocumentAttributeSticker)
+        sticker_attrib = find_instance(sticker.attributes, DocumentAttributeSticker)
         if not sticker_attrib.stickerset:
             await event.reply("This sticker is not part of a pack")
             return
@@ -302,8 +300,7 @@ async def _(event):
         async def download(sticker, emojis, path, file):
             await borg.download_media(sticker, file=os.path.join(path, file))
             with open(pack_file, "a") as f:
-                f.write(
-                    f"{{'image_file': '{file}','emojis':{emojis[sticker.id]}}},")
+                f.write(f"{{'image_file': '{file}','emojis':{emojis[sticker.id]}}},")
 
         pending_tasks = [
             asyncio.ensure_future(
@@ -335,8 +332,7 @@ async def _(event):
         await moods.edit("Downloading to my local completed")
         # https://gist.github.com/udf/e4e3dbb2e831c8b580d8fddd312714f7
         directory_name = Config.TMP_DOWNLOAD_DIRECTORY + sticker_set.set.short_name
-        zipf = zipfile.ZipFile(directory_name + ".zip",
-                               "w", zipfile.ZIP_DEFLATED)
+        zipf = zipfile.ZipFile(directory_name + ".zip", "w", zipfile.ZIP_DEFLATED)
         zipdir(directory_name, zipf)
         zipf.close()
         await borg.send_file(
