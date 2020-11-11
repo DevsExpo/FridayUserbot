@@ -3,7 +3,9 @@
 # Official Web : nekobot.xyz
 # "Copy It As You Want But Don't Edit Credits"
 import requests
-from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
+from uniborg.util import edit_or_reply
+from uniborg.util import friday_on_cmd
+from uniborg.util import sudo_cmd
 
 
 @friday.on(friday_on_cmd("ttt ?(.*)"))

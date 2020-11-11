@@ -3,7 +3,6 @@ Available Commands:
 .google search <query>
 .google image <query>
 .google reverse search"""
-
 import asyncio
 import os
 from datetime import datetime
@@ -12,7 +11,9 @@ import requests
 from bs4 import BeautifulSoup
 from google_images_download import google_images_download
 
-from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+from fridaybot.utils import edit_or_reply
+from fridaybot.utils import friday_on_cmd
+from fridaybot.utils import sudo_cmd
 
 
 def progress(current, total):

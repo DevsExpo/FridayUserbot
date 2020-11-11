@@ -2,7 +2,6 @@
 # For F.r.i.d.a.y And Indianbot ™
 """ Userbot module which contains everything related to \
     downloading/uploading from/to the server. """
-
 import asyncio
 import json
 import math
@@ -15,9 +14,13 @@ from hachoir.parser import createParser
 from pySmartDL import SmartDL
 from telethon.tl.types import DocumentAttributeVideo
 
-from fridaybot import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY
+from fridaybot import CMD_HELP
+from fridaybot import LOGS
+from fridaybot import TEMP_DOWNLOAD_DIRECTORY
 from fridaybot.events import register
-from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+from fridaybot.utils import edit_or_reply
+from fridaybot.utils import friday_on_cmd
+from fridaybot.utils import sudo_cmd
 
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):

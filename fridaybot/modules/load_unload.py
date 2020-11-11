@@ -1,4 +1,6 @@
-from fridaybot.utils import friday_on_cmd, load_module, remove_plugin
+from fridaybot.utils import friday_on_cmd
+from fridaybot.utils import load_module
+from fridaybot.utils import remove_plugin
 
 
 @friday.on(friday_on_cmd(pattern="load ?(.*)", outgoing=True))

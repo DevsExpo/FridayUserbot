@@ -1,9 +1,12 @@
-from telethon import events, utils
+from telethon import events
+from telethon import utils
 from telethon.tl import types
 
 from fridaybot.Configs import Config
-from fridaybot.modules.sql_helper.snips_sql import (add_snip, get_all_snips,
-                                                    get_snips, remove_snip)
+from fridaybot.modules.sql_helper.snips_sql import add_snip
+from fridaybot.modules.sql_helper.snips_sql import get_all_snips
+from fridaybot.modules.sql_helper.snips_sql import get_snips
+from fridaybot.modules.sql_helper.snips_sql import remove_snip
 
 TYPE_TEXT = 0
 TYPE_PHOTO = 1

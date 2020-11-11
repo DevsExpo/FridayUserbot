@@ -2,12 +2,16 @@
 Available Commands: .lock <option>, .unlock <option>, .locks
 API Options: msg, media, sticker, gif, gamee, ainline, gpoll, adduser, cpin, changeinfo
 DB Options: bots, commands, email, forward, url"""
+from telethon import events
+from telethon import functions
+from telethon import types
 
-from telethon import events, functions, types
-
-from fridaybot.modules.sql_helper.locks_sql import (get_locks, is_locked,
-                                                    update_lock)
-from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+from fridaybot.modules.sql_helper.locks_sql import get_locks
+from fridaybot.modules.sql_helper.locks_sql import is_locked
+from fridaybot.modules.sql_helper.locks_sql import update_lock
+from fridaybot.utils import edit_or_reply
+from fridaybot.utils import friday_on_cmd
+from fridaybot.utils import sudo_cmd
 
 
 @friday.on(friday_on_cmd("lock( (?P<target>\S+)|$)"))

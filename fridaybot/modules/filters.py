@@ -12,11 +12,13 @@ import re
 from telethon import utils
 from telethon.tl import types
 
-from fridaybot.modules.sql_helper.filter_sql import (add_filter,
-                                                     get_all_filters,
-                                                     remove_all_filters,
-                                                     remove_filter)
-from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+from fridaybot.modules.sql_helper.filter_sql import add_filter
+from fridaybot.modules.sql_helper.filter_sql import get_all_filters
+from fridaybot.modules.sql_helper.filter_sql import remove_all_filters
+from fridaybot.modules.sql_helper.filter_sql import remove_filter
+from fridaybot.utils import edit_or_reply
+from fridaybot.utils import friday_on_cmd
+from fridaybot.utils import sudo_cmd
 
 DELETE_TIMEOUT = 0
 TYPE_TEXT = 0

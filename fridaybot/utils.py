@@ -8,11 +8,15 @@ import re
 import sys
 import traceback
 from pathlib import Path
-from time import gmtime, strftime
+from time import gmtime
+from time import strftime
 
 from telethon import events
 
-from fridaybot import CMD_LIST, LOAD_PLUG, SUDO_LIST, bot
+from fridaybot import bot
+from fridaybot import CMD_LIST
+from fridaybot import LOAD_PLUG
+from fridaybot import SUDO_LIST
 from fridaybot.Configs import Config
 from var import Var
 

@@ -7,7 +7,8 @@ from telethon import TelegramClient
 
 from fridaybot import bot
 from fridaybot.Configs import Config
-from fridaybot.utils import load_module, start_assistant
+from fridaybot.utils import load_module
+from fridaybot.utils import start_assistant
 from var import Var
 
 

@@ -10,13 +10,13 @@
 #
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
 from telethon.errors import BadRequestError
-from telethon.tl.functions.channels import EditAdminRequest, EditBannedRequest
+from telethon.tl.functions.channels import EditAdminRequest
+from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.functions.messages import UpdatePinnedMessageRequest
-from telethon.tl.types import (ChatAdminRights, ChatBannedRights,
-                               MessageEntityMentionName)
+from telethon.tl.types import ChatAdminRights
+from telethon.tl.types import ChatBannedRights
+from telethon.tl.types import MessageEntityMentionName
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"

@@ -1,6 +1,11 @@
-from sqlalchemy import BigInteger, Boolean, Column, String, UnicodeText
+from sqlalchemy import BigInteger
+from sqlalchemy import Boolean
+from sqlalchemy import Column
+from sqlalchemy import String
+from sqlalchemy import UnicodeText
 
-from fridaybot.modules.sql_helper import BASE, SESSION
+from fridaybot.modules.sql_helper import BASE
+from fridaybot.modules.sql_helper import SESSION
 
 
 class Welcome(BASE):

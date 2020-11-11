@@ -3,12 +3,13 @@
 Credits @MrConfused
 .appr <app_name>  to fetch app details with request link.
   © [cHAuHaN](http://t.me/amnd33p)"""
-
 import bs4
 import requests
 
 from .. import CMD_HELP
-from ..utils import edit_or_reply, friday_on_cmd, sudo_cmd
+from ..utils import edit_or_reply
+from ..utils import friday_on_cmd
+from ..utils import sudo_cmd
 
 
 @friday.on(friday_on_cmd(pattern="app (.*)"))

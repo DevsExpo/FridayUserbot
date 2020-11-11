@@ -1,8 +1,6 @@
 """Emoji
 Available Commands:
 .hack"""
-
-
 import asyncio
 
 from telethon.tl.functions.users import GetFullUserRequest

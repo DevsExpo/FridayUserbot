@@ -3,7 +3,6 @@
 # you may not use this file except in compliance with the License.
 # @MrConfused
 """ Userbot module containing commands related to android"""
-
 import json
 import re
 
@@ -11,7 +10,9 @@ from bs4 import BeautifulSoup
 from requests import get
 
 from .. import CMD_HELP
-from ..utils import edit_or_reply, friday_on_cmd, sudo_cmd
+from ..utils import edit_or_reply
+from ..utils import friday_on_cmd
+from ..utils import sudo_cmd
 
 GITHUB = "https://github.com"
 DEVICES_DATA = (

@@ -6,10 +6,10 @@ cmd: .ls // will return files from current working directory
 By:- @Zero_cool7870
 
 """
-
 import os
 
-from uniborg.util import edit_or_reply, friday_on_cmd
+from uniborg.util import edit_or_reply
+from uniborg.util import friday_on_cmd
 
 
 @friday.on(friday_on_cmd(pattern="ls ?(.*)"))

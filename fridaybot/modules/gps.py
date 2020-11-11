@@ -2,14 +2,14 @@
 Syntax : .gps <location name>
 credits :@mrconfused
 """
-
 # help from @sunda005 and @SpEcHIDe
 # don't edit credits
-
 from geopy.geocoders import Nominatim
 from telethon.tl import types
 
-from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+from fridaybot.utils import edit_or_reply
+from fridaybot.utils import friday_on_cmd
+from fridaybot.utils import sudo_cmd
 
 
 @friday.on(friday_on_cmd(pattern="gps ?(.*)"))
