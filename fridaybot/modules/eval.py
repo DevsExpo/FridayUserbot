@@ -7,9 +7,7 @@ import io
 import sys
 import traceback
 
-from uniborg.util import edit_or_reply
-from uniborg.util import friday_on_cmd
-from uniborg.util import sudo_cmd
+from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd("eval"))
@@ -49,8 +47,7 @@ async def _(event):
     else:
         evaluation = "Success"
 
-    final_output = "**EVAL**: `{}` \n\n **OUTPUT**: \n`{}` \n".format(
-        cmd, evaluation)
+    final_output = "**EVAL**: `{}` \n\n **OUTPUT**: \n`{}` \n".format(cmd, evaluation)
 
     if len(final_output) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(final_output)) as out_file:
@@ -69,6 +66,5 @@ async def _(event):
 
 
 async def aexec(code, event):
-    exec(f"async def __aexec(event): " + "".join(f"\n {l}"
-                                                 for l in code.split("\n")))
+    exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
     return await locals()["__aexec"](event)

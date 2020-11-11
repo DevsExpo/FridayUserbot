@@ -3,9 +3,7 @@
 # Official Web : nekobot.xyz
 # "Copy It As You Want But Don't Edit Credits"
 import requests
-from uniborg.util import edit_or_reply
-from uniborg.util import friday_on_cmd
-from uniborg.util import sudo_cmd
+from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd("ttt ?(.*)"))
@@ -29,10 +27,9 @@ async def noobishere(event):
     tweetimg = meikobot
     starkxd = f"Trump Has Tweeted {ipman}"
     await edit_or_reply(event, "Trump : Wait I Am Tweeting Your Texts")
-    await event.client.send_file(event.chat_id,
-                                 tweetimg,
-                                 caption=starkxd,
-                                 reply_to=reply_to_id)
+    await event.client.send_file(
+        event.chat_id, tweetimg, caption=starkxd, reply_to=reply_to_id
+    )
 
 
 @friday.on(friday_on_cmd("tweet ?(.*)"))
@@ -63,7 +60,6 @@ async def noobishere(event):
     tweetimg = meikobot
     starkxd = f"{starky} Has Tweeted {ipman}"
     await edit_or_reply(event, f"{starky} : Wait I Am Tweeting Your Texts")
-    await event.client.send_file(event.chat_id,
-                                 tweetimg,
-                                 caption=starkxd,
-                                 reply_to=reply_to_id)
+    await event.client.send_file(
+        event.chat_id, tweetimg, caption=starkxd, reply_to=reply_to_id
+    )

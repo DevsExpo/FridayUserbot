@@ -2,9 +2,7 @@ import asyncio
 import io
 import time
 
-from fridaybot.utils import edit_or_reply
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd(pattern="bash ?(.*)"))
@@ -20,7 +18,8 @@ async def _(event):
         reply_to_id = event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
     process = await asyncio.create_subprocess_shell(
-        cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
+        cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+    )
     stdout, stderr = await process.communicate()
     e = stderr.decode()
     if not e:

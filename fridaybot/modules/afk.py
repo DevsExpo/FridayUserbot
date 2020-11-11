@@ -5,8 +5,7 @@ import datetime
 from datetime import datetime
 
 from telethon import events
-from telethon.tl import functions
-from telethon.tl import types
+from telethon.tl import functions, types
 
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602
@@ -19,7 +18,9 @@ last_afk_message = {}
 afk_start = {}
 
 
-@friday.on(events.NewMessage(pattern=r"\.afk ?(.*)", outgoing=True))  # pylint:disable=E0602
+@friday.on(
+    events.NewMessage(pattern=r"\.afk ?(.*)", outgoing=True)
+)  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -38,8 +39,8 @@ async def _(event):
     reason = event.pattern_match.group(1)
     if not USER_AFK:  # pylint:disable=E0602
         last_seen_status = await borg(  # pylint:disable=E0602
-            functions.account.GetPrivacyRequest(
-                types.InputPrivacyKeyStatusTimestamp()))
+            functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
+        )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
             afk_time = datetime.datetime.now()  # pylint:disable=E0602
         USER_AFK = f"yes: {reason}"  # pylint:disable=E0602
@@ -49,8 +50,7 @@ async def _(event):
                 f"**My Master Seems To Be Too Busy 👀.** \n__He Going Afk Because Of__ `{reason}`",
             )
         else:
-            await borg.send_message(event.chat_id,
-                                    f"**I Am Busy And I Am Going Afk**.")
+            await borg.send_message(event.chat_id, f"**I Am Busy And I Am Going Afk**.")
         await asyncio.sleep(5)
         await event.delete()
         try:
@@ -77,8 +77,9 @@ async def set_not_afk(event):
     if ".afk" not in current_message and "yes" in USER_AFK:  # pylint:disable=E0602
         shite = await borg.send_message(
             event.chat_id,
-            "__Pro is Back Alive__\n**No Longer afk.**\n `I Was afk for:``" +
-            total_afk_time + "`",
+            "__Pro is Back Alive__\n**No Longer afk.**\n `I Was afk for:``"
+            + total_afk_time
+            + "`",
         )
         try:
             await borg.send_message(  # pylint:disable=E0602
@@ -88,9 +89,9 @@ async def set_not_afk(event):
         except Exception as e:  # pylint:disable=C0103,W0703
             await borg.send_message(  # pylint:disable=E0602
                 event.chat_id,
-                "Please set `PRIVATE_GROUP_ID` " +
-                "for the proper functioning of afk functionality " +
-                "Please Seek Support in @FridayOT\n\n `{}`".format(str(e)),
+                "Please set `PRIVATE_GROUP_ID` "
+                + "for the proper functioning of afk functionality "
+                + "Please Seek Support in @FridayOT\n\n `{}`".format(str(e)),
                 reply_to=event.message.id,
                 silent=True,
             )
@@ -102,8 +103,9 @@ async def set_not_afk(event):
 
 @friday.on(
     events.NewMessage(  # pylint:disable=E0602
-        incoming=True,
-        func=lambda e: bool(e.mentioned or e.is_private)))
+        incoming=True, func=lambda e: bool(e.mentioned or e.is_private)
+    )
+)
 async def on_afk(event):
     if event.fwd_from:
         return
@@ -139,7 +141,8 @@ async def on_afk(event):
             elif days > 1:
                 if days > 6:
                     date = now + datetime.timedelta(
-                        days=-days, hours=-hours, minutes=-minutes)
+                        days=-days, hours=-hours, minutes=-minutes
+                    )
                     afk_since = date.strftime("%A, %Y %B %m, %H:%I")
                 else:
                     wday = now + datetime.timedelta(days=-days)
@@ -153,8 +156,9 @@ async def on_afk(event):
         msg = None
         message_to_reply = (
             f"**My Boss is Afk**  \n**AFKT** : `{total_afk_time}`\n**Reason** : `{reason}`"
-            + f"\n\nHe Will Reply To You Soon!" if reason else
-            f"**My Master is Afk**\n AFK : `{total_afk_time}` He Will Comeback Soon"
+            + f"\n\nHe Will Reply To You Soon!"
+            if reason
+            else f"**My Master is Afk**\n AFK : `{total_afk_time}` He Will Comeback Soon"
         )
         msg = await event.reply(message_to_reply)
         await asyncio.sleep(5)

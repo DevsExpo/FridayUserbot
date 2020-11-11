@@ -10,11 +10,9 @@
 #
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-from sqlalchemy import Column
-from sqlalchemy import String
+from sqlalchemy import Column, String
 
-from . import BASE
-from . import SESSION
+from . import BASE, SESSION
 
 
 class Blockedid(BASE):
@@ -42,8 +40,7 @@ def get_all_nibba():
 
 def is_he_added(chat_id):
     try:
-        return SESSION.query(Blockedid).filter(
-            Blockedid.chat_id == str(chat_id)).one()
+        return SESSION.query(Blockedid).filter(Blockedid.chat_id == str(chat_id)).one()
     except:
         return None
     finally:

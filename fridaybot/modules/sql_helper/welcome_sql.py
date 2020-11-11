@@ -1,11 +1,6 @@
-from sqlalchemy import BigInteger
-from sqlalchemy import Boolean
-from sqlalchemy import Column
-from sqlalchemy import String
-from sqlalchemy import UnicodeText
+from sqlalchemy import BigInteger, Boolean, Column, String, UnicodeText
 
-from fridaybot.modules.sql_helper import BASE
-from fridaybot.modules.sql_helper import SESSION
+from fridaybot.modules.sql_helper import BASE, SESSION
 
 
 class Welcome(BASE):
@@ -17,12 +12,12 @@ class Welcome(BASE):
     previous_welcome = Column(BigInteger)
 
     def __init__(
-            self,
-            chat_id,
-            custom_welcome_message,
-            should_clean_welcome,
-            previous_welcome,
-            media_file_id=None,
+        self,
+        chat_id,
+        custom_welcome_message,
+        should_clean_welcome,
+        previous_welcome,
+        media_file_id=None,
     ):
         self.chat_id = chat_id
         self.custom_welcome_message = custom_welcome_message
@@ -36,8 +31,7 @@ Welcome.__table__.create(checkfirst=True)
 
 def get_current_welcome_settings(chat_id):
     try:
-        return SESSION.query(Welcome).filter(
-            Welcome.chat_id == str(chat_id)).one()
+        return SESSION.query(Welcome).filter(Welcome.chat_id == str(chat_id)).one()
     except:
         return None
     finally:
@@ -45,11 +39,11 @@ def get_current_welcome_settings(chat_id):
 
 
 def add_welcome_setting(
-        chat_id,
-        custom_welcome_message,
-        should_clean_welcome,
-        previous_welcome,
-        media_file_id,
+    chat_id,
+    custom_welcome_message,
+    should_clean_welcome,
+    previous_welcome,
+    media_file_id,
 ):
     # adder = SESSION.query(Welcome).get(chat_id)
     adder = Welcome(

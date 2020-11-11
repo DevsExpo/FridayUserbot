@@ -7,9 +7,7 @@ credits :@mrconfused
 from geopy.geocoders import Nominatim
 from telethon.tl import types
 
-from fridaybot.utils import edit_or_reply
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd(pattern="gps ?(.*)"))
@@ -34,9 +32,9 @@ async def gps(event):
     if geoloc:
         lon = geoloc.longitude
         lat = geoloc.latitude
-        await reply_to_id.reply(input_str,
-                                file=types.InputMediaGeoPoint(
-                                    types.InputGeoPoint(lat, lon)))
+        await reply_to_id.reply(
+            input_str, file=types.InputMediaGeoPoint(types.InputGeoPoint(lat, lon))
+        )
         await event.delete()
     else:
         await starkislub.edit("i coudn't find it")

@@ -2,9 +2,7 @@
 Syntax: .github USERNAME"""
 import requests
 
-from fridaybot.utils import edit_or_reply
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @borg.on(friday_on_cmd("github (.*)"))
@@ -34,8 +32,9 @@ Company: {}
 Blog: {}
 Location: {}
 Bio: {}
-Profile Created: {}""".format(name, html_url, gh_type, company, blog, location,
-                              bio, created_at),
+Profile Created: {}""".format(
+                name, html_url, gh_type, company, blog, location, bio, created_at
+            ),
             file=avatar_url,
             force_document=False,
             allow_cache=False,

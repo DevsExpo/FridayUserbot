@@ -6,9 +6,7 @@ import lyricsgenius
 from tswift import Song
 
 from fridaybot import CMD_HELP
-from fridaybot.utils import edit_or_reply
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
 
@@ -62,7 +60,8 @@ async def lyrics(lyric):
     else:
         await lyric.edit(
             "`Error: please use '-' as divider for <artist> and <song>`\n"
-            "eg: `.glyrics Nicki Minaj - Super Bass`")
+            "eg: `.glyrics Nicki Minaj - Super Bass`"
+        )
         return
 
     if GENIUS is None:
@@ -105,18 +104,20 @@ async def lyrics(lyric):
         os.remove("lyrics.txt")
     else:
         await lyric.edit(
-            f"**Search query**: \n`{artist} - {song}`\n\n```{songs.lyrics}```")
+            f"**Search query**: \n`{artist} - {song}`\n\n```{songs.lyrics}```"
+        )
     return
 
 
-CMD_HELP.update({
-    "lyrics":
-    ".lyrics song name \
+CMD_HELP.update(
+    {
+        "lyrics": ".lyrics song name \
     \n USAGE: searches a song lyrics and sends you if song name doesnt work try along with artisyt name"
-    "**Usage:** .`glyrics <artist name> - <song name>`\n"
-    "__note__: **-** is neccessary when searching the lyrics to divided artist and song \n"
-    "Genius lyrics plugin \n"
-    "get this value from https://genius.com/developers \n"
-    "Add:-  GENIUS_API_TOKEN and token value in heroku app settings \n"
-    "Lyrics Plugin Syntax: .lyrics <aritst name - song nane>"
-})
+        "**Usage:** .`glyrics <artist name> - <song name>`\n"
+        "__note__: **-** is neccessary when searching the lyrics to divided artist and song \n"
+        "Genius lyrics plugin \n"
+        "get this value from https://genius.com/developers \n"
+        "Add:-  GENIUS_API_TOKEN and token value in heroku app settings \n"
+        "Lyrics Plugin Syntax: .lyrics <aritst name - song nane>"
+    }
+)

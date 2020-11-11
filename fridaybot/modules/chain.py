@@ -3,9 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 from telethon.tl.functions.messages import SaveDraftRequest
 
-from fridaybot.utils import edit_or_reply
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd(pattern="chain"))
@@ -18,9 +16,10 @@ async def _(event):
         reply = await message.get_reply_message()
         if reply is None:
             await borg(
-                SaveDraftRequest(await event.get_input_chat(),
-                                 "",
-                                 reply_to_msg_id=message.id))
+                SaveDraftRequest(
+                    await event.get_input_chat(), "", reply_to_msg_id=message.id
+                )
+            )
         message = reply
         count += 1
     await pokemonlub.edit(f"Chain length: {count}")

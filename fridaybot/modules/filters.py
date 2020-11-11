@@ -12,13 +12,13 @@ import re
 from telethon import utils
 from telethon.tl import types
 
-from fridaybot.modules.sql_helper.filter_sql import add_filter
-from fridaybot.modules.sql_helper.filter_sql import get_all_filters
-from fridaybot.modules.sql_helper.filter_sql import remove_all_filters
-from fridaybot.modules.sql_helper.filter_sql import remove_filter
-from fridaybot.utils import edit_or_reply
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.modules.sql_helper.filter_sql import (
+    add_filter,
+    get_all_filters,
+    remove_all_filters,
+    remove_filter,
+)
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 DELETE_TIMEOUT = 0
 TYPE_TEXT = 0
@@ -97,11 +97,11 @@ async def on_snip_save(event):
             snip.get("hash"),
             snip.get("fr"),
         )
-        await hitler.edit(
-            f"filter {name} saved successfully. Get it with {name}")
+        await hitler.edit(f"filter {name} saved successfully. Get it with {name}")
     else:
         await hitler.edit(
-            "Reply to a message with `savefilter keyword` to save the filter")
+            "Reply to a message with `savefilter keyword` to save the filter"
+        )
 
 
 @friday.on(friday_on_cmd(pattern="filters$"))

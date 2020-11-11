@@ -1,6 +1,4 @@
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import load_module
-from fridaybot.utils import remove_plugin
+from fridaybot.utils import friday_on_cmd, load_module, remove_plugin
 
 
 @friday.on(friday_on_cmd(pattern="load ?(.*)", outgoing=True))
@@ -30,5 +28,6 @@ async def unload(event):
         remove_plugin(shortname)
         await event.edit(f"Unloaded {shortname} successfully")
     except Exception as e:
-        await event.edit("Successfully unload {shortname}\n{}".format(
-            shortname, str(e)))
+        await event.edit(
+            "Successfully unload {shortname}\n{}".format(shortname, str(e))
+        )

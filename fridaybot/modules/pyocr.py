@@ -20,8 +20,9 @@ async def _(event):
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
-        imagez = await borg.download_media(await event.get_reply_message(),
-                                           Config.TMP_DOWNLOAD_DIRECTORY)
+        imagez = await borg.download_media(
+            await event.get_reply_message(), Config.TMP_DOWNLOAD_DIRECTORY
+        )
     pytesseract.pytesseract.tesseract_cmd = "/app/.apt/usr/bin/tesseract"
     results = pytesseract.image_to_string(Image.open(imagez))
     mk = f"<b><u> OCR </u></b> \n<b></u>Here is What I Can Read From This.</u></b> \n<code>{results}</code>"

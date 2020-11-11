@@ -7,9 +7,7 @@ import shutil
 from re import findall
 
 from fridaybot.googol_images import googleimagesdownload
-from fridaybot.utils import edit_or_reply
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd(pattern="img ?(.*)"))
@@ -23,8 +21,8 @@ async def img_sampler(event):
         query = reply.message
     else:
         await edit_or_reply(
-            event,
-            "`um, mind mentioning what I actually need to search for ;_;`")
+            event, "`um, mind mentioning what I actually need to search for ;_;`"
+        )
         return
 
     lim = findall(r"lim=\d+", query)
@@ -49,6 +47,7 @@ async def img_sampler(event):
     paths = response.download(arguments)
     lst = paths[0][query]
     await event.client.send_file(
-        await event.client.get_input_entity(event.chat_id), lst)
+        await event.client.get_input_entity(event.chat_id), lst
+    )
     shutil.rmtree(os.path.dirname(os.path.abspath(lst[0])))
     await event.delete()

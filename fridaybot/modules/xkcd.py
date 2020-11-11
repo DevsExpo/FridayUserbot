@@ -3,9 +3,7 @@ Syntax: .xkcd <search>"""
 from urllib.parse import quote
 
 import requests
-from uniborg.util import edit_or_reply
-from uniborg.util import friday_on_cmd
-from uniborg.util import sudo_cmd
+from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd(pattern="xkcd ?(.*)"))
@@ -21,11 +19,9 @@ async def _(event):
             xkcd_id = input_str
         else:
             xkcd_search_url = "https://relevantxkcd.appspot.com/process?"
-            queryresult = requests.get(xkcd_search_url,
-                                       params={
-                                           "action": "xkcd",
-                                           "query": quote(input_str)
-                                       }).text
+            queryresult = requests.get(
+                xkcd_search_url, params={"action": "xkcd", "query": quote(input_str)}
+            ).text
             xkcd_id = queryresult.split(" ")[2].lstrip("\n")
     if xkcd_id is None:
         xkcd_url = "https://xkcd.com/info.0.json"
@@ -49,8 +45,9 @@ Title: {}
 Alt: {}
 Day: {}
 Month: {}
-Year: {}""".format(img, input_str, xkcd_link, safe_title, alt, day, month,
-                   year)
+Year: {}""".format(
+            img, input_str, xkcd_link, safe_title, alt, day, month, year
+        )
         await livinglegend.edit(output_str, link_preview=True)
     else:
         await livinglegend.edit("xkcd n.{} not found!".format(xkcd_id))

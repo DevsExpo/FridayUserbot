@@ -4,9 +4,7 @@
 # Test
 import requests
 
-from fridaybot.utils import edit_or_reply
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 from var import Var
 
 newslog = Var.NEWS_CHANNEL_ID
@@ -19,7 +17,8 @@ async def _(event):
         return
     if Var.NEWS_CHANNEL_ID is None:
         await edit_or_reply(
-            event, "`Please ADD NEWS_CHANNEL_ID For This Module To Work`")
+            event, "`Please ADD NEWS_CHANNEL_ID For This Module To Work`"
+        )
         return
     infintyvar = event.pattern_match.group(1)
     main_url = f"https://inshortsapi.vercel.app/news?category={infintyvar}"

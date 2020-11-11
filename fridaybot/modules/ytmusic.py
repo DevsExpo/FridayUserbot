@@ -5,9 +5,7 @@ import wget
 from youtubesearchpython import SearchVideos
 
 from fridaybot.Configs import Config
-from fridaybot.utils import edit_or_reply
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd(pattern="ytmusic ?(.*)"))
@@ -17,7 +15,8 @@ async def _(event):
         return
     urlissed = event.pattern_match.group(1)
     myself_stark = await edit_or_reply(
-        event, f"`Getting {urlissed} From Youtube Servers. Please Wait.`")
+        event, f"`Getting {urlissed} From Youtube Servers. Please Wait.`"
+    )
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
     mi = search.result()
     mio = mi["search_result"]
@@ -33,16 +32,15 @@ async def _(event):
     sedlyf = wget.download(kekme, out=path)
     stark = (
         f'youtube-dl --force-ipv4 -q -o "./music/%(title)s.%(ext)s" --extract-audio --audio-format mp3 --audio-quality 128k '
-        + mo)
+        + mo
+    )
     os.system(stark)
     await asyncio.sleep(4)
     km = f"./music/{thum}.mp3"
     if os.path.exists(km):
-        await myself_stark.edit(
-            "`Song Downloaded Sucessfully. Let Me Upload it Here.`")
+        await myself_stark.edit("`Song Downloaded Sucessfully. Let Me Upload it Here.`")
     else:
-        await myself_stark.edit(
-            "`SomeThing Went Wrong. Try Again After Sometime..`")
+        await myself_stark.edit("`SomeThing Went Wrong. Try Again After Sometime..`")
     capy = f"**Song Name ➠** `{thum}` \n**Requested For ➠** `{urlissed}` \n**Channel ➠** `{thums}` \n**Link ➠** `{mo}`"
     await borg.send_file(
         event.chat_id,

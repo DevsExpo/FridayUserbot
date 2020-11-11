@@ -2,16 +2,10 @@
 Available Commands: .lock <option>, .unlock <option>, .locks
 API Options: msg, media, sticker, gif, gamee, ainline, gpoll, adduser, cpin, changeinfo
 DB Options: bots, commands, email, forward, url"""
-from telethon import events
-from telethon import functions
-from telethon import types
+from telethon import events, functions, types
 
-from fridaybot.modules.sql_helper.locks_sql import get_locks
-from fridaybot.modules.sql_helper.locks_sql import is_locked
-from fridaybot.modules.sql_helper.locks_sql import update_lock
-from fridaybot.utils import edit_or_reply
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.modules.sql_helper.locks_sql import get_locks, is_locked, update_lock
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd("lock( (?P<target>\S+)|$)"))
@@ -76,7 +70,9 @@ async def _(event):
         try:
             result = await borg(  # pylint:disable=E0602
                 functions.messages.EditChatDefaultBannedRightsRequest(
-                    peer=peer_id, banned_rights=banned_rights))
+                    peer=peer_id, banned_rights=banned_rights
+                )
+            )
         except Exception as e:  # pylint:disable=C0103,W0703
             await mrhackerguy.edit(str(e))
         else:
@@ -97,8 +93,7 @@ async def _(event):
         update_lock(peer_id, input_str, False)
         await starkgang.edit("UnLocked {}".format(input_str))
     else:
-        await starkgang.edit(
-            "Use `.lock` without any parameters to unlock API locks")
+        await starkgang.edit("Use `.lock` without any parameters to unlock API locks")
 
 
 @friday.on(friday_on_cmd("curenabledlocks"))
@@ -155,8 +150,8 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".
-                    format(str(e)))
+                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                )
                 update_lock(peer_id, "commands", False)
     if is_locked(peer_id, "forward"):
         if event.fwd_from:
@@ -164,8 +159,8 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".
-                    format(str(e)))
+                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                )
                 update_lock(peer_id, "forward", False)
     if is_locked(peer_id, "email"):
         entities = event.message.entities
@@ -179,8 +174,8 @@ async def check_incoming_messages(event):
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".
-                    format(str(e)))
+                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                )
                 update_lock(peer_id, "email", False)
     if is_locked(peer_id, "url"):
         entities = event.message.entities
@@ -188,16 +183,16 @@ async def check_incoming_messages(event):
         if entities:
             for entity in entities:
                 if isinstance(
-                        entity,
-                    (types.MessageEntityTextUrl, types.MessageEntityUrl)):
+                    entity, (types.MessageEntityTextUrl, types.MessageEntityUrl)
+                ):
                     is_url = True
         if is_url:
             try:
                 await event.delete()
             except Exception as e:
                 await event.reply(
-                    "I don't seem to have ADMIN permission here. \n`{}`".
-                    format(str(e)))
+                    "I don't seem to have ADMIN permission here. \n`{}`".format(str(e))
+                )
                 update_lock(peer_id, "url", False)
 
 
@@ -211,8 +206,7 @@ async def _(event):
         if event.user_added:
             users_added_by = event.action_message.from_id
             is_ban_able = False
-            rights = types.ChatBannedRights(until_date=None,
-                                            view_messages=True)
+            rights = types.ChatBannedRights(until_date=None, view_messages=True)
             added_users = event.action_message.action.users
             for user_id in added_users:
                 user_obj = await borg.get_entity(user_id)
@@ -221,14 +215,20 @@ async def _(event):
                     try:
                         await borg(
                             functions.channels.EditBannedRequest(
-                                event.chat_id, user_obj, rights))
+                                event.chat_id, user_obj, rights
+                            )
+                        )
                     except Exception as e:
                         await event.reply(
-                            "I don't seem to have ADMIN permission here. \n`{}`"
-                            .format(str(e)))
+                            "I don't seem to have ADMIN permission here. \n`{}`".format(
+                                str(e)
+                            )
+                        )
                         update_lock(event.chat_id, "bots", False)
                         break
             if Config.G_BAN_LOGGER_GROUP is not None and is_ban_able:
                 ban_reason_msg = await event.reply(
-                    "!warn [user](tg://user?id={}) Please Do Not Add BOTs to this chat."
-                    .format(users_added_by))
+                    "!warn [user](tg://user?id={}) Please Do Not Add BOTs to this chat.".format(
+                        users_added_by
+                    )
+                )

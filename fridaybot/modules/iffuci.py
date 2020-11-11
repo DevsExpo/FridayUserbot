@@ -6,14 +6,15 @@ from datetime import datetime
 
 import requests
 
-from fridaybot.utils import edit_or_reply
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 def progress(current, total):
-    logger.info("Downloaded {} of {}\nCompleted {}".format(
-        current, total, (current / total) * 100))
+    logger.info(
+        "Downloaded {} of {}\nCompleted {}".format(
+            current, total, (current / total) * 100
+        )
+    )
 
 
 @friday.on(friday_on_cmd(pattern="iffuci ?(.*)"))
@@ -57,7 +58,8 @@ async def _(event):
         nurl = f"https://iffuci.tk/v/{r['key']}"
         await crackexy.edit(
             "code is pasted to {} in {} seconds. GoTo Original URL: {}".format(
-                url, ms, nurl))
+                url, ms, nurl
+            )
+        )
     else:
-        await crackexy.edit("code is pasted to {} in {} seconds".format(
-            url, ms))
+        await crackexy.edit("code is pasted to {} in {} seconds".format(url, ms))

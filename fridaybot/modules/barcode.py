@@ -8,9 +8,7 @@ from datetime import datetime
 
 import barcode
 from barcode.writer import ImageWriter
-from uniborg.util import edit_or_reply
-from uniborg.util import friday_on_cmd
-from uniborg.util import sudo_cmd
+from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd(pattern="barcode ?(.*)"))
@@ -46,9 +44,7 @@ async def _(event):
         message = "SYNTAX: `.barcode <long text to include>`"
     bar_code_type = "code128"
     try:
-        bar_code_mode_f = barcode.get(bar_code_type,
-                                      message,
-                                      writer=ImageWriter())
+        bar_code_mode_f = barcode.get(bar_code_type, message, writer=ImageWriter())
         filename = bar_code_mode_f.save(bar_code_type)
         await borg.send_file(
             event.chat_id,

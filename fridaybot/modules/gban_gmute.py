@@ -1,6 +1,5 @@
 from telethon.events import ChatAction
-from telethon.tl.functions.contacts import BlockRequest
-from telethon.tl.functions.contacts import UnblockRequest
+from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import MessageEntityMentionName
 
 from fridaybot.utils import friday_on_cmd
@@ -24,8 +23,7 @@ async def get_full_user(event):
             return
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
-            if isinstance(probable_user_mention_entity,
-                          MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 user_obj = await event.client.get_entity(user_id)
                 return user_obj
@@ -79,7 +77,8 @@ async def gspider(fridaybot):
     if user:
         if user.id == 1263617196:
             return await friday.edit(
-                f"**Didn't , Your Father Teach You ? That You Cant Gban Dev**")
+                f"**Didn't , Your Father Teach You ? That You Cant Gban Dev**"
+            )
         try:
             from fridaybot.modules.sql_helper.gmute_sql import gmute
         except:
@@ -89,25 +88,22 @@ async def gspider(fridaybot):
         except:
             pass
         testfridaybot = [
-            d.entity.id for d in await fridaybot.client.get_dialogs()
+            d.entity.id
+            for d in await fridaybot.client.get_dialogs()
             if (d.is_group or d.is_channel)
         ]
         for i in testfridaybot:
             try:
-                await fridaybot.client.edit_permissions(i,
-                                                        user,
-                                                        view_messages=False)
+                await fridaybot.client.edit_permissions(i, user, view_messages=False)
                 a += 1
-                await friday.edit(
-                    f"**GBANNED // Total Affected Chats **: `{a}`")
+                await friday.edit(f"**GBANNED // Total Affected Chats **: `{a}`")
             except:
                 b += 1
     else:
         await friday.edit(f"**Reply to a user !!**")
     try:
         if gmute(user.id) is False:
-            return await friday.edit(
-                f"**Error! User probably already gbanned.**")
+            return await friday.edit(f"**Error! User probably already gbanned.**")
     except:
         pass
     return await friday.edit(
@@ -156,14 +152,13 @@ async def gspider(fridaybot):
         except:
             pass
         testfridaybot = [
-            d.entity.id for d in await fridaybot.client.get_dialogs()
+            d.entity.id
+            for d in await fridaybot.client.get_dialogs()
             if (d.is_group or d.is_channel)
         ]
         for i in testfridaybot:
             try:
-                await fridaybot.client.edit_permissions(i,
-                                                        user,
-                                                        send_messages=True)
+                await fridaybot.client.edit_permissions(i, user, send_messages=True)
                 a += 1
                 await friday.edit(f"**UNGBANNING // AFFECTED CHATS - {a} **")
             except:
@@ -172,8 +167,7 @@ async def gspider(fridaybot):
         await friday.edit("**Reply to a user !!**")
     try:
         if ungmute(user.id) is False:
-            return await friday.edit(
-                "**Error! User probably already ungbanned.**")
+            return await friday.edit("**Error! User probably already ungbanned.**")
     except:
         pass
     return await friday.edit(
@@ -199,13 +193,14 @@ async def handler(rkG):
                     creator = chat.creator
                     if admin or creator:
                         try:
-                            await client.edit_permissions(rkG.chat_id,
-                                                          guser.id,
-                                                          view_messages=False)
+                            await client.edit_permissions(
+                                rkG.chat_id, guser.id, view_messages=False
+                            )
                             await rkG.reply(
                                 f"**Gbanned User Joined!!** \n"
                                 f"**Victim Id**: [{guser.id}](tg://user?id={guser.id})\n"
-                                f"**Action **  : `Banned`")
+                                f"**Action **  : `Banned`"
+                            )
                         except:
                             rkG.reply("`No Permission To Ban`")
                             return
