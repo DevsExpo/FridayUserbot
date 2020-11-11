@@ -29,9 +29,7 @@ async def _(event):
         await event.edit("```Reply to actual users message.```")
         return
     else:
-        await event.edit(
-            "```Transfiguration Time!Memifying this image! (」ﾟﾛﾟ)｣ ```"
-        )
+        await event.edit("```Transfiguration Time!Memifying this image! (」ﾟﾛﾟ)｣ ```")
     await borg.download_file(reply_message.media)
 
     async with borg.conversation("@TgMemeRobot") as conv:
