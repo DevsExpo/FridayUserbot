@@ -28,6 +28,7 @@ pm_caption += "➥ **License** : [GNU General Public License v3.0](github.com/St
 pm_caption += "➥ **Copyright** : By [StarkGang@Github](GitHub.com/StarkGang)\n"
 pm_caption += "[Assistant By Friday 🇮🇳](https://telegra.ph/FRIDAY-06-15)"
 
+
 # only Owner Can Use it
 @assistant_cmd("alive", is_args=False)
 @peru_only

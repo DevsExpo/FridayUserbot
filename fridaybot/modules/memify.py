@@ -48,7 +48,8 @@ async def _(event):
             den = response.media
             await borg.send_file(hmm, den)
         except YouBlockedUserError:
-            await event.reply("```Please unblock @TgMemeRobot and try again```")
+            await event.reply("```Please unblock @TgMemeRobot and try again```"
+                              )
             return
         if response.text.startswith("Forward"):
             await event.edit(

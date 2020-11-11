@@ -53,9 +53,9 @@ def command(**args):
             try:
                 cmd = re.search(reg, pattern)
                 try:
-                    cmd = (
-                        cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
-                    )
+                    cmd = (cmd.group(1).replace("$", "").replace("\\",
+                                                                 "").replace(
+                                                                     "^", ""))
                 except:
                     pass
 
@@ -270,7 +270,9 @@ def register(**args):
         try:
             cmd = re.search(reg, pattern)
             try:
-                cmd = cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
+                cmd = cmd.group(1).replace("$",
+                                           "").replace("\\",
+                                                       "").replace("^", "")
             except:
                 pass
 
@@ -302,7 +304,10 @@ def errors_handler(func):
         except BaseException:
 
             date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-            new = {"error": str(sys.exc_info()[1]), "date": datetime.datetime.now()}
+            new = {
+                "error": str(sys.exc_info()[1]),
+                "date": datetime.datetime.now()
+            }
 
             text = "**USERBOT CRASH REPORT**\n\n"
 
@@ -334,10 +339,12 @@ def errors_handler(func):
             ftext += "\n\n\nLast 5 commits:\n"
 
             process = await asyncio.create_subprocess_shell(
-                command, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
-            )
+                command,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE)
             stdout, stderr = await process.communicate()
-            result = str(stdout.decode().strip()) + str(stderr.decode().strip())
+            result = str(stdout.decode().strip()) + str(
+                stderr.decode().strip())
 
             ftext += result
 
@@ -361,12 +368,11 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
             round(percentage, 2),
         )
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
-            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
-        )
+            humanbytes(current), humanbytes(total),
+            time_formatter(estimated_total_time))
         if file_name:
-            await event.edit(
-                "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
-            )
+            await event.edit("{}\nFile Name: `{}`\n{}".format(
+                type_of_ps, file_name, tmp))
         else:
             await event.edit("{}\n{}".format(type_of_ps, tmp))
 
@@ -378,7 +384,7 @@ def humanbytes(size):
     if not size:
         return ""
     # 2 ** 10 = 1024
-    power = 2 ** 10
+    power = 2**10
     raised_to_pow = 0
     dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
     while size > power:
@@ -394,13 +400,11 @@ def time_formatter(milliseconds: int) -> str:
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
-    tmp = (
-        ((str(days) + " day(s), ") if days else "")
-        + ((str(hours) + " hour(s), ") if hours else "")
-        + ((str(minutes) + " minute(s), ") if minutes else "")
-        + ((str(seconds) + " second(s), ") if seconds else "")
-        + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
-    )
+    tmp = (((str(days) + " day(s), ") if days else "") +
+           ((str(hours) + " hour(s), ") if hours else "") +
+           ((str(minutes) + " minute(s), ") if minutes else "") +
+           ((str(seconds) + " second(s), ") if seconds else "") +
+           ((str(milliseconds) + " millisecond(s), ") if milliseconds else ""))
     return tmp[:-2]
 
 
@@ -423,9 +427,12 @@ def sudo_cmd(pattern=None, **args):
             # special fix for snip.py
             args["pattern"] = re.compile(pattern)
         else:
-            args["pattern"] = re.compile(Config.SUDO_COMMAND_HAND_LER + pattern)
+            args["pattern"] = re.compile(Config.SUDO_COMMAND_HAND_LER +
+                                         pattern)
             reg = Config.SUDO_COMMAND_HAND_LER[1]
-            cmd = (reg + pattern).replace("$", "").replace("\\", "").replace("^", "")
+            cmd = (reg + pattern).replace("$",
+                                          "").replace("\\",
+                                                      "").replace("^", "")
             try:
                 SUDO_LIST[file_test].append(cmd)
             except:
@@ -488,8 +495,7 @@ def assistant_cmd(add_cmd, is_args=False):
         else:
             pattern = bothandler + add_cmd + "$"
         serena.add_event_handler(
-            func, events.NewMessage(incoming=True, pattern=pattern)
-        )
+            func, events.NewMessage(incoming=True, pattern=pattern))
 
     return cmd
 
@@ -544,7 +550,8 @@ def only_pro():
             elif event.sender_id == kek:
                 await func(event)
             else:
-                await event.reply("Only Owners, Sudo Users Can Use This Command.")
+                await event.reply(
+                    "Only Owners, Sudo Users Can Use This Command.")
 
         return wrapper
 

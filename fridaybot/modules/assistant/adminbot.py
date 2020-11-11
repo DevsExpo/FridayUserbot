@@ -28,11 +28,9 @@ NO_PERM = (
 NO_SQL = "`Running on Non-SQL mode!`"
 
 CHAT_PP_CHANGED = "`Chat Picture Changed`"
-CHAT_PP_ERROR = (
-    "`Some issue with updating the pic,`"
-    "`maybe coz I'm not an admin,`"
-    "`or don't have enough rights.`"
-)
+CHAT_PP_ERROR = ("`Some issue with updating the pic,`"
+                 "`maybe coz I'm not an admin,`"
+                 "`or don't have enough rights.`")
 INVALID_MEDIA = "`Invalid Extension`"
 
 BANNED_RIGHTS = ChatBannedRights(
@@ -83,9 +81,11 @@ async def ban(event):
     else:
         return
     try:
-        await event.client(EditBannedRequest(event.chat_id, user.id, BANNED_RIGHTS))
+        await event.client(
+            EditBannedRequest(event.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
-        await event.reply("I Could't Ban That User Probably Due To Less Permissions.")
+        await event.reply(
+            "I Could't Ban That User Probably Due To Less Permissions.")
         return
     if reason:
         await event.reply(f"Banned {momoz} For \nReason: {reason}")
@@ -108,10 +108,12 @@ async def nothanos(event):
     else:
         return
     try:
-        await event.client(EditBannedRequest(event.chat_id, user.id, UNBAN_RIGHTS))
+        await event.client(
+            EditBannedRequest(event.chat_id, user.id, UNBAN_RIGHTS))
         await event.reply("`Unbanned Successfully. Granting another chance.🚶`")
     except BadRequestError:
-        await event.reply("I Could't UnBan That User Probably Due To Less Permissions.")
+        await event.reply(
+            "I Could't UnBan That User Probably Due To Less Permissions.")
         return
 
 
@@ -143,12 +145,12 @@ async def promote(event):
     else:
         return
     try:
-        await event.client(EditAdminRequest(event.chat_id, user.id, new_rights, rank))
+        await event.client(
+            EditAdminRequest(event.chat_id, user.id, new_rights, rank))
         await event.reply("Promoted Successfully! Now give Party")
     except BadRequestError:
         await event.reply(
-            "I Could't Promote That User Probably Due To Less Permissions."
-        )
+            "I Could't Promote That User Probably Due To Less Permissions.")
         return
 
 
@@ -177,11 +179,11 @@ async def demote(event):
         pin_messages=None,
     )
     try:
-        await event.client(EditAdminRequest(event.chat_id, user.id, newrights, rank))
+        await event.client(
+            EditAdminRequest(event.chat_id, user.id, newrights, rank))
     except BadRequestError:
         await event.reply(
-            "I Could't Demote That User Probably Due To Less Permissions."
-        )
+            "I Could't Demote That User Probably Due To Less Permissions.")
         return
     await event.reply("Demoted This User Sucessfully.")
 
@@ -201,11 +203,11 @@ async def pin(event):
     if options.lower() == "loud":
         is_silent = False
     try:
-        await event.client(UpdatePinnedMessageRequest(event.to_id, to_pin, is_silent))
+        await event.client(
+            UpdatePinnedMessageRequest(event.to_id, to_pin, is_silent))
     except BadRequestError:
         await event.reply(
-            "I Could't Pin That Message Probably Due To Less Permissions."
-        )
+            "I Could't Pin That Message Probably Due To Less Permissions.")
         return
     await event.reply("Pinned This Message Sucessfully.")
     await get_user_from_id(event.from_id, event)
@@ -232,14 +234,16 @@ async def kick(event):
     try:
         await event.client.kick_participant(event.chat_id, user.id)
     except:
-        await event.reply("I Could't Kick That User Probably Due To Less Permissions.")
+        await event.reply(
+            "I Could't Kick That User Probably Due To Less Permissions.")
         return
     if reason:
         await event.reply(
             f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
         )
     else:
-        await event.reply(f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
+        await event.reply(
+            f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
 
 
 @assistant_cmd("mute", is_args=True)
@@ -261,16 +265,19 @@ async def mute(event):
         await event.reply("Mention A User")
         return
     try:
-        await event.client(EditBannedRequest(event.chat_id, user.id, MUTE_RIGHTS))
+        await event.client(
+            EditBannedRequest(event.chat_id, user.id, MUTE_RIGHTS))
     except:
-        await event.reply("I Could't Mute That User Probably Due To Less Permissions.")
+        await event.reply(
+            "I Could't Mute That User Probably Due To Less Permissions.")
         return
     if reason:
         await event.reply(
             f"`Muted` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
         )
     else:
-        await event.reply(f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
+        await event.reply(
+            f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
 
 
 @assistant_cmd("unmute", is_args=True)
@@ -286,18 +293,19 @@ async def mute(event):
         await event.reply("Mention A User")
         return
     try:
-        await event.client(EditBannedRequest(event.chat_id, user.id, UNMUTE_RIGHTS))
+        await event.client(
+            EditBannedRequest(event.chat_id, user.id, UNMUTE_RIGHTS))
     except:
         await event.reply(
-            "I Could't UnMute That User Probably Due To Less Permissions."
-        )
+            "I Could't UnMute That User Probably Due To Less Permissions.")
         return
     if reason:
         await event.reply(
             f"`UnMuted` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
         )
     else:
-        await event.reply(f"`Unmute` [{user.first_name}](tg://user?id={user.id})`!`")
+        await event.reply(
+            f"`Unmute` [{user.first_name}](tg://user?id={user.id})`!`")
 
 
 async def get_user_from_event(event):
@@ -323,7 +331,8 @@ async def get_user_from_event(event):
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
 
-            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity,
+                          MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 user_obj = await event.client.get_entity(user_id)
                 return user_obj

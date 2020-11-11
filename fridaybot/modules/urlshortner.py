@@ -13,8 +13,7 @@ async def vom(event):
         kek = sed.tinyurl.short(link)
         bestisbest = (
             f"<b>Url Shortened</b> \n<b><u>Given Link</u></b> ➠ <code>{link}</code> \n"
-            f"<b><u>Shortened Link</u></b> ➠ <code>{kek}</code>"
-        )
+            f"<b><u>Shortened Link</u></b> ➠ <code>{kek}</code>")
         await event.edit(bestisbest, parse_mode="HTML")
     except Exception as e:
         await event.edit("SomeThing Went Wrong. \nError : " + e)

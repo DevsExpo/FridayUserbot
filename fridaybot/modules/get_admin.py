@@ -37,19 +37,19 @@ async def _(event):
             await event.edit(str(e))
             return None
     try:
-        async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
+        async for x in borg.iter_participants(
+                chat, filter=ChannelParticipantsAdmins):
             if not x.deleted:
                 if isinstance(x.participant, ChannelParticipantCreator):
                     mentions += "\n 👑 [{}](tg://user?id={}) `{}`".format(
-                        x.first_name, x.id, x.id
-                    )
+                        x.first_name, x.id, x.id)
         mentions += "\n"
-        async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
+        async for x in borg.iter_participants(
+                chat, filter=ChannelParticipantsAdmins):
             if not x.deleted:
                 if isinstance(x.participant, ChannelParticipantAdmin):
                     mentions += "\n ⚜️ [{}](tg://user?id={}) `{}`".format(
-                        x.first_name, x.id, x.id
-                    )
+                        x.first_name, x.id, x.id)
             else:
                 mentions += "\n `{}`".format(x.id)
     except Exception as e:

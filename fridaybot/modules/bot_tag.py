@@ -24,8 +24,7 @@ from fridaybot.Configs import Config
         incoming=True,
         blacklist_chats=Config.UB_BLACK_LIST_CHAT,
         func=lambda e: (e.mentioned),
-    )
-)
+    ))
 async def all_messages_catcher(event):
     if Config.TAG_FEATURE == "DISABLE":
         return

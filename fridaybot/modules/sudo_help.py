@@ -14,4 +14,5 @@ async def _(event):
             help_string += "\n"
         await event.reply(f"{help_string}")
     except:
-        await event.reply(f"`{plugin_name}` __May Not Have Sudo Or Is Not Valid__")
+        await event.reply(
+            f"`{plugin_name}` __May Not Have Sudo Or Is Not Valid__")

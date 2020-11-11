@@ -25,7 +25,6 @@ TYPE_TEXT = 0
 TYPE_PHOTO = 1
 TYPE_DOCUMENT = 2
 
-
 global last_triggered_filters
 last_triggered_filters = {}  # pylint:disable=E0602
 
@@ -98,11 +97,11 @@ async def on_snip_save(event):
             snip.get("hash"),
             snip.get("fr"),
         )
-        await hitler.edit(f"filter {name} saved successfully. Get it with {name}")
+        await hitler.edit(
+            f"filter {name} saved successfully. Get it with {name}")
     else:
         await hitler.edit(
-            "Reply to a message with `savefilter keyword` to save the filter"
-        )
+            "Reply to a message with `savefilter keyword` to save the filter")
 
 
 @friday.on(friday_on_cmd(pattern="filters$"))

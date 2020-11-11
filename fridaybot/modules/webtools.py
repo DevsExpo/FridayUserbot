@@ -38,8 +38,7 @@ async def _(event):
         gone = event.pattern_match.group(1)
         url = f"https://api.ip2whois.com/v1?key=free&domain=" + gone
         await event.edit(
-            "Fecthing Website Info ! Stay Tuned. This may take some time ;)"
-        )
+            "Fecthing Website Info ! Stay Tuned. This may take some time ;)")
         lol = iplookup.iplookup
         okthen = lol(gone)
         sed = requests.get(url=url).json()
@@ -49,8 +48,7 @@ async def _(event):
             f'Domain Name => {sed["domain"]} \nCreated On => {sed["create_date"]} \nDomain ID => {sed["domain_id"]} \nHosted ON => {kek["url"]}'
             f'\nLast updated => {sed["update_date"]} \nExpiry Date => {sed["expire_date"]} \nDomain Age => {sed["domain_age"]}'
             f'\nOwner => {km["name"]} \nCountry => {km["country"]} \nState => {km["region"]}'
-            f'\nPhone Number => {km["phone"]} \nDomain Ip => {okthen}'
-        )
+            f'\nPhone Number => {km["phone"]} \nDomain Ip => {okthen}')
         await tfbro.edit(sedlyf)
     except Exception:
         await tfbro.edit(f"Something Went Wrong. MayBe Website Wrong.")
@@ -90,15 +88,13 @@ async def _(event):
     try:
         tfhm = await edit_or_reply(event, "Wait Fetching IBAN Info")
         banks = lol["bankData"]
-        kek = (
-            f"<b><u>VALID</u></b> ➠ <code>{lol['valid']}</code> \n"
-            f"<b><u>IBAN</u></b> ➠ <code>{lol['iban']}</code> \n"
-            f"<b><u>BANK-CODE</u></b> ➠ <code>{banks['bankCode']}</code> \n"
-            f"<b><u>BANK-NAME</u></b> ➠ <code>{banks['name']}</code> \n"
-            f"<b><u>ZIP</u></b> ➠ <code>{banks['zip']}</code> \n"
-            f"<b><u>CITY</u></b> ➠ <code>{banks['city']}</code> \n"
-            f"<b><u>BIC</u></b> ➠ <code>{banks['bic']}</code> \n"
-        )
+        kek = (f"<b><u>VALID</u></b> ➠ <code>{lol['valid']}</code> \n"
+               f"<b><u>IBAN</u></b> ➠ <code>{lol['iban']}</code> \n"
+               f"<b><u>BANK-CODE</u></b> ➠ <code>{banks['bankCode']}</code> \n"
+               f"<b><u>BANK-NAME</u></b> ➠ <code>{banks['name']}</code> \n"
+               f"<b><u>ZIP</u></b> ➠ <code>{banks['zip']}</code> \n"
+               f"<b><u>CITY</u></b> ➠ <code>{banks['city']}</code> \n"
+               f"<b><u>BIC</u></b> ➠ <code>{banks['bic']}</code> \n")
         await tfhm.edit(kek, parse_mode="HTML")
     except:
         await tfhm.edit(f"Invalid IBAN Or Doesn't Have Enough Info")
@@ -122,11 +118,13 @@ async def _(event):
         link = f"https://github.com/{gitusername}/{gitrepo}/archive/{gitbranch}.zip"
         await kekman.edit("Uploading... Stark Tuned.")
         await event.delete()
-        await borg.send_file(event.chat_id, file=link, caption="You Repo Achieve File.")
+        await borg.send_file(event.chat_id,
+                             file=link,
+                             caption="You Repo Achieve File.")
     except:
         await borg.send_message(
-            event.chat_id, "**Usage** : `.gitdl <gitusername> <gitrepo> <gitbranch>`"
-        )
+            event.chat_id,
+            "**Usage** : `.gitdl <gitusername> <gitrepo> <gitbranch>`")
 
 
 @friday.on(friday_on_cmd(pattern="yts ?(.*)"))
@@ -136,7 +134,8 @@ async def _(event):
         return
     try:
         fin = event.pattern_match.group(1)
-        stark_result = await edit_or_reply(event, "Fectching Result this May Take Time")
+        stark_result = await edit_or_reply(
+            event, "Fectching Result this May Take Time")
         results = YoutubeSearch(f"{fin}", max_results=5).to_dict()
         noob = "<b>YOUTUBE SEARCH</b> \n\n"
         for moon in results:
@@ -151,8 +150,7 @@ async def _(event):
                 f"<b><u>LINK</u></b> ➠ <code>{kek}</code> \n"
                 f"<b><u>CHANNEL</u></b> ➠ <code>{stark_chnnl}</code> \n"
                 f"<b><u>DURATION</u></b> ➠ <code>{total_stark}</code> \n"
-                f"<b><u>TOTAL-VIEWS</u></b> ➠ <code>{stark_views}</code> \n\n"
-            )
+                f"<b><u>TOTAL-VIEWS</u></b> ➠ <code>{stark_views}</code> \n\n")
         await stark_result.edit(noob, parse_mode="HTML")
     except:
         await event.edit("Some Thing Went Wrong.")
