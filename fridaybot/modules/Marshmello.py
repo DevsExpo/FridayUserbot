@@ -1,9 +1,5 @@
 import asyncio
-import os
 import random
-import sys
-
-from telethon import events
 
 from fridaybot.utils import admin_cmd
 

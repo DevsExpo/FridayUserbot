@@ -1,8 +1,3 @@
-import asyncio
-
-from telethon import events
-from telethon.tl.types import ChannelParticipantsAdmins
-
 from fridaybot import ALIVE_NAME
 from fridaybot.utils import admin_cmd
 
@@ -22,7 +17,7 @@ pm_caption += " [───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───
 # @command(outgoing=True, pattern="^.alive$")
 @borg.on(admin_cmd(pattern=r"zinda"))
 async def amireallyalive(alive):
-    chat = await alive.get_chat()
+    await alive.get_chat()
     await alive.delete()
     """ For .alive command, check if the bot is running.  """
     await borg.send_file(alive.chat_id, PM_IMG, caption=pm_caption)
