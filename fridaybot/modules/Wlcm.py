@@ -1,6 +1,4 @@
 # Credit To @Helloji123bot . Keep credit if you are going to edit it.
-
-
 import asyncio
 import random
 import re

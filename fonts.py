@@ -3,7 +3,6 @@ Ported from Saitama Bot.
 By :- @PhycoNinja13b
 Modified by :- @Kraken_The_BadAsS
 .weeb <text> """
-
 from telethon import events
 from uniborg.util import admin_cmd
 
