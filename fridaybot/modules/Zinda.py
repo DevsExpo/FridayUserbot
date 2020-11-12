@@ -16,8 +16,8 @@ pm_caption += "Dicsussion group    : [ᴊᴏɪɴ](https://t.me/pycodingwithayush
 
 pm_caption += "PLUGIN CHANNEL        : [ᴊᴏɪɴ](https://t.me/pyfilesayush)\n"
 
-
 pm_caption += " [───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───\n───█▒▒░░░░░░░░░▒▒█───\n────█░░█░░░░░█░░█────\n─▄▄──█░░░▀█▀░░░█──▄▄─\n█░░█─▀▄░░░░░░░▄▀─█░░█\n█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n█░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█\n█░░║║║╠─║─║─║║║║║╠─░░█\n█░░╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝░░█\n█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n](https://t.me/pycodingwithayush)"
+
 
 # @command(outgoing=True, pattern="^.alive$")
 @borg.on(admin_cmd(pattern=r"zinda"))
