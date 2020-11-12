@@ -1,8 +1,7 @@
 import asyncio
 from datetime import datetime
 
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.utils import friday_on_cmd, sudo_cmd
 
 fridaythumb = "./resources/giphy.gif"
 

@@ -1,16 +1,12 @@
 # Credit To @Kraken_The_BadASS . Keep credit if you are going to edit it.
 import asyncio
-import random
-import re
 
-from telethon import events
 from uniborg.util import admin_cmd
 
 
 @borg.on(admin_cmd(pattern="lawda ?(.*)"))
 async def _(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@",
-                                                             "!"):
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit("A")
         await asyncio.sleep(0.2)
         await event.edit("Ab")
