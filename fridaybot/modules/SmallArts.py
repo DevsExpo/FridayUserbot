@@ -1,11 +1,12 @@
 # Created by  Md Jisan.  tg @Jisan7509
 
 import asyncio
-from telethon import events
-from fridaybot.utils import admin_cmd
 from platform import uname
-from fridaybot import ALIVE_NAME
 
+from telethon import events
+
+from fridaybot import ALIVE_NAME
+from fridaybot.utils import admin_cmd
 
 A = (
     "⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⣠⣤⣶⣶\n"

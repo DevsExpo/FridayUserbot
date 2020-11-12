@@ -1,11 +1,12 @@
 # Credit To @Helloji123bot . Keep credit if you are going to edit it.
 
 
+import asyncio
 import random
 import re
-from uniborg.util import admin_cmd
-import asyncio
+
 from telethon import events
+from uniborg.util import admin_cmd
 
 
 @borg.on(admin_cmd(pattern="wlcm ?(.*)"))
