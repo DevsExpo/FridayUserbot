@@ -9,7 +9,8 @@ from uniborg.util import admin_cmd
 
 @borg.on(admin_cmd(pattern="wlcm ?(.*)"))
 async def _(event):
-    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@",
+                                                             "!"):
 
         await event.edit("**💛💚💙💜🖤❤️🧡\n💜💚welcome💙...\n💛💚💙💜🖤❤️🧡\n**")
         await asyncio.sleep(1.3)
