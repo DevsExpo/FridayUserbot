@@ -1,9 +1,11 @@
-from telethon import events
 import asyncio
 import os
-import sys
-from fridaybot.utils import admin_cmd
 import random
+import sys
+
+from telethon import events
+
+from fridaybot.utils import admin_cmd
 
 # Marshmellow
 img1 = "https://telegra.ph/file/e2a002fbd79e519f30879.jpg"

@@ -1,8 +1,10 @@
 import asyncio
+
 from telethon import events
-from fridaybot.utils import admin_cmd
-from fridaybot import ALIVE_NAME
 from telethon.tl.types import ChannelParticipantsAdmins
+
+from fridaybot import ALIVE_NAME
+from fridaybot.utils import admin_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 PM_IMG = "https://telegra.ph/file/43e6a780c8191c8e45982.mp4"
