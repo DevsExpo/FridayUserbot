@@ -11,14 +11,14 @@ normiefont = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', '
               'v', 'w', 'x', 'y', 'z']
 weebyfont = ['卂', '乃', '匚', '刀', '乇', '下', '厶', '卄', '工', '丁', '长', '乚', '从', '𠘨', '口', '尸', '㔿', '尺', '丂', '丅', '凵',
              'リ', '山', '乂', '丫', '乙']
-tantextfont = ['Ꭿ', 'Ᏸ', 'Ꮳ', 'Ꮄ', 'Ꮛ', 'Ꮄ', 'Ꮆ', 'Ꮒ', 'i', 'Ꮰ', 'Ꮶ', 'l', 'm', 'Ꮑ', 'Ꮻ', 'Ꮅ', 'Ꮔ', 'ᖇ', 'Ꭶ', 'Ꮏ', 'Ꮜ', 
-              'Ꮙ', 'Ꮿ', 'ﾒ', 'Ꭹ', 'Ꮓ']
-linetextfont = [' 𝔸',' 𝔹',' ℂ',' 𝔻',' 𝔼',' 𝔽',' 𝔾',' ℍ',' 𝕀',' 𝕁',' 𝕂',' 𝕃',' 𝕄',' ℕ',' 𝕆',' ℙ',' ℚ',' ℝ',' 𝕊',' 𝕋',' 𝕌',
-             ' 𝕍',' 𝕎',' 𝕏',' 𝕐',' ℤ']
-boxtextfont = [' 🄰',' 🄱',' 🄲',' 🄳',' 🄴',' 🄵',' 🄶',' 🄷',' 🄸',' 🄹',' 🄺',' 🄻',' 🄼',' 🄽',' 🄾',' 🄿',' 🅀',' 🅁',' 🅂',' 🅃',' 🅄',
-             ' 🅅',' 🅆',' 🅇',' 🅈',' 🅉']
-bubbletextfont = [' Ⓐ',' Ⓑ',' Ⓒ',' Ⓓ',' Ⓔ',' Ⓕ',' Ⓖ',' Ⓗ',' Ⓘ',' Ⓙ',' Ⓚ',' Ⓛ',' Ⓜ',' Ⓝ',' Ⓞ',' Ⓟ',' Ⓠ',' Ⓡ',' Ⓢ',' Ⓣ',' Ⓤ',
-              'Ⓥ',' Ⓦ',' Ⓧ',' Ⓨ',' Ⓩ']
+tantextfont = ['Ꭿ', 'Ᏸ', 'Ꮳ', 'Ꮄ', 'Ꮛ', 'Ꮄ', 'Ꮆ', 'Ꮒ', 'i', 'Ꮰ', 'Ꮶ', 'l', 'm', 'Ꮑ', 'Ꮻ', 'Ꮅ', 'Ꮔ', 'ᖇ', 'Ꭶ', 'Ꮏ', 'Ꮜ',
+               'Ꮙ', 'Ꮿ', 'ﾒ', 'Ꭹ', 'Ꮓ']
+linetextfont = [' 𝔸', ' 𝔹', ' ℂ', ' 𝔻', ' 𝔼', ' 𝔽', ' 𝔾', ' ℍ', ' 𝕀', ' 𝕁', ' 𝕂', ' 𝕃', ' 𝕄', ' ℕ', ' 𝕆', ' ℙ', ' ℚ', ' ℝ', ' 𝕊', ' 𝕋', ' 𝕌',
+                ' 𝕍', ' 𝕎', ' 𝕏', ' 𝕐', ' ℤ']
+boxtextfont = [' 🄰', ' 🄱', ' 🄲', ' 🄳', ' 🄴', ' 🄵', ' 🄶', ' 🄷', ' 🄸', ' 🄹', ' 🄺', ' 🄻', ' 🄼', ' 🄽', ' 🄾', ' 🄿', ' 🅀', ' 🅁', ' 🅂', ' 🅃', ' 🅄',
+               ' 🅅', ' 🅆', ' 🅇', ' 🅈', ' 🅉']
+bubbletextfont = [' Ⓐ', ' Ⓑ', ' Ⓒ', ' Ⓓ', ' Ⓔ', ' Ⓕ', ' Ⓖ', ' Ⓗ', ' Ⓘ', ' Ⓙ', ' Ⓚ', ' Ⓛ', ' Ⓜ', ' Ⓝ', ' Ⓞ', ' Ⓟ', ' Ⓠ', ' Ⓡ', ' Ⓢ', ' Ⓣ', ' Ⓤ',
+                  'Ⓥ', ' Ⓦ', ' Ⓧ', ' Ⓨ', ' Ⓩ']
 
 
 @borg.on(admin_cmd(pattern="weeb ?(.*)"))
@@ -27,7 +27,7 @@ async def weebify(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text   
+        args = get.text
     if not args:
         await event.edit("`What I am Supposed to Weebify U Dumb`")
         return
@@ -37,7 +37,7 @@ async def weebify(event):
             weebycharacter = weebyfont[normiefont.index(normiecharacter)]
             string = string.replace(normiecharacter, weebycharacter)
     await event.edit(string)
-    
+
 
 @borg.on(admin_cmd(pattern="tantext ?(.*)"))
 async def tantxt(event):
@@ -45,7 +45,7 @@ async def tantxt(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text   
+        args = get.text
     if not args:
         await event.edit("`What I am Supposed to tanify U Dumb`")
         return
@@ -63,7 +63,7 @@ async def linetxt(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text   
+        args = get.text
     if not args:
         await event.edit("`What I am Supposed to linefy U Dumb`")
         return
@@ -81,7 +81,7 @@ async def boxtxt(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text   
+        args = get.text
     if not args:
         await event.edit("`What I am Supposed to boxify U Dumb`")
         return
@@ -99,7 +99,7 @@ async def bubbletxt(event):
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()
-        args = get.text   
+        args = get.text
     if not args:
         await event.edit("`What I am Supposed to bubblify U Dumb`")
         return
@@ -109,4 +109,3 @@ async def bubbletxt(event):
             bubblecharacter = bubbletextfont[normiefont.index(normiecharacter)]
             string = string.replace(normiecharacter, bubblecharacter)
     await event.edit(string)
-
