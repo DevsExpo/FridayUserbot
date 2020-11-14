@@ -1,297 +1,203 @@
-#    Copyright (C) By @Hackintush
-
+#    Copyright (C) Midhun KM 2020
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-
+#
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #    GNU Affero General Public License for more details.
-
+#
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-import asyncio
+import io
+import os
 
-from telethon.tl.types import InputMediaUploadedPhoto
-from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
-
+from userbot.Configs import Config
 from userbot.plugins.sql_helper.broadcast_sql import (
-    add_channel,
-    get_all_channels,
-    in_channels,
+    add_chnnl_in_db,
+    already_added,
+    get_all_chnnl,
     rm_channel,
 )
-from var import Var
+from userbot.utils import friday_on_cmd
 
-logs_id = Var.PRIVATE_GROUP_ID
-
-
-@friday.on(friday_on_cmd("bforward ?(.*)"))
-@friday.on(sudo_cmd("bforward ?(.*)", allow_sudo=True))
-async def forw(event):
-    if event.fwd_from:
-        return
-    if not event.is_reply:
-        await edit_or_reply(event, "Reply to a message to broadcast.")
-        return
-    channels = get_all_channels()
-    await edit_or_reply(event, "Sending...")
-    error_count = 0
-    sent_count = 0
-    if event.reply_to_msg_id:
-        previous_message = await event.get_reply_message()
-        previous_message.message
-        previous_message.raw_text
-    error_count = 0
-    for channel in channels:
-        try:
-            await borg.forward_messages(int(channel.chat_id), previous_message)
-            sent_count += 1
-            await edit_or_reply(
-                event,
-                f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}",
-            )
-        except Exception as error:
-            try:
-                await borg.send_message(
-                    logs_id, f"Error in sending at {channel.chat_id}."
-                )
-                await borg.send_message(logs_id, "Error! " + str(error))
-                if error == "The message cannot be empty unless a file is provided":
-                    edit_or_reply(
-                        event,
-                        "For sending files, upload in Saved Messages and reply .forward to in.",
-                    )
-                    return
-            except:
-                pass
-            error_count += 1
-            await edit_or_reply(event, f"Sent : {sent_count}\nError : {error_count}")
-    await edit_or_reply(event, f"{sent_count} messages sent with {error_count} errors.")
-    if error_count > 0:
-        try:
-            await borg.send_message(logs_id, f"{error_count} Errors")
-        except:
-            await edit_or_reply(event, "Set up log channel for checking errors.")
+loggy_grp = Config.PRIVATE_GROUP_ID
 
 
-@friday.on(friday_on_cmd("broadcast ?(.*)"))
-@friday.on(sudo_cmd("broadcast ?(.*)", allow_sudo=True))
+@friday.on(friday_on_cmd(pattern="badd ?(.*)"))
 async def _(event):
-    if event.fwd_from:
+    input_chnnl = event.pattern_match.group(1)
+    sed = 0
+    oks = 0
+    if input_chnnl == "all":
+        addall = [
+            d.entity
+            for d in await event.client.get_dialogs()
+            if (d.is_group or d.is_channel)
+        ]
+        await event.edit("`Adding All Channel TO DB.")
+        for i in addall:
+            try:
+                if i.broadcast:
+                    if i.creator or i.admin_rights:
+                        if already_added(i.id):
+                            oks += 1
+                        else:
+                            add_chnnl_in_db(i.id)
+                            sed += 1
+            except BaseException:
+                pass
+        await event.edit(
+            f"Process Completed. Added {sed} Channel To List. Failed {oks} Due to already Added !"
+        )
         return
-    if not event.is_reply:
-        await edit_or_reply(event, "Reply to a message to broadcast.")
-        return
-    channels = get_all_channels()
-    error_count = 0
-    sent_count = 0
-    await edit_or_reply(event, "Sending....")
-    if event.reply_to_msg_id:
-        previous_message = await event.get_reply_message()
-        if previous_message.sticker or previous_message.poll:
-            await edit_or_reply(event, "Reply .forward for stickers and polls.")
-            return
-        if (
-            previous_message.gif
-            or previous_message.audio
-            or previous_message.voice
-            or previous_message.video
-            or previous_message.video_note
-            or previous_message.contact
-            or previous_message.game
-            or previous_message.geo
-            or previous_message.invoice
-        ):  # Written by @HeisenbergTheDanger
-            await edit_or_reply(event, "Not supported. Try .forward")
-            return
-        if not previous_message.web_preview and previous_message.photo:
-            file = await borg.download_file(previous_message.media)
-            uploaded_doc = await borg.upload_file(file, file_name="img.png")
-            raw_text = previous_message.text
-            for channel in channels:
-                try:
-                    if previous_message.photo:
-                        await borg.send_file(
-                            int(channel.chat_id),
-                            InputMediaUploadedPhoto(file=uploaded_doc),
-                            force_document=False,
-                            caption=raw_text,
-                            link_preview=False,
-                        )
-
-                    sent_count += 1
-                    await edit_or_reply(
-                        event,
-                        f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}",
-                    )
-                except Exception as error:
-                    try:
-                        await borg.send_message(
-                            logs_id, f"Error in sending at {chat_id}."
-                        )
-                        await borg.send_message(logs_id, "Error! " + str(error))
-                        if (
-                            error
-                            == "The message cannot be empty unless a file is provided"
-                        ):
-                            event.edit(
-                                "For sending files, upload in Saved Messages and reply .forward to in."
-                            )
-                            return
-                    except:
-                        pass
-                    error_count += 1
-                    await event.edit(
-                        f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}"
-                    )
-            await edit_or_reply(
-                event, f"{sent_count} messages sent with {error_count} errors."
-            )
-            if error_count > 0:
-                try:
-                    await borg.send_message(logs_id, f"{error_count} Errors")
-                except:
-                    pass
+    elif input_chnnl == "":
+        if event.is_channel and event.is_group:
+            input_chnnl = event.chat_id
         else:
-            raw_text = previous_message.text
-            for channel in channels:
-                try:
-                    await borg.send_message(
-                        int(channel.chat_id), raw_text, link_preview=False
-                    )
-                    sent_count += 1
-                    await edit_or_reply(
-                        event,
-                        f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}",
-                    )
-                except Exception as error:
-                    try:
-                        await borg.send_message(
-                            logs_id, f"Error in sending at {channel.chat_id}."
-                        )
-                        await borg.send_message(logs_id, "Error! " + str(error))
-                        if (
-                            error
-                            == "The message cannot be empty unless a file is provided"
-                        ):
-                            edit_or_reply(
-                                event,
-                                "For sending files, upload in Saved Messages and reply .forward to in.",
-                            )
-                            return
-                    except:
-                        pass
-                    error_count += 1
-                    await event.edit(
-                        f"Sent : {sent_count}\nError : {error_count}\nTotal : {len(channels)}"
-                    )
-            await edit_or_reply(
-                event, f"{sent_count} messages sent with {error_count} errors."
-            )
-            if error_count > 0:
-                try:
-                    await borg.send_message(logs_id, f"{error_count} Errors")
-                except:
-                    await edit_or_reply(
-                        event, "Set up log channel for checking errors."
-                    )
-
-
-# Written by @Hackintush
-
-
-@friday.on(friday_on_cmd("badd ?(.*)"))
-@friday.on(sudo_cmd("badd ?(.*)", allow_sudo=True))
-async def add_ch(event):
-    if event.fwd_from:
-        return
-    if event.reply_to_msg_id:
-        await edit_or_reply(event, "Adding...")
-        previous_message = await event.get_reply_message()
-        raw_text = previous_message.text
-        lines = raw_text.split("\n")
-        length = len(lines)
-        for line_number in range(1, length - 2):
-            channel_id = lines[line_number][4:-1]
-            if not in_channels(channel_id):
-                add_channel(channel_id)
-        await edit_or_reply(event, "Channels added!")
-        await asyncio.sleep(3)
-        await event.delete()
-        return
-    chat_id = event.chat_id
-    try:
-        if int(chat_id) == logs_id:
+            await event.edit("Please Give Group / Channel ID !")
             return
-    except:
-        pass
-    if not in_channels(chat_id):
-        add_channel(chat_id)
-        await edit_or_reply(event, "`Added Successfuly To List`")
-        await asyncio.sleep(3)
-        await event.delete()
-    elif in_channels(chat_id):
-        await edit_or_reply(event, "`Channel is already is database!`")
-        await asyncio.sleep(3)
-        await event.delete()
-
-
-@friday.on(friday_on_cmd("brm ?(.*)"))
-@friday.on(sudo_cmd("brm ?(.*)", allow_sudo=True))
-async def remove_ch(event):
-    if event.fwd_from:
+    if already_added(input_chnnl):
+        await event.edit("This Channel Already Found in Database.")
         return
-    chat_id = event.pattern_match.group(1)
-    if chat_id == "all":
-        await edit_or_reply(event, "Removing...")
-        channels = get_all_channels()
-        for channel in channels:
-            rm_channel(channel.chat_id)
-        await edit_or_reply(event, "Database cleared.")
+    if not already_added(input_chnnl):
+        add_chnnl_in_db(input_chnnl)
+        await event.edit(f"Fine. I have Added {input_chnnl} to Database.")
+        await borg.send_message(loggy_grp, f"Added {input_chnnl} To DB")
+
+
+@friday.on(friday_on_cmd(pattern="brm ?(.*)"))
+async def _(event):
+    input_chnnl = event.pattern_match.group(1)
+    all_chnnl = get_all_chnnl()
+    if input_chnnl == "all":
+        for channelz in all_chnnl:
+            rm_channel(channelz.chat_id)
+        await event.edit("Fine. Cleared All Channel Database")
         return
+    if input_chnnl is "":
+        if event.is_channel and event.is_group:
+            input_chnnl = event.chat_id
+        else:
+            await event.edit("Please Give Group / Channel ID")
+            return
+    if already_added(input_chnnl):
+        rm_channel(input_chnnl)
+        await event.edit(f"Fine. I have Removed {input_chnnl} From DataBase.")
+        await borg.send_message(loggy_grp, f"Removed {input_chnnl} From DB")
+    elif not already_added(input_chnnl):
+        await event.edit(
+            "Are You Sure? , You Haven't Added This Group / Channel To Database"
+        )
 
-    if in_channels(chat_id):
-        rm_channel(chat_id)
-        await edit_or_reply(event, "Removed from database")
-        await asyncio.sleep(3)
-        await event.delete()
-    elif in_channels(event.chat_id):
-        rm_channel(event.chat_id)
-        await edit_or_reply(event, "Removed from database")
-        await asyncio.sleep(3)
-        await event.delete()
-    elif not in_channels(event.chat_id):
-        await edit_or_reply(event, "Channel is already removed from database. ")
-        await asyncio.sleep(3)
-        await event.delete()
 
-
-@friday.on(friday_on_cmd("listchannels"))
-@friday.on(sudo_cmd("listchannels", allow_sudo=True))
-async def list(event):
-    if event.fwd_from:
+@friday.on(friday_on_cmd(pattern="broadcast"))
+async def _(event):
+    await event.edit("**Fine. Broadcasting in Progress. Kindly Wait !**")
+    sedpath = Config.TMP_DOWNLOAD_DIRECTORY
+    all_chnnl = get_all_chnnl()
+    if len(all_chnnl) == 0:
+        await event.edit("No Channel Or Group Found on Database. Please Check Again")
         return
-    channels = get_all_channels()
-    msg = "Channels in database:\n"
-    for channel in channels:
-        msg += f"=> `{channel.chat_id}`\n"
-    msg += f"\nTotal {len(channels)} channels."
-    if len(msg) > Config.MAX_MESSAGE_SIZE_LIMIT:
-        with io.BytesIO(str.encode(msg)) as out_file:
-            out_file.name = "channels.text"
-            await borg.send_file(
-                event.chat_id,
-                out_file,
-                force_document=True,
-                allow_cache=False,
-                caption="Channels in database",
-                reply_to=event,
-            )
-            await event.delete()
+    total_errors = 0
+    total_count = 0
+    errorno = ""
+    total_chnnl = len(all_chnnl)
+    if event.reply_to_msg_id:
+        hmm = await event.get_reply_message()
     else:
-        await edit_or_reply(event, msg)
+        event.edit("Reply To Some Message.")
+        return
+    if hmm and hmm.media:
+        ok = await borg.download_media(hmm.media, sedpath)
+        for channelz in all_chnnl:
+            try:
+                await borg.send_file(int(channelz.chat_id), file=ok, caption=hmm.text)
+                total_count += 1
+            except Exception as e:
+                total_errors += 1
+                errorno += f"{e} \n"
+        await borg.send_message(
+            loggy_grp,
+            f"Error : {total_errors}\nError : {errorno}",
+        )
+        if os.path.exists(ok):
+            os.remove(ok)
+    elif hmm and hmm.text:
+        for channelz in all_chnnl:
+            try:
+                await borg.send_message(int(channelz.chat_id), hmm.text)
+                total_count += 1
+            except Exception as e:
+                total_errors += 1
+                errorno += f"{e} \n"
+        await borg.send_message(
+            loggy_grp,
+            f"Error : {total_errors}\nError : {errorno}",
+        )
+    elif hmm.message.poll:
+        await event.edit("Bro, This Can't Be Broadcasted.")
+        return
+    await event.edit(
+        f"BroadCast Success In : {total_count} \nFailed In : {total_errors} \nTotal Channel In DB : {total_chnnl}"
+    )
+    await borg.send_message(
+        loggy_grp,
+        f"BroadCast Success In : {total_count} \nFailed In : {total_errors} \nTotal Channel In DB : {total_chnnl}",
+    )
+
+
+@friday.on(friday_on_cmd(pattern="bforward"))
+async def _(event):
+    all_chnnl = get_all_chnnl()
+    if len(all_chnnl) == 0:
+        await event.edit("No Channel Or Group Found On Database. Please Check Again")
+        return
+    total_errors = 0
+    total_count = 0
+    total_chnnl = len(all_chnnl)
+    if event.reply_to_msg_id:
+        hmm = await event.get_reply_message()
+    else:
+        event.edit("Reply To Some Message.")
+        return
+    try:
+        for forbard in all_chnnl:
+            await hmm.forward_to(forbard.chat_id)
+            total_count += 1
+    except Exception as e:
+        total_errors += 1
+        try:
+            logger.info(f"Error : {error_count}\nError : {e} \nUsers : {chat_id}")
+        except:
+            pass
+    await event.edit(
+        f"Forward Success in {total_count} And Failed In {total_errors} And Total Channel In Db is {total_chnnl}"
+    )
+    await borg.send_message(
+        loggy_grp,
+        f"Forward Success in {total_count} And Failed In {total_errors} And Total Channel In Db is {total_chnnl}",
+    )
+
+
+@friday.on(friday_on_cmd(pattern="bstat"))
+async def _(event):
+    total_chnnl = get_all_chnnl()
+    chnnl_list = ""
+    for starked in total_chnnl:
+        try:
+            chnnl_list += ("==> {} \n").format(starked.chat_id)
+        except Exception:
+            pass
+    with io.BytesIO(str.encode(chnnl_list)) as tedt_file:
+        tedt_file.name = "dbchnnllist.txt"
+        await borg.send_file(
+            event.chat_id,
+            tedt_file,
+            force_document=True,
+            caption="Total Channel In DB.",
+            allow_cache=False,
+        )
