@@ -8,14 +8,6 @@ from telethon import events
 
 from userbot import CMD_LIST, LOAD_PLUG, SUDO_LIST, bot
 from userbot.Configs import Config
-from fridaybot.wraptools import (
-    am_i_admin,
-    ignore_bot,
-    ignore_fwd,
-    ignore_grp,
-    ignore_pm,
-)
-
 from var import Var
 
 cmdhandler = Config.COMMAND_HAND_LER
