@@ -1,44 +1,56 @@
-# Credits : @Hackintush
+#    Copyright (C) Midhun KM 2020
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 
 from sqlalchemy import Column, String
 
-from userbot.plugins.sql_helper import BASE, SESSION
+from . import BASE, SESSION
 
 
-class ghdb(BASE):
-    __tablename__ = "channels"
+class Broadcast(BASE):
+    __tablename__ = "Broadcast"
     chat_id = Column(String(14), primary_key=True)
 
     def __init__(self, chat_id):
         self.chat_id = chat_id
 
 
-ghdb.__table__.create(checkfirst=True)
+Broadcast.__table__.create(checkfirst=True)
 
 
-def in_channels(chat_id):
+def add_chnnl_in_db(chat_id: int):
+    chnnl_id = Broadcast(str(chat_id))
+    SESSION.add(chnnl_id)
+    SESSION.commit()
+
+
+def get_all_chnnl():
+    stark = SESSION.query(Broadcast).all()
+    SESSION.close()
+    return stark
+
+
+def already_added(chat_id):
     try:
-        return SESSION.query(ghdb).filter(ghdb.chat_id == str(chat_id)).one()
+        return SESSION.query(Broadcast).filter(Broadcast.chat_id == str(chat_id)).one()
     except:
         return None
     finally:
         SESSION.close()
 
 
-def add_channel(chat_id):
-    adder = ghdb(str(chat_id))
-    SESSION.add(adder)
-    SESSION.commit()
-
-
 def rm_channel(chat_id):
-    rem = SESSION.query(ghdb).get(str(chat_id))
-    if rem:
-        SESSION.delete(rem)
+    remove = SESSION.query(Broadcast).get(str(chat_id))
+    if remove:
+        SESSION.delete(remove)
         SESSION.commit()
-
-
-def get_all_channels():
-    rem = SESSION.query(ghdb).all()
-    SESSION.close()
-    return rem
