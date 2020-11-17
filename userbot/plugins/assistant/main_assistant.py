@@ -180,7 +180,7 @@ async def sedlyfsir(event):
         event.chat_id,
         f"Broadcast Done in {sent_count} Group/Users and I got {error_count} Error and Total Number Was {len(userstobc)}",
     )
-    
+
 
 @assistant_cmd("stats", is_args=False)
 @peru_only

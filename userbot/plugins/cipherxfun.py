@@ -358,7 +358,7 @@ async def _(event):
         await asyncio.sleep(0.3)
         await event.edit("💝")
 
-        
+
 @friday.on(friday_on_cmd("billy ?(.*)"))
 async def _(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
@@ -382,8 +382,6 @@ async def _(event):
         await asyncio.sleep(0.9)
         await event.edit("👍🏻")
 
-       
- 
 
 @friday.on(events.NewMessage(pattern=r"\.angry", outgoing=True))
 async def _(event):
