@@ -45,7 +45,7 @@ def am_i_admin():
             if sed.is_admin or sed.is_creator:
                 await func(event)
             else:
-                await event.reply(
+                await event.edit(
                     "I Must Be Admin To Do This. Please Make Sure I'm Admin."
                 )
 
@@ -64,7 +64,7 @@ def ignore_bot():
             if not reply_message.sender.bot:
                 await func(event)
             else:
-                await event.reply("Bro, Reply to Actual Users Message")
+                await event.edit("Bro, Reply to Actual Users Message")
 
         return wrapper
 
@@ -78,7 +78,7 @@ def ignore_pm():
             if event.is_group:
                 await func(event)
             else:
-                await event.reply("This Command Only Works On Groups.")
+                await event.edit("This Command Only Works On Groups.")
 
         return wrapper
 
