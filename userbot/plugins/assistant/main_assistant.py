@@ -32,7 +32,7 @@ from userbot.plugins.sql_helper.idadder_sql import (
 )
 
 
-@tgbot.on(events.NewMessage(pattern="^/start"))
+@assistant_cmd("start", is_args=False)
 async def start(event):
     starkbot = await tgbot.get_me()
     bot_id = starkbot.first_name
@@ -136,22 +136,28 @@ async def sed(event):
     msg = await event.get_reply_message()
     if msg is None:
         return
-    msg.id
+    real_nigga = msg.id
     msg_s = event.raw_text
-    user_id, reply_message_id = his_userid(msg.id)
-    if event.sender_id == bot.uid:
+        user_id, reply_message_id = his_userid(
+        msg.id
+        )
+    if event.sender_id == Config.OWNER_ID:
         if event.raw_text.startswith("/"):
-            pass
+             return
+        if event.text is not None and event.media:
+            bot_api_file_id = pack_bot_file_id(event.media)
+            await tgbot.send_file(user_id, file=bot_api_file_id, caption=event.text, reply_to=reply_message_id)
         else:
-            await tgbot.send_message(user_id, msg_s)
+            msg_s = event.raw_text
+            await tgbot.send_message(
+            user_id,
+            msg_s,
+            reply_to=reply_message_id,
+            )  
 
 
-# broadcast
-@tgbot.on(
-    events.NewMessage(
-        pattern="^/broadcast ?(.*)", func=lambda e: e.sender_id == bot.uid
-    )
-)
+@assistant_cmd("broadcast", is_args=True)
+@god_only
 async def sedlyfsir(event):
     msgtobroadcast = event.pattern_match.group(1)
     userstobc = get_all_users()
@@ -171,11 +177,10 @@ async def sedlyfsir(event):
         event.chat_id,
         f"Broadcast Done in {sent_count} Group/Users and I got {error_count} Error and Total Number Was {len(userstobc)}",
     )
+    
 
-
-@tgbot.on(
-    events.NewMessage(pattern="^/stats ?(.*)", func=lambda e: e.sender_id == bot.uid)
-)
+@assistant_cmd("stats", is_args=False)
+@peru_only
 async def starkisnoob(event):
     starkisnoob = get_all_users()
     await event.reply(
@@ -183,15 +188,15 @@ async def starkisnoob(event):
     )
 
 
-@tgbot.on(events.NewMessage(pattern="^/help", func=lambda e: e.sender_id == bot.uid))
+@assistant_cmd("help", is_args=False)
+@peru_only
 async def starkislub(event):
     grabonx = "Here are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message"
     await event.reply(grabonx)
 
 
-@tgbot.on(
-    events.NewMessage(pattern="^/block ?(.*)", func=lambda e: e.sender_id == bot.uid)
-)
+@assistant_cmd("block", is_args=False)
+@god_only
 async def starkisnoob(event):
     if event.sender_id == bot.uid:
         msg = await event.get_reply_message()
@@ -208,9 +213,8 @@ async def starkisnoob(event):
         )
 
 
-@tgbot.on(
-    events.NewMessage(pattern="^/unblock ?(.*)", func=lambda e: e.sender_id == bot.uid)
-)
+@assistant_cmd("unblock", is_args=False)
+@god_only
 async def starkisnoob(event):
     if event.sender_id == bot.uid:
         msg = await event.get_reply_message()
