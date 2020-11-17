@@ -136,24 +136,27 @@ async def sed(event):
     msg = await event.get_reply_message()
     if msg is None:
         return
-    real_nigga = msg.id
+    msg.id
     msg_s = event.raw_text
-        user_id, reply_message_id = his_userid(
-        msg.id
-        )
+    user_id, reply_message_id = his_userid(msg.id)
     if event.sender_id == Config.OWNER_ID:
         if event.raw_text.startswith("/"):
-             return
+            return
         if event.text is not None and event.media:
             bot_api_file_id = pack_bot_file_id(event.media)
-            await tgbot.send_file(user_id, file=bot_api_file_id, caption=event.text, reply_to=reply_message_id)
+            await tgbot.send_file(
+                user_id,
+                file=bot_api_file_id,
+                caption=event.text,
+                reply_to=reply_message_id,
+            )
         else:
             msg_s = event.raw_text
             await tgbot.send_message(
-            user_id,
-            msg_s,
-            reply_to=reply_message_id,
-            )  
+                user_id,
+                msg_s,
+                reply_to=reply_message_id,
+            )
 
 
 @assistant_cmd("broadcast", is_args=True)
