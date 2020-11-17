@@ -1,14 +1,10 @@
-import asyncio
 from asyncio import sleep
 
-from telethon.errors import ChatAdminRequiredError
-from telethon.errors import UserAdminInvalidError
+from telethon.errors import ChatAdminRequiredError, UserAdminInvalidError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 
-from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
 
 #
 BOTLOG = True
@@ -80,15 +76,15 @@ async def rm_deletedacc(show):
         if user.deleted:
             try:
                 await show.client(
-                    EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS))
+                    EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS)
+                )
             except ChatAdminRequiredError:
                 await show.edit("`I Don't Have Ban Rights In This Group`")
                 return
             except UserAdminInvalidError:
                 del_u -= 1
                 del_a += 1
-            await show.client(
-                EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
+            await show.client(EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
             del_u += 1
 
     if del_u > 0:

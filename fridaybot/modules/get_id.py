@@ -2,9 +2,7 @@
 Syntax: .id"""
 from telethon.utils import pack_bot_file_id
 
-from fridaybot.utils import edit_or_reply
-from fridaybot.utils import friday_on_cmd
-from fridaybot.utils import sudo_cmd
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd("id"))
@@ -19,13 +17,15 @@ async def _(event):
         if r_msg.media:
             bot_api_file_id = pack_bot_file_id(r_msg.media)
             await starkisgreat.edit(
-                "Current Chat ID : `{}`\nFrom User ID : `{}`\nBot API File ID : `{}`"
-                .format(str(event.chat_id), str(r_msg.from_id),
-                        bot_api_file_id))
+                "Current Chat ID : `{}`\nFrom User ID : `{}`\nBot API File ID : `{}`".format(
+                    str(event.chat_id), str(r_msg.from_id), bot_api_file_id
+                )
+            )
         else:
             await starkisgreat.edit(
                 "Current Chat ID : `{}`\nFrom User ID : `{}`".format(
-                    str(event.chat_id), str(r_msg.from_id)))
+                    str(event.chat_id), str(r_msg.from_id)
+                )
+            )
     else:
-        await starkisgreat.edit("Current Chat ID : `{}`".format(
-            str(event.chat_id)))
+        await starkisgreat.edit("Current Chat ID : `{}`".format(str(event.chat_id)))

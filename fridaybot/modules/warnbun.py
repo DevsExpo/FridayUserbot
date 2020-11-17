@@ -12,8 +12,7 @@ async def _(event):
         "`You Have  1/3  Warnings...\nWatch Out!....\nReason For Warn : Not Given`"
     )
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat,
-                                          filter=ChannelParticipantsAdmins):
+    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -32,8 +31,7 @@ async def _(event):
         "`You Have  2/3  Warnings...\nWatch Out!....\nReason For Last Warn : Not Given`"
     )
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat,
-                                          filter=ChannelParticipantsAdmins):
+    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -50,8 +48,7 @@ async def _(event):
         return
     mentions = "`You Have  3/3  Warnings...\nBanned!!!....\nReason For Ban : Not Given`"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat,
-                                          filter=ChannelParticipantsAdmins):
+    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:
@@ -68,8 +65,7 @@ async def _(event):
         return
     mentions = "`Warning Resetted By Admin...\nYou Have  0/3  Warnings`"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat,
-                                          filter=ChannelParticipantsAdmins):
+    async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
     reply_message = None
     if event.reply_to_msg_id:

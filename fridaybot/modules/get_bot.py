@@ -1,7 +1,6 @@
 """ Get the Bots in any chat*
 Syntax: .bots"""
-from telethon.tl.types import ChannelParticipantAdmin
-from telethon.tl.types import ChannelParticipantsBots
+from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantsBots
 
 from fridaybot.utils import friday_on_cmd
 
@@ -24,14 +23,15 @@ async def _(event):
             await event.edit(str(e))
             return None
     try:
-        async for x in borg.iter_participants(chat,
-                                              filter=ChannelParticipantsBots):
+        async for x in borg.iter_participants(chat, filter=ChannelParticipantsBots):
             if isinstance(x.participant, ChannelParticipantAdmin):
                 mentions += "\n ⚜️ [{}](tg://user?id={}) `{}`".format(
-                    x.first_name, x.id, x.id)
+                    x.first_name, x.id, x.id
+                )
             else:
                 mentions += "\n [{}](tg://user?id={}) `{}`".format(
-                    x.first_name, x.id, x.id)
+                    x.first_name, x.id, x.id
+                )
     except Exception as e:
         mentions += " " + str(e) + "\n"
     await event.edit(mentions)
