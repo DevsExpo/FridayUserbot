@@ -1,4 +1,3 @@
-
 from uniborg.util import friday_on_cmd
 from telethon.tl.types import ChannelParticipantsAdmins
 

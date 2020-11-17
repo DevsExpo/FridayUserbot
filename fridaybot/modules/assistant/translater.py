@@ -1,5 +1,3 @@
-
-
 import emoji
 from googletrans import Translator
 

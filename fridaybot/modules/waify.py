@@ -1,4 +1,3 @@
-
 import asyncio
 import os
 from datetime import datetime
@@ -52,8 +51,7 @@ async def _(event):
             previous_message_text = previous_message.message
             SEARCH_URL = "{}/searchbyimage?image_url={}"
             request_url = SEARCH_URL.format(BASE_URL, previous_message_text)
-            google_rs_response = requests.get(
-                request_url, allow_redirects=False)
+            google_rs_response = requests.get(request_url, allow_redirects=False)
             the_location = google_rs_response.headers.get("Location")
 
         headers = {
@@ -71,7 +69,5 @@ async def _(event):
         img_size = img_size_div.find_all("div")
         end = datetime.now()
         ms = (end - start).seconds
-        OUTPUT_STR = """/protecc {prs_text}""".format(
-            **locals()
-        )
+        OUTPUT_STR = """/protecc {prs_text}""".format(**locals())
     await event.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)

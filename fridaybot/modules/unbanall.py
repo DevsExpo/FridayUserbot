@@ -1,4 +1,3 @@
-
 import asyncio
 from time import sleep
 
@@ -25,8 +24,7 @@ async def _(event):
             rights = ChatBannedRights(until_date=0, view_messages=False)
             try:
                 await borg(
-                    functions.channels.EditBannedRequest(
-                        event.chat_id, i, rights)
+                    functions.channels.EditBannedRequest(event.chat_id, i, rights)
                 )
             except FloodWaitError as ex:
                 logger.warn("Sleeping For {} Seconds".format(ex.seconds))

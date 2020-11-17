@@ -1,4 +1,3 @@
-
 """ Userbot module for other small commands. """
 
 from random import randint
@@ -21,7 +20,6 @@ async def sleepybot(time):
             if LOGGER:
                 await time.client.send_message(
                     LOGGER_GROUP,
-                    "You Put The Bot To Sleep For " +
-                    str(counter) + " seconds",
+                    "You Put The Bot To Sleep For " + str(counter) + " seconds",
                 )
             sleep(counter)
