@@ -82,8 +82,6 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 @friday.on(friday_on_cmd(pattern=r"setgpic"))
 @friday.on(sudo_cmd(pattern=r"setgpic", allow_sudo=True))
-@am_i_admin
-@ignore_fwd
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
     if not gpic.is_group:
@@ -115,8 +113,6 @@ async def set_group_photo(gpic):
 
 @friday.on(friday_on_cmd(pattern=r"promote(?: |$)(.*)"))
 @friday.on(sudo_cmd(pattern=r"promote(?: |$)(.*)", allow_sudo=True))
-@am_i_admin
-@ignore_fwd
 async def promote(promt):
     """ For .promote command, promotes the replied/tagged person """
     # Get targeted chat
@@ -161,8 +157,6 @@ async def promote(promt):
 
 
 @friday.on(friday_on_cmd(pattern=r"demote(?: |$)(.*)"))
-@am_i_admin
-@ignore_fwd
 async def demote(dmod):
     # If passing, declare that we're going to demote
     await dmod.edit("`Demoting...`")
@@ -205,8 +199,6 @@ async def demote(dmod):
 
 
 @friday.on(friday_on_cmd(pattern=r"ban(?: |$)(.*)"))
-@am_i_admin
-@ignore_fwd
 async def ban(bon):
     user, reason = await get_user_from_event(bon)
     if user:
@@ -249,8 +241,6 @@ async def ban(bon):
 
 
 @friday.on(friday_on_cmd(pattern=r"unban(?: |$)(.*)"))
-@am_i_admin
-@ignore_fwd
 async def nothanos(unbon):
     # If everything goes well...
     await unbon.edit("`Unbanning...`")
@@ -277,8 +267,6 @@ async def nothanos(unbon):
 
 
 @friday.on(friday_on_cmd(pattern=r"mute(?: |$)(.*)"))
-@am_i_admin
-@ignore_fwd
 async def spider(spdr):
     """
     This function is basically muting peeps
@@ -331,8 +319,6 @@ async def spider(spdr):
 
 
 @friday.on(friday_on_cmd(pattern=r"unmute(?: |$)(.*)"))
-@am_i_admin
-@ignore_fwd
 async def unmoot(unmot):
     """ For .unmute command, unmute the replied/tagged person """
     # Admin or creator check
@@ -409,8 +395,6 @@ async def muter(moot):
 
 # @register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
 @friday.on(friday_on_cmd(pattern=r"ungmute(?: |$)(.*)"))
-@am_i_admin
-@ignore_fwd
 async def ungmoot(un_gmute):
     """ For .ungmute command, ungmutes the target in the CipherXbot """
     # Admin or creator check
@@ -448,8 +432,6 @@ async def ungmoot(un_gmute):
 
 
 @friday.on(friday_on_cmd(pattern=r"gmute(?: |$)(.*)"))
-@am_i_admin
-@ignore_fwd
 async def gspider(gspdr):
     """ For .gmute command, globally mutes the replied/tagged person """
     await gspdr.get_chat()
@@ -485,8 +467,6 @@ async def gspider(gspdr):
 
 
 @friday.on(friday_on_cmd(pattern=r"delusers(?: |$)(.*)"))
-@am_i_admin
-@ignore_fwd
 async def rm_deletedacc(show):
     """ For .delusers command, list all the ghost/deleted accounts in a chat. """
     if not show.is_group:
@@ -573,8 +553,6 @@ async def get_admin(show):
 
 
 @friday.on(friday_on_cmd(pattern=r"pin(?: |$)(.*)"))
-@am_i_admin
-@ignore_fwd
 async def pin(msg):
     """ For .pin command, pins the replied/tagged message on the top the chat. """
     # Admin or creator check
@@ -613,8 +591,6 @@ async def pin(msg):
 
 
 @friday.on(friday_on_cmd(pattern=r"kick(?: |$)(.*)"))
-@am_i_admin
-@ignore_fwd
 async def kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
     # Admin or creator check
