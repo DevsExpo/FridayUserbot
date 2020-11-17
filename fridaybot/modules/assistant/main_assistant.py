@@ -6,17 +6,13 @@ from telethon import Button, custom, events
 from telethon.tl.functions.users import GetFullUserRequest
 
 from fridaybot import bot
-from fridaybot.modules.sql_helper.blacklist_assistant import (
-    add_nibba_in_db,
-    is_he_added,
-    removenibba,
-)
+from fridaybot.modules.sql_helper.blacklist_assistant import (add_nibba_in_db,
+                                                              is_he_added,
+                                                              removenibba)
 from fridaybot.modules.sql_helper.botusers_sql import add_me_in_db, his_userid
-from fridaybot.modules.sql_helper.idadder_sql import (
-    add_usersid_in_db,
-    already_added,
-    get_all_users,
-)
+from fridaybot.modules.sql_helper.idadder_sql import (add_usersid_in_db,
+                                                      already_added,
+                                                      get_all_users)
 
 
 @assistant_cmd("start", is_args=False)

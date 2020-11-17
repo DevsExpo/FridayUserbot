@@ -15,12 +15,8 @@ from PIL import Image
 from telethon.errors import MessageNotModifiedError
 from telethon.errors.rpcerrorlist import StickersetInvalidError
 from telethon.tl.functions.messages import GetStickerSetRequest
-from telethon.tl.types import (
-    DocumentAttributeSticker,
-    InputStickerSetID,
-    InputStickerSetShortName,
-    MessageMediaPhoto,
-)
+from telethon.tl.types import (DocumentAttributeSticker, InputStickerSetID,
+                               InputStickerSetShortName, MessageMediaPhoto)
 
 from fridaybot import ALIVE_NAME
 from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
