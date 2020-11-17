@@ -30,14 +30,17 @@ async def start(event):
     if event.sender_id == bot.uid:
         await tgbot.send_message(
             vent,
-            message=f"Hi Master, It's Me *{bot_id}*, Your Assistant! \nWhat You Wanna Do today ?",
+            message=
+            f"Hi Master, It's Me *{bot_id}*, Your Assistant! \nWhat You Wanna Do today ?",
             buttons=[
                 [custom.Button.inline("Show Users 🔥", data="users")],
-                [custom.Button.inline("Commands For Assistant", data="gibcmd")],
                 [
-                    Button.url(
-                        "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
-                    )
+                    custom.Button.inline("Commands For Assistant",
+                                         data="gibcmd")
+                ],
+                [
+                    Button.url("Add Me to Group 👥",
+                               f"t.me/{bot_username}?startgroup=true")
                 ],
             ],
         )
@@ -131,7 +134,8 @@ async def sedlyfsir(event):
             await asyncio.sleep(0.2)
         except Exception as e:
             try:
-                logger.info(f"Error : {error_count}\nError : {e} \nUsers : {chat_id}")
+                logger.info(
+                    f"Error : {error_count}\nError : {e} \nUsers : {chat_id}")
             except:
                 pass
     await tgbot.send_message(
@@ -145,8 +149,7 @@ async def sedlyfsir(event):
 async def starkisnoob(event):
     starkisnoob = get_all_users()
     await event.reply(
-        f"**Stats Of Your Bot** \nTotal Users In Bot => {len(starkisnoob)}"
-    )
+        f"**Stats Of Your Bot** \nTotal Users In Bot => {len(starkisnoob)}")
 
 
 @assistant_cmd("help", is_args=False)
@@ -170,8 +173,8 @@ async def starkisnoob(event):
         add_nibba_in_db(user_id)
         await event.reply("Blacklisted This Dumb Person")
         await tgbot.send_message(
-            user_id, "You Have Been Blacklisted And You Can't Message My Master Now."
-        )
+            user_id,
+            "You Have Been Blacklisted And You Can't Message My Master Now.")
 
 
 @assistant_cmd("unblock", is_args=False)
@@ -188,5 +191,4 @@ async def starkisnoob(event):
         removenibba(user_id)
         await event.reply("DisBlacklisted This Dumb Person")
         await tgbot.send_message(
-            user_id, "Congo! You Have Been Unblacklisted By My Master."
-        )
+            user_id, "Congo! You Have Been Unblacklisted By My Master.")

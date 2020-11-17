@@ -51,10 +51,10 @@ async def _(event):
             required_file_name + ".opus",
         ]
         try:
-            t_response = subprocess.check_output(
-                command_to_execute, stderr=subprocess.STDOUT
-            )
-        except (subprocess.CalledProcessError, NameError, FileNotFoundError) as exc:
+            t_response = subprocess.check_output(command_to_execute,
+                                                 stderr=subprocess.STDOUT)
+        except (subprocess.CalledProcessError, NameError,
+                FileNotFoundError) as exc:
             await event.edit(str(exc))
             # continue sending required_file_name
         else:
@@ -71,7 +71,8 @@ async def _(event):
             voice_note=True,
         )
         os.remove(required_file_name)
-        await event.edit("Processed {} ({}) In {} seconds!".format(text[0:97], lan, ms))
+        await event.edit("Processed {} ({}) In {} seconds!".format(
+            text[0:97], lan, ms))
         await asyncio.sleep(5)
         await event.delete()
     except Exception as e:

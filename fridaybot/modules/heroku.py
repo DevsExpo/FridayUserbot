@@ -25,11 +25,9 @@ async def dyno_usage(dyno):
     Get your account Dyno Usage
     """
     await edit_or_reply(dyno, "`Trying To Fetch Dyno Usage....`")
-    useragent = (
-        "Mozilla/5.0 (Linux; Android 10; SM-G975F) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/80.0.3987.149 Mobile Safari/537.36"
-    )
+    useragent = ("Mozilla/5.0 (Linux; Android 10; SM-G975F) "
+                 "AppleWebKit/537.36 (KHTML, like Gecko) "
+                 "Chrome/80.0.3987.149 Mobile Safari/537.36")
     user_id = Heroku.account().id
     headers = {
         "User-Agent": useragent,
@@ -40,19 +38,17 @@ async def dyno_usage(dyno):
     r = requests.get(heroku_api + path, headers=headers)
     if r.status_code != 200:
         return await edit_or_reply(
-            dyno, "`Error: something bad happened`\n\n" f">.`{r.reason}`\n"
-        )
+            dyno, "`Error: something bad happened`\n\n"
+            f">.`{r.reason}`\n")
     result = r.json()
     quota = result["account_quota"]
     quota_used = result["quota_used"]
-
     """ - Used - """
     remaining_quota = quota - quota_used
     percentage = math.floor(remaining_quota / quota * 100)
     minutes_remaining = remaining_quota / 60
     hours = math.floor(minutes_remaining / 60)
     minutes = math.floor(minutes_remaining % 60)
-
     """ - Current - """
     App = result["apps"]
     try:
@@ -98,7 +94,8 @@ async def _(givelogs):
         givelogs.chat_id,
         "logs.txt",
         reply_to=givelogs.id,
-        caption="Logs Collected Using Heroku \n For More Support Visit @FridayOT",
+        caption=
+        "Logs Collected Using Heroku \n For More Support Visit @FridayOT",
     )
     await edit_or_reply(givelogs, "`Logs Send Sucessfully ! `")
     await asyncio.sleep(5)

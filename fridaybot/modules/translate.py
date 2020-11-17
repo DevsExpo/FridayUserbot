@@ -39,9 +39,7 @@ async def _(event):
         output_str = """**Translated By [HinataBot](@MissHinata_Bot)**
          **Source** - __( {} )__
          **Translation** - __( {} )__
-         `{}`""".format(
-            translated.src, lan, after_tr_text
-        )
+         `{}`""".format(translated.src, lan, after_tr_text)
         await edit_or_reply(event, output_str)
     except Exception as exc:
         await edit_or_reply(event, str(exc))

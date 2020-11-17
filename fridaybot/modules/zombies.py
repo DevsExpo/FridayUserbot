@@ -28,7 +28,6 @@ BANNED_RIGHTS = ChatBannedRights(
     embed_links=True,
 )
 
-
 UNBAN_RIGHTS = ChatBannedRights(
     until_date=None,
     send_messages=None,
@@ -59,6 +58,7 @@ async def rm_deletedacc(show):
         if del_u > 0:
             del_status = f"Found **{del_u}** Zombies In This Group.\
             \nClean Them By Using `.zombies clean`"
+
         await show.edit(del_status)
         return
 
@@ -80,15 +80,15 @@ async def rm_deletedacc(show):
         if user.deleted:
             try:
                 await show.client(
-                    EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS)
-                )
+                    EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS))
             except ChatAdminRequiredError:
                 await show.edit("`I Don't Have Ban Rights In This Group`")
                 return
             except UserAdminInvalidError:
                 del_u -= 1
                 del_a += 1
-            await show.client(EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
+            await show.client(
+                EditBannedRequest(show.chat_id, user.id, UNBAN_RIGHTS))
             del_u += 1
 
     if del_u > 0:
