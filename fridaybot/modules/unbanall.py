@@ -25,7 +25,8 @@ async def _(event):
             rights = ChatBannedRights(until_date=0, view_messages=False)
             try:
                 await borg(
-                    functions.channels.EditBannedRequest(event.chat_id, i, rights)
+                    functions.channels.EditBannedRequest(
+                        event.chat_id, i, rights)
                 )
             except FloodWaitError as ex:
                 logger.warn("Sleeping For {} Seconds".format(ex.seconds))
@@ -35,5 +36,3 @@ async def _(event):
             else:
                 p += 1
         await event.edit("{} : {} Unbanned!".format(event.chat_id, p))
-
-

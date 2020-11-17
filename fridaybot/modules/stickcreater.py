@@ -11,8 +11,6 @@ from telethon.tl.types import InputMessagesFilterDocument
 from fridaybot.utils import friday_on_cmd, sudo_cmd
 
 
-
-
 @friday.on(friday_on_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
 async def sticklet(event):
     R = random.randint(0, 256)

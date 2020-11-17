@@ -76,5 +76,3 @@ async def _(event):
         await event.delete()
     except Exception as e:
         await event.edit(str(e))
-
-

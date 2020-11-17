@@ -1,5 +1,5 @@
 import asyncio
-import time 
+import time
 
 from telethon.tl.functions.channels import LeaveChannelRequest
 
@@ -16,6 +16,3 @@ async def leave(e):
             await bot(LeaveChannelRequest(e.chat_id))
         else:
             await e.edit("`But, Boss! This is Not A Chat`")
-
-
-

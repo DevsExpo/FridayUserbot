@@ -35,7 +35,8 @@ async def start(event):
             message=f"Hi Master, It's Me *{bot_id}*, Your Assistant! \nWhat You Wanna Do today ?",
             buttons=[
                 [custom.Button.inline("Show Users 🔥", data="users")],
-                [custom.Button.inline("Commands For Assistant", data="gibcmd")],
+                [custom.Button.inline(
+                    "Commands For Assistant", data="gibcmd")],
                 [
                     Button.url(
                         "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
@@ -57,8 +58,6 @@ async def start(event):
                 [Button.url("Help Me ❓", "t.me/Fridayot")],
             ],
         )
-
-
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"users")))
@@ -135,7 +134,8 @@ async def sedlyfsir(event):
             await asyncio.sleep(0.2)
         except Exception as e:
             try:
-                logger.info(f"Error : {error_count}\nError : {e} \nUsers : {chat_id}")
+                logger.info(
+                    f"Error : {error_count}\nError : {e} \nUsers : {chat_id}")
             except:
                 pass
     await tgbot.send_message(

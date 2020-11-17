@@ -630,7 +630,6 @@ async def rm_deletedacc(show):
         )
 
 
-
 @friday.on(friday_on_cmd(pattern=r"pin(?: |$)(.*)"))
 @errors_handler
 async def pin(msg):

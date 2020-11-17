@@ -17,8 +17,6 @@ Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
 
 
-
-
 @friday.on(friday_on_cmd(pattern="usage$", outgoing=True))
 @friday.on(sudo_cmd(pattern="usage$", allow_sudo=True))
 async def dyno_usage(dyno):
@@ -80,7 +78,6 @@ async def dyno_usage(dyno):
         f"✗ `{hours}`**h**  `{minutes}`**m** \n"
         f"✗ **Percentage :-** [`{percentage}`**%**]",
     )
-
 
 
 @friday.on(friday_on_cmd(pattern="logs$", outgoing=True))

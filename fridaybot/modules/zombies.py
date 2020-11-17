@@ -108,6 +108,3 @@ async def rm_deletedacc(show):
             f"Cleaned **{del_u}** Zombies!!\
             \nCHAT: {show.chat.title}(`{show.chat_id}`)",
         )
-
-
-

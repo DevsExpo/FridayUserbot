@@ -52,7 +52,7 @@ pm_caption += f"➥ **Version** : `{currentversion}`\n"
 pm_caption += f"➥ **My Boss** : {DEFAULTUSER} \n"
 pm_caption += "➥ **Heroku Database** : `AWS - Working Properly`\n\n"
 pm_caption += "➥ **Check Stats By Doing** `.stat`. \n\n"
-pm_caption += "           [Hinata](https://t.me/misshinata_bot) | [Support](https://t.me/misslillysupport) | [Lilly](https://t.me/misslilly_bot)"                                                              
+pm_caption += "           [Hinata](https://t.me/misshinata_bot) | [Support](https://t.me/misslillysupport) | [Lilly](https://t.me/misslilly_bot)"
 
 
 @friday.on(friday_on_cmd(pattern=r"alive"))

@@ -29,7 +29,7 @@ async def _(event):
     global afk_start
     global afk_end
     global reason
-    USER_AFK = {} 
+    USER_AFK = {}
     afk_time = None
     last_afk_message = {}
     afk_end = {}
@@ -38,12 +38,13 @@ async def _(event):
     reason = event.pattern_match.group(1)
     if not USER_AFK:  # pylint:disable=E0602
         last_seen_status = await borg(  # pylint:disable=E0602
-            functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
+            functions.account.GetPrivacyRequest(
+                types.InputPrivacyKeyStatusTimestamp())
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
             afk_time = datetime.datetime.now()  # pylint:disable=E0602
         USER_AFK = f"yes: {reason}"  # pylint:disable=E0602
-        
+
         if reason:
             await borg.send_message(-1001247283436, f"/divuoffline {reason}")
             await borg.send_message(
@@ -61,9 +62,7 @@ async def _(event):
                 f"#AfkLogger Afk Is Active And Reason is {reason}",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
-            logger.warn(str(e))  # pylint:disable=E0602 
-
-
+            logger.warn(str(e))  # pylint:disable=E0602
 
 
 @friday.on(events.NewMessage(outgoing=True))  # pylint:disable=E0602
@@ -160,7 +159,7 @@ async def on_afk(event):
                 f"`{int(seconds)}s` **ago**"
         msg = None
         message_to_reply = (
-            f"**My Boss Is Currently Not Available!**  \n**Last Seen :** `{total_afk_time}` \n\n**Reason** : {reason}"                     
+            f"**My Boss Is Currently Not Available!**  \n**Last Seen :** `{total_afk_time}` \n\n**Reason** : {reason}"
             if reason
             else f"**My Boss Is Currently Not Available!**  \n**Last Seen :** `{total_afk_time}`"
         )
