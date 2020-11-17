@@ -1,6 +1,5 @@
 # For @UniBorg
 # (c) Shrimadhav U K
-
 from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest
 from uniborg.util import friday_on_cmd
 

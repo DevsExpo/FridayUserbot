@@ -1,12 +1,14 @@
 import asyncio
 from asyncio import sleep
 
-from telethon.errors import ChatAdminRequiredError, UserAdminInvalidError
+from telethon.errors import ChatAdminRequiredError
+from telethon.errors import UserAdminInvalidError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 
 from fridaybot import CMD_HELP
-from fridaybot.utils import friday_on_cmd, sudo_cmd
+from fridaybot.utils import friday_on_cmd
+from fridaybot.utils import sudo_cmd
 
 #
 BOTLOG = True

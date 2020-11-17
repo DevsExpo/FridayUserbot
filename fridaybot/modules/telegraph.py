@@ -2,12 +2,13 @@
 Available Commands:
 .telegraph media as reply to a media
 .telegraph text as reply to a large text"""
-
 import os
 from datetime import datetime
 
 from PIL import Image
-from telegraph import Telegraph, exceptions, upload_file
+from telegraph import exceptions
+from telegraph import Telegraph
+from telegraph import upload_file
 
 from fridaybot.utils import friday_on_cmd
 

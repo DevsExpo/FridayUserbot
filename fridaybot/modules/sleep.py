@@ -1,5 +1,4 @@
 """ Userbot module for other small commands. """
-
 from random import randint
 from time import sleep
 

@@ -1,10 +1,11 @@
 """Check if GujjuBot alive. If you change these, you become the gayest gay such that even the gay world will disown you."""
-
 import time
 
-from uniborg.util import friday_on_cmd, sudo_cmd
+from uniborg.util import friday_on_cmd
+from uniborg.util import sudo_cmd
 
-from fridaybot import ALIVE_NAME, Lastupdate
+from fridaybot import ALIVE_NAME
+from fridaybot import Lastupdate
 from fridaybot.Configs import Config
 from fridaybot.modules import currentversion
 

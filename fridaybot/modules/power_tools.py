@@ -2,7 +2,6 @@
 Available Commands:
 .restart
 .shutdown"""
-
 import os
 import sys
 

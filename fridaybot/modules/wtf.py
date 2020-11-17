@@ -3,8 +3,6 @@
 Available Commands:
 
 .wtf"""
-
-
 import asyncio
 
 from fridaybot.utils import friday_on_cmd
