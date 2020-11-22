@@ -1,6 +1,6 @@
 """BarCode Generator
 Command .barcode (your text)
-By @Hackintush
+By @snappy101
 """
 
 import asyncio
@@ -10,6 +10,8 @@ from datetime import datetime
 import barcode
 from barcode.writer import ImageWriter
 from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
+
+from userbot import CMD_HELP
 
 
 @friday.on(friday_on_cmd(pattern="barcode ?(.*)"))
@@ -59,6 +61,15 @@ async def _(event):
         return
     end = datetime.now()
     ms = (end - start).seconds
-    await edit_or_reply(event, "Created Barcode in {} seconds".format(ms))
+    await edit_or_reply(event, "Created BarCode in {} seconds".format(ms))
     await asyncio.sleep(5)
     await event.delete()
+
+
+CMD_HELP.update(
+    {
+        "barcode": "**Barcode**\
+\n\n**Syntax : **`.barcode <text>`\
+\n**Usage :** Creates Barcode Of Your Text."
+    }
+)
