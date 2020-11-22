@@ -32,6 +32,7 @@ if ENV:
         TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "CipherX")
         # Get a Free API Key from OCR.Space
         OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
+        DEEP_API_KEY = os.environ.get("DEEP_API_KEY", None)
         # Send .get_id in any group with all your administration bots (added)
         G_BAN_LOGGER_GROUP = int(os.environ.get("G_BAN_LOGGER_GROUP", -1001296928120))
         # TG API limit. An album can have atmost 10 media!
