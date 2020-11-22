@@ -1,8 +1,12 @@
 """Check if userbot alive. If you change these, you become the gayest gay such that even the gay world will disown you."""
 # IMG CREDITS: @Hackintush
-from uniborg.util import admin_cmd
+import time
 
-from userbot import ALIVE_NAME
+from uniborg.util import friday_on_cmd, sudo_cmd
+
+from userbot import ALIVE_NAME, CMD_HELP, Lastupdate
+from userbot.Configs import Config
+from userbot.modules import currentversion
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 PM_IMG = (
