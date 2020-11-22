@@ -25,6 +25,7 @@ async def amireallyalive(alive):
     await borg.send_file(alive.chat_id, PM_IMG, caption=pm_caption)
     await alive.delete()
 
+
 CMD_HELP.update(
     {
         "alive": "**ALive**\
