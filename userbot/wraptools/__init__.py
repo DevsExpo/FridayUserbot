@@ -17,6 +17,7 @@ import re
 
 from telethon import events
 
+from userbot import bot
 from userbot.Configs import Config
 from var import Var
 
@@ -39,10 +40,11 @@ def am_i_admin():
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(event):
-            serena = bot.tgbot
-            pep = await serena.get_me()
-            sed = await serena.get_permissions(event.chat_id, pep)
-            if sed.is_admin or sed.is_creator:
+            pep = await bot.get_me()
+            sed = await bot.get_permissions(event.chat_id, pep)
+            if sed.is_admin:
+                await func(event)
+            if sed.is_creator:
                 await func(event)
             else:
                 await event.edit(
@@ -58,7 +60,6 @@ def ignore_bot():
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(event):
-            bot.tgbot
             reply_message = await event.get_reply_message()
             reply_message.sender
             if not reply_message.sender.bot:
