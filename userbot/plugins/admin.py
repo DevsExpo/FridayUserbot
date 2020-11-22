@@ -32,13 +32,15 @@ from telethon.tl.types import (
 )
 
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
-from userbot.utils import errors_handler, friday_on_cmd, register, sudo_cmd
+from userbot.utils import admin_cmd, errors_handler, register
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"
 PP_ERROR = "`Failure while processing the image`"
-NO_ADMIN = "`I'm not an admin!`"
-NO_PERM = "`I don't have sufficient permissions!`"
+NO_ADMIN = "`I am not an admin!`"
+NO_PERM = (
+    "`I don't have sufficient permissions!`"
+)
 NO_SQL = "`Running on Non-SQL mode!`"
 
 CHAT_PP_CHANGED = "`Chat Picture Changed`"
@@ -78,16 +80,24 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
 
-@friday.on(friday_on_cmd(pattern=r"setgpic"))
-@friday.on(sudo_cmd(pattern=r"setgpic", allow_sudo=True))
+# @register(outgoing=True, pattern="^.setgpic$")
+@borg.on(admin_cmd(pattern=r"setgpic"))
+@errors_handler
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
     if not gpic.is_group:
         await gpic.edit("`I don't think this is a group.`")
         return
     replymsg = await gpic.get_reply_message()
-    await gpic.get_chat()
+    chat = await gpic.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
     photo = None
+
+    if not admin and not creator:
+        await gpic.edit(NO_ADMIN)
+        return
+
     if replymsg and replymsg.media:
         if isinstance(replymsg.media, MessageMediaPhoto):
             photo = await gpic.client.download_media(message=replymsg.photo)
@@ -109,12 +119,22 @@ async def set_group_photo(gpic):
             await gpic.edit(PP_ERROR)
 
 
-@friday.on(friday_on_cmd(pattern=r"promote(?: |$)(.*)"))
-@friday.on(sudo_cmd(pattern=r"promote(?: |$)(.*)", allow_sudo=True))
+# @register(outgoing=True, pattern="^.promote(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"promote(?: |$)(.*)"))
+@errors_handler
 async def promote(promt):
     """ For .promote command, promotes the replied/tagged person """
     # Get targeted chat
-    await promt.get_chat()
+    chat = await promt.get_chat()
+    # Grab admin status or creator in a chat
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # If not admin and not creator, also return
+    if not admin and not creator:
+        await promt.edit(NO_ADMIN)
+        return
+
     new_rights = ChatAdminRights(
         add_admins=False,
         invite_users=True,
@@ -136,7 +156,7 @@ async def promote(promt):
     # Try to promote if current user is admin or creator
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await promt.edit("`Promoted Successfully!`")
+        await promt.edit("`Promoted Successfully! Now gib Party`")
 
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
@@ -154,8 +174,20 @@ async def promote(promt):
         )
 
 
-@friday.on(friday_on_cmd(pattern=r"demote(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.demote(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"demote(?: |$)(.*)"))
+@errors_handler
 async def demote(dmod):
+    """ For .demote command, demotes the replied/tagged person """
+    # Admin right check
+    chat = await dmod.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    if not admin and not creator:
+        await dmod.edit(NO_ADMIN)
+        return
+
     # If passing, declare that we're going to demote
     await dmod.edit("`Demoting...`")
     rank = "admeme"  # dummy rank, lol.
@@ -184,7 +216,7 @@ async def demote(dmod):
     except BadRequestError:
         await dmod.edit(NO_PERM)
         return
-    await dmod.edit("`Demoted Successfully!`")
+    await dmod.edit("`Demoted this retard Successfully!`")
 
     # Announce to the logging group if we have demoted successfully
     if BOTLOG:
@@ -196,8 +228,21 @@ async def demote(dmod):
         )
 
 
-@friday.on(friday_on_cmd(pattern=r"ban(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.ban(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"ban(?: |$)(.*)"))
+@errors_handler
 async def ban(bon):
+    """ For .ban command, bans the replied/tagged person """
+    # Here laying the sanity check
+    chat = await bon.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # Well
+    if not admin and not creator:
+        await bon.edit(NO_ADMIN)
+        return
+
     user, reason = await get_user_from_event(bon)
     if user:
         pass
@@ -224,7 +269,7 @@ async def ban(bon):
     # is done gracefully
     # Shout out the ID, so that fedadmins can fban later
     if reason:
-        await bon.edit(f"`{str(user.id)}` was banned !!\nReason: {reason}")
+        await bon.edit(f"Loser `{str(user.id)}` was banned !!\nReason: {reason}")
     else:
         await bon.edit(f"`{str(user.id)}` was banned !!")
     # Announce to the logging group if we have banned the person
@@ -238,10 +283,24 @@ async def ban(bon):
         )
 
 
-@friday.on(friday_on_cmd(pattern=r"unban(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.unban(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"unban(?: |$)(.*)"))
+@errors_handler
 async def nothanos(unbon):
+    """ For .unban command, unbans the replied/tagged person """
+    # Here laying the sanity check
+    chat = await unbon.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # Well
+    if not admin and not creator:
+        await unbon.edit(NO_ADMIN)
+        return
+
     # If everything goes well...
     await unbon.edit("`Unbanning...`")
+
     user = await get_user_from_event(unbon)
     user = user[0]
     if user:
@@ -261,10 +320,12 @@ async def nothanos(unbon):
                 f"CHAT: {unbon.chat.title}(`{unbon.chat_id}`)",
             )
     except UserIdInvalidError:
-        await unbon.edit("`Oh my unban logic broke!`")
+        await unbon.edit("`Uh oh my unban logic broke!`")
 
 
-@friday.on(friday_on_cmd(pattern=r"mute(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.mute(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"mute(?: |$)(.*)"))
+@errors_handler
 async def spider(spdr):
     """
     This function is basically muting peeps
@@ -277,7 +338,15 @@ async def spider(spdr):
         return
 
     # Admin or creator check
-    await spdr.get_chat()
+    chat = await spdr.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # If not admin and not creator, return
+    if not admin and not creator:
+        await spdr.edit(NO_ADMIN)
+        return
+
     user, reason = await get_user_from_event(spdr)
     if user:
         pass
@@ -316,11 +385,20 @@ async def spider(spdr):
             return await spdr.edit("`Oh my mute logic broke!`")
 
 
-@friday.on(friday_on_cmd(pattern=r"unmute(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"unmute(?: |$)(.*)"))
+@errors_handler
 async def unmoot(unmot):
     """ For .unmute command, unmute the replied/tagged person """
     # Admin or creator check
-    await unmot.get_chat()
+    chat = await unmot.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # If not admin and not creator, return
+    if not admin and not creator:
+        await unmot.edit(NO_ADMIN)
+        return
 
     # Check if the function running under SQL mode
     try:
@@ -346,7 +424,7 @@ async def unmoot(unmot):
             await unmot.client(EditBannedRequest(unmot.chat_id, user.id, UNBAN_RIGHTS))
             await unmot.edit("```Unmuted Successfully```")
         except UserIdInvalidError:
-            await unmot.edit("`Oh my unmute logic broke!`")
+            await unmot.edit("`Uh oh my unmute logic broke!`")
             return
 
         if BOTLOG:
@@ -392,11 +470,20 @@ async def muter(moot):
 
 
 # @register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
-@friday.on(friday_on_cmd(pattern=r"ungmute(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"ungmute(?: |$)(.*)"))
+@errors_handler
 async def ungmoot(un_gmute):
-    """ For .ungmute command, ungmutes the target in the CipherXbot """
+    """ For .ungmute command, ungmutes the target in the userbot """
     # Admin or creator check
-    await un_gmute.get_chat()
+    chat = await un_gmute.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # If not admin and not creator, return
+    if not admin and not creator:
+        await un_gmute.edit(NO_ADMIN)
+        return
+
     # Check if the function running under SQL mode
     try:
         from userbot.plugins.sql_helper.gmute_sql import ungmute
@@ -429,10 +516,22 @@ async def ungmoot(un_gmute):
             )
 
 
-@friday.on(friday_on_cmd(pattern=r"gmute(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.gmute(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"gmute(?: |$)(.*)"))
+@errors_handler
 async def gspider(gspdr):
     """ For .gmute command, globally mutes the replied/tagged person """
-    await gspdr.get_chat()
+    # Admin or creator check
+    chat = await gspdr.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # If not admin and not creator, return
+    if not admin and not creator:
+        await gspdr.edit(NO_ADMIN)
+        return
+
+    # Check if the function running under SQL mode
     try:
         from userbot.plugins.sql_helper.gmute_sql import gmute
     except AttributeError:
@@ -464,7 +563,9 @@ async def gspider(gspdr):
             )
 
 
-@friday.on(friday_on_cmd(pattern=r"delusers(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.delusers(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"delusers(?: |$)(.*)"))
+@errors_handler
 async def rm_deletedacc(show):
     """ For .delusers command, list all the ghost/deleted accounts in a chat. """
     if not show.is_group:
@@ -488,7 +589,15 @@ async def rm_deletedacc(show):
         return
 
     # Here laying the sanity check
-    await show.get_chat()
+    chat = await show.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # Well
+    if not admin and not creator:
+        await show.edit("`I am not an admin here!`")
+        return
+
     await show.edit("`Deleting deleted accounts...`")
     del_u = 0
     del_a = 0
@@ -528,7 +637,8 @@ async def rm_deletedacc(show):
         )
 
 
-@friday.on(friday_on_cmd(pattern=r"adminlist"))
+# @register(outgoing=True, pattern="^.adminlist$")
+@borg.on(admin_cmd(pattern=r"adminlist"))
 @errors_handler
 async def get_admin(show):
     """ For .admins command, list all of the admins of the chat. """
@@ -550,11 +660,21 @@ async def get_admin(show):
     await show.edit(mentions, parse_mode="html")
 
 
-@friday.on(friday_on_cmd(pattern=r"pin(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.pin(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"pin(?: |$)(.*)"))
+@errors_handler
 async def pin(msg):
     """ For .pin command, pins the replied/tagged message on the top the chat. """
     # Admin or creator check
-    await msg.get_chat()
+    chat = await msg.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # If not admin and not creator, return
+    if not admin and not creator:
+        await msg.edit(NO_ADMIN)
+        return
+
     to_pin = msg.reply_to_msg_id
 
     if not to_pin:
@@ -588,11 +708,21 @@ async def pin(msg):
         )
 
 
-@friday.on(friday_on_cmd(pattern=r"kick(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.kick(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"kick(?: |$)(.*)"))
+@errors_handler
 async def kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
     # Admin or creator check
-    await usr.get_chat()
+    chat = await usr.get_chat()
+    admin = chat.admin_rights
+    creator = chat.creator
+
+    # If not admin and not creator, return
+    if not admin and not creator:
+        await usr.edit(NO_ADMIN)
+        return
+
     user, reason = await get_user_from_event(usr)
     if not user:
         await usr.edit("`Couldn't fetch user.`")
@@ -623,7 +753,8 @@ async def kick(usr):
         )
 
 
-@friday.on(friday_on_cmd(pattern=r"users ?(.*)"))
+# @register(outgoing=True, pattern="^.users ?(.*)")
+@borg.on(admin_cmd(pattern=r"users ?(.*)"))
 @errors_handler
 async def get_users(show):
     """ For .users command, list all of the users in a chat. """
@@ -665,7 +796,7 @@ async def get_users(show):
             caption="Users in {}".format(title),
             reply_to=show.id,
         )
-        remove("userslist.txt")
+        remove("users.txt")
 
 
 async def get_user_from_event(event):
