@@ -8,14 +8,7 @@ from telethon import events
 
 from userbot import CMD_LIST, LOAD_PLUG, SUDO_LIST, bot
 from userbot.Configs import Config
-from var import Var
-from userbot.wraptools import (
-    am_i_admin,
-    ignore_bot,
-    ignore_fwd,
-    ignore_grp,
-    ignore_pm,
-)
+from userbot.wraptools import am_i_admin, ignore_bot, ignore_fwd, ignore_grp, ignore_pm
 from var import Var
 
 cmdhandler = Config.COMMAND_HAND_LER
@@ -97,7 +90,7 @@ def load_module(shortname):
         import importlib
         import sys
         from pathlib import Path
-        
+
         import userbot.plugins
         import userbot.utils
 
@@ -111,7 +104,7 @@ def load_module(shortname):
         import importlib
         import sys
         from pathlib import Path
-        
+
         import userbot.plugins
         import userbot.utils
 
