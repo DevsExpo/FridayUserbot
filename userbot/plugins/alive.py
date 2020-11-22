@@ -16,8 +16,8 @@ pm_caption += "**➥ Current Branch** : `Master`\n"
 pm_caption += "**➥ CɪᴘʜᴇʀX OS** : `Kali GNU/Linux Rolling x86_64`\n"
 pm_caption += f"**➥ My Boss** : [CɪᴘʜᴇʀX](https://t.me/Hackintush)\n"
 pm_caption += "**✨ CɪᴘʜᴇʀX is the best ✨**"
-# @command(outgoing=True, pattern="^.alive$")
-@borg.on(admin_cmd(pattern=r"alive"))
+@friday.on(friday_on_cmd(pattern=r"alive"))
+@friday.on(sudo_cmd(pattern=r"alive", allow_sudo=True)) 
 async def amireallyalive(alive):
     await alive.get_chat()
     await alive.delete()
