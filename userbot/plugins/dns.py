@@ -6,6 +6,7 @@ Available Commands:
 .unshort <short url>"""
 import requests
 
+from userbot import CMD_HELP
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
@@ -21,7 +22,7 @@ async def _(event):
     if response_api:
         await starky.edit("DNS records of {} are \n{}".format(input_str, response_api))
     else:
-        await starky.edit("i can't seem to find {} on the internet".format(input_str))
+        await starky.edit("It can't seems to find {} on the internet".format(input_str))
 
 
 @friday.on(friday_on_cmd("url (.*)"))
@@ -56,3 +57,16 @@ async def _(event):
         await sadness.edit(
             "Input URL {} returned status_code {}".format(input_str, r.status_code)
         )
+
+
+CMD_HELP.update(
+    {
+        "dns": "**Dns**\
+\n\n**Syntax : **`.dns <site link>`\
+\n**Usage :** it provides DNS records of given site.\
+\n\n**Syntax : **`.url <site link>`\
+\n**Usage :** it shortens given URL.\
+\n\n**Syntax : **`.unshort <shorten link>`\
+\n**Usage :** it unshortens the given short link."
+    }
+)
