@@ -1,27 +1,23 @@
-"""Auto Profile Updation Commands
-
+﻿"""Auto Profile Updation Commands
 .autoname"""
-
-
 import asyncio
 import time
 
 from telethon.errors import FloodWaitError
 from telethon.tl import functions
-from uniborg.util import admin_cmd
+from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
-from userbot import ALIVE_NAME
+from userbot import ALIVE_NAME, CMD_HELP
 
 DEL_TIME_OUT = 60
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "CɪᴘʜᴇʀX"
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "FridayUserbot"
 
-
-@borg.on(admin_cmd(pattern="autoname"))  # pylint:disable=E0602
+@friday.on(friday_on_cmd(pattern="autoname"))  # pylint:disable=E0602
+@friday.on(sudo_cmd(pattern="autoname", allow_sudo=True))
 async def _(event):
-
+    sed = await edit_or_reply(event, "`Starting AutoName Please Wait`")
     if event.fwd_from:
-
         return
 
     while True:
@@ -62,4 +58,13 @@ async def _(event):
 
         await asyncio.sleep(DEL_TIME_OUT)
 
-    await event.edit(f"Auto Name has been started Master")
+    await sed.edit(f"Auto Name has been started my Master")
+
+
+CMD_HELP.update(
+    {
+        "autoname": "**Autoname**\
+\n\n**Syntax : **`.autoname`\
+\n**Usage :** Change Name With Time"
+    }
+)
