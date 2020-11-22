@@ -121,7 +121,7 @@ def load_module(shortname):
         sys.modules["uniborg.util"] = userbot.utils
         sys.modules["friday.util"] = userbot.utils
         sys.modules["userbot.utils"] = userbot.utils
-        sys.modules["userbot.plugins"] = userbot.modules
+        sys.modules["userbot.plugins"] = userbot.plugins
         mod.Config = Config
         mod.ignore_grp = ignore_grp()
         mod.ignore_pm = ignore_pm()
