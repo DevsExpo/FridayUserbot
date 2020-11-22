@@ -2,7 +2,6 @@ import asyncio
 import os
 from pathlib import Path
 
-from userbotimport CMD_HELP
 from userbot.utils import friday_on_cmd, load_module
 
 DELETE_TIMEOUT = 5
@@ -39,7 +38,8 @@ async def install(event):
             os.remove(downloaded_file_name)
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
-    
+
+
 CMD_HELP.update(
     {
         "install": "**Install**\
@@ -47,4 +47,3 @@ CMD_HELP.update(
 \n**Usage :** it installs replyed plugin"
     }
 )
-
