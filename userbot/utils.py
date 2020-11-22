@@ -9,6 +9,14 @@ from telethon import events
 from userbot import CMD_LIST, LOAD_PLUG, SUDO_LIST, bot
 from userbot.Configs import Config
 from var import Var
+from userbot.wraptools import (
+    am_i_admin,
+    ignore_bot,
+    ignore_fwd,
+    ignore_grp,
+    ignore_pm,
+)
+from var import Var
 
 cmdhandler = Config.COMMAND_HAND_LER
 bothandler = Config.BOT_HANDLER
@@ -89,7 +97,8 @@ def load_module(shortname):
         import importlib
         import sys
         from pathlib import Path
-
+        
+        import userbot.plugins
         import userbot.utils
 
         path = Path(f"userbot/plugins/{shortname}.py")
@@ -102,7 +111,8 @@ def load_module(shortname):
         import importlib
         import sys
         from pathlib import Path
-
+        
+        import userbot.plugins
         import userbot.utils
 
         path = Path(f"userbot/plugins/{shortname}.py")
@@ -116,8 +126,15 @@ def load_module(shortname):
         mod.logger = logging.getLogger(shortname)
         # support for uniborg
         sys.modules["uniborg.util"] = userbot.utils
-        sys.modules["userbot.util"] = userbot.utils
+        sys.modules["friday.util"] = userbot.utils
+        sys.modules["userbot.utils"] = userbot.utils
+        sys.modules["userbot.plugins"] = userbot.modules
         mod.Config = Config
+        mod.ignore_grp = ignore_grp()
+        mod.ignore_pm = ignore_pm()
+        mod.ignore_bot = ignore_bot()
+        mod.am_i_admin = am_i_admin()
+        mod.ignore_fwd = ignore_fwd()
         mod.borg = bot
         mod.friday = bot
         # support for paperplaneextended
