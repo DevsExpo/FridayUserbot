@@ -2,6 +2,7 @@ import asyncio
 import io
 import time
 
+from userbot import CMD_HELP
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
@@ -44,3 +45,12 @@ async def _(event):
             )
             await event.delete()
     await tflyf.edit(OUTPUT)
+
+
+CMD_HELP.update(
+    {
+        "bash": "**Bash**\
+\n\n**Syntax : **`.bash <cmd>`\
+\n**Usage :** Run Commands Using CɪᴘʜᴇʀXbot"
+    }
+)
