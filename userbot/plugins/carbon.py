@@ -14,7 +14,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 
-from userbot import CHROME_DRIVER, GOOGLE_CHROME_BIN
+from userbot import CHROME_DRIVER, CMD_HELP, GOOGLE_CHROME_BIN
 from userbot.utils import register
 
 CARBONLANG = "auto"
@@ -26,7 +26,7 @@ async def carbon_api(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
 
         """ A Wrapper for carbon.now.sh """
-        await e.edit("`Processing..`")
+        await e.edit("`Processing...`")
         CARBON = "https://carbon.now.sh/?l={lang}&code={code}"
         global CARBONLANG
         textx = await e.get_reply_message()
@@ -94,13 +94,22 @@ async def carbon_api(e):
         await e.client.send_file(
             e.chat_id,
             file,
-            caption="<< `Here's your carbon!` \n **Carbonised by** CɪᴘʜᴇʀX>>\n**Colour Scheme: **`{}`".format(
+            caption="<< `Here's your carbon!` \n **Carbonised Using** [CɪᴘʜᴇʀX](https://t.me/Hackintush)>>\n**Colour Scheme: **`{}`".format(
                 color_name
             ),
             force_document=True,
             reply_to=e.message.reply_to_msg_id,
         )
-        os.remove("./CipherX.png")
+        os.remove("./carbon.png")
         driver.quit()
         # Removing carbon.png after uploading
         await e.delete()  # Deleting msg
+
+
+CMD_HELP.update(
+    {
+        "carbon": "**Carbon**\
+\n\n**Syntax : **`.carbon <text>`\
+\n**Usage :** this plugin converts text into carbon."
+    }
+)
