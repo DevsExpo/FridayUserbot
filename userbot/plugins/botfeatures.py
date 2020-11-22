@@ -3,6 +3,7 @@ import asyncio
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
+from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
 
@@ -31,7 +32,7 @@ async def _(event):
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @sangmatainfo_bot and try again```")
+            await event.reply("```Please unblock bot and try again```")
             return
         if response.text.startswith("Forward"):
             await event.edit(
@@ -57,7 +58,7 @@ async def _(event):
             mail = k[0].text
             # print(k[0].text)
         except YouBlockedUserError:
-            await event.reply("```Please unblock @fakemailbot and try again```")
+            await event.reply("```Please unblock bot and try again```")
             return
         await event.edit(mail)
 
@@ -78,7 +79,7 @@ async def _(event):
             mail = k[0].text
             # print(k[0].text)
         except YouBlockedUserError:
-            await event.reply("```Please unblock @fakemailbot and try again```")
+            await event.reply("```Please unblock bot and try again```")
             return
         await event.edit(mail)
 
@@ -108,7 +109,7 @@ async def _(event):
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Please unblock @uploadbot and try again```")
+            await event.reply("```Please unblock bot and try again```")
             return
         if response.text.startswith("Hi!,"):
             await event.edit(
@@ -151,3 +152,18 @@ async def _(event):
             )
         else:
             await event.edit(f"{response.message.message}")
+
+
+CMD_HELP.update(
+    {
+        "botfeatures": "**Botfeatures**\
+\n\n**Syntax : **`.sang <replying to user message> `\
+\n**Usage :** Get Name history of an user.\
+\n\n**Syntax : **`.fakemail <type and send in groups or private chats>`\
+\n**Usage :** Get a fake email id and get all mails forwarded to you.\
+\n\n**Syntax : **`.ub <paste direct download link here>`\
+\n**Usage :** Upload any file from direct download link to telegram max file limit 500MB.\
+\n\n**Syntax : **`.gid <replying to user message>`\
+\n**Usage :** Get user_id of a person."
+    }
+)
