@@ -1,6 +1,8 @@
-""".admin Plugin for @Hackintush"""
+""".admin Plugin for @UniBorg"""
 from telethon.tl.types import ChannelParticipantsAdmins
 from uniborg.util import friday_on_cmd
+
+from userbot import CMD_HELP
 
 
 @friday.on(friday_on_cmd(pattern="admins"))
@@ -18,3 +20,12 @@ async def _(event):
     else:
         await event.reply(mentions)
     await event.delete()
+
+
+CMD_HELP.update(
+    {
+        "calladmin": "**Calladmin**\
+\n\n**Syntax : **`.admins`\
+\n**Usage :** use this plugin to mention all the admins in a group."
+    }
+)
