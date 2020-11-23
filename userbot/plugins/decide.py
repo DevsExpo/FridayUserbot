@@ -1,7 +1,7 @@
 """Quickly make a decision
 Syntax: .decide"""
 import requests
-
+from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
 
@@ -17,3 +17,11 @@ async def _(event):
         event.chat_id, r["answer"], reply_to=message_id, file=r["image"]
     )
     await event.delete()
+    
+CMD_HELP.update(
+    {
+        "decide": "**Decide**\
+\n\n**Syntax : **`.decide`\
+\n**Usage :** Use this plugin to quickly make a decision."
+    }
+)
