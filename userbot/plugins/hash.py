@@ -76,6 +76,7 @@ async def endecrypt(query):
         )[2:]
         await query.reply("Decoded: `" + lething[:-1] + "`")
 
+
 CMD_HELP.update(
     {
         "hash": "**Hash**\
