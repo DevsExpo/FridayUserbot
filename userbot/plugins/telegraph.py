@@ -8,6 +8,7 @@ from datetime import datetime
 from PIL import Image
 from telegraph import Telegraph, exceptions, upload_file
 
+from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
 telegraph = Telegraph()
@@ -96,9 +97,22 @@ async def _(event):
                 link_preview=True,
             )
     else:
-        await event.edit("Reply to a message to get a permanent telegra.ph link.")
+        await event.edit(
+            "Reply to a message to get a permanent telegra.ph link. (Inspired by CɪᴘʜᴇʀX)"
+        )
 
 
 def resize_image(image):
     im = Image.open(image)
     im.save(image, "PNG")
+
+
+CMD_HELP.update(
+    {
+        "telegraph": "**Telegraph**\
+\n\n**Syntax : **`.telegraph media <reply to image or video>`\
+\n**Usage :** Upload image and video directly to telegraph\
+\n\n**Syntax : **`.telegraph text <reply to text>`\
+\n**Usage :** upload text directly to telegraph ."
+    }
+)
