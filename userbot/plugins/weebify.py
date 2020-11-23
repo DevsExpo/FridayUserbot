@@ -3,8 +3,9 @@ Ported from Saitama Bot.
 By :- @PhycoNinja13b
 Modified by :- @kirito6969
 .weeb <text> """
-from userbot import CMD_HELP
 from uniborg.util import friday_on_cmd
+
+from userbot import CMD_HELP
 
 normiefont = [
     "a",
@@ -80,7 +81,8 @@ async def weebify(event):
             weebycharacter = weebyfont[normiefont.index(normiecharacter)]
             string = string.replace(normiecharacter, weebycharacter)
     await event.edit(string)
-    
+
+
 CMD_HELP.update(
     {
         "weebify": "**Weebify**\

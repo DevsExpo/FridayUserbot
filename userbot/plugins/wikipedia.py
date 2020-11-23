@@ -5,7 +5,9 @@
 Syntax: .wikipedia Query"""
 import wikipedia
 from uniborg.util import friday_on_cmd
+
 from userbot import CMD_HELP
+
 
 @friday.on(friday_on_cmd(pattern="wikipedia (.*)"))
 async def _(event):
@@ -22,7 +24,8 @@ async def _(event):
     await event.edit(
         "WikiPedia **Search**: {} \n\n **Result**: \n\n{}".format(input_str, result)
     )
-    
+
+
 CMD_HELP.update(
     {
         "wikipedia": "**Wikipedia**\
