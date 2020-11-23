@@ -15,6 +15,7 @@
 import io
 import os
 
+from userbot import CMD_HELP
 from userbot.Configs import Config
 from userbot.plugins.sql_helper.broadcast_sql import (
     add_chnnl_in_db,
@@ -65,7 +66,7 @@ async def _(event):
         return
     if not already_added(input_chnnl):
         add_chnnl_in_db(input_chnnl)
-        await event.edit(f"Fine. I have Added {input_chnnl} to Database.")
+        await event.edit(f"Fine. I have Added {input_chnnl} To DataBase.")
         await borg.send_message(loggy_grp, f"Added {input_chnnl} To DB")
 
 
@@ -100,7 +101,7 @@ async def _(event):
     sedpath = Config.TMP_DOWNLOAD_DIRECTORY
     all_chnnl = get_all_chnnl()
     if len(all_chnnl) == 0:
-        await event.edit("No Channel Or Group Found on Database. Please Check Again")
+        await event.edit("No Channel Or Group Found On Database. Please Check Again")
         return
     total_errors = 0
     total_count = 0
@@ -139,7 +140,7 @@ async def _(event):
             f"Error : {total_errors}\nError : {errorno}",
         )
     elif hmm.message.poll:
-        await event.edit("Bro, This Can't Be Broadcasted.")
+        await event.edit("Bruh, This Can't Be Broadcasted.")
         return
     await event.edit(
         f"BroadCast Success In : {total_count} \nFailed In : {total_errors} \nTotal Channel In DB : {total_chnnl}"
@@ -201,3 +202,24 @@ async def _(event):
             caption="Total Channel In DB.",
             allow_cache=False,
         )
+
+
+CMD_HELP.update(
+    {
+        "broadcast": "**broadcast**\
+        \n\n**Syntax : **`.badd <channel_id>`\
+        \n**Usage :** Adds the given channel/group to database.\
+        \n\n**Syntax : **`.badd all`\
+        \n**Usage :** Adds all the channel/groups to database where you are admin.\
+        \n\n**Syntax : **`.brm <channel_id>`\
+        \n**Usage :** Removes the Specified Channel From database.\
+        \n\n**Syntax : **`.brm all`\
+        \n**Usage :** Removes Everything From DataBase.\
+        \n\n**Syntax : **`.broadcast <Reply-To-Msg>`\
+        \n**Usage :**  Broadcasts To All Channel in DB, Even Supports Media.\
+        \n\n**Syntax : **`.forward <Reply-To-Msg>`\
+        \n**Usage :** Forwards To All Channel in Database.\
+        \n\n**Syntax : **`.bstat`\
+        \n**Usage :** Shows list of channels/groups in database."
+    }
+)
