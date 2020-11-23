@@ -1,12 +1,13 @@
 Pillow
+python-magic
 glitch_this
 PyGithub
-git+https://github.com/ytdl-org/youtube-dl.git
-git+https://github.com/StarkGang/Telethon.git
+youtube-dl
+telethon
 iplookup
-git+https://github.com/Starkgangs/pydl.git
+numpy
+pytube3
 pytesseract
-spotdl
 aiofiles
 aria2p
 pyshorteners
@@ -14,7 +15,6 @@ aiohttp
 async_generator
 beautifulsoup4
 bs4
-bwb==3.0.0
 cfscrape
 coffeehouse
 cowpy
@@ -44,11 +44,9 @@ pySmartDL
 pybase64>=0.4.0
 pyfiglet
 pylast
-pygments
 pymongo
 python-barcode
 python-dotenv
-python-magic
 pytz
 qrcode
 regex
@@ -61,8 +59,6 @@ telegraph
 tswift
 urbandict>=0.5
 wikipedia>=1.4.0
-youtube-dl
-covid
 validators
 youtube-search
 youtube-search-python
