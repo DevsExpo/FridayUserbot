@@ -1,24 +1,10 @@
 import asyncio
-import os
 
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from userbot import bot
 from userbot.utils import friday_on_cmd
-
-try:
-    pass
-except:
-    os.system("pip install instantmusic")
-
-
-os.system("rm -rf *.mp3")
-
-
-def bruh(name):
-
-    os.system("instantmusic -q -s " + name)
 
 
 @friday.on(friday_on_cmd(pattern="spd ?(.*)"))
@@ -30,7 +16,7 @@ async def _(event):
     await event.edit("```Getting Your Music```")
     async with bot.conversation(chat) as conv:
         await asyncio.sleep(2)
-        await event.edit("`Downloading music taking some times,  Stay Tuned.....`")
+        await event.edit("`Downloading music taking some times,  Stay Tuned...`")
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=752979930)
@@ -39,7 +25,7 @@ async def _(event):
             respond = await response
         except YouBlockedUserError:
             await event.reply(
-                "```Please unblock @SpotifyMusicDownloaderBot and try again```"
+                "```Please unblock bot and try again```"
             )
             return
         await event.delete()
@@ -64,7 +50,7 @@ async def WooMai(netase):
             """ - don't spam notif - """
             await bot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await netase.reply("```Please unblock @WooMaiBot and try again```")
+            await netase.reply("```Please unblock Bot and try again```")
             return
         await netase.edit("`Sending Your Music...`")
         await asyncio.sleep(3)
@@ -94,7 +80,7 @@ async def DeezLoader(Deezlod):
             """ - don't spam notif - """
             await bot.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await Deezlod.edit("**Error:** `unblock` @DeezLoadBot `and retry!`")
+            await Deezlod.edit("**Error:** `unblock` bot `and retry!`")
             return
         await bot.send_file(Deezlod.chat_id, song, caption=details.text)
         await Deezlod.client.delete_messages(
