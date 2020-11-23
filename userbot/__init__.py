@@ -171,11 +171,6 @@ else:
     # Put your ppe vars here if you are using local hosting
     PLACEHOLDER = None
 
-# Setting Up CloudMail.ru and MEGA.nz extractor binaries,
-# and giving them correct perms to work properly.
-if not os.path.exists("bin"):
-    os.mkdir("bin")
-
 
 # Global Variables
 COUNT_MSG = 0
