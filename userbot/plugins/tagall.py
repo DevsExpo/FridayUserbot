@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2
 
 from telethon.tl.types import ChannelParticipantsAdmins
+
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
 
@@ -36,7 +37,8 @@ async def _(event):
         mentions += f" \n [{x.first_name}](tg://user?id={x.id})"
     await event.reply(mentions)
     await event.delete()
-    
+
+
 CMD_HELP.update(
     {
         "tagall": "**Tagall**\
