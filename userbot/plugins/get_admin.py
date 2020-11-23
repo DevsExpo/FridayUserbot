@@ -5,6 +5,7 @@ from telethon.tl.types import (
     ChannelParticipantCreator,
     ChannelParticipantsAdmins,
 )
+
 from userbot import CMD_HELP
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
@@ -62,7 +63,8 @@ async def _(event):
         await event.delete()
     else:
         await admeme.edit(mentions)
-        
+
+
 CMD_HELP.update(
     {
         "get_admin": "**Get_admin**\
