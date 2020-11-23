@@ -3,7 +3,7 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from userbot import CMD_HELP, bot
+from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
 
@@ -42,7 +42,8 @@ async def _(event):
         else:
             await event.delete()
             await event.client.send_message(event.chat_id, response.message)
-            
+
+
 CMD_HELP.update(
     {
         "quotly": "**Quotly**\
