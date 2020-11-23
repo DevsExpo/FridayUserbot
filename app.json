@@ -51,6 +51,10 @@
       "description": "Get From Repl.run Or Run Locally",
       "value": ""
     },
+    "TESSDATA_PREFIX": {
+      "description": "Pytesserct Path. Don't Edit Until You Know What Are You Doing..",
+      "value": "./.apt/usr/share/tesseract-ocr/4.00/tessdata"
+    },
     "GITHUB_ACCESS_TOKEN": {
       "description": "Your Github Access Token for GitHub Commit Plugin. Google 'Github access token' to find more About It.",
       "value": "",
@@ -103,9 +107,6 @@
   ],
   "buildpacks": [
     {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-    },
-    {
       "url": "heroku/python"
     },
     {
@@ -113,6 +114,12 @@
     },
     {
       "url": "https://github.com/heroku/heroku-buildpack-chromedriver"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-apt"
     },
     {
       "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
