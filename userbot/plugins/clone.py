@@ -41,8 +41,8 @@ async def _(event):
         last_name = "⁪⁬⁮⁮⁮⁮ ‌‌‌‌"
     # giving myself credits cause y not
     user_bio = replied_user.about
-    if user_id == 1263617196:
-        await event.edit("Sorry, can't clone my Dev")
+    if user_id == 798271566:
+        await event.edit("Sorry, can't clone my Master")
         await asyncio.sleep(3)
         return
     if user_bio is not None:
@@ -120,3 +120,11 @@ async def get_full_user(event):
                 return replied_user, None
             except Exception as e:
                 return None, e
+            
+CMD_HELP.update(
+    {
+        "clone": "**Clone**\
+\n\n**Syntax : **`.clone <@username/tag anyone>`\
+\n**Usage :** Get Telegram Profile Picture and other information and set as own profile."
+    }
+)
