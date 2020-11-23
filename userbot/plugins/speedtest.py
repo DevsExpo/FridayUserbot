@@ -4,6 +4,7 @@ Available Options: image, file, text"""
 from datetime import datetime
 
 import speedtest
+
 from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
@@ -95,6 +96,7 @@ def convert_from_bytes(size):
         size /= power
         n += 1
     return f"{round(size, 2)} {units[n]}"
+
 
 CMD_HELP.update(
     {
