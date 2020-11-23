@@ -176,15 +176,6 @@ else:
 if not os.path.exists("bin"):
     os.mkdir("bin")
 
-binaries = {
-    "https://raw.githubusercontent.com/yshalsager/megadown/master/megadown": "bin/megadown",
-    "https://raw.githubusercontent.com/yshalsager/cmrudl.py/master/cmrudl.py": "bin/cmrudl",
-}
-
-for binary, path in binaries.items():
-    downloader = SmartDL(binary, path, progress_bar=False)
-    downloader.start()
-    os.chmod(path, 0o755)
 
 # Global Variables
 COUNT_MSG = 0
