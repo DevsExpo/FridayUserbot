@@ -1,6 +1,7 @@
 from telethon.events import ChatAction
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import MessageEntityMentionName
+
 from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
@@ -205,6 +206,7 @@ async def handler(rkG):
                             rkG.reply("`No Permission To Ban`")
                             return
 
+
 CMD_HELP.update(
     {
         "gban_gmute": "**Gban_Gmute**\
@@ -213,4 +215,4 @@ CMD_HELP.update(
 \n\n**Syntax : **`.ungban <reply to a user / mention their ID>`\
 \n**Usage :** unbans the user in every group where you are admin."
     }
-)            
+)
