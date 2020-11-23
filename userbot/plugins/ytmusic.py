@@ -6,7 +6,7 @@ from youtubesearchpython import SearchVideos
 
 from userbot.Configs import Config
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd(pattern="ytmusic ?(.*)"))
 @friday.on(sudo_cmd(pattern="ytmusic ?(.*)", allow_sudo=True))
@@ -56,3 +56,11 @@ async def _(event):
     for files in (sedlyf, km):
         if files and os.path.exists(files):
             os.remove(files)
+            
+CMD_HELP.update(
+    {
+        "ytmusic": "**Ytmusic**\
+\n\n**Syntax : **`.ytmusic <song name>`\
+\n**Usage :** Downloads songs from ytmusic"
+    }
+)
