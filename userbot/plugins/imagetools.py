@@ -35,7 +35,7 @@ async def hmm(event):
         await event.reply("Reply to any Image.")
         return
     headers = {"api-key": life}
-    hmm = await event.edit("Colorizing..")
+    hmm = await event.edit("Colourizing...")
     sed = await event.get_reply_message()
     if isinstance(sed.media, MessageMediaPhoto):
         img = await borg.download_media(sed.media, sedpath)
@@ -99,7 +99,7 @@ async def hmm(event):
         await event.reply("Reply to any Image.")
         return
     headers = {"api-key": life}
-    hmm = await event.edit("Colourzing..")
+    hmm = await event.edit("Colourizing...")
     sed = await event.get_reply_message()
     if isinstance(sed.media, MessageMediaPhoto):
         img = await borg.download_media(sed.media, sedpath)
