@@ -24,7 +24,7 @@ from youtube_dl.utils import (
     UnavailableVideoError,
     XAttrMetadataError,
 )
-
+from userbot import CMD_HELP
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for uploads and downloads."""
@@ -213,3 +213,11 @@ async def download_video(v_url):
         )
         os.remove(f"{ytdl_data['id']}.mp4")
         await v_url.delete()
+                  
+CMD_HELP.update(
+    {
+        "ytdl": "**Ytdl**\
+\n\n**Syntax : **`.yta <song link> OR .ytv <video link>`\
+\n**Usage :** download songs or videos from YouTube just with a link"
+    }
+)
