@@ -6,6 +6,7 @@ PyGithub
 youtube-dl
 telethon
 iplookup
+covid
 numpy
 pytube3
 pytesseract
