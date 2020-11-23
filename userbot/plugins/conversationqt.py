@@ -13,7 +13,7 @@ Syntax: .qt
 
 import asyncio
 import random
-
+from userbot import CMD_HELP
 from userbot.utils import admin_cmd
 
 
@@ -327,3 +327,11 @@ async def _(event):
         await event.edit(
             '`"What’s something you misunderstood as a child and only realized much later was wrong?"`'
         )
+        
+CMD_HELP.update(
+    {
+        "conversationqt": "**Conversationqt**\
+\n\n**Syntax : **`.qt`\
+\n**Usage :** this plugin generates questions."
+    }
+)
