@@ -1,5 +1,5 @@
 import asyncio
-
+from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
 
@@ -18,3 +18,11 @@ async def install(event):
     o = "\n".join(_o)
     OUTPUT = f"**List of Plugins:**\n - {o}\n\n**HELP:** __If you want to know the commands for a plugin, do:-__ \n `.help <plugin name>` **without the < > brackets.**\n__All plugins might not work directly.__"
     await event.edit(OUTPUT)
+    
+CMD_HELP.update(
+    {
+        "cmd_list": "**Cmd_list**\
+\n\n**Syntax : **`.cmds`\
+\n**Usage :** This plugin lists all the plugins which are in your userbot."
+    }
+)
