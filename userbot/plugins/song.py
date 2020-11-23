@@ -24,9 +24,7 @@ async def _(event):
             await bot.send_message(chat, link)
             respond = await response
         except YouBlockedUserError:
-            await event.reply(
-                "```Please unblock bot and try again```"
-            )
+            await event.reply("```Please unblock bot and try again```")
             return
         await event.delete()
         await bot.forward_messages(event.chat_id, respond.message)
