@@ -4,6 +4,7 @@ python-magic
 glitch_this
 PyGithub
 youtube-dl
+opencv-contrib-python
 telethon
 iplookup
 covid
@@ -30,7 +31,7 @@ gitpython
 google-api-python-client==1.8.0
 google-auth-oauthlib
 google_images_download>=2.7.1
-googletrans>=2.4.0
+googletrans
 gsearch
 hachoir
 heroku3
@@ -52,7 +53,7 @@ python-dotenv
 pytz
 qrcode
 regex
-requests
+requests>=2.18.4
 search-engine-parser>=0.4.2
 selenium
 speedtest-cli>=2.0.2
