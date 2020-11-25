@@ -1,7 +1,7 @@
+import logging
 from pathlib import Path
 from sys import argv
 
-import logging
 import telethon.utils
 from telethon import TelegramClient
 
@@ -10,6 +10,7 @@ from userbot.utils import load_module, start_assistant
 from var import Var
 
 sed = logging.getLogger(shortname)
+
 
 async def add_bot(bot_token):
     await bot.start(bot_token)
