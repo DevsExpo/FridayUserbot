@@ -147,6 +147,10 @@ if ENV:
             "ALIVE_IMAGE",
             "https://filetolinktelegrambot.herokuapp.com/1996057911608/VID_20200723_004420.mp4",
         )
+        ASSISTANT_START_PIC = os.environ.get(
+            "ASSISTANT_START_PIC",
+            "https://www.logolynx.com/images/logolynx/72/7257d2ac93b97c8a2c7308266052df13.png",
+        )
         TESSDATA_PREFIX = os.environ.get(
             "TESSDATA_PREFIX", "/usr/share/tesseract-ocr/4.00/tessdata"
         )
