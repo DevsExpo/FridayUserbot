@@ -9,9 +9,10 @@
     "telegram-userbot",
     "productivity"
   ],
-  "repository": "https://github.com/CipherX1-ops/FridayUserbot/",
+  "repository": "https://github.com/CipherX1-ops/FridayUserbot",
   "website": "cipherx.ml",
   "success_url": "t.me/Hackintush",
+  "stack": "container",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable heroku.",
@@ -103,26 +104,6 @@
       "options": {
         "version": "12"
       }
-    }
-  ],
-  "buildpacks": [
-    {
-      "url": "heroku/python"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-chromedriver"
-    },
-    {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-apt"
-    },
-    {
-      "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
     }
   ]
 }
