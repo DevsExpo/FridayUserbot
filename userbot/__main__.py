@@ -6,6 +6,7 @@ import telethon.utils
 from telethon import TelegramClient
 
 from userbot import bot
+from userbot.Configs import Config
 from userbot.utils import load_module, start_assistant
 from var import Var
 
@@ -40,16 +41,18 @@ for name in files:
         path1 = Path(f.name)
         shortname = path1.stem
         load_module(shortname.replace(".py", ""))
-# Done.
-path = "userbot/plugins/assistant/*.py"
-files = glob.glob(path)
-for name in files:
-    with open(name) as f:
-        path1 = Path(f.name)
-        shortname = path1.stem
-        start_assistant(shortname.replace(".py", ""))
 
-sed.info("CɪᴘʜᴇʀX And Assistant Bot Have Been Installed Successfully !")
+if Config.ENABLE_ASSISTANTBOT == "ENABLE":
+    path = "userbot/plugins/assistant/*.py"
+    files = glob.glob(path)
+    for name in files:
+        with open(name) as f:
+            path1 = Path(f.name)
+            shortname = path1.stem
+            start_assistant(shortname.replace(".py", ""))
+    sed.info("CɪᴘʜᴇʀX And Assistant Bot Have Been Installed Successfully !")
+else:
+    sed.info("CɪᴘʜᴇʀX Has Been Installed Sucessfully !")
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()
