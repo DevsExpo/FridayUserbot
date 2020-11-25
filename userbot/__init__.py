@@ -6,6 +6,7 @@ from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
 
 import pylast
+import wget
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
@@ -21,7 +22,6 @@ Lastupdate = time.time()
 
 from var import Var
 
-os.system("pip install --upgrade pip")
 if Var.STRING_SESSION:
     session_name = str(Var.STRING_SESSION)
     bot = TelegramClient(StringSession(session_name), Var.APP_ID, Var.API_HASH)
@@ -31,12 +31,10 @@ else:
 
 
 CMD_LIST = {}
-# for later purposes
 CMD_HELP = {}
 INT_PLUG = ""
 LOAD_PLUG = {}
 
-# PaperPlaneExtended Support Vars
 ENV = os.environ.get("ENV", False)
 """ PPE initialization. """
 
@@ -54,9 +52,6 @@ if bool(ENV):
             format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=INFO
         )
     LOGS = getLogger(__name__)
-
-    # Check if the config was edited by using the already used variable.
-    # Basically, its the 'virginity check' for the config file ;)
     CONFIG_CHECK = os.environ.get(
         "___________PLOX_______REMOVE_____THIS_____LINE__________", None
     )
@@ -171,7 +166,6 @@ else:
     # Put your ppe vars here if you are using local hosting
     PLACEHOLDER = None
 
-
 # Global Variables
 COUNT_MSG = 0
 USERS = {}
@@ -183,3 +177,10 @@ CMD_HELP = {}
 ISAFK = False
 AFKREASON = None
 # End of PaperPlaneExtended Support Vars
+link = "https://people.eecs.berkeley.edu/~rich.zhang/projects/2016_colorization/files/demo_v2/colorization_release_v2.caffemodel"
+km = "./resources/imgcolour/colorization_release_v2.caffemodel"
+if os.path.exists(km):
+    pass
+else:
+    pathz = "./resources/imgcolour/"
+    sedlyf = wget.download(link, out=pathz)
