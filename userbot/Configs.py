@@ -113,9 +113,7 @@ if ENV:
         TEMP_DIR = os.environ.get("TEMP_DIR", None)
         CHANNEL_ID = int(os.environ.get("CHANNEL_ID", -100))
         # Google Chrome Stuff
-        CHROME_DRIVER = os.environ.get(
-            "CHROME_DRIVER", "/usr/bin/chromedriver"
-        )
+        CHROME_DRIVER = os.environ.get("CHROME_DRIVER", "/usr/bin/chromedriver")
         GOOGLE_CHROME_BIN = os.environ.get(
             "GOOGLE_CHROME_BIN", "/usr/bin/google-chrome"
         )
