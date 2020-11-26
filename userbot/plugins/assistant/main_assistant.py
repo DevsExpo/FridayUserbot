@@ -71,7 +71,7 @@ async def start(event):
             link_preview=False,
             buttons=[
                 [custom.Button.inline("Commands For Assistant", data="usercmd")],
-                [Button.url("Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"],
+                [Button.url("Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true")],
             ],
         )
         if os.path.exists(mypic):
