@@ -7,7 +7,7 @@ import requests
 from telethon import Button, custom, events, functions
 from youtubesearchpython import SearchVideos
 
-from userbot import ALIVE_NAME, CMD_LIST, CMD_HELP
+from userbot import ALIVE_NAME, CMD_HELP, CMD_LIST
 from userbot.plugins import inlinestats
 
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
@@ -98,6 +98,8 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         else:
             reply_pop_up_alert = "Please make your own bot, and don't use mine!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
+
 @tgbot.on(
     events.callbackquery.CallbackQuery(  # pylint:disable=E0602
         data=re.compile(b"us_plugin_(.*)")
@@ -130,7 +132,6 @@ async def on_plug_in_callback_query_handler(event):
             message=reply_pop_up_alert,
             buttons=[[custom.Button.inline("Go Back", data="backme")]],
         )
-    
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"terminator")))
     async def rip(event):
@@ -165,7 +166,7 @@ async def rip(event):
     sed = f"""CɪᴘʜᴇʀX Super Technology Bot Modules Are Listed Here !\n
 Programmed and Powered by [CɪᴘʜᴇʀX](https://t.me/Hackintush) \nCurrently Loaded Plugins: {len(CMD_LIST)}"""
     await event.edit(message=sed, buttons=buttons)
-    
+
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"whattalk")))
     async def rip(event):
         await event.get_chat()

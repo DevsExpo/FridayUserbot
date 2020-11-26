@@ -13,13 +13,14 @@
 
 import asyncio
 import io
-import re
 import os
+import re
 
 from telethon import Button, custom, events
 from telethon.tl.functions.users import GetFullUserRequest
 
 from userbot import bot
+from userbot.Configs import Config
 from userbot.plugins.sql_helper.blacklist_assistant import (
     add_nibba_in_db,
     is_he_added,
@@ -31,7 +32,7 @@ from userbot.plugins.sql_helper.idadder_sql import (
     already_added,
     get_all_users,
 )
-from userbot.Configs import Config
+
 
 @assistant_cmd("start", is_args=False)
 async def start(event):
@@ -41,7 +42,7 @@ async def start(event):
     replied_user = await event.client(GetFullUserRequest(event.sender_id))
     firstname = replied_user.user.first_name
     devlop = await bot.get_me()
-    hmmwow = devlop.first_name
+    devlop.first_name
     vent = event.chat_id
     mypic = Config.ASSISTANT_START_PIC
     starttext = f"Hello, {firstname} ! Nice To Meet You, Well I'm {bot_id}, A Powerfull Assistant Bot.\n\nYou Can Talk/Contact with My Master Using This Bot.\n\nProgrammed and Powered By My Master the ➤ CɪᴘʜᴇʀX\n\n Please Join and Support Our Channel ➤ [Future Technology](https://t.me/FutureTechnologyGuard)"
@@ -71,7 +72,11 @@ async def start(event):
             link_preview=False,
             buttons=[
                 [custom.Button.inline("Commands For Assistant", data="usercmd")],
-                [Button.url("Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true")],
+                [
+                    Button.url(
+                        "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
+                    )
+                ],
             ],
         )
         if os.path.exists(mypic):
@@ -169,21 +174,24 @@ async def sedlyfsir(event):
     userstobc = get_all_users()
     error_count = 0
     sent_count = 0
-    hmmok = ''
+    hmmok = ""
     if msgtobroadcast == None:
-        await event.reply('`Wait. What? Broadcast None?`')
+        await event.reply("`Wait. What? Broadcast None?`")
         return
-    elif msgtobroadcast == ' ':
-        await event.reply('`Wait. What? Broadcast None?`')
+    elif msgtobroadcast == " ":
+        await event.reply("`Wait. What? Broadcast None?`")
         return
     for starkcast in userstobc:
         try:
             sent_count += 1
-            await tgbot.send_message(int(starkcast.chat_id), '**Hey, You Have Received A New Broadcast Message**')
+            await tgbot.send_message(
+                int(starkcast.chat_id),
+                "**Hey, You Have Received A New Broadcast Message**",
+            )
             await tgbot.send_message(int(starkcast.chat_id), msgtobroadcast)
             await asyncio.sleep(0.2)
         except Exception as e:
-            hmmok += f'Errors : {e} \n'
+            hmmok += f"Errors : {e} \n"
             error_count += 1
     await tgbot.send_message(
         event.chat_id,
