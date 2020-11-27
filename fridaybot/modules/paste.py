@@ -8,6 +8,8 @@ from datetime import datetime
 import requests
 from uniborg.util import friday_on_cmd, sudo_cmd
 
+from fridaybot import CMD_HELP
+
 logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
 )
@@ -84,3 +86,12 @@ async def _(event):
         raw = f"https://nekobin.com/raw/{key}"
         reply_text = f"Pasted Text [neko]({url})\n Raw ? [View Raw]({raw})"
         await event.edit(reply_text)
+
+
+CMD_HELP.update(
+    {
+        "paste": "**Paste**\
+\n\n**Syntax : **`.paste <reply to your text file>`\
+\n**Usage :** this plugin automatically uploades and pastes replied text file to nekobin.com "
+    }
+)

@@ -8,6 +8,7 @@ from datetime import datetime
 from PIL import Image
 from telegraph import Telegraph, exceptions, upload_file
 
+from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
 
 telegraph = Telegraph()
@@ -104,3 +105,14 @@ async def _(event):
 def resize_image(image):
     im = Image.open(image)
     im.save(image, "PNG")
+
+
+CMD_HELP.update(
+    {
+        "telegraph": "**Telegraph**\
+\n\n**Syntax : **`.telegraph media <reply to image or video>`\
+\n**Usage :** Upload image and video directly to telegraph.\
+\n\n**Syntax : **`.telegraph text <reply to text>`\
+\n**Usage :** upload text directly to telegraph ."
+    }
+)

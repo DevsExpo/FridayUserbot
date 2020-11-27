@@ -12,6 +12,7 @@ import heroku3
 import requests
 from telegraph import Telegraph
 
+from fridaybot import CMD_HELP
 from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 telegraph = Telegraph()
@@ -226,3 +227,22 @@ async def _(givelogs):
         reply_to=givelogs.id,
         caption=suger,
     )
+
+
+CMD_HELP.update(
+    {
+        "heroku": "**Heroku**\
+\n\n**Syntax : **`.set var <var key> <var value>`\
+\n**Usage :** Add new variable or update existing value variable.\
+\n\n**Syntax : **`.get var <var>`\
+\n**Usage :** Get your existing variables, use it only on your private group!\
+\n\n**Syntax : **`.del var <var>`\
+\n**Usage :** Deletes existing variable.\
+\n\n**Syntax : **`.usage`\
+\n**Usage :** Gives you information about Dyno usage.\
+\n\n**Syntax : **`.info heroku`\
+\n**Usage :** Gives you information to use other commands of heroku.\
+\n\n**Syntax : **`.logs`\
+\n**Usage :** Gets logs from heroku."
+    }
+)

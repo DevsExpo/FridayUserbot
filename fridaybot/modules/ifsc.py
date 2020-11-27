@@ -5,6 +5,8 @@ import json
 import requests
 from uniborg.util import friday_on_cmd
 
+from fridaybot import CMD_HELP
+
 
 @friday.on(friday_on_cmd(pattern="ifsc(.*)"))
 async def _(event):
@@ -20,3 +22,12 @@ async def _(event):
         await event.edit(str(a))
     else:
         await event.edit("`{}`: {}".format(input_str, r.text))
+
+
+CMD_HELP.update(
+    {
+        "ifsc": "**IFSC**\
+\n\n**Syntax : **`.ifsc <IFSC code>`\
+\n**Usage :** gives you details about the bank."
+    }
+)

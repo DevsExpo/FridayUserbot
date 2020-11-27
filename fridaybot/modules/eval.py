@@ -10,6 +10,8 @@ import traceback
 
 from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
+from fridaybot import CMD_HELP
+
 
 @friday.on(friday_on_cmd("eval"))
 @friday.on(sudo_cmd("eval", allow_sudo=True))
@@ -69,3 +71,12 @@ async def _(event):
 async def aexec(code, event):
     exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
     return await locals()["__aexec"](event)
+
+
+CMD_HELP.update(
+    {
+        "eval": "**Eval**\
+\n\n**Syntax : **`.eval <python code>`\
+\n**Usage :** Run python code using this plugin."
+    }
+)

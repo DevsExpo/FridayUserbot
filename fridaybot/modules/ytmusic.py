@@ -4,6 +4,7 @@ import os
 import wget
 from youtubesearchpython import SearchVideos
 
+from fridaybot import CMD_HELP
 from fridaybot.Configs import Config
 from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
@@ -56,3 +57,12 @@ async def _(event):
     for files in (sedlyf, km):
         if files and os.path.exists(files):
             os.remove(files)
+
+
+CMD_HELP.update(
+    {
+        "ytmusic": "**Ytmusic**\
+\n\n**Syntax : **`.ytmusic <song name>`\
+\n**Usage :** Downloads songs from ytmusic"
+    }
+)

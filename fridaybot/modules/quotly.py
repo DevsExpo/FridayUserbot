@@ -3,7 +3,7 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from fridaybot import bot
+from fridaybot import CMD_HELP, bot
 from fridaybot.utils import friday_on_cmd
 
 
@@ -39,3 +39,12 @@ async def _(event):
         else:
             await event.delete()
             await bot.forward_messages(event.chat_id, response.message)
+
+
+CMD_HELP.update(
+    {
+        "quotly": "**Quotly**\
+\n\n**Syntax : **`.qbot media <reply to some message>`\
+\n**Usage :** you will get quoted message."
+    }
+)

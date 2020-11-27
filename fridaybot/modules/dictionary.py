@@ -4,6 +4,8 @@ Syntax: .meaning <word>"""
 import requests
 from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
+from fridaybot import CMD_HELP
+
 
 @friday.on(friday_on_cmd("meaning (.*)"))
 @friday.on(sudo_cmd("meaning (.*)", allow_sudo=True))
@@ -45,3 +47,12 @@ async def _(event):
     except:
         pass
     await stark.edit(caption_str)
+
+
+CMD_HELP.update(
+    {
+        "dictionary": "**Dictionary**\
+\n\n**Syntax : **`.meaning <word>`\
+\n**Usage :** Get meaning and pronunciation of a word."
+    }
+)

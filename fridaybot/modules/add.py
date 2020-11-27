@@ -10,6 +10,7 @@ Syntax: .invite <User(s)>"""
 
 from telethon import functions
 
+from fridaybot import CMD_HELP
 from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
@@ -48,4 +49,13 @@ async def _(event):
                     )
                 except Exception as e:
                     await event.reply(str(e))
-            await edit_or_reply(event, "Invited Successfully")
+                await edit_or_reply(event, "Invited Successfully")
+
+
+CMD_HELP.update(
+    {
+        "add": "**Add**\
+\n\n**Syntax : **`.add <user_id or user-name>`\
+\n**Usage :** Adds User To Group"
+    }
+)

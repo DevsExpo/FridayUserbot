@@ -2,6 +2,8 @@ import random
 
 from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
+from fridaybot import CMD_HELP
+
 RUNSREACTS = [
     "`Congratulations and BRAVO!`",
     "`You did it! So proud of you!`",
@@ -24,3 +26,12 @@ async def _(event):
     bro = random.randint(0, len(RUNSREACTS) - 1)
     reply_text = RUNSREACTS[bro]
     await edit_or_reply(event, reply_text)
+
+
+CMD_HELP.update(
+    {
+        "congratulations": "**Congratulations**\
+\n\n**Syntax : **`.congo`\
+\n**Usage :** This plugin is used to congratulate someone."
+    }
+)

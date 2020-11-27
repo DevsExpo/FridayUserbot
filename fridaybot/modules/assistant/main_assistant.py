@@ -13,12 +13,14 @@
 
 import asyncio
 import io
+import os
 import re
 
 from telethon import Button, custom, events
 from telethon.tl.functions.users import GetFullUserRequest
 
 from fridaybot import bot
+from fridaybot.Configs import Config
 from fridaybot.modules.sql_helper.blacklist_assistant import (
     add_nibba_in_db,
     is_he_added,
@@ -39,8 +41,11 @@ async def start(event):
     bot_username = starkbot.username
     replied_user = await event.client(GetFullUserRequest(event.sender_id))
     firstname = replied_user.user.first_name
+    devlop = await bot.get_me()
+    hmmwow = devlop.first_name
     vent = event.chat_id
-    starttext = f"Hello, {firstname} ! Nice To Meet You, Well I Am {bot_id}, An Powerfull Assistant Bot. \n\nMy [➤ Master](tg://user?id={bot.uid}) \nYou Can Talk/Contact My Master Using This Bot. \n\nIf You Want Your Own Assistant You Can Deploy From Button Below. \n\nPowered By [Friday Userbot](t.me/FridayOT)"
+    mypic = Config.ASSISTANT_START_PIC
+    starttext = f"Hello, {firstname} ! Nice To Meet You, Well I Am {bot_id}, An Powerfull Assistant Bot. \n\nMy Master [{hmmwow}](tg://user?id={bot.uid}) \nYou Can Talk/Contact My Master Using This Bot. \n\nIf You Want Your Own Assistant You Can Deploy From Button Below. \n\nPowered By [Friday Userbot](t.me/FridayOT)"
     if event.sender_id == bot.uid:
         await tgbot.send_message(
             vent,
@@ -60,15 +65,18 @@ async def start(event):
             pass
         elif not already_added(event.sender_id):
             add_usersid_in_db(event.sender_id)
-        await tgbot.send_message(
+        await tgbot.send_file(
             event.chat_id,
-            message=starttext,
+            file=mypic,
+            caption=starttext,
             link_preview=False,
             buttons=[
                 [custom.Button.inline("Deploy your Friday 🇮🇳", data="deploy")],
                 [Button.url("Help Me ❓", "t.me/Fridayot")],
             ],
         )
+        if os.path.exists(mypic):
+            os.remove(mypic)
 
 
 # Data's
@@ -142,11 +150,24 @@ async def sed(event):
     msg.id
     msg_s = event.raw_text
     user_id, reply_message_id = his_userid(msg.id)
-    if event.sender_id == bot.uid:
+    if event.sender_id == Config.OWNER_ID:
         if event.raw_text.startswith("/"):
-            pass
+            return
+        if event.text is not None and event.media:
+            bot_api_file_id = pack_bot_file_id(event.media)
+            await tgbot.send_file(
+                user_id,
+                file=bot_api_file_id,
+                caption=event.text,
+                reply_to=reply_message_id,
+            )
         else:
-            await tgbot.send_message(user_id, msg_s)
+            msg_s = event.raw_text
+            await tgbot.send_message(
+                user_id,
+                msg_s,
+                reply_to=reply_message_id,
+            )
 
 
 @assistant_cmd("broadcast", is_args=True)
@@ -156,16 +177,25 @@ async def sedlyfsir(event):
     userstobc = get_all_users()
     error_count = 0
     sent_count = 0
+    hmmok = ""
+    if msgtobroadcast == None:
+        await event.reply("`Wait. What? Broadcast None?`")
+        return
+    elif msgtobroadcast == " ":
+        await event.reply("`Wait. What? Broadcast None?`")
+        return
     for starkcast in userstobc:
         try:
             sent_count += 1
+            await tgbot.send_message(
+                int(starkcast.chat_id),
+                "**Hey, You Have Received A New Broadcast Message**",
+            )
             await tgbot.send_message(int(starkcast.chat_id), msgtobroadcast)
             await asyncio.sleep(0.2)
         except Exception as e:
-            try:
-                logger.info(f"Error : {error_count}\nError : {e} \nUsers : {chat_id}")
-            except:
-                pass
+            hmmok += f"Errors : {e} \n"
+            error_count += 1
     await tgbot.send_message(
         event.chat_id,
         f"Broadcast Done in {sent_count} Group/Users and I got {error_count} Error and Total Number Was {len(userstobc)}",

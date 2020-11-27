@@ -4,6 +4,8 @@ from datetime import datetime
 import requests
 from uniborg.util import friday_on_cmd
 
+from fridaybot import CMD_HELP
+
 
 @friday.on(friday_on_cmd(pattern="currency (.*)"))
 async def _(event):
@@ -63,3 +65,14 @@ async def list(ups):
                 key
             ),
         )
+
+
+CMD_HELP.update(
+    {
+        "currency": "**Currency**\
+\n\n**Syntax : **`.currency <amount> <from> <to>`\
+\n**Usage :** It converts given amount from one currency to another.\
+\n\n**Syntax : **`.currencies`\
+\n**Usage :** List all the currencies."
+    }
+)

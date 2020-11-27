@@ -32,7 +32,7 @@ from telethon.tl.types import (
 )
 
 from fridaybot import BOTLOG, BOTLOG_CHATID, CMD_HELP
-from fridaybot.utils import errors_handler, friday_on_cmd, register, sudo_cmd
+from fridaybot.utils import admin_cmd, errors_handler
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"
@@ -80,8 +80,8 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
 
-@friday.on(friday_on_cmd(pattern=r"setgpic"))
-@friday.on(sudo_cmd(pattern=r"setgpic", allow_sudo=True))
+# @register(outgoing=True, pattern="^.setgpic$")
+@borg.on(admin_cmd(pattern=r"setgpic"))
 @errors_handler
 async def set_group_photo(gpic):
     """ For .setgpic command, changes the picture of a group """
@@ -119,8 +119,8 @@ async def set_group_photo(gpic):
             await gpic.edit(PP_ERROR)
 
 
-@friday.on(friday_on_cmd(pattern=r"promote(?: |$)(.*)"))
-@friday.on(sudo_cmd(pattern=r"promote(?: |$)(.*)", allow_sudo=True))
+# @register(outgoing=True, pattern="^.promote(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"promote(?: |$)(.*)"))
 @errors_handler
 async def promote(promt):
     """ For .promote command, promotes the replied/tagged person """
@@ -174,7 +174,8 @@ async def promote(promt):
         )
 
 
-@friday.on(friday_on_cmd(pattern=r"demote(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.demote(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"demote(?: |$)(.*)"))
 @errors_handler
 async def demote(dmod):
     """ For .demote command, demotes the replied/tagged person """
@@ -227,7 +228,8 @@ async def demote(dmod):
         )
 
 
-@friday.on(friday_on_cmd(pattern=r"ban(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.ban(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"ban(?: |$)(.*)"))
 @errors_handler
 async def ban(bon):
     """ For .ban command, bans the replied/tagged person """
@@ -281,7 +283,8 @@ async def ban(bon):
         )
 
 
-@friday.on(friday_on_cmd(pattern=r"unban(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.unban(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"unban(?: |$)(.*)"))
 @errors_handler
 async def nothanos(unbon):
     """ For .unban command, unbans the replied/tagged person """
@@ -320,7 +323,7 @@ async def nothanos(unbon):
         await unbon.edit("`Uh oh my unban logic broke!`")
 
 
-@friday.on(friday_on_cmd(pattern=r"mute(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"mute(?: |$)(.*)"))
 @errors_handler
 async def spider(spdr):
     """
@@ -328,7 +331,7 @@ async def spider(spdr):
     """
     # Check if the function running under SQL mode
     try:
-        from fridaybot.modules.sql_helper.spam_mute_sql import mute
+        from userbot.modules.sql_helper.spam_mute_sql import mute
     except AttributeError:
         await spdr.edit(NO_SQL)
         return
@@ -381,7 +384,8 @@ async def spider(spdr):
             return await spdr.edit("`Uh oh my mute logic broke!`")
 
 
-@friday.on(friday_on_cmd(pattern=r"unmute(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.unmute(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"unmute(?: |$)(.*)"))
 @errors_handler
 async def unmoot(unmot):
     """ For .unmute command, unmute the replied/tagged person """
@@ -397,7 +401,7 @@ async def unmoot(unmot):
 
     # Check if the function running under SQL mode
     try:
-        from fridaybot.modules.sql_helper.spam_mute_sql import unmute
+        from userbot.modules.sql_helper.spam_mute_sql import unmute
     except AttributeError:
         await unmot.edit(NO_SQL)
         return
@@ -431,133 +435,7 @@ async def unmoot(unmot):
             )
 
 
-@register(incoming=True)
-@errors_handler
-async def muter(moot):
-    """ Used for deleting the messages of muted people """
-    try:
-        from fridaybot.modules.sql_helper.gmute_sql import is_gmuted
-        from fridaybot.modules.sql_helper.spam_mute_sql import is_muted
-    except AttributeError:
-        return
-    muted = is_muted(moot.chat_id)
-    gmuted = is_gmuted(moot.sender_id)
-    rights = ChatBannedRights(
-        until_date=None,
-        send_messages=True,
-        send_media=True,
-        send_stickers=True,
-        send_gifs=True,
-        send_games=True,
-        send_inline=True,
-        embed_links=True,
-    )
-    if muted:
-        for i in muted:
-            if str(i.sender) == str(moot.sender_id):
-                await moot.delete()
-                await moot.client(
-                    EditBannedRequest(moot.chat_id, moot.sender_id, rights)
-                )
-    for i in gmuted:
-        if i.sender == str(moot.sender_id):
-            await moot.delete()
-
-
-# @register(outgoing=True, pattern="^.ungmute(?: |$)(.*)")
-@friday.on(friday_on_cmd(pattern=r"ungmute(?: |$)(.*)"))
-@errors_handler
-async def ungmoot(un_gmute):
-    """ For .ungmute command, ungmutes the target in the fridaybot """
-    # Admin or creator check
-    chat = await un_gmute.get_chat()
-    admin = chat.admin_rights
-    creator = chat.creator
-
-    # If not admin and not creator, return
-    if not admin and not creator:
-        await un_gmute.edit(NO_ADMIN)
-        return
-
-    # Check if the function running under SQL mode
-    try:
-        from fridaybot.modules.sql_helper.gmute_sql import ungmute
-    except AttributeError:
-        await un_gmute.edit(NO_SQL)
-        return
-
-    user = await get_user_from_event(un_gmute)
-    user = user[0]
-    if user:
-        pass
-    else:
-        return
-
-    # If pass, inform and start ungmuting
-    await un_gmute.edit("```Ungmuting...```")
-
-    if ungmute(user.id) is False:
-        await un_gmute.edit("`Error! User probably not gmuted.`")
-    else:
-        # Inform about success
-        await un_gmute.edit("```Ungmuted Successfully```")
-
-        if BOTLOG:
-            await un_gmute.client.send_message(
-                BOTLOG_CHATID,
-                "#UNGMUTE\n"
-                f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                f"CHAT: {un_gmute.chat.title}(`{un_gmute.chat_id}`)",
-            )
-
-
-@friday.on(friday_on_cmd(pattern=r"gmute(?: |$)(.*)"))
-@errors_handler
-async def gspider(gspdr):
-    """ For .gmute command, globally mutes the replied/tagged person """
-    # Admin or creator check
-    chat = await gspdr.get_chat()
-    admin = chat.admin_rights
-    creator = chat.creator
-
-    # If not admin and not creator, return
-    if not admin and not creator:
-        await gspdr.edit(NO_ADMIN)
-        return
-
-    # Check if the function running under SQL mode
-    try:
-        from fridaybot.modules.sql_helper.gmute_sql import gmute
-    except AttributeError:
-        await gspdr.edit(NO_SQL)
-        return
-
-    user, reason = await get_user_from_event(gspdr)
-    if user:
-        pass
-    else:
-        return
-
-    # If pass, inform and start gmuting
-    await gspdr.edit("`Grabs a huge, sticky duct tape!`")
-    if gmute(user.id) is False:
-        await gspdr.edit("`Error! User probably already gmuted.\nRe-rolls the tape.`")
-    else:
-        if reason:
-            await gspdr.edit(f"`Globally taped!`Reason: {reason}")
-        else:
-            await gspdr.edit("`Globally taped!`")
-
-        if BOTLOG:
-            await gspdr.client.send_message(
-                BOTLOG_CHATID,
-                "#GMUTE\n"
-                f"USER: [{user.first_name}](tg://user?id={user.id})\n"
-                f"CHAT: {gspdr.chat.title}(`{gspdr.chat_id}`)",
-            )
-
-
-@friday.on(friday_on_cmd(pattern=r"delusers(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"delusers(?: |$)(.*)"))
 @errors_handler
 async def rm_deletedacc(show):
     """ For .delusers command, list all the ghost/deleted accounts in a chat. """
@@ -630,7 +508,8 @@ async def rm_deletedacc(show):
         )
 
 
-@friday.on(friday_on_cmd(pattern=r"adminlist"))
+# @register(outgoing=True, pattern="^.adminlist$")
+@borg.on(admin_cmd(pattern=r"adminlist"))
 @errors_handler
 async def get_admin(show):
     """ For .admins command, list all of the admins of the chat. """
@@ -652,7 +531,8 @@ async def get_admin(show):
     await show.edit(mentions, parse_mode="html")
 
 
-@friday.on(friday_on_cmd(pattern=r"pin(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.pin(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"pin(?: |$)(.*)"))
 @errors_handler
 async def pin(msg):
     """ For .pin command, pins the replied/tagged message on the top the chat. """
@@ -699,7 +579,8 @@ async def pin(msg):
         )
 
 
-@friday.on(friday_on_cmd(pattern=r"kick(?: |$)(.*)"))
+# @register(outgoing=True, pattern="^.kick(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"kick(?: |$)(.*)"))
 @errors_handler
 async def kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
@@ -743,7 +624,8 @@ async def kick(usr):
         )
 
 
-@friday.on(friday_on_cmd(pattern=r"users ?(.*)"))
+# @register(outgoing=True, pattern="^.users ?(.*)")
+@borg.on(admin_cmd(pattern=r"users ?(.*)"))
 @errors_handler
 async def get_users(show):
     """ For .users command, list all of the users in a chat. """

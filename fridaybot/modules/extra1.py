@@ -13,10 +13,11 @@ Available Commands:
 
 import asyncio
 
+from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
 
 
-@friday.on(friday_on_cmd(pattern=r"(.*)"))
+@friday.on(friday_on_cmd(pattern=r"chod"))
 async def _(event):
 
     if event.fwd_from:
@@ -54,7 +55,7 @@ async def _(event):
             await event.edit(animation_chars[i % 10])
 
 
-@friday.on(friday_on_cmd(pattern=r"(.*)"))
+@friday.on(friday_on_cmd(pattern=r"sqh"))
 async def _(event):
 
     if event.fwd_from:
@@ -92,7 +93,7 @@ async def _(event):
             await event.edit(animation_chars[i % 10])
 
 
-@friday.on(friday_on_cmd(pattern=r"(.*)"))
+@friday.on(friday_on_cmd(pattern=r"vquickheal"))
 async def _(event):
 
     if event.fwd_from:
@@ -128,3 +129,16 @@ async def _(event):
             await asyncio.sleep(animation_interval)
 
             await event.edit(animation_chars[i % 10])
+
+
+CMD_HELP.update(
+    {
+        "extra1": "**Extra1**\
+\n\n**Syntax : **`.chod`\
+\n**Usage :** Abuse someone using this.\
+\n\n**Syntax : **`.sqh`\
+\n**Usage :** Prank antivirus plugin with no virus result.\
+\n\n**Syntax : **`.vquickheal`\
+\n**Usage :** Prank antivirus plugin with virus result."
+    }
+)

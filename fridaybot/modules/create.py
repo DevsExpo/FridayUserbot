@@ -93,15 +93,12 @@ async def telegraphs(grop):
 
 CMD_HELP.update(
     {
-        "create": "\
-Create\
-\nUsage: Create Channel, Group & Group With Bot.\
-\n\n.create g\
-\nUsage: Create a Private Group.\
-\n\n.create b\
-\nUsage: Create a Group with Bot.\
-\n\n.create c\
-\nUsage: Create a Channel.\
-"
+        "create": "**Create**\
+\n\n**Syntax : **`.create g <group name>`\
+\n**Usage :** Creates a private group with given name.\
+\n\n**Syntax : **`.create b <group name>`\
+\n**Usage :** Creates a private group with bot in it and given name.\
+\n\n**Syntax : **`.create c <channel name>`\
+\n**Usage :** Creates a channel with given name."
     }
 )

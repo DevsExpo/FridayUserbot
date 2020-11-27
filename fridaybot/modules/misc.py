@@ -10,6 +10,7 @@
 from random import randint
 from time import sleep
 
+from fridaybot import CMD_HELP
 from fridaybot.events import register
 
 
@@ -45,3 +46,14 @@ async def sleepybot(time):
                     "You put the bot to sleep for " + str(counter) + " seconds",
                 )
             sleep(counter)
+
+
+CMD_HELP.update(
+    {
+        "misc": "**Misc**\
+\n\n**Syntax : **`.random <mention text or numbers>`\
+\n**Usage :** This plugin picks random text or number from given texts or numbers.\
+\n\n**Syntax : **`.sleep <time in seconds>`\
+\n**Usage :** Bot sleeps for given time."
+    }
+)

@@ -2,6 +2,7 @@
 Syntax: .get_bot"""
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantsBots
 
+from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
 
 
@@ -35,3 +36,12 @@ async def _(event):
     except Exception as e:
         mentions += " " + str(e) + "\n"
     await event.edit(mentions)
+
+
+CMD_HELP.update(
+    {
+        "get_bot": "**Get Bot**\
+\n\n**Syntax : **`.get_bot`\
+\n**Usage :** Lists all the bots in a chat."
+    }
+)

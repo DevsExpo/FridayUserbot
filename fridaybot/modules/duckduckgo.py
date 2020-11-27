@@ -2,6 +2,8 @@
 
 from uniborg.util import friday_on_cmd
 
+from fridaybot import CMD_HELP
+
 
 @friday.on(friday_on_cmd("ducduckgo (.*)"))
 async def _(event):
@@ -16,3 +18,12 @@ async def _(event):
         )
     else:
         await event.edit("something is wrong. please try again later.")
+
+
+CMD_HELP.update(
+    {
+        "duckduckgo": "**Duckduckgo**\
+\n\n**Syntax : **`.ducduckgo <query>`\
+\n**Usage :** get duckduckgo search query link"
+    }
+)

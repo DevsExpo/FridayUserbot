@@ -1,7 +1,11 @@
+import asyncio
+
 from telethon.events import ChatAction
 from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import MessageEntityMentionName
 
+from fridaybot import CMD_HELP
+from fridaybot.modules.sql_helper.mute_sql import is_muted, mute, unmute
 from fridaybot.utils import friday_on_cmd
 
 
@@ -204,3 +208,87 @@ async def handler(rkG):
                         except:
                             rkG.reply("`No Permission To Ban`")
                             return
+
+
+@friday.on(friday_on_cmd(pattern=r"gmute ?(\d+)?"))
+async def startgmute(event):
+    private = False
+    if event.fwd_from:
+        return
+    elif event.is_private:
+        await event.edit("Unexpected issues or ugly errors may occur!")
+        await asyncio.sleep(3)
+        private = True
+    reply = await event.get_reply_message()
+    if event.pattern_match.group(1) is not None:
+        userid = event.pattern_match.group(1)
+    elif reply is not None:
+        userid = reply.sender_id
+    elif private is True:
+        userid = event.chat_id
+    else:
+        return await event.edit(
+            "Please reply to a user or add their into the command to gmute them."
+        )
+    event.chat_id
+    await event.get_chat()
+    if is_muted(userid, "gmute"):
+        return await event.edit("`He has Tap Already On His Mouth.`")
+    try:
+        mute(userid, "gmute")
+    except Exception as e:
+        await event.edit("Error occured!\nError is " + str(e))
+    else:
+        await event.edit("Here A Tape, Now Shutup \nGmuteD")
+
+
+@friday.on(friday_on_cmd(pattern=r"ungmute ?(\d+)?"))
+async def endgmute(event):
+    private = False
+    if event.fwd_from:
+        return
+    elif event.is_private:
+        await event.edit("Unexpected issues or ugly errors may occur!")
+        await asyncio.sleep(3)
+        private = True
+    reply = await event.get_reply_message()
+    if event.pattern_match.group(1) is not None:
+        userid = event.pattern_match.group(1)
+    elif reply is not None:
+        userid = reply.sender_id
+    elif private is True:
+        userid = event.chat_id
+    else:
+        return await event.edit(
+            "Please reply to a user or add their into the command to ungmute them."
+        )
+    event.chat_id
+    if not is_muted(userid, "gmute"):
+        return await event.edit("This user is not gmuted")
+    try:
+        unmute(userid, "gmute")
+    except Exception as e:
+        await event.edit("Error occured!\nError is " + str(e))
+    else:
+        await event.edit("Successfully ungmuted that person")
+
+
+@command(incoming=True)
+async def watcher(event):
+    if is_muted(event.sender_id, "gmute"):
+        await event.delete()
+
+
+CMD_HELP.update(
+    {
+        "gtools": "**Global Tools**\
+\n\n**Syntax : **`.gmute <replying to user message>`\
+\n**Usage :** Gmute User And Delete His Msg.\
+\n\n**Syntax : **`.ungmute <replying to user message>`\
+\n**Usage :** UnGmute User And Stops Deleting His Msgs.\
+\n\n**Syntax : **`.gban <replying to user message>`\
+\n**Usage :**  Gban User And Blow Him From Your Groups\
+\n\n**Syntax : **`.ungban <replying to user message>`\
+\n**Usage :** Ugban User."
+    }
+)

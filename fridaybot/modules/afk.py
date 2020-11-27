@@ -7,6 +7,8 @@ from datetime import datetime
 from telethon import events
 from telethon.tl import functions, types
 
+from fridaybot import CMD_HELP
+
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602
 global last_afk_message  # pylint:disable=E0602
@@ -165,3 +167,11 @@ async def on_afk(event):
         if event.chat_id in last_afk_message:  # pylint:disable=E0602
             await last_afk_message[event.chat_id].delete()  # pylint:disable=E0602
         last_afk_message[event.chat_id] = msg  # pylint:disable=E0602
+
+
+CMD_HELP.update(
+    {
+        "afk": ".afk <Reason> \
+\nUsage: Gets You Afk"
+    }
+)

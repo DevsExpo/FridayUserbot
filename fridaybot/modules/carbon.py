@@ -14,7 +14,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 
-from fridaybot import CHROME_DRIVER, GOOGLE_CHROME_BIN
+from fridaybot import CHROME_DRIVER, CMD_HELP, GOOGLE_CHROME_BIN
 from fridaybot.utils import register
 
 CARBONLANG = "auto"
@@ -104,3 +104,12 @@ async def carbon_api(e):
         driver.quit()
         # Removing carbon.png after uploading
         await e.delete()  # Deleting msg
+
+
+CMD_HELP.update(
+    {
+        "carbon": "**Carbon**\
+\n\n**Syntax : **`.carbon <text>`\
+\n**Usage :** this plugin converts text into carbon."
+    }
+)

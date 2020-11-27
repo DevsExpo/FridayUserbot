@@ -12,6 +12,8 @@ import bs4
 import requests
 from uniborg.util import friday_on_cmd
 
+from fridaybot import CMD_HELP
+
 langi = "en"
 
 # kanged from Blank-x ;---;
@@ -110,3 +112,12 @@ async def imdb(e):
         )
     except IndexError:
         await e.edit("Plox enter **Valid movie name** kthx")
+
+
+CMD_HELP.update(
+    {
+        "imdb": "**Imdb**\
+\n\n**Syntax : **`.imdb <type movie/show name>`\
+\n**Usage :** it provides details and ratings about given movie/show"
+    }
+)

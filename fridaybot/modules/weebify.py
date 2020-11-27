@@ -6,6 +6,8 @@ Modified by :- @kirito6969
 
 from uniborg.util import friday_on_cmd
 
+from fridaybot import CMD_HELP
+
 normiefont = [
     "a",
     "b",
@@ -80,3 +82,12 @@ async def weebify(event):
             weebycharacter = weebyfont[normiefont.index(normiecharacter)]
             string = string.replace(normiecharacter, weebycharacter)
     await event.edit(string)
+
+
+CMD_HELP.update(
+    {
+        "weebify": "**Weebify**\
+\n\n**Syntax : **`.weeb <text>`\
+\n**Usage :** weebify your text"
+    }
+)

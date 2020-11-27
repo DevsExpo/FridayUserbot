@@ -13,10 +13,15 @@ import re
 import time
 from collections import deque
 
+""" Plugin By @chsaiujwal on telegram """
+from asyncio import wait
+
 import requests
 from cowpy import cow
+from telethon import events
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
+from uniborg.util import friday_on_cmd
 
 from fridaybot import CMD_HELP
 from fridaybot.utils import register
@@ -1352,6 +1357,111 @@ async def download_video(v_url):
         os.remove(f"{safe_filename(video.title)}.mp4")
         os.remove("thumbnail.jpg")
         await v_url.delete()
+
+
+@friday.on(friday_on_cmd(pattern=r"hola"))
+async def hi(event):
+    if event.fwd_from:
+        return
+    await event.edit("╔┓┏╦━╦┓╔┓╔━━╗\n║┗┛║┗╣┃║┃║X X  ║\n║┏┓║┏╣┗╣┗╣╰╯║\n╚┛┗╩━╩━╩━╩━━╝")
+
+
+@friday.on(friday_on_cmd(pattern=r"plus"))
+async def hi(event):
+    if event.fwd_from:
+        return
+    await event.edit(
+        "╭━━━━━━━━━━━━━╮\n┃╱╱╱╱╱╱╱╱┏┓╱╱╱┃\n┃╱╱╱┏┓╱╱┏╯┃╱╱╱┃\n┃╱╱┏┛┗┓╱┗┓┃╱╱╱┃\n┃╱╱┗┓┏┛╱╱┃┃╱╱╱┃\n┃╱╱╱┗┛╱╱╱┃┃╱╱╱┃\n┃╱╱╱╱╱╱╱╱┗┛╱╱╱┃\n╰━━━━━━━━━━━━━╯"
+    )
+
+
+@friday.on(friday_on_cmd(pattern=r"yes"))
+async def hi(event):
+    if event.fwd_from:
+        return
+    await event.edit(
+        "┏┓┏┓╭━━┓╭━━╮▕▔▔▏\n┃┃┃┃┃┏━┛┃╭━┛▕┈┈▏\n┃╰╯┃┃┗━┓┃╰━╮▕┈┈▏\n╰━╮┃┃┏━┛╰━╮┃┈╲╱┈\n┏━╯┃┃┗━┓┏━╯┃┈╭╮┈\n╰━━╯╰━━┛╰━━╯┈╰╯┈"
+    )
+
+
+@friday.on(friday_on_cmd(pattern=r"lol"))
+async def hi(event):
+    if event.fwd_from:
+        return
+    await event.edit(
+        "▂▂╱▔▔▔▔▔▔▔▔▔▔▔▔╲\n╲▂┈╭╮┈┈╭━━╮╭╮┈┈▕\n┈┈▏┃┃┈┈┃╭╮┃┃┃┈┈▕\n┈┈▏┃╰━╮┃╰╯┃┃╰━╮▕\n┈┈▏╰━━╯╰━━╯╰━━╯▕\n┈┈╲▂▂▂▂▂▂▂▂▂▂▂▂╱"
+    )
+
+
+@friday.on(friday_on_cmd(pattern=r"android"))
+async def hi(event):
+    if event.fwd_from:
+        return
+    await event.edit(
+        "┈┈┈╲┈┈┈┈╱┈┈┈┈┈┈┈\n┈┈┈╱▔▔▔▔╲┈┈┈┈┈┈┈\n┈┈┃┈▇┈┈▇┈┃┈┈┈┈┈┈\n╭╮┣━━━━━━┫╭╮┈┈┈┈\n┃┃┃┈┈┈┈┈┈┃┃┃┈┈┈┈\n╰╯┃┈┈┈┈┈┈┃╰╯┈┈┈┈\n┈┈╰┓┏━━┓┏╯┈┈┈┈┈┈\n┈┈┈╰╯┈┈╰╯┈┈┈┈┈┈┈"
+    )
+
+
+@friday.on(friday_on_cmd(pattern=r"hmm"))
+async def hi(event):
+    if event.fwd_from:
+        return
+    await event.edit(
+        "┈┈╱▔▔▔▔▔╲┈┈┈HM┈HM\n┈╱┈┈╱▔╲╲╲▏┈┈┈HMMM\n╱┈┈╱━╱▔▔▔▔▔╲━╮┈┈\n▏┈▕┃▕╱▔╲╱▔╲▕╮┃┈┈\n▏┈▕╰━▏▊▕▕▋▕▕━╯┈┈\n╲┈┈╲╱▔╭╮▔▔┳╲╲┈┈┈\n┈╲┈┈▏╭━━━━╯▕▕┈┈┈\n┈┈╲┈╲▂▂▂▂▂▂╱╱┈┈┈\n┈┈┈┈▏┊┈┈┈┈┊┈┈┈╲┈\n┈┈┈▏┊┈┈┈┈┊▕╲┈┈╲\n┈╱▔╲▏┊┈┈┈┈┊▕╱▔╲▕\n┈▏┈┈┈╰┈┈┈┈╯┈┈┈▕▕\n┈╲┈┈┈╲┈┈┈┈╱┈┈┈╱┈╲\n┈┈╲┈┈▕▔▔▔▔▏┈┈╱╲╲╲▏\n┈╱▔┈┈▕┈┈┈┈▏┈┈▔╲▔▔\n┈╲▂▂▂╱┈┈┈┈╲▂▂▂╱┈"
+    )
+
+
+@friday.on(friday_on_cmd(pattern=r"happybirthday"))
+async def hi(event):
+    if event.fwd_from:
+        return
+    await event.edit(
+        "¸.•°*”˜˜”*°•.¸☆ ★ ☆¸.•°*”˜˜”*°\n╔╗╔╦══╦═╦═╦╗╔╗ ★ ★ \n║╚╝║══║═║═║╚╝║ ☆¸.•° \n║╔╗║╔╗║╔╣╔╩╗╔╝ ★\n╚╝╚╩╝╚╩╝╚╝═╚╝★Birthday!★"
+    )
+
+
+@friday.on(friday_on_cmd(pattern=r"WTF"))
+async def hi(event):
+    if event.fwd_from:
+        return
+    await event.edit(
+        "┏┓┏┓┏┓┏━━━┓┏━━━┓\n┃┃┃┃┃┃┗┓╱┏┛┃╱┏━┛\n┃┗┛┗┛┃┈┃╱┃┈┃╱┗┓\n┃╱╱╱╱┃┈┃╱┃┈┃╱┏┛\n┗━━━━┛◯┗━┛◯┗━┛◯"
+    )
+
+
+@friday.on(friday_on_cmd(pattern=r"lmao"))
+async def hi(event):
+    if event.fwd_from:
+        return
+    await event.edit(
+        "┏┓┈╭━━╮╭━━╮╭━━╮\n┃┃┈┃┃┃┃┃╭╮┃┃╭╮┃\n┃┗┓┃┃┃┃┃┏┓┃┃╰╯┃\n┗━┛┗┻┻┛┗┛┗┛╰━━╯"
+    )
+
+
+@friday.on(events.NewMessage(pattern=r"\.spam", outgoing=True))
+async def spammer(e):
+
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        message = e.text
+        counter = int(message[6:8])
+        spam_message = str(e.text[8:])
+
+        await wait([e.respond(spam_message) for i in range(counter)])
+
+        await e.delete()
+        if LOGGER:
+            await e.client.send_message(
+                LOGGER_GROUP, "#SPAM \n\n" "Spam was executed successfully"
+            )
+
+
+@friday.on(friday_on_cmd(pattern=r"no"))
+async def hi(event):
+    if event.fwd_from:
+        return
+    await event.edit(
+        "███╗░░██╗░█████╗░ \n████╗░██║██╔══██╗ \n██╔██╗██║██║░░██║ \n██║╚████║██║░░██║ \n██║░╚███║╚█████╔╝ \n╚═╝░░╚══╝░╚════╝░ "
+    )
 
 
 @register(pattern=".type(?: |$)(.*)")

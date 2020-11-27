@@ -1,6 +1,7 @@
 """Enable Seen Counter in any message,Credits To Xtra-Tg Owner 
 to know how many users have seen your message
 Syntax: .fwd as reply to any message"""
+from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
 
 
@@ -24,3 +25,12 @@ async def _(event):
         await borg.forward_messages(event.chat_id, fwd_message)
         await fwd_message.delete()
         await event.delete()
+
+
+CMD_HELP.update(
+    {
+        "fwd": "**Fwd**\
+\n\n**Syntax : **`.frwd <reply to a message>`\
+\n**Usage :** Enable Seen Counter in any message."
+    }
+)

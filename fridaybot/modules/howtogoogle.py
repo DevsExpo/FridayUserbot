@@ -7,6 +7,7 @@ By @loxxi
 
 import requests
 
+from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
 
 
@@ -25,3 +26,12 @@ async def _(event):
         )
     else:
         await event.edit("something is wrong. please try again later.")
+
+
+CMD_HELP.update(
+    {
+        "howtogoogle": "**How To Google**\
+\n\n**Syntax : **`.ggl <search query>`\
+\n**Usage :** Animates how to Google with search query."
+    }
+)

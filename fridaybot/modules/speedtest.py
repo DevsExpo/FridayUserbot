@@ -5,6 +5,7 @@ from datetime import datetime
 
 import speedtest
 
+from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
 
 
@@ -95,3 +96,12 @@ def convert_from_bytes(size):
         size /= power
         n += 1
     return f"{round(size, 2)} {units[n]}"
+
+
+CMD_HELP.update(
+    {
+        "speedtest": "**Speedtest**\
+\n\n**Syntax : **`.speedtest`\
+\n**Usage :** check your userbot's internet speed"
+    }
+)

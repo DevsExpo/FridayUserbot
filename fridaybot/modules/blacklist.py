@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 """Filters
 Available Commands:
-.addblacklist
+.textblacklist
 .listblacklist
 .rmblacklist"""
 import re
@@ -11,6 +11,7 @@ import re
 from telethon import events
 
 import fridaybot.modules.sql_helper.blacklist_sql as sql
+from fridaybot import CMD_HELP
 from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
@@ -57,7 +58,7 @@ async def on_view_blacklist(event):
         for trigger in all_blacklisted:
             OUT_STR += f"👉 {trigger} \n"
     else:
-        OUT_STR = "No BlackLists. Start Saving using `.addblacklist`"
+        OUT_STR = "No BlackLists. Start Saving using `.textblacklist`"
     if len(OUT_STR) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUT_STR)) as out_file:
             out_file.name = "blacklist.text"
@@ -89,3 +90,16 @@ async def on_delete_blacklist(event):
     await sensibleisleecher.edit(
         f"Removed {successful} / {len(to_unblacklist)} from the blacklist"
     )
+
+
+CMD_HELP.update(
+    {
+        "blacklist": "**Blacklist**\
+\n\n**Syntax : **`.textblacklist <text to blacklist>`\
+\n**Usage :** Mentioned text is blacklisted in current chat.\
+\n\n**Syntax : **`.listblacklist`\
+\n**Usage :** Blacklisted text is shown.\
+\n\n**Syntax : **`.rmblacklist <text to remove from blacklist>`\
+\n**Usage :** Mentioned text is removed from blacklist."
+    }
+)

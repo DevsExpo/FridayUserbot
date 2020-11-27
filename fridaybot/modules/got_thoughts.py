@@ -11,6 +11,8 @@ import random
 
 from telethon import events
 
+from fridaybot import CMD_HELP
+
 
 @friday.on(events.NewMessage(pattern=r"\.gott", outgoing=True))
 async def _(event):
@@ -214,3 +216,12 @@ async def _(event):
     if x == 40:
 
         await event.edit('`"I wish I was the monster you think I am!"`')
+
+
+CMD_HELP.update(
+    {
+        "got_thoughts": "**Got Thoughts**\
+\n\n**Syntax : **`.gott`\
+\n**Usage :** Provides a random Game of thrones thought."
+    }
+)

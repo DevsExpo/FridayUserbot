@@ -1,146 +1,104 @@
-# For The-TG-Bot-3.0
-# By Priyam Kalra
-# Parts of the code below is taken from other sources, the links to the sources is commented above the taken code
+#    Copyright (C) Midhun KM 2020
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import os
 import textwrap
 
 from PIL import Image, ImageDraw, ImageFont
+from telethon.tl.types import MessageMediaPhoto
 
 from fridaybot.utils import friday_on_cmd
-from var import Var
 
-# how a lazy guy ports.
-client = borg
+sedpath = Config.TMP_DOWNLOAD_DIRECTORY
 
 
-@friday.on(friday_on_cmd("memify ?(.*)"))
-async def handler(event):
-    if event.fwd_from:
+@friday.on(friday_on_cmd(pattern="memify (.*)"))
+async def starkmeme(event):
+    hmm = event.pattern_match.group(1)
+    if hmm == None:
+        await event.edit("Give Some Text")
         return
     if not event.reply_to_msg_id:
-        await event.edit("You might want to try `.help memify`")
+        await event.edit("`PLease, Reply To A MsG`")
         return
-    reply_message = await event.get_reply_message()
-    if not reply_message.media:
-        await event.edit("```Reply to a image/sticker.```")
-        return
-    file = await client.download_media(reply_message, Var.TEMP_DOWNLOAD_DIRECTORY)
-    await event.edit("```Memifying this image! (」ﾟﾛﾟ)｣ ```")
-    text = str(event.pattern_match.group(1)).strip()
-    if len(text) < 1:
-        return await event.edit("You might want to try `.help memify`")
-    meme = await drawText(file, text)
-    await client.send_file(event.chat_id, file=meme, force_document=False)
-    os.remove(meme)
+    mryeast = await event.edit("Making Memes Until Praise MrBeast.")
+    response = await event.get_reply_message()
+    name = response.media
+    if response and response.media:
+        if isinstance(response.media, MessageMediaPhoto):
+            seds = await borg.download_media(name, sedpath)
+        elif "image" in response.media.document.mime_type.split("/"):
+            seds = await borg.download_media(name, sedpath)
+        else:
+            await event.reply("This is Not Supported Yet.")
+            return
+        if ";" in hmm:
+            stark = hmm.split(";", 1)
+            first_txt = stark[0]
+            second_txt = stark[1]
+            top_text = first_txt
+            bottom_text = second_txt
+            generate_meme(seds, top_text=top_text, bottom_text=bottom_text)
+            imgpath = sedpath + "/" + "memeimg.png"
+            await borg.send_file(event.chat_id, imgpath)
+            if os.path.exists(imgpath):
+                os.remove(imgpath)
+            await mryeast.delete()
+        else:
+            top_text = hmm
+            bottom_text = ""
+            generate_meme(seds, top_text=top_text, bottom_text=bottom_text)
+            imgpath = sedpath + "/" + "memeimg.png"
+            await borg.send_file(event.chat_id, imgpath)
+            if os.path.exists(imgpath):
+                os.remove(imgpath)
+            await mryeast.delete()
 
 
-# Taken from https://github.com/UsergeTeam/Userge-Plugins/blob/master/modules/memify.py#L64
-# Maybe edited to suit the needs of this module
+def generate_meme(
+    image_path, top_text, bottom_text="", font_path="Fonts/impact.ttf", font_size=11
+):
+    im = Image.open(image_path)
+    draw = ImageDraw.Draw(im)
+    image_width, image_height = im.size
+    font = ImageFont.truetype(font=font_path, size=int(image_height * font_size) // 100)
+    top_text = top_text.upper()
+    bottom_text = bottom_text.upper()
+    char_width, char_height = font.getsize("A")
+    chars_per_line = image_width // char_width
+    top_lines = textwrap.wrap(top_text, width=chars_per_line)
+    bottom_lines = textwrap.wrap(bottom_text, width=chars_per_line)
+    y = 9
+    for line in top_lines:
+        line_width, line_height = font.getsize(line)
+        x = (image_width - line_width) / 2
+        draw.text((x - 2, y - 2), line, font=font, fill="black")
+        draw.text((x + 2, y - 2), line, font=font, fill="black")
+        draw.text((x + 2, y + 2), line, font=font, fill="black")
+        draw.text((x - 2, y + 2), line, font=font, fill="black")
+        draw.text((x, y), line, fill="white", font=font)
+        y += line_height
 
-
-async def drawText(image_path, text):
-    img = Image.open(image_path)
-    os.remove(image_path)
-    i_width, i_height = img.size
-    if os.name == "nt":
-        fnt = "arial.ttf"
-    else:
-        fnt = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-    m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
-    if "," in text:
-        upper_text, lower_text = text.split(",")
-    else:
-        upper_text = text
-        lower_text = ""
-    draw = ImageDraw.Draw(img)
-    current_h, pad = 10, 5
-    if upper_text:
-        for u_text in textwrap.wrap(upper_text, width=15):
-            u_width, u_height = draw.textsize(u_text, font=m_font)
-            draw.text(
-                xy=(((i_width - u_width) / 2) - 2, int((current_h / 640) * i_width)),
-                text=u_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-            draw.text(
-                xy=(((i_width - u_width) / 2) + 2, int((current_h / 640) * i_width)),
-                text=u_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-            draw.text(
-                xy=((i_width - u_width) / 2, int(((current_h / 640) * i_width)) - 2),
-                text=u_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-            draw.text(
-                xy=(((i_width - u_width) / 2), int(((current_h / 640) * i_width)) + 2),
-                text=u_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-
-            draw.text(
-                xy=((i_width - u_width) / 2, int((current_h / 640) * i_width)),
-                text=u_text,
-                font=m_font,
-                fill=(255, 255, 255),
-            )
-            current_h += u_height + pad
-    if lower_text:
-        for l_text in textwrap.wrap(lower_text, width=15):
-            u_width, u_height = draw.textsize(l_text, font=m_font)
-            draw.text(
-                xy=(
-                    ((i_width - u_width) / 2) - 2,
-                    i_height - u_height - int((20 / 640) * i_width),
-                ),
-                text=l_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-            draw.text(
-                xy=(
-                    ((i_width - u_width) / 2) + 2,
-                    i_height - u_height - int((20 / 640) * i_width),
-                ),
-                text=l_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-            draw.text(
-                xy=(
-                    (i_width - u_width) / 2,
-                    (i_height - u_height - int((20 / 640) * i_width)) - 2,
-                ),
-                text=l_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-            draw.text(
-                xy=(
-                    (i_width - u_width) / 2,
-                    (i_height - u_height - int((20 / 640) * i_width)) + 2,
-                ),
-                text=l_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-
-            draw.text(
-                xy=(
-                    (i_width - u_width) / 2,
-                    i_height - u_height - int((20 / 640) * i_width),
-                ),
-                text=l_text,
-                font=m_font,
-                fill=(255, 255, 255),
-            )
-            current_h += u_height + pad
-    image_name = "memify.webp"
-    webp_file = os.path.join(Var.TEMP_DOWNLOAD_DIRECTORY, image_name)
-    img.save(webp_file, "webp")
-    return webp_file
+    y = image_height - char_height * len(bottom_lines) - 14
+    for line in bottom_lines:
+        line_width, line_height = font.getsize(line)
+        x = (image_width - line_width) / 2
+        draw.text((x - 2, y - 2), line, font=font, fill="black")
+        draw.text((x + 2, y - 2), line, font=font, fill="black")
+        draw.text((x + 2, y + 2), line, font=font, fill="black")
+        draw.text((x - 2, y + 2), line, font=font, fill="black")
+        draw.text((x, y), line, fill="white", font=font)
+        y += line_height
+    file_name = "memeimg.png"
+    ok = sedpath + "/" + file_name
+    im.save(ok, "PNG")

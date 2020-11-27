@@ -1,3 +1,4 @@
+from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
 from var import Var
 
@@ -52,3 +53,18 @@ async def mod(event):
     tap = await bot.inline_query(botusername, modr)
     await tap[0].click(event.chat_id)
     await event.delete()
+
+
+CMD_HELP.update(
+    {
+        "inline_fun": "**Inline Fun**\
+\n\n**Syntax : **`.stat`\
+\n**Usage :** Shows inline stats of your assistant bot.\
+\n\n**Syntax : **`.xogame`\
+\n**Usage :** starts a multiplayer xo game.\
+\n\n**Syntax : **`.wspr <text> <username/ID>`\
+\n**Usage :** sends a inline whisper message for given user.\
+\n\n**Syntax : **`.mod <app name>`\
+\n**Usage :** Provides mod APK for given app."
+    }
+)

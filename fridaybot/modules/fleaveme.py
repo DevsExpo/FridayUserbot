@@ -9,8 +9,10 @@ import asyncio
 
 from telethon import events
 
+from fridaybot import CMD_HELP
 
-@friday.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+
+@friday.on(events.NewMessage(pattern=r"\.fleave", outgoing=True))
 async def _(event):
 
     if event.fwd_from:
@@ -50,3 +52,12 @@ async def _(event):
             await asyncio.sleep(animation_interval)
 
             await event.edit(animation_chars[i % 17])
+
+
+CMD_HELP.update(
+    {
+        "fleaveme": "**Fleaveme**\
+\n\n**Syntax : **`.fleave`\
+\n**Usage :** Prank plugin."
+    }
+)

@@ -12,6 +12,7 @@
   "repository": "https://github.com/starkgang/FridayUserbot",
   "website": "starkgang.ml",
   "success_url": "t.me/FridayOT",
+  "stack": "container",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable heroku.",
@@ -103,26 +104,6 @@
       "options": {
         "version": "12"
       }
-    }
-  ],
-  "buildpacks": [
-    {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-    },
-    {
-      "url": "heroku/python"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-google-chrome"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-chromedriver"
-    },
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-apt"
-    },
-    {
-      "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
     }
   ]
 }

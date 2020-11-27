@@ -2,6 +2,8 @@ from telethon.tl.functions.photos import DeletePhotosRequest, GetUserPhotosReque
 from telethon.tl.types import InputPhoto
 from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
+from fridaybot import CMD_HELP
+
 
 @friday.on(friday_on_cmd(pattern="delpfp ?(.*)"))
 @friday.on(sudo_cmd(pattern="delpfp ?(.*)", allow_sudo=True))
@@ -31,3 +33,12 @@ async def remove_profilepic(delpfp):
     await edit_or_reply(
         delpfp, f"`Successfully deleted {len(input_photos)} profile picture(s).`"
     )
+
+
+CMD_HELP.update(
+    {
+        "delfp": "**Delfp**\
+\n\n**Syntax : **`.delpfp <profile pictures count>`\
+\n**Usage :** This plugin deletes requested number of profile pictures."
+    }
+)

@@ -6,6 +6,7 @@ from telethon.tl.types import (
     ChannelParticipantsAdmins,
 )
 
+from fridaybot import CMD_HELP
 from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
@@ -62,3 +63,12 @@ async def _(event):
         await event.delete()
     else:
         await admeme.edit(mentions)
+
+
+CMD_HELP.update(
+    {
+        "get_admin": "**Get_admin**\
+\n\n**Syntax : **`.get_admin`\
+\n**Usage :** lists all the admins in a group."
+    }
+)

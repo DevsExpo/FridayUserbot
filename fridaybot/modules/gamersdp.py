@@ -7,6 +7,7 @@ import urllib
 import requests
 from telethon.tl import functions
 
+from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
 
 COLLECTION_STRINGZ = [
@@ -64,3 +65,12 @@ async def main(event):
         os.system("rm -rf donottouch.jpg")
 
         await asyncio.sleep(3600)  # Edit this to your required needs
+
+
+CMD_HELP.update(
+    {
+        "gamersdp": "**Gamersdp**\
+\n\n**Syntax : **`.gamerdp`\
+\n**Usage :** Use this plugin to automatically change your profile picture to gaming pictures"
+    }
+)

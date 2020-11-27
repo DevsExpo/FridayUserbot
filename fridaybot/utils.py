@@ -8,8 +8,16 @@ from telethon import events
 
 from fridaybot import CMD_LIST, LOAD_PLUG, SUDO_LIST, bot
 from fridaybot.Configs import Config
+from fridaybot.wraptools import (
+    am_i_admin,
+    ignore_bot,
+    ignore_fwd,
+    ignore_grp,
+    ignore_pm,
+)
 from var import Var
 
+sedprint = logging.getLogger("PLUGINS")
 cmdhandler = Config.COMMAND_HAND_LER
 bothandler = Config.BOT_HANDLER
 
@@ -90,6 +98,7 @@ def load_module(shortname):
         import sys
         from pathlib import Path
 
+        import fridaybot.modules
         import fridaybot.utils
 
         path = Path(f"fridaybot/modules/{shortname}.py")
@@ -97,12 +106,13 @@ def load_module(shortname):
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        print("Successfully (re)imported " + shortname)
+        sedprint.info("Successfully (re)imported " + shortname)
     else:
         import importlib
         import sys
         from pathlib import Path
 
+        import fridaybot.modules
         import fridaybot.utils
 
         path = Path(f"fridaybot/modules/{shortname}.py")
@@ -117,7 +127,14 @@ def load_module(shortname):
         # support for uniborg
         sys.modules["uniborg.util"] = fridaybot.utils
         sys.modules["friday.util"] = fridaybot.utils
+        sys.modules["userbot.utils"] = fridaybot.utils
+        sys.modules["userbot.plugins"] = fridaybot.modules
         mod.Config = Config
+        mod.ignore_grp = ignore_grp()
+        mod.ignore_pm = ignore_pm()
+        mod.ignore_bot = ignore_bot()
+        mod.am_i_admin = am_i_admin()
+        mod.ignore_fwd = ignore_fwd()
         mod.borg = bot
         mod.friday = bot
         # support for paperplaneextended
@@ -125,7 +142,7 @@ def load_module(shortname):
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["fridaybot.modules." + shortname] = mod
-        print("Successfully imported " + shortname)
+        sedprint.info("Successfully imported " + shortname)
 
 
 def remove_plugin(shortname):
@@ -640,8 +657,8 @@ def start_assistant(shortname):
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        print("Starting Your Assistant Bot.")
-        print("Assistant Sucessfully imported " + shortname)
+        sedprint.info("Starting Your Assistant Bot.")
+        sedprint.info("Assistant Sucessfully imported " + shortname)
     else:
         import importlib
         import sys
@@ -665,4 +682,4 @@ def start_assistant(shortname):
         mod.only_pvt = only_pvt()
         spec.loader.exec_module(mod)
         sys.modules["fridaybot.modules.assistant" + shortname] = mod
-        print("Assistant Has imported " + shortname)
+        sedprint.info("Assistant Has imported " + shortname)

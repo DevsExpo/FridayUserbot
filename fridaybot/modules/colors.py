@@ -4,6 +4,7 @@ import os
 
 from PIL import Image, ImageColor
 
+from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
 
 
@@ -36,3 +37,12 @@ async def _(event):
             await event.delete()
     else:
         await event.edit("Syntax: `.color <color_code>`")
+
+
+CMD_HELP.update(
+    {
+        "colors": "**Colors**\
+\n\n**Syntax : **`.color <Hex Color Code>`\
+\n**Usage :** This plugin uploades colour picture just with Hex Color code. ."
+    }
+)

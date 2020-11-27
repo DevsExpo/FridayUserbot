@@ -3,6 +3,7 @@
 
 import asyncio
 
+from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
 
 
@@ -41,3 +42,12 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
         await event.edit(animation_chars[i % 103])
+
+
+CMD_HELP.update(
+    {
+        "eye": "**Eye**\
+\n\n**Syntax : **`.eye`\
+\n**Usage :** Use this plugin to abuse someone."
+    }
+)

@@ -7,6 +7,7 @@ import os
 import shutil
 from re import findall
 
+from fridaybot import CMD_HELP
 from fridaybot.googol_images import googleimagesdownload
 from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
@@ -52,3 +53,12 @@ async def img_sampler(event):
     )
     shutil.rmtree(os.path.dirname(os.path.abspath(lst[0])))
     await event.delete()
+
+
+CMD_HELP.update(
+    {
+        "img": "**Img**\
+\n\n**Syntax : **`.img <query>`\
+\n**Usage :** get images just with a query"
+    }
+)

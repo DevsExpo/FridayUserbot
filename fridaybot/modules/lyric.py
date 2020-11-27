@@ -111,13 +111,10 @@ async def lyrics(lyric):
 
 CMD_HELP.update(
     {
-        "lyrics": ".lyrics song name \
-    \n USAGE: searches a song lyrics and sends you if song name doesnt work try along with artisyt name"
-        "**Usage:** .`glyrics <artist name> - <song name>`\n"
-        "__note__: **-** is neccessary when searching the lyrics to divided artist and song \n"
-        "Genius lyrics plugin \n"
-        "get this value from https://genius.com/developers \n"
-        "Add:-  GENIUS_API_TOKEN and token value in heroku app settings \n"
-        "Lyrics Plugin Syntax: .lyrics <aritst name - song nane>"
+        "lyric": "**Lyric**\
+\n\n**Syntax : **`.lyrics <song name>`\
+\n**Usage :** this plugin searches for song lyrics with song name. \
+\n\n**Syntax : **`.glyrics <artist - song>`\
+\n**Usage :** this plugin searches for song lyrics with song name and artist."
     }
 )

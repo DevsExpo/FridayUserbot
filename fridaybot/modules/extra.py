@@ -111,7 +111,6 @@ async def _(event):
 
 
 CMD_HELP.update({"leave": "Leave a Chat"})
-CMD_HELP.update({";__;": "You try it!"})
 CMD_HELP.update({"cry": "Cry"})
 CMD_HELP.update({"fp": "Send face palm emoji."})
 CMD_HELP.update({"moon": "Bot will send a cool moon animation."})
