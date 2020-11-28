@@ -3,7 +3,7 @@ Syntax: .filext EXTENSION"""
 import requests
 from bs4 import BeautifulSoup
 from uniborg.util import admin_cmd
-
+from userbot import CMD_HELP
 
 @borg.on(admin_cmd(pattern="filext (.*)"))
 async def _(event):
@@ -29,3 +29,11 @@ async def _(event):
                 status_code, input_str
             )
         )
+        
+CMD_HELP.update(
+    {
+        "fileext": "**File Extension**\
+\n\n**Syntax : **`.filext <extension>`\
+\n**Usage :** Gives details about the extension."
+    }
+)
