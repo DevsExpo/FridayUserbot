@@ -1,7 +1,7 @@
 """Get information about an user on GitHub
 Syntax: .github USERNAME"""
 import requests
-
+from userbot import CMD_HELP
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
@@ -43,3 +43,11 @@ Profile Created: {}""".format(
         await event.delete()
     else:
         await edit_or_reply(event, "`{}`: {}".format(input_str, r.text))
+
+CMD_HELP.update(
+    {
+        "github": "**GitHub**\
+\n\n**Syntax : **`.github <username>`\
+\n**Usage :** Get information about an user on GitHub."
+    }
+)from userbot import CMD_HELP
