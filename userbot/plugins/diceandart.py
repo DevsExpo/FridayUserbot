@@ -1,4 +1,5 @@
 from telethon.tl.types import InputMediaDice
+
 from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
@@ -28,7 +29,8 @@ async def _(event):
                 r = await reply_message.reply(file=InputMediaDice(emoticon=emoticon))
         except:
             pass
-        
+
+
 CMD_HELP.update(
     {
         "diceandart": "**Diceandart**\
