@@ -1,6 +1,6 @@
 """.admin Plugin for @UniBorg"""
 from telethon.tl.types import ChannelParticipantsAdmins
-
+from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
 
@@ -36,3 +36,13 @@ async def _(event):
     else:
         await event.reply(mentions)
     await event.delete()
+
+CMD_HELP.update(
+    {
+        "design": "**Design**\
+\n\n**Syntax : **`.join`\
+\n**Usage :** Funny prank plugin.\
+\n\n**Syntax : **`.pay`\
+\n**Usage :** Funny Prank plugin."
+    }
+)
