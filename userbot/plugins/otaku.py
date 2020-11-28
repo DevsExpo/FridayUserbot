@@ -52,4 +52,4 @@ async def _(event):
         prs_anchor_element = prs_div.find("a")
         BASE_URL + prs_anchor_element.get("href")
         prs_text = prs_anchor_element.text
-    await event.edit("/protecc " + prs_text)
+    await event.edit("/protecc " + prs_text - "wallpaper phone")
