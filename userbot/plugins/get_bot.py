@@ -42,4 +42,4 @@ CMD_HELP.update(
 \n\n**Syntax : **`.get_bot`\
 \n**Usage :** Lists all the bots in a chat."
     }
-)from userbot import CMD_HELP
+)
