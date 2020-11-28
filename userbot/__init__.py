@@ -4,13 +4,14 @@ import sys
 import time
 from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
-from telegraph import Telegraph, exceptions, upload_file
+
 import pylast
 import wget
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
 from requests import get
+from telegraph import Telegraph, exceptions, upload_file
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 
@@ -182,7 +183,7 @@ if os.path.exists(km):
 else:
     pathz = "./resources/imgcolour/"
     sedlyf = wget.download(link, out=pathz)
-    
+
 telegraph = Telegraph()
-r = telegraph.create_account(short_name='CɪᴘʜᴇʀX Bot Exclusive')
+r = telegraph.create_account(short_name="CɪᴘʜᴇʀX Bot Exclusive")
 auth_url = r["auth_url"]
