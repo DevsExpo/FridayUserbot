@@ -50,4 +50,4 @@ CMD_HELP.update(
 \n\n**Syntax : **`.github <username>`\
 \n**Usage :** Get information about an user on GitHub."
     }
-)from userbot import CMD_HELP
+)
