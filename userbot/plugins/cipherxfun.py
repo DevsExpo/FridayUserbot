@@ -5030,6 +5030,6 @@ CMD_HELP.update(
 \n\n.fighappyfrog\
 \n\n.figdeadfrog\
 \n\n.fuck\
-\n.jagh\"
+\n.jagh"
     }
 )
