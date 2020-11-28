@@ -4,7 +4,7 @@ import sys
 import time
 from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
-
+from telegraph import Telegraph, exceptions, upload_file
 import pylast
 import wget
 from dotenv import load_dotenv
@@ -88,12 +88,8 @@ if bool(ENV):
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
 
     # Chrome For Carbon
-    CHROME_DRIVER = os.environ.get(
-        "CHROME_DRIVER", "/app/.chromedriver/bin/chromedriver"
-    )
-    GOOGLE_CHROME_BIN = os.environ.get(
-        "GOOGLE_CHROME_BIN", "/app/.apt/usr/bin/google-chrome"
-    )
+    CHROME_DRIVER = os.environ.get("CHROME_DRIVER", "/usr/bin/chromedriver")
+    GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN", "/usr/bin/google-chrome")
 
     # Heroku Credentials for updater.
     HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
@@ -174,6 +170,8 @@ LASTMSG = {}
 SUDO_LIST = {}
 CMD_HELP = {}
 
+CUSTOM_PMPERMIT_MSG = {}
+CUSTOM_BOTSTART = {}
 ISAFK = False
 AFKREASON = None
 # End of PaperPlaneExtended Support Vars
@@ -184,3 +182,7 @@ if os.path.exists(km):
 else:
     pathz = "./resources/imgcolour/"
     sedlyf = wget.download(link, out=pathz)
+    
+telegraph = Telegraph()
+r = telegraph.create_account(short_name='CɪᴘʜᴇʀX Bot Exclusive')
+auth_url = r["auth_url"]
