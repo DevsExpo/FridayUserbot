@@ -4698,8 +4698,38 @@ async def figlol(e):
             "`\n╱┃┗━━┓┃╰━╯┃┃┗━━┓╱ `"
             "`\n╱┗━━━┛╰━━━╯┗━━━┛╱ `"
         )
-
-
+        
+@register(outgoing=True, pattern="^.figlmao$")
+async def figlol(e):
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        await e.edit(
+            "`\n┏┓┈╭━━╮╭━━╮╭━━╮`"
+            "`\n┃┃┈┃┃┃┃┃╭╮┃┃╭╮┃`"
+            "`\n┃┗┓┃┃┃┃┃┏┓┃┃╰╯┃`"
+            "`\n┗━┛┗┻┻┛┗┛┗┛╰━━╯`"
+        )
+       
+@register(outgoing=True, pattern="^.figamong$")
+async def figlol(e):
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        await e.edit(
+"⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⣶⣦⣤⣄⡀\n"⠀⠀⠀⠀
+"⠀⠀⠀⠀ ⠀⠀⠀⠀⢀⣴⣿⡿⠛⠉⠙⠛⠛⠻⢿⣿⣷⣤⡀\n"⠀⠀
+"⠀⠀⠀⠀ ⠀⠀⠀⠀⣼⣿⠋⠀⠀⠀⠀⠀⢀⣀⣀⠈⢻⣿⣿⡄\n"⠀
+"⠀⠀⠀⠀⠀⠀⠀ ⣸⣿⡏⠀⠀⠀⣠⣶⣾⣿⣿⣿⠿⢿⣿⣿⣿⣄\n"
+"⠀⠀⠀⠀   ⠀⣿⣿⠁⠀⠀⢰⣿⣿⣯⠁⠀⠀⠀⠀⠀⠈⠙⢿⣷⡄\n"
+"⠀⠀⣀⣤⣴⣶⣶⣿⡟⠀⠀⠀⢸⣿⣿⣿⣆⠀⠀⠀⠀⠀ ⠀⠀⠀⣿⣷\n"
+"⢰⣿⡟⠋⠉⣹⣿⡇⠀⠀⠀⠘⣿⣿⣿⣿⣷⣦⣤⣤⣤⣶⣶⣶⣶⣿⣿\n"
+"⢸⣿⡇⠀⠀⣿⣿⡇⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿\n"
+"⣸⣿⡇⠀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠉⠻⠿⣿⣿⣿⣿⡿⠿⠿⠛⢻⣿\n"
+"⠸⣿⣧⡀⠀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⣿⣿\n"
+"⠀⠛⢿⣿⣿⣿⣿⣇⠀⠀⠀⠀⣰⣿⣿⣷⣶⣶⣶⣶⠶⠀ ⢠⣿⣿\n"\n"
+"⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⣽⣿⡏⠁⠀ ⠀⢸⣿⡇\n"
+"⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⠀⣿⣿⡇⠀⢹⣿⡆⠀⠀ ⠀⣸⣿⠇\n"\n"
+"⠀⠀⠀⠀⠀⠀⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁⠀⠈⠻⣿⣿⣿⣿⡿⠏\n"
+"⠀⠀⠀⠀⠀⠀⠀⠈⠛⠻⠿⠿⠿⠿⠋⠁\n"⠀⠀⠀
+        )        
+        
 @register(outgoing=True, pattern="^.fighi$")
 async def fighi(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
@@ -4991,6 +5021,8 @@ CMD_HELP.update(
 \n\n.figcar\
 \n\n.penis;dick\
 \n\n.figlol\
+\n\n.figlmao\
+\n\n.figamong\
 \n\n.fighi\
 \n\n.figtrump\
 \n\n.figputin\
