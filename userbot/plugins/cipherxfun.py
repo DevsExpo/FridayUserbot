@@ -88,7 +88,7 @@ async def meme(event):
     if event.fwd_from:
         return
     memeVar = event.text
-    sleepValue = 3
+    sleepValue = 5
     memeVar = memeVar[6:]
 
     await event.edit("-------------" + memeVar)
@@ -108,6 +108,24 @@ async def meme(event):
     await event.edit(memeVar)
     await asyncio.sleep(sleepValue)
 
+@friday.on(friday_on_cmd("gangestar ?(.*)"))
+async def _(event):
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+        await event.edit("Everybody")
+        await asyncio.sleep(0.3)
+        await event.edit("was")
+        await asyncio.sleep(0.2)
+        await event.edit("Gangestar")
+        await asyncio.sleep(0.5)
+        await event.edit("Until ")
+        await asyncio.sleep(0.2)
+        await event.edit("I")
+        await asyncio.sleep(0.3)
+        await event.edit("Arrived")
+        await asyncio.sleep(0.3)
+        await event.edit("🔥")
+        await asyncio.sleep(0.3)
+        await event.edit("Everybody was Gangestar Until I Arrived 🔥")
 
 @friday.on(events.NewMessage(pattern=r"\.flower", outgoing=True))
 async def meme(event):
@@ -4976,6 +4994,7 @@ CMD_HELP.update(
 \n\n.bigoof\
 \n\n.ok\
 \n\n.meme\
+\n\n.gangestar\
 \n\n.flower\
 \n\n.tlol\
 \n\n.kiss\
