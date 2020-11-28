@@ -3,7 +3,9 @@ import re
 import bs4
 import requests
 from uniborg.util import friday_on_cmd
+
 from userbot import CMD_HELP
+
 
 @friday.on(friday_on_cmd(pattern="giz ?(.*)"))
 async def gizoogle(event):
@@ -35,6 +37,7 @@ def text(input_text: str) -> str:
     giz = soup.find_all(text=True)
     giz_text = giz[37].strip("\r\n")  # Hacky, but consistent.
     return giz_text
+
 
 CMD_HELP.update(
     {

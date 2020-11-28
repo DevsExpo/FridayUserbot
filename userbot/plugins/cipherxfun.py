@@ -108,6 +108,7 @@ async def meme(event):
     await event.edit(memeVar)
     await asyncio.sleep(sleepValue)
 
+
 @friday.on(friday_on_cmd("gangestar ?(.*)"))
 async def _(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
@@ -126,6 +127,7 @@ async def _(event):
         await event.edit("🔥")
         await asyncio.sleep(0.3)
         await event.edit("Everybody was Gangestar Until I Arrived 🔥")
+
 
 @friday.on(events.NewMessage(pattern=r"\.flower", outgoing=True))
 async def meme(event):
@@ -376,6 +378,7 @@ async def _(event):
         await asyncio.sleep(0.3)
         await event.edit("💝")
 
+
 @friday.on(friday_on_cmd("finger ?(.*)"))
 async def _(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
@@ -414,7 +417,8 @@ async def _(event):
         await event.edit("🖕")
         await asyncio.sleep(0.3)
         await event.edit("🖕🏼")
-        
+
+
 @friday.on(friday_on_cmd("billy ?(.*)"))
 async def _(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
@@ -527,6 +531,7 @@ async def _(event):
         await event.edit("".join(deq))
         deq.rotate(1)
 
+
 @friday.on(friday_on_cmd("heart$"))
 # @register(outgoing=True, pattern="^.heart$")
 async def _(event):
@@ -537,6 +542,7 @@ async def _(event):
         await asyncio.sleep(0.1)
         await event.edit("".join(deq))
         deq.rotate(1)
+
 
 @friday.on(events.NewMessage(pattern=r"\.sand", outgoing=True))
 async def _(event):
@@ -4716,7 +4722,8 @@ async def figlol(e):
             "`\n╱┃┗━━┓┃╰━╯┃┃┗━━┓╱ `"
             "`\n╱┗━━━┛╰━━━╯┗━━━┛╱ `"
         )
-        
+
+
 @register(outgoing=True, pattern="^.figlmao$")
 async def figlol(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
@@ -4726,8 +4733,8 @@ async def figlol(e):
             "`\n┃┗┓┃┃┃┃┃┏┓┃┃╰╯┃`"
             "`\n┗━┛┗┻┻┛┗┛┗┛╰━━╯`"
         )
-       
-        
+
+
 @register(outgoing=True, pattern="^.fighi$")
 async def fighi(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):

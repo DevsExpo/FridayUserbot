@@ -1,6 +1,7 @@
 from re import findall
 
 from search_engine_parser import GoogleSearch
+
 from userbot import CMD_HELP
 from userbot.utils import register
 
@@ -31,6 +32,8 @@ async def gsearch(q_event):
     await q_event.edit(
         "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
     )
+
+
 CMD_HELP.update(
     {
         "google": "**Google**\

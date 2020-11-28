@@ -1,22 +1,20 @@
-#CɪᴘʜᴇʀX
-#Credit by @hackintush
-import asyncio
+# CɪᴘʜᴇʀX
+# Credit by @hackintush
 import os
 from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
-from google_images_download import google_images_download
 
-from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+from userbot.utils import friday_on_cmd
+
 
 @friday.on(friday_on_cmd(pattern="ota"))
 async def _(event):
     if event.fwd_from:
         return
-    start = datetime.now()
+    datetime.now()
     BASE_URL = "http://www.google.com"
-    OUTPUT_STR = "Reply to an image to do CɪᴘʜᴇʀX Magic On"
     if event.reply_to_msg_id:
         await event.edit("Processing...")
         previous_message = await event.get_reply_message()
@@ -52,6 +50,6 @@ async def _(event):
         soup = BeautifulSoup(response.text, "html.parser")
         prs_div = soup.find_all("div", {"class": "r5a77d"})[0]
         prs_anchor_element = prs_div.find("a")
-        prs_url = BASE_URL + prs_anchor_element.get("href")
+        BASE_URL + prs_anchor_element.get("href")
         prs_text = prs_anchor_element.text
     await event.edit("/protecc" + prs_text)

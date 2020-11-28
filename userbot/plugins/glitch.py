@@ -15,6 +15,7 @@ import os
 
 from glitch_this import ImageGlitcher
 from telethon.tl.types import MessageMediaPhoto
+
 from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd, sudo_cmd
 
@@ -55,7 +56,8 @@ async def glitch(event):
     for starky in (pathsn, photolove):
         if starky and os.path.exists(starky):
             os.remove(starky)
-            
+
+
 CMD_HELP.update(
     {
         "glitch": "**Glitch**\

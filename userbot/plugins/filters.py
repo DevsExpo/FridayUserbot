@@ -11,6 +11,7 @@ import re
 
 from telethon import utils
 from telethon.tl import types
+
 from userbot import CMD_HELP
 from userbot.plugins.sql_helper.filter_sql import (
     add_filter,
@@ -147,7 +148,8 @@ async def on_all_snip_delete(event):
     await edit_or_reply(event, "Processing....")
     remove_all_filters(event.chat_id)
     await sadness.edit(f"filters **in current chat** deleted successfully")
-    
+
+
 CMD_HELP.update(
     {
         "filters": "**Filters**\
