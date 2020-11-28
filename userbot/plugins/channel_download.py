@@ -6,7 +6,7 @@ By: @Zero_cool7870
 """
 import os
 import subprocess
-
+from userbot import CMD_HELP
 from uniborg.util import friday_on_cmd
 
 
@@ -67,3 +67,14 @@ async def get_media(event):
     output = output.replace("b'", "")
     output = output.replace("\n'", "")
     await event.edit("Downloaded " + output + " files.")
+
+
+CMD_HELP.update(
+    {
+        "channel_download": "**Channel Download**\
+\n\n**Syntax : **`.geta <channel username>`\
+\n**Usage :** Will get all media from given channel.\
+\n\n**Syntax : **`.getc <number of messages> <channel username>`\
+\n**Usage :** Downloads given number of messages from given channel."
+    }
+)
