@@ -31,3 +31,10 @@ async def gsearch(q_event):
     await q_event.edit(
         "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
     )
+CMD_HELP.update(
+    {
+        "google": "**Google**\
+\n\n**Syntax : **`.gs <text to search>`\
+\n**Usage :** Get the Google search result for given text."
+    }
+)
