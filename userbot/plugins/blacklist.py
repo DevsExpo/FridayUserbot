@@ -7,7 +7,7 @@ Available Commands:
 .listblacklist
 .rmblacklist"""
 import re
-
+from userbot import CMD_HELP
 from telethon import events
 
 import userbot.plugins.sql_helper.blacklist_sql as sql
@@ -89,3 +89,15 @@ async def on_delete_blacklist(event):
     await sensibleisleecher.edit(
         f"Removed {successful} / {len(to_unblacklist)} from the blacklist"
     )
+
+    CMD_HELP.update(
+    {
+        "blacklist": "**Blacklist**\
+\n\n**Syntax : **`.addblacklist <text to blacklist>`\
+\n**Usage :** Mentioned text is blacklisted in current chat.\
+\n\n**Syntax : **`.listblacklist`\
+\n**Usage :** Blacklisted text is shown.\
+\n\n**Syntax : **`.rmblacklist <text to remove from blacklist>`\
+\n**Usage :** Mentioned text is removed from blacklist."
+    }
+)
