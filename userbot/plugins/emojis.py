@@ -5,7 +5,7 @@ Available Commands:
 .emoji :/
 .emoji -_-"""
 import asyncio
-
+from userbot import CMD_HELP
 from uniborg.util import friday_on_cmd
 
 
@@ -32,3 +32,11 @@ async def _(event):
         for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 2])
+
+CMD_HELP.update(
+    {
+        "emojis": "**Emojis**\
+\n\n**Syntax : **`.emoji <apple/shrug/ :/ /-_->`\
+\n**Usage :** Funny prank plugin."
+    }
+)
