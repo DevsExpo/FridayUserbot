@@ -5,8 +5,10 @@ Available Commands:
 .emoji :/
 .emoji -_-"""
 import asyncio
-from userbot import CMD_HELP
+
 from uniborg.util import friday_on_cmd
+
+from userbot import CMD_HELP
 
 
 @friday.on(friday_on_cmd(pattern="emoji (.*)"))
@@ -32,6 +34,7 @@ async def _(event):
         for i in animation_ttl:
             await asyncio.sleep(animation_interval)
             await event.edit(animation_chars[i % 2])
+
 
 CMD_HELP.update(
     {

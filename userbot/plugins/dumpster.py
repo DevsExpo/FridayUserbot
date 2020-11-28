@@ -1,6 +1,7 @@
 import asyncio
 
 from telethon.errors.rpcerrorlist import MessageIdInvalidError
+
 from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
@@ -42,7 +43,8 @@ async def _(message):
                 await message.edit(something_else)
             except MessageIdInvalidError:
                 return
-            
+
+
 CMD_HELP.update(
     {
         "dumpster": "**Dumpster**\
@@ -50,4 +52,3 @@ CMD_HELP.update(
 \n**Usage :** just a dumping funny prank plugin."
     }
 )
-            
