@@ -66,3 +66,5 @@ validators
 youtube-search
 youtube-search-python
 wget
+password_strength
+pyjokes
