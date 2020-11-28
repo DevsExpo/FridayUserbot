@@ -358,28 +358,66 @@ async def _(event):
         await asyncio.sleep(0.3)
         await event.edit("💝")
 
-
+@friday.on(friday_on_cmd("finger ?(.*)"))
+async def _(event):
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+        await event.edit("🖕🏻")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏼")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏽")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏾")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏿")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏾")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏽")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏼")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏻")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏽")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏾")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏿")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏾")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏽")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕")
+        await asyncio.sleep(0.3)
+        await event.edit("🖕🏼")
+        
 @friday.on(friday_on_cmd("billy ?(.*)"))
 async def _(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit("👍")
-        await asyncio.sleep(0.3)
+        await asyncio.sleep(0.6)
         await event.edit("👍🏻")
-        await asyncio.sleep(0.3)
+        await asyncio.sleep(0.6)
         await event.edit("👍🏼")
-        await asyncio.sleep(0.3)
+        await asyncio.sleep(0.6)
         await event.edit("👍🏽")
-        await asyncio.sleep(0.3)
+        await asyncio.sleep(0.6)
         await event.edit("👍🏾")
-        await asyncio.sleep(0.3)
+        await asyncio.sleep(0.6)
         await event.edit("👍🏿")
-        await asyncio.sleep(0.3)
+        await asyncio.sleep(0.6)
         await event.edit("👍🏾")
-        await asyncio.sleep(0.3)
+        await asyncio.sleep(0.6)
         await event.edit("👍🏽")
-        await asyncio.sleep(0.3)
+        await asyncio.sleep(0.6)
         await event.edit("👍🏼")
-        await asyncio.sleep(0.3)
+        await asyncio.sleep(0.6)
         await event.edit("👍🏻")
 
 
@@ -471,6 +509,16 @@ async def _(event):
         await event.edit("".join(deq))
         deq.rotate(1)
 
+@friday.on(friday_on_cmd("heart$"))
+# @register(outgoing=True, pattern="^.heart$")
+async def _(event):
+    if event.fwd_from:
+        return
+    deq = deque(list("❤️🧡💛💚💙💜🖤"))
+    for _ in range(32):
+        await asyncio.sleep(0.1)
+        await event.edit("".join(deq))
+        deq.rotate(1)
 
 @friday.on(events.NewMessage(pattern=r"\.sand", outgoing=True))
 async def _(event):
@@ -4600,7 +4648,7 @@ async def hi(event):
     await event.edit("💕💕𝑰 𝒍𝒐𝒗𝒆 𝒚𝒐𝒖 𝒂𝒍𝒍 𝒇𝒓𝒊𝒆𝒏𝒅𝒔💕💕")
 
 
-@friday.on(friday_on_cmd(pattern=r"car"))
+@friday.on(friday_on_cmd(pattern=r"figcar"))
 async def car(event):
     if event.fwd_from:
         return
@@ -4890,7 +4938,8 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "CipherXFun": ".slash\
+        "CipherXFun": "Usage: List of All Available Fun Commands.
+\n\n.slash\
 \n\n.para\
 \n\n.question\
 \n\n.oof\
@@ -4914,6 +4963,7 @@ CMD_HELP.update(
 \n\n.starheart\
 \n\n.wink\
 \n\n.cheart\
+\n\n.finger\
 \n\n.billy\
 \n\n.angry\
 \n\n.sad\
@@ -4938,7 +4988,7 @@ CMD_HELP.update(
 \n\n.love\
 \n\n.my\
 \n\n.hi\
-\n\n.car\
+\n\n.figcar\
 \n\n.penis;dick\
 \n\n.figlol\
 \n\n.fighi\
@@ -4950,7 +5000,6 @@ CMD_HELP.update(
 \n\n.fighappyfrog\
 \n\n.figdeadfrog\
 \n\n.fuck\
-\n\n.jagh\
-nUsage: List of All Available Commands."
+\n\n.jagh\"
     }
 )
