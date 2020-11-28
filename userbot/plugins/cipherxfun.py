@@ -4966,7 +4966,8 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "CipherXFun": "Usage: List of All Available Fun Commands.
+        "CipherXFun": "
+\n\nUsage: List of All Available Fun Commands.\
 \n\n.slash\
 \n\n.para\
 \n\n.question\
