@@ -157,7 +157,7 @@ async def on_plug_in_callback_query_handler(event):
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"backme")))
-async def rip(event):
+async def sed(event):
     if not event.query.user_id == bot.uid:
         sedok = "Don't touch that button bitch!"
         await event.answer(sedok, cache_time=0, alert=True)
