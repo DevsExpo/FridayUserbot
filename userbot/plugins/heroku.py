@@ -10,7 +10,7 @@ import os
 
 import heroku3
 import requests
-
+from userbot import CMD_HELP
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
@@ -174,11 +174,11 @@ async def dyno_usage(dyno):
     )
 
 
-@command(pattern="^.info heroku")
+@command(pattern="^.info server")
 async def info(event):
     await borg.send_message(
         event.chat_id,
-        "**Info for Module to Manage Heroku:**\n\n`.usage`\nUsage:__Check your heroku dyno hours status.__\n\n`.set var <NEW VAR> <VALUE>`\nUsage: __add new variable or update existing value variable__\n**!!! WARNING !!!, after setting a variable the bot will restart.**\n\n`.get var or .get var <VAR>`\nUsage: __get your existing varibles, use it only on your private group!__\n**This returns all of your private information, please be cautious...**\n\n`.del var <VAR>`\nUsage: __delete existing variable__\n**!!! WARNING !!!, after deleting variable the bot will restarted**",
+        "**Info for Module to Manage Server:**\n\n`.usage`\nUsage:__Check your server dyno hours status.__\n\n`.set var <NEW VAR> <VALUE>`\nUsage: __add new variable or update existing value variable__\n**!!! WARNING !!!, after setting a variable the bot will restart.**\n\n`.get var or .get var <VAR>`\nUsage: __get your existing varibles, use it only on your private group!__\n**This returns all of your private information, please be cautious...**\n\n`.del var <VAR>`\nUsage: __delete existing variable__\n**!!! WARNING !!!, after deleting variable the bot will restarted**",
     )
     await event.delete()
 
@@ -205,7 +205,7 @@ async def _(givelogs):
         app = Heroku.app(Var.HEROKU_APP_NAME)
     except:
         return await givelogs.reply(
-            " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku var !"
+            " Please make sure your Server API Key, Your App name are configured correctly in the server var !"
         )
     await edit_or_reply(givelogs, "`Trying To Fetch Logs...`")
     with open("logs.txt", "w") as log:
@@ -214,9 +214,27 @@ async def _(givelogs):
         givelogs.chat_id,
         "logs.txt",
         reply_to=givelogs.id,
-        caption="Logs Collected Using Heroku",
+        caption="Logs Collected Using CɪᴘʜᴇʀX Server",
     )
-    await edit_or_reply(givelogs, "`Logs Send Sucessfully ! `")
+    await edit_or_reply(givelogs, "`CɪᴘʜᴇʀX Server Logs Send Sucessfully ! `")
     await asyncio.sleep(5)
     await givelogs.delete()
     return os.remove("logs.txt")
+
+CMD_HELP.update(
+    {
+        "server": "**Server**\
+\n\n**Syntax : **`.set var <var key> <var value>`\
+\n**Usage :** Add new variable or update existing value variable.\
+\n\n**Syntax : **`.get var <var>`\
+\n**Usage :** Get your existing variables, use it only on your private group!\
+\n\n**Syntax : **`.del var <var>`\
+\n**Usage :** Deletes existing variable.\
+\n\n**Syntax : **`.usage`\
+\n**Usage :** Gives you information about Dyno usage.\
+\n\n**Syntax : **`.info server`\
+\n**Usage :** Gives you information to use other commands of server.\
+\n\n**Syntax : **`.logs`\
+\n**Usage :** Gets logs from server."
+    }
+)
