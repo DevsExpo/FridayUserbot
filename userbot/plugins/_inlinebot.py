@@ -18,7 +18,8 @@ else:
 LOG_CHAT = Config.PRIVATE_GROUP_ID
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "CɪᴘʜᴇʀX"
 
-@tgbot.on(events.InlineQuery)  
+
+@tgbot.on(events.InlineQuery)
 async def inline_handler(event):
     builder = event.builder
     result = None
@@ -48,17 +49,26 @@ async def inline_handler(event):
             file=WARN_PIC,
             text=query,
             buttons=[
-                [custom.Button.inline("❌ I'm Here for Spamming ❌", data="dontspamnigga")],
+                [
+                    custom.Button.inline(
+                        "❌ I'm Here for Spamming ❌", data="dontspamnigga"
+                    )
+                ],
                 [
                     custom.Button.inline(
                         "🛡️ I'm Here for Talking with CɪᴘʜᴇʀX 🛡️",
                         data="whattalk",
                     )
                 ],
-                [custom.Button.inline("🙏 I'm Here for Asking Something 🙏", data="askme")],
+                [
+                    custom.Button.inline(
+                        "🙏 I'm Here for Asking Something 🙏", data="askme"
+                    )
+                ],
             ],
         )
         await event.answer([result])
+
 
 @tgbot.on(
     events.callbackquery.CallbackQuery(  # pylint:disable=E0602
@@ -75,7 +85,7 @@ async def on_plug_in_callback_query_handler(event):
         reply_popp_up_alert = "Please write your own bot, and don't use mine!"
         await event.answer(reply_popp_up_alert, cache_time=0, alert=True)
 
-        
+
 @tgbot.on(
     events.callbackquery.CallbackQuery(  # pylint:disable=E0602
         data=re.compile(b"helpme_prev\((.+?)\)")
@@ -106,7 +116,9 @@ async def on_plug_in_callback_query_handler(event):
         return
     plugin_name = event.data_match.group(1).decode("UTF-8")
     if plugin_name in CMD_HELP:
-        help_string = f"**🏴‍☠ Plugin Name 🏴‍☠ :** `{plugin_name}` \n{CMD_HELP[plugin_name]}"
+        help_string = (
+            f"**🏴‍☠ Plugin Name 🏴‍☠ :** `{plugin_name}` \n{CMD_HELP[plugin_name]}"
+        )
     reply_pop_up_alert = help_string
     reply_pop_up_alert += "\n\n**(C)CɪᴘʜᴇʀX bot** ".format(plugin_name)
     if len(reply_pop_up_alert) >= 4096:
@@ -127,7 +139,7 @@ async def on_plug_in_callback_query_handler(event):
             buttons=[[custom.Button.inline("Go Back", data="backme")]],
         )
 
-        
+
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"terminator")))
 async def rip(event):
     if event.query.user_id == bot.uid:
@@ -136,6 +148,7 @@ async def rip(event):
     else:
         txt = "I Can't View CɪᴘʜᴇʀX Stats to you bitch!"
         await event.answer(txt, alert=True)
+
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"dontspamnigga")))
 async def rip(event):
@@ -165,6 +178,7 @@ async def sed(event):
     sed = f"""CɪᴘʜᴇʀX Super Technology Bot Modules Are Listed Here !\n
 Programmed and Powered by [CɪᴘʜᴇʀX](https://t.me/Hackintush) \nCurrently Loaded Plugins: {len(CMD_LIST)}"""
     await event.edit(message=sed, buttons=buttons)
+
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"whattalk")))
 async def rip(event):
@@ -200,7 +214,6 @@ async def rip(event):
         message=f"Hello, [New User](tg://user?id={him_id}) Wants to Ask you Something.",
         buttons=[Button.url("Contact Him", f"tg://user?id={him_id}")],
     )
-
 
 
 def paginate_help(page_number, loaded_plugins, prefix):
