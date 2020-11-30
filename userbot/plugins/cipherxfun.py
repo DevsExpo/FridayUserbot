@@ -4742,20 +4742,21 @@ async def fighi(e):
             "\n╔┓┏╦━╦┓╔┓╔━━╗" "\n║┗┛║┗╣┃║┃║X X║" "\n║┏┓║┏╣┗╣┗╣╰╯║" "\n╚┛┗╩━╩━╩━╩━━╝"
         )
 
+
 @register(outgoing=True, pattern="^.figno$")
 async def figtrump(e):
 
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit(        
-            "\n███╗░░██╗░█████╗░" 
-            "\n████╗░██║██╔══██╗" 
-            "\n██╔██╗██║██║░░██║" 
-            "\n██║╚████║██║░░██║" 
-            "\n██║░╚███║╚█████╔╝" 
+        await e.edit(
+            "\n███╗░░██╗░█████╗░"
+            "\n████╗░██║██╔══██╗"
+            "\n██╔██╗██║██║░░██║"
+            "\n██║╚████║██║░░██║"
+            "\n██║░╚███║╚█████╔╝"
             "\n╚═╝░░╚══╝░╚════╝░"
         )
-        
-        
+
+
 @register(outgoing=True, pattern="^.figtrump$")
 async def figtrump(e):
 
