@@ -21,7 +21,7 @@ async def _(event):
     response_api = requests.get(sample_url).text
     if response_api:
         await event.edit(
-            "[{}]({})\n`Thank's to [CɪᴘʜᴇʀX](https://t.me/Hackintush) 🙃` ".format(
+            "[{}]({})\n`Thank's to CɪᴘʜᴇʀX 🙃` ".format(
                 input_str, response_api.rstrip()
             )
         )
