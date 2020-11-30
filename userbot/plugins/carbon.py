@@ -42,7 +42,7 @@ async def carbon_api(e):
             pcode = str(textx.message)
             skeme = None  # Importing message to module
         code = quote_plus(pcode)  # Converting to urlencoded
-        await e.edit("`Meking Carbon...\n25%`")
+        await e.edit("`Making Carbon...\n25%`")
         url = CARBON.format(code=code, lang=CARBONLANG)
         chrome_options = Options()
         chrome_options.add_argument("--headless")
@@ -94,13 +94,13 @@ async def carbon_api(e):
         await e.client.send_file(
             e.chat_id,
             file,
-            caption="<< `Here's your carbon!` \n **Carbonised Using** [CɪᴘʜᴇʀX](https://t.me/Hackintush)>>\n**Colour Scheme: **`{}`".format(
+            caption="<< `Here's your Carbon!` \n **Carbonised Using** [CɪᴘʜᴇʀX](https://t.me/Hackintush)>>\n**Colour Scheme: **`{}`".format(
                 color_name
             ),
             force_document=True,
             reply_to=e.message.reply_to_msg_id,
         )
-        os.remove("./carbon.png")
+        os.remove("./cipherx.png")
         driver.quit()
         # Removing carbon.png after uploading
         await e.delete()  # Deleting msg
