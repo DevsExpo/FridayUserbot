@@ -6,6 +6,7 @@ By @Hackintush
 """
 
 import requests
+
 from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
@@ -21,13 +22,12 @@ async def _(event):
     response_api = requests.get(sample_url).text
     if response_api:
         await event.edit(
-            "[{}]({})\n`Thank's to CɪᴘʜᴇʀX 🙃` ".format(
-                input_str, response_api.rstrip()
-            )
+            "[{}]({})\n`Thank's to CɪᴘʜᴇʀX 🙃` ".format(input_str, response_api.rstrip())
         )
     else:
         await event.edit("something is wrong. please try again later.")
-        
+
+
 CMD_HELP.update(
     {
         "howtogoogle": "**How To Google**\
