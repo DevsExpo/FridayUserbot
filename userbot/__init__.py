@@ -178,11 +178,14 @@ AFKREASON = None
 # End of PaperPlaneExtended Support Vars
 link = "https://people.eecs.berkeley.edu/~rich.zhang/projects/2016_colorization/files/demo_v2/colorization_release_v2.caffemodel"
 km = "./resources/imgcolour/colorization_release_v2.caffemodel"
+pathz = "./resources/imgcolour/"
 if os.path.exists(km):
     pass
 else:
-    pathz = "./resources/imgcolour/"
-    sedlyf = wget.download(link, out=pathz)
+    try:
+        sedlyf = wget.download(link, out=pathz)
+    except:
+        print("I wasn't Able to Download Cafee Model. Skipping...")
 
 telegraph = Telegraph()
 r = telegraph.create_account(short_name="CɪᴘʜᴇʀX Bot Exclusive")
