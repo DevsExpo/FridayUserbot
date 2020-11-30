@@ -5,7 +5,7 @@ from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.types import MessageEntityMentionName
 
 from userbot import CMD_HELP
-from userbot.modules.sql_helper.mute_sql import is_muted, mute, unmute
+from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute
 from userbot.utils import friday_on_cmd
 
 
