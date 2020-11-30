@@ -6,7 +6,7 @@ By @Hackintush
 """
 
 import requests
-
+from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
 
@@ -27,3 +27,11 @@ async def _(event):
         )
     else:
         await event.edit("something is wrong. please try again later.")
+        
+CMD_HELP.update(
+    {
+        "howtogoogle": "**How To Google**\
+\n\n**Syntax : **`.ggl <search query>`\
+\n**Usage :** Animates how to Google with search query."
+    }
+)
