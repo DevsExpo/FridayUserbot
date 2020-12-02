@@ -5,7 +5,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from userbot import bot
 from userbot.utils import friday_on_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd(pattern="spd ?(.*)"))
 async def _(event):
@@ -85,3 +85,11 @@ async def DeezLoader(Deezlod):
             conv.chat_id, [msg_start.id, response.id, r.id, msg.id, details.id, song.id]
         )
         await Deezlod.delete()
+        
+CMD_HELP.update(
+    {
+        "song": "**Song**\
+\n\n**Syntax : **`.netease <song name>`\
+\n**Usage :** downloads the song from internet and uploades it."
+    }
+)
