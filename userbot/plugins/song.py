@@ -91,9 +91,9 @@ CMD_HELP.update(
     {
         "song": "**Song**\
         \n\n**Syntax : **`.spd <song name>`\
-        \n**Usage :** downloads the song from Spotify and uploades it.
+        \n**Usage :** downloads the song from Spotify and uploades it.\
         \n\n**Syntax : **`.netease <song name>`\
-        \n**Usage :** downloads the song from internet and uploades it.
+        \n**Usage :** downloads the song from internet and uploades it.\
         \n\n**Syntax : **`.dzd <song name>`\
         \n**Usage :** downloads the song from Deezer and uploades it."
     }
