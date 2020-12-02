@@ -107,7 +107,8 @@ async def meme(event):
     await event.edit(memeVar + "-------------")
     await event.edit(memeVar)
     await asyncio.sleep(sleepValue)
-    
+
+
 @friday.on(friday_on_cmd(pattern=r"police"))
 async def _(event):
 
@@ -141,6 +142,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
         await event.edit(animation_chars[i % 12])
+
 
 @friday.on(friday_on_cmd("gangestar ?(.*)"))
 async def _(event):
@@ -474,6 +476,7 @@ async def _(event):
         await event.edit("👍🏼")
         await asyncio.sleep(0.6)
         await event.edit("👍🏻")
+
 
 @friday.on(friday_on_cmd("agree ?(.*)"))
 async def _(event):
