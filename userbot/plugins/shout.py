@@ -4,6 +4,7 @@ originaly from : @Hackintush
 """
 
 from telethon import events
+from userbot import CMD_HELP
 
 
 @friday.on(events.NewMessage(pattern=r"\.shouts", outgoing=True))
@@ -24,3 +25,11 @@ async def shout(args):
         result = "".join(result)
         msg = "\n" + result
         await args.edit("`" + msg + "`")
+        from userbot import CMD_HELP
+CMD_HELP.update(
+    {
+        "shout": "**Shout**\
+\n\n**Syntax : **`.shout <text>`\
+\n**Usage :** Shouts a message in NEME way."
+    }
+)
