@@ -47,7 +47,7 @@ if 1 == 1:
                 photo = await event.client.download_profile_photo(chat)
 
                 await borg.send_file(event.chat_id, photo)
-
+                await potocmd.delete()
         else:
 
             try:
