@@ -1,6 +1,7 @@
+from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 from var import Var
-from userbot import CMD_HELP
+
 
 @friday.on(friday_on_cmd(pattern="stat$"))
 async def stats(event):
@@ -52,7 +53,8 @@ async def mod(event):
     tap = await bot.inline_query(botusername, modr)
     await tap[0].click(event.chat_id)
     await event.delete()
-    
+
+
 CMD_HELP.update(
     {
         "inline_fun": "**Inline Fun**\
