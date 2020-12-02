@@ -10,7 +10,7 @@ PM_IMG = (
 )
 pm_caption = "`➥ CɪᴘʜᴇʀX Super Technology Bot is:` **Online**\n\n"
 pm_caption += "**➥ System Status**\n"
-pm_caption += "`➥ Telethon Version:` **6.0.9**\n`➥ Python:` **3.8.5**\n"
+pm_caption += "`➥ Telethon Version:` **6.0.9**\n`➥ Python:` **3.9**\n"
 pm_caption += "`➥ Database Status:` **AWS Working Properly**\n"
 pm_caption += "**➥ Current Branch** : `Master`\n"
 pm_caption += "**➥ CɪᴘʜᴇʀX OS** : `Kali GNU/Linux Rolling x86_64`\n"
