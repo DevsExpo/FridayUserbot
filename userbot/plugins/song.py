@@ -3,9 +3,9 @@ import asyncio
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from userbot import bot
+from userbot import CMD_HELP, bot
 from userbot.utils import friday_on_cmd
-from userbot import CMD_HELP
+
 
 @friday.on(friday_on_cmd(pattern="spd ?(.*)"))
 async def _(event):
@@ -85,7 +85,8 @@ async def DeezLoader(Deezlod):
             conv.chat_id, [msg_start.id, response.id, r.id, msg.id, details.id, song.id]
         )
         await Deezlod.delete()
-        
+
+
 CMD_HELP.update(
     {
         "song": "**Song**\
