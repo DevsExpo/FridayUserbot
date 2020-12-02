@@ -108,6 +108,7 @@ async def meme(event):
     await event.edit(memeVar)
     await asyncio.sleep(sleepValue)
 
+
 @friday.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
 async def _(event):
 
@@ -160,8 +161,8 @@ async def _(event):
             await asyncio.sleep(animation_interval)
 
             await event.edit(animation_chars[i % 27])
-    
-    
+
+
 @friday.on(friday_on_cmd(pattern=r"police"))
 async def _(event):
 
