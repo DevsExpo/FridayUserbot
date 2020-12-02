@@ -38,7 +38,7 @@ CMD_HELP.update(
         \n\n**Syntax : **`.rensay <text>`\
         \n\n**Syntax : **`.cheesesay <text>`\
         \n\n**Syntax : **`.ghostbusterssay <text>`\
-        \n\n**Syntax : **`.skeletonsay text>`\
-        \n\n**Usage :** A fun plugin to get ur texts look like its being said by different characters"
+        \n\n**Syntax : **`.skeletonsay <text>`\
+        \n\n**Usage :** A fun plugin to get your texts look like its being said by different characters"
     }
 )
