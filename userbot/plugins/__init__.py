@@ -1,4 +1,5 @@
 from userbot import topfunc
+from userbot import timefunc
 from userbot.Configs import Config
 from userbot.utils import friday_on_cmd
 from var import Var
