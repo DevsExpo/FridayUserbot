@@ -135,7 +135,7 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "amongus": "**Plugin :** `amongus__`\
+        "among-us": "**Plugin :** `among-us`\
 \n\n**Syntax : **`.imp` / `.impn` <text>\
 \n**Usage : ** Find imposter with stickers.\
 \n\n**Syntax : **`.timp` / `.timpn` <text>\
