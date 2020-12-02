@@ -2,7 +2,9 @@ import random
 
 import requests
 from uniborg.util import friday_on_cmd
+
 from userbot import CMD_HELP
+
 
 @friday.on(friday_on_cmd(pattern="quote ?(.*)"))
 async def quote_search(event):
@@ -28,7 +30,8 @@ async def quote_search(event):
         await event.edit(result.replace("<code>", "`").replace("</code>", "`"))
     else:
         await event.edit("Zero results found")
-        
+
+
 CMD_HELP.update(
     {
         "quotes": "**Quotes**\
