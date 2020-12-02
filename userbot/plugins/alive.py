@@ -32,6 +32,6 @@ CMD_HELP.update(
     {
         "alive": "**ALive**\
 \n\n**Syntax : **`.alive`\
-\n**Usage :** Check if CɪᴘʜᴇʀXBot is alive"
+\n**Usage :** Check if CɪᴘʜᴇʀX Bot is alive"
     }
 )
