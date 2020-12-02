@@ -4,6 +4,7 @@ originaly from : @Hackintush
 """
 
 from telethon import events
+
 from userbot import CMD_HELP
 
 
@@ -25,7 +26,8 @@ async def shout(args):
         result = "".join(result)
         msg = "\n" + result
         await args.edit("`" + msg + "`")
-        from userbot import CMD_HELP
+
+
 CMD_HELP.update(
     {
         "shout": "**Shout**\
