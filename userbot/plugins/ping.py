@@ -1,7 +1,7 @@
 import time
 from datetime import datetime
 
-from userbot import Lastupdate
+from userbot import CMD_HELP, Lastupdate
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
@@ -46,3 +46,12 @@ async def _(event):
     await starkislub.edit(
         f"**█▀█ █▀█ █▄░█ █▀▀ █ \n█▀▀ █▄█ █░▀█ █▄█ ▄**\n ➲ `{ms}` \n ➲ `{uptime}`"
     )
+
+
+CMD_HELP.update(
+    {
+        "ping": "**Ping**\
+\n\n**Syntax : **`.pin`\
+\n**Usage :** Get uptime and speed of your bot."
+    }
+)
