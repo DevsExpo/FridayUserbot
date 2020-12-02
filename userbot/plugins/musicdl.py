@@ -8,7 +8,7 @@ from telethon.errors.rpcerrorlist import (
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
 from userbot.utils import friday_on_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd("sdd ?(.*)"))
 async def _(event):
@@ -41,3 +41,11 @@ async def _(event):
             await event.delete()
         except YouBlockedUserError:
             await event.edit("**Error:** `unblock bot and retry!`")
+            
+CMD_HELP.update(
+    {
+        "musicdl": "**Music downloader**\
+\n\n**Syntax : **`.sdd <link>`\
+\n**Usage :** Downloads music from given link."
+    }
+)
