@@ -8,7 +8,7 @@ from datetime import datetime
 from selenium import webdriver
 
 from userbot.utils import friday_on_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd("screenlong (.*)"))
 async def _(event):
@@ -66,3 +66,11 @@ async def _(event):
         await event.edit(f"Completed screencapture Process in {ms} seconds")
     except Exception:
         await event.edit(traceback.format_exc())
+        
+CMD_HELP.update(
+    {
+        "screenlong": "**long Screen Capture**\
+\n\n**Syntax : **`.screenlong <website URL>`\
+\n**Usage :** takes website screenshot."
+    }
+)
