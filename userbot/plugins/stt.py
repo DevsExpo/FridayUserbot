@@ -6,7 +6,7 @@ from datetime import datetime
 import requests
 
 from userbot.utils import friday_on_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd(pattern="stt (.*)"))
 async def _(event):
@@ -71,3 +71,11 @@ async def _(event):
             os.remove(required_file_name)
     else:
         await event.edit("Reply to a voice message, to get the relevant transcript.")
+        
+CMD_HELP.update(
+    {
+        "stt": "**Stt**\
+\n\n**Syntax : **`.stt <language Code> <reply to voice message>`\
+\n**Usage :** Converts voice message into text."
+    }
+)
