@@ -6,7 +6,9 @@ import os
 
 from telethon.tl import functions
 from uniborg.util import friday_on_cmd
+
 from userbot import CMD_HELP
+
 
 @friday.on(friday_on_cmd(pattern="pbio (.*)"))  # pylint:disable=E0602
 async def _(event):
@@ -75,7 +77,8 @@ async def _(event):
         os.remove(photo)
     except Exception as e:  # pylint:disable=C0103,W0703
         logger.warn(str(e))  # pylint:disable=E0602
-        
+
+
 CMD_HELP.update(
     {
         "profile": "**Profile**\

@@ -8,17 +8,22 @@ Available Commands:
 import os
 import sys
 
-from userbot.utils import friday_on_cmd
 from userbot import CMD_HELP
+from userbot.utils import friday_on_cmd
+
 
 @friday.on(friday_on_cmd("restart"))
 async def _(event):
     if event.fwd_from:
         return
     await asyncio.sleep(2)
-    await event.edit("Restarting [██░] ...\n`.ping` me or `.help` to check if I'm online after a lil bit.")
+    await event.edit(
+        "Restarting [██░] ...\n`.ping` me or `.help` to check if I'm online after a lil bit."
+    )
     await asyncio.sleep(2)
-    await event.edit("Restarting [███]...\n`.ping` me or `.help` to check if I'm online after a lil bit.")
+    await event.edit(
+        "Restarting [███]...\n`.ping` me or `.help` to check if I'm online after a lil bit."
+    )
     await asyncio.sleep(2)
     await event.edit("Restarted. `.ping` me or `.help` me to check if I'm online")
     await borg.disconnect()
@@ -34,7 +39,8 @@ async def _(event):
         return
     await event.edit("Turning off ...Manually turn me on later")
     await borg.disconnect()
-    
+
+
 CMD_HELP.update(
     {
         "power_tools": "**Power Tools**\
