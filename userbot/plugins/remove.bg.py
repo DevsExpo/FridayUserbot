@@ -22,7 +22,7 @@ from datetime import datetime
 import requests
 
 from userbot.utils import friday_on_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd("rmbg ?(.*)"))
 async def _(event):
@@ -120,3 +120,11 @@ def ReTrieveURL(input_url):
         stream=True,
     )
     return r
+
+CMD_HELP.update(
+    {
+        "remove.bg": "**Remove background**\
+\n\n**Syntax : **`.rmbg <reply to image>`\
+\n**Usage :** Image of replyed image is removed."
+    }
+)
