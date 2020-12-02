@@ -13,7 +13,7 @@ import aiohttp
 import magic
 import requests
 from uniborg.util import friday_on_cmd, progress
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd(pattern="verystream ?(.*)", allow_sudo=True))
 async def _(event):
@@ -138,3 +138,11 @@ def get_sha_one_hash(input_file, chunk_size):
                 break
             sha1.update(data)
     return sha1.hexdigest()
+
+CMD_HELP.update(
+    {
+        "verystream": "**Verystream**\
+\n\n**Syntax : **`.verystream <reply to file>`\
+\n**Usage :** uploades the file to very stream."
+    }
+)
