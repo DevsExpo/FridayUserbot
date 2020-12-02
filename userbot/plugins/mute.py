@@ -15,7 +15,7 @@
 import asyncio
 
 from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute
-
+from userbot import CMD_HELP
 
 @command(outgoing=True, pattern=r"^.mute ?(\d+)?")
 async def startmute(event):
@@ -217,3 +217,13 @@ async def hehehe(event):
                 chat,
                 "`This inbox has been blessed by my master. Consider yourself lucky.`\n**Increased Stability and Karma** (づ￣ ³￣)づ",
             )
+            
+CMD_HELP.update(
+    {
+        "mute": "**Mute**\
+\n\n**Syntax : **`.mute <reply to a user/ mention username>`\
+\n**Usage :** Mutes the user in a chat.\
+\n\n**Syntax : **`.unmute <reply to a user/ mention username>`\
+\n**Usage :** unmutes user in that chat."
+    }
+)
