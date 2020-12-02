@@ -10,8 +10,9 @@
 from random import randint
 from time import sleep
 
-from userbot.events import register
 from userbot import CMD_HELP
+from userbot.events import register
+
 
 @register(outgoing=True, pattern="^.random")
 async def randomise(items):
@@ -45,7 +46,8 @@ async def sleepybot(time):
                     "You put the bot to sleep for " + str(counter) + " seconds",
                 )
             sleep(counter)
-            
+
+
 CMD_HELP.update(
     {
         "misc": "**Misc**\
