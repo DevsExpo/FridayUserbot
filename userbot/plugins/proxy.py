@@ -21,18 +21,15 @@ sedpng = "https://telegra.ph/file/6a7f81fb3878d501f87e5.jpg"
 async def cipherxme(event):
     await event.get_chat()
     file_name = "Http_CipherX.txt"
-    message_id = event.message.id
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloader = SmartDL(f"{CIPHERX_HTTP}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
     await event.client.send_file(
         event.chat_id,
         downloaded_file_name,
-        allow_cache=False,
-        force_document=True,
+        force_document=False,
         thumb=sedpng,
         caption=HTTP_TXT,
-        reply_to=message_id,
     )
 
 
@@ -41,18 +38,17 @@ async def cipherxme(event):
 async def hackintush(event):
     await event.get_chat()
     file_name = "Socks4_CipherX.txt"
-    message_id = event.message.id
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloader = SmartDL(f"{CIPHERX_SOCKS4}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
+    # await borg.send_message(event.chat_id , SOCKS4_TXT)
     await event.client.send_file(
         event.chat_id,
         downloaded_file_name,
         thumb=sedpng,
         caption=SOCKS4_TXT,
         allow_cache=False,
-        force_document=True,
-        reply_to=message_id,
+        force_document=False,
     )
 
 
@@ -61,16 +57,27 @@ async def hackintush(event):
 async def hubs(event):
     await event.get_chat()
     file_name = "Socks5_CipherX.txt"
-    message_id = event.message.id
     downloaded_file_name = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, file_name)
     downloader = SmartDL(f"{CIPHERX_SOCKS5}", downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
+    # await borg.send_message(event.chat_id , SOCKS5_TXT)
     await event.client.send_file(
         event.chat_id,
         downloaded_file_name,
         thumb=sedpng,
         caption=SOCKS5_TXT,
         allow_cache=False,
-        force_document=True,
-        reply_to=message_id,
+        force_document=False,
     )
+    
+CMD_HELP.update(
+    {
+        "proxyscrape": "**Proxy scrape**\
+\n\n**Syntax : **`.http`\
+\n**Usage :** scrapes http proxies automatically.\
+\n\n**Syntax : **`.socks4`\
+\n**Usage :** scrapes socks4 proxies automatically.\
+\n\n**Syntax : **`.socks5`\
+\n**Usage :** Scrapes socks5 proxies automatically."
+    }
+)
