@@ -9,7 +9,7 @@ from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 from var import Var
 
 newslog = Var.NEWS_CHANNEL_ID
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd("news (.*)"))
 @friday.on(sudo_cmd("news (.*)", allow_sudo=True))
@@ -39,3 +39,11 @@ async def _(event):
         sed1 = img
         sedm = f"**Title : {titles}** \n{sedlyf} \nDate : {dateis} \nAuthor : {writter} \nReadMore : {readthis}"
         await borg.send_file(newslog, sed1, caption=sedm)
+        
+CMD_HELP.update(
+    {
+        "news": "**News**\
+\n\n**Syntax : **`.news <type of news>`\
+\n**Usage :** Get latest news instantly to your private group"
+    }
+)
