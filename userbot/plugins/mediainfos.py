@@ -8,6 +8,7 @@ from typing import Tuple
 
 from telegraph import Telegraph
 
+from userbot import CMD_HELP
 from userbot.Configs import Config
 from userbot.utils import friday_on_cmd
 
@@ -36,7 +37,7 @@ async def _(event):
         return
     reply_message = await event.get_reply_message()
     if reply_message is None:
-        await event.edit("Reply to a Media.")
+        await event.edit("Reply To a Media.")
     await event.edit("`Processing...`")
     file_path = await borg.download_media(reply_message, Config.TMP_DOWNLOAD_DIRECTORY)
     out, err, ret, pid = await runcmd(f"mediainfo '{file_path}'")
@@ -50,3 +51,12 @@ async def _(event):
     await event.edit(f"`This MediaInfo Can Be Found` [Here](https://telegra.ph/{km})")
     if os.path.exists(file_path):
         os.remove(file_path)
+
+
+CMD_HELP.update(
+    {
+        "mediadata": "**Media Data**\
+\n\n**Syntax : **`.mediainfo <reply to image>`\
+\n**Usage :** Gives you information about the media."
+    }
+)
