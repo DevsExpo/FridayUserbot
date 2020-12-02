@@ -6,7 +6,7 @@ Available Commands:
 import asyncio
 
 from uniborg.util import admin_cmd
-
+from userbot import CMD_HELP
 
 @borg.on(admin_cmd(pattern=r"mtn"))
 async def _(event):
@@ -52,3 +52,11 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
         await event.edit(animation_chars[i % 19])
+        
+CMD_HELP.update(
+    {
+        "mtn": "**MTN**\
+\n\n**Syntax : **`.mtn `\
+\n**Usage :** Funny prank plugin."
+    }
+)
