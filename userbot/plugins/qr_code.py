@@ -9,7 +9,9 @@ from datetime import datetime
 import qrcode
 from bs4 import BeautifulSoup
 from uniborg.util import friday_on_cmd
+
 from userbot import CMD_HELP
+
 
 def progress(current, total):
     logger.info(
@@ -120,7 +122,8 @@ async def _(event):
     await event.edit("Created QRCode in {} seconds".format(ms))
     await asyncio.sleep(5)
     await event.delete()
-    
+
+
 CMD_HELP.update(
     {
         "qr_code": "**QR CODE**\
