@@ -5,7 +5,7 @@
 import random
 
 from telethon import events
-
+from userbot import CMD_HELP
 
 @friday.on(events.NewMessage(pattern=r"\.react (.*)", outgoing=True))
 async def _(event):
@@ -108,3 +108,11 @@ async def _(event):
     index = random.randint(0, len(emoticons))
     output_str = emoticons[index]
     await event.edit(output_str)
+
+CMD_HELP.update(
+    {
+        "react": "**React**\
+\n\n**Syntax : **`.react <type happy/thinking/waving/dead/dog/sad/love/confused/wtf>`\
+\n**Usage :** generates emojis to show given emotion."
+    }
+)
