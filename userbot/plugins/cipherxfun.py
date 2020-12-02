@@ -88,7 +88,7 @@ async def meme(event):
     if event.fwd_from:
         return
     memeVar = event.text
-    sleepValue = 5
+    sleepValue = 8
     memeVar = memeVar[6:]
 
     await event.edit("-------------" + memeVar)
@@ -107,7 +107,40 @@ async def meme(event):
     await event.edit(memeVar + "-------------")
     await event.edit(memeVar)
     await asyncio.sleep(sleepValue)
+    
+@friday.on(friday_on_cmd(pattern=r"police"))
+async def _(event):
 
+    if event.fwd_from:
+
+        return
+
+    animation_interval = 0.1
+
+    animation_ttl = range(0, 64)
+
+    await event.edit("Police")
+
+    animation_chars = [
+        "🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵",
+        "🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴",
+        "🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵",
+        "🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴",
+        "🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵",
+        "🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴",
+        "🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵",
+        "🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴",
+        "🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵",
+        "🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴\n🔵🔵🔵⬜⬜⬜🔴🔴🔴",
+        "🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵\n🔴🔴🔴⬜⬜⬜🔵🔵🔵",
+        "[CɪᴘʜᴇʀX](https://t.me/Hackintush) **Police Service Here**",
+    ]
+
+    for i in animation_ttl:
+
+        await asyncio.sleep(animation_interval)
+
+        await event.edit(animation_chars[i % 12])
 
 @friday.on(friday_on_cmd("gangestar ?(.*)"))
 async def _(event):
@@ -442,6 +475,29 @@ async def _(event):
         await asyncio.sleep(0.6)
         await event.edit("👍🏻")
 
+@friday.on(friday_on_cmd("agree ?(.*)"))
+async def _(event):
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+        await event.edit("👌")
+        await asyncio.sleep(0.6)
+        await event.edit("👌🏻")
+        await asyncio.sleep(0.6)
+        await event.edit("👌🏼")
+        await asyncio.sleep(0.6)
+        await event.edit("👌🏽")
+        await asyncio.sleep(0.6)
+        await event.edit("👌🏾")
+        await asyncio.sleep(0.6)
+        await event.edit("👌🏿")
+        await asyncio.sleep(0.6)
+        await event.edit("👌🏾")
+        await asyncio.sleep(0.6)
+        await event.edit("👌🏽")
+        await asyncio.sleep(0.6)
+        await event.edit("👌🏼")
+        await asyncio.sleep(0.6)
+        await event.edit("👌🏻")
+
 
 @friday.on(events.NewMessage(pattern=r"\.angry", outgoing=True))
 async def _(event):
@@ -755,7 +811,7 @@ async def _(event):
 
     animation_interval = 0.1
 
-    animation_ttl = range(0, 110)
+    animation_ttl = range(0, 210)
 
     input_str = event.pattern_match.group(1)
 
@@ -778,7 +834,7 @@ async def _(event):
 
             await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 110])
+            await event.edit(animation_chars[i % 210])
 
 
 @friday.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
@@ -4995,6 +5051,7 @@ CMD_HELP.update(
 \n\n.bigoof\
 \n\n.ok\
 \n\n.meme\
+\n\n.police\
 \n\n.gangestar\
 \n\n.flower\
 \n\n.tlol\
@@ -5015,6 +5072,7 @@ CMD_HELP.update(
 \n\n.cheart\
 \n\n.finger\
 \n\n.billy\
+\n\n.agree\
 \n\n.angry\
 \n\n.sad\
 \n\n.amaze\
