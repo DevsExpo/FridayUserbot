@@ -1,5 +1,5 @@
 # @Hackintush
-Available Commands:
+"""Available Commands:
 .unbanall
 .kick option
 Available Options: d, y, m, w, o, q, r """
