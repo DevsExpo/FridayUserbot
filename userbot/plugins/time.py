@@ -7,8 +7,8 @@ from datetime import datetime
 
 from PIL import Image, ImageDraw, ImageFont
 
-from userbot.utils import friday_on_cmd
 from userbot import CMD_HELP
+from userbot.utils import friday_on_cmd
 
 FONT_FILE_TO_USE = "Fonts/digital.ttf"
 
@@ -60,7 +60,8 @@ async def _(event):
         return
     input_str = event.pattern_match.group(1)
     logger.info(input_str)  # pylint:disable=E0602
-    
+
+
 CMD_HELP.update(
     {
         "time": "**Time**\

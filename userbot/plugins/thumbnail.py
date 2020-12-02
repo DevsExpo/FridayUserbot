@@ -11,6 +11,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
 from uniborg.util import friday_on_cmd
+
 from userbot import CMD_HELP
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
@@ -124,7 +125,8 @@ async def _(event):
         await event.edit(caption_str)
     else:
         await event.edit("Reply `.gethumbnail` as a reply to a media")
-        
+
+
 CMD_HELP.update(
     {
         "thumbnail": "**Thumbnail**\

@@ -22,9 +22,8 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from userbot import ALIVE_NAME
+from userbot import ALIVE_NAME, CMD_HELP
 from userbot.utils import admin_cmd
-from userbot import CMD_HELP
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Who is this"
 FILLED_UP_DADDY = "Invalid pack selected."
@@ -447,7 +446,8 @@ def zipdir(path, ziph):
         for file in files:
             ziph.write(os.path.join(root, file))
             os.remove(os.path.join(root, file))
-            
+
+
 CMD_HELP.update(
     {
         "stickers": "**Stickers**\

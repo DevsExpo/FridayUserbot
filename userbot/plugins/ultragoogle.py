@@ -12,8 +12,9 @@ import requests
 from bs4 import BeautifulSoup
 from google_images_download import google_images_download
 
-from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 from userbot import CMD_HELP
+from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+
 
 def progress(current, total):
     logger.info(
@@ -157,7 +158,8 @@ More Info: Open this <a href="{the_location}">Link</a> in {ms} seconds""".format
             **locals()
         )
     await event.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
-    
+
+
 CMD_HELP.update(
     {
         "ultragoogle": "**Ultra Google**\

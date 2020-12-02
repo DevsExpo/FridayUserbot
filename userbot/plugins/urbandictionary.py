@@ -5,8 +5,9 @@
 Syntax: .ud Query"""
 import urbandict
 
-from userbot.utils import friday_on_cmd
 from userbot import CMD_HELP
+from userbot.utils import friday_on_cmd
+
 
 @friday.on(friday_on_cmd("ud (.*)"))
 async def _(event):
@@ -31,7 +32,8 @@ async def _(event):
             await event.edit("No result found for **" + str + "**")
     except:
         await event.edit("No result found for **" + str + "**")
-        
+
+
 CMD_HELP.update(
     {
         "urbandictionary": "**Urban Dictionary**\

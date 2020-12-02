@@ -6,8 +6,9 @@ Available Commands:
 import emoji
 from googletrans import Translator
 
-from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 from userbot import CMD_HELP
+from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+
 
 @friday.on(friday_on_cmd("tr ?(.*)"))
 @friday.on(sudo_cmd("tr ?(.*)", allow_sudo=True))
@@ -44,7 +45,8 @@ async def _(event):
         await edit_or_reply(event, output_str)
     except Exception as exc:
         await edit_or_reply(event, str(exc))
-        
+
+
 CMD_HELP.update(
     {
         "translate": "**Translate**\
