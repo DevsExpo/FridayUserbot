@@ -7,7 +7,7 @@ from datetime import datetime
 import requests
 
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
-
+from userbot import CMD_HELP
 
 def progress(current, total):
     logger.info(
@@ -63,3 +63,11 @@ async def _(event):
         )
     else:
         await crackexy.edit("code is pasted to {} in {} seconds".format(url, ms))
+        
+CMD_HELP.update(
+    {
+        "ifsc": "**IFSC**\
+\n\n**Syntax : **`.ifsc <IFSC code>`\
+\n**Usage :** gives you details about the bank."
+    }
+)
