@@ -108,6 +108,59 @@ async def meme(event):
     await event.edit(memeVar)
     await asyncio.sleep(sleepValue)
 
+@friday.on(friday_on_cmd("think"))
+async def _(event):
+    if event.fwd_from:
+        return
+    animation_interval = 0.1
+    animation_ttl = range(0, 288)
+
+    # await event.edit(input_str)
+    await event.edit("thinking")
+    animation_chars = [
+        "THINKING",
+        "THI&K#N₹",
+        "T+IN@I?G",
+        "¿H$NK∆NG",
+        "¶H×NK&N*",
+        "NGITHKIN",
+        "T+I#K@₹G",
+        "THINKING",
+        "THI&K#N₹",
+        "T+IN@I?G",
+        "¿H$NK∆NG",
+        "¶H×NK&N*",
+        "NGITHKIN",
+        "T+I#K@₹G",
+        "THINKING",
+        "THI&K#N₹",
+        "T+IN@I?G",
+        "¿H$NK∆NG",
+        "¶H×NK&N*",
+        "NGITHKIN",
+        "T+I#K@₹G",
+        "THINKING",
+        "THI&K#N₹",
+        "T+IN@I?G",
+        "¿H$NK∆NG",
+        "¶H×NK&N*",
+        "NGITHKIN",
+        "T+I#K@₹G",
+        "THINKING",
+        "THI&K#N₹",
+        "T+IN@I?G",
+        "¿H$NK∆NG",
+        "¶H×NK&N*",
+        "NGITHKIN",
+        "T+I#K@₹G",
+        "Thinking... 🤔",
+    ]
+
+    for i in animation_ttl:
+
+        await asyncio.sleep(animation_interval)
+        await event.edit(animation_chars[i % 72])
+    
 
 @friday.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
 async def _(event):
@@ -5108,6 +5161,7 @@ CMD_HELP.update(
 \n\n.bigoof\
 \n\n.ok\
 \n\n.meme\
+\n\n.think\
 \n\n.snake\
 \n\n.police\
 \n\n.gangestar\
