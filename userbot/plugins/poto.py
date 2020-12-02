@@ -6,6 +6,7 @@
 import logging
 
 from userbot.utils import friday_on_cmd, sudo_cmd
+from userbot import CMD_HELP
 
 logger = logging.getLogger(__name__)
 
@@ -76,3 +77,11 @@ if 1 == 1:
                 await event.edit("`No photo found of that User`")
 
                 return
+            
+CMD_HELP.update(
+    {
+        "poto": "**Poto**\
+\n\n**Syntax : **`.poto <reply to a user> <profile picture number>`\
+\n**Usage :** Downloads profile picture of replyed user."
+    }
+)
