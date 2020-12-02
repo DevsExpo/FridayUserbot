@@ -1,7 +1,7 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from uniborg.util import friday_on_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd("sg ?(.*)"))
 async def _(event):
@@ -177,3 +177,19 @@ async def _(event):
             )
         else:
             await event.edit(f"{response.message.message}")
+            
+CMD_HELP.update(
+    {
+        "sangmata": "**Sangmata**\
+\n\n**Syntax : **`.sg <reply to someone's message>`\
+\n**Usage :** gets name history of the person.\
+\n\n**Syntax : **`.fakemail <reply to someone's message>`\
+\n**Usage :** Gets you fake email to use.\
+\n\n**Syntax : **`.ub <reply to a link>`\
+\n**Usage :** Download from given link and uploades in telegram.\
+\n\n**Syntax : **`.gid <reply to someone's message>`\
+\n**Usage :** gets id and info of the person.\
+\n\n**Syntax : **`.urban <reply to text>`\
+\n**Usage :** Gets you meaning of replyed text."
+    }
+)
