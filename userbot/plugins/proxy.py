@@ -6,6 +6,7 @@ import os
 from pySmartDL import SmartDL
 
 from userbot.utils import friday_on_cmd, sudo_cmd
+from userbot import CMD_HELP
 
 CIPHERX_HTTP = "https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=3000&country=IR&ssl=all&anonymity=all"
 HTTP_TXT = "**🔅Proxy List Info** \n🔹Type: __Https__ \n🔸TimeOut: __3000__ \n🔹Country: __IR__ \n🔸Ssl: All \n🔹Anonymity: __All__ \n🔸Provided By ✨CɪᴘʜᴇʀX✨ \n**🔹Here Is Your Proxy List** 👇"
@@ -74,9 +75,9 @@ CMD_HELP.update(
     {
         "proxyscrape": "**Proxy scrape**\
 \n\n**Syntax : **`.http`\
-\n**Usage :** scrapes http proxies automatically.\
+\n**Usage :** Scrapes http proxies automatically.\
 \n\n**Syntax : **`.socks4`\
-\n**Usage :** scrapes socks4 proxies automatically.\
+\n**Usage :** Scrapes socks4 proxies automatically.\
 \n\n**Syntax : **`.socks5`\
 \n**Usage :** Scrapes socks5 proxies automatically."
     }
