@@ -7,7 +7,7 @@ import emoji
 from googletrans import Translator
 
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd("tr ?(.*)"))
 @friday.on(sudo_cmd("tr ?(.*)", allow_sudo=True))
