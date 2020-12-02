@@ -11,6 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
 
 from userbot.utils import friday_on_cmd, sudo_cmd
+from userbot import CMD_HELP
 
 # RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 
@@ -153,3 +154,11 @@ async def get_font_file(client, channel_id, search_kw=""):
 # def deEmojify(inputString: str) -> str:
 #  """Remove emojis and other non-safe characters from string"""
 # return re.sub(EMOJI_PATTERN, '', inputString)
+
+CMD_HELP.update(
+    {
+        "stickcreate": "**Sticker Creator**\
+\n\n**Syntax : **`.stcr <text>`\
+\n**Usage :** Creates sticker with given text."
+    }
+)
