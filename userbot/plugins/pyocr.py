@@ -9,7 +9,7 @@ import pytesseract
 
 from userbot.Configs import Config
 from userbot.utils import friday_on_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd(pattern="read$"))
 async def _(event):
@@ -29,3 +29,11 @@ async def _(event):
     await event.edit(mk, parse_mode="HTML")
     if os.path.exists(results):
         os.remove(results)
+        
+CMD_HELP.update(
+    {
+        "pyocr": "**PY OCR**\
+\n\n**Syntax : **`.read <reply to image>`\
+\n**Usage :** It automatically reads the image and shows text in the image."
+    }
+)
