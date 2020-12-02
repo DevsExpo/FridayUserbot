@@ -18,7 +18,7 @@ from telethon.tl.types import (
     UserStatusRecently,
 )
 from uniborg.util import friday_on_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd(pattern="unbanall ?(.*)"))
 async def _(event):
