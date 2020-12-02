@@ -1,7 +1,9 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from uniborg.util import friday_on_cmd
+
 from userbot import CMD_HELP
+
 
 @friday.on(friday_on_cmd("mask ?(.*)"))
 async def _(event):
@@ -36,7 +38,8 @@ async def _(event):
             )
         else:
             await borg.send_file(event.chat_id, response.message.media)
-            
+
+
 CMD_HELP.update(
     {
         "mask": "**Mask**\
