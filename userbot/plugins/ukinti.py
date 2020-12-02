@@ -1,4 +1,4 @@
-""" @ukinti_bot
+# @Hackintush
 Available Commands:
 .unbanall
 .kick option
@@ -197,3 +197,13 @@ async def ban_user(chat_id, i, rights):
         return True, None
     except Exception as exc:
         return False, str(exc)
+    
+CMD_HELP.update(
+    {
+        "ukinti": "**Ukinti**\
+\n\n**Syntax : **`.unbanall`\
+\n**Usage :** Unbans everyone in your group.\
+\n\n**Syntax : **`.ikuck`\
+\n**Usage :** Shows stats of Group."
+    }
+)
