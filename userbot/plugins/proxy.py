@@ -28,7 +28,7 @@ async def cipherxme(event):
     await event.client.send_file(
         event.chat_id,
         downloaded_file_name,
-        force_document=False,
+        force_document=True,
         thumb=sedpng,
         caption=HTTP_TXT,
     )
@@ -49,7 +49,7 @@ async def hackintush(event):
         thumb=sedpng,
         caption=SOCKS4_TXT,
         allow_cache=False,
-        force_document=False,
+        force_document=True,
     )
 
 
@@ -68,7 +68,7 @@ async def hubs(event):
         thumb=sedpng,
         caption=SOCKS5_TXT,
         allow_cache=False,
-        force_document=False,
+        force_document=True,
     )
 
 
