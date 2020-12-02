@@ -1,7 +1,7 @@
 import pyshorteners
 
 from userbot.utils import friday_on_cmd, sudo_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd(pattern="urlshort (.*)"))
 @friday.on(sudo_cmd(pattern="urlshort (.*)", allow_sudo=True))
@@ -17,3 +17,11 @@ async def vom(event):
         await event.edit(bestisbest, parse_mode="HTML")
     except Exception as e:
         await event.edit("SomeThing Went Wrong. \nError : " + e)
+        
+CMD_HELP.update(
+    {
+        "urlshortner": "**URL shortner**\
+\n\n**Syntax : **`.urlshort <url link>`\
+\n**Usage :** Shortens the given URL."
+    }
+)
