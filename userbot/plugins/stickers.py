@@ -24,6 +24,7 @@ from telethon.tl.types import (
 
 from userbot import ALIVE_NAME
 from userbot.utils import admin_cmd
+from userbot import CMD_HELP
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Who is this"
 FILLED_UP_DADDY = "Invalid pack selected."
@@ -446,3 +447,15 @@ def zipdir(path, ziph):
         for file in files:
             ziph.write(os.path.join(root, file))
             os.remove(os.path.join(root, file))
+            
+CMD_HELP.update(
+    {
+        "stickers": "**Stickers**\
+\n\n**Syntax : **`.kang <reply to sticker/image>`\
+\n**Usage :** Kangs the image into your sticker pack.\
+\n\n**Syntax : **`.packinfo <reply to a sticker>`\
+\n**Usage :** Shows info about the pack.\
+\n\n**Syntax : **`.getsticker <reply to sticker>`\
+\n**Usage :** Downloada the sticker."
+    }
+)
