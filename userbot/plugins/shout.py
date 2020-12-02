@@ -30,6 +30,6 @@ CMD_HELP.update(
     {
         "shout": "**Shout**\
 \n\n**Syntax : **`.shout <text>`\
-\n**Usage :** Shouts a message in NEME way."
+\n**Usage :** Shouts a message in MEME way."
     }
 )
