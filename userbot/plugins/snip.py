@@ -9,6 +9,7 @@ Available Commands:
 from telethon import events, utils
 from telethon.tl import types
 
+from userbot import CMD_HELP
 from userbot.plugins.sql_helper.snips_sql import (
     add_snip,
     get_all_snips,
@@ -16,7 +17,6 @@ from userbot.plugins.sql_helper.snips_sql import (
     remove_snip,
 )
 from userbot.utils import friday_on_cmd
-from userbot import CMD_HELP
 
 TYPE_TEXT = 0
 TYPE_PHOTO = 1
@@ -114,7 +114,8 @@ async def on_snip_delete(event):
     name = event.pattern_match.group(1)
     remove_snip(name)
     await event.edit("snip #{} deleted successfully".format(name))
-    
+
+
 CMD_HELP.update(
     {
         "snip": "**Snip**\
