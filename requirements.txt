@@ -23,7 +23,7 @@ gitpython
 google-api-python-client==1.8.0
 google-auth-oauthlib
 google_images_download>=2.7.1
-googletrans
+googletrans==3.1.0a0
 gsearch
 hachoir
 heroku3
