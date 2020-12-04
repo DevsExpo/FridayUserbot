@@ -4,7 +4,7 @@ from telethon.events import ChatAction
 
 @borg.on(ChatAction)
 async def ok(event):
-    if Configs.ANTISPAM_FEATURE != "ENABLE":
+    if Config.ANTISPAM_FEATURE != "ENABLE":
         return
     if event.user_joined or event.user_added:
         juser = await event.get_user()
