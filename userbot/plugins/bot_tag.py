@@ -44,7 +44,7 @@ async def all_messages_catcher(event):
     where_ = await event.client.get_entity(event.chat_id)
 
     where_m = get_display_name(where_)
-    button_text = "Check 🚶"
+    button_text = "🏴‍☠ Check 🏴‍☠"
 
     if isinstance(where_, Chat):
         message_link = f"https://t.me/c/{where_.id}/{event.id}"
@@ -55,7 +55,7 @@ async def all_messages_catcher(event):
         message_link = f"tg://openmessage?chat_id={where_.id}&message_id={event.id}"
         # Telegram is weird :\
 
-    ammoca_message += f"User {who_m} Have Tagged You Here -> [{where_m}]({message_link}) \nCheck Message 👇 "
+    ammoca_message += f"User {who_m} Has Tagged You Here CɪᴘʜᴇʀX -> [{where_m}]({message_link}) \nCheck Message Here 👇 "
     log_chat = Config.PRIVATE_GROUP_ID
     await tgbot.send_message(
         log_chat,
