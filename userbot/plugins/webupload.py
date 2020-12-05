@@ -1,7 +1,9 @@
 # credits: SNAPDRAGON (@s_n_a_p_s)
 import asyncio
 import time
+
 from userbot import CMD_HELP
+
 
 @command(
     pattern="^.webupload ?(.+?|) (?:--)(anonfiles|transfer|filebin|anonymousfiles|megaupload|bayfiles)"
@@ -38,7 +40,8 @@ async def _(event):
     )
     stdout, stderr = await process.communicate()
     await event.edit(f"{stdout.decode()}")
-    
+
+
 CMD_HELP.update(
     {
         "webupload": "**Webupload**\

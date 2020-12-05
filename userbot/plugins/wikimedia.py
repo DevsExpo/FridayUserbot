@@ -2,7 +2,9 @@
 Syntax: .wikimedia Query"""
 import requests
 from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
+
 from userbot import CMD_HELP
+
 
 @friday.on(friday_on_cmd(pattern="wikimedia (.*)"))
 @friday.on(sudo_cmd(pattern="wikimedia (.*)", allow_sudo=True))
@@ -45,7 +47,8 @@ async def _(event):
     await wowsosmart.edit(
         "**Search**: {} \n\n **Results**: {}".format(input_str, result)
     )
-    
+
+
 CMD_HELP.update(
     {
         "wikimedia": "**Wikimedia**\

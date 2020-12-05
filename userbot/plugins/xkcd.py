@@ -4,7 +4,9 @@ from urllib.parse import quote
 
 import requests
 from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
+
 from userbot import CMD_HELP
+
 
 @friday.on(friday_on_cmd(pattern="xkcd ?(.*)"))
 @friday.on(sudo_cmd(pattern="xkcd ?(.*)", allow_sudo=True))
@@ -51,7 +53,7 @@ Year: {}""".format(
         await livinglegend.edit(output_str, link_preview=True)
     else:
         await livinglegend.edit("xkcd n.{} not found!".format(xkcd_id))
-        from userbot import CMD_HELP
+
 
 CMD_HELP.update(
     {
