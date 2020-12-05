@@ -6,7 +6,7 @@ from selenium import webdriver
 from youtube_search import YoutubeSearch
 
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd(pattern="wshot ?(.*)"))
 @friday.on(sudo_cmd(pattern="wshot ?(.*)", allow_sudo=True))
@@ -30,7 +30,23 @@ async def _(event):
 @friday.on(friday_on_cmd(pattern="lp ?(.*)"))
 @friday.on(sudo_cmd(pattern="lp ?(.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:
+    if event.fwd_from:CMD_HELP.update(
+    {
+        "webtools": "**Web Tools**\
+\n\n**Syntax : **`.wshot <website URL>`\
+\n**Usage :** takes screenshot of webpage.\
+\n\n**Syntax : **`.lp <URL link>`\
+\n**Usage :** Gives whois information about website.\
+\n\n**Syntax : **`.bin <bin>`\
+\n**Usage :** Provides information about bin.\
+\n\n**Syntax : **`.iban <iban>`\
+\n**Usage :** Provides information about IBAN.\
+\n\n**Syntax : **`.gitdl <repository name>`\
+\n**Usage :** Gets repository link.\
+\n\n**Syntax : **`.yts <query>`\
+\n**Usage :** searches the query on YouTube and give results."
+    }
+)
         return
     try:
         tfbro = await edit_or_reply(event, "Wait Fetching Website Info")
@@ -155,3 +171,21 @@ async def _(event):
         await stark_result.edit(noob, parse_mode="HTML")
     except:
         await event.edit("Something went Wrong.")
+        
+CMD_HELP.update(
+    {
+        "webtools": "**Web Tools**\
+\n\n**Syntax : **`.wshot <website URL>`\
+\n**Usage :** takes screenshot of webpage.\
+\n\n**Syntax : **`.lp <URL link>`\
+\n**Usage :** Gives whois information about website.\
+\n\n**Syntax : **`.bin <bin>`\
+\n**Usage :** Provides information about bin.\
+\n\n**Syntax : **`.iban <iban>`\
+\n**Usage :** Provides information about IBAN.\
+\n\n**Syntax : **`.gitdl <repository name>`\
+\n**Usage :** Gets repository link.\
+\n\n**Syntax : **`.yts <query>`\
+\n**Usage :** searches the query on YouTube and give results."
+    }
+)
