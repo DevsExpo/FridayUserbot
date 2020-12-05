@@ -7,7 +7,7 @@ from userbot.plugins.sql_helper.welcome_sql import (
     rm_welcome_setting,
     update_previous_welcome,
 )
-
+from userbot import CMD_HELP
 
 @bot.on(events.ChatAction())  # pylint:disable=E0602
 async def _(event):
@@ -102,3 +102,15 @@ async def _(event):
         )
     else:
         await event.edit("No Welcome Messages Found")
+        
+CMD_HELP.update(
+    {
+        "welcome": "**Welcome**\
+\n\n**Syntax : **`.savewelcome <welcome message to save>`\
+\n**Usage :** Saves welcome message.\
+\n\n**Syntax : **`.clearwelcome`\
+\n**Usage :** Clears welcome message.\
+\n\n**Syntax : **`.listwelcome`\
+\n**Usage :** Lists existing welcome message."
+    }
+)
