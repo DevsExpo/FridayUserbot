@@ -77,38 +77,7 @@ async def hmm(event):
             os.remove(files)
 
 
-@friday.on(friday_on_cmd(pattern=r"toon"))
-@friday.on(sudo_cmd(pattern=r"toon", allow_sudo=True))
-async def hmm(event):
-    life = Config.DEEP_API_KEY
-    if life == None:
-        life = "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"
-        await event.edit("No Api Key Found, Please Add it. For Now Using Local Key")
-    if not event.reply_to_msg_id:
-        await event.reply("Reply to any Image.")
-        return
-    headers = {"api-key": life}
-    hmm = await event.edit("Toooning.....")
-    sed = await event.get_reply_message()
-    if isinstance(sed.media, MessageMediaPhoto):
-        img = await borg.download_media(sed.media, sedpath)
-    elif "image" in sed.media.document.mime_type.split("/"):
-        img = await borg.download_media(sed.media, sedpath)
-    else:
-        await event.edit("Reply To Image")
-        return
-    img_file = {
-        "image": open(img, "rb"),
-    }
-    url = "https://api.deepai.org/api/toonify"
-    r = requests.post(url=url, files=img_file, headers=headers).json()
-    sedimg = r["output_url"]
-    await borg.send_file(event.chat_id, sedimg)
-    await hmm.delete()
-    if os.path.exists(img):
-        os.remove(img)
-
-
+# Firstly Released By @DELETEDUSER420
 @friday.on(friday_on_cmd(pattern=r"nst"))
 @friday.on(sudo_cmd(pattern=r"nst", allow_sudo=True))
 async def hmm(event):
@@ -182,6 +151,43 @@ async def iamthug(event):
             os.remove(files)
 
 
+import os
+
+import cv2
+
+
+@friday.on(friday_on_cmd(pattern=r"tni"))
+@friday.on(sudo_cmd(pattern=r"tni", allow_sudo=True))
+async def toony(event):
+    if not event.reply_to_msg_id:
+        await event.reply("Reply to any Image.")
+        return
+    hmmu = await event.edit("`Converting Toonized Image..`")
+    sed = await event.get_reply_message()
+    if isinstance(sed.media, MessageMediaPhoto):
+        img = await borg.download_media(sed.media, sedpath)
+    elif "image" in sed.media.document.mime_type.split("/"):
+        img = await borg.download_media(sed.media, sedpath)
+    else:
+        await event.edit("Reply To Image")
+        return
+    imagez = cv2.imread(img)
+    cartoon_image_style_2 = cv2.stylization(
+        imagez, sigma_s=60, sigma_r=0.5
+    )  ## Cartoonify process.
+    # Save it
+    file_name = "Tooned.png"
+    ok = sedpath + "/" + file_name
+    cv2.imwrite(ok, cartoon_image_style_2)
+    # Upload it
+    await borg.send_file(event.chat_id, ok)
+    await hmmu.delete()
+    # Remove all Files
+    for files in (ok, img):
+        if files and os.path.exists(files):
+            os.remove(files)
+
+
 @friday.on(friday_on_cmd(pattern=r"tig"))
 @friday.on(sudo_cmd(pattern=r"tig", allow_sudo=True))
 async def lolmetrg(event):
@@ -213,8 +219,6 @@ CMD_HELP.update(
         "imagetools": "**imagetools**\
         \n\n**Syntax : **`.cit`\
         \n**Usage :** colourizes the given picture\
-        \n\n**Syntax : **`.toon`\
-        \n**Usage :** makes toon of the given image\
         \n\n**Syntax : **`.nst`\
         \n**Usage :** removes colours from image\
         \n\n**Syntax : ** `.thug`\

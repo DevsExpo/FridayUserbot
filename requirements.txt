@@ -56,3 +56,5 @@ youtube-search
 youtube-search-python
 password_strength
 pyjokes
+cryptocompare
+faker
