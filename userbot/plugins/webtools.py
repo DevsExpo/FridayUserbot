@@ -30,23 +30,7 @@ async def _(event):
 @friday.on(friday_on_cmd(pattern="lp ?(.*)"))
 @friday.on(sudo_cmd(pattern="lp ?(.*)", allow_sudo=True))
 async def _(event):
-    if event.fwd_from:CMD_HELP.update(
-    {
-        "webtools": "**Web Tools**\
-\n\n**Syntax : **`.wshot <website URL>`\
-\n**Usage :** takes screenshot of webpage.\
-\n\n**Syntax : **`.lp <URL link>`\
-\n**Usage :** Gives whois information about website.\
-\n\n**Syntax : **`.bin <bin>`\
-\n**Usage :** Provides information about bin.\
-\n\n**Syntax : **`.iban <iban>`\
-\n**Usage :** Provides information about IBAN.\
-\n\n**Syntax : **`.gitdl <repository name>`\
-\n**Usage :** Gets repository link.\
-\n\n**Syntax : **`.yts <query>`\
-\n**Usage :** searches the query on YouTube and give results."
-    }
-)
+    if event.fwd_from:
         return
     try:
         tfbro = await edit_or_reply(event, "Wait Fetching Website Info")
