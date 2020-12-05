@@ -7,7 +7,7 @@ import io
 import requests
 
 from userbot.utils import admin_cmd
-
+from userbot import CMD_HELP
 
 @borg.on(admin_cmd("screencapture (.*)"))
 async def _(event):
@@ -65,3 +65,11 @@ async def _(event):
     else:
 
         await event.edit(response_api.text)
+        
+CMD_HELP.update(
+    {
+        "webshot": "**Webshot**\
+\n\n**Syntax : **`.screencapture <webpage link>`\
+\n**Usage :** takes screenshot of webpage."
+    }
+)
