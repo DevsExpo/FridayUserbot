@@ -327,7 +327,6 @@ async def _(event):
         await event.edit("".join(deq))
         deq.rotate(1)
 
-
 @friday.on(events.NewMessage(pattern=r"\.gym", outgoing=True))
 async def _(event):
     if event.fwd_from:
@@ -337,8 +336,16 @@ async def _(event):
         await asyncio.sleep(0.1)
         await event.edit("".join(deq))
         deq.rotate(1)
-
-
+@friday.on(events.NewMessage(pattern=r"\.candy", outgoing=True))
+async def _(event):
+    if event.fwd_from:
+        return
+    deq = deque(list("🍦🍧🍩🍪🎂🍰🧁🍫🍬🍭"))
+    for _ in range(48):
+        await asyncio.sleep(0.1)
+        await event.edit("".join(deq))
+        deq.rotate(1)
+        
 @friday.on(events.NewMessage(pattern=r"\.kiss", outgoing=True))
 async def _(event):
     if event.fwd_from:
@@ -764,8 +771,7 @@ async def _(event):
         await asyncio.sleep(0.1)
         await event.edit("".join(deq))
         deq.rotate(1)
-
-
+        
 @friday.on(events.NewMessage(pattern=r"\.brain", outgoing=True))
 async def _(event):
     if event.fwd_from:
@@ -793,7 +799,6 @@ async def _(event):
 
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 14])
-
 
 @friday.on(events.NewMessage(pattern=r"\.solar", outgoing=True))
 async def _(event):
@@ -5209,6 +5214,7 @@ CMD_HELP.update(
 \n\n.flower\
 \n\n.tlol\
 \n\n.gym\
+\n\n.candy\
 \n\n.kiss\
 \n\n.butterfly\
 \n\n.box\
