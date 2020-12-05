@@ -1,5 +1,5 @@
 """	
-	Anilist Search Plugin for Userbot	
+	Anime Search Plugin 
 	Usage : .anime animeName	
 	By :- @Hackintush	
 """
