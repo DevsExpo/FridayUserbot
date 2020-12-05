@@ -23,14 +23,14 @@ PM_ON_OFF = Config.PM_DATA
 DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 )
-CUSTOM_MIDDLE_PMP = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "Protection By CɪᴘʜᴇʀX"
-USER_BOT_WARN_ZERO = "You Have Attempted to Spam Masters Inbox, So in order to Avoid over Spam , You Have Been Blocked and Reported to Telegram."
+CUSTOM_MIDDLE_PMP = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "⚜ Protection By CɪᴘʜᴇʀX ⚜"
+USER_BOT_WARN_ZERO = "You Have Attempted to Spam My Masters Inbox, So in order to Avoid over Spam , You Have Been Blocked and Reported to Telegram."
 
 botisnoob = Var.TG_BOT_USER_NAME_BF_HER
 USER_BOT_NO_WARN = (
-    "**Hello, This is CɪᴘʜᴇʀX PM Protection Service ⚠️**\n\n"
+    "**🏴‍☠ Hello, This is CɪᴘʜᴇʀX PM Protection Service 🏴‍☠**\n\n"
     f"`My Master {DEFAULTUSER} is Busy Right Now !` \n"
-    "**I Request You To Choose A Reason You Have Came For** 👀 \n\n"
+    "**I Request You To Choose A Reason You Have Came For** \n\n"
     f"**{CUSTOM_MIDDLE_PMP}**"
 )
 
