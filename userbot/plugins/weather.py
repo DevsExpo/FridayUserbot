@@ -7,6 +7,7 @@ import time
 
 import aiohttp
 
+from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
 
@@ -70,3 +71,12 @@ async def _(event):
         with io.BytesIO(response_api) as out_file:
             await event.reply(file=out_file)
     await event.edit(input_str)
+
+
+CMD_HELP.update(
+    {
+        "weather": "**Weather**\
+\n\n**Syntax : **`.weather <location>`\
+\n**Usage :** Gives weather information about the location."
+    }
+)
