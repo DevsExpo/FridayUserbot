@@ -52,6 +52,6 @@ CMD_HELP.update(
     {
         "ping": "**Ping**\
 \n\n**Syntax : **`.ping`\
-\n**Usage :** Get uptime and speed of your bot."
+\n**Usage :** Get uptime and speed of CɪᴘʜᴇʀX bot."
     }
 )
