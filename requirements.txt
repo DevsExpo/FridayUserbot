@@ -1,4 +1,5 @@
 Pillow
+quote
 pygments
 python-magic
 glitch_this
@@ -68,3 +69,5 @@ youtube-search-python
 wget
 password_strength
 pyjokes
+cryptocompare
+faker
