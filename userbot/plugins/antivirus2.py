@@ -23,9 +23,7 @@ async def _(event):
     if reply_message.sender.bot:
         await event.edit("```Reply to actual users message.```")
         return
-    await event.edit(
-        "`Scanning by CɪᴘʜᴇʀX Antivirus Algorithm...` "
-    )
+    await event.edit("`Scanning by CɪᴘʜᴇʀX Antivirus Algorithm...` ")
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -44,7 +42,8 @@ async def _(event):
             await event.edit(
                 f"**Antivirus scan was completed**\n {response.message.message}"
             )
-            #await event.edit(("`Antivirus scan was completed.`\n`Yeah, I got the final results.`\n ") + response + response.replace("------------ADS------------\nدریافت فالوور، لایک و ممبر رایگان\n\n@ViewFakBot", "")) 
+            # await event.edit(("`Antivirus scan was completed.`\n`Yeah, I got the final results.`\n ") + response + response.replace("------------ADS------------\nدریافت فالوور، لایک و ممبر رایگان\n\n@ViewFakBot", ""))
+
 
 CMD_HELP.update(
     {
