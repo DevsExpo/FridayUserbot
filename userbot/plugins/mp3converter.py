@@ -6,19 +6,21 @@ import os
 import time
 from datetime import datetime
 
-from userbot.utils import friday_on_cmd, progress
+from userbot.utils import admin_cmd, progress
 
 
-@friday.on(friday_on_cmd(pattern="convert (.*)"))  # pylint:disable=E0602
+@borg.on(admin_cmd(pattern="convert (.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     if reply_message is None:
-        await event.edit("reply to a media to use the `nfc` operation.")
+        await event.edit(
+            "reply to a media to use the `nfc` operation.\nInspired by CɪᴘʜᴇʀX"
+        )
         return
-    await event.edit("trying to download media file, to my local")
+    await event.edit("trying to download media file to my local...")
     try:
         start = datetime.now()
         c_time = time.time()
@@ -107,9 +109,9 @@ async def _(event):
                 voice_note=voice_note,
                 supports_streaming=supports_streaming,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, event, c_time, "trying to upload")
+                    progress(d, t, event, c_time, "trying to upload...")
                 ),
             )
             ms_two = (end_two - end).seconds
             os.remove(new_required_file_name)
-            await event.edit(f"converted in {ms_two} seconds")
+            await event.edit(f"converted in {ms_two} seconds by CɪᴘʜᴇʀX ")
