@@ -46,8 +46,9 @@ async def Oof(e):
     for j in range(15):
         t = t[:-1] + "of"
         await e.edit(t)
-        
-@friday.on(events.NewMessage(pattern=r"\.loading", outgoing=True))    
+
+
+@friday.on(events.NewMessage(pattern=r"\.loading", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -57,8 +58,9 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 4])
-        
-@friday.on(events.NewMessage(pattern=r"\.square", outgoing=True))  
+
+
+@friday.on(events.NewMessage(pattern=r"\.square", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -67,9 +69,10 @@ async def _(event):
     animation_chars = ["◧", "◨", "◧", "◨", "‎"]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 4])   
-        
-@friday.on(events.NewMessage(pattern=r"\.up", outgoing=True))  
+        await event.edit(animation_chars[i % 4])
+
+
+@friday.on(events.NewMessage(pattern=r"\.up", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -79,8 +82,9 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 4])
-        
-@friday.on(events.NewMessage(pattern=r"\.round", outgoing=True))   
+
+
+@friday.on(events.NewMessage(pattern=r"\.round", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -89,9 +93,10 @@ async def _(event):
     animation_chars = ["⚫", "⬤", "●", "∘", "‎"]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 4]) 
-        
-@friday.on(events.NewMessage(pattern=r"\.cipherx", outgoing=True))  
+        await event.edit(animation_chars[i % 4])
+
+
+@friday.on(events.NewMessage(pattern=r"\.cipherx", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -112,8 +117,9 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 11])
-        
-@friday.on(friday_on_cmd("joon")) 
+
+
+@friday.on(friday_on_cmd("joon"))
 async def _(event):
     if event.fwd_from:
         return
@@ -138,7 +144,8 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 13])
-        
+
+
 @friday.on(friday_on_cmd("bigoof"))
 async def _(event):
     if event.fwd_from:
@@ -428,7 +435,8 @@ async def _(event):
         await asyncio.sleep(0.1)
         await event.edit("".join(deq))
         deq.rotate(1)
-        
+
+
 @friday.on(events.NewMessage(pattern=r"\.run", outgoing=True))
 async def _(event):
     if event.fwd_from:
@@ -438,6 +446,7 @@ async def _(event):
         await asyncio.sleep(0.1)
         await event.edit("".join(deq))
         deq.rotate(1)
+
 
 @friday.on(events.NewMessage(pattern=r"\.candy", outgoing=True))
 async def _(event):
@@ -602,7 +611,8 @@ async def _(event):
         await asyncio.sleep(0.1)
         await event.edit("".join(deq))
         deq.rotate(1)
-        
+
+
 @friday.on(friday_on_cmd("loveu ?(.*)"))
 async def _(event):
     if event.fwd_from:
@@ -650,7 +660,7 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 35])
-        
+
 
 @friday.on(friday_on_cmd("cheart ?(.*)"))
 async def _(event):
@@ -952,6 +962,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 14])
 
+
 @borg.on(admin_cmd(pattern="dump ?(.*)"))
 async def _(message):
     try:
@@ -989,8 +1000,9 @@ async def _(message):
                 await message.edit(something_else)
             except errors.MessageIdInvalidError:
                 return
-            
-@friday.on(events.NewMessage(pattern=r"\.snake", outgoing=True))    
+
+
+@friday.on(events.NewMessage(pattern=r"\.snake", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1027,9 +1039,10 @@ async def _(event):
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 27])      
-            
-@friday.on(events.NewMessage(pattern=r"\.human", outgoing=True))   
+        await event.edit(animation_chars[i % 27])
+
+
+@friday.on(events.NewMessage(pattern=r"\.human", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1055,9 +1068,10 @@ async def _(event):
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 27])          
-            
-@friday.on(events.NewMessage(pattern=r"\.mc", outgoing=True))        
+        await event.edit(animation_chars[i % 27])
+
+
+@friday.on(events.NewMessage(pattern=r"\.mc", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1095,8 +1109,9 @@ async def _(event):
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 64])   
-            
+        await event.edit(animation_chars[i % 64])
+
+
 @friday.on(events.NewMessage(pattern=r"\.solar", outgoing=True))
 async def _(event):
     if event.fwd_from:
