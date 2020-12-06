@@ -50,6 +50,6 @@ CMD_HELP.update(
     {
         "bash": "**Bash**\
 \n\n**Syntax : **`.bash <cmd>`\
-\n**Usage :** Run Commands Using CɪᴘʜᴇʀXbot"
+\n**Usage :** Run Commands Using CɪᴘʜᴇʀX bot"
     }
 )
