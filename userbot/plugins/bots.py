@@ -8,6 +8,7 @@ from userbot.utils import admin_cmd
 telegraph = Telegraph()
 mee = telegraph.create_account(short_name="yohohehe")
 
+
 @borg.on(admin_cmd(pattern="purl ?(.*)"))
 async def _(event):
     if event.fwd_from:
@@ -52,7 +53,6 @@ async def _(event):
                 await event.delete()
             except YouBlockedUserError:
                 await event.edit("**Error:** `unblock` bot `and retry!")
-
 
 
 @borg.on(admin_cmd(pattern="reader ?(.*)", allow_sudo=True))
