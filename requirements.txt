@@ -12,6 +12,7 @@ covid
 numpy
 pytube3
 pytesseract
+antispaminc
 aiofiles
 aria2p
 pyshorteners
