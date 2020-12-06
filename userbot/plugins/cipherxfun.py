@@ -5204,13 +5204,13 @@ async def car(event):
         "┈╱▔▔▔▔▔▔▔▔╲┈┈┈┈\n ╱▔▔▔▔▔▔▔▔╲╱┈┈┈┈\n▏┳╱╭╮┓┏┏┓▕╱▔▔╲┈\n▏┃╱┃┃┃┃┣▏▕▔▔╲╱▏\n▏┻┛╰╯╰╯┗┛▕▕▉▕╱╲\n▇▇▇▇▇▇▇▇▇▇▔▔▔╲▕\n▇▇╱▔╲▇▇▇▇▇╱▔╲▕╱\n┈┈╲▂╱┈┈┈┈┈╲▂╱▔┈"
     )
 
+
 @friday.on(friday_on_cmd(pattern=r"figkiller"))
 async def car(event):
     if event.fwd_from:
         return
-    await event.edit(
-        "_/﹋\_\n" "(҂`_´)\n" "<,︻╦╤─ ҉ - -\n" "_/﹋\_\n"
-    ) 
+    await event.edit("_/﹋\_\n" "(҂`_´)\n" "<,︻╦╤─ ҉ - -\n" "_/﹋\_\n")
+
 
 @register(outgoing=True, pattern="^.figgun$")
 async def figgun(e):
@@ -5224,7 +5224,8 @@ async def figgun(e):
             "....// (..) ), —\n"
             "...//___//\n"
         )
-    
+
+
 # ================= CONSTANT =================
 
 
