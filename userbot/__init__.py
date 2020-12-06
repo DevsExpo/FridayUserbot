@@ -1,4 +1,5 @@
 import asyncio
+import logging
 import os
 import sys
 import time
@@ -7,6 +8,7 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 
 import pylast
 import wget
+from antispaminc.connect import Connect
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
@@ -20,7 +22,7 @@ from var import Var
 from .function import fridayfunction as topfunc
 
 Lastupdate = time.time()
-
+sed = logging.getLogger("WARNING")
 from var import Var
 
 if Var.STRING_SESSION:
@@ -185,8 +187,9 @@ else:
     try:
         sedlyf = wget.download(link, out=pathz)
     except:
-        print("I wasn't Able to Download Cafee Model. Skipping...")
-
-telegraph = Telegraph()
-r = telegraph.create_account(short_name="CɪᴘʜᴇʀX Bot Exclusive")
-auth_url = r["auth_url"]
+        sed.info("I Wasn't Able To Download Cafee Model. Skipping...")
+if Config.ANTI_SPAMINC_TOKEN is not None:
+    try:
+        sclient = Connect(Config.ANTI_SPAMINC_TOKEN)
+    except Exception as e:
+        sed.info("Antispaminc Client Failed to Start " + e)
