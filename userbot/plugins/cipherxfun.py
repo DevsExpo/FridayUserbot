@@ -963,7 +963,7 @@ async def _(event):
         await event.edit(animation_chars[i % 14])
 
 
-@friday.on(events.NewMessage(pattern=r"\.brain", outgoing=True))
+@friday.on(events.NewMessage(pattern=r"\.dump", outgoing=True))
 async def _(message):
     try:
         obj = message.pattern_match.group(1)
