@@ -1,30 +1,41 @@
-from quote import quote
+import random
+
+import requests
+from uniborg.util import friday_on_cmd
 
 from userbot import CMD_HELP
-from userbot.utils import admin_cmd
 
 
-@friday.on(admin_cmd(pattern="quote (.*)"))
-async def _(event):
+@friday.on(friday_on_cmd(pattern="quote ?(.*)"))
+async def quote_search(event):
     if event.fwd_from:
         return
-    input_str = event.pattern_match.group(1)
-    result = quote(input_str, limit=3)
-    sed = ""
-
-    for quotes in result:
-        sed += str(quotes["quote"]) + "\n\n"
-
-    await event.edit(
-        f"<b><u>Quotes Successfully Gathered for given word </b></u><code>{input_str}</code>\n\n\n<code>{sed}</code>",
-        parse_mode="HTML",
+    await event.edit("Processing...")
+    search_string = event.pattern_match.group(1)
+    input_url = "https://bots.shrimadhavuk.me/Telegram/GoodReadsQuotesBot/?q={}".format(
+        search_string
     )
+    headers = {"USER-AGENT": "UniBorg"}
+    try:
+        response = requests.get(input_url, headers=headers).json()
+    except:
+        response = None
+    if response is not None:
+        result = (
+            random.choice(response).get("input_message_content").get("message_text")
+        )
+    else:
+        result = None
+    if result:
+        await event.edit(result.replace("<code>", "`").replace("</code>", "`"))
+    else:
+        await event.edit("Zero results found")
 
 
 CMD_HELP.update(
     {
-        "quotes": "**Quotes**\
+        "quote": "**Quote**\
 \n\n**Syntax : **`.quote <text>`\
-\n**Usage :** Automatically gets quotes for given plugin."
+\n**Usage :** Gets quotes about given text."
     }
 )
