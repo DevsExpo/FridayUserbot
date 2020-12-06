@@ -5204,7 +5204,27 @@ async def car(event):
         "┈╱▔▔▔▔▔▔▔▔╲┈┈┈┈\n ╱▔▔▔▔▔▔▔▔╲╱┈┈┈┈\n▏┳╱╭╮┓┏┏┓▕╱▔▔╲┈\n▏┃╱┃┃┃┃┣▏▕▔▔╲╱▏\n▏┻┛╰╯╰╯┗┛▕▕▉▕╱╲\n▇▇▇▇▇▇▇▇▇▇▔▔▔╲▕\n▇▇╱▔╲▇▇▇▇▇╱▔╲▕╱\n┈┈╲▂╱┈┈┈┈┈╲▂╱▔┈"
     )
 
+@friday.on(friday_on_cmd(pattern=r"figkiller"))
+async def car(event):
+    if event.fwd_from:
+        return
+    await event.edit(
+        "_/﹋\_\n" "(҂`_´)\n" "<,︻╦╤─ ҉ - -\n" "_/﹋\_\n"
+    ) 
 
+@register(outgoing=True, pattern="^.figgun$")
+async def figgun(e):
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        await e.edit(
+            "........___________________\n"
+            "....../ `-___________--_____|] - - - - - -\n"
+            " - - ░ ▒▓▓█D \n"
+            "...../==o;;;;;;;;______.:/\n"
+            ".....), -.(_(__) /\n"
+            "....// (..) ), —\n"
+            "...//___//\n"
+        )
+    
 # ================= CONSTANT =================
 
 
@@ -5581,6 +5601,8 @@ CMD_HELP.update(
 \n\n.my\
 \n\n.hi\
 \n\n.figcar\
+\n\n.figkiller\
+\n\n.figgun\
 \n\n.penis;dick\
 \n\n.figlol\
 \n\n.figlmao\
