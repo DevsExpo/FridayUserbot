@@ -3,6 +3,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TERM xterm-256color
 RUN apt-get update && apt upgrade -y && apt-get install sudo -y
 
+
 RUN apt-get install -y\
     coreutils \
     bash \
@@ -19,6 +20,7 @@ RUN apt-get install -y\
     libjpeg-dev \
     libffi-dev \
     libpq-dev \
+    libsqlite3-dev \
     libwebp-dev \
     libgl1 \
     musl \
@@ -35,7 +37,7 @@ RUN apt-get install -y\
     python3-pip \
     libreadline-dev \
     zipalign \
-    sqlite \
+    sqlite3 \
     ffmpeg \
     libsqlite3-dev \
     axel \
