@@ -8,7 +8,7 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 
 import pylast
 import wget
-from antispaminc.connect import Connect
+from antispaminc.connect import Connect, TokenNotFound
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
@@ -19,10 +19,11 @@ from telethon.sessions import StringSession
 
 from var import Var
 
+from .Configs import Config
 from .function import fridayfunction as topfunc
 
 Lastupdate = time.time()
-sed = logging.getLogger("WARNING")
+sedprint = logging.getLogger("WARNING")
 from var import Var
 
 if Var.STRING_SESSION:
@@ -172,7 +173,6 @@ COUNT_PM = {}
 LASTMSG = {}
 SUDO_LIST = {}
 CMD_HELP = {}
-
 CUSTOM_PMPERMIT_MSG = {}
 CUSTOM_BOTSTART = {}
 ISAFK = False
@@ -187,9 +187,14 @@ else:
     try:
         sedlyf = wget.download(link, out=pathz)
     except:
-        sed.info("I Wasn't Able To Download Cafee Model. Skipping...")
-# if Config.ANTI_SPAMINC_TOKEN is not None:
-# try:
-# sclient = Connect(Config.ANTI_SPAMINC_TOKEN)
-# except Exception as e:
-# sed.info("Antispaminc Client Failed to Start " + e)
+        sedprint.info("I Wasn't Able To Download Cafee Model. Skipping")
+
+if Config.ANTI_SPAMINC_TOKEN == None:
+    sclient = None
+    sedprint.info("[Warning] - AntispamInc is None")
+else:
+    try:
+        sclient = Connect(Config.ANTI_SPAMINC_TOKEN)
+    except TokenNotFound:
+        sclient = None
+        sedprint.info("[Warning] - Invalid AntispamInc Key")
