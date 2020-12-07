@@ -1,6 +1,5 @@
 """Get Telegram Profile Picture and other information
 Syntax: .info @username"""
-# hmm
 import html
 
 from telethon.tl.functions.photos import GetUserPhotosRequest
@@ -8,7 +7,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
 
-from userbot import CMD_HELP
+from userbot import CMD_HELP, sclient
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
@@ -26,7 +25,7 @@ async def _(event):
             user_id=replied_user.user.id, offset=42, max_id=0, limit=80
         )
     )
-    replied_user_profile_photos_count = "NaN"
+    replied_user_profile_photos_count = "None"
     try:
         replied_user_profile_photos_count = replied_user_profile_photos.count
     except AttributeError:
@@ -46,33 +45,27 @@ async def _(event):
     try:
         dc_id, location = get_input_location(replied_user.profile_photo)
     except Exception as e:
-        dc_id = "`Need a Profile Picture to check **this**`"
+        dc_id = "Unknown."
         str(e)
-    caption = """<b>Extracted Userdata From Telegram DATABASE By CipherX<b>
-<b>🔥Telegram ID</b>: <code>{}</code>
-<b>🤟Permanent Link</b>: <a href='tg://user?id={}'>Click Here</a>
-<b>🗣️First Name</b>: <code>{}</code>
-<b>🗣️Second Name</b>: <code>{}</code>
-<b>👨🏿‍💻BIO</b>: {}
-<b>🎃DC ID</b>: {}
-<b>⚡NO OF PSS</b> : {}
-<b>🤔IS RESTRICTED</b>: {}
-<b>✅VERIFIED</b>: {}
-<b>🙄IS A BOT</b>: {}
-<b>👥Groups in Common</b>: {}
-""".format(
-        user_id,
-        user_id,
-        first_name,
-        last_name,
-        user_bio,
-        dc_id,
-        replied_user_profile_photos_count,
-        replied_user.user.restricted,
-        replied_user.user.verified,
-        replied_user.user.bot,
-        common_chats,
-    )
+    hmmyes = sclient.is_banned(user_id)
+    if hmmyes.banned == True:
+        oki = f"Wait, This Guy is Banned In AntispamInc. For Reason : {hmmyes.reason}"
+    else:
+        oki = " "
+    caption = f"""<b>Extracted Userdata From Telegram DATABASE By CipherX<b>
+<b>🔥Telegram ID</b>: <code>{user_id}</code>
+<b>🤟Permanent Link</b>: <a href='tg://user?id={user_id}'>Click Here</a>
+<b>🗣️First Name</b>: <code>{first_name}</code>
+<b>🗣️Second Name</b>: <code>{last_name}</code>
+<b>👨🏿‍💻BIO</b>: {user_bio}
+<b>🎃DC ID</b>: {dc_id}
+<b>⚡NO OF PSS</b> : {replied_user_profile_photos_count}
+<b>🤔IS RESTRICTED</b>: {replied_user.user.restricted}
+<b>✅VERIFIED</b>: {replied_user.user.verified}
+<b>🙄IS A BOT</b>: {replied_user.user.bot}
+<b>👥Groups in Common</b>: {common_chats}
+<b>{oki}</b>
+"""
     message_id_to_reply = event.message.reply_to_msg_id
     if not message_id_to_reply:
         message_id_to_reply = event.message.id
