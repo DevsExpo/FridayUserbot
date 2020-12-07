@@ -20,8 +20,8 @@ from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd, sudo_cmd
 
 glitcher = ImageGlitcher()
-DURATION = 200  # Set this to however many centiseconds each frame should be visible for
-LOOP = 0  # Set this to how many times the gif should loop
+DURATION = 100  # Set this to however many centiseconds each frame should be visible for
+LOOP = 3  # Set this to how many times the gif should loop
 # LOOP = 0 means infinite loop
 sedpath = "./starkgangz/"
 if not os.path.isdir(sedpath):
