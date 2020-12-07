@@ -123,7 +123,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    animation_interval = 1
+    animation_interval = 0.3
     animation_ttl = range(0, 13)
     animation_chars = [
         "J",
@@ -175,7 +175,7 @@ async def _(event):
 
 @friday.on(events.NewMessage(pattern=r"\.ok", outgoing=True))
 async def Ok(e):
-    t = "Ok"
+    t = "Ook"
     for j in range(15):
         t = t[:-1] + "k"
         await e.edit(t)
