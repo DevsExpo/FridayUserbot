@@ -17,6 +17,7 @@ import asyncio
 from coffeehouse.api import API
 from coffeehouse.lydia import LydiaAI
 from telethon import events
+
 from userbot import CMD_HELP
 
 # Non-SQL Mode
@@ -101,7 +102,8 @@ async def user(event):
             await event.reply(text_rep)
     except (KeyError, TypeError):
         return
-    
+
+
 CMD_HELP.update(
     {
         "lydia": "**Lydia**\
