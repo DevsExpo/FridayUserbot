@@ -1,5 +1,7 @@
 import secrets
 
+from antispaminc.connect import RequestError
+
 from userbot import sclient
 from userbot.utils import admin_cmd
 
@@ -9,18 +11,18 @@ from userbot.utils import admin_cmd
 @borg.on(admin_cmd(pattern="benheck(?: |$)(.*)"))
 async def oki(event):
     await event.edit("`Processing...`")
-    args = event.pattern_match.group(1).split(" ", 1)
     extra = None
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         user = await event.client.get_entity(previous_message.sender_id)
         extra = event.pattern_match.group(1)
     elif args:
+        args = event.pattern_match.group(1).split(" ", 1)
         userz = args[0]
         if userz.isnumeric():
             user = int(userz)
         else:
-            await event.edit("Provide User-ID not a Username.")
+            await event.edit("Provide User-ID Not Username.")
             return
         if len(args) == 2:
             extra = args[1]
@@ -33,14 +35,14 @@ async def oki(event):
         if not user:
             await event.edit("Reply To User or Mention a User.")
             return
-    gensys = sclient.ban(user, extra)
-    await borg.send_message("antispamincfed", f"/fban {user} {extra}")
-    if gensys["error"] == True:
-        await event.edit("Error : " + gensys["full"])
-    else:
+    try:
+        sclient.ban(user, extra)
+        await borg.send_message("antispamincfed", f"/fban {user} {extra}")
         await event.edit(
             f"**User :** `{user}` \n**Reason :** `{extra}` \n**Banned Sucessfully !**"
         )
+    except RequestError as e:
+        await event.edit("Errors : " + e)
 
 
 @borg.on(admin_cmd(pattern="heck(?: |$)(.*)"))
@@ -77,3 +79,25 @@ async def tokens(event):
         await event.edit("Error : " + gensys2["full"])
     else:
         await event.edit(f"**New Token** \n**Token** : `{okbabe}`")
+
+
+@borg.on(admin_cmd(pattern="massbenheck(?: |$)(.*)"))
+async def oki(event):
+    lmaoded = []
+    lol = event.pattern_match.group(1)
+    stark = lol.split(" ", 1)
+    noteme = stark[0]
+    errorz = ""
+    lolsed = stark[1]
+    async for user in borg.iter_participants(noteme):
+        lmaoded.append(user.id)
+    for i in lmaoded:
+        try:
+            sclient.ban(i, lolsed)
+            await borg.send_message("antispamincfed", f"/fban {i} {lolsed}")
+        except RequestError:
+            errorz += 1
+        await event.edit(
+            f"**User :** `{i}` \n**Banned Sucessfully !** \n**Failed :** `{len(errorz)}`"
+        )
+    await event.edit("**DONE !**")
