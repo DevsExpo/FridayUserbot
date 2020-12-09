@@ -44,7 +44,8 @@ async def _(event):
         )
         await asyncio.sleep(10)
         await no_admin_privilege_message.edit(
-            "CɪᴘʜᴇʀX Anti-Flood Algorithm restricts you as a punishment! ", link_preview=False
+            "CɪᴘʜᴇʀX Anti-Flood Algorithm restricts you as a punishment! ",
+            link_preview=False,
         )
     else:
         await event.client.send_message(
@@ -67,7 +68,9 @@ async def _(event):
         sql.set_flood(event.chat_id, input_str)
         sql.__load_flood_settings()
         await event.edit(
-            "Antiflood successfully set to count {} in the current chat".format(input_str)
+            "Antiflood successfully set to count {} in the current chat".format(
+                input_str
+            )
         )
     except Exception as e:  # pylint:disable=C0103,W0703
         await event.edit(str(e))
