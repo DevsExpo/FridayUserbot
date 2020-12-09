@@ -5313,24 +5313,28 @@ async def figlol(e):
             "`\n┃┗┓┃┃┃┃┃┏┓┃┃╰╯┃`"
             "`\n┗━┛┗┻┻┛┗┛┗┛╰━━╯`"
         )
-        
+
+
 @register(outgoing=True, pattern="^.figok$")
 async def figok(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit("▒▐█▀▀█▌▒▐█▒▐▀\n▒▐█▄▒█▌▒▐██▌░\n▒▐██▄█▌▒▐█▒▐▄")
+
 
 @register(outgoing=True, pattern="^.figgood$")
 async def figgood(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit(
             "╔══╗╔═╗╔═╗╔══╗\n║╔═╣║║║║║║╚╗╗║\n║╚╗║║║║║║║╔╩╝║\n╚══╝╚═╝╚═╝╚══╝"
-        )     
-        
+        )
+
+
 @register(outgoing=True, pattern="^.figooh$")
 async def figooh(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
-        await event.edit("╔═╗╔═╗╔═╗╔╗╔╗\n║║║║║║║║║║╚╝║\n║║║║║║║║║║╔╗║\n╚═╝╚═╝╚═╝╚╝╚╝") 
-        
+        await event.edit("╔═╗╔═╗╔═╗╔╗╔╗\n║║║║║║║║║║╚╝║\n║║║║║║║║║║╔╗║\n╚═╝╚═╝╚═╝╚╝╚╝")
+
+
 @register(outgoing=True, pattern="^.fighi$")
 async def fighi(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
