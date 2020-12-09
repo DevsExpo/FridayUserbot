@@ -5582,6 +5582,7 @@ CMD_HELP.update(
 \n\n.ok\
 \n\n.meme\
 \n\n.think\
+\n\n.good\
 \n\n.snake\
 \n\n.police\
 \n\n.gangestar\
