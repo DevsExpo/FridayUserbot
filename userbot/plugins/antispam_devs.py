@@ -1,6 +1,6 @@
 import secrets
 
-#from antispaminc.connect import TokenNotFound
+from antispaminc.connect import TokenNotFound
 
 from userbot import sclient
 from userbot.utils import admin_cmd
@@ -41,7 +41,7 @@ async def oki(event):
         await event.edit(
             f"**User :** `{user}` \n**Reason :** `{extra}` \n**Banned Sucessfully !**"
         )
-    except RequestError as e:
+    except TokenNotFound as e:
         await event.edit("Errors : " + e)
 
 
