@@ -1,5 +1,7 @@
 Pillow
 quote
+the-python-bay
+textblob
 pygments
 python-magic
 glitch_this
