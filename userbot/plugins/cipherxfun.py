@@ -260,6 +260,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 72])
 
+
 @friday.on(friday_on_cmd("good ?(.*)"))
 async def _(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
@@ -307,8 +308,8 @@ async def _(event):
             ".     😍😊😍😊😍😍\n 😊😍😍😍😍😊😍😊\n  😍😊                     😊😊\n 😍😍\n😍😊                😊😍😊😍\n😍😊                😍😊😊😊\n😍😊                        😊😍\n   😊😊                      😍😍\n     😍😊😍😍😍😊😊😍  \n          😊😊😊😍😍😊 "
         )
         await asyncio.sleep(0.5)
-        await event.edit("GOOD MORNING ,HAVE A NICE DAY 😊")   
-        
+        await event.edit("GOOD MORNING ,HAVE A NICE DAY 😊")
+
 
 @friday.on(events.NewMessage(pattern=r"\.snake", outgoing=True))
 async def _(event):
