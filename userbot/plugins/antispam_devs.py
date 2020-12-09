@@ -1,6 +1,6 @@
 import secrets
 
-from antispaminc.connect import RequestError
+#from antispaminc.connect import RequestError
 
 from userbot import sclient
 from userbot.utils import admin_cmd
