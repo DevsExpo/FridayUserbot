@@ -5248,17 +5248,16 @@ async def car(event):
     await event.edit("_/﹋\_\n" "(҂`_´)\n" "<,︻╦╤─ ҉ - -\n" "_/﹋\_\n")
 
 
-@register(outgoing=True, pattern="^.figgun$")
+@register(outgoing=True, pattern="^.figyes$")
 async def figgun(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
-            "........___________________\n"
-            "....../ `-___________--_____|] - - - - - -\n"
-            " - - ░ ▒▓▓█D \n"
-            "...../==o;;;;;;;;______.:/\n"
-            ".....), -.(_(__) /\n"
-            "....// (..) ), —\n"
-            "...//___//\n"
+            "`\n┏┓┏┓╭━━┓╭━━╮▕▔▏`"
+            "`\n┃┃┃┃┃┏━┛┃╭━┛▕┈┈▏`"
+            "`\n┃╰╯┃┃┗━┓┃╰━╮▕┈┈▏`"
+            "`\n╰━╮┃┃┏━┛╰━╮┃┈╲╱┈`"
+            "`\n┏━╯┃┃┗━┓┏━╯┃┈╭╮┈`"
+            "`\n╰━━╯╰━━┛╰━━╯┈╰╯┈`"
         )
 
 
@@ -5314,8 +5313,24 @@ async def figlol(e):
             "`\n┃┗┓┃┃┃┃┃┏┓┃┃╰╯┃`"
             "`\n┗━┛┗┻┻┛┗┛┗┛╰━━╯`"
         )
+        
+@register(outgoing=True, pattern="^.figok$")
+async def figok(event):
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+        await event.edit("▒▐█▀▀█▌▒▐█▒▐▀\n▒▐█▄▒█▌▒▐██▌░\n▒▐██▄█▌▒▐█▒▐▄")
 
-
+@register(outgoing=True, pattern="^.figgood$")
+async def figgood(event):
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+        await event.edit(
+            "╔══╗╔═╗╔═╗╔══╗\n║╔═╣║║║║║║╚╗╗║\n║╚╗║║║║║║║╔╩╝║\n╚══╝╚═╝╚═╝╚══╝"
+        )     
+        
+@register(outgoing=True, pattern="^.figooh$")
+async def figooh(event):
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+        await event.edit("╔═╗╔═╗╔═╗╔╗╔╗\n║║║║║║║║║║╚╝║\n║║║║║║║║║║╔╗║\n╚═╝╚═╝╚═╝╚╝╚╝") 
+        
 @register(outgoing=True, pattern="^.fighi$")
 async def fighi(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
@@ -5640,10 +5655,13 @@ CMD_HELP.update(
 \n\n.hi\
 \n\n.figcar\
 \n\n.figkiller\
-\n\n.figgun\
+\n\n.figyes\
 \n\n.penis;dick\
 \n\n.figlol\
 \n\n.figlmao\
+\n\n.figok\
+\n\n.figgood\
+\n\n.figooh\
 \n\n.fighi\
 \n\n.figno\
 \n\n.figtrump\
