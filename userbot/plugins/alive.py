@@ -2,7 +2,7 @@
 # IMG CREDITS: @Hackintush
 import time
 from uniborg.util import friday_on_cmd, sudo_cmd
-from userbot import ALIVE_NAME, CMD_HELP، Lastupdate 
+from userbot import ALIVE_NAME, CMD_HELP, Lastupdate 
 from usetbot.Configs import Config
 from userbot.modules import currentversion
 
