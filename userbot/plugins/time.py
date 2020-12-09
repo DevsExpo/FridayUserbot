@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont
 from userbot import CMD_HELP
 from userbot.utils import friday_on_cmd
 
-FONT_FILE_TO_USE = "Fonts/digital.ttf"
+FONT_FILE_TO_USE = "Fonts/impact.ttf"
 
 
 @friday.on(friday_on_cmd("time ?(.*)"))  # pylint:disable=E0602
