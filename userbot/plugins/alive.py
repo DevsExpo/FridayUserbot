@@ -1,10 +1,11 @@
 """Check if userbot alive. If you change these, you become the gayest gay such that even the gay world will disown you."""
 # IMG CREDITS: @Hackintush
 import time
+
 from uniborg.util import friday_on_cmd, sudo_cmd
-from userbot import ALIVE_NAME, CMD_HELP, Lastupdate 
-from usetbot.Configs import Config
-from userbot.modules import currentversion
+
+from userbot import ALIVE_NAME, CMD_HELP, Lastupdate
+
 
 # Functions
 def get_readable_time(seconds: int) -> str:
@@ -34,6 +35,7 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
+
 uptime = get_readable_time((time.time() - Lastupdate))
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 PM_IMG = (
@@ -41,7 +43,7 @@ PM_IMG = (
 )
 pm_caption = "➥ `CɪᴘʜᴇʀX Super Technology Bot is:` **Online**\n\n"
 pm_caption += "➥ **System Status**\n"
-pm_caption += "➥ **Telethon Version:** `6.0.9` \n" 
+pm_caption += "➥ **Telethon Version:** `6.0.9` \n"
 pm_caption += "➥ **Python:** `3.9` \n"
 pm_caption += f"➥ **CɪᴘʜᴇʀX Server Uptime** : `{uptime}` \n"
 pm_caption += "➥ **Database Status:** `AWS Working Properly` \n"
