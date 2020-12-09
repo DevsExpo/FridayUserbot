@@ -1,6 +1,6 @@
 import secrets
 
-#from antispaminc.connect import RequestError
+#from antispaminc.connect import TokenNotFound
 
 from userbot import sclient
 from userbot.utils import admin_cmd
@@ -95,7 +95,7 @@ async def oki(event):
         try:
             sclient.ban(i, lolsed)
             await borg.send_message("antispamincfed", f"/fban {i} {lolsed}")
-        except RequestError:
+        except TokenNotFound:
             errorz += 1
         await event.edit(
             f"**User :** `{i}` \n**Banned Sucessfully !** \n**Failed :** `{len(errorz)}`"
