@@ -8,7 +8,7 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 
 import pylast
 import wget
-from antispaminc.connect import Connect, TokenNotFound
+from antispaminc.connect import Connect
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
@@ -195,6 +195,6 @@ if Config.ANTI_SPAMINC_TOKEN == None:
 else:
     try:
         sclient = Connect(Config.ANTI_SPAMINC_TOKEN)
-    except TokenNotFound:
+    except Exception as e:
         sclient = None
-        sedprint.info("[Warning] - Invalid AntispamInc Key")
+        sedprint.info('[Warning] - ' + e)
