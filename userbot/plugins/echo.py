@@ -24,21 +24,20 @@ import pybase64
 import requests
 from telethon import events
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+from uniborg.util import friday_on_cmd, sudo_cmd
 
+from userbot import CMD_HELP
 from userbot.plugins.sql_helper.echo_sql import (
     addecho,
     get_all_echos,
     is_echo,
     remove_echo,
 )
-
-from userbot import CMD_HELP
-from userbot.utils import admin_cmd, edit_or_reply
-from uniborg.util import friday_on_cmd, sudo_cmd
+from userbot.utils import edit_or_reply
 
 
 @friday.on(friday_on_cmd(pattern=r"addecho"))
-@friday.on(sudo_cmd(pattern=r"addecho", allow_sudo=True)) 
+@friday.on(sudo_cmd(pattern=r"addecho", allow_sudo=True))
 async def echo(cat):
     if cat.fwd_from:
         return
@@ -59,7 +58,6 @@ async def echo(cat):
         await edit_or_reply(cat, "Hi")
     else:
         await edit_or_reply(cat, "Reply to a User's Message to echo his messages")
-
 
 
 @friday.on(friday_on_cmd(pattern=r"rmecho"))
@@ -84,7 +82,6 @@ async def echo(cat):
             await edit_or_reply(cat, "The user is not activated with echo")
     else:
         await edit_or_reply(cat, "Reply to a User's Message to echo his messages")
-
 
 
 @friday.on(friday_on_cmd(pattern=r"listecho"))
