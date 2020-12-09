@@ -32,11 +32,13 @@ from userbot.plugins.sql_helper.echo_sql import (
     remove_echo,
 )
 
-from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply
+from userbot import CMD_HELP
+from userbot.utils import admin_cmd, edit_or_reply
+from uniborg.util import friday_on_cmd, sudo_cmd
 
 
-@borg.on(admin_cmd(pattern="enableecho$"))
+@friday.on(friday_on_cmd(pattern=r"addecho"))
+@friday.on(sudo_cmd(pattern=r"addecho", allow_sudo=True)) 
 async def echo(cat):
     if cat.fwd_from:
         return
@@ -59,7 +61,9 @@ async def echo(cat):
         await edit_or_reply(cat, "Reply to a User's Message to echo his messages")
 
 
-@borg.on(admin_cmd(pattern="disableecho$"))
+
+@friday.on(friday_on_cmd(pattern=r"rmecho"))
+@friday.on(sudo_cmd(pattern=r"rmecho", allow_sudo=True))
 async def echo(cat):
     if cat.fwd_from:
         return
@@ -82,7 +86,9 @@ async def echo(cat):
         await edit_or_reply(cat, "Reply to a User's Message to echo his messages")
 
 
-@borg.on(admin_cmd(pattern="listecho$"))
+
+@friday.on(friday_on_cmd(pattern=r"listecho"))
+@friday.on(sudo_cmd(pattern=r"listecho", allow_sudo=True))
 async def echo(cat):
     if cat.fwd_from:
         return
