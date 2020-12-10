@@ -35,7 +35,7 @@ async def _(event):
         no_admin_privilege_message = await event.client.send_message(
             entity=event.chat_id,
             message="""**Automatic AntiFlood Detected**
-@admin [User](tg://user?id={}) is flooding this chat.
+@admin [{user.first_name}](tg://user?id={}) is flooding this chat.
 
 `{}`""".format(
                 event.message.from_id, str(e)
@@ -51,7 +51,7 @@ async def _(event):
         await event.client.send_message(
             entity=event.chat_id,
             message="""**Automatic AntiFlood Detected**
-[User](tg://user?id={}) has been automatically restricted by CɪᴘʜᴇʀX Anti-Flood Algorithm,
+[{user.first_name}](tg://user?id={}) has been automatically restricted by CɪᴘʜᴇʀX Anti-Flood Algorithm,
 because he reached the defined flood limit.""".format(
                 event.message.from_id
             ),
