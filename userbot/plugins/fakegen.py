@@ -16,7 +16,7 @@ from faker import Faker
 from faker.providers import internet
 from uniborg.util import friday_on_cmd
 
-from userbot import CMD_HELP
+from fridaybot import CMD_HELP
 
 
 @friday.on(friday_on_cmd(pattern=r"fakegen"))
@@ -24,7 +24,7 @@ async def hi(event):
     if event.fwd_from:
         return
     fake = Faker()
-    print("**Fake Details Generated**\n")
+    print("FAKE DETAILS GENERATED\n")
     name = str(fake.name())
     fake.add_provider(internet)
     address = str(fake.address())
