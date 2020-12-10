@@ -16,8 +16,8 @@ import os
 import cv2
 import numpy as np
 import requests
-from fridaybot import CMD_HELP
-from fridaybot.utils import friday_on_cmd, sudo_cmd
+from userbot import CMD_HELP
+from userbot.utils import friday_on_cmd, sudo_cmd
 from PIL import Image
 from telegraph import upload_file
 from telethon.tl.types import MessageMediaPhoto
