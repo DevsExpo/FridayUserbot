@@ -14,11 +14,11 @@
 
 from faker import Faker
 from faker.providers import internet
-from fridaybot import CMD_HELP
+from userbot import CMD_HELP
 from uniborg.util import friday_on_cmd
 
 
-@friday.on(friday_on_cmd(pattern=r"fakegen"))
+@friday.on(friday_on_cmd(pattern=r"gen"))
 async def hi(event):
     if event.fwd_from:
         return
