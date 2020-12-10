@@ -425,6 +425,7 @@ async def _(event):
         await event.edit("".join(deq))
         deq.rotate(1)
 
+
 @friday.on(events.NewMessage(pattern=r"\.teeth", outgoing=True))
 async def _(event):
     if event.fwd_from:
@@ -434,6 +435,7 @@ async def _(event):
         await asyncio.sleep(0.1)
         await event.edit("".join(deq))
         deq.rotate(1)
+
 
 @friday.on(events.NewMessage(pattern=r"\.gym", outgoing=True))
 async def _(event):
