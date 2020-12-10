@@ -6,31 +6,16 @@
 
 # --------------------------------------------------------------------------------------------------------------------------------
 
-import asyncio, time, io, math, os, logging, asyncio, shutil, re, subprocess, json
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
-from base64 import b64decode
+from telethon.errors import (
+    ChannelInvalidError,
+    ChannelPrivateError,
+    ChannelPublicGroupNaError,
+)
+from telethon.tl import functions
+from telethon.tl.functions.channels import GetFullChannelRequest
+from telethon.tl.functions.messages import GetFullChatRequest
+
 from userbot import CMD_HELP
-from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
-from telethon.events import NewMessage
-from telethon.tl.custom import Dialog
-from telethon.tl.types import Channel, Chat, User
-from telethon.tl import functions, types
-from telethon.tl.functions.messages import GetHistoryRequest, CheckChatInviteRequest, GetFullChatRequest
-from telethon.errors import (ChannelInvalidError, ChannelPrivateError, ChannelPublicGroupNaError, InviteHashEmptyError, InviteHashExpiredError, InviteHashInvalidError)
-from telethon.tl.functions.channels import GetFullChannelRequest, GetParticipantsRequest
-from telethon.errors import FloodWaitError
-from time import sleep
-from html import unescape
-from urllib.parse import quote_plus
-from urllib.error import HTTPError
-from telethon import events
-from requests import get
-from html import unescape
-from re import findall
-from asyncio import sleep
-from telethon.errors.rpcerrorlist import YouBlockedUserError
-import random
 from userbot.utils import edit_or_reply, sudo_cmd
 
 
