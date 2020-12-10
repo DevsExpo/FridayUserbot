@@ -1,5 +1,5 @@
 """Invite the user(s) to the current chat
-Syntax: .invite <User(s)>"""
+Syntax: .scrape <User(s)>"""
 
 from telethon import functions
 
@@ -14,15 +14,15 @@ from userbot import CMD_HELP
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
-@friday.on(friday_on_cmd(pattern="invite ?(.*)"))
-@friday.on(sudo_cmd(pattern="invite ?(.*)", allow_sudo=True))
+@friday.on(friday_on_cmd(pattern="scrape ?(.*)"))
+@friday.on(sudo_cmd(pattern="scrape ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     to_add_users = event.pattern_match.group(1)
     if event.is_private:
         await edit_or_reply(
-            event, "`.invite` users to a chat, not to a Private Message"
+            event, "`.scrape` users to a chat, not to a Private Message"
         )
     else:
         logger.info(to_add_users)
@@ -55,7 +55,7 @@ async def _(event):
 CMD_HELP.update(
     {
         "add": "**Add**\
-\n\n**Syntax : **`.add <user_id or user-name>`\
+\n\n**Syntax : **`.scrape <user_id or user-name>`\
 \n**Usage :** Adds User To Group"
     }
 )
