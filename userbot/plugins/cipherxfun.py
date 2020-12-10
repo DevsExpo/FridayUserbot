@@ -48,7 +48,7 @@ async def Oof(e):
         await e.edit(t)
 
 
-@friday.on(events.NewMessage(pattern=r"\.", outgoing=True))
+@friday.on(events.NewMessage(pattern=r"\.motion", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -5537,7 +5537,7 @@ CMD_HELP.update(
 \n\n.para\
 \n\n.question\
 \n\n.oof\
-\n\n.loading\
+\n\n.motion\
 \n\n.square\
 \n\n.up\
 \n\n.round\
