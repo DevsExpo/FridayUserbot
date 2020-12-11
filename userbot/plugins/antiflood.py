@@ -34,7 +34,7 @@ async def _(event):
     except Exception as e:  # pylint:disable=C0103,W0703
         no_admin_privilege_message = await event.client.send_message(
             entity=event.chat_id,
-            user = await event.client.get_entity(previous_message.sender_id), 
+            user=await event.client.get_entity(previous_message.sender_id),
             message="""**Automatic AntiFlood Detected**
 @admin {user} is flooding this chat.
 
@@ -51,7 +51,7 @@ async def _(event):
     else:
         await event.client.send_message(
             entity=event.chat_id,
-            user = await event.client.get_entity(previous_message.sender_id),
+            user=await event.client.get_entity(previous_message.sender_id),
             message="""**Automatic AntiFlood Detected**
 {user} has been automatically restricted by CɪᴘʜᴇʀX Anti-Flood Algorithm,
 because he reached the defined flood limit.""".format(
