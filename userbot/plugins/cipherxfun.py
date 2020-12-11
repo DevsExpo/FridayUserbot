@@ -624,12 +624,12 @@ async def _(event):
         deq.rotate(1)
 
 
-@friday.on(friday_on_cmd("loveu ?(.*)"))
+@friday.on(friday_on_cmd("her ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 0.5
-    animation_ttl = range(0, 70)
+    animation_ttl = range(0, 64)
     await event.edit("loveu")
     animation_chars = [
         "😀",
@@ -670,7 +670,7 @@ async def _(event):
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 35])
+        await event.edit(animation_chars[i % 64])
 
 
 @friday.on(friday_on_cmd("cheart ?(.*)"))
@@ -5581,7 +5581,7 @@ CMD_HELP.update(
 \n\n.monkey\
 \n\n.starheart\
 \n\n.wink\
-\n\n.loveu\
+\n\n.her\
 \n\n.cheart\
 \n\n.finger\
 \n\n.billy\
