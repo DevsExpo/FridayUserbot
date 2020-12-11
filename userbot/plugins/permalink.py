@@ -6,7 +6,7 @@ Userbot module to help you manage a group
 
 from telethon.tl.types import MessageEntityMentionName
 
-from userbot.utils import admin_cmd
+from userbot.utils import admin_cmd, edit_or_reply
 
 
 @borg.on(admin_cmd(pattern="link(?: |$)(.*)"))
