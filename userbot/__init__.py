@@ -109,11 +109,11 @@ if bool(ENV):
     OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
 
     # Anti Spambot Config
-    ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "False"))
+    ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "True"))
     # Log It
     PRIVATE_GROUP_BOT_API_ID = os.environ.get("PRIVATE_GROUP_BOT_API_ID", None)
 
-    ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
+    ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "True"))
 
     # Youtube API key
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
@@ -133,7 +133,7 @@ if bool(ENV):
 
     # Spamwatch Module
     SPAMWATCH_API = os.environ.get("SPAMWATCH_API", None)
-    ANTISPAM_SYSTEM = os.environ.get("ANTISPAM_SYSTEM", "DISABLE")
+    ANTISPAM_SYSTEM = os.environ.get("ANTISPAM_SYSTEM", "Enable")
     WHITE_CHAT = PRIVATE_GROUP_ID = int(os.environ.get("WHITE_CHAT", False))
 
     # Last.fm Module
@@ -187,3 +187,4 @@ else:
         sedlyf = wget.download(link, out=pathz)
     except:
         sedprint.info("I Wasn't Able To Download Cafee Model. Skipping")
+
