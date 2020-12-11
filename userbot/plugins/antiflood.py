@@ -2,7 +2,8 @@ import asyncio
 
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
-
+from telethon.events import ChatAction
+from telethon.tl.types import ChannelParticipantsAdmins, Message
 import userbot.plugins.sql_helper.antiflood_sql as sql
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
@@ -36,7 +37,7 @@ async def _(event):
             entity=event.chat_id,
             user=await event.client.get_entity(previous_message.sender_id),
             message="""**Automatic AntiFlood Detected**
-@admin {user} is flooding this chat.
+@admin [{user.first_name}](tg://user?id={check_user.id}) is flooding this chat.
 
 `{}`""".format(
                 event.message.from_id, str(e)
@@ -53,7 +54,7 @@ async def _(event):
             entity=event.chat_id,
             user=await event.client.get_entity(previous_message.sender_id),
             message="""**Automatic AntiFlood Detected**
-{user} has been automatically restricted by CɪᴘʜᴇʀX Anti-Flood Algorithm,
+[{user.first_name}](tg://user?id={check_user.id}) has been automatically restricted by CɪᴘʜᴇʀX Anti-Flood Algorithm,
 because he reached the defined flood limit.""".format(
                 event.message.from_id
             ),
