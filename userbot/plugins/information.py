@@ -7,7 +7,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
 
-from userbot import CMD_HELP, sclient
+from userbot import CMD_HELP
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
@@ -47,11 +47,6 @@ async def _(event):
     except Exception as e:
         dc_id = "Unknown."
         str(e)
-    hmmyes = sclient.is_banned(user_id)
-    if hmmyes.banned == True:
-        oki = f"Wait, This Guy is Banned In AntispamInc. For Reason : {hmmyes.reason}"
-    else:
-        oki = " "
     caption = f"""<b>Extracted Userdata From Telegram DATABASE By CipherX<b>
 <b>🔥Telegram ID</b>: <code>{user_id}</code>
 <b>🤟Permanent Link</b>: <a href='tg://user?id={user_id}'>Click Here</a>
