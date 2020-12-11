@@ -24,7 +24,6 @@ import pybase64
 import requests
 from telethon import events
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
-from uniborg.util import friday_on_cmd, sudo_cmd
 
 from userbot import CMD_HELP
 from userbot.plugins.sql_helper.echo_sql import (
@@ -33,7 +32,7 @@ from userbot.plugins.sql_helper.echo_sql import (
     is_echo,
     remove_echo,
 )
-from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd, admin_cmd
+from userbot.utils import admin_cmd, edit_or_reply
 
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
