@@ -33,11 +33,14 @@ from userbot.plugins.sql_helper.echo_sql import (
     is_echo,
     remove_echo,
 )
-from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd, admin_cmd
+
+from .. import CMD_HELP
+from ..utils import admin_cmd, edit_or_reply
+from .sql_helper.echo_sql import addecho, get_all_echos, is_echo, remove_echo
 
 
-@friday.on(friday_on_cmd(pattern=r"addecho"))
-@friday.on(sudo_cmd(pattern=r"addecho", allow_sudo=True))
+@borg.on(admin_cmd(pattern="enableecho$"))
 async def echo(cat):
     if cat.fwd_from:
         return
@@ -52,16 +55,15 @@ async def echo(cat):
         except BaseException:
             pass
         if is_echo(user_id, chat_id):
-            await edit_or_reply(cat, "The user is already enabled with echo mode ")
+            await edit_or_reply(cat, "The user is already enabled with echo ")
             return
         addecho(user_id, chat_id)
         await edit_or_reply(cat, "Hi")
     else:
-        await edit_or_reply(cat, "Reply to a User's Message to echo his messages")
+        await edit_or_reply(cat, "Reply To A User's Message to echo his messages")
 
 
-@friday.on(friday_on_cmd(pattern=r"rmecho"))
-@friday.on(sudo_cmd(pattern=r"rmecho", allow_sudo=True))
+@borg.on(admin_cmd(pattern="disableecho$"))
 async def echo(cat):
     if cat.fwd_from:
         return
@@ -77,27 +79,26 @@ async def echo(cat):
             pass
         if is_echo(user_id, chat_id):
             remove_echo(user_id, chat_id)
-            await edit_or_reply(cat, "Echo has been stopped for this user")
+            await edit_or_reply(cat, "Echo has been stopped for the user")
         else:
             await edit_or_reply(cat, "The user is not activated with echo")
     else:
-        await edit_or_reply(cat, "Reply to a User's Message to echo his messages")
+        await edit_or_reply(cat, "Reply To A User's Message to echo his messages")
 
 
-@friday.on(friday_on_cmd(pattern=r"listecho"))
-@friday.on(sudo_cmd(pattern=r"listecho", allow_sudo=True))
+@borg.on(admin_cmd(pattern="listecho$"))
 async def echo(cat):
     if cat.fwd_from:
         return
     lsts = get_all_echos()
     if len(lsts) > 0:
-        output_str = "Echo Mode Enabled Users List:\n\n"
+        output_str = "echo enabled users:\n\n"
         for echos in lsts:
             output_str += (
                 f"[User](tg://user?id={echos.user_id}) in chat `{echos.chat_id}`\n"
             )
     else:
-        output_str = "No echo enabled users found. "
+        output_str = "No echo enabled users "
     if len(output_str) > Config.MAX_MESSAGE_SIZE_LIMIT:
         key = (
             requests.post(
@@ -108,7 +109,7 @@ async def echo(cat):
             .get("key")
         )
         url = f"https://nekobin.com/{key}"
-        reply_text = f"Echo Mode Enabled Users List: [here]({url})"
+        reply_text = f"echo enabled users: [here]({url})"
         await edit_or_reply(cat, reply_text)
     else:
         await edit_or_reply(cat, output_str)
@@ -132,9 +133,9 @@ async def samereply(cat):
 
 CMD_HELP.update(
     {
-        "echo": "**Syntax :** `.addecho` reply to user to who you want to enable\
+        "echo": "**Syntax :** `.enableecho` reply to user to who you want to enable\
     \n**Usage : **replay's his every message for whom you enabled echo\
-    \n\n**Syntax : **`.rmecho` reply to user to who you want to stop\
+    \n\n**Syntax : **`.disableecho` reply to user to who you want to stop\
     \n**Usage : **Stops replaying his messages\
     \n\n**Syntax : **`.listecho`\
     \n**Usage : **shows the list of users for who you enabled echo\
