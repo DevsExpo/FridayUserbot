@@ -2,8 +2,7 @@ import asyncio
 
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
-from telethon.events import ChatAction
-from telethon.tl.types import ChannelParticipantsAdmins, Message
+
 import userbot.plugins.sql_helper.antiflood_sql as sql
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
