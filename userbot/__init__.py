@@ -187,4 +187,3 @@ else:
         sedlyf = wget.download(link, out=pathz)
     except:
         sedprint.info("I Wasn't Able To Download Cafee Model. Skipping")
-
