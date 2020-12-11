@@ -48,7 +48,7 @@ async def _(event):
         dc_id = "Unknown."
         str(e)
     hmmyes = sclient.is_banned(user_id)
-    if hmmyes.banned == True:
+    if hmmyes:
         oki = f"""<b>ANTISPAM INC BANNED:</b> <code>True</code> 
 <b>Reason :</b> <code>{hmmyes.reason}</code>"""
     else:

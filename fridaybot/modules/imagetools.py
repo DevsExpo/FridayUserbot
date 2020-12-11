@@ -214,16 +214,84 @@ async def lolmetrg(event):
             os.remove(files)
 
 
+@friday.on(friday_on_cmd(pattern=r"jail"))
+@friday.on(sudo_cmd(pattern=r"jail", allow_sudo=True))
+async def hmm(event):
+    if not event.reply_to_msg_id:
+        await event.reply("Reply to any Image.")
+        return
+    hmmu = await event.edit("hmm... Sending him to jail...🚶")
+    sed = await event.get_reply_message()
+    if isinstance(sed.media, MessageMediaPhoto):
+        img = await borg.download_media(sed.media, sedpath)
+    elif "image" in sed.media.document.mime_type.split("/"):
+        img = await borg.download_media(sed.media, sedpath)
+    else:
+        await event.edit("Reply To Image")
+        return
+    mon = "./resources/jail/jail.png"
+    foreground = Image.open(mon).convert("RGBA")
+
+    background = Image.open(img).convert("RGB")
+    with Image.open(img) as img:
+        width, height = img.size
+    fg_resized = foreground.resize((width, height))
+    background.paste(fg_resized, box=(0, 0), mask=fg_resized)
+
+    background.save("./starkgangz/testing.png")
+
+    file_name = "testing.png"
+    ok = "./starkgangz/" + file_name
+    await borg.send_file(event.chat_id, ok)
+    await hmmu.delete()
+    for files in (ok, img):
+        if files and os.path.exists(files):
+            os.remove(files)
+
+
+@friday.on(friday_on_cmd(pattern=r"greyscale"))
+@friday.on(sudo_cmd(pattern=r"greyscale", allow_sudo=True))
+async def hmm(event):
+    if not event.reply_to_msg_id:
+        await event.reply("Reply to any Image.")
+        return
+    hmmu = await event.edit("hmm.. Creating a black&White image...")
+    sed = await event.get_reply_message()
+    if isinstance(sed.media, MessageMediaPhoto):
+        img = await borg.download_media(sed.media, sedpath)
+    elif "image" in sed.media.document.mime_type.split("/"):
+        img = await borg.download_media(sed.media, sedpath)
+    else:
+        await event.edit("Reply To Image")
+        return
+    img1 = cv2.imread(img)
+
+    gray_img = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+
+    cv2.imwrite("./starkgangz/testing.png", gray_img)
+    file_name = "testing.png"
+    ok = "./starkgangz/" + file_name
+    await borg.send_file(event.chat_id, ok)
+    await hmmu.delete()
+    for files in (ok, img):
+        if files and os.path.exists(files):
+            os.remove(files)
+
+
 CMD_HELP.update(
     {
         "imagetools": "**imagetools**\
         \n\n**Syntax : **`.cit`\
-        \n**Usage :** colourizes the given picture\
+        \n**Usage :** colourizes the given picture.\
         \n\n**Syntax : **`.nst`\
-        \n**Usage :** removes colours from image\
+        \n**Usage :** removes colours from image.\
         \n\n**Syntax : ** `.thug`\
-        \n**Usage :** makes a thug life meme image\
+        \n**Usage :** makes a thug life meme image.\
         \n\n**Syntax : ** `.tig`\
-        \n**Usage :** Makes a triggered gif of the replied image"
+        \n**Usage :** Makes a triggered gif of the replied image.\
+        \n\n**Syntax : ** `.jail`\
+        \n**Usage :** Makes a jail image of the replied image.\
+        \n\n**Syntax : ** `.greyscale`\
+        \n**Usage :** Makes a black and white image of the replied image."
     }
 )

@@ -13,6 +13,7 @@ telethon>=1.17
 iplookup
 wget
 numpy
+googletrans
 pyshorteners
 aiohttp
 bs4
@@ -27,7 +28,7 @@ gitpython
 google-api-python-client==1.8.0
 google-auth-oauthlib
 google_images_download>=2.7.1
-googletrans
+google_trans_new
 gsearch
 hachoir
 heroku3
