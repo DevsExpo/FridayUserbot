@@ -1,5 +1,7 @@
 Pillow
 quote
+deep_translator
+langdetect
 the-python-bay
 textblob
 pygments
