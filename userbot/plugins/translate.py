@@ -1,7 +1,7 @@
 """ Google Translate
 Available Commands:
 .tr LanguageCode as reply to a message
-.tr LangaugeCode | text to translate"""
+.tr LangaugeCode / text to translate"""
 
 import emoji
 from deep_translator import GoogleTranslator
