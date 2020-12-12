@@ -248,6 +248,7 @@ async def hmm(event):
         if files and os.path.exists(files):
             os.remove(files)
 
+
 @friday.on(friday_on_cmd(pattern=r"greyscale"))
 @friday.on(sudo_cmd(pattern=r"greyscale", allow_sudo=True))
 async def hmm(event):
@@ -275,7 +276,7 @@ async def hmm(event):
     for files in (ok, img):
         if files and os.path.exists(files):
             os.remove(files)
-      
+
 
 CMD_HELP.update(
     {
