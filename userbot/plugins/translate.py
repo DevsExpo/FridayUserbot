@@ -24,7 +24,7 @@ async def _(event):
         text = previous_message.message
         lan = input_str or "gu"
     elif "|" in input_str:
-        lan, text = input_str.split("|")
+        lan, text = input_str.split("/")
     else:
         await edit_or_reply(event, "`.tr LanguageCode` as reply to a message")
         return
