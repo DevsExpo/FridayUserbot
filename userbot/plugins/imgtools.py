@@ -1,4 +1,4 @@
-# All Credits Belong to @hackintush 
+# All Credits Belong to @hackintush
 
 import os
 
@@ -8,7 +8,6 @@ from telethon.tl.types import MessageMediaPhoto
 from userbot import ALIVE_NAME, CMD_HELP
 from userbot.utils import friday_on_cmd, sudo_cmd
 
-
 sedpath = "./cipherx/"
 if not os.path.isdir(sedpath):
     os.makedirs(sedpath)
@@ -17,7 +16,7 @@ KANG_KAREGA_MC = str(ALIVE_NAME) if ALIVE_NAME else "CɪᴘʜᴇʀX"
 
 
 @friday.on(friday_on_cmd(pattern=r"enc"))
-@friday.on(sudo_cmd(pattern=r"enc", allow_sudo=True)) 
+@friday.on(sudo_cmd(pattern=r"enc", allow_sudo=True))
 async def _(event):
     life = Config.DEEP_API_KEY
     if life == None:
@@ -112,6 +111,7 @@ async def hmm(event):
     if os.path.exists(img):
         os.remove(img)
 
+
 @friday.on(friday_on_cmd(pattern=r"cele"))
 @friday.on(sudo_cmd(pattern=r"cele", allow_sudo=True))
 async def hmm(event):
@@ -161,4 +161,4 @@ CMD_HELP.update(
         \n\n**Syntax : ** `.cele`\
         \n**Usage :** Recognizes the celebrity."
     }
-) 
+)
