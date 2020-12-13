@@ -13,7 +13,6 @@ if not os.path.isdir(sedpath):
     os.makedirs(sedpath)
 
 
-
 @friday.on(friday_on_cmd(pattern=r"enc"))
 @friday.on(sudo_cmd(pattern=r"enc", allow_sudo=True))
 async def hmm(event):
@@ -111,7 +110,6 @@ async def hmm(event):
     await hmm.delete()
     if os.path.exists(img):
         os.remove(img)
-
 
 
 CMD_HELP.update(
