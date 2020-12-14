@@ -142,6 +142,7 @@ if ENV:
         PM_DATA = os.environ.get("PM_DATA", "ENABLE")
         ENABLE_ASSISTANTBOT = os.environ.get("ENABLE_ASSISTANTBOT", "ENABLE")
         TAG_FEATURE = os.environ.get("TAG_FEATURE", "DISABLE")
+        ANTISPAM_FEATURE = os.environ.get("ANTISPAM_FEATURE", "ENABLE")
         ASSISTANT_LOG = int(os.environ.get("ASSISTANT_LOG", True))
         UPSTREAM_REPO = os.environ.get(
             "UPSTREAM_REPO", "https://github.com/CipherX1-ops/FridayUserbot"
