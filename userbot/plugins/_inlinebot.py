@@ -253,6 +253,13 @@ def paginate_help(page_number, loaded_plugins, prefix):
 
 @tgbot.on(events.InlineQuery(pattern=r"torrent (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
+    if event.query.user_id != bot.uid:
+        resultm = builder.article(
+            title="Not Allowded",
+            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode",
+        )
+        await event.answer([resultm])
+        return
     builder = event.builder
     testinput = event.pattern_match.group(1)
     starkisnub = urllib.parse.quote_plus(testinput)
@@ -267,7 +274,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
         resultm = builder.article(
             title="No Results Found.",
             description="Check Your Spelling / Keyword",
-            text="**Please, Search Again with Correct Keyword, Thank you !**",
+            text="**Please, Search Again With Correct Keyword, Thank you !**",
             buttons=[
                 [
                     Button.switch_inline(
@@ -327,6 +334,13 @@ async def inline_id_handler(event: events.InlineQuery.Event):
 
 @tgbot.on(events.InlineQuery(pattern=r"yt (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
+    if event.query.user_id != bot.uid:
+        resultm = builder.article(
+            title="Not Allowded",
+            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode",
+        )
+        await event.answer([resultm])
+        return
     builder = event.builder
     testinput = event.pattern_match.group(1)
     urllib.parse.quote_plus(testinput)
@@ -338,7 +352,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
         resultm = builder.article(
             title="No Results Found.",
             description="Check Your Spelling / Keyword",
-            text="**Please, Search Again with Correct Keyword, Thank you !**",
+            text="**Please, Search Again With Correct Keyword, Thank you !**",
             buttons=[
                 [Button.switch_inline("Search Again", query="yt ", same_peer=True)],
             ],
@@ -370,6 +384,13 @@ async def inline_id_handler(event: events.InlineQuery.Event):
 
 @tgbot.on(events.InlineQuery(pattern=r"jm (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
+    if event.query.user_id != bot.uid:
+        resultm = builder.article(
+            title="Not Allowded",
+            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode",
+        )
+        await event.answer([resultm])
+        return
     event.builder
     testinput = event.pattern_match.group(1)
     starkisnub = urllib.parse.quote_plus(testinput)
@@ -407,6 +428,13 @@ async def inline_id_handler(event: events.InlineQuery.Event):
 
 @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
 async def inline_handler(event):
+    if event.query.user_id != bot.uid:
+        resultm = builder.article(
+            title="Not Allowded",
+            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode",
+        )
+        await event.answer([resultm])
+        return
     builder = event.builder
     query = event.text
     replied_user = await tgbot.get_me()
@@ -414,7 +442,7 @@ async def inline_handler(event):
     if query == None:
         resulte = builder.article(
             title="Usage Guide.",
-            description="(C) CɪᴘʜᴇʀX ",
+            description="(C) CɪᴘʜᴇʀX",
             text=f"**How To Use Me?** \n**Youtube :** `@{firstname} yt <query>` \n**Example :** `@{firstname} yt why we lose song` \n\n**Torrent :** `@{firstname} torrent <query>` \n**Example :** `@{firstname} torrent avengers endgame ` \n\n**JioSaavan :** `@{firstname} jm <query>` \n**Example :** `@{firstname} jm `",
             buttons=[
                 [Button.url("Contact Me", f"t.me/{firstname}")],
