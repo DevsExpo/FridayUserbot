@@ -8,6 +8,7 @@ the-python-bay
 textblob
 pygments
 python-magic
+antispaminc
 glitch_this
 PyGithub
 youtube-dl
