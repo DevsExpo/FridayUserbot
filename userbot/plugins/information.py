@@ -7,8 +7,8 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
 
-from userbot import CMD_HELP
-from userbot.utils import friday_on_cmd, sudo_cmd
+from userbot import CMD_HELP, sclient
+from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
 @friday.on(friday_on_cmd("info ?(.*)"))
@@ -18,14 +18,14 @@ async def _(event):
         return
     replied_user, error_i_a = await get_full_user(event)
     if replied_user is None:
-        await event.edit(str(error_i_a))
+        await edit_or_reply(event, str(error_i_a))
         return False
     replied_user_profile_photos = await borg(
         GetUserPhotosRequest(
             user_id=replied_user.user.id, offset=42, max_id=0, limit=80
         )
     )
-    replied_user_profile_photos_count = "NaN"
+    replied_user_profile_photos_count = "None"
     try:
         replied_user_profile_photos_count = replied_user_profile_photos.count
     except AttributeError:
@@ -45,33 +45,22 @@ async def _(event):
     try:
         dc_id, location = get_input_location(replied_user.profile_photo)
     except Exception as e:
-        dc_id = "`Need a Profile Picture to check **this**`"
+        dc_id = "Unknown."
         str(e)
-    caption = """User Info Extracted By <b> CɪᴘʜᴇʀXbot</b>
-<b>⫸ User ID</b>: <code>{}</code>
-<b>⫸ Link To Profile</b>: <a href='tg://user?id={}'>Click Here.</a>
-<b>⫸ First Name</b>: <code>{}</code>
-<b>⫸ Second Name</b>: <code>{}</code>
-<b>⫸ BIO</b>: {}
-<b>⫸ DC ID</b>: {}
-<b>⫸ NO OF PSS</b> : {}
-<b>⫸ RESTRICTED</b>: {}
-<b>⫸ VERIFIED</b>: {}
-<b>⫸ Is_BOT</b>: {}
-<b>⫸ Groups in Common</b>: {}
-""".format(
-        user_id,
-        user_id,
-        first_name,
-        last_name,
-        user_bio,
-        dc_id,
-        replied_user_profile_photos_count,
-        replied_user.user.restricted,
-        replied_user.user.verified,
-        replied_user.user.bot,
-        common_chats,
-    )  # if command is replied to self it shows 0 common groups
+    shazam = replied_user_profile_photos_count
+    caption = f"""<b>INFO<b>
+<b>Telegram ID</b>: <code>{user_id}</code>
+<b>Permanent Link</b>: <a href='tg://user?id={user_id}'>Click Here</a>
+<b>First Name</b>: <code>{first_name}</code>
+<b>Second Name</b>: <code>{last_name}</code>
+<b>BIO</b>: <code>{user_bio}</code>
+<b>DC ID</b>: <code>{dc_id}</code>
+<b>NO OF PSS</b>: <code>{shazam}</code>
+<b>IS RESTRICTED</b>: <code>{replied_user.user.restricted}</code>
+<b>VERIFIED</b>: <code>{replied_user.user.verified}</code>
+<b>IS A BOT</b>: <code>{replied_user.user.bot}</code>
+<b>Groups in Common</b>: <code>{common_chats}</code>
+"""
     message_id_to_reply = event.message.reply_to_msg_id
     if not message_id_to_reply:
         message_id_to_reply = event.message.id
@@ -93,14 +82,14 @@ async def get_full_user(event):
         if previous_message.forward:
             replied_user = await event.client(
                 GetFullUserRequest(
-                    previous_message.forward.sender_id
+                    previous_message.forward.from_id
                     or previous_message.forward.channel_id
                 )
             )
             return replied_user, None
         else:
             replied_user = await event.client(
-                GetFullUserRequest(previous_message.sender_id)
+                GetFullUserRequest(previous_message.from_id)
             )
             return replied_user, None
     else:
@@ -139,6 +128,46 @@ async def get_full_user(event):
                 return replied_user, None
             except Exception as e:
                 return None, e
+
+
+@friday.on(friday_on_cmd("wru ?(.*)"))
+@friday.on(sudo_cmd("wru ?(.*)", allow_sudo=True))
+async def gibinfo(event):
+    if not event.pattern_match.group(1):
+        user = (
+            (await event.get_reply_message()).sender if event.is_reply else event.sender
+        )
+    else:
+        try:
+            user = await friday.get_entity(event.pattern_match.group(1))
+        except ValueError:
+            await event.edit("<i>No User Found.</i>", parse_mode="HTML")
+            return
+    try:
+        cas_url = f"https://combot.org/api/cas/check?user_id={user.id}"
+        r = get(cas_url, timeout=3)
+        data = r.json()
+    except:
+        data = None
+    if data and data["ok"]:
+        reason = f"<i>True</i>"
+    else:
+        reason = f"<i>False</i>"
+    hmmyes = sclient.is_banned(user.id)
+    if hmmyes:
+        oki = f"""<i>True</i>
+<b>~ Reason :</b> <i>{hmmyes.reason}</i>"""
+    else:
+        oki = "<i>False</i>"
+    infomsg = (
+        f"<b>Info Of</b> <a href=tg://user?id={user.id}>{user.first_name}</a>: \n"
+        f"<b>- Username :</b> <i>{user.username}</i>\n"
+        f"<b>- ID :</b> <i>{user.id}</i>\n"
+        f"<b>- Bot :</b> <i>{user.bot}</i>\n"
+        f"<b>- CAS Banned :</b> {reason} \n"
+        f"<b>- AntispamInc Banned :</b> {oki}"
+    )
+    await event.edit(infomsg, parse_mode="HTML")
 
 
 CMD_HELP.update(
