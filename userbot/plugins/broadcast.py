@@ -123,7 +123,7 @@ async def _(event):
                 errorno += f"{e} \n"
         await borg.send_message(
             loggy_grp,
-            f"Error : {total_errors}\nError : {errorno}",
+            f"Error : {total_errors}\nError : {errorno} \n\n",
         )
         if os.path.exists(ok):
             os.remove(ok)
@@ -137,7 +137,7 @@ async def _(event):
                 errorno += f"{e} \n"
         await borg.send_message(
             loggy_grp,
-            f"Error : {total_errors}\nError : {errorno}",
+            f"Failed in {channelz.chat_id} Because Of Error : `{errorno}` \n\n",
         )
     elif hmm.message.poll:
         await event.edit("Bruh, This Can't Be Broadcasted.")
@@ -159,6 +159,7 @@ async def _(event):
         return
     total_errors = 0
     total_count = 0
+    errorno = ""
     total_chnnl = len(all_chnnl)
     if event.reply_to_msg_id:
         hmm = await event.get_reply_message()
@@ -171,10 +172,11 @@ async def _(event):
             total_count += 1
     except Exception as e:
         total_errors += 1
-        try:
-            logger.info(f"Error : {error_count}\nError : {e} \nUsers : {chat_id}")
-        except:
-            pass
+        errorno += f"{e} \n"
+    await borg.send_message(
+            loggy_grp,
+            f"Failed in {forbard.chat_id} Because Of Error : `{errorno}` \n\n",
+        )
     await event.edit(
         f"Forward Success in {total_count} And Failed In {total_errors} And Total Channel In Db is {total_chnnl}"
     )
