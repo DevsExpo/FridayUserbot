@@ -1,22 +1,39 @@
-# Originally made by @rekcah for @javes05
-# porting by @hackintush...
-# i asked rekcah before porting...not like other kangers....
-# keep credit if u wanna kang...
-# else u are a gay...no doubt in that....
 
-# --------------------------------------------------------------------------------------------------------------------------------
 
-from telethon.errors import (
-    ChannelInvalidError,
-    ChannelPrivateError,
-    ChannelPublicGroupNaError,
-)
-from telethon.tl import functions
-from telethon.tl.functions.channels import GetFullChannelRequest
-from telethon.tl.functions.messages import GetFullChatRequest
 
-from userbot import CMD_HELP
-from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+from userbot import *
+from userbot.utils import admin_cmd
+import asyncio, time, io, math, os, logging, asyncio, shutil, re, subprocess, json
+from datetime import datetime
+from hachoir.metadata import extractMetadata
+from hachoir.parser import createParser
+from base64 import b64decode
+from pySmartDL import SmartDL
+from userbot import TEMP_DOWNLOAD_DIRECTORY, CMD_HELP, COUNTRY, TZ_NUMBER
+from telethon.events import NewMessage
+from telethon.tl.custom import Dialog
+from telethon.tl.types import Channel, Chat, User
+FULL_SUDO = os.environ.get("FULL_SUDO", None)
+from telethon.tl import functions, types
+from userbot import BOTLOG_CHATID, CMD_HELP, BOTLOG, BOTLOG_CHATID, YOUTUBE_API_KEY, TEMP_DOWNLOAD_DIRECTORY, CHROME_DRIVER, GOOGLE_CHROME_BIN, bot
+from telethon.tl.functions.messages import GetHistoryRequest, CheckChatInviteRequest, GetFullChatRequest
+from telethon.errors import (ChannelInvalidError, ChannelPrivateError, ChannelPublicGroupNaError, InviteHashEmptyError, InviteHashExpiredError, InviteHashInvalidError)
+from telethon.tl.functions.channels import GetFullChannelRequest, GetParticipantsRequest
+from telethon.errors import FloodWaitError
+from bs4 import BeautifulSoup
+from time import sleep
+from html import unescape
+from urllib.parse import quote_plus
+from urllib.error import HTTPError
+from telethon import events
+from requests import get
+from html import unescape
+from re import findall
+from asyncio import sleep
+from datetime import datetime as dt
+from pytz import country_names as c_n, country_timezones as c_tz, timezone as tz
+from telethon.errors.rpcerrorlist import YouBlockedUserError
+import random
 
 
 async def get_chatinfo(event):
@@ -43,110 +60,85 @@ async def get_chatinfo(event):
             await event.reply("`Invalid channel/group`")
             return None
         except ChannelPrivateError:
-            await event.reply(
-                "`This is a private channel/group or I am banned from there`"
-            )
+            await event.reply("`This is a private channel/group or I am banned from there`")
             return None
         except ChannelPublicGroupNaError:
-            await event.reply("`Channel or supergroup doesn't exist`")
+            await event.reply("`Channel or Supergroup doesn't exist`")
             return None
-        except (TypeError, ValueError):
+        except (TypeError, ValueError) as err:
             await event.reply("`Invalid channel/group`")
             return None
     return chat_info
+
+async def get_tz(con):
+    """ Get time zone of the given country. """
+    if "(Uk)" in con:
+        con = con.replace("Uk", "UK")
+    if "(Us)" in con:
+        con = con.replace("Us", "US")
+    if " Of " in con:
+        con = con.replace(" Of ", " of ")
+    if "(Western)" in con:
+        con = con.replace("(Western)", "(western)")
+    if "Minor Outlying Islands" in con:
+        con = con.replace("Minor Outlying Islands", "minor outlying islands")
+    if "Nl" in con:
+        con = con.replace("Nl", "NL")
+
+    for c_code in c_n:
+        if con == c_n[c_code]:
+            return c_tz[c_code]
+    try:
+        if c_n[con]:
+            return c_tz[con]
+    except KeyError:
+        return
+
+
+def make_mention(user):
+    if user.username:
+        return f"@{user.username}"
+    else:
+        return inline_mention(user)
+
+
+def inline_mention(user):
+    full_name = user_full_name(user) or "No Name"
+    return f"[{full_name}](tg://user?id={user.id})"
 
 
 def user_full_name(user):
     names = [user.first_name, user.last_name]
     names = [i for i in list(names) if i]
-    full_name = " ".join(names)
+    full_name = ' '.join(names)
     return full_name
+ 
 
 
-@friday.on(friday_on_cmd(pattern=r"inviteall"))
-@friday.on(sudo_cmd(pattern=r"inviteall", allow_sudo=True))
-async def get_users(event):
-    sender = await event.get_sender()
-    me = await event.client.get_me()
+
+
+
+
+@borg.on(admin_cmd(pattern=r"inviteall ?(.*)"))
+async def get_users(event):   
+    sender = await event.get_sender() ; me = await event.client.get_me()
     if not sender.id == me.id:
-        hell = await event.reply("`processing...`")
+        rkp = await event.reply("`processing...`")
     else:
-        hell = await event.edit("`processing...`")
-    kraken = await get_chatinfo(event)
-    chat = await event.get_chat()
+    	rkp = await event.edit("`processing...`")
+    rk1 = await get_chatinfo(event) ; chat = await event.get_chat()
     if event.is_private:
-        return await hell.edit("`Sorry, Can add users here`")
-    s = 0
-    f = 0
-    error = "None"
-
-    await hell.edit(
-        "**TerminalStatus**\n\n`Collecting Users by CɪᴘʜᴇʀX Scraper Algorithm...`"
-    )
-    async for user in event.client.iter_participants(kraken.full_chat.id):
-        try:
-            if error.startswith("Too"):
-                return await hell.edit(
-                    f"**Terminal Finished With Error**\n(`May Got Limit Error from telethon Please try agin Later`)\n**Error** : \n`{error}`\n\n• Invited `{s}` people \n• Failed to Invite `{f}` people"
-                )
-            await event.client(
-                functions.channels.InviteToChannelRequest(channel=chat, users=[user.id])
-            )
-            s = s + 1
-            await hell.edit(
-                f"**Terminal Running...**\n\n• Invited `{s}` people \n• Failed to Invite `{f}` people\n\n**× LastError:** `{error}`"
-            )
-        except Exception as e:
-            error = str(e)
-            f = f + 1
-    return await hell.edit(
-        f"**Terminal Finished** \n\n• Successfully Invited `{s}` people \n• failed to invite `{f}` people"
-    )
-
-
-@friday.on(friday_on_cmd(pattern=r"invite"))
-@friday.on(sudo_cmd(pattern=r"invite", allow_sudo=True))
-async def _(event):
-    if event.fwd_from:
-        return
-    to_add_users = event.pattern_match.group(1)
-    if event.is_private:
-        await edit_or_reply(event, "`.add` users to a chat, not to a Private Message")
-    else:
-        logger.info(to_add_users)
-        if not event.is_channel and event.is_group:
-            # https://lonamiwebs.github.io/Telethon/methods/messages/add_chat_user.html
-            for user_id in to_add_users.split(" "):
+              return await rkp.edit("`Sorry, Can add users here`")    
+    s = 0 ; f = 0 ; error = 'None'   
+  
+    await rkp.edit("**CɪᴘʜᴇʀX Terminal Status**\n\n`Collecting Users.......`")
+    async for user in event.client.iter_participants(rk1.full_chat.id):
                 try:
-                    await borg(
-                        functions.messages.AddChatUserRequest(
-                            chat_id=event.chat_id, user_id=user_id, fwd_limit=1000000
-                        )
-                    )
+                    if error.startswith("Too"):
+                        return await rkp.edit(f"**CɪᴘʜᴇʀX Terminal Finished With Error**\n(`May Got Limit Error from telethon Please try agin Later`)\n**Error** : \n`{error}`\n\n• Invited `{s}` people \n• Failed to Invite `{f}` people")
+                    await event.client(functions.channels.InviteToChannelRequest(channel=chat,users=[user.id]))
+                    s = s + 1                                                    
+                    await rkp.edit(f"**CɪᴘʜᴇʀX Terminal Running...**\n\n• Invited `{s}` people \n• Failed to Invite `{f}` people\n\n**× LastError:** `{error}`")                
                 except Exception as e:
-                    await event.reply(str(e))
-            await edit_or_reply(event, "Invited Successfully")
-        else:
-            # https://lonamiwebs.github.io/Telethon/methods/channels/invite_to_channel.html
-            for user_id in to_add_users.split(" "):
-                try:
-                    await borg(
-                        functions.channels.InviteToChannelRequest(
-                            channel=event.chat_id, users=[user_id]
-                        )
-                    )
-                except Exception as e:
-                    await event.reply(str(e))
-            await edit_or_reply(event, "Added user to the chat....")
-
-
-CMD_HELP.update(
-    {
-        "invite": """**Plugin : **`invite`
-  •  **Syntax : **`.add username(s)/userid(s)`
-  •  **Function : **__Add the given user/users to the group where u used the command__
-  •  **Syntax : **`.inviteall groups username`
-  •  **Function : **__Scrapes users from the given chat to your group__
-"""
-    }
-)
+                    error = str(e) ; f = f + 1             
+    return await rkp.edit(f"**CɪᴘʜᴇʀX Terminal Finished** \n\n• Successfully Invited `{s}` people \n• failed to invite `{f}` people")
