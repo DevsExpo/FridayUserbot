@@ -3,8 +3,8 @@ Available Commands:
 .tr LanguageCode as reply to a message
 .tr LangaugeCode / text to translate"""
 
-import emoji
 from deep_translator import GoogleTranslator
+from googletrans import LANGUAGES
 from langdetect import detect
 
 from userbot import CMD_HELP
@@ -22,29 +22,35 @@ async def _(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         text = previous_message.message
-        lan = input_str or "gu"
+        lan = input_str or "en"
     elif "|" in input_str:
         lan, text = input_str.split("/")
     else:
         await edit_or_reply(event, "`.tr LanguageCode` as reply to a message")
         return
-    text = emoji.demojize(text.strip())
     lan = lan.strip()
     try:
-
+        lmao_bruh = text
         lmao = detect(text)
         after_tr_text = lmao
-        to_translate = text
+        translated = GoogleTranslator(source="auto", target=lan).translate(lmao_bruh)
+        source_lan = LANGUAGES[after_tr_text]
+        transl_lan = LANGUAGES[lan]
+        output_str = f"""**Translation by CɪᴘʜᴇʀX**
+**Source ({source_lan})**:
+`{text}`
 
-        translated = GoogleTranslator(source="auto", target=lan).translate(to_translate)
-
-        output_str = """**Translated By CɪᴘʜᴇʀX** 
-         Source **( {} )**
-         Translation **( {} )**
-         {}""".format(
-            after_tr_text, lan, translated
-        )
-        await edit_or_reply(event, output_str)
+**Translation ({transl_lan})**:
+`{translated}`"""
+        if len(output_str) >= 4096:
+            out_file = output_str
+            url = "https://del.dog/documents"
+            r = requests.post(url, data=out_file.encode("UTF-8")).json()
+            url2 = f"https://del.dog/{r['key']}"
+            starky = f"Translated Text was too Big, I Have Pasted It [Here]({url2})"
+        else:
+            starky = output_str
+        await edit_or_reply(event, starky)
     except Exception as exc:
         await edit_or_reply(event, str(exc))
 
