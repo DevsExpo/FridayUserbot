@@ -3,6 +3,7 @@ import sys
 import os
 from userbot.utils import admin_cmd
 from userbot import bot 
+from userbot import CMD_HELP
 
 if not os.path.isdir("./cipherx/"):
     os.makedirs("./cipherx/")
