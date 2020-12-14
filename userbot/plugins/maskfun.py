@@ -476,7 +476,7 @@ async def scan(event):
     hoi = await event.delete()
     
     
- CMD_HELP.update(
+CMD_HELP.update(
     {
         "Maskfun": "List of All Available Fun Commands.\
 \n\n.cmask\
