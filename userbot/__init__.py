@@ -8,6 +8,7 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 
 import pylast
 import wget
+from antispaminc.connect import Connect
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
@@ -109,11 +110,11 @@ if bool(ENV):
     OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
 
     # Anti Spambot Config
-    ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "True"))
+    ANTI_SPAMBOT = sb(os.environ.get("ANTI_SPAMBOT", "False"))
     # Log It
     PRIVATE_GROUP_BOT_API_ID = os.environ.get("PRIVATE_GROUP_BOT_API_ID", None)
 
-    ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "True"))
+    ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
 
     # Youtube API key
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
@@ -187,3 +188,13 @@ else:
         sedlyf = wget.download(link, out=pathz)
     except:
         sedprint.info("I Wasn't Able To Download Cafee Model. Skipping")
+
+if Config.ANTI_SPAMINC_TOKEN == None:
+    sclient = None
+    sedprint.info("[Warning] - AntispamInc is None")
+else:
+    try:
+        sclient = Connect(Config.ANTI_SPAMINC_TOKEN)
+    except Exception as e:
+        sclient = None
+        sedprint.info("[Warning] - " + str(e))
