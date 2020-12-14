@@ -174,9 +174,9 @@ async def _(event):
         total_errors += 1
         errorno += f"{e} \n"
     await borg.send_message(
-            loggy_grp,
-            f"Failed in {forbard.chat_id} Because Of Error : `{errorno}` \n\n",
-        )
+        loggy_grp,
+        f"Failed in {forbard.chat_id} Because Of Error : `{errorno}` \n\n",
+    )
     await event.edit(
         f"Forward Success in {total_count} And Failed In {total_errors} And Total Channel In Db is {total_chnnl}"
     )

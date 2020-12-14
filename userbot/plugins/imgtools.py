@@ -3,87 +3,84 @@
 import os
 
 import requests
-import urllib, re, asyncio
 from telethon.tl.types import MessageMediaPhoto
-from userbot.utils import admin_cmd
+
 from userbot import CMD_HELP
-from userbot.utils import friday_on_cmd, sudo_cmd
+from userbot.utils import admin_cmd, friday_on_cmd, sudo_cmd
 
 sedpath = "./cipherx/"
 if not os.path.isdir(sedpath):
     os.makedirs(sedpath)
-    
-cipherx = Config.DEEP_API_KEY if Config.DEEP_API_KEY else "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"
+
+cipherx = (
+    Config.DEEP_API_KEY
+    if Config.DEEP_API_KEY
+    else "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"
+)
 
 KANG_KAREGA_MC = str(ALIVE_NAME) if ALIVE_NAME else "CɪᴘʜᴇʀX"
 
+
 @bot.on(admin_cmd(pattern="enc ?(.*)", outgoing=True))
-async def _(event):                   
+async def _(event):
     reply = await event.get_reply_message()
     if not reply:
 
-        return await event.edit(
-           "Reply to any image or non animated sticker !"
-        )
+        return await event.edit("Reply to any image or non animated sticker !")
 
     input_str = event.pattern_match.group(1)
-    hm = input_str 
+    hm = input_str
     devent = await event.edit("Let me Downlaoad it...")
     media = await event.client.download_media(reply)
     if not media.endswith(("png", "jpg", "webp")):
-        return await event.edit(
-             "Reply to any image or non animated sticker !"
-        )
-    
+        return await event.edit("Reply to any image or non animated sticker !")
+
     if input_str:
         devent = await event.edit("styling the image sar...")
         r = requests.post(
-          "https://api.deepai.org/api/neural-style",
-        files={
-            'style': f"{hm}",
-            'content': open(media, "rb"),
+            "https://api.deepai.org/api/neural-style",
+            files={
+                "style": f"{hm}",
+                "content": open(media, "rb"),
             },
-        headers={"api-key": cipherx},
-    )
+            headers={"api-key": cipherx},
+        )
 
         os.remove(media)
         if "status" in r.json():
-            return await devent.edit( r.json()["status"])
-        r_json = r.json()['output_url']
-        pic_id = r.json()['id']
-    
+            return await devent.edit(r.json()["status"])
+        r_json = r.json()["output_url"]
+        pic_id = r.json()["id"]
+
         link = f"https://api.deepai.org/job-view-file/{pic_id}/inputs/image.jpg"
         result = f"{r_json}"
-    
-        await devent.delete()
-        await borg.send_message(
-        event.chat_id,
-        file=result)
-    
-    else:
-      devent = await event.edit("Styling the image...")
-      r = requests.post(
-          "https://api.deepai.org/api/neural-style",
-      files={
-            'style': 'https://telegra.ph/file/aaaa686bd3acff51208d7.jpg',
-            'content': open(media, "rb"),
-            },
-      headers={"api-key": cipherx},
-    )
 
-      os.remove(media)
-      if "status" in r.json():
-          return await devent.edit( r.json()["status"])
-      r_json = r.json()['output_url']
-      pic_id = r.json()['id']
-    
-      link = f"https://api.deepai.org/job-view-file/{pic_id}/inputs/image.jpg"
-      result = f"{r_json}"
-    
-      await devent.delete()
-      await borg.send_message(
-      event.chat_id,
-      file=result)
+        await devent.delete()
+        await borg.send_message(event.chat_id, file=result)
+
+    else:
+        devent = await event.edit("Styling the image...")
+        r = requests.post(
+            "https://api.deepai.org/api/neural-style",
+            files={
+                "style": "https://telegra.ph/file/aaaa686bd3acff51208d7.jpg",
+                "content": open(media, "rb"),
+            },
+            headers={"api-key": cipherx},
+        )
+
+        os.remove(media)
+        if "status" in r.json():
+            return await devent.edit(r.json()["status"])
+        r_json = r.json()["output_url"]
+        pic_id = r.json()["id"]
+
+        link = f"https://api.deepai.org/job-view-file/{pic_id}/inputs/image.jpg"
+        result = f"{r_json}"
+
+        await devent.delete()
+        await borg.send_message(event.chat_id, file=result)
+
 
 @friday.on(friday_on_cmd(pattern=r"reso"))
 @friday.on(sudo_cmd(pattern=r"reso", allow_sudo=True))

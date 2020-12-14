@@ -93,7 +93,9 @@ async def oki(event):
     for i in lmaoded:
         try:
             sclient.ban(i, lolsed)
-            await borg.send_message("CɪᴘʜᴇʀX Anti-Spam Algorithm", f"/fban {i} {lolsed}")
+            await borg.send_message(
+                "CɪᴘʜᴇʀX Anti-Spam Algorithm", f"/fban {i} {lolsed}"
+            )
         except:
             errorz += 1
         await event.edit(
