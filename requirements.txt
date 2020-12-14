@@ -11,6 +11,7 @@ python-magic
 antispaminc
 glitch_this
 PyGithub
+pydub
 youtube-dl
 opencv-contrib-python
 telethon>=1.17
