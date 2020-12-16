@@ -1,7 +1,7 @@
 """ Google Translate
 Available Commands:
 .tr LanguageCode as reply to a message
-.tr LangaugeCode / text to translate"""
+.tr LangaugeCode | text to translate"""
 
 from deep_translator import GoogleTranslator
 from googletrans import LANGUAGES
@@ -24,7 +24,7 @@ async def _(event):
         text = previous_message.message
         lan = input_str or "en"
     elif "|" in input_str:
-        lan, text = input_str.split("/")
+        lan, text = input_str.split("|")
     else:
         await edit_or_reply(event, "`.tr LanguageCode` as reply to a message")
         return
