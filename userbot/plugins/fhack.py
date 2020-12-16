@@ -7,6 +7,7 @@ from userbot import CMD_HELP
 SHUTDOWN = "https://filetolinktelegrambot.herokuapp.com/41750275203384/voice.ogg"
 STARTUP = "https://filetolinktelegrambot.herokuapp.com/41767455072568/funny.gif.mp4"
 
+
 @friday.on(events.NewMessage(pattern=r"\.fhack", outgoing=True))
 async def _(event):
     await event.client.send_file(
@@ -39,14 +40,14 @@ async def _(event):
         "`Hacking... 100%\n` 98% HACKED`",
         "`Targeted Account Hacked By CɪᴘʜᴇʀX`\n\n`_______________________`\n`result ... :)`\n\n`Chatlist : ✅`\n`Calls : ✅`\n`groups : ✅`\n `Contacts : ✅`\n`Channel : ✅`\n`Deleted Messages : ❌`\n`Edited Messages : ❌`\n`All API Tokens : ✅`",
     ]
-    
 
     for i in animation_ttl:
 
         await asyncio.sleep(animation_interval)
 
         await event.edit(animation_chars[i % 11])
-        
+
+
 CMD_HELP.update(
     {
         "fhack": "**Fhack**\
