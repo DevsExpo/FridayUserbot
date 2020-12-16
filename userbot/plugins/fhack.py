@@ -1,7 +1,7 @@
 import asyncio
-import io
+
 from telethon import events
-from userbot.utils import friday_on_cmd
+
 
 @friday.on(events.NewMessage(pattern=r"\.fhack", outgoing=True))
 async def _(event):
