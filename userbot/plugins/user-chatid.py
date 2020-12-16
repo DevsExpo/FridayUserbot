@@ -1,12 +1,10 @@
 # Originally Made by @Hackintush
 """ Userbot module containing userid, chatid and log commands"""
 
-from time import sleep
 
-from telethon.tl.functions.channels import LeaveChannelRequest
-
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
+from userbot import CMD_HELP
 from userbot.events import register
+
 
 @register(outgoing=True, pattern="^.userid$")
 async def useridgetter(target):
@@ -26,15 +24,15 @@ async def useridgetter(target):
                 name = "@" + message.forward.sender.username
             else:
                 name = "*" + message.forward.sender.first_name + "*"
-        await target.edit("**Name:** {} \n**User ID:** `{}`".format(
-            name, user_id))
+        await target.edit("**Name:** {} \n**User ID:** `{}`".format(name, user_id))
 
 
 @register(outgoing=True, pattern="^.chatid$")
 async def chatidgetter(chat):
     """ For .chatid, returns the ID of the chat you are in at that moment. """
     await chat.edit("**Chat ID:**\n`" + str(chat.chat_id) + "`")
-    
+
+
 CMD_HELP.update(
     {
         "user-chatid": "**User-chatid**\
