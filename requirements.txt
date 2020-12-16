@@ -3,6 +3,7 @@ quote
 PyDictionary
 fontTools
 deep_translator
+langdetect
 textblob
 pygments
 python-magic
