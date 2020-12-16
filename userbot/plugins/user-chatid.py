@@ -37,10 +37,10 @@ async def chatidgetter(chat):
     
 CMD_HELP.update(
     {
-        "user": "**User**\
+        "user-chatid": "**User-chatid**\
         \n\n**Syntax : **`.userid`\
-        \n**Usage :** Checks the userid of a message.\ 
+        \n**Usage :** Checks the userid of a message.\
         \n\n**Syntax : **`.chatid`\
-        \n**Usage :** Checks the chatid of a chat." 
+        \n**Usage :** Checks the chatid of a chat."
     }
 )
