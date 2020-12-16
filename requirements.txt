@@ -3,8 +3,6 @@ quote
 PyDictionary
 fontTools
 deep_translator
-langdetect
-the-python-bay
 textblob
 pygments
 python-magic
