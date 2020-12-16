@@ -1,5 +1,6 @@
 Pillow
 quote
+the_python_bay
 PyDictionary
 fontTools
 deep_translator
