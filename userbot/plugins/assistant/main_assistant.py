@@ -18,6 +18,7 @@ import re
 
 from telethon import Button, custom, events
 from telethon.tl.functions.users import GetFullUserRequest
+from telethon.utils import pack_bot_file_id
 
 from userbot import bot
 from userbot.Configs import Config
@@ -132,7 +133,6 @@ async def all_messages_catcher(event):
         return
     else:
         await event.get_sender()
-        event.chat_id
         sed = await event.forward_to(bot.uid)
         # Add User To Database ,Later For Broadcast Purpose
         # (C) @SpecHide
@@ -147,24 +147,25 @@ async def sed(event):
     msg.id
     msg_s = event.raw_text
     user_id, reply_message_id = his_userid(msg.id)
-    if event.sender_id == Config.OWNER_ID:
-        if event.raw_text.startswith("/"):
-            return
-        if event.text is not None and event.media:
-            bot_api_file_id = pack_bot_file_id(event.media)
-            await tgbot.send_file(
-                user_id,
-                file=bot_api_file_id,
-                caption=event.text,
-                reply_to=reply_message_id,
-            )
-        else:
-            msg_s = event.raw_text
-            await tgbot.send_message(
-                user_id,
-                msg_s,
-                reply_to=reply_message_id,
-            )
+    if event.sender_id != bot.uid:
+        return
+    elif event.raw_text.startswith("/"):
+        return
+    elif event.text is not None and event.media:
+        bot_api_file_id = pack_bot_file_id(event.media)
+        await tgbot.send_file(
+            user_id,
+            file=bot_api_file_id,
+            caption=event.text,
+            reply_to=reply_message_id,
+        )
+    else:
+        msg_s = event.raw_text
+        await tgbot.send_message(
+            user_id,
+            msg_s,
+            reply_to=reply_message_id,
+        )
 
 
 @assistant_cmd("broadcast", is_args=True)
@@ -220,8 +221,6 @@ async def starkislub(event):
 async def starkisnoob(event):
     if event.sender_id == bot.uid:
         msg = await event.get_reply_message()
-        msg.id
-        event.raw_text
         user_id, reply_message_id = his_userid(msg.id)
     if is_he_added(user_id):
         await event.reply("Already Blacklisted")
