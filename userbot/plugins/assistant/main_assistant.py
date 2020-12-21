@@ -242,7 +242,7 @@ async def starkisnoob(event):
         event.raw_text
         user_id, reply_message_id = his_userid(msg.id)
     if not is_he_added(user_id):
-        await event.reply("Not Even Blacklisted 🤦🚶")
+        await event.reply("Not Even Blacklisted 🚶")
     elif is_he_added(user_id):
         removenibba(user_id)
         await event.reply("Unblacklisted This Dumb Person")
