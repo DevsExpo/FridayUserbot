@@ -11,18 +11,16 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import io
-import os
-import random
 
+import os
+from shutil import rmtree
 import cv2
 import numpy as np
 import requests
 from PIL import Image, ImageDraw, ImageFont
 from telegraph import upload_file
-from telethon.tl.types import DocumentAttributeFilename, MessageMediaPhoto
-
 from userbot import CMD_HELP
+from userbot.function import convert_to_image, crop_vid, runcmd
 from userbot.utils import friday_on_cmd, sudo_cmd
 
 sedpath = "./cipherx/"
@@ -37,18 +35,13 @@ async def hmm(event):
         await event.reply("Reply to any Image.")
         return
     hmmu = await event.edit("Colorizing...")
-    sed = await event.get_reply_message()
-    if isinstance(sed.media, MessageMediaPhoto):
-        img = await borg.download_media(sed.media, sedpath)
-    elif "image" in sed.media.document.mime_type.split("/"):
-        img = await borg.download_media(sed.media, sedpath)
-    else:
-        await event.edit("Reply To Image")
-        return
+    await event.get_reply_message()
+    img = await convert_to_image(event, borg)
     net = cv2.dnn.readNetFromCaffe(
         "./resources/imgcolour/colouregex.prototxt",
         "./resources/imgcolour/colorization_release_v2.caffemodel",
     )
+    
     pts = np.load("./resources/imgcolour/pts_in_hull.npy")
     class8 = net.getLayerId("class8_ab")
     conv8 = net.getLayerId("conv8_313_rh")
@@ -79,38 +72,6 @@ async def hmm(event):
             os.remove(files)
 
 
-@friday.on(friday_on_cmd(pattern=r"toon"))
-@friday.on(sudo_cmd(pattern=r"toon", allow_sudo=True))
-async def hmm(event):
-    life = Config.DEEP_API_KEY
-    if life == None:
-        life = "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"
-        await event.edit("No Api Key Found, Please Add it. For Now Using Local Key")
-    if not event.reply_to_msg_id:
-        await event.reply("Reply to any Image.")
-        return
-    headers = {"api-key": life}
-    hmm = await event.edit("Tooning...")
-    sed = await event.get_reply_message()
-    if isinstance(sed.media, MessageMediaPhoto):
-        img = await borg.download_media(sed.media, sedpath)
-    elif "image" in sed.media.document.mime_type.split("/"):
-        img = await borg.download_media(sed.media, sedpath)
-    else:
-        await event.edit("Reply To Image")
-        return
-    img_file = {
-        "image": open(img, "rb"),
-    }
-    url = "https://api.deepai.org/api/toonify"
-    r = requests.post(url=url, files=img_file, headers=headers).json()
-    sedimg = r["output_url"]
-    await borg.send_file(event.chat_id, sedimg)
-    await hmm.delete()
-    if os.path.exists(img):
-        os.remove(img)
-
-
 # Firstly Released By @DELETEDUSER420
 @friday.on(friday_on_cmd(pattern=r"nst"))
 @friday.on(sudo_cmd(pattern=r"nst", allow_sudo=True))
@@ -123,15 +84,9 @@ async def hmm(event):
         await event.reply("Reply to any Image.")
         return
     headers = {"api-key": life}
-    hmm = await event.edit("Colorizing...")
-    sed = await event.get_reply_message()
-    if isinstance(sed.media, MessageMediaPhoto):
-        img = await borg.download_media(sed.media, sedpath)
-    elif "image" in sed.media.document.mime_type.split("/"):
-        img = await borg.download_media(sed.media, sedpath)
-    else:
-        await event.edit("Reply To Image")
-        return
+    hmm = await event.edit("Processing...")
+    await event.get_reply_message()
+    img = await convert_to_image(event, borg)
     img_file = {
         "image": open(img, "rb"),
     }
@@ -154,14 +109,8 @@ async def iamthug(event):
         await event.reply("Reply to any Image.")
         return
     hmm = await event.edit("`Converting To thug Image...`")
-    sed = await event.get_reply_message()
-    if isinstance(sed.media, MessageMediaPhoto):
-        img = await borg.download_media(sed.media, sedpath)
-    elif "image" in sed.media.document.mime_type.split("/"):
-        img = await borg.download_media(sed.media, sedpath)
-    else:
-        await event.edit("Reply To Image")
-        return
+    await event.get_reply_message()
+    img = await convert_to_image(event, borg)
     imagePath = img
     maskPath = "./resources/thuglife/mask.png"
     cascPath = "./resources/thuglife/face_regex.xml"
@@ -175,7 +124,7 @@ async def iamthug(event):
         mask = mask.resize((w, h), Image.ANTIALIAS)
         offset = (x, y)
         background.paste(mask, offset, mask=mask)
-    file_name = "thug.png"
+    file_name = "cipherx.png"
     ok = sedpath + "/" + file_name
     background.save(ok, "PNG")
     await borg.send_file(event.chat_id, ok)
@@ -185,11 +134,6 @@ async def iamthug(event):
             os.remove(files)
 
 
-import os
-
-import cv2
-
-
 @friday.on(friday_on_cmd(pattern=r"tni"))
 @friday.on(sudo_cmd(pattern=r"tni", allow_sudo=True))
 async def toony(event):
@@ -197,14 +141,8 @@ async def toony(event):
         await event.reply("Reply to any Image.")
         return
     hmmu = await event.edit("`Converting Toonized Image...`")
-    sed = await event.get_reply_message()
-    if isinstance(sed.media, MessageMediaPhoto):
-        img = await borg.download_media(sed.media, sedpath)
-    elif "image" in sed.media.document.mime_type.split("/"):
-        img = await borg.download_media(sed.media, sedpath)
-    else:
-        await event.edit("Reply To Image")
-        return
+    await event.get_reply_message()
+    img = await convert_to_image(event, borg)
     imagez = cv2.imread(img)
     cartoon_image_style_2 = cv2.stylization(
         imagez, sigma_s=60, sigma_r=0.5
@@ -227,13 +165,7 @@ async def toony(event):
 async def lolmetrg(event):
     await event.edit("`Triggered This Image`")
     sed = await event.get_reply_message()
-    if isinstance(sed.media, MessageMediaPhoto):
-        img = await borg.download_media(sed.media, sedpath)
-    elif "image" in sed.media.document.mime_type.split("/"):
-        img = await borg.download_media(sed.media, sedpath)
-    else:
-        await event.edit("Reply To Image")
-        return
+    img = await convert_to_image(event, borg)
     url_s = upload_file(img)
     imglink = f"https://telegra.ph{url_s[0]}"
     lolul = f"https://some-random-api.ml/canvas/triggered?avatar={imglink}"
@@ -241,7 +173,7 @@ async def lolmetrg(event):
     open("triggered.gif", "wb").write(r.content)
     lolbruh = "triggered.gif"
     await borg.send_file(
-        event.chat_id, lolbruh, caption="You got triggered....", reply_to=sed
+        event.chat_id, lolbruh, caption="Got Triggered...", reply_to=sed
     )
     for files in (lolbruh, img):
         if files and os.path.exists(files):
@@ -255,15 +187,11 @@ async def hmm(event):
         await event.reply("Reply to any Image.")
         return
     hmmu = await event.edit("Sending him to jail...🚶")
+    await event.get_reply_message()
+    img = await convert_to_image(event, borg)
     sed = await event.get_reply_message()
-    if isinstance(sed.media, MessageMediaPhoto):
-        img = await borg.download_media(sed.media, sedpath)
-    elif "image" in sed.media.document.mime_type.split("/"):
-        img = await borg.download_media(sed.media, sedpath)
-    else:
-        await event.edit("Reply To Image")
-        return
-    mon = "./resources/jail/jail.png"
+    img = await convert_to_image(event, borg)
+    mon = "./resources/jail/hmm.png"
     foreground = Image.open(mon).convert("RGBA")
 
     background = Image.open(img).convert("RGB")
@@ -289,15 +217,9 @@ async def hmm(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
-    hmmu = await event.edit("Creating a Black & White Image...")
-    sed = await event.get_reply_message()
-    if isinstance(sed.media, MessageMediaPhoto):
-        img = await borg.download_media(sed.media, sedpath)
-    elif "image" in sed.media.document.mime_type.split("/"):
-        img = await borg.download_media(sed.media, sedpath)
-    else:
-        await event.edit("Reply To Image")
-        return
+    hmmu = await event.edit("Creating a black & white image...")
+    await event.get_reply_message()
+    img = await convert_to_image(event, borg)
     img1 = cv2.imread(img)
 
     gray_img = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
@@ -312,6 +234,9 @@ async def hmm(event):
             os.remove(files)
 
 
+# Plugin By - XlayerCharon[XCB]
+# TG ~>>//@CharonCB21
+# @code-rgb
 @friday.on(friday_on_cmd(pattern=r"fgs ?(.*)"))
 @friday.on(sudo_cmd(pattern=r"fgs ?(.*)", allow_sudo=True))
 async def img(event):
@@ -352,7 +277,7 @@ async def lottiepie(event):
             await event.edit("Not Supported Yet.")
             return
         await message.download_media("tgs.tgs")
-        os.system("lottie_convert.py tgs.tgs json.json")
+        await runcmd("lottie_convert.py tgs.tgs json.json")
         json = open("json.json", "r")
         jsn = json.read()
         json.close()
@@ -365,7 +290,7 @@ async def lottiepie(event):
         )
         open("json.json", "w").write(jsn)
         await event.delete()
-        os.system(f"lottie_convert.py json.json tgs.tgs")
+        await runcmd(f"lottie_convert.py json.json tgs.tgs")
         await borg.send_file(event.chat_id, file="tgs.tgs", force_document=False)
         os.remove("json.json")
         os.remove("tgs.tgs")
@@ -396,90 +321,102 @@ async def img(event):
     file_name = "testpb.jpg"
     ok = "./cipherx/" + file_name
     await borg.send_file(event.chat_id, ok)
+    os.remove(files)
     for files in (ok, img):
         if files and os.path.exists(files):
             os.remove(files)
+        event.delete()
+# Credits To These :
+# https://github.com/midnightmadwalk [TG: @MidnightMadwalk]
+# https://github.com/code-rgb [TG: @DeletedUser420]
 
-
-#   Friendly Telegram (telegram userbot)
-#   Copyright (C) 2018-2020 The Authors
-
-#   This program is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU Affero General Public License as published by
-#   the Free Software Foundation, either version 3 of the License, or
-#   (at your option) any later version.
-
-#   This program is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU Affero General Public License for more details.
-
-#   You should have received a copy of the GNU Affero General Public License
-#   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 @friday.on(friday_on_cmd(pattern=r"spin ?(.*)"))
 @friday.on(sudo_cmd(pattern=r"spin ?(.*)", allow_sudo=True))
 async def spinshit(message):
-    if message.is_reply:
-        reply_message = await message.get_reply_message()
-        data = await check_media(reply_message)
-        if isinstance(data, bool):
-            await message.edit(message, "`Reply to Image/Sticker Only.`")
-            return
-    else:
-        await message.edit(message, "`Reply To MSG`")
+    reply = await message.get_reply_message()
+    lmaodict = {"1": 1, "2": 3, "3": 6, "4": 12, "5": 24, "6": 60}
+    lolshit = message.pattern_match.group(1)
+    keke = f"{lolshit}"
+    if not reply:
+        await message.edit("`Reply To Media First !`")
         return
-        image = io.BytesIO()
-        await borg.download_media(data, image)
-        image = Image.open(image)
-        image.thumbnail((512, 512), Image.ANTIALIAS)
-        img = Image.new("RGB", (512, 512), "black")
-        img.paste(image, ((512 - image.width) // 2, (512 - image.height) // 2))
-        image = img
-        way = random.choice([1, -1])
-        frames = []
-        for i in range(1, 60):
-            im = image.rotate(i * 6 * way)
-            frames.append(im)
-        frames.remove(im)
-        image_stream = io.BytesIO()
-        image_stream.name = "spin.gif"
-        im.save(image_stream, "GIF", save_all=True, append_images=frames, duration=10)
-        image_stream.seek(0)
-        await borg.send_file(message.chat_id, image_stream)
-        os.remove(data)
-        os.remove(image)
-        os.remove(image_stream)
-
-
-async def check_media(reply_message):
-    if reply_message and reply_message.media:
-        if reply_message.photo:
-            data = reply_message.photo
-        elif reply_message.document:
-            if (
-                DocumentAttributeFilename(file_name="AnimatedSticker.tgs")
-                in reply_message.media.document.attributes
-            ):
-                return False
-            if (
-                reply_message.gif
-                or reply_message.video
-                or reply_message.audio
-                or reply_message.voice
-            ):
-                return False
-            data = reply_message.media.document
+    else:
+        if lolshit:
+            step = lmaodict[keke]
         else:
-            return False
-    else:
-        return False
+            step = 1
+    pic_loc = await convert_to_image(message, borg)
+    if not pic_loc:
+        await message.edit("`Reply to a valid media first.`")
+        return
+    await message.edit("🌀 `Tighten your seatbelts...`")
+    spin_dir = 1
+    path = "resources/rotate-disc/"
+    if os.path.exists(path):
+        rmtree(path, ignore_errors=True)
+    os.mkdir(path)
+    im = Image.open(pic_loc)
+    if im.mode != "RGB":
+        im = im.convert("RGB")
+    # Rotating pic by given angle and saving
+    for k, nums in enumerate(range(1, 360, step), start=0):
+        y = im.rotate(nums * spin_dir)
+        y.save(os.path.join(path, "spinx%s.jpg" % k))
+    output_vid = os.path.join(path, "out.mp4")
+    # ;__; Maths lol, y = mx + c
+    frate = int(((90 / 59) * step) + (1680 / 59))
+    # https://stackoverflow.com/questions/20847674/ffmpeg-libx264-height-not-divisible-by-2
+    await runcmd(
+        f'ffmpeg -framerate {frate} -i {path}spinx%d.jpg -c:v libx264 -preset ultrafast -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" -pix_fmt yuv420p {output_vid}'
+    )
+    if os.path.exists(output_vid):
+        round_vid = os.path.join(path, "out_round.mp4")
+        await crop_vid(output_vid, round_vid)
+        await borg.send_file(
+            message.chat_id, round_vid, video_note=True, reply_to=reply.id
+        )
+        await message.delete()
+    os.remove(pic_loc)
+    rmtree(path, ignore_errors=True)
 
-    if not data or data is None:
-        return False
-    else:
-        return data
+
+
+@friday.on(friday_on_cmd(pattern=r"lnews ?(.*)"))
+@friday.on(sudo_cmd(pattern=r"lnews ?(.*)", allow_sudo=True))
+async def hmm(event):
+    text = event.pattern_match.group(1)
+    if not text:
+        await event.edit("No input found!  --__--")
+        return
+    if not event.reply_to_msg_id:
+        await event.reply("Reply to any Image.")
+        return
+    hmmu = await event.edit("Starting Live News Stream...🚶")
+    await event.get_reply_message()
+    img = await convert_to_image(event, borg)
+    sed = await event.get_reply_message()
+    img = await convert_to_image(event, borg)
+    background = Image.open(img)
+    newss = "./resources/live/news.png"
+    foreground = Image.open(newss)
+    im = background.resize((2800, 1500))
+    im.paste(foreground, (0,0), mask = foreground)
+    d1 = ImageDraw.Draw(im)
+    myFont = ImageFont.truetype("./resources/live/font.ttf", 165)
+    d1.text((7, 1251), text, font=myFont, fill =(0, 0, 0))
+
+    im.save("./cipherx/livenews.png")
+    file_name = "livenews.png"
+    ok = "./cipherx/" + file_name
+    await borg.send_file(event.chat_id, ok)
+    await hmmu.delete()
+    for files in (ok, img):
+        if files and os.path.exists(files):
+            os.remove(files)
+
+
 
 
 CMD_HELP.update(
@@ -493,6 +430,8 @@ CMD_HELP.update(
         \n**Usage :** makes a thug life meme image.\
         \n\n**Syntax : ** `.tig`\
         \n**Usage :** Makes a triggered gif of the replied image.\
+        \n\n**Syntax : ** `.spin <number between 1-6>`\
+        \n**Usage :** Spins The Given Image.\
         \n\n**Syntax : ** `.jail`\
         \n**Usage :** Makes a jail image of the replied image.\
         \n\n**Syntax : ** `.fgs searchtext;fake text`\
@@ -500,6 +439,8 @@ CMD_HELP.update(
         \n\n**Syntax : ** `.ph username:fake text`\
         \n**Usage :** Makes a Fake PornHub comment with given username and text.\
         \n\n**Syntax : ** `.greyscale`\
-        \n**Usage :** Makes a black and white image of the replied image."
+        \n**Usage :** Makes a black and white image of the replied image.\
+        \n\n**Syntax : ** `.lnews <text>`\
+        \n**Usage :** Makes a Fake News Streaming With Replyed Image And Text."
     }
 )
