@@ -20,9 +20,7 @@ async def _m(event):
         await event.edit("`No, LoL You Can't Set Channel Stickers In Groups`")
         return
     if event.is_private:
-        await event.edit(
-            "`No, LoL You Can't Set Channel Stickers In Private Chats`"
-        )
+        await event.edit("`No, LoL You Can't Set Channel Stickers In Private Chats`")
         return
     if lmao.sticker.mime_type != "image/webp":
         await event.edit("`Only Sticker Allowded.`")
