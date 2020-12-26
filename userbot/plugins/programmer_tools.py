@@ -38,7 +38,7 @@ async def __(event):
 
 CMD_HELP.update(
     {
-        "programmer_jokes": "**Programmer Jokes**\
+        "programmer_tools": "**Programmer_Tools**\
 \n\n**Syntax : **`.pjoke`\
 \n**Usage :** Get programmer jokes.\
 \n\n**Syntax : **`.howdoi <programming query>`\
