@@ -35,7 +35,7 @@ async def glitch(event):
     okbruh = await event.edit("`Glitching...`")
     if isinstance(sed.media, MessageMediaPhoto):
         photolove = await borg.download_media(sed.media, sedpath)
-    elif "image" in response.media.document.mime_type.split("/"):
+    elif "image" in sed.media.document.mime_type.split("/"):
         photolove = await borg.download_media(sed.media, sedpath)
     else:
         await event.edit("`Reply To Image`")
