@@ -99,7 +99,7 @@ if ENV:
         # specify list of users allowed to use bot
         # WARNING: be careful who you grant access to your bot.
         # malicious users could do ".exec rm -rf /*"
-        SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS". "").split())
+        SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS"\."").split())
         WHITELIST_USERS = set(
             int(x) for x in os.environ.get("WHITELIST_USERS", "").split()
         )
