@@ -5,7 +5,7 @@ from math import ceil
 
 import requests
 from telethon import Button, custom, events, functions
-from youtubesearchpython import SearchVideos
+from youtubesearchpython import VideosSearch
 
 from userbot import ALIVE_NAME, CMD_HELP, CMD_LIST
 from userbot.plugins import inlinestats
@@ -345,9 +345,10 @@ async def inline_id_handler(event: events.InlineQuery.Event):
     testinput = event.pattern_match.group(1)
     urllib.parse.quote_plus(testinput)
     results = []
-    search = SearchVideos(f"{testinput}", offset=1, mode="dict", max_results=20)
+    search = VideosSearch(f"{testinput}", limit = 20)
     mi = search.result()
-    moi = mi["search_result"]
+    moi = mi["result"]
+    fk = 0
     if search == None:
         resultm = builder.article(
             title="No Results Found.",
@@ -365,7 +366,9 @@ async def inline_id_handler(event: events.InlineQuery.Event):
         fridayz = mio["id"]
         thums = mio["channel"]
         td = mio["duration"]
-        tw = mio["views"]
+        kk = moi[fk]
+        tw = kk["viewCount"]["text"]
+        fk = fk+1
         kekme = f"https://img.youtube.com/vi/{fridayz}/hqdefault.jpg"
         okayz = f"**Title :** `{thum}` \n**Link :** `{mo}` \n**Channel :** `{thums}` \n**Views :** `{tw}` \n**Duration :** `{td}`"
         hmmkek = f"Channel : {thums} \nDuration : {td} \nViews : {tw}"
