@@ -21,14 +21,13 @@ async def _(event):
     if reply_message.sender.bot:
         await event.edit("```Reply to actual users message.```")
         return
-    await event.edit("```Processing```")
+    await event.edit("```Processing...```")
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=461843263)
             )
-            # await borg.forward_messages(chat, reply_message)
-            await silently_send_message(chat, "/generate")
+            await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
             await event.reply("```Please unblock bot and try again```")
@@ -54,16 +53,14 @@ async def _(event):
         return
     chat = "@fakemailbot"
     reply_message.sender
-    if reply_message.sender.bot:
-        await event.edit("```Reply to actual users message.```")
-        return
-    await event.edit("```Processing```")
+    await event.edit("```Processing...```")
+    link = f"/generate"
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=177914997)
             )
-            await borg.forward_messages(chat, reply_message)
+            await conv.send_message(link)
             response = await response
         except YouBlockedUserError:
             await event.reply("```Please unblock bot and try again```")
@@ -92,7 +89,7 @@ async def _(event):
     if reply_message.sender.bot:
         await event.edit("```Reply to actual users message.```")
         return
-    await event.edit("```Processing```")
+    await event.edit("```Processing...```")
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -127,7 +124,7 @@ async def _(event):
     if reply_message.sender.bot:
         await event.edit("```Reply to actual users message.```")
         return
-    await event.edit("```Processing```")
+    await event.edit("```Processing...```")
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -136,7 +133,7 @@ async def _(event):
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Hmm```")
+            await event.reply("```Please unblock bot and try again```")
             return
         if response.text.startswith("Hello,"):
             await event.edit(
@@ -162,7 +159,7 @@ async def _(event):
     if reply_message.sender.bot:
         await event.edit("```Reply to actual users message.```")
         return
-    await event.edit("```Processing```")
+    await event.edit("```Processing...```")
     async with borg.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -171,7 +168,7 @@ async def _(event):
             await borg.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await event.reply("```Hmm```")
+            await event.reply("```Please unblock Bot and try again```")
             return
         if response.text.startswith("Hello,"):
             await event.edit(
