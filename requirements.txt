@@ -5,6 +5,7 @@ PyDictionary
 fontTools
 deep_translator
 langdetect
+PyProxyToolkit
 textblob
 pygments
 python-magic
