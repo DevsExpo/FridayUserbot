@@ -32,7 +32,7 @@ telethon>=1.17
 iplookup
 wget
 numpy
-googletrans
+googletrans==3.1.0a0
 pyshorteners
 aiohttp
 bs4
