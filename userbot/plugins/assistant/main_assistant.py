@@ -175,7 +175,6 @@ async def sedlyfsir(event):
     userstobc = get_all_users()
     error_count = 0
     sent_count = 0
-    hmmok = ""
     if msgtobroadcast == None:
         await event.reply("`Wait. What? Broadcast None?`")
         return
