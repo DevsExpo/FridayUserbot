@@ -345,7 +345,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
     testinput = event.pattern_match.group(1)
     urllib.parse.quote_plus(testinput)
     results = []
-    search = VideosSearch(f"{testinput}", limit = 20)
+    search = VideosSearch(f"{testinput}", limit=20)
     mi = search.result()
     moi = mi["result"]
     fk = 0
@@ -368,7 +368,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
         td = mio["duration"]
         kk = moi[fk]
         tw = kk["viewCount"]["text"]
-        fk = fk+1
+        fk = fk + 1
         kekme = f"https://img.youtube.com/vi/{fridayz}/hqdefault.jpg"
         okayz = f"**Title :** `{thum}` \n**Link :** `{mo}` \n**Channel :** `{thums}` \n**Views :** `{tw}` \n**Duration :** `{td}`"
         hmmkek = f"Channel : {thums} \nDuration : {td} \nViews : {tw}"
