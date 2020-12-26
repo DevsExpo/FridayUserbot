@@ -12,7 +12,7 @@ from userbot.plugins import inlinestats
 
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
-    WARN_PIC = "https://telegra.ph/file/82c595986872349e5ba1a.jpg"
+    WARN_PIC = "https://filetolinktelegrambot.herokuapp.com/44584953618744/C%C9%AA%E1%B4%98%CA%9C%E1%B4%87%CA%80X.mp4"
 else:
     WARN_PIC = PMPERMIT_PIC
 LOG_CHAT = Config.PRIVATE_GROUP_ID
