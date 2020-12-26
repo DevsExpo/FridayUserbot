@@ -11,6 +11,9 @@ if ENV:
         # Get this value from my.telegram.org! Please do not steal
         LOCATION = os.environ.get("LOCATION", None)
         OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
+        VIRUSTOTAL_API_KEY = os.environ.get("VIRUSTOTAL_API_KEY", None)
+        SUPERHERO_API_KEY = os.environ.get("SUPERHERO_API_KEY", None)
+        FOOTBALL_API_KEY = os.environ.get("FOOTBALL_API_KEY", None)
         AUTO_SPELL_FIX = os.environ.get("AUTO_SPELL_FIX", False)
         # Get your own ACCESS_KEY from http://api.screenshotlayer.com/api/capture
         SCREEN_SHOT_LAYER_ACCESS_KEY = os.environ.get(
@@ -30,13 +33,13 @@ if ENV:
             "HASH_TO_TORRENT_API", "https://example.com/torrent/{}"
         )
         # This is required for the @telegraph functionality.
-        TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "CipherX")
+        TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "Friday")
         # Get a Free API Key from OCR.Space
         OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
         DEEP_API_KEY = os.environ.get("DEEP_API_KEY", None)
         ANTI_SPAMINC_TOKEN = os.environ.get("ANTI_SPAMINC_TOKEN", None)
         # Send .get_id in any group with all your administration bots (added)
-        G_BAN_LOGGER_GROUP = int(os.environ.get("G_BAN_LOGGER_GROUP", -1001296928120))
+        G_BAN_LOGGER_GROUP = int(os.environ.get("G_BAN_LOGGER_GROUP", -1001198699233))
         # TG API limit. An album can have atmost 10 media!
         GOOGLE_SEARCH_COUNT_LIMIT = int(os.environ.get("GOOGLE_SEARCH_COUNT_LIMIT", 9))
         TG_GLOBAL_ALBUM_LIMIT = int(os.environ.get("TG_GLOBAL_ALBUM_LIMIT", 9))
@@ -122,7 +125,6 @@ if ENV:
         # Google Drive ()
         G_DRIVE_CLIENT_ID = os.environ.get("G_DRIVE_CLIENT_ID", None)
         G_DRIVE_CLIENT_SECRET = os.environ.get("G_DRIVE_CLIENT_SECRET", None)
-        PYROGRAM_STRING = os.environ.get("PYROGRAM_STRING", None)
         GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
         AUTH_TOKEN_DATA = os.environ.get("AUTH_TOKEN_DATA", None)
         if AUTH_TOKEN_DATA != None:
@@ -139,17 +141,17 @@ if ENV:
         PRIVATE_GROUP_ID = int(os.environ.get("PRIVATE_GROUP_ID", False))
         PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", False))
         NEWS_CHANNEL_ID = int(os.environ.get("NEWS_CHANNEL_ID", False))
+        FBAN_GROUP = int(os.environ.get("FBAN_GROUP", False))
         PM_DATA = os.environ.get("PM_DATA", "ENABLE")
         ENABLE_ASSISTANTBOT = os.environ.get("ENABLE_ASSISTANTBOT", "ENABLE")
         TAG_FEATURE = os.environ.get("TAG_FEATURE", "DISABLE")
         ANTISPAM_FEATURE = os.environ.get("ANTISPAM_FEATURE", "ENABLE")
-        ASSISTANT_LOG = int(os.environ.get("ASSISTANT_LOG", True))
+        ASSISTANT_LOG = int(os.environ.get("ASSISTANT_LOG", False))
         UPSTREAM_REPO = os.environ.get(
-            "UPSTREAM_REPO", "https://github.com/CipherX1-ops/FridayUserbot"
+            "UPSTREAM_REPO", "https://github.com/Starkgang/FridayUserbot"
         )
         ALIVE_IMAGE = os.environ.get(
-            "ALIVE_IMAGE",
-            "https://filetolinktelegrambot.herokuapp.com/1996057911608/VID_20200723_004420.mp4",
+            "ALIVE_IMAGE", "https://filetolinktelegrambot.herokuapp.com/1996057911608/VID_20200723_004420.mp4"
         )
         ASSISTANT_START_PIC = os.environ.get(
             "ASSISTANT_START_PIC",
