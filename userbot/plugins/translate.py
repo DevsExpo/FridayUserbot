@@ -1,12 +1,13 @@
 """ Google Translate
 Available Commands:
 .tr LanguageCode as reply to a message
-.tr LangaugeCode | text to translate"""
+.tr LangaugeCode / text to translate"""
 
 from deep_translator import GoogleTranslator
 from googletrans import LANGUAGES
 from langdetect import detect
-
+from google_trans_new import google_translator
+import requests
 from userbot import CMD_HELP
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
@@ -23,17 +24,18 @@ async def _(event):
         previous_message = await event.get_reply_message()
         text = previous_message.message
         lan = input_str or "en"
-    elif "|" in input_str:
-        lan, text = input_str.split("|")
+    elif "/" in input_str:
+        lan, text = input_str.split("/")
     else:
         await edit_or_reply(event, "`.tr LanguageCode` as reply to a message")
         return
     lan = lan.strip()
     try:
+        translator = google_translator()
+        translated = translator.translate(text ,lang_tgt=lan)
         lmao_bruh = text
         lmao = detect(text)
         after_tr_text = lmao
-        translated = GoogleTranslator(source="auto", target=lan).translate(lmao_bruh)
         source_lan = LANGUAGES[after_tr_text]
         transl_lan = LANGUAGES[lan]
         output_str = f"""**Translation by CɪᴘʜᴇʀX**
@@ -51,8 +53,8 @@ async def _(event):
         else:
             starky = output_str
         await edit_or_reply(event, starky)
-    except Exception as exc:
-        await edit_or_reply(event, str(exc))
+    except Exception as e:
+      print(e)
 
 
 CMD_HELP.update(
