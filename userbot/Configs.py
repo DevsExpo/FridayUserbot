@@ -151,7 +151,8 @@ if ENV:
             "UPSTREAM_REPO", "https://github.com/Starkgang/FridayUserbot"
         )
         ALIVE_IMAGE = os.environ.get(
-            "ALIVE_IMAGE", "https://filetolinktelegrambot.herokuapp.com/1996057911608/VID_20200723_004420.mp4"
+            "ALIVE_IMAGE",
+            "https://filetolinktelegrambot.herokuapp.com/1996057911608/VID_20200723_004420.mp4",
         )
         ASSISTANT_START_PIC = os.environ.get(
             "ASSISTANT_START_PIC",
