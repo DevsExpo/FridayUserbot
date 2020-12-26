@@ -49,17 +49,17 @@ async def _(event):
         str(e)
     shazam = replied_user_profile_photos_count
     caption = f"""<b>INFO<b>
-<b>Telegram ID</b>: <code>{user_id}</code>
-<b>Permanent Link</b>: <a href='tg://user?id={user_id}'>Click Here</a>
-<b>First Name</b>: <code>{first_name}</code>
-<b>Second Name</b>: <code>{last_name}</code>
-<b>BIO</b>: <code>{user_bio}</code>
-<b>DC ID</b>: <code>{dc_id}</code>
-<b>NO OF PSS</b>: <code>{shazam}</code>
-<b>IS RESTRICTED</b>: <code>{replied_user.user.restricted}</code>
-<b>VERIFIED</b>: <code>{replied_user.user.verified}</code>
-<b>IS A BOT</b>: <code>{replied_user.user.bot}</code>
-<b>Groups in Common</b>: <code>{common_chats}</code>
+<b>-⫸ Telegram ID</b>: <code>{user_id}</code>
+<b>-⫸ Permanent Link</b>: <a href='tg://user?id={user_id}'>Click Here</a>
+<b>-⫸ First Name</b>: <code>{first_name}</code>
+<b>-⫸ Second Name</b>: <code>{last_name}</code>
+<b>-⫸ BIO</b>: <code>{user_bio}</code>
+<b>-⫸ DC ID</b>: <code>{dc_id}</code>
+<b>-⫸ NO OF PSS</b>: <code>{shazam}</code>
+<b>-⫸ IS RESTRICTED</b>: <code>{replied_user.user.restricted}</code>
+<b>-⫸ VERIFIED</b>: <code>{replied_user.user.verified}</code>
+<b>-⫸ IS A BOT</b>: <code>{replied_user.user.bot}</code>
+<b>-⫸ Groups in Common</b>: <code>{common_chats}</code>
 """
     message_id_to_reply = event.message.reply_to_msg_id
     if not message_id_to_reply:
@@ -137,6 +137,7 @@ async def gibinfo(event):
         user = (
             (await event.get_reply_message()).sender if event.is_reply else event.sender
         )
+        lolu = await event.client(GetFullUserRequest(user.id))
     else:
         try:
             lolu = await event.client(GetFullUserRequest(event.pattern_match.group(1)))
@@ -161,11 +162,11 @@ async def gibinfo(event):
         oki = "<i>False</i>"
     infomsg = (
         f"<b>Info Of</b> <a href=tg://user?id={lolu.user.id}>{lolu.user.first_name}</a>: \n"
-        f"<b>-⫸ Username :</b> <i>{lolu.user.username}</i>\n"
-        f"<b>-⫸ ID :</b> <i>{lolu.user.id}</i>\n"
-        f"<b>-⫸ Bot :</b> <i>{lolu.user.bot}</i>\n"
-        f"<b>-⫸ CAS Banned :</b> {reason} \n"
-        f"<b>-⫸ CɪᴘʜᴇʀX Antispam Algorithm Banned :</b> {oki}"
+        f"<b>--⫸ Username :</b> <i>{lolu.user.username}</i>\n"
+        f"<b>--⫸ ID :</b> <i>{lolu.user.id}</i>\n"
+        f"<b>--⫸ Bot :</b> <i>{lolu.user.bot}</i>\n"
+        f"<b>--⫸ CAS Banned :</b> {reason} \n"
+        f"<b>--⫸  CɪᴘʜᴇʀX Antispam Banned :</b> {oki}"
     )
     await event.edit(infomsg, parse_mode="HTML")
 
@@ -174,6 +175,8 @@ CMD_HELP.update(
     {
         "information": "**Information**\
 \n\n**Syntax : **`.info <mention a username/reply to a message>`\
-\n**Usage :** Gives you information about the username."
+\n**Usage :** Gives you information about the username.\
+\n\n**Syntax : **`.wru <mention a username/reply to a message>`\
+\n**Usage :** Shows if the person is banned in  CɪᴘʜᴇʀX antispam or not."
     }
 )
