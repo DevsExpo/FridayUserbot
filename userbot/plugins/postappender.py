@@ -21,9 +21,7 @@ async def mstark(event):
         await event.edit("`You Can't Set Channel Post Appender In Groups`")
         return
     if event.is_private:
-        await event.edit(
-            "`You Can't Set Channel Post Appender In Private Chats`"
-        )
+        await event.edit("`You Can't Set Channel Post Appender In Private Chats`")
         return
     if is_data_indbs(lul_id):
         await event.edit("`Please Remove Old Data, To Add New One`")
@@ -44,9 +42,7 @@ async def _starky(event):
         await event.edit("`You Can't Set Channel Append System In Groups`")
         return
     if event.is_private:
-        await event.edit(
-            "`You Can't Set Channel Append System In Private Chats`"
-        )
+        await event.edit("`You Can't Set Channel Append System In Private Chats`")
         return
     if is_data_indbs(lul_id):
         await event.edit("`Please Remove Old Data, To Add New One`")

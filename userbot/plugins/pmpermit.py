@@ -39,7 +39,6 @@ USER_BOT_NO_WARN = (
 
 if Var.PRIVATE_GROUP_ID is not None:
 
-
     @borg.on(friday_on_cmd(pattern="(a|approve)"))
     async def block(event):
         if event.fwd_from:
@@ -71,9 +70,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         if event.is_private:
             if pmpermit_sql.is_approved(chat.id):
                 pmpermit_sql.disapprove(chat.id)
-            await event.edit(
-                    "Blocked [{}](tg://user?id={})".format(firstname, chat.id)
-                )
+            await event.edit("Blocked [{}](tg://user?id={})".format(firstname, chat.id))
             await event.client(functions.contacts.BlockRequest(chat.id))
 
     @borg.on(friday_on_cmd(pattern="(da|disapprove)"))

@@ -4,8 +4,9 @@ import requests
 from iplookup import iplookup
 from selenium import webdriver
 from youtube_search import YoutubeSearch
-from userbot.function import apk_dl
+
 from userbot import CMD_HELP
+from userbot.function import apk_dl
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 
@@ -157,7 +158,7 @@ async def _(event):
     except:
         await event.edit("Something went Wrong.")
 
-        
+
 @friday.on(friday_on_cmd(pattern="akd ?(.*)"))
 @friday.on(sudo_cmd(pattern="akd ?(.*)", allow_sudo=True))
 async def _(event):
@@ -165,8 +166,9 @@ async def _(event):
     if event.fwd_from:
         return
     pathz, name = await apk_dl(akkad, Config.TMP_DOWNLOAD_DIRECTORY, event)
-    await borg.send_file(event.chat_id, pathz, caption='Uploaded By CɪᴘʜᴇʀX Server')
-    
+    await borg.send_file(event.chat_id, pathz, caption="Uploaded By CɪᴘʜᴇʀX Server")
+
+
 CMD_HELP.update(
     {
         "webtools": "**Web Tools**\

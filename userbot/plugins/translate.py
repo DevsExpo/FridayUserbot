@@ -3,11 +3,11 @@ Available Commands:
 .tr LanguageCode as reply to a message
 .tr LangaugeCode / text to translate"""
 
-from deep_translator import GoogleTranslator
+import requests
+from google_trans_new import google_translator
 from googletrans import LANGUAGES
 from langdetect import detect
-from google_trans_new import google_translator
-import requests
+
 from userbot import CMD_HELP
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
@@ -32,8 +32,7 @@ async def _(event):
     lan = lan.strip()
     try:
         translator = google_translator()
-        translated = translator.translate(text ,lang_tgt=lan)
-        lmao_bruh = text
+        translated = translator.translate(text, lang_tgt=lan)
         lmao = detect(text)
         after_tr_text = lmao
         source_lan = LANGUAGES[after_tr_text]
@@ -54,7 +53,7 @@ async def _(event):
             starky = output_str
         await edit_or_reply(event, starky)
     except Exception as e:
-      print(e)
+        print(e)
 
 
 CMD_HELP.update(
