@@ -6,14 +6,16 @@ import re
 import shlex
 import subprocess
 import time
+import webbrowser
 from os.path import basename
 from typing import List, Optional, Tuple
-import webbrowser
-from bs4 import BeautifulSoup
+
 import requests
+from bs4 import BeautifulSoup
 from bs4 import BeautifulSoup as bs
 from pymediainfo import MediaInfo
 from telethon.tl.types import MessageMediaPhoto
+
 BASE_URL = "https://isubtitles.org"
 from userbot.Configs import Config
 
@@ -313,28 +315,32 @@ async def get_subtitles(imdb_id, borg, event):
     namez = selected_sub_name
     return final_paths, namez, subtitles[0]["sub_link"]
 
+
 # Thanks To TechoAryan For Scarpping
 async def apk_dl(app_name, path, event):
-    await event.edit('`Searching, For Apk File. This May Take Time Depending On Your App Size`')
+    await event.edit(
+        "`Searching, For Apk File. This May Take Time Depending On Your App Size`"
+    )
     res = requests.get(f"https://m.apkpure.com/search?q={app_name}")
-    soup = BeautifulSoup(res.text, 'html.parser')
-    result = soup.select('.dd')
+    soup = BeautifulSoup(res.text, "html.parser")
+    result = soup.select(".dd")
     for link in result[:1]:
-        s_for_name = requests.get("https://m.apkpure.com" + link.get('href'))
-        sfn = BeautifulSoup(s_for_name.text, 'html.parser')
-        ttl = sfn.select_one('title').text
-        noneed = [' - APK Download']
+        s_for_name = requests.get("https://m.apkpure.com" + link.get("href"))
+        sfn = BeautifulSoup(s_for_name.text, "html.parser")
+        ttl = sfn.select_one("title").text
+        noneed = [" - APK Download"]
         for i in noneed:
-            name = ttl.replace(i, '')
-            res2 = requests.get("https://m.apkpure.com" + link.get('href') + "/download?from=details")
-            soup2 = BeautifulSoup(res2.text, 'html.parser')
-            result = soup2.select('.ga')
+            name = ttl.replace(i, "")
+            res2 = requests.get(
+                "https://m.apkpure.com" + link.get("href") + "/download?from=details"
+            )
+            soup2 = BeautifulSoup(res2.text, "html.parser")
+            result = soup2.select(".ga")
         for link in result:
-            dl_link = link.get('href')
-            r = requests.get(dl_link) 
-            with open(f"{path}/{name}@Hackintush.apk", 'wb') as f:
+            dl_link = link.get("href")
+            r = requests.get(dl_link)
+            with open(f"{path}/{name}@Hackintush.apk", "wb") as f:
                 f.write(r.content)
-    await event.edit('`Apk, Downloaded. Let me Upload It here.`')
-    final_path = f'{path}/{name}@Hackintush.apk'
+    await event.edit("`Apk, Downloaded. Let me Upload It here.`")
+    final_path = f"{path}/{name}@Hackintush.apk"
     return final_path, name
-
