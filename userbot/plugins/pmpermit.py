@@ -61,7 +61,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await asyncio.sleep(3)
                 await event.delete()
 
-  @borg.on(friday_on_cmd(pattern="block$"))
+    @borg.on(friday_on_cmd(pattern="block$"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
