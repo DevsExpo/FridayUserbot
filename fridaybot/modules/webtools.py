@@ -4,7 +4,7 @@ import requests
 from iplookup import iplookup
 from selenium import webdriver
 from youtube_search import YoutubeSearch
-
+from fridaybot.function import apk_dl
 from fridaybot import CMD_HELP
 from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
@@ -156,7 +156,15 @@ async def _(event):
         await stark_result.edit(noob, parse_mode="HTML")
     except:
         await event.edit("Some Thing Went Wrong.")
-
+        
+@friday.on(friday_on_cmd(pattern="akd ?(.*)"))
+@friday.on(sudo_cmd(pattern="akd ?(.*)", allow_sudo=True))
+async def _(event):
+    akkad = event.pattern_match.group(1)
+    if event.fwd_from:
+        return
+    pathz, name = await apk_dl(akkad, Config.TMP_DOWNLOAD_DIRECTORY, event)
+    await borg.send_file(event.chat_id, pathz, caption='Uploaded By @FRidayOT')
 
 CMD_HELP.update(
     {

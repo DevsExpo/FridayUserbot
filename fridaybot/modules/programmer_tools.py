@@ -11,11 +11,11 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
 import pyjokes
-from uniborg.util import friday_on_cmd
+from howdoi import howdoi
 
 from fridaybot import CMD_HELP
+from fridaybot.utils import friday_on_cmd
 
 
 @friday.on(friday_on_cmd(pattern=r"pjoke"))
@@ -25,10 +25,23 @@ async def hi(event):
     await event.edit(pyjokes.get_joke(category="all"))
 
 
+@friday.on(friday_on_cmd(pattern="howdoi ?(.*)"))
+async def __(event):
+    query = event.pattern_match.group(1)
+    if query == None:
+        await event.edit("`Give Some Query First`")
+        return
+    output = howdoi.howdoi(query)
+    lel = f"<b><u>Here is Your Answer</b></u> \n<code>{output}</code>"
+    await event.edit(lel, parse_mode="HTML")
+
+
 CMD_HELP.update(
     {
         "programmer_jokes": "**Programmer Jokes**\
 \n\n**Syntax : **`.pjoke`\
-\n**Usage :** Get programmer jokes."
+\n**Usage :** Get programmer jokes.\
+\n\n**Syntax : **`.howdoi <programming query>`\
+\n**Usage :** Gives Answers For Given Programming Questions."
     }
 )

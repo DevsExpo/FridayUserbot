@@ -188,14 +188,9 @@ async def sedlyfsir(event):
     for starkcast in userstobc:
         try:
             sent_count += 1
-            await tgbot.send_message(
-                int(starkcast.chat_id),
-                "**Hey, You Have Received A New Broadcast Message**",
-            )
             await tgbot.send_message(int(starkcast.chat_id), msgtobroadcast)
             await asyncio.sleep(0.2)
-        except Exception as e:
-            hmmok += f"Errors : {e} \n"
+        except:
             error_count += 1
     await tgbot.send_message(
         event.chat_id,

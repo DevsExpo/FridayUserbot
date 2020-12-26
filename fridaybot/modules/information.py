@@ -137,6 +137,7 @@ async def gibinfo(event):
         user = (
             (await event.get_reply_message()).sender if event.is_reply else event.sender
         )
+        lolu = await event.client(GetFullUserRequest(user.id))
     else:
         try:
             lolu = await event.client(GetFullUserRequest(event.pattern_match.group(1)))
@@ -174,6 +175,8 @@ CMD_HELP.update(
     {
         "information": "**Information**\
 \n\n**Syntax : **`.info <mention a username/reply to a message>`\
-\n**Usage :** Gives you information about the username."
+\n**Usage :** Gives you information about the username.\
+\n\n**Syntax : **`.wru <mention a username/reply to a message>`\
+\n**Usage :** Shows if the person is banned in antispaminc or not."
     }
 )

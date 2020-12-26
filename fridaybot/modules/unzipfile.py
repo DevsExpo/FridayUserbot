@@ -2,26 +2,65 @@
 coded by @By_Azade
 code rewritten my SnapDragon7410
 """
-
+import asyncio
 import os
 import time
+import time as t
 import zipfile
 from datetime import datetime
 
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
-from telethon.tl.types import DocumentAttributeVideo
-
 from fridaybot import CMD_HELP
-from fridaybot.utils import friday_on_cmd
+from fridaybot.utils import admin_cmd
 
-thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 extracted = Config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
-if not os.path.isdir(extracted):
-    os.makedirs(extracted)
+thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
 
-@friday.on(friday_on_cmd(pattern="unzip"))
+@borg.on(admin_cmd("zip"))
+async def _(event):
+    if event.fwd_from:
+        return
+    if not event.is_reply:
+        await event.edit("Reply to a file to compress it. Bruh.")
+        return
+    mone = await event.edit("Processing ...")
+    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if event.reply_to_msg_id:
+        reply_message = await event.get_reply_message()
+        try:
+            downloaded_file_name = await borg.download_media(
+                reply_message,
+                Config.TMP_DOWNLOAD_DIRECTORY,
+            )
+            directory_name = downloaded_file_name
+            await event.edit(downloaded_file_name)
+        except Exception as e:  # pylint:disable=C0103,W0703
+            await mone.edit(str(e))
+    zipfile.ZipFile(directory_name + ".zip", "w", zipfile.ZIP_DEFLATED).write(
+        directory_name
+    )
+    await borg.send_file(
+        event.chat_id,
+        directory_name + ".zip",
+        caption="**Zipped!**",
+        force_document=True,
+        allow_cache=False,
+        reply_to=event.message.id,
+    )
+    await asyncio.sleep(7)
+    await event.delete()
+
+
+def zipdir(path, ziph):
+    # ziph is zipfile handle
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            ziph.write(os.path.join(root, file))
+            os.remove(os.path.join(root, file))
+
+
+@borg.on(admin_cmd(pattern="unzip"))
 async def _(event):
     if event.fwd_from:
         return
@@ -32,8 +71,8 @@ async def _(event):
         start = datetime.now()
         reply_message = await event.get_reply_message()
         try:
-            time.time()
-            downloaded_file_name = await borg.download_media(
+            t.time()
+            downloaded_file_name = await bot.download_media(
                 reply_message,
                 Config.TMP_DOWNLOAD_DIRECTORY,
             )
@@ -59,33 +98,11 @@ async def _(event):
                 force_document = True
                 supports_streaming = False
                 document_attributes = []
-                if single_file.endswith((".mp4", ".mp3", ".flac", ".webm")):
-                    metadata = extractMetadata(createParser(single_file))
-                    duration = 0
-                    width = 0
-                    height = 0
-                    if metadata.has("duration"):
-                        duration = metadata.get("duration").seconds
-                    if os.path.exists(thumb_image_path):
-                        metadata = extractMetadata(createParser(thumb_image_path))
-                        if metadata.has("width"):
-                            width = metadata.get("width")
-                        if metadata.has("height"):
-                            height = metadata.get("height")
-                    document_attributes = [
-                        DocumentAttributeVideo(
-                            duration=duration,
-                            w=width,
-                            h=height,
-                            round_message=False,
-                            supports_streaming=True,
-                        )
-                    ]
                 try:
-                    await borg.send_file(
+                    await bot.send_file(
                         event.chat_id,
                         single_file,
-                        caption=f"UnZipped `{caption_rts}`",
+                        caption=f"**Unzipped** `{caption_rts}`",
                         force_document=force_document,
                         supports_streaming=supports_streaming,
                         allow_cache=False,
@@ -96,7 +113,7 @@ async def _(event):
                         # )
                     )
                 except Exception as e:
-                    await borg.send_message(
+                    await bot.send_message(
                         event.chat_id,
                         "{} caused `{}`".format(caption_rts, str(e)),
                         reply_to=event.message.id,
