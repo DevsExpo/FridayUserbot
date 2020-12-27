@@ -453,7 +453,7 @@ async def scan(event):
 
 CMD_HELP.update(
     {
-        "Maskfun": "List of All Available Fun Commands.\
+        "maskfun": "List of All Available Fun Commands.\
 \n\n.cmask\
 \n\n.thug\
 \n\n.pro\
