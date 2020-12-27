@@ -59,6 +59,7 @@ async def start(event):
                         "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
                     )
                 ],
+                [custom.Button.inline("⨵ Close Menu ⨵", data="close")],
             ],
         )
     else:
@@ -78,6 +79,7 @@ async def start(event):
                         "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
                     )
                 ],
+                [custom.Button.inline("⨵ Close Menu ⨵", data="close")],
             ],
         )
         if os.path.exists(mypic):
