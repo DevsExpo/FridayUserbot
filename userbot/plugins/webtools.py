@@ -234,7 +234,7 @@ async def _(event):
         caption="Uploaded By CɪᴘʜᴇʀX Server",
         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
             progress(
-                d, t, v_url, c_time, "Uploading..."
+                d, t, event, c_time, "Uploading By CɪᴘʜᴇʀX Server..."
         )
     )
 CMD_HELP.update(
@@ -251,6 +251,8 @@ CMD_HELP.update(
 \n\n**Syntax : **`.gitdl <repository name>`\
 \n**Usage :** Gets repository link.\
 \n\n**Syntax : **`.yts <query>`\
-\n**Usage :** searches the query on YouTube and give results."
+\n**Usage :** searches the query on YouTube and give results.\
+\n\n**Syntax : **`.akd <query>`\
+\n**Usage :** Finds and uploads apk files."
     }
 )
