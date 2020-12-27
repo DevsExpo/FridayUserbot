@@ -235,8 +235,10 @@ async def _(event):
         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
             progress(
                 d, t, event, c_time, "Uploading By CɪᴘʜᴇʀX Server..."
+            )
         )
     )
+    
 CMD_HELP.update(
     {
         "webtools": "**Web Tools**\
