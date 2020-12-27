@@ -29,7 +29,7 @@ async def _(event):
     url5 = search[4].url
 
     await event.edit(
-        f"<b><u>Anime Search Complete</b></u> \n\n\n<b>Title</b>:-  <code>{title1}</code> \n<b>URL Link</b>:- <code>{url1}</code>\n\n<b>Title</b>:-  <code>{title2}</code> \n<b>URL Link</b>:- <code>{url2}</code>\n\n<b>Title</b>:-  <code>{title3}</code> \n<b>URL Link</b>:- <code>{url3}</code>\n\n<b>Title</b>:-  <code>{title4}</code> \n<b>URL Link</b>:- <code>{url4}</code>\n\n<b>Title</b>:-  <code>{title5}</code> \n<b>URL Link</b>:- <code>{url5}</code>",
+        f"<b><u>Anime Search Complete</b></u> \n\n\n<b>Title</b>:-  <code>{title1}</code> \n<b>URL Link</b>:- {url1}\n\n<b>Title</b>:-  <code>{title2}</code> \n<b>URL Link</b>:- {url2}\n\n<b>Title</b>:-  <code>{title3}</code>\n<b>URL Link</b>:- {url3}\n\n<b>Title</b>:-  <code>{title4}</code> \n<b>URL Link</b>:- {url4}\n\n<b>Title</b>:-  <code>{title5}</code> \n<b>URL Link</b>:- {url5}\n\n<b>Links Gathered By CɪᴘʜᴇʀX</b>",
         parse_mode="HTML",
     )
 
@@ -40,6 +40,6 @@ CMD_HELP.update(
 \n\n**Syntax : **`.anime <site name:Amime Name>`\
 \n**Usage :** Automatically Gets Streaming Link Of The Anime.\
 \n**Example :** `.anime twist.moe:one piece`\
-\n**Note** :** Get Site names list."
+\n**Note** :** Get Site names list)."
     }
 )
