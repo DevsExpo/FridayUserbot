@@ -1,13 +1,12 @@
 # @Hackintush
 import asyncio
 import math
-import os
 import time
+
 import requests
 from iplookup import iplookup
 from selenium import webdriver
 from youtube_search import YoutubeSearch
-from telethon.tl.types import DocumentAttributeAudio
 
 from userbot import CMD_HELP
 from userbot.function import apk_dl
@@ -71,6 +70,7 @@ def time_formatter(milliseconds: int) -> str:
         + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
     )
     return tmp[:-2]
+
 
 @friday.on(friday_on_cmd(pattern="wshot ?(.*)"))
 @friday.on(sudo_cmd(pattern="wshot ?(.*)", allow_sudo=True))
@@ -229,16 +229,15 @@ async def _(event):
         return
     pathz, name = await apk_dl(akkad, Config.TMP_DOWNLOAD_DIRECTORY, event)
     await borg.send_file(
-        event.chat_id, 
-        pathz, 
+        event.chat_id,
+        pathz,
         caption="Uploaded By CɪᴘʜᴇʀX Server",
         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-            progress(
-                d, t, event, c_time, "Uploading By CɪᴘʜᴇʀX Server..."
-            )
-        )
+            progress(d, t, event, c_time, "Uploading By CɪᴘʜᴇʀX Server...")
+        ),
     )
-    
+
+
 CMD_HELP.update(
     {
         "webtools": "**Web Tools**\
