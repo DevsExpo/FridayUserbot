@@ -1,6 +1,6 @@
 from userbot.plugins.sql_helper import warns_sql as sql
 from userbot.utils import friday_on_cmd
-
+from userbot import CMD_HELP
 
 @friday.on(friday_on_cmd(pattern="warn(?: |$)(.*)"))
 async def _s(event):
@@ -167,3 +167,20 @@ async def get_user_from_id(user, event):
         return None
 
     return user_obj
+
+CMD_HELP.update(
+    {
+        "warns": "**Warns**\
+\n\n**Syntax : **`.warn <reason> <reply or mention the user>`\
+\n**Usage :** Warns The Given User.\
+\n\n**Syntax : **`.rwarn <reply or mention the user>`\
+\n**Usage :** Removes Warn Of The User.\
+\n\n**Syntax : **`.allwarns <reply or mention the user>`\
+\n**Usage :** Shows All The Warns Of The Given User.\
+\n\n**Syntax : **`.slimit <no of max warns>`\
+\n**Usage :** Sets Maximum Warn Limit.\
+\n\n**Syntax : **`.wap <on or off>`\
+\n**Usage :** If this is turned on, user gets banned after reaching maximum warns. If it's off, user is kicked."
+    }
+)
+
