@@ -40,6 +40,6 @@ CMD_HELP.update(
 \n\n**Syntax : **`.anime <site name:Amime Name>`\
 \n**Usage :** Automatically Gets Streaming Link Of The Anime.\
 \n**Example :** `.anime twist.moe:one piece`\
-\n**Note** :** Get Site names list)."
+\n**Note** :** Get Site names list."
     }
 )
