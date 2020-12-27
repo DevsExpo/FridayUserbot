@@ -12,7 +12,7 @@ from userbot.plugins import inlinestats
 
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
-    WARN_PIC = "https://filetolinktelegrambot.herokuapp.com/44584953618744/C%C9%AA%E1%B4%98%CA%9C%E1%B4%87%CA%80X.mp4"
+    WARN_PIC = "https://telegra.ph/file/82c595986872349e5ba1a.jpg"
 else:
     WARN_PIC = PMPERMIT_PIC
 LOG_CHAT = Config.PRIVATE_GROUP_ID
@@ -40,6 +40,7 @@ async def inline_handler(event):
             text=f"**Showing Stats For {DEFAULTUSER}'s bot** \nNote --> Only Owner Can Check This \n(C) CɪᴘʜᴇʀX",
             buttons=[
                 [custom.Button.inline("Show Stats ", data="terminator")],
+                [custom.Button.inline("⨵ Close ⨵", data="close")],
                 [Button.url("My Master PV", "t.me/Hackintush")],
             ],
         )
@@ -242,6 +243,9 @@ def paginate_help(page_number, loaded_plugins, prefix):
             (
                 custom.Button.inline(
                     "≼≼≼", data="{}_prev({})".format(prefix, modulo_page)
+                ),
+                custom.Button.inline(
+                    "⨵ close ⨵", data="close")
                 ),
                 custom.Button.inline(
                     "≽≽≽", data="{}_next({})".format(prefix, modulo_page)
