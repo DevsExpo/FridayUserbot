@@ -13,12 +13,10 @@
 
 
 import emoji
-from googletrans import Translator
 from google_trans_new import google_translator
-import requests
-from deep_translator import GoogleTranslator
 from googletrans import LANGUAGES
 from langdetect import detect
+
 
 @assistant_cmd("tr", is_args=True)
 async def _(event):
@@ -38,7 +36,6 @@ async def _(event):
     lan = lan.strip()
     translator = google_translator()
     translated = translator.translate(text, lang_tgt=lan)
-    lmao_bruh = text
     lmao = detect(text)
     after_tr_text = lmao
     source_lan = LANGUAGES[after_tr_text]
@@ -49,7 +46,7 @@ async def _(event):
 
 **Translation ({transl_lan})**:
 `{translated}`"""
-      
+
     try:
         await tgbot.send_message(event.chat_id, output_str)
     except Exception:

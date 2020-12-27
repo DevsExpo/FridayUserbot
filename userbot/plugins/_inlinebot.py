@@ -250,6 +250,8 @@ def paginate_help(page_number, loaded_plugins, prefix):
             )
         ]
     return pairs
+
+
 @tgbot.on(events.InlineQuery(pattern=r"torrent (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
     if event.query.user_id != bot.uid:

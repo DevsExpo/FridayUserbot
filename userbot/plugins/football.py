@@ -1,4 +1,4 @@
-#    Copyright (C) 
+#    Copyright (C)
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -13,29 +13,36 @@
 
 
 import requests
+
 from userbot import CMD_HELP
-from userbot.utils import admin_cmd
 from userbot.Configs import Config
+from userbot.utils import admin_cmd
+
 
 @friday.on(admin_cmd(pattern="fpl"))
 async def _(event):
     if event.fwd_from:
         return
-    
+
     if Config.FOOTBALL_API_KEY is None:
-      await event.edit("Need to get an API key from https://rapidapi.com/api-sports/api/api-football-beta\nModule stopping!")
-      return
-    
+        await event.edit(
+            "Need to get an API key from https://rapidapi.com/api-sports/api/api-football-beta\nModule stopping!"
+        )
+        return
+
     appo = Config.FOOTBALL_API_KEY
     url = "https://api-football-beta.p.rapidapi.com/standings"
-    querystring = {"season":"2020","league":"39"}
-    headers = {'x-rapidapi-key': appo,'x-rapidapi-host': "api-football-beta.p.rapidapi.com"}
+    querystring = {"season": "2020", "league": "39"}
+    headers = {
+        "x-rapidapi-key": appo,
+        "x-rapidapi-host": "api-football-beta.p.rapidapi.com",
+    }
     response = requests.request("GET", url, headers=headers, params=querystring)
     a = response.json()
     b = a.get("response")
     c = b[0]
-    d = c.get('league')
-    e = d.get('name')
+    d = c.get("league")
+    e = d.get("name")
     f = d.get("country")
     logo = d.get("logo")
     season = d.get("season")
@@ -50,7 +57,7 @@ async def _(event):
     kk = i.get("all")
     pl = kk.get("played")
     wein = kk.get("win")
-    yqw= kk.get("draw")
+    yqw = kk.get("draw")
     pol = kk.get("lose")
     nex = h[1]
     new = nex.get("rank")
@@ -58,11 +65,10 @@ async def _(event):
     nee = np.get("name")
     popo = nex.get("points")
     oloq = nex.get("all")
-    pl1 = oloq.get("played")
+    oloq.get("played")
     wein1 = oloq.get("win")
     yqw1 = oloq.get("draw")
     pol1 = oloq.get("lose")
-
 
     nex2 = h[2]
     new2 = nex2.get("rank")
@@ -70,7 +76,7 @@ async def _(event):
     nee2 = np2.get("name")
     popo2 = nex2.get("points")
     oloq2 = nex2.get("all")
-    pl2 = oloq2.get("played")
+    oloq2.get("played")
     wein2 = oloq2.get("win")
     yqw2 = oloq2.get("draw")
     pol2 = oloq2.get("lose")
@@ -81,7 +87,7 @@ async def _(event):
     nee3 = np3.get("name")
     popo3 = nex3.get("points")
     oloq3 = nex3.get("all")
-    pl3 = oloq3.get("played")
+    oloq3.get("played")
     wein3 = oloq3.get("win")
     yqw3 = oloq3.get("draw")
     pol3 = oloq3.get("lose")
@@ -92,11 +98,10 @@ async def _(event):
     nee4 = np4.get("name")
     popo4 = nex4.get("points")
     oloq4 = nex4.get("all")
-    pl4 = oloq4.get("played")
+    oloq4.get("played")
     wein4 = oloq4.get("win")
     yqw4 = oloq4.get("draw")
     pol4 = oloq4.get("lose")
-
 
     caption = f"""<b>{e}</b>
 <b>Country:- {f}
@@ -150,25 +155,31 @@ Lose:- {pol4}</b>
     )
     await event.delete()
 
+
 @friday.on(admin_cmd(pattern="ffl"))
 async def _(event):
     if event.fwd_from:
         return
-    
+
     if Config.FOOTBALL_API_KEY is None:
-      await event.edit("Need to get an API key from https://rapidapi.com/api-sports/api/api-football-beta\nModule stopping!")
-      return
-    
+        await event.edit(
+            "Need to get an API key from https://rapidapi.com/api-sports/api/api-football-beta\nModule stopping!"
+        )
+        return
+
     appo = Config.FOOTBALL_API_KEY
     url = "https://api-football-beta.p.rapidapi.com/standings"
-    querystring = {"season":"2020","league":"61"}
-    headers = {'x-rapidapi-key': appo,'x-rapidapi-host': "api-football-beta.p.rapidapi.com"}
+    querystring = {"season": "2020", "league": "61"}
+    headers = {
+        "x-rapidapi-key": appo,
+        "x-rapidapi-host": "api-football-beta.p.rapidapi.com",
+    }
     response = requests.request("GET", url, headers=headers, params=querystring)
     a = response.json()
     b = a.get("response")
     c = b[0]
-    d = c.get('league')
-    e = d.get('name')
+    d = c.get("league")
+    e = d.get("name")
     f = d.get("country")
     logo = d.get("logo")
     season = d.get("season")
@@ -183,7 +194,7 @@ async def _(event):
     kk = i.get("all")
     pl = kk.get("played")
     wein = kk.get("win")
-    yqw= kk.get("draw")
+    yqw = kk.get("draw")
     pol = kk.get("lose")
     nex = h[1]
     new = nex.get("rank")
@@ -191,11 +202,10 @@ async def _(event):
     nee = np.get("name")
     popo = nex.get("points")
     oloq = nex.get("all")
-    pl1 = oloq.get("played")
+    oloq.get("played")
     wein1 = oloq.get("win")
     yqw1 = oloq.get("draw")
     pol1 = oloq.get("lose")
-
 
     nex2 = h[2]
     new2 = nex2.get("rank")
@@ -203,7 +213,7 @@ async def _(event):
     nee2 = np2.get("name")
     popo2 = nex2.get("points")
     oloq2 = nex2.get("all")
-    pl2 = oloq2.get("played")
+    oloq2.get("played")
     wein2 = oloq2.get("win")
     yqw2 = oloq2.get("draw")
     pol2 = oloq2.get("lose")
@@ -214,7 +224,7 @@ async def _(event):
     nee3 = np3.get("name")
     popo3 = nex3.get("points")
     oloq3 = nex3.get("all")
-    pl3 = oloq3.get("played")
+    oloq3.get("played")
     wein3 = oloq3.get("win")
     yqw3 = oloq3.get("draw")
     pol3 = oloq3.get("lose")
@@ -225,11 +235,10 @@ async def _(event):
     nee4 = np4.get("name")
     popo4 = nex4.get("points")
     oloq4 = nex4.get("all")
-    pl4 = oloq4.get("played")
+    oloq4.get("played")
     wein4 = oloq4.get("win")
     yqw4 = oloq4.get("draw")
     pol4 = oloq4.get("lose")
-
 
     caption = f"""<b>{e}</b>
 <b>Country:- {f}

@@ -1,6 +1,7 @@
+from userbot import CMD_HELP
 from userbot.plugins.sql_helper import warns_sql as sql
 from userbot.utils import friday_on_cmd
-from userbot import CMD_HELP
+
 
 @friday.on(friday_on_cmd(pattern="warn(?: |$)(.*)"))
 async def _s(event):
@@ -168,6 +169,7 @@ async def get_user_from_id(user, event):
 
     return user_obj
 
+
 CMD_HELP.update(
     {
         "warns": "**Warns**\
@@ -183,4 +185,3 @@ CMD_HELP.update(
 \n**Usage :** If this is turned on, user gets banned after reaching maximum warns. If it's off, user is kicked."
     }
 )
-
