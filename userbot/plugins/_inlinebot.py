@@ -250,8 +250,7 @@ def paginate_help(page_number, loaded_plugins, prefix):
                 custom.Button.inline(
                     "≽≽≽", data="{}_next({})".format(prefix, modulo_page)
                 ),
-            ]
-
+            )
         ]
     return pairs
 
