@@ -10,18 +10,18 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await eor(event, "```Reply to any user message.```")
+        await event(event, "```Reply to any user message.```")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await eor(event, "```reply to media message```")
+        await event(event, "```reply to media message```")
         return
     chat = "@asciiart_bot"
     reply_message.sender
     if reply_message.sender.bot:
-        await eor(event, "```Reply to actual users message.```")
+        await event(event, "```Reply to actual users message.```")
         return
-    await eor(event, "```Processing...```")
+    await event(event, "```Processing...```")
     # For userbot
     async with borg.conversation(chat) as conv:
         try:
