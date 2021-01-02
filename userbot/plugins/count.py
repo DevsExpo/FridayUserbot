@@ -16,7 +16,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# @borg.on(admin_cmd(pattern="count"))
+# @borg.on(admin_cmd(pattern="count$"))
 # async def _(event):
 #     if event.fwd_from:
 #         return
@@ -52,12 +52,12 @@ logger = logging.getLogger(__name__)
 # Bots:\t{}""".format(ms, u, g, c, bc, b))
 
 
-@borg.on(admin_cmd(pattern="count"))
+@borg.on(admin_cmd(pattern="count$"))
 async def stats(
     event: NewMessage.Event,
 ) -> None:  # pylint: disable = R0912, R0914, R0915
     """Command to get stats about the account"""
-    await event.edit("`Collecting stats, Wait Master`")
+    await event.edit("`Collecting stats, wait CɪᴘʜᴇʀX...`")
     start_time = time.time()
     private_chats = 0
     bots = 0
