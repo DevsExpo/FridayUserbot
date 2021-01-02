@@ -8,8 +8,8 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 
 import pylast
 import wget
-from nospamplus.connect import Connect
 from dotenv import load_dotenv
+from nospamplus.connect import Connect
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
 from requests import get
@@ -189,7 +189,7 @@ else:
     except:
         sedprint.info("I Wasn't Able To Download Cafee Model. Skipping")
 
-if Config.NOSPAMPLUS_TOKEN  == None:
+if Config.NOSPAMPLUS_TOKEN == None:
     sclient = None
     sedprint.info("[Warning] - CɪᴘʜᴇʀX Anti-Spam Algorithm Token is None")
 else:
