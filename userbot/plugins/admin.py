@@ -32,7 +32,7 @@ from telethon.tl.types import (
 )
 
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
-from userbot.utils import admin_cmd, errors_handler, sudo_cmd
+from userbot.utils import admin_cmd, errors_handler
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"
