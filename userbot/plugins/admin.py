@@ -3,7 +3,7 @@
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
 """
- CɪᴘʜᴇʀXbot module to help you manage a group
+ CɪᴘʜᴇʀX bot module to help you manage a group
 """
 
 from asyncio import sleep
@@ -595,8 +595,7 @@ async def get_users(show):
         remove("userslist.txt")
 
 
-@borg.on(admin_cmd(pattern="zombies(?: |$)(.*)", allow_sudo=True))
-@borg.on(sudo_cmd(pattern="zombies(?: |$)(.*)", allow_sudo=True))
+@borg.on(admin_cmd(pattern="zombies(?: |$)(.*)"))
 async def rm_deletedacc(show):
     con = show.pattern_match.group(1).lower()
     del_u = 0
@@ -609,8 +608,8 @@ async def rm_deletedacc(show):
                 del_u += 1
                 await sleep(1)
         if del_u > 0:
-            del_status = f"`Found` **{del_u}** `ghost/deleted/zombie account(s) in this group,\
-            \nclean them by using .zombies clean`"
+            del_status = f"Found **{del_u}** ghost/deleted/zombie account(s) in this group,\
+            \nclean them by using `.zombies clean`"
 
         await show.edit(del_status)
         return
