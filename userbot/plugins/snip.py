@@ -121,7 +121,7 @@ CMD_HELP.update(
         "snip": "**Snip**\
 \n\n**Syntax : **`.snips <name of snip> <reply to a message>`\
 \n**Usage :** saves the message with given text.\
-\n\n**Syntax : **`.snipl\
+\n\n**Syntax : **`.snipl`\
 \n**Usage :** lists all the snips.\
 \n\n**Syntax : **`.snipd <name of snip>`\
 \n**Usage :** Deletes the snip."
