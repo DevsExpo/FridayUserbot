@@ -16,7 +16,8 @@ import io
 import os
 import re
 
-from telethon import Button, custom, events
+from telethon import Button, custom, events, functions
+import telethon
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import pack_bot_file_id
 
@@ -129,16 +130,24 @@ async def users(event):
 async def all_messages_catcher(event):
     if is_he_added(event.sender_id):
         return
-    if event.raw_text.startswith("/"):
-        pass
-    elif event.sender_id == bot.uid:
+    if event.sender_id == bot.uid:
         return
-    else:
-        await event.get_sender()
-        sed = await event.forward_to(bot.uid)
-        # Add User To Database ,Later For Broadcast Purpose
-        # (C) @SpecHide
-        add_me_in_db(sed.id, event.sender_id, event.id)
+    if event.raw_text.startswith("/"):
+        return
+    if Config.SUB_TO_MSG_ASSISTANT:
+        try:
+            result = await tgbot(
+                functions.channels.GetParticipantRequest(
+                    channel=Config.JTM_CHANNEL_ID, user_id=event.sender_id
+                )
+            )
+        except telethon.errors.rpcerrorlist.UserNotParticipantError:
+            await event.reply(f"**Please Join My Channel First And Then Try Again!**",
+                             buttons = [Button.url("≼≼≼ Join Channel ≽≽≽", Config.JTM_CHANNEL_USERNAME)])
+            return
+    await event.get_sender()
+    sed = await event.forward_to(bot.uid)
+    add_me_in_db(sed.id, event.sender_id, event.id)
 
 
 @tgbot.on(events.NewMessage(func=lambda e: e.is_private))
