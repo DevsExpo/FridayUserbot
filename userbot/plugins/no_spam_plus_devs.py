@@ -4,17 +4,17 @@ from userbot import sclient
 from userbot.utils import admin_cmd
 
 json_codes = {
-    'nsX01': 'Pornography - High Risk',
-    'nsX02': 'Spammer - High Risk',
-    'nsX03': 'Spam Adding Users - High Risk',
-    'nsX04': 'Raid Participants - High Risk',
-    'nsX05': 'Licence violation - Low Risk',
-    'nsX06': 'Spam Bot - High Risk',
-    'nsX07': 'Flood - High Risk',
-    'nsX08': 'Malware - High Risk',
-    'nsX09': 'PM Spam - High Risk',
-    'nsX10': 'Power Misuser - Medium Risk',
-    'nsX11': 'Multiple Risks - Extreme Risk'
+    "nsX01": "Pornography - High Risk",
+    "nsX02": "Spammer - High Risk",
+    "nsX03": "Spam Adding Users - High Risk",
+    "nsX04": "Raid Participants - High Risk",
+    "nsX05": "Licence violation - Low Risk",
+    "nsX06": "Spam Bot - High Risk",
+    "nsX07": "Flood - High Risk",
+    "nsX08": "Malware - High Risk",
+    "nsX09": "PM Spam - High Risk",
+    "nsX10": "Power Misuser - Medium Risk",
+    "nsX11": "Multiple Risks - Extreme Risk",
 }
 
 
@@ -42,14 +42,16 @@ async def oki(event):
         if len(args) == 2:
             extra = args[1]
         if not json_codes.get(extra):
-            await event.edit('`Please Use Valid Ban Codes.`')
+            await event.edit("`Please Use Valid Ban Codes.`")
             return
         if not user:
             await event.edit("Reply To User or Mention a User.")
             return
     try:
         sclient.ban(user, extra)
-        await borg.send_message("CɪᴘʜᴇʀX Anti-Spam Algorithm", f"/fban {user} {extra} {json_codes[extra]}")
+        await borg.send_message(
+            "CɪᴘʜᴇʀX Anti-Spam Algorithm", f"/fban {user} {extra} {json_codes[extra]}"
+        )
         await event.edit(
             f"**User :** `{user}` \n**Reason :** `{extra} {json_codes[extra]}` \n**Banned Sucessfully !**"
         )
@@ -79,18 +81,19 @@ async def oka(event):
             await event.edit("Reply To User or Mention a User.")
             return
     try:
-        gensys2 = sclient.unban(user)
+        sclient.unban(user)
         await borg.send_message("CɪᴘʜᴇʀX Anti-Spam Algorithm", f"/unfban {user}")
         await event.edit(f"**User :** `{user}` \n**UnBanned Sucessfully !**")
     except Exception as e:
         await event.edit("**Errors : **" + str(e))
+
 
 @borg.on(admin_cmd(pattern="generatetoken"))
 async def tokens(event):
     await event.edit("`Processing...`")
     okbabe = secrets.token_urlsafe(16)
     try:
-        skynet = sclient.new_token(okbabe)
+        sclient.new_token(okbabe)
         await event.edit(f"**New Token** \n**Token** : `{okbabe}`")
     except Exception as e:
         await event.edit("**Errors : **" + str(e))
