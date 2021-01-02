@@ -220,46 +220,12 @@ async def _(event):
         return
     pathz, name = await apk_dl(akkad, Config.TMP_DOWNLOAD_DIRECTORY, event)
     c_time = time.time()
-    display_message = None
-    while not downloader.isFinished():
-        status = downloader.get_status().capitalize()
-        total_length = downloader.filesize if downloader.filesize else None
-        downloaded = downloader.get_dl_size()
-        now = time.time()
-        diff = now - c_time
-        percentage = downloader.get_progress() * 100
-        speed = downloader.get_speed()
-        elapsed_time = round(diff) * 1000
-        progress_str = "[{0}{1}] {2}%".format(
-            ''.join(["█" for i in range(math.floor(percentage / 10))]),
-            ''.join(["░"
-                     for i in range(10 - math.floor(percentage / 10))]),
-            round(percentage, 2))
-        estimated_total_time = downloader.get_eta(human=True)
-        try:
-            current_message = f"{status}..\
-            \nFile Name: {file_name}\
-            \n{progress_str}\
-            \n{humanbytes(downloaded)} of {humanbytes(total_length)}\
-            \nETA: {estimated_total_time}"
-
-            if round(diff %
-                     10.00) == 0 and current_message != display_message:
-                await event.edit(current_message)
-                display_message = current_message
-        except Exception as e:
-            LOGS.info(str(e))
-    if downloader.isSuccessful():
-        return
-    try:
-        c_time = time.time()
-        downloaded_file_name = await event.client.download_media(
-            await event.get_reply_message(),
-            TEMP_DOWNLOAD_DIRECTORY,
-            progress_callback=lambda d, t: asyncio.get_event_loop(
-            ).create_task(
-                progress(d, t, event, c_time, f"{text} \n\nUploading By CɪᴘʜᴇʀX Server...")))
-        await borg.send_file(event.chat_id, pathz, caption='Uploaded By CɪᴘʜᴇʀX Server')
+    caption="Uploaded By CɪᴘʜᴇʀX Server",
+    progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
+        progress(d, t, event, c_time, "Uploading By CɪᴘʜᴇʀX Server...")
+    ),
+)
+    await borg.send_file(event.chat_id, pathz, caption='Uploaded By CɪᴘʜᴇʀX Server')
     
 CMD_HELP.update(
     {
