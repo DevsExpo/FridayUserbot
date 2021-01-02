@@ -250,6 +250,7 @@ async def _(event):
         except Exception as e:
             LOGS.info(str(e))
     if downloader.isSuccessful():
+        return
     try:
         c_time = time.time()
         downloaded_file_name = await event.client.download_media(
