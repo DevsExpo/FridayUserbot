@@ -1,8 +1,12 @@
 Pillow
+nospamplus
 pymediainfo
 apscheduler
 git+https://github.com/gleitz/howdoi
 pokedex.py
+pyseoanalyzer
+countryinfo
+emoji-country-flag
 cairosvg
 grapheme
 lottie
