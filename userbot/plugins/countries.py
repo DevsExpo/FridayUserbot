@@ -1,4 +1,4 @@
-#    Copyright (C) 
+#    Copyright (C)
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -11,19 +11,11 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from uniborg.util import friday_on_cmd
 import flag
-import html
-
-from telethon.tl.functions.photos import GetUserPhotosRequest
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import MessageEntityMentionName
-from telethon.utils import get_input_location
-
-from userbot import CMD_HELP, sclient
-from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd, admin_cmd
 from countryinfo import CountryInfo
 
+from userbot import CMD_HELP
+from userbot.utils import admin_cmd
 
 
 @friday.on(admin_cmd(pattern="country (.*)"))
@@ -34,65 +26,65 @@ async def _(event):
     lol = input_str
     country = CountryInfo(lol)
     try:
-	    a = country.info()
+        a = country.info()
     except:
-	    await event.edit("Country not Avaiable Currently")
+        await event.edit("Country not Avaiable Currently")
     name = a.get("name")
-    bb= a.get("altSpellings")
-    hu = ''
+    bb = a.get("altSpellings")
+    hu = ""
     for p in bb:
-    	hu += p+",  "
-	
+        hu += p + ",  "
+
     area = a.get("area")
     borders = ""
     hell = a.get("borders")
     for fk in hell:
-	    borders += fk+",  "
-	
-    call = "" 
+        borders += fk + ",  "
+
+    call = ""
     WhAt = a.get("callingCodes")
     for what in WhAt:
-	    call+= what+"  "
-	
+        call += what + "  "
+
     capital = a.get("capital")
     currencies = ""
     fker = a.get("currencies")
     for FKer in fker:
-	    currencies += FKer+",  "
+        currencies += FKer + ",  "
 
     HmM = a.get("demonym")
     geo = a.get("geoJSON")
     pablo = geo.get("features")
     Pablo = pablo[0]
     PAblo = Pablo.get("geometry")
-    EsCoBaR= PAblo.get("type")
+    EsCoBaR = PAblo.get("type")
     iso = ""
     iSo = a.get("ISO")
     for hitler in iSo:
-      po = iSo.get(hitler)
-      iso += po+",  "
+        po = iSo.get(hitler)
+        iso += po + ",  "
     fla = iSo.get("alpha2")
     nox = fla.upper()
     okie = flag.flag(nox)
 
     languages = a.get("languages")
-    lMAO=""
+    lMAO = ""
     for lmao in languages:
-	    lMAO += lmao+",  "
+        lMAO += lmao + ",  "
 
     nonive = a.get("nativeName")
     waste = a.get("population")
     reg = a.get("region")
     sub = a.get("subregion")
     tik = a.get("timezones")
-    tom =""
+    tom = ""
     for jerry in tik:
-	    tom+=jerry+",   "
+        tom += jerry + ",   "
 
     GOT = a.get("tld")
     lanester = ""
     for targaryen in GOT:
-	    lanester+=targaryen+",   "
+        lanester += targaryen + ",   "
 
     wiki = a.get("wiki")
 
@@ -121,18 +113,14 @@ Wikipedia:- {wiki}</b>
 
 <u><b>Information Gathered By CɪᴘʜᴇʀX</b></u>
 """
-    
-    
+
     await borg.send_message(
         event.chat_id,
         caption,
         parse_mode="HTML",
     )
-    
+
     await event.delete()
-
-
-
 
 
 CMD_HELP.update(
