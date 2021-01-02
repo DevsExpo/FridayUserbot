@@ -23,25 +23,25 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "[{0}{1}] {2}%\n".format(
-            "".join(["█" for i in range(math.floor(percentage / 10))]),
-            "".join(["░" for i in range(10 - math.floor(percentage / 10))]),
-            round(percentage, 2),
-        )
-        tmp = progress_str + "{0} of {1}\nETA: {2}".format(
-            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
-        )
-        if file_name:
-            await event.edit(
-                "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
+            ''.join(["█" for i in range(math.floor(percentage / 10))]),
+            ''.join(["░" for i in range(10 - math.floor(percentage / 10))]),
+            round(percentage, 2))
+        tmp = progress_str + \
+            "{0} of {1}\nETA: {2}".format(
+                humanbytes(current),
+                humanbytes(total),
+                time_formatter(estimated_total_time)
             )
+        if file_name:
+            await event.edit("{}\nFile Name: `{}`\n{}".format(
+                type_of_ps, file_name, tmp))
         else:
             await event.edit("{}\n{}".format(type_of_ps, tmp))
-
-
+            
 def humanbytes(size):
     if not size:
         return ""
-    power = 2 ** 10
+    power = 2**10
     raised_to_pow = 0
     dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
     while size > power:
@@ -55,13 +55,11 @@ def time_formatter(milliseconds: int) -> str:
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
-    tmp = (
-        ((str(days) + " day(s), ") if days else "")
-        + ((str(hours) + " hour(s), ") if hours else "")
-        + ((str(minutes) + " minute(s), ") if minutes else "")
-        + ((str(seconds) + " second(s), ") if seconds else "")
-        + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
-    )
+    tmp = ((str(days) + " day(s), ") if days else "") + \
+        ((str(hours) + " hour(s), ") if hours else "") + \
+        ((str(minutes) + " minute(s), ") if minutes else "") + \
+        ((str(seconds) + " second(s), ") if seconds else "") + \
+        ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
     return tmp[:-2]
 
 
@@ -221,16 +219,47 @@ async def _(event):
     if event.fwd_from:
         return
     pathz, name = await apk_dl(akkad, Config.TMP_DOWNLOAD_DIRECTORY, event)
-    await borg.send_file(
-        event.chat_id,
-        pathz,
-        caption="Uploaded By CɪᴘʜᴇʀX Server",
-        progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-            progress(d, t, event, "Uploading By CɪᴘʜᴇʀX Server...")
-        ),
-    )
+    c_time = time.time()
+    display_message = None
+    while not downloader.isFinished():
+        status = downloader.get_status().capitalize()
+        total_length = downloader.filesize if downloader.filesize else None
+        downloaded = downloader.get_dl_size()
+        now = time.time()
+        diff = now - c_time
+        percentage = downloader.get_progress() * 100
+        speed = downloader.get_speed()
+        elapsed_time = round(diff) * 1000
+        progress_str = "[{0}{1}] {2}%".format(
+            ''.join(["█" for i in range(math.floor(percentage / 10))]),
+            ''.join(["░"
+                     for i in range(10 - math.floor(percentage / 10))]),
+            round(percentage, 2))
+        estimated_total_time = downloader.get_eta(human=True)
+        try:
+            current_message = f"{status}..\
+            \nFile Name: {file_name}\
+            \n{progress_str}\
+            \n{humanbytes(downloaded)} of {humanbytes(total_length)}\
+            \nETA: {estimated_total_time}"
 
-
+            if round(diff %
+                     10.00) == 0 and current_message != display_message:
+                await event.edit(current_message)
+                display_message = current_message
+        except Exception as e:
+            LOGS.info(str(e))
+    if downloader.isSuccessful():
+    try:
+        c_time = time.time()
+        downloaded_file_name = await event.client.download_media(
+            await event.get_reply_message(),
+            TEMP_DOWNLOAD_DIRECTORY,
+            progress_callback=lambda d, t: asyncio.get_event_loop(
+            ).create_task(
+                progress(d, t, event, c_time, f"{text} \n\nUploading By CɪᴘʜᴇʀX Server...")))
+    await borg.send_file(event.chat_id, pathz, caption='Uploaded By CɪᴘʜᴇʀX Server')
+    
 CMD_HELP.update(
     {
         "webtools": "**Web Tools**\
