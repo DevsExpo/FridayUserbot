@@ -16,8 +16,8 @@ import io
 import os
 import re
 
-from telethon import Button, custom, events, functions
 import telethon
+from telethon import Button, custom, events, functions
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import pack_bot_file_id
 
@@ -142,8 +142,12 @@ async def all_messages_catcher(event):
                 )
             )
         except telethon.errors.rpcerrorlist.UserNotParticipantError:
-            await event.reply(f"**Please Join My Channel First And Then Try Again!**",
-                             buttons = [Button.url("≼≼≼ Join Channel ≽≽≽", Config.JTM_CHANNEL_USERNAME)])
+            await event.reply(
+                f"**Please Join My Channel First And Then Try Again!**",
+                buttons=[
+                    Button.url("≼≼≼ Join Channel ≽≽≽", Config.JTM_CHANNEL_USERNAME)
+                ],
+            )
             return
     await event.get_sender()
     sed = await event.forward_to(bot.uid)
