@@ -133,7 +133,7 @@ async def _(event):
             try:
                 await borg.send_message(int(channelz.chat_id), hmm.text)
                 total_count += 1
-            except Exception as e:
+            except Exception:
                 total_errors += 1
     elif hmm.message.poll:
         await event.edit("Bruh, This Can't Be Broadcasted.")
