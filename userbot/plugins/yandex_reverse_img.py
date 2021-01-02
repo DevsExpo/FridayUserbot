@@ -1,13 +1,10 @@
-import os
-import numpy as np
-import requests
-from PIL import Image, ImageDraw, ImageFont
-from telegraph import upload_file
-from userbot import CMD_HELP
-from userbot.function import convert_to_image, crop_vid, runcmd
-from userbot.utils import friday_on_cmd, sudo_cmd
 import json
+import os
+
 import requests
+
+from userbot.function import convert_to_image
+from userbot.utils import friday_on_cmd, sudo_cmd
 
 sedpath = "./yandex/"
 if not os.path.isdir(sedpath):
@@ -20,19 +17,23 @@ async def hmm(event):
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
-    hmmu = await event.reply("Reverse Searching Image on Yandex...🚶")
+    await event.reply("Reverse Searching Image on Yandex...🚶")
     await event.get_reply_message()
     img = await convert_to_image(event, borg)
-    sed = await event.get_reply_message()
+    await event.get_reply_message()
     img = await convert_to_image(event, borg)
-    
+
     filePath = img
-    searchUrl = 'https://yandex.ru/images/search'
-    files = {'upfile': ('blob', open(filePath, 'rb'), 'image/jpeg')}
-    params = {'rpt': 'imageview', 'format': 'json', 'request': '{"blocks":[{"block":"b-page_type_search-by-image__link"}]}'}
+    searchUrl = "https://yandex.ru/images/search"
+    files = {"upfile": ("blob", open(filePath, "rb"), "image/jpeg")}
+    params = {
+        "rpt": "imageview",
+        "format": "json",
+        "request": '{"blocks":[{"block":"b-page_type_search-by-image__link"}]}',
+    }
     response = requests.post(searchUrl, params=params, files=files)
-    query_string = json.loads(response.content)['blocks'][0]['params']['url']
-    img_search_url= searchUrl + '?' + query_string
+    query_string = json.loads(response.content)["blocks"][0]["params"]["url"]
+    img_search_url = searchUrl + "?" + query_string
     caption = f"""<b>Reverse Search Completed!</b>
 
 Reverse Searched Link:- {img_search_url}
@@ -51,5 +52,3 @@ Another Note:- Don't Use This Command continually, Yandex Will Block Your Reques
         parse_mode="HTML",
     )
     await event.delete()
-    
-    
