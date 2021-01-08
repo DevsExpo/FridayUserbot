@@ -110,6 +110,18 @@ async def users(event):
     else:
         pass
 
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
+    async def users(event): 
+            await event.edit(
+                "Assitant Menu Closed !!", buttons=[Button.inline("Re-open Menu", data="reopen")]
+            )
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen")))
+    async def megic(event):
+            await event.delete()
+            buttons = start(0,)
+            await event.edit("Menu Re-opened", buttons=buttons)
+        
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
 async def users(event):
