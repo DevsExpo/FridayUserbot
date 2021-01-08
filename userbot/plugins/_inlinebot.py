@@ -267,7 +267,7 @@ async def on_plug_in_callback_query_handler(event):
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"statcheck")))
 async def rip(event):
-    text = 
+    text = inlinestats
     await event.answer(text, alert=True)
 
 @tgbot.on(events.InlineQuery(pattern=r"torrent (.*)"))
