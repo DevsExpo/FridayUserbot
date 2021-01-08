@@ -89,5 +89,4 @@ CMD_HELP.update(
         "amongus": ".saylie\
     \nSubmit a picture of an among us impostor with a sentence from you."
     }
-
 )
