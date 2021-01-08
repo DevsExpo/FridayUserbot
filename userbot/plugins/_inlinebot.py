@@ -247,15 +247,12 @@ def paginate_help(page_number, loaded_plugins, prefix):
                 custom.Button.inline(
                     "≽≽≽", data="{}_next({})".format(prefix, modulo_page)
                 ),
-                custom.Button.inline(
-                    "⨵ Close Menu ⨵", data="close"
-                ),
-                custom.Button.inline(
-                    "✨Stats✨", data="statcheck"
-                ),
+                custom.Button.inline("⨵ Close Menu ⨵", data="close"),
+                custom.Button.inline("✨Stats✨", data="statcheck"),
             )
         ]
     return pairs
+
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
 async def on_plug_in_callback_query_handler(event):
@@ -265,10 +262,12 @@ async def on_plug_in_callback_query_handler(event):
         reply_pop_up_alert = "Don't touch that button bitch!"
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
+
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"statcheck")))
 async def rip(event):
     text = inlinestats
     await event.answer(text, alert=True)
+
 
 @tgbot.on(events.InlineQuery(pattern=r"torrent (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
