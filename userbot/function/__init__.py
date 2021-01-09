@@ -375,7 +375,7 @@ async def apk_dl(app_name, path, event, tgbot):
         file=hmmo,
         text=f"{cipher['title']} \n**Uploaded by CɪᴘʜᴇʀX**"
     )
-    os.remove(f'{path}/{name}@Hackintush.apk)
+    os.remove(f'{path}/{name}@Hackintush.apk')
 
 
 
