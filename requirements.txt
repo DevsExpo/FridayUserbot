@@ -1,4 +1,5 @@
 Pillow
+git+https://github.com/cher-nov/cryptg
 nospamplus
 pymediainfo
 apscheduler
@@ -22,6 +23,7 @@ the_python_bay
 PyDictionary
 fontTools
 deep_translator
+pornhub-api
 langdetect
 PyProxyToolkit
 textblob
