@@ -364,7 +364,7 @@ async def apk_dl(app_name, path, event, tgbot):
     \n**App Uploader :** `{cipher['uploader']}`"
     )
     hmmo = await tgbot.upload_file(
-        file=f'{path}/{name}@Hackintush.apk,
+        file=f'{path}/{name}@Hackintush.apk',
         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
             progress(
                 d, t, event, c_time, '`Apk Downloaded. Uploading via CɪᴘʜᴇʀX Server.`', f'{path}/{name}@Hackintush.apk'
