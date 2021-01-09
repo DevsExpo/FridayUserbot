@@ -101,3 +101,4 @@ password_strength
 pyjokes
 cryptocompare
 faker
+wand
