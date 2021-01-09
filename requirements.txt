@@ -9,6 +9,7 @@ pyseoanalyzer
 countryinfo
 emoji-country-flag
 cairosvg
+colour
 grapheme
 lottie
 cryptosteganography
