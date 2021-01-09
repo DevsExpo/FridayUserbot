@@ -6,9 +6,7 @@ import asyncio
 import os
 import random
 
-from . import (
-    LOGS,
-)
+from . import LOGS
 
 import shlex
 from os import getcwd
@@ -17,11 +15,7 @@ from textwrap import wrap
 from typing import Optional, Tuple
 from userbot import Configs
 import numpy as np
-
-try:
-    from colour import Color as asciiColor
-except:
-    os.system("pip install colour")
+from colour import Color as asciiColor
 import PIL.ImageOps
 from PIL import Image, ImageDraw, ImageFont
 from wand.color import Color
