@@ -44,8 +44,6 @@ async def delete(event):
     target = await get_target_message(event)
     if target:
         chat = await event.get_input_chat()
-        await await_read(chat, target)
-        await asyncio.sleep(0.5)
         if command == "edit":
             await borg.edit_message(chat, target, text)
         else:
