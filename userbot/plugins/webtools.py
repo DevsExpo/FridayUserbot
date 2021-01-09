@@ -11,20 +11,42 @@ from youtube_search import YoutubeSearch
 from userbot import CMD_HELP
 from userbot.function import apk_dl
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+from userbot import logging
+
+logger = logging.getLogger("[--WARNING--]")
+if not os.path.isdir(sedpath):
+    os.makedirs(sedpath)
+
+
+async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
+    """ run command in terminal """
+    args = shlex.split(cmd)
+    process = await asyncio.create_subprocess_exec(
+        *args, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+    )
+    stdout, stderr = await process.communicate()
+    return (
+        stdout.decode("utf-8", "replace").strip(),
+        stderr.decode("utf-8", "replace").strip(),
+        process.returncode,
+        process.pid,
+    )
+
 
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
+    """Generic progress_callback for uploads and downloads."""
     now = time.time()
     diff = now - start
-    if round(diff % 10.00) == 0 or current == total:
+    if round(diff % 10.00) == 0 or current != total:
         percentage = current * 100 / total
         speed = current / diff
         elapsed_time = round(diff) * 1000
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "[{0}{1}] {2}%\n".format(
-            "".join(["█" for i in range(math.floor(percentage / 10))]),
-            "".join(["░" for i in range(10 - math.floor(percentage / 10))]),
+            "".join(["■" for i in range(math.floor(percentage / 5))]),
+            "".join(["▢" for i in range(20 - math.floor(percentage / 5))]),
             round(percentage, 2),
         )
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
@@ -39,8 +61,12 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
 
 
 def humanbytes(size):
+    """Input size in bytes,
+    outputs in a human readable format"""
+    # https://stackoverflow.com/a/49361727/4723940
     if not size:
         return ""
+    # 2 ** 10 = 1024
     power = 2 ** 10
     raised_to_pow = 0
     dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
@@ -51,18 +77,22 @@ def humanbytes(size):
 
 
 def time_formatter(milliseconds: int) -> str:
+    """Inputs time in milliseconds, to get beautified time,
+    as string"""
     seconds, milliseconds = divmod(int(milliseconds), 1000)
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
     tmp = (
-        ((str(days) + " day(s), ") if days else "")
-        + ((str(hours) + " hour(s), ") if hours else "")
-        + ((str(minutes) + " minute(s), ") if minutes else "")
-        + ((str(seconds) + " second(s), ") if seconds else "")
-        + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
+            ((str(days) + " day(s), ") if days else "")
+            + ((str(hours) + " hour(s), ") if hours else "")
+            + ((str(minutes) + " minute(s), ") if minutes else "")
+            + ((str(seconds) + " second(s), ") if seconds else "")
+            + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
     )
     return tmp[:-2]
+
+ 
 
 
 @friday.on(friday_on_cmd(pattern="wshot ?(.*)"))
@@ -221,11 +251,7 @@ async def _(event):
     if event.fwd_from:
         return
     pathz, name = await apk_dl(akkad, Config.TMP_DOWNLOAD_DIRECTORY, event)
-    c_time = time.time()
-    progress_callback = lambda d, t: asyncio.get_event_loop().create_task(
-        progress(d, t, event, c_time, "Uploading By CɪᴘʜᴇʀX Server...")
-    )
-    await borg.send_file(event.chat_id, pathz, caption="Uploaded By CɪᴘʜᴇʀX Server")
+    await borg.send_file(event.chat_id, pathz, caption='Uploaded by CɪᴘʜᴇʀX Server')
 
 
 CMD_HELP.update(
