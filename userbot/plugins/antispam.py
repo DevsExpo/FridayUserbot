@@ -1,7 +1,9 @@
 from telethon.events import ChatAction
-
+from telethon import events
+from telethon.tl.functions.users import GetFullUserRequest
 from userbot import bot, sclient
 from userbot.Configs import Config
+
 
 """Bans Spammers/Scammer At time Of Arrival 
 If You Add Him The Bot Won't Restrict."""
@@ -29,8 +31,7 @@ async def ok(event):
                 pass
         else:
             pass
-
-
+                                    
 @borg.on(ChatAction)
 async def dnamg(event):
     okbruh = await borg.get_me()
