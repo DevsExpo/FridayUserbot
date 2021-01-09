@@ -21,6 +21,7 @@ from PIL import Image, ImageDraw, ImageFont
 from wand.color import Color
 from wand.drawing import Drawing
 from wand.image import Image as catimage
+from userbot.utils import admin_cmd
 
 MARGINS = [50, 150, 250, 350, 450]
 
