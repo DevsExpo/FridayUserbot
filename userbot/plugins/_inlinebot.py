@@ -2,14 +2,17 @@ import os
 import re
 import urllib
 from math import ceil
-
+from re import findall
+from youtube_search import YoutubeSearch
+from search_engine_parser import GoogleSearch
+from userbot.function import _ytdl
+from urllib.parse import quote
 import requests
 from telethon import Button, custom, events, functions
 from youtubesearchpython import VideosSearch
-
 from userbot import ALIVE_NAME, CMD_HELP, CMD_LIST
 from userbot.plugins import inlinestats
-
+from pornhub_api import PornhubApi
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
     WARN_PIC = "https://telegra.ph/file/82c595986872349e5ba1a.jpg"
@@ -37,11 +40,11 @@ async def inline_handler(event):
     elif event.query.user_id == bot.uid and query == "stats":
         result = builder.article(
             title="Stats",
-            text=f"**Showing Stats For {DEFAULTUSER}'s bot** \nNote --> Only Owner Can Check This \n(C) CɪᴘʜᴇʀX",
+            text=f"**Showing Stats For {DEFAULTUSER}'s bot**\n(C) CɪᴘʜᴇʀX",
             buttons=[
                 [custom.Button.inline("Show Stats ", data="terminator")],
                 [custom.Button.inline("⨵ Close ⨵", data="close")],
-                [Button.url("My Master PV", "t.me/Hackintush")],
+                [Button.url("CɪᴘʜᴇʀX", "t.me/Hackintush")],
             ],
         )
         await event.answer([result])
@@ -66,6 +69,12 @@ async def inline_handler(event):
                         "🙏 I'm Here for Asking Something 🙏", data="askme"
                     )
                 ],
+                [
+                    custom.Button.inline(
+                        "⨵ Close Menu ⨵", 
+                        data="close"
+                    )
+                ],
             ],
         )
         await event.answer([result])
@@ -83,7 +92,7 @@ async def on_plug_in_callback_query_handler(event):
         # https://t.me/TelethonChat/115200
         await event.edit(buttons=buttons)
     else:
-        reply_popp_up_alert = "Please write your own bot, and don't use mine!"
+        reply_popp_up_alert = "Please write your own bot, and don't use mine!\n(C) CɪᴘʜᴇʀX"
         await event.answer(reply_popp_up_alert, cache_time=0, alert=True)
 
 
@@ -101,7 +110,7 @@ async def on_plug_in_callback_query_handler(event):
         # https://t.me/TelethonChat/115200
         await event.edit(buttons=buttons)
     else:
-        reply_pop_up_alert = "Please write your own bot, and don't use mine!"
+        reply_pop_up_alert = "Please write your own bot, and don't use mine!\n(C) CɪᴘʜᴇʀX"
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
 
@@ -132,12 +141,12 @@ async def on_plug_in_callback_query_handler(event):
         await event.edit(
             f"Pasted {plugin_name} to {url}",
             link_preview=False,
-            buttons=[[custom.Button.inline("Go Back", data="backme")]],
+            buttons=[[custom.Button.inline("≼≼≼", data="backme")]],
         )
     else:
         await event.edit(
             message=reply_pop_up_alert,
-            buttons=[[custom.Button.inline("Go Back", data="backme")]],
+            buttons=[[custom.Button.inline("≼≼≼", data="backme")]],
         )
 
 
@@ -147,10 +156,31 @@ async def rip(event):
         text = inlinestats
         await event.answer(text, alert=True)
     else:
-        txt = "I Can't View CɪᴘʜᴇʀX Stats to you bitch!"
+        txt = "I Can't View CɪᴘʜᴇʀX Stats to you bitch!\n(C) CɪᴘʜᴇʀX"
         await event.answer(txt, alert=True)
 
-
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"yt_dla_(.*)")))
+async def rip(event):
+    yt_dl_data = event.data_match.group(1).decode("UTF-8")
+    link_s = yt_dl_data
+    if event.query.user_id != bot.uid:
+        text = f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode\n(C) CɪᴘʜᴇʀX"
+        await event.answer(text, alert=True)
+        return
+    is_it = True
+    ok = await _ytdl(link_s, is_it, event, tgbot)
+    
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"yt_vid_(.*)")))
+async def rip(event):
+    yt_dl_data = event.data_match.group(1).decode("UTF-8")
+    link_s = yt_dl_data
+    if event.query.user_id != bot.uid:
+        text = f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode\n(C) CɪᴘʜᴇʀX"
+        await event.answer(text, alert=True)
+        return
+    is_it = False
+    ok = await _ytdl(link_s, is_it, event, tgbot)
+    
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"dontspamnigga")))
 async def rip(event):
     if event.query.user_id == bot.uid:
@@ -159,13 +189,13 @@ async def rip(event):
         return
     await event.get_chat()
     him_id = event.query.user_id
-    text1 = "You Have Chosed A Prohibited Option. Therefore, You Have Been Blocked and Reported to Telegram Agency."
-    await event.edit("Choice Not Accepted ❌")
+    text1 = "You Have Chosed A Prohibited Option. Therefore, You Have Been Blocked and Reported to Telegram Agency.\n(C) CɪᴘʜᴇʀX"
+    await event.edit("⨵ Choice not Accepted ⨵")
     await borg.send_message(event.query.user_id, text1)
     await borg(functions.contacts.BlockRequest(event.query.user_id))
     await tgbot.send_message(
         LOG_CHAT,
-        f"Hello, [This](tg://user?id={him_id}) Selected Prohibited Option, Therefore Blocked.",
+        f"Hello, [This](tg://user?id={him_id}) Selected Prohibited Option, Therefore Blocked.\n(C) CɪᴘʜᴇʀX",
     )
 
 
@@ -189,12 +219,12 @@ async def rip(event):
         return
     await event.get_chat()
     him_id = event.query.user_id
-    await event.edit("Choice Accepted ✔️")
+    await event.edit("Choice Accepted ✔️\n(C) CɪᴘʜᴇʀX")
     text2 = "Ok. Please Wait until CɪᴘʜᴇʀX Approves you. Don't Spam or Try Anything Stupid. \nThanks for Contacting me."
     await borg.send_message(event.query.user_id, text2)
     await tgbot.send_message(
         LOG_CHAT,
-        message=f"Hello, [New User](tg://user?id={him_id}) Wants to Talk with tou.",
+        message=f"Hello, [New User](tg://user?id={him_id}) Wants to Talk with tou.\n(C) CɪᴘʜᴇʀX",
         buttons=[Button.url("Contact Him", f"tg://user?id={him_id}")],
     )
 
@@ -208,11 +238,11 @@ async def rip(event):
     await event.get_chat()
     him_id = event.query.user_id
     await event.edit("Choice Accepted ✔️")
-    text3 = "Ok, Wait. You can Ask after CɪᴘʜᴇʀX Approves you. Kindly, Wait."
+    text3 = "Ok, Wait. You can Ask after CɪᴘʜᴇʀX Approves you. Kindly, Wait.\n(C) CɪᴘʜᴇʀX"
     await borg.send_message(event.query.user_id, text3)
     await tgbot.send_message(
         LOG_CHAT,
-        message=f"Hello, [New User](tg://user?id={him_id}) Wants to Ask you Something.",
+        message=f"Hello, [New User](tg://user?id={him_id}) Wants to Ask you Something.\n(C) CɪᴘʜᴇʀX",
         buttons=[Button.url("Contact Him", f"tg://user?id={him_id}")],
     )
 
@@ -246,10 +276,17 @@ def paginate_help(page_number, loaded_plugins, prefix):
                 ),
                 custom.Button.inline(
                     "≽≽≽", data="{}_next({})".format(prefix, modulo_page)
+                )
+
+            ],
+            [
+                custom.Button.inline(
+                    "⨵ Close Menu ⨵", data="close"
                 ),
-                custom.Button.inline("⨵ Close Menu ⨵", data="close"),
-                custom.Button.inline("✨Stats✨", data="statcheck"),
-            )
+                custom.Button.inline(
+                    "✨Stats✨", data="statcheck"
+                )
+            ]
         ]
     return pairs
 
@@ -257,9 +294,9 @@ def paginate_help(page_number, loaded_plugins, prefix):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
 async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == bot.uid:
-        await event.edit("CɪᴘʜᴇʀX Super Technology Bot Menu Closed.")
+        await event.edit("CɪᴘʜᴇʀX Super Technology Bot Menu Closed.\n(C) CɪᴘʜᴇʀX")
     else:
-        reply_pop_up_alert = "Don't touch that button bitch!"
+        reply_pop_up_alert = "Don't touch that button bitch!\n(C) CɪᴘʜᴇʀX"
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
 
@@ -271,14 +308,14 @@ async def rip(event):
 
 @tgbot.on(events.InlineQuery(pattern=r"torrent (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
+    builder = event.builder
     if event.query.user_id != bot.uid:
         resultm = builder.article(
-            title="Not Allowded",
-            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode",
+            title="Not Allowded\n(C) CɪᴘʜᴇʀX",
+            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode\n(C) CɪᴘʜᴇʀX",
         )
         await event.answer([resultm])
         return
-    builder = event.builder
     testinput = event.pattern_match.group(1)
     starkisnub = urllib.parse.quote_plus(testinput)
     results = []
@@ -290,13 +327,13 @@ async def inline_id_handler(event: events.InlineQuery.Event):
     sed = len(okpro)
     if sed == 0:
         resultm = builder.article(
-            title="No Results Found.",
+            title="No Results Found.\n(C) CɪᴘʜᴇʀX",
             description="Check Your Spelling / Keyword",
-            text="**Please, Search Again With Correct Keyword, Thank you !**",
+            text="**Please, Search Again With Correct Keyword, Thank you!**\n(C) CɪᴘʜᴇʀX**",
             buttons=[
                 [
                     Button.switch_inline(
-                        "Search Again", query="torrent ", same_peer=True
+                        "≼≼≼Search Again≽≽≽", query="torrent ", same_peer=True
                     )
                 ],
             ],
@@ -320,7 +357,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                     description=sedme,
                     text=okayz,
                     buttons=Button.switch_inline(
-                        "Search Again", query="torrent ", same_peer=True
+                        "≼≼≼Search Again≽≽≽", query="torrent ", same_peer=True
                     ),
                 )
             )
@@ -342,7 +379,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                     text=okayz,
                     buttons=[
                         Button.switch_inline(
-                            "Search Again", query="torrent ", same_peer=True
+                            "≼≼≼Search Again≽≽≽", query="torrent ", same_peer=True
                         )
                     ],
                 )
@@ -350,69 +387,72 @@ async def inline_id_handler(event: events.InlineQuery.Event):
     await event.answer(results)
 
 
+
 @tgbot.on(events.InlineQuery(pattern=r"yt (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
+    builder = event.builder
     if event.query.user_id != bot.uid:
         resultm = builder.article(
             title="Not Allowded",
-            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode",
+            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode\n(C) CɪᴘʜᴇʀX",
         )
         await event.answer([resultm])
         return
-    builder = event.builder
     testinput = event.pattern_match.group(1)
     urllib.parse.quote_plus(testinput)
     results = []
-    search = VideosSearch(f"{testinput}", limit=20)
-    mi = search.result()
-    moi = mi["result"]
-    fk = 0
-    if search == None:
+    moi = YoutubeSearch(testinput, max_results=9).to_dict()
+    if not moi:
         resultm = builder.article(
-            title="No Results Found.",
+            title="No Results Found.\n(C) CɪᴘʜᴇʀX",
             description="Check Your Spelling / Keyword",
-            text="**Please, Search Again With Correct Keyword, Thank you !**",
+            text="**Please, Search Again With Correct Keyword, Thank you!\n(C) CɪᴘʜᴇʀX**",
             buttons=[
-                [Button.switch_inline("Search Again", query="yt ", same_peer=True)],
+                [Button.switch_inline("≼≼≼Search Again≽≽≽", query="yt ", same_peer=True)],
             ],
         )
         await event.answer([resultm])
         return
-    for mio in moi:
-        mo = mio["link"]
-        thum = mio["title"]
-        fridayz = mio["id"]
-        thums = mio["channel"]
-        td = mio["duration"]
-        kk = moi[fk]
-        tw = kk["viewCount"]["text"]
-        fk = fk + 1
-        kekme = f"https://img.youtube.com/vi/{fridayz}/hqdefault.jpg"
-        okayz = f"**Title :** `{thum}` \n**Link :** `{mo}` \n**Channel :** `{thums}` \n**Views :** `{tw}` \n**Duration :** `{td}`"
-        hmmkek = f"Channel : {thums} \nDuration : {td} \nViews : {tw}"
+    for moon in moi:
+        hmm = moon["id"]
+        mo = f"https://www.youtube.com/watch?v={hmm}"
+        kek = f"https://www.youtube.com/watch?v={hmm}"
+        stark_name = moon["title"]
+        stark_chnnl = moon["channel"]
+        total_stark = moon["duration"]
+        stark_views = moon["views"]
+        lol_desc = moon["long_desc"]
+        kekme = f"https://img.youtube.com/vi/{hmm}/hqdefault.jpg"
+        okayz = f"**Title :** `{stark_name}` \n**Link :** `{kek}` \n**Channel :** `{stark_chnnl}` \n**Views :** `{stark_views}` \n**Duration :** `{total_stark}`"
+        hmmkek = f"Video Name : {stark_name} \nChannel : {stark_chnnl} \nDuration : {total_stark} \nViews : {stark_views}"
         results.append(
-            await event.builder.article(
-                title=thum,
+            await event.builder.document(
+                file=kekme,
+                title=stark_name,
                 description=hmmkek,
                 text=okayz,
-                buttons=Button.switch_inline(
-                    "Search Again", query="yt ", same_peer=True
-                ),
-            )
+                include_media=True,
+                buttons=[
+                [custom.Button.inline("Download Video - mp4", data=f"yt_vid_{mo}")],
+                [custom.Button.inline("Download Audio - mp3", data=f"yt_dla_{mo}")],
+                [Button.switch_inline("Search Again", query="yt ", same_peer=True)],
+                ]
+              )
         )
     await event.answer(results)
 
 
+
 @tgbot.on(events.InlineQuery(pattern=r"jm (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
+    builder = event.builder
     if event.query.user_id != bot.uid:
         resultm = builder.article(
-            title="Not Allowded",
-            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode",
+            title="Not Allowded\n(C) CɪᴘʜᴇʀX",
+            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode\n(C) CɪᴘʜᴇʀX",
         )
         await event.answer([resultm])
         return
-    event.builder
     testinput = event.pattern_match.group(1)
     starkisnub = urllib.parse.quote_plus(testinput)
     results = []
@@ -440,40 +480,153 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 description=hmmkek,
                 text=okayz,
                 buttons=Button.switch_inline(
-                    "Search Again", query="jm ", same_peer=True
+                    "≼≼≼Search Again≽≽≽", query="jm ", same_peer=True
                 ),
             )
         )
     await event.answer(results)
 
+    
 
-@tgbot.on(events.InlineQuery)  # pylint:disable=E0602
-async def inline_handler(event):
+
+@tgbot.on(events.InlineQuery(pattern=r"google (.*)"))
+async def inline_id_handler(event: events.InlineQuery.Event):
+    builder = event.builder
     if event.query.user_id != bot.uid:
         resultm = builder.article(
-            title="Not Allowded",
-            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode",
+            title="Not Allowded\n(C) CɪᴘʜᴇʀX",
+            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode\n(C) CɪᴘʜᴇʀX",
         )
         await event.answer([resultm])
         return
+    results = []
+    match = event.pattern_match.group(1)
+    page = findall(r"page=\d+", match)
+    try:
+        page = page[0]
+        page = page.replace("page=", "")
+        match = match.replace("page=" + page[0], "")
+    except IndexError:
+        page = 1
+    
+    search_args = (str(match), int(page))
+    gsearch = GoogleSearch()
+    gresults = await gsearch.async_search(*search_args)
+    msg = ""
+    for i in range(len(gresults["links"])):
+        try:
+            title = gresults["titles"][i]
+            link = gresults["links"][i]
+            desc = gresults["descriptions"][i]
+            okiknow = f"**GOOGLE - SEARCH** \n[{title}]({link})\n\n`{desc}`"
+            results.append(
+                await event.builder.article(
+                    title=title,
+                    description=desc,
+                    text=okiknow,
+                    buttons=[
+                        Button.switch_inline(
+                            "≼≼≼Search Again≽≽≽", query="google ", same_peer=True
+                        )
+                    ],
+                )
+            )
+        except IndexError:
+            break
+    await event.answer(results)
+    
+@tgbot.on(events.InlineQuery(pattern=r"ph (.*)"))
+async def inline_id_handler(event: events.InlineQuery.Event):
     builder = event.builder
-    query = event.text
-    replied_user = await tgbot.get_me()
-    firstname = replied_user.username
-    if query == None:
-        resulte = builder.article(
-            title="Usage Guide.",
-            description="(C) CɪᴘʜᴇʀX",
-            text=f"**How To Use Me?** \n**Youtube :** `@{firstname} yt <query>` \n**Example :** `@{firstname} yt why we lose song` \n\n**Torrent :** `@{firstname} torrent <query>` \n**Example :** `@{firstname} torrent avengers endgame ` \n\n**JioSaavan :** `@{firstname} jm <query>` \n**Example :** `@{firstname} jm `",
-            buttons=[
-                [Button.url("Contact Me", f"t.me/{firstname}")],
-                [Button.switch_inline("Search Youtube", query="yt ", same_peer=True)],
-                [
-                    Button.switch_inline(
-                        "Search Torrent", query="torrent ", same_peer=True
-                    )
-                ],
-                [Button.switch_inline("Search JioSaavn", query="jm ", same_peer=True)],
-            ],
+    if event.query.user_id != bot.uid:
+        resultm = builder.article(
+            title="Not Allowded\n(C) CɪᴘʜᴇʀX",
+            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode\n(C) CɪᴘʜᴇʀX",
         )
-        await event.answer([resulte])
+        await event.answer([resultm])
+        return
+    results = []
+    input_str = event.pattern_match.group(1)
+    api = PornhubApi()
+    data = api.search.search(
+    input_str,
+    ordering="mostviewed"
+    )
+    ok = 1
+    oik = ""
+    for vid in data.videos:
+      if ok <= 5:
+        lul_m = (f"**PORN-HUB SEARCH** \n**Video title :** `{vid.title}` \n**Video link :** `https://www.pornhub.com/view_video.php?viewkey={vid.video_id}`")
+        results.append(
+                await event.builder.article(
+                    title=vid.title,
+                    text=lul_m,
+                    buttons=[
+                        Button.switch_inline(
+                            "≼≼≼Search Again≽≽≽", query="ph ", same_peer=True
+                        )
+                    ],
+                )
+            )
+      else:
+        pass
+    await event.answer(results)
+    
+@tgbot.on(events.InlineQuery(pattern=r"xkcd (.*)"))
+async def inline_id_handler(event: events.InlineQuery.Event):
+    builder = event.builder
+    if event.query.user_id != bot.uid:
+        resultm = builder.article(
+            title="Not Allowded\n(C) CɪᴘʜᴇʀX",
+            text=f"You Can't Use CɪᴘʜᴇʀX Super Technology Bot Inline Mode\n(C) CɪᴘʜᴇʀX",
+        )
+        await event.answer([resultm])
+        return
+    results = []
+    input_str = event.pattern_match.group(1)
+    xkcd_id = None
+    if input_str:
+        if input_str.isdigit():
+            xkcd_id = input_str
+        else:
+            xkcd_search_url = "https://relevantxkcd.appspot.com/process?"
+            queryresult = requests.get(
+                xkcd_search_url, params={"action": "xkcd", "query": quote(input_str)}
+            ).text
+            xkcd_id = queryresult.split(" ")[2].lstrip("\n")
+    if xkcd_id is None:
+        xkcd_url = "https://xkcd.com/info.0.json"
+    else:
+        xkcd_url = "https://xkcd.com/{}/info.0.json".format(xkcd_id)
+    r = requests.get(xkcd_url)
+    if r.ok:
+        data = r.json()
+        year = data.get("year")
+        month = data["month"].zfill(2)
+        day = data["day"].zfill(2)
+        xkcd_link = "https://xkcd.com/{}".format(data.get("num"))
+        safe_title = data.get("safe_title")
+        data.get("transcript")
+        alt = data.get("alt")
+        img = data.get("img")
+        data.get("title")
+        output_str = """
+[XKCD]({})
+Title: {}
+Alt: {}
+Day: {}
+Month: {}
+Year: {}""".format(
+            xkcd_link, safe_title, alt, day, month, year
+        )
+        lul_k = builder.photo(
+            file=img,
+            text=output_str
+        )
+        await event.answer([lul_k])
+    else:
+        resultm = builder.article(
+            title="- No Results :/ -",
+            text=f"No Results Found.\n(C) CɪᴘʜᴇʀX"
+        )
+        await event.answer([resultm])
