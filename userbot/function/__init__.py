@@ -23,7 +23,7 @@ import re
 import shlex
 import subprocess
 import time
-from os.import basename
+from os.path import basename
 from typing import List, Optional, Tuple
 import webbrowser
 from bs4 import BeautifulSoup
