@@ -426,6 +426,8 @@ CMD_HELP.update(
         \n**Usage :** colourizes the given picture.\
         \n\n**Syntax : **`.nst`\
         \n**Usage :** removes colours from image.\
+        \n\n**Syntax : **`.tni`\
+        \n**Usage :** Toonify the image.\
         \n\n**Syntax : ** `.thug`\
         \n**Usage :** makes a thug life meme image.\
         \n\n**Syntax : ** `.tig`\
