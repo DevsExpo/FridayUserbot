@@ -1,9 +1,7 @@
 # Copyright (C) 2019 The Raphielscape Company LLC.
-# Fixed Delete After Download Issue by @StarkXD
+# Fixed Delete After Download Issue 
 # Licensed under the Raphielscape Public License, Version 1.b (the "License");
 # you may not use this file except in compliance with the License.
-#
-# Fixed and made better by @anubisxx
 """ Userbot module containing various scrapers. """
 import os
 import random
@@ -94,7 +92,7 @@ async def carbon_api(e):
         await e.client.send_file(
             e.chat_id,
             file,
-            caption="<< `Here's your Carbon!` \n **Carbonised Using** [CɪᴘʜᴇʀX](https://t.me/Hackintush)>>\n**Colour Scheme: **`{}`".format(
+            caption="<< `Here's your Carbon!` \n **Carbonised by** [CɪᴘʜᴇʀX](https://t.me/Hackintush)>>\n**Colour Scheme: **`{}`".format(
                 color_name
             ),
             force_document=True,
