@@ -6,7 +6,7 @@ import asyncio
 import os
 import random
 
-from . import LOGS
+from .. import LOGS
 
 import shlex
 from os import getcwd
