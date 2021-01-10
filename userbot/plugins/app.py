@@ -15,7 +15,7 @@ from ..utils import edit_or_reply, friday_on_cmd, sudo_cmd
 @friday.on(sudo_cmd(pattern="app (.*)", allow_sudo=True))
 async def apk(event):
     app_name = event.pattern_match.group(1)
-    event = await edit_or_reply(event, "Searching!")
+    event = await edit_or_reply(event, "Searching...")
     try:
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
@@ -74,8 +74,8 @@ async def apk(event):
             + "'>View in Play Store</a>"
         )
         app_details += "\n\n===> `CɪᴘʜᴇʀX Ⲉⲭⲥⳑυⲋⲓⳳⲉ` <==="
-        await event.edit(
-            app_details, link_preview=True, parse_mode="HTML", reply_to=reply_to_id
+        await edit_or_reply(
+            event, app_details, link_preview=True, parse_mode="HTML"
         )
     except IndexError:
         await event.edit("No result found in search. Please enter **Valid app name**")
@@ -87,7 +87,7 @@ async def apk(event):
 @friday.on(sudo_cmd(pattern="appr (.*)", allow_sudo=True))
 async def apkr(event):
     app_name = event.pattern_match.group(1)
-    event = await edit_or_reply(event, "searching!")
+    event = await edit_or_reply(event, "searching...")
     try:
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
@@ -146,8 +146,8 @@ async def apkr(event):
             + "'>View in Play Store</a>"
         )
         app_details += "\n\n===> `CɪᴘʜᴇʀX Ⲉⲭⲥⳑυⲋⲓⳳⲉ` <==="
-        await event.edit(
-            app_details, link_preview=True, parse_mode="HTML", reply_to=reply_to_id
+        await edit_or_reply(
+            event, app_details, link_preview=True, parse_mode="HTML"
         )
     except IndexError:
         await event.edit("No result found in search. Please enter **Valid app name**")
