@@ -55,7 +55,7 @@ async def _(event):
     stcr4 = await event.client.send_file(
         event.chat_id, "CAADAQADLwADnjOcH-wxu-ehy6NRAg"
     )
-    catevent = await event.reply(f"{name} is ejected.......")
+    catevent = await event.reply(f"{name} is ejected...")
     await asyncio.sleep(2)
     await catevent.edit("ඞㅤㅤㅤㅤ ㅤㅤㅤㅤ")
     await asyncio.sleep(0.5)
