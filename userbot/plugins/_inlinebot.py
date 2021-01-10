@@ -42,9 +42,9 @@ async def inline_handler(event):
     elif event.query.user_id == bot.uid and query == "stats":
         result = builder.article(
             title="Stats",
-            text=f"**Showing Stats For {DEFAULTUSER}'s bot**\n(C) CɪᴘʜᴇʀX",
+            text=f"**{DEFAULTUSER} Ⲃⲟⲧ Ⲋⲧⲁⲧⲋ**\n(C) CɪᴘʜᴇʀX",
             buttons=[
-                [custom.Button.inline("Show Stats ", data="terminator")],
+                [custom.Button.inline("✨ Show Stats ✨", data="terminator")],
                 [custom.Button.inline("⨵ Close ⨵", data="close")],
                 [Button.url("CɪᴘʜᴇʀX", "t.me/Hackintush")],
             ],
@@ -57,18 +57,18 @@ async def inline_handler(event):
             buttons=[
                 [
                     custom.Button.inline(
-                        "❌ I'm Here for Spamming ❌", data="dontspamnigga"
+                        "✘ I'm Here for Spamming ✘", data="dontspamnigga"
                     )
                 ],
                 [
                     custom.Button.inline(
-                        "🛡️ I'm Here for Talking with CɪᴘʜᴇʀX 🛡️",
+                        "✓ I'm Here for Talking with CɪᴘʜᴇʀX ✓",
                         data="whattalk",
                     )
                 ],
                 [
                     custom.Button.inline(
-                        "🙏 I'm Here for Asking Something 🙏", data="askme"
+                        "✓ I'm Here for Asking Something ✓", data="askme"
                     )
                 ],
                 [custom.Button.inline("⨵ Close Menu ⨵", data="close")],
@@ -223,7 +223,7 @@ async def rip(event):
         return
     await event.get_chat()
     him_id = event.query.user_id
-    await event.edit("Choice Accepted ✔️\n(C) CɪᴘʜᴇʀX")
+    await event.edit("Choice Accepted ✓\n(C) CɪᴘʜᴇʀX")
     text2 = "Ok. Please Wait until CɪᴘʜᴇʀX Approves you. Don't Spam or Try Anything Stupid. \nThanks for Contacting me."
     await borg.send_message(event.query.user_id, text2)
     await tgbot.send_message(
@@ -241,7 +241,7 @@ async def rip(event):
         return
     await event.get_chat()
     him_id = event.query.user_id
-    await event.edit("Choice Accepted ✔️")
+    await event.edit("Choice Accepted ✓")
     text3 = (
         "Ok, Wait. You can Ask after CɪᴘʜᴇʀX Approves you. Kindly, Wait.\n(C) CɪᴘʜᴇʀX"
     )
