@@ -31,9 +31,7 @@ async def _(event):
         reply_msg_id = previous_message.id
         if previous_message.media:
             downloaded_file_name = await borg.download_media(
-                previous_message,
-                Config.TMP_DOWNLOAD_DIRECTORY,
-                reply_to=reply_msg_id
+                previous_message, Config.TMP_DOWNLOAD_DIRECTORY, reply_to=reply_msg_id
             )
             m_list = None
             with open(downloaded_file_name, "rb") as fd:
