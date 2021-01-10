@@ -19,7 +19,9 @@ async def boobs(event):
     await a.edit("Sending some big boobs🤪")
     nsfw = requests.get("http://api.oboobs.ru/noise/1").json()[0]["preview"]
     urllib.request.urlretrieve("http://media.oboobs.ru/{}".format(nsfw), pic_loc)
-    await event.client.send_file(event.chat_id, pic_loc, force_document=False, reply_to=reply_to_id)
+    await event.client.send_file(
+        event.chat_id, pic_loc, force_document=False, reply_to=reply_to_id
+    )
     os.remove(pic_loc)
     await event.delete()
     await a.delete()
@@ -36,7 +38,9 @@ async def butts(event):
     await a.edit("Sending some beautiful butts🤪")
     nsfw = requests.get("http://api.obutts.ru/noise/1").json()[0]["preview"]
     urllib.request.urlretrieve("http://media.obutts.ru/{}".format(nsfw), pic_loc)
-    await event.client.send_file(event.chat_id, pic_loc, force_document=False, reply_to=reply_to_id)
+    await event.client.send_file(
+        event.chat_id, pic_loc, force_document=False, reply_to=reply_to_id
+    )
     os.remove(pic_loc)
     await event.delete()
     await a.delete()
