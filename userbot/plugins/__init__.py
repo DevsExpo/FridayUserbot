@@ -14,53 +14,53 @@ gdriveisshit = Config.AUTH_TOKEN_DATA
 wttrapi = Config.OPEN_WEATHER_MAP_APPID
 rmbg = Config.REM_BG_API_KEY
 hmmok = Config.LYDIA_API
-currentversion = "5.0"
+currentversion = "7.5"
 if issudousing:
-    amiusingsudo = "Active ✅"
+    amiusingsudo = "𝑨𝒄𝒕𝒊𝒗𝒆 ✓"
 else:
-    amiusingsudo = "Inactive ❌"
+    amiusingsudo = "𝑰𝒏𝒂𝒄𝒕𝒊𝒗𝒆 ✘"
 
 if islogokay:
-    logchat = "Connected ✅"
+    logchat = "𝑪𝒐𝒏𝒏𝒆𝒄𝒕𝒆𝒅 ✓"
 else:
-    logchat = "Not Connected ❌"
+    logchat = "𝑫𝒊𝒔𝒄𝒐𝒏𝒏𝒆𝒄𝒕𝒆𝒅 ✘"
 
 if isherokuokay:
-    riplife = "Connected ✅"
+    riplife = "𝑪𝒐𝒏𝒏𝒆𝒄𝒕𝒆𝒅 ✓"
 else:
-    riplife = "Not Connected ❌"
+    riplife = "𝑫𝒊𝒔𝒄𝒐𝒏𝒏𝒆𝒄𝒕𝒆𝒅 ✘"
 
 if gdriveisshit:
-    wearenoob = "Active ✅"
+    wearenoob = "𝑨𝒄𝒕𝒊𝒗𝒆 ✓"
 else:
-    wearenoob = "Inactive ❌"
+    wearenoob = "𝑰𝒏𝒂𝒄𝒕𝒊𝒗𝒆 ✘"
 
 if rmbg:
-    gendu = "Added ✅"
+    gendu = "𝑨𝒅𝒅𝒆𝒅 ✓"
 else:
-    gendu = "Not Added ❌"
+    gendu = "𝑵𝒐𝒕 𝒂𝒅𝒅𝒆𝒅 ✘"
 
 if wttrapi:
-    starknoobs = "Added ✅"
+    starknoobs = "𝑨𝒅𝒅𝒆𝒅 ✓"
 else:
-    starknoobs = "Not Added ❌"
+    starknoobs = "𝑵𝒐𝒕 𝒂𝒅𝒅𝒆𝒅 ✘"
 
 if hmmok:
-    meiko = "Added ✅"
+    meiko = "𝑨𝒅𝒅𝒆𝒅 ✓"
 else:
-    meiko = "Not Added ❌"
+    meiko = "𝑵𝒐𝒕 𝒂𝒅𝒅𝒆𝒅 ✘"
 
 if isdbfine:
-    dbstats = "Fine ✅"
+    dbstats = "𝑪𝒐𝒏𝒏𝒆𝒄𝒕𝒆𝒅 ✓"
 else:
-    dbstats = "Not Fine ❌"
+    dbstats = "𝑫𝒊𝒔𝒄𝒐𝒏𝒏𝒆𝒄𝒕𝒆𝒅 ✘"
 
 inlinestats = (
-    f"✘ SHOWING CɪᴘʜᴇʀX BOT STATS ✘\n"
-    f"VERSION = {currentversion} \n"
-    f"DATABASE = {dbstats} \n"
-    f"SUDO = {amiusingsudo} \n"
-    f"LOG-CHAT = {logchat} \n"
-    f"SERVER = {riplife} \n"
-    f"G-DRIVE = {wearenoob}"
+    f"🏴‍☠ CɪᴘʜᴇʀX Ⲃⲟⲧ Ⲋⲧⲁⲧⲋ 🏴‍☠\n"
+    f"ᴠᴇʀsɪᴏɴ = {currentversion} \n"
+    f"ᴅᴀᴛᴀʙᴀsᴇ = {dbstats} \n"
+    f"sᴜᴅᴏ = {amiusingsudo} \n"
+    f"ʟᴏɢ-ᴄʜᴀᴛ = {logchat} \n"
+    f"sᴇʀᴠᴇʀ = {riplife} \n"
+    f"ɢ-ᴅʀɪᴠᴇ = {wearenoob}"
 )
