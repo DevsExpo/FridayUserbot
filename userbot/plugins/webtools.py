@@ -1,5 +1,4 @@
 # @Hackintush
-import asyncio
 import math
 import os
 import time
@@ -20,6 +19,7 @@ from userbot import logging
 logger = logging.getLogger("[--WARNING--]")
 if not os.path.isdir(sedpath):
     os.makedirs(sedpath)
+
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
     """Generic progress_callback for uploads and downloads."""
