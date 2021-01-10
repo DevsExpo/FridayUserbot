@@ -12,6 +12,14 @@ from userbot import CMD_HELP, logging
 from userbot.function import apk_dl
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
+import os
+import zipfile
+
+from userbot.Configs import Config
+
+sedpath = Config.TMP_DOWNLOAD_DIRECTORY
+from userbot import logging
+
 logger = logging.getLogger("[--WARNING--]")
 if not os.path.isdir(sedpath):
     os.makedirs(sedpath)
