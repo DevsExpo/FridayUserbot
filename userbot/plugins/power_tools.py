@@ -20,14 +20,38 @@ async def _(event):
         return
     await asyncio.sleep(2)
     await event.edit(
-        "Restarting [██░] ...\n`.ping` me or `.help` to check if I'm online after a lil bit."
+        "Restarting [██░░░░░░░░░]"
     )
     await asyncio.sleep(2)
     await event.edit(
-        "Restarting [███]...\n`.ping` me or `.help` to check if I'm online after a lil bit."
+        "Restarting [███░░░░░░░░]"
     )
     await asyncio.sleep(2)
-    await event.edit("Restarted. `.ping` me or `.help` me to check if I'm online")
+    await event.edit(
+        "Restarting [█████░░░░░░]"
+    )
+    await asyncio.sleep(2)
+    await event.edit(
+        "Restarting [██████░░░░░]"
+    )
+    await asyncio.sleep(2)
+    await event.edit(
+        "Restarting [███████░░░░]"
+    )
+    await asyncio.sleep(2)
+    await event.edit(
+        "Restarting [████████░░░]"
+    )
+    await asyncio.sleep(2)
+    await event.edit(
+        "Restarting [█████████░░]"
+    )
+    await asyncio.sleep(2)
+    await event.edit(
+        "Restarting [███████████]"
+    )
+    await asyncio.sleep(2)
+    await event.edit("Restarted CɪᴘʜᴇʀX bot \nType `.ping` or `.help` me to check if I'm online")
     await borg.disconnect()
     # https://archive.is/im3rt
     os.execl(sys.executable, sys.executable, *sys.argv)
@@ -39,7 +63,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("Turning off ...Manually turn me on later")
+    await event.edit("Turning off CɪᴘʜᴇʀX bot \nManually turn me on later")
     await borg.disconnect()
 
 
