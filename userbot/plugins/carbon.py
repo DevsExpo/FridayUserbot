@@ -1,5 +1,5 @@
 # Copyright (C) 2019 The Raphielscape Company LLC.
-# Fixed Delete After Download Issue 
+# Fixed Delete After Download Issue
 # Licensed under the Raphielscape Public License, Version 1.b (the "License");
 # you may not use this file except in compliance with the License.
 """ Userbot module containing various scrapers. """

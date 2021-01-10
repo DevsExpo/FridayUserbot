@@ -12,19 +12,21 @@ async def _(event):
     ommhg = await event.reply("Searching For Anime...")
     lmao = input_str.split(":", 1)
     try:
-       site = lmao[1]
+        site = lmao[1]
     except:
-       site = "twist.moe"
-       await event.reply("Please Provide Site Name From Next Time. Now Continuing With Default Site.")
+        site = "twist.moe"
+        await event.reply(
+            "Please Provide Site Name From Next Time. Now Continuing With Default Site."
+        )
 
     lol = lmao[0]
     why = site.lower()
 
     Twist = get_anime_class(why)
     try:
-       search = Twist.search(lol)
+        search = Twist.search(lol)
     except:
-       await ommhg.edit("Please Try Different Site. Given Site is Down.")
+        await ommhg.edit("Please Try Different Site. Given Site is Down.")
 
     title1 = search[0].title
     url1 = search[0].url

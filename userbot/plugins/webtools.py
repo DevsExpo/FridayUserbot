@@ -8,10 +8,9 @@ from iplookup import iplookup
 from selenium import webdriver
 from youtube_search import YoutubeSearch
 
-from userbot import CMD_HELP
+from userbot import CMD_HELP, logging
 from userbot.function import apk_dl
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
-from userbot import logging
 
 logger = logging.getLogger("[--WARNING--]")
 if not os.path.isdir(sedpath):
@@ -31,7 +30,6 @@ async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
         process.returncode,
         process.pid,
     )
-
 
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
@@ -84,15 +82,13 @@ def time_formatter(milliseconds: int) -> str:
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
     tmp = (
-            ((str(days) + " day(s), ") if days else "")
-            + ((str(hours) + " hour(s), ") if hours else "")
-            + ((str(minutes) + " minute(s), ") if minutes else "")
-            + ((str(seconds) + " second(s), ") if seconds else "")
-            + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
+        ((str(days) + " day(s), ") if days else "")
+        + ((str(hours) + " hour(s), ") if hours else "")
+        + ((str(minutes) + " minute(s), ") if minutes else "")
+        + ((str(seconds) + " second(s), ") if seconds else "")
+        + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
     )
     return tmp[:-2]
-
- 
 
 
 @friday.on(friday_on_cmd(pattern="wshot ?(.*)"))
@@ -251,7 +247,7 @@ async def _(event):
     if event.fwd_from:
         return
     pathz, name = await apk_dl(akkad, Config.TMP_DOWNLOAD_DIRECTORY, event)
-    await borg.send_file(event.chat_id, pathz, caption='Uploaded by CɪᴘʜᴇʀX Server')
+    await borg.send_file(event.chat_id, pathz, caption="Uploaded by CɪᴘʜᴇʀX Server")
 
 
 CMD_HELP.update(

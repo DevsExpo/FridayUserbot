@@ -12,10 +12,11 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from geopy.geocoders import Nominatim
-from telethon.tl import types
-import requests
 import urllib.parse
+
+import requests
+from telethon.tl import types
+
 from userbot import CMD_HELP
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
@@ -33,17 +34,24 @@ async def gps(event):
     if not address:
         return await starkislub.edit("`Give Input Location`")
     await starkislub.edit("`Searching..`")
-    url = 'https://nominatim.openstreetmap.org/search/' + urllib.parse.quote(address) +'?format=json'
+    url = (
+        "https://nominatim.openstreetmap.org/search/"
+        + urllib.parse.quote(address)
+        + "?format=json"
+    )
     response = requests.get(url).json()
     try:
         lat = response[0]["lat"]
         lon = response[0]["lon"]
         await reply_to_id.reply(
-            address, file=types.InputMediaGeoPoint(types.InputGeoPoint(float(lat), float(lon)))
+            address,
+            file=types.InputMediaGeoPoint(types.InputGeoPoint(float(lat), float(lon))),
         )
         await event.delete()
     except:
-        await starkislub.edit("Location not found. Please try giving input with country.")
+        await starkislub.edit(
+            "Location not found. Please try giving input with country."
+        )
 
 
 CMD_HELP.update(

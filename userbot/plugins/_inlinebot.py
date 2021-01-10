@@ -3,16 +3,18 @@ import re
 import urllib
 from math import ceil
 from re import findall
-from youtube_search import YoutubeSearch
-from search_engine_parser import GoogleSearch
-from userbot.function import _ytdl
 from urllib.parse import quote
+
 import requests
-from telethon import Button, custom, events, functions
-from youtubesearchpython import VideosSearch
-from userbot import ALIVE_NAME, CMD_HELP, CMD_LIST
-from userbot.plugins import inlinestats
 from pornhub_api import PornhubApi
+from search_engine_parser import GoogleSearch
+from telethon import Button, custom, events, functions
+from youtube_search import YoutubeSearch
+
+from userbot import ALIVE_NAME, CMD_HELP, CMD_LIST
+from userbot.function import _ytdl
+from userbot.plugins import inlinestats
+
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
     WARN_PIC = "https://telegra.ph/file/82c595986872349e5ba1a.jpg"
@@ -69,12 +71,7 @@ async def inline_handler(event):
                         "🙏 I'm Here for Asking Something 🙏", data="askme"
                     )
                 ],
-                [
-                    custom.Button.inline(
-                        "⨵ Close Menu ⨵", 
-                        data="close"
-                    )
-                ],
+                [custom.Button.inline("⨵ Close Menu ⨵", data="close")],
             ],
         )
         await event.answer([result])
@@ -92,7 +89,9 @@ async def on_plug_in_callback_query_handler(event):
         # https://t.me/TelethonChat/115200
         await event.edit(buttons=buttons)
     else:
-        reply_popp_up_alert = "Please write your own bot, and don't use mine!\n(C) CɪᴘʜᴇʀX"
+        reply_popp_up_alert = (
+            "Please write your own bot, and don't use mine!\n(C) CɪᴘʜᴇʀX"
+        )
         await event.answer(reply_popp_up_alert, cache_time=0, alert=True)
 
 
@@ -110,7 +109,9 @@ async def on_plug_in_callback_query_handler(event):
         # https://t.me/TelethonChat/115200
         await event.edit(buttons=buttons)
     else:
-        reply_pop_up_alert = "Please write your own bot, and don't use mine!\n(C) CɪᴘʜᴇʀX"
+        reply_pop_up_alert = (
+            "Please write your own bot, and don't use mine!\n(C) CɪᴘʜᴇʀX"
+        )
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
 
@@ -159,6 +160,7 @@ async def rip(event):
         txt = "I Can't View CɪᴘʜᴇʀX Stats to you bitch!\n(C) CɪᴘʜᴇʀX"
         await event.answer(txt, alert=True)
 
+
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"yt_dla_(.*)")))
 async def rip(event):
     yt_dl_data = event.data_match.group(1).decode("UTF-8")
@@ -168,8 +170,9 @@ async def rip(event):
         await event.answer(text, alert=True)
         return
     is_it = True
-    ok = await _ytdl(link_s, is_it, event, tgbot)
-    
+    await _ytdl(link_s, is_it, event, tgbot)
+
+
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"yt_vid_(.*)")))
 async def rip(event):
     yt_dl_data = event.data_match.group(1).decode("UTF-8")
@@ -179,8 +182,9 @@ async def rip(event):
         await event.answer(text, alert=True)
         return
     is_it = False
-    ok = await _ytdl(link_s, is_it, event, tgbot)
-    
+    await _ytdl(link_s, is_it, event, tgbot)
+
+
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"dontspamnigga")))
 async def rip(event):
     if event.query.user_id == bot.uid:
@@ -238,7 +242,9 @@ async def rip(event):
     await event.get_chat()
     him_id = event.query.user_id
     await event.edit("Choice Accepted ✔️")
-    text3 = "Ok, Wait. You can Ask after CɪᴘʜᴇʀX Approves you. Kindly, Wait.\n(C) CɪᴘʜᴇʀX"
+    text3 = (
+        "Ok, Wait. You can Ask after CɪᴘʜᴇʀX Approves you. Kindly, Wait.\n(C) CɪᴘʜᴇʀX"
+    )
     await borg.send_message(event.query.user_id, text3)
     await tgbot.send_message(
         LOG_CHAT,
@@ -267,27 +273,25 @@ def paginate_help(page_number, loaded_plugins, prefix):
     max_num_pages = ceil(len(pairs) / number_of_rows)
     modulo_page = page_number % max_num_pages
     if len(pairs) > number_of_rows:
-        pairs = pairs[
-            modulo_page * number_of_rows : number_of_rows * (modulo_page + 1)
-        ] + [
-            (
-                custom.Button.inline(
-                    "≼≼≼", data="{}_prev({})".format(prefix, modulo_page)
-                ),
-                custom.Button.inline(
-                    "≽≽≽", data="{}_next({})".format(prefix, modulo_page)
+        pairs = (
+            pairs[modulo_page * number_of_rows : number_of_rows * (modulo_page + 1)]
+            + [
+                (
+                    custom.Button.inline(
+                        "≼≼≼", data="{}_prev({})".format(prefix, modulo_page)
+                    ),
+                    custom.Button.inline(
+                        "≽≽≽", data="{}_next({})".format(prefix, modulo_page)
+                    ),
                 )
-            ) 
-        ] + [
-            (
-                custom.Button.inline(
-                    "⨵ Close Menu ⨵", data="close"
-                ),
-                custom.Button.inline(
-                    "✨Stats✨", data="statcheck"
+            ]
+            + [
+                (
+                    custom.Button.inline("⨵ Close Menu ⨵", data="close"),
+                    custom.Button.inline("✨Stats✨", data="statcheck"),
                 )
-            ) 
-        ]
+            ]
+        )
     return pairs
 
 
@@ -387,7 +391,6 @@ async def inline_id_handler(event: events.InlineQuery.Event):
     await event.answer(results)
 
 
-
 @tgbot.on(events.InlineQuery(pattern=r"yt (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
     builder = event.builder
@@ -408,7 +411,11 @@ async def inline_id_handler(event: events.InlineQuery.Event):
             description="Check Your Spelling / Keyword",
             text="**Please, Search Again With Correct Keyword, Thank you!\n(C) CɪᴘʜᴇʀX**",
             buttons=[
-                [Button.switch_inline("≼≼≼Search Again≽≽≽", query="yt ", same_peer=True)],
+                [
+                    Button.switch_inline(
+                        "≼≼≼Search Again≽≽≽", query="yt ", same_peer=True
+                    )
+                ],
             ],
         )
         await event.answer([resultm])
@@ -421,7 +428,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
         stark_chnnl = moon["channel"]
         total_stark = moon["duration"]
         stark_views = moon["views"]
-        lol_desc = moon["long_desc"]
+        moon["long_desc"]
         kekme = f"https://img.youtube.com/vi/{hmm}/hqdefault.jpg"
         okayz = f"**Title :** `{stark_name}` \n**Link :** `{kek}` \n**Channel :** `{stark_chnnl}` \n**Views :** `{stark_views}` \n**Duration :** `{total_stark}`"
         hmmkek = f"Video Name : {stark_name} \nChannel : {stark_chnnl} \nDuration : {total_stark} \nViews : {stark_views}"
@@ -433,14 +440,13 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                 text=okayz,
                 include_media=True,
                 buttons=[
-                [custom.Button.inline("Download Video - mp4", data=f"yt_vid_{mo}")],
-                [custom.Button.inline("Download Audio - mp3", data=f"yt_dla_{mo}")],
-                [Button.switch_inline("Search Again", query="yt ", same_peer=True)],
-                ]
-              )
+                    [custom.Button.inline("Download Video - mp4", data=f"yt_vid_{mo}")],
+                    [custom.Button.inline("Download Audio - mp3", data=f"yt_dla_{mo}")],
+                    [Button.switch_inline("Search Again", query="yt ", same_peer=True)],
+                ],
+            )
         )
     await event.answer(results)
-
 
 
 @tgbot.on(events.InlineQuery(pattern=r"jm (.*)"))
@@ -486,8 +492,6 @@ async def inline_id_handler(event: events.InlineQuery.Event):
         )
     await event.answer(results)
 
-    
-
 
 @tgbot.on(events.InlineQuery(pattern=r"google (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
@@ -508,11 +512,10 @@ async def inline_id_handler(event: events.InlineQuery.Event):
         match = match.replace("page=" + page[0], "")
     except IndexError:
         page = 1
-    
+
     search_args = (str(match), int(page))
     gsearch = GoogleSearch()
     gresults = await gsearch.async_search(*search_args)
-    msg = ""
     for i in range(len(gresults["links"])):
         try:
             title = gresults["titles"][i]
@@ -534,7 +537,8 @@ async def inline_id_handler(event: events.InlineQuery.Event):
         except IndexError:
             break
     await event.answer(results)
-    
+
+
 @tgbot.on(events.InlineQuery(pattern=r"ph (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
     builder = event.builder
@@ -548,16 +552,12 @@ async def inline_id_handler(event: events.InlineQuery.Event):
     results = []
     input_str = event.pattern_match.group(1)
     api = PornhubApi()
-    data = api.search.search(
-    input_str,
-    ordering="mostviewed"
-    )
+    data = api.search.search(input_str, ordering="mostviewed")
     ok = 1
-    oik = ""
     for vid in data.videos:
-      if ok <= 5:
-        lul_m = (f"**PORN-HUB SEARCH** \n**Video title :** `{vid.title}` \n**Video link :** `https://www.pornhub.com/view_video.php?viewkey={vid.video_id}`")
-        results.append(
+        if ok <= 5:
+            lul_m = f"**PORN-HUB SEARCH** \n**Video title :** `{vid.title}` \n**Video link :** `https://www.pornhub.com/view_video.php?viewkey={vid.video_id}`"
+            results.append(
                 await event.builder.article(
                     title=vid.title,
                     text=lul_m,
@@ -568,10 +568,11 @@ async def inline_id_handler(event: events.InlineQuery.Event):
                     ],
                 )
             )
-      else:
-        pass
+        else:
+            pass
     await event.answer(results)
-    
+
+
 @tgbot.on(events.InlineQuery(pattern=r"xkcd (.*)"))
 async def inline_id_handler(event: events.InlineQuery.Event):
     builder = event.builder
@@ -582,7 +583,6 @@ async def inline_id_handler(event: events.InlineQuery.Event):
         )
         await event.answer([resultm])
         return
-    results = []
     input_str = event.pattern_match.group(1)
     xkcd_id = None
     if input_str:
@@ -619,14 +619,10 @@ Month: {}
 Year: {}""".format(
             xkcd_link, safe_title, alt, day, month, year
         )
-        lul_k = builder.photo(
-            file=img,
-            text=output_str
-        )
+        lul_k = builder.photo(file=img, text=output_str)
         await event.answer([lul_k])
     else:
         resultm = builder.article(
-            title="- No Results :/ -",
-            text=f"No Results Found.\n(C) CɪᴘʜᴇʀX"
+            title="- No Results :/ -", text=f"No Results Found.\n(C) CɪᴘʜᴇʀX"
         )
         await event.answer([resultm])

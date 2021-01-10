@@ -14,8 +14,8 @@ json_codes = {
     "nsX08": "Malware - High Risk",
     "nsX09": "PM Spam - High Risk",
     "nsX10": "Power Misuser - Medium Risk",
-    'nsX11': 'Multiple Risks - Extreme Risk',
-    'nsX12': 'Scam - Extreme Risk'
+    "nsX11": "Multiple Risks - Extreme Risk",
+    "nsX12": "Scam - Extreme Risk",
 }
 
 

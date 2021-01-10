@@ -5,25 +5,26 @@ Fixed and Ported by @Hackintush
 import asyncio
 import os
 import random
-
-from .. import LOGS
-
 import shlex
 from os import getcwd
 from os.path import basename, join
 from textwrap import wrap
 from typing import Optional, Tuple
-from userbot import Configs
+
 import numpy as np
-from colour import Color as asciiColor
 import PIL.ImageOps
+from colour import Color as asciiColor
 from PIL import Image, ImageDraw, ImageFont
 from wand.color import Color
 from wand.drawing import Drawing
 from wand.image import Image as catimage
+
 from userbot.utils import admin_cmd
 
+from .. import LOGS
+
 MARGINS = [50, 150, 250, 350, 450]
+
 
 async def reply_id(event):
     reply_to_id = None
@@ -33,31 +34,37 @@ async def reply_id(event):
         reply_to_id = event.reply_to_msg_id
     return reply_to_id
 
+
 async def solarize(imagefile, endname):
     image = Image.open(imagefile)
     inverted_image = PIL.ImageOps.solarize(image, threshold=128)
     inverted_image.save(endname)
-    
+
+
 async def mirror_file(imagefile, endname):
     image = Image.open(imagefile)
     inverted_image = PIL.ImageOps.mirror(image)
     inverted_image.save(endname)
-    
+
+
 async def invert_colors(imagefile, endname):
     image = Image.open(imagefile)
     inverted_image = PIL.ImageOps.invert(image)
     inverted_image.save(endname)
-    
+
+
 async def flip_image(imagefile, endname):
     image = Image.open(imagefile)
     inverted_image = PIL.ImageOps.flip(image)
     inverted_image.save(endname)
-    
+
+
 async def crop(imagefile, endname, x):
     image = Image.open(imagefile)
     inverted_image = PIL.ImageOps.crop(image, border=x)
     inverted_image.save(endname)
-    
+
+
 def convert_tosticker(response, filename=None):
     filename = filename or os.path.join("./temp/", "temp.webp")
     image = Image.open(response)
@@ -66,6 +73,7 @@ def convert_tosticker(response, filename=None):
     image.save(filename, "webp")
     os.remove(response)
     return filename
+
 
 def convert_toimage(image, filename=None):
     filename = filename or os.path.join("./temp/", "temp.jpg")
@@ -76,10 +84,12 @@ def convert_toimage(image, filename=None):
     os.remove(image)
     return filename
 
+
 async def add_frame(imagefile, endname, x, color):
     image = Image.open(imagefile)
     inverted_image = PIL.ImageOps.expand(image, border=x, fill=color)
     inverted_image.save(endname)
+
 
 def asciiart(in_f, SC, GCF, out_f, color1, color2, bgcolor="black"):
     chars = np.asarray(list(" .,:irs?@9B&#"))
@@ -116,6 +126,7 @@ def asciiart(in_f, SC, GCF, out_f, color1, color2, bgcolor="black"):
 def get_warp_length(width):
     return int((20.0 / 1024.0) * (width + 0.0))
 
+
 async def take_screen_shot(
     video_file: str, duration: int, path: str = ""
 ) -> Optional[str]:
@@ -132,6 +143,7 @@ async def take_screen_shot(
         print(err)
     return thumb_image_path if os.path.exists(thumb_image_path) else None
 
+
 async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
     args = shlex.split(cmd)
     process = await asyncio.create_subprocess_exec(
@@ -144,6 +156,7 @@ async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
         process.returncode,
         process.pid,
     )
+
 
 async def cat_meme(CNG_FONTS, topString, bottomString, filename, endname):
     img = Image.open(filename)
@@ -189,7 +202,8 @@ async def cat_meme(CNG_FONTS, topString, bottomString, filename, endname):
     draw.text(topTextPosition, topString, (255, 255, 255), font=font)
     draw.text(bottomTextPosition, bottomString, (255, 255, 255), font=font)
     img.save(endname)
-    
+
+
 async def cat_meeme(upper_text, lower_text, CNG_FONTS, picture_name, endname):
     main_image = catimage(filename=picture_name)
     main_image.resize(
@@ -213,7 +227,8 @@ async def cat_meeme(upper_text, lower_text, CNG_FONTS, picture_name, endname):
         )
     text_draw(main_image)
     main_image.save(filename=endname)
-    
+
+
 def random_color():
     number_of_colors = 2
     return [
@@ -231,6 +246,7 @@ font_list = [
     "digital.ttf",
     "impact.ttf",
 ]
+
 
 @bot.on(admin_cmd(outgoing=True, pattern="ascii ?(.*)"))
 @bot.on(sudo_cmd(pattern="ascii ?(.*)", allow_sudo=True))
@@ -308,6 +324,7 @@ async def memes(cat):
         if files and os.path.exists(files):
             os.remove(files)
 
+
 @bot.on(admin_cmd(pattern="cfont(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="cfont(?: |$)(.*)", allow_sudo=True))
 async def lang(event):
@@ -326,6 +343,7 @@ async def lang(event):
         arg = f"userbot/Fonts/{input_str}"
         CNG_FONTS = arg
         await edit_or_reply(event, f"**Fonts for Memify changed to :-** `{input_str}`")
+
 
 @bot.on(admin_cmd(pattern="invert$", outgoing=True))
 @bot.on(sudo_cmd(pattern="invert$", allow_sudo=True))
@@ -450,9 +468,7 @@ async def memes(cat):
         meme_file = catfile
         jisanidea = True
     elif catsticker.endswith(".webp"):
-        await cat.edit(
-            "```Transfiguration Time! Solarizing this sticker! (」ﾟﾛﾟ)｣```"
-        )
+        await cat.edit("```Transfiguration Time! Solarizing this sticker! (」ﾟﾛﾟ)｣```")
         catfile = os.path.join("./temp/", "memes.jpg")
         os.rename(catsticker, catfile)
         if not os.path.lexists(catfile):
@@ -461,9 +477,7 @@ async def memes(cat):
         meme_file = catfile
         jisanidea = True
     elif catsticker.endswith((".mp4", ".mov")):
-        await cat.edit(
-            "```Transfiguration Time! Solarizing this video! (」ﾟﾛﾟ)｣```"
-        )
+        await cat.edit("```Transfiguration Time! Solarizing this video! (」ﾟﾛﾟ)｣```")
         catfile = os.path.join("./temp/", "memes.jpg")
         await take_screen_shot(catsticker, 0, catfile)
         if not os.path.lexists(catfile):
@@ -472,9 +486,7 @@ async def memes(cat):
         meme_file = catfile
         jisanidea = True
     else:
-        await cat.edit(
-            "```Transfiguration Time! Solarizing this image! (」ﾟﾛﾟ)｣```"
-        )
+        await cat.edit("```Transfiguration Time! Solarizing this image! (」ﾟﾛﾟ)｣```")
         meme_file = catsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
@@ -618,9 +630,7 @@ async def memes(cat):
         meme_file = catfile
         jisanidea = True
     elif catsticker.endswith(".webp"):
-        await cat.edit(
-            "```Transfiguration Time! Fliping this sticker! (」ﾟﾛﾟ)｣```"
-        )
+        await cat.edit("```Transfiguration Time! Fliping this sticker! (」ﾟﾛﾟ)｣```")
         catfile = os.path.join("./temp/", "memes.jpg")
         os.rename(catsticker, catfile)
         if not os.path.lexists(catfile):
@@ -629,9 +639,7 @@ async def memes(cat):
         meme_file = catfile
         jisanidea = True
     elif catsticker.endswith((".mp4", ".mov")):
-        await cat.edit(
-            "```Transfiguration Time! Fliping this video! (」ﾟﾛﾟ)｣```"
-        )
+        await cat.edit("```Transfiguration Time! Fliping this video! (」ﾟﾛﾟ)｣```")
         catfile = os.path.join("./temp/", "memes.jpg")
         await take_screen_shot(catsticker, 0, catfile)
         if not os.path.lexists(catfile):
@@ -640,9 +648,7 @@ async def memes(cat):
         meme_file = catfile
         jisanidea = True
     else:
-        await cat.edit(
-            "```Transfiguration Time! Fliping this image! (」ﾟﾛﾟ)｣```"
-        )
+        await cat.edit("```Transfiguration Time! Fliping this image! (」ﾟﾛﾟ)｣```")
         meme_file = catsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
@@ -661,7 +667,8 @@ async def memes(cat):
     for files in (catsticker, meme_file):
         if files and os.path.exists(files):
             os.remove(files)
-            
+
+
 @bot.on(admin_cmd(outgoing=True, pattern="zoom ?(.*)"))
 @bot.on(sudo_cmd(pattern="zoom ?(.*)", allow_sudo=True))
 async def memes(cat):
@@ -801,9 +808,7 @@ async def memes(cat):
         meme_file = catfile
         jisanidea = True
     elif catsticker.endswith(".webp"):
-        await cat.edit(
-            "```Transfiguration Time! Framing this sticker! (」ﾟﾛﾟ)｣```"
-        )
+        await cat.edit("```Transfiguration Time! Framing this sticker! (」ﾟﾛﾟ)｣```")
         catfile = os.path.join("./temp/", "memes.jpg")
         os.rename(catsticker, catfile)
         if not os.path.lexists(catfile):
@@ -812,9 +817,7 @@ async def memes(cat):
         meme_file = catfile
         jisanidea = True
     elif catsticker.endswith((".mp4", ".mov")):
-        await cat.edit(
-            "```Transfiguration Time! Framing this video! (」ﾟﾛﾟ)｣```"
-        )
+        await cat.edit("```Transfiguration Time! Framing this video! (」ﾟﾛﾟ)｣```")
         catfile = os.path.join("./temp/", "memes.jpg")
         await take_screen_shot(catsticker, 0, catfile)
         if not os.path.lexists(catfile):
@@ -822,9 +825,7 @@ async def memes(cat):
             return
         meme_file = catfile
     else:
-        await cat.edit(
-            "```Transfiguration Time! Framing this image! (」ﾟﾛﾟ)｣```"
-        )
+        await cat.edit("```Transfiguration Time! Framing this image! (」ﾟﾛﾟ)｣```")
         meme_file = catsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")

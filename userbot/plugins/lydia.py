@@ -1,4 +1,4 @@
-#   Copyright 2019 - 2020 
+#   Copyright 2019 - 2020
 
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -17,8 +17,9 @@ import asyncio
 import coffeehouse
 from coffeehouse.lydia import LydiaAI
 from telethon import events
-from userbot.utils import admin_cmd
+
 from userbot import CMD_HELP
+from userbot.utils import admin_cmd
 
 # Non-SQL Mode
 ACC_LYDIA = {}
@@ -30,7 +31,7 @@ if Var.LYDIA_API_KEY:
     Lydia = LydiaAI(api_client)
 
 
-@borg.on(admin_cmd(pattern='rcf$'))
+@borg.on(admin_cmd(pattern="rcf$"))
 async def repcf(event):
     if event.fwd_from:
         return
@@ -46,7 +47,7 @@ async def repcf(event):
         await event.edit(str(e))
 
 
-@borg.on(admin_cmd(pattern='addcf$'))
+@borg.on(admin_cmd(pattern="addcf$"))
 async def addcf(event):
     if event.fwd_from:
         return
@@ -70,7 +71,7 @@ async def addcf(event):
         await event.edit("Reply to a user to activate Lydia AI on them")
 
 
-@borg.on(admin_cmd(pattern='remcf$'))
+@borg.on(admin_cmd(pattern="remcf$"))
 async def remcf(event):
     if event.fwd_from:
         return
