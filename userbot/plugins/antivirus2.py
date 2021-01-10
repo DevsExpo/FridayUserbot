@@ -1,55 +1,48 @@
-# Lots of lub to @r4v4n4 for gibing the base <3
-""" cmd is .anti """
-
+# Advanced Antivirus  Scanner Pligin Made by @Hackintush 
+# All Credits Belong to CɪᴘʜᴇʀX. 
+# Copy with Credit 
+import asyncio 
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
+from userbot.utils import admin_cmd as cipherx_on_cmd
+from userbot import bot as cipherx
 from userbot import CMD_HELP
-from userbot.utils import friday_on_cmd
 
+bot = "@VirusYabBot"
 
-@friday.on(friday_on_cmd("anti ?(.*)", allow_sudo=True))
+@cipherx.on(cipherx_on_cmd("ment ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("```Reply to any user message.```")
+        await event.edit("Reply to any user message.")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await event.edit("```reply to a media message```")
+        await event.edit("Reply to file")
         return
     chat = "@VirusYabBot"
     reply_message.sender
     if reply_message.sender.bot:
-        await event.edit("```Reply to actual users message.```")
+        await event.edit("Reply to actual user's message.")
         return
-    await event.edit("`Scanning by CɪᴘʜᴇʀX Antivirus Algorithm...` ")
+    await event.edit("Scanning...")
     async with borg.conversation(chat) as conv:
-        try:
-            response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=397530575)
-            )
-            await borg.forward_messages(chat, reply_message)
-            response = await response
-        except YouBlockedUserError:
-            await event.reply("```Please remove my restrictions and try again```")
-            return
-        if response.text.startswith("Hello"):
-            await event.edit(
-                "```can you kindly disable your forward privacy settings for good?```"
-            )
-        else:
-            await event.edit(
-                f"**Antivirus scan was completed**\n {response.message.message}"
-            )
-            # await event.edit(("`Antivirus scan was completed.`\n`Yeah, I got the final results.`\n ") + response + response.replace("------------ADS------------\nدریافت فالوور، لایک و ممبر رایگان\n\n@ViewFakBot", ""))
-
-
+            try:
+                await conv.send_message(reply_message)
+                await asyncio.sleep(2)
+                reply = await conv.get_response()
+                final = reply.text
+                await borg.send_message(event.chat_id, final.rsplit("\n",4)[0], reply_to=reply_to_id)
+            except YouBlockedUserError:
+                await event.edit("Error: Unblock bot and retry!")
+                
+                
 CMD_HELP.update(
     {
-        "antivirus2": "`.anti` reply to a file:\
-      \nUse - Scans the file with antivirus.\
-      "
+        "antivirus 2": "Antivirus 2\
+        \n\nSyntax : .anti <reply to file>\
+        \nUsage : Scans files Max 300 MB."
     }
 )
