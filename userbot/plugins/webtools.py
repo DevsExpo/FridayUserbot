@@ -235,7 +235,7 @@ async def _(event):
     akkad = event.pattern_match.group(1)
     if event.fwd_from:
         return
-    pathz, name = await apk_dl(akkad, Config.TMP_DOWNLOAD_DIRECTORY, event)
+    pathz, name = await apk_dl(akkad, Config.TMP_DOWNLOAD_DIRECTORY, tgbot, event)
     await borg.send_file(event.chat_id, pathz, caption="Uploaded by CɪᴘʜᴇʀX Server")
 
 
