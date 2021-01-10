@@ -1,15 +1,16 @@
-# Advanced Antivirus  Scanner Pligin Made by @Hackintush 
-# All Credits Belong to CɪᴘʜᴇʀX. 
-# Copy with Credit 
-import asyncio 
-from telethon import events
+# Advanced Antivirus  Scanner Pligin Made by @Hackintush
+# All Credits Belong to CɪᴘʜᴇʀX.
+# Copy with Credit
+import asyncio
+
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from userbot.utils import admin_cmd as cipherx_on_cmd
-from userbot import bot as cipherx
 from userbot import CMD_HELP
+from userbot import bot as cipherx
+from userbot.utils import admin_cmd as cipherx_on_cmd
 
 bot = "@VirusYabBot"
+
 
 @cipherx.on(cipherx_on_cmd("ment ?(.*)"))
 async def _(event):
@@ -29,16 +30,18 @@ async def _(event):
         return
     await event.edit("Scanning...")
     async with borg.conversation(chat) as conv:
-            try:
-                await conv.send_message(reply_message)
-                await asyncio.sleep(2)
-                reply = await conv.get_response()
-                final = reply.text
-                await borg.send_message(event.chat_id, final.rsplit("\n",4)[0], reply_to=reply_to_id)
-            except YouBlockedUserError:
-                await event.edit("Error: Unblock bot and retry!")
-                
-                
+        try:
+            await conv.send_message(reply_message)
+            await asyncio.sleep(2)
+            reply = await conv.get_response()
+            final = reply.text
+            await borg.send_message(
+                event.chat_id, final.rsplit("\n", 4)[0], reply_to=reply_to_id
+            )
+        except YouBlockedUserError:
+            await event.edit("Error: Unblock bot and retry!")
+
+
 CMD_HELP.update(
     {
         "antivirus 2": "Antivirus 2\
