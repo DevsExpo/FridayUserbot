@@ -51,7 +51,7 @@ async def start(event):
     if event.sender_id == bot.uid:
         await tgbot.send_message(
             vent,
-            message=f"Hi Master, It's Me {bot_id}, Your Assistant ! \nWhat You Wanna Do today ?",
+            message=f"Hi Master, It's Me {bot_id}, Your Assistant ! \nWhat You Wanna Do?",
             buttons=[
                 [custom.Button.inline("Show Users 🔥", data="users")],
                 [custom.Button.inline("Commands For Assistant", data="gibcmd")],
@@ -60,7 +60,7 @@ async def start(event):
                         "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
                     )
                 ],
-                [custom.Button.inline("⨵ Close Menu ⨵", data="close")],
+                [custom.Button.inline("⨵ Close Menu ⨵", data="close1")],
             ],
         )
     else:
@@ -80,7 +80,7 @@ async def start(event):
                         "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
                     )
                 ],
-                [custom.Button.inline("⨵ Close Menu ⨵", data="close")],
+                [custom.Button.inline("⨵ Close Menu ⨵", data="close1")],
             ],
         )
         if os.path.exists(mypic):
@@ -104,26 +104,26 @@ async def users(event):
                 event.chat_id,
                 tedt_file,
                 force_document=True,
-                caption="Total Users In Your Bot.",
+                caption="Total Users In CɪᴘʜᴇʀX Bot.",
                 allow_cache=False,
             )
     else:
         pass
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
-    async def users(event):
-        await event.edit(
-            "Assitant Menu Closed !!",
-            buttons=[Button.inline("Re-open Menu", data="reopen")],
-        )
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close1")))
+async def users(event):
+    await event.edit(
+        "CɪᴘʜᴇʀX Bot Assitant Menu Closed !!",
+        buttons=[Button.inline("Re-open Menu", data="reopen")],
+    )
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen")))
-    async def megic(event):
-        await event.delete()
-        buttons = start(
-            0,
-        )
-        await event.edit("Menu Re-opened", buttons=buttons)
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen")))
+async def megic(event):
+    await event.delete()
+    buttons = start(
+        0,
+    )
+    await event.edit("Menu Re-opened", buttons=buttons)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
