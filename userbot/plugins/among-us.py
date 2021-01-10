@@ -16,7 +16,7 @@ async def _(event):
     USERNAME = f"tg://user?id={hmm}"
     name = event.pattern_match.group(2)
     cmd = event.pattern_match.group(1).lower()
-    text1 = await edit_or_reply(event, "Uhmm... Something is wrong here!!")
+    text1 = await edit_or_reply(event, "Hmm... Something is wrong here!!")
     await asyncio.sleep(3)
     await text1.delete()
     stcr1 = await event.client.send_file(
@@ -45,7 +45,7 @@ async def _(event):
     await text4.edit(f"**Others :** Who?? ")
     await asyncio.sleep(3)
     await text4.edit(
-        f"**[{DEFAULTUSER}]({USERNAME}) :** Its {name} , I saw {name}  using vent,"
+        f"**[{DEFAULTUSER}]({USERNAME}) :** Its {name} , I saw {name}  using vent"
     )
     await asyncio.sleep(4)
     await text4.edit(f"**Others :**Okay.. Vote {name} ")
@@ -101,7 +101,7 @@ async def _(event):
         return
     name = event.pattern_match.group(2)
     cmd = event.pattern_match.group(1).lower()
-    catevent = await edit_or_reply(event, f"{name} is ejected.......")
+    catevent = await edit_or_reply(event, f"{name} is ejected...")
     await asyncio.sleep(2)
     await catevent.edit("ඞㅤㅤㅤㅤ ㅤㅤㅤㅤ")
     await asyncio.sleep(0.8)
