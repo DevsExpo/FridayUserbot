@@ -19,7 +19,7 @@ from wand.color import Color
 from wand.drawing import Drawing
 from wand.image import Image as catimage
 
-from userbot.utils import admin_cmd, sudo_cmd 
+from userbot.utils import admin_cmd, sudo_cmd
 
 from .. import LOGS
 
