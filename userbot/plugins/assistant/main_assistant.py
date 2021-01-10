@@ -120,11 +120,9 @@ async def users(event):
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen")))
-async def megic(event):
+async def megix(event):
+    buttons = start(0)
     await event.delete()
-    buttons = start(
-        0,
-    )
     await event.edit("Menu Re-opened", buttons=buttons)
 
 
