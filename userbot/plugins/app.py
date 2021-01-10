@@ -74,9 +74,7 @@ async def apk(event):
             + "'>View in Play Store</a>"
         )
         app_details += "\n\n===> `CɪᴘʜᴇʀX Ⲉⲭⲥⳑυⲋⲓⳳⲉ` <==="
-        await edit_or_reply(
-            event, app_details, link_preview=True, parse_mode="HTML"
-        )
+        await edit_or_reply(event, app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
         await event.edit("No result found in search. Please enter **Valid app name**")
     except Exception as err:
@@ -146,9 +144,7 @@ async def apkr(event):
             + "'>View in Play Store</a>"
         )
         app_details += "\n\n===> `CɪᴘʜᴇʀX Ⲉⲭⲥⳑυⲋⲓⳳⲉ` <==="
-        await edit_or_reply(
-            event, app_details, link_preview=True, parse_mode="HTML"
-        )
+        await edit_or_reply(event, app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
         await event.edit("No result found in search. Please enter **Valid app name**")
     except Exception as err:
