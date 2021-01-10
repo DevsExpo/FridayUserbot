@@ -19,39 +19,25 @@ async def _(event):
     if event.fwd_from:
         return
     await asyncio.sleep(2)
-    await event.edit(
-        "Restarting [██░░░░░░░░░]"
-    )
+    await event.edit("Restarting [██░░░░░░░░░]")
+    await asyncio.sleep(2)
+    await event.edit("Restarting [███░░░░░░░░]")
+    await asyncio.sleep(2)
+    await event.edit("Restarting [█████░░░░░░]")
+    await asyncio.sleep(2)
+    await event.edit("Restarting [██████░░░░░]")
+    await asyncio.sleep(2)
+    await event.edit("Restarting [███████░░░░]")
+    await asyncio.sleep(2)
+    await event.edit("Restarting [████████░░░]")
+    await asyncio.sleep(2)
+    await event.edit("Restarting [█████████░░]")
+    await asyncio.sleep(2)
+    await event.edit("Restarting [███████████]")
     await asyncio.sleep(2)
     await event.edit(
-        "Restarting [███░░░░░░░░]"
+        "Restarted CɪᴘʜᴇʀX bot \nType `.ping` or `.help` me to check if I'm online"
     )
-    await asyncio.sleep(2)
-    await event.edit(
-        "Restarting [█████░░░░░░]"
-    )
-    await asyncio.sleep(2)
-    await event.edit(
-        "Restarting [██████░░░░░]"
-    )
-    await asyncio.sleep(2)
-    await event.edit(
-        "Restarting [███████░░░░]"
-    )
-    await asyncio.sleep(2)
-    await event.edit(
-        "Restarting [████████░░░]"
-    )
-    await asyncio.sleep(2)
-    await event.edit(
-        "Restarting [█████████░░]"
-    )
-    await asyncio.sleep(2)
-    await event.edit(
-        "Restarting [███████████]"
-    )
-    await asyncio.sleep(2)
-    await event.edit("Restarted CɪᴘʜᴇʀX bot \nType `.ping` or `.help` me to check if I'm online")
     await borg.disconnect()
     # https://archive.is/im3rt
     os.execl(sys.executable, sys.executable, *sys.argv)
