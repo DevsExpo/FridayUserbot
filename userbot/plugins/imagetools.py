@@ -33,7 +33,7 @@ if not os.path.isdir(sedpath):
 @friday.on(friday_on_cmd(pattern=r"cit"))
 @friday.on(sudo_cmd(pattern=r"cit", allow_sudo=True))
 async def hmm(event):
-    await event.get_reply_message()
+    reply = await event.get_reply_message()
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -68,7 +68,7 @@ async def hmm(event):
     file_name = "Colour.png"
     ok = sedpath + "/" + file_name
     cv2.imwrite(ok, colorized)
-    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
+    await borg.send_file(event.chat_id, ok, reply_to=reply.id)
     await hmmu.delete()
     for files in (ok, img):
         if files and os.path.exists(files):
@@ -79,7 +79,7 @@ async def hmm(event):
 @friday.on(friday_on_cmd(pattern=r"nst"))
 @friday.on(sudo_cmd(pattern=r"nst", allow_sudo=True))
 async def hmm(event):
-    await event.get_reply_message()
+    reply = await event.get_reply_message()
     life = Config.DEEP_API_KEY
     if life == None:
         life = "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"
@@ -100,7 +100,7 @@ async def hmm(event):
     hmmyes = sedcopy["detections"]
     game = sedcopy["nsfw_score"]
     final = f"**IMG RESULT** \n**Detections :** `{hmmyes}` \n**NSFW SCORE :** `{game}`"
-    await borg.send_message(event.chat_id, final, reply_to=event.reply_to_msg_id)
+    await borg.send_message(event.chat_id, final, reply_to=reply.id)
     await hmm.delete()
     if os.path.exists(img):
         os.remove(img)
@@ -109,7 +109,7 @@ async def hmm(event):
 @friday.on(friday_on_cmd(pattern=r"thug"))
 @friday.on(sudo_cmd(pattern=r"thug", allow_sudo=True))
 async def iamthug(event):
-    await event.get_reply_message()
+    reply = await event.get_reply_message()
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -132,7 +132,7 @@ async def iamthug(event):
     file_name = "cipherx.png"
     ok = sedpath + "/" + file_name
     background.save(ok, "PNG")
-    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
+    await borg.send_file(event.chat_id, ok, reply_to=reply.id)
     await hmm.delete()
     for files in (ok, img):
         if files and os.path.exists(files):
@@ -142,7 +142,7 @@ async def iamthug(event):
 @friday.on(friday_on_cmd(pattern=r"tni"))
 @friday.on(sudo_cmd(pattern=r"tni", allow_sudo=True))
 async def toony(event):
-    await event.get_reply_message()
+    reply = await event.get_reply_message()
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -158,7 +158,7 @@ async def toony(event):
     ok = sedpath + "/" + file_name
     cv2.imwrite(ok, cartoon_image_style_2)
     # Upload it
-    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
+    await borg.send_file(event.chat_id, ok, reply_to=reply.id)
     await hmmu.delete()
     # Remove all Files
     for files in (ok, img):
@@ -169,8 +169,8 @@ async def toony(event):
 @friday.on(friday_on_cmd(pattern=r"tig"))
 @friday.on(sudo_cmd(pattern=r"tig", allow_sudo=True))
 async def lolmetrg(event):
-    await event.edit("`Triggered This Image`")
-    sed = await event.get_reply_message()
+    reply = await event.get_reply_message()
+    me = await event.edit("`Triggered This Image`")
     img = await convert_to_image(event, borg)
     url_s = upload_file(img)
     imglink = f"https://telegra.ph{url_s[0]}"
@@ -179,8 +179,9 @@ async def lolmetrg(event):
     open("triggered.gif", "wb").write(r.content)
     lolbruh = "triggered.gif"
     await borg.send_file(
-        event.chat_id, lolbruh, caption="Got Triggered...", reply_to=sed
+        event.chat_id, lolbruh, caption="Got Triggered...", reply_to=reply.id
     )
+    await me.delete()
     for files in (lolbruh, img):
         if files and os.path.exists(files):
             os.remove(files)
@@ -189,7 +190,7 @@ async def lolmetrg(event):
 @friday.on(friday_on_cmd(pattern=r"jail"))
 @friday.on(sudo_cmd(pattern=r"jail", allow_sudo=True))
 async def hmm(event):
-    await event.get_reply_message()
+    reply = await event.get_reply_message()
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -211,7 +212,7 @@ async def hmm(event):
 
     file_name = "testing.png"
     ok = "./cipherx/" + file_name
-    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
+    await borg.send_file(event.chat_id, ok, reply_to=reply.id)
     await hmmu.delete()
     for files in (ok, img):
         if files and os.path.exists(files):
@@ -221,7 +222,7 @@ async def hmm(event):
 @friday.on(friday_on_cmd(pattern=r"greyscale"))
 @friday.on(sudo_cmd(pattern=r"greyscale", allow_sudo=True))
 async def hmm(event):
-    await event.get_reply_message()
+    reply = await event.get_reply_message()
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -235,7 +236,7 @@ async def hmm(event):
     cv2.imwrite("./cipherx/testing.png", gray_img)
     file_name = "testing.png"
     ok = "./cipherx/" + file_name
-    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
+    await borg.send_file(event.chat_id, ok, reply_to=reply.id)
     await hmmu.delete()
     for files in (ok, img):
         if files and os.path.exists(files):
@@ -248,7 +249,7 @@ async def hmm(event):
 @friday.on(friday_on_cmd(pattern=r"fgs ?(.*)"))
 @friday.on(sudo_cmd(pattern=r"fgs ?(.*)", allow_sudo=True))
 async def img(event):
-    await event.get_reply_message()
+    reply = await event.get_reply_message()
     text = event.pattern_match.group(1)
     if not text:
         await event.edit("No input found!")
@@ -270,7 +271,7 @@ async def img(event):
     ok = sedpath + "/" + file_name
     photo.save(ok)
     await event.delete()
-    await friday.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
+    await friday.send_file(event.chat_id, ok, reply_to=reply.id)
     if os.path.exists(ok):
         os.remove(ok)
 
@@ -278,6 +279,7 @@ async def img(event):
 @friday.on(friday_on_cmd(pattern=r"lg"))
 @friday.on(sudo_cmd(pattern=r"lg", allow_sudo=True))
 async def lottiepie(event):
+    reply = await event.get_reply_message()
     await event.edit("`Processing...`")
     message = await event.get_reply_message()
     if message.media and message.media.document:
@@ -304,7 +306,7 @@ async def lottiepie(event):
             event.chat_id,
             file="tgs.tgs",
             force_document=False,
-            reply_to=event.reply_to_msg_id,
+            reply_to=reply.id,
         )
         os.remove("json.json")
         os.remove("tgs.tgs")
@@ -313,7 +315,7 @@ async def lottiepie(event):
 @friday.on(friday_on_cmd(pattern=r"ph ?(.*)"))
 @friday.on(sudo_cmd(pattern=r"ph ?(.*)", allow_sudo=True))
 async def img(event):
-    await event.get_reply_message()
+    reply = await event.get_reply_message()
     text = event.pattern_match.group(1)
     if not text:
         await event.edit("No input found!  --__--")
@@ -335,7 +337,7 @@ async def img(event):
     img.save("./cipherx/testpb.jpg")
     file_name = "testpb.jpg"
     ok = "./cipherx/" + file_name
-    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
+    await borg.send_file(event.chat_id, ok, reply_to=reply.id)
     os.remove(files)
     for files in (ok, img):
         if files and os.path.exists(files):
