@@ -33,7 +33,7 @@ if not os.path.isdir(sedpath):
 @friday.on(friday_on_cmd(pattern=r"cit"))
 @friday.on(sudo_cmd(pattern=r"cit", allow_sudo=True))
 async def hmm(event):
-    reply = await event.get_reply_message() 
+    await event.get_reply_message()
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -79,7 +79,7 @@ async def hmm(event):
 @friday.on(friday_on_cmd(pattern=r"nst"))
 @friday.on(sudo_cmd(pattern=r"nst", allow_sudo=True))
 async def hmm(event):
-    reply = await event.get_reply_message() 
+    await event.get_reply_message()
     life = Config.DEEP_API_KEY
     if life == None:
         life = "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"
@@ -109,7 +109,7 @@ async def hmm(event):
 @friday.on(friday_on_cmd(pattern=r"thug"))
 @friday.on(sudo_cmd(pattern=r"thug", allow_sudo=True))
 async def iamthug(event):
-    reply = await event.get_reply_message() 
+    await event.get_reply_message()
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -142,7 +142,7 @@ async def iamthug(event):
 @friday.on(friday_on_cmd(pattern=r"tni"))
 @friday.on(sudo_cmd(pattern=r"tni", allow_sudo=True))
 async def toony(event):
-    reply = await event.get_reply_message() 
+    await event.get_reply_message()
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -189,7 +189,7 @@ async def lolmetrg(event):
 @friday.on(friday_on_cmd(pattern=r"jail"))
 @friday.on(sudo_cmd(pattern=r"jail", allow_sudo=True))
 async def hmm(event):
-    reply = await event.get_reply_message() 
+    await event.get_reply_message()
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -221,7 +221,7 @@ async def hmm(event):
 @friday.on(friday_on_cmd(pattern=r"greyscale"))
 @friday.on(sudo_cmd(pattern=r"greyscale", allow_sudo=True))
 async def hmm(event):
-    reply = await event.get_reply_message() 
+    await event.get_reply_message()
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -248,7 +248,7 @@ async def hmm(event):
 @friday.on(friday_on_cmd(pattern=r"fgs ?(.*)"))
 @friday.on(sudo_cmd(pattern=r"fgs ?(.*)", allow_sudo=True))
 async def img(event):
-    reply = await event.get_reply_message() 
+    await event.get_reply_message()
     text = event.pattern_match.group(1)
     if not text:
         await event.edit("No input found!")
@@ -300,7 +300,12 @@ async def lottiepie(event):
         open("json.json", "w").write(jsn)
         await event.delete()
         await runcmd(f"lottie_convert.py json.json tgs.tgs")
-        await borg.send_file(event.chat_id, file="tgs.tgs", force_document=False, reply_to=event.reply_to_msg_id)
+        await borg.send_file(
+            event.chat_id,
+            file="tgs.tgs",
+            force_document=False,
+            reply_to=event.reply_to_msg_id,
+        )
         os.remove("json.json")
         os.remove("tgs.tgs")
 
@@ -308,7 +313,7 @@ async def lottiepie(event):
 @friday.on(friday_on_cmd(pattern=r"ph ?(.*)"))
 @friday.on(sudo_cmd(pattern=r"ph ?(.*)", allow_sudo=True))
 async def img(event):
-    reply = await event.get_reply_message() 
+    await event.get_reply_message()
     text = event.pattern_match.group(1)
     if not text:
         await event.edit("No input found!  --__--")
