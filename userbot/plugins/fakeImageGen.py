@@ -30,7 +30,7 @@ async def _(event):
     response = requests.get(url)
     await event.edit("Creating a fake face for you... 🌚")
     if response.status_code == 200:
-        with open("FRIDAYOT.jpg", "wb") as f:
+        with open("cipherx.jpg", "wb") as f:
             f.write(response.content)
 
     captin = f"Fake Image Made by CɪᴘʜᴇʀX."
