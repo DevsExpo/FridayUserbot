@@ -6,7 +6,6 @@ import requests
 
 from userbot import *
 from userbot.utils import *
-from userbot.Configs import Config
 from var import Var
 
 
