@@ -1,5 +1,4 @@
-""" It does not do to dwell on dreams and forget to live
-Syntax: .getime"""
+
 
 import asyncio
 import os
@@ -18,7 +17,7 @@ async def _(event):
     if event.fwd_from:
         return
     current_time = datetime.now().strftime(
-        "☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠ \nCipherX Timezone \n  Time: %H:%M:%S \n  Date: %d.%m.%y \n☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠☠"
+        "CipherX Timezone \n  Time: %H:%M:%S \n  Date: %d.%m.%y"
     )
     start = datetime.now()
     input_str = event.pattern_match.group(1)
@@ -43,8 +42,7 @@ async def _(event):
         event.chat_id,
         required_file_name,
         caption="Time",
-        # Courtesy: @ManueI15
-        reply_to=reply_msg_id,
+        reply_to=previous_message,
     )
     os.remove(required_file_name)
     end = datetime.now()
