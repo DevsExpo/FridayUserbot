@@ -19,7 +19,7 @@ async def _(event):
     if not event.reply_to_msg_id:
         await event.edit("Reply to any user message.")
         return
-    reply_message = await event.get_reply_message()
+    reply = await event.get_reply_message() 
     if not reply_message.media:
         await event.edit("Reply to file")
         return
@@ -36,7 +36,7 @@ async def _(event):
             reply = await conv.get_response()
             final = reply.text
             await borg.send_message(
-                event.chat_id, final.rsplit("\n", 4)[0], reply_to=reply_to_msg_id
+                event.chat_id, final.rsplit("\n", 4)[0], reply_to=event.reply_to_msg_id
             )
         except YouBlockedUserError:
             await event.edit("Error: Unblock bot and retry!")
