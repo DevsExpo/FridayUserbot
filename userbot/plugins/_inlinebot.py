@@ -308,7 +308,7 @@ async def on_plug_in_callback_query_handler(event):
 async def users(event):
     await event.edit(
         "⨵ CɪᴘʜᴇʀX Bot Pm-Security Menu Closed ⨵",
-        buttons=[custon.Button.inline("Re-open Menu", data="reopen2")],
+        buttons=[custom.Button.inline("Re-open Menu", data="reopen2")],
     )
 
 
