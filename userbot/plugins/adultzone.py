@@ -6,9 +6,9 @@ import requests
 
 from userbot import *
 from userbot.utils import *
-from var import Var
 
 sedpath = "./cipherx/"
+
 
 @bot.on(admin_cmd("boobs$"))
 @bot.on(sudo_cmd(pattern="boobs$", allow_sudo=True))
