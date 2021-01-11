@@ -1,8 +1,3 @@
-"""Reply to an image/sticker with .mmf` 'text on top' ; 'text on bottom
-base by: @r4v4n4
-created by: @A_Dark_Princ3
-"""
-
 import asyncio
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -22,7 +17,7 @@ async def _(event):
     if not event.reply_to_msg_id:
         await event.edit("`Syntax: reply to an image with .mmf And Text `")
         return
-    await event.get_reply_message()
+    cipher = await event.get_reply_message()
     if not reply_message.media:
         await event.edit("```reply to a image/sticker/gif```")
         return
@@ -47,7 +42,7 @@ async def _(event):
             response = await conv.get_response()
             await conv.mark_read(message=response)
             den = response.media
-            await borg.send_file(hmm, den, reply_to=event.reply_to_msg_id)
+            await borg.send_file(hmm, den, reply_to=cipher)
         except YouBlockedUserError:
             await event.reply("```Please unblock bot and try again```")
             return
