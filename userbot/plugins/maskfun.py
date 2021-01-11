@@ -33,7 +33,7 @@ async def scan(event):
 
     maskPath = f"{pic}"
 
-    cascPath = "haarcascade_frontalface_default.xml"
+    cascPath = "face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
@@ -66,6 +66,7 @@ async def scan(event):
     await event.delete()
 
 
+
 @bot.on(admin_cmd(pattern=r"pro"))
 async def scan(event):
     path = "cipherx"
@@ -88,7 +89,7 @@ async def scan(event):
 
     maskPath = "f061c861ba85fbb23a51e.png"
 
-    cascPath = "haarcascade_frontalface_default.xml"
+    cascPath = "face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
@@ -143,7 +144,7 @@ async def scan(event):
 
     maskPath = "df2d739544595ae337642.png"
 
-    cascPath = "haarcascade_frontalface_default.xml"
+    cascPath = "face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
@@ -198,7 +199,7 @@ async def scan(event):
 
     maskPath = "4cc40d1e0846667488341.png"
 
-    cascPath = "haarcascade_frontalface_default.xml"
+    cascPath = "face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
@@ -253,7 +254,7 @@ async def scan(event):
 
     maskPath = "55fcb205c6f8f4790585e.png"
 
-    cascPath = "haarcascade_frontalface_default.xml"
+    cascPath = "face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
@@ -308,7 +309,7 @@ async def scan(event):
 
     maskPath = "54d2a267d411951b41a20.png"
 
-    cascPath = "haarcascade_frontalface_default.xml"
+    cascPath = "face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
@@ -363,7 +364,7 @@ async def scan(event):
 
     maskPath = "b934a713abb321bd1a9fe.png"
 
-    cascPath = "haarcascade_frontalface_default.xml"
+    cascPath = "face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
