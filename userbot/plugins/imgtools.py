@@ -21,7 +21,7 @@ cipherx = (
 KANG_KAREGA_MC = str(ALIVE_NAME) if ALIVE_NAME else "CɪᴘʜᴇʀX"
 
 
-@bot.on(admin_cmd(pattern="enc ?(.*)", outgoing=True))
+@bot.on(admin_cmd(pattern="imgenc ?(.*)", outgoing=True))
 async def _(event):
     reply = await event.get_reply_message()
     if not reply:
@@ -152,7 +152,7 @@ async def hmm(event):
 CMD_HELP.update(
     {
         "imgtools": "**imgtools**\
-        \n\n**Syntax : **`.enc`\
+        \n\n**Syntax : **`.imgenc`\
         \n**Usage :** Enhancerize any anime pic.\
         \n\n**Syntax : **`.reso`\
         \n**Usage :** Makes a super resolution quality image from your picture.\
