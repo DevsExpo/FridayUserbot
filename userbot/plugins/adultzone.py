@@ -13,7 +13,7 @@ sedpath = "./cipherx/"
 @bot.on(admin_cmd("boobs$"))
 @bot.on(sudo_cmd(pattern="boobs$", allow_sudo=True))
 async def boobs(event):
-    await event.get_reply_message()
+    reply = await event.get_reply_message()
     if not os.path.isdir(sedpath):
         os.makedirs(sedpath)
     pic_loc = os.path.join(sedpath, "boobs.jpg")
@@ -23,7 +23,7 @@ async def boobs(event):
     nsfw = requests.get("http://api.oboobs.ru/noise/1").json()[0]["preview"]
     urllib.request.urlretrieve("http://media.oboobs.ru/{}".format(nsfw), pic_loc)
     await event.client.send_file(
-        event.chat_id, pic_loc, force_document=False, reply_to=event.reply_to_msg_id
+        event.chat_id, pic_loc, force_document=False, reply_to=reply.id
     )
     os.remove(pic_loc)
     await event.delete()
@@ -33,7 +33,7 @@ async def boobs(event):
 @bot.on(admin_cmd("butts$"))
 @bot.on(sudo_cmd(pattern="butts$", allow_sudo=True))
 async def butts(event):
-    await event.get_reply_message()
+    reply = await event.get_reply_message()
     if not os.path.isdir(sedpath):
         os.makedirs(sedpath)
     pic_loc = os.path.join(sedpath, "butts.jpg")
@@ -43,7 +43,7 @@ async def butts(event):
     nsfw = requests.get("http://api.obutts.ru/noise/1").json()[0]["preview"]
     urllib.request.urlretrieve("http://media.obutts.ru/{}".format(nsfw), pic_loc)
     await event.client.send_file(
-        event.chat_id, pic_loc, force_document=False, reply_to=event.reply_to_msg_id
+        event.chat_id, pic_loc, force_document=False, reply_to=reply.id
     )
     os.remove(pic_loc)
     await event.delete()
