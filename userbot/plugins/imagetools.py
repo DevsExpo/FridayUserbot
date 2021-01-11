@@ -33,6 +33,7 @@ if not os.path.isdir(sedpath):
 @friday.on(friday_on_cmd(pattern=r"cit"))
 @friday.on(sudo_cmd(pattern=r"cit", allow_sudo=True))
 async def hmm(event):
+    reply = await event.get_reply_message() 
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -67,7 +68,7 @@ async def hmm(event):
     file_name = "Colour.png"
     ok = sedpath + "/" + file_name
     cv2.imwrite(ok, colorized)
-    await borg.send_file(event.chat_id, ok)
+    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
     await hmmu.delete()
     for files in (ok, img):
         if files and os.path.exists(files):
@@ -78,6 +79,7 @@ async def hmm(event):
 @friday.on(friday_on_cmd(pattern=r"nst"))
 @friday.on(sudo_cmd(pattern=r"nst", allow_sudo=True))
 async def hmm(event):
+    reply = await event.get_reply_message() 
     life = Config.DEEP_API_KEY
     if life == None:
         life = "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"
@@ -98,7 +100,7 @@ async def hmm(event):
     hmmyes = sedcopy["detections"]
     game = sedcopy["nsfw_score"]
     final = f"**IMG RESULT** \n**Detections :** `{hmmyes}` \n**NSFW SCORE :** `{game}`"
-    await borg.send_message(event.chat_id, final)
+    await borg.send_message(event.chat_id, final, reply_to=event.reply_to_msg_id)
     await hmm.delete()
     if os.path.exists(img):
         os.remove(img)
@@ -107,6 +109,7 @@ async def hmm(event):
 @friday.on(friday_on_cmd(pattern=r"thug"))
 @friday.on(sudo_cmd(pattern=r"thug", allow_sudo=True))
 async def iamthug(event):
+    reply = await event.get_reply_message() 
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -129,7 +132,7 @@ async def iamthug(event):
     file_name = "cipherx.png"
     ok = sedpath + "/" + file_name
     background.save(ok, "PNG")
-    await borg.send_file(event.chat_id, ok)
+    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
     await hmm.delete()
     for files in (ok, img):
         if files and os.path.exists(files):
@@ -139,6 +142,7 @@ async def iamthug(event):
 @friday.on(friday_on_cmd(pattern=r"tni"))
 @friday.on(sudo_cmd(pattern=r"tni", allow_sudo=True))
 async def toony(event):
+    reply = await event.get_reply_message() 
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -154,7 +158,7 @@ async def toony(event):
     ok = sedpath + "/" + file_name
     cv2.imwrite(ok, cartoon_image_style_2)
     # Upload it
-    await borg.send_file(event.chat_id, ok)
+    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
     await hmmu.delete()
     # Remove all Files
     for files in (ok, img):
@@ -185,6 +189,7 @@ async def lolmetrg(event):
 @friday.on(friday_on_cmd(pattern=r"jail"))
 @friday.on(sudo_cmd(pattern=r"jail", allow_sudo=True))
 async def hmm(event):
+    reply = await event.get_reply_message() 
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -206,7 +211,7 @@ async def hmm(event):
 
     file_name = "testing.png"
     ok = "./cipherx/" + file_name
-    await borg.send_file(event.chat_id, ok)
+    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
     await hmmu.delete()
     for files in (ok, img):
         if files and os.path.exists(files):
@@ -216,6 +221,7 @@ async def hmm(event):
 @friday.on(friday_on_cmd(pattern=r"greyscale"))
 @friday.on(sudo_cmd(pattern=r"greyscale", allow_sudo=True))
 async def hmm(event):
+    reply = await event.get_reply_message() 
     if not event.reply_to_msg_id:
         await event.reply("Reply to any Image.")
         return
@@ -229,7 +235,7 @@ async def hmm(event):
     cv2.imwrite("./cipherx/testing.png", gray_img)
     file_name = "testing.png"
     ok = "./cipherx/" + file_name
-    await borg.send_file(event.chat_id, ok)
+    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
     await hmmu.delete()
     for files in (ok, img):
         if files and os.path.exists(files):
@@ -242,6 +248,7 @@ async def hmm(event):
 @friday.on(friday_on_cmd(pattern=r"fgs ?(.*)"))
 @friday.on(sudo_cmd(pattern=r"fgs ?(.*)", allow_sudo=True))
 async def img(event):
+    reply = await event.get_reply_message() 
     text = event.pattern_match.group(1)
     if not text:
         await event.edit("No input found!")
@@ -263,7 +270,7 @@ async def img(event):
     ok = sedpath + "/" + file_name
     photo.save(ok)
     await event.delete()
-    await friday.send_file(event.chat_id, ok)
+    await friday.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
     if os.path.exists(ok):
         os.remove(ok)
 
@@ -293,7 +300,7 @@ async def lottiepie(event):
         open("json.json", "w").write(jsn)
         await event.delete()
         await runcmd(f"lottie_convert.py json.json tgs.tgs")
-        await borg.send_file(event.chat_id, file="tgs.tgs", force_document=False)
+        await borg.send_file(event.chat_id, file="tgs.tgs", force_document=False, reply_to=event.reply_to_msg_id)
         os.remove("json.json")
         os.remove("tgs.tgs")
 
@@ -301,6 +308,7 @@ async def lottiepie(event):
 @friday.on(friday_on_cmd(pattern=r"ph ?(.*)"))
 @friday.on(sudo_cmd(pattern=r"ph ?(.*)", allow_sudo=True))
 async def img(event):
+    reply = await event.get_reply_message() 
     text = event.pattern_match.group(1)
     if not text:
         await event.edit("No input found!  --__--")
@@ -322,7 +330,7 @@ async def img(event):
     img.save("./cipherx/testpb.jpg")
     file_name = "testpb.jpg"
     ok = "./cipherx/" + file_name
-    await borg.send_file(event.chat_id, ok)
+    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
     os.remove(files)
     for files in (ok, img):
         if files and os.path.exists(files):
@@ -412,7 +420,7 @@ async def hmm(event):
     im.save("./cipherx/livenews.png")
     file_name = "livenews.png"
     ok = "./cipherx/" + file_name
-    await borg.send_file(event.chat_id, ok)
+    await borg.send_file(event.chat_id, ok, reply_to=event.reply_to_msg_id)
     await hmmu.delete()
     for files in (ok, img):
         if files and os.path.exists(files):
