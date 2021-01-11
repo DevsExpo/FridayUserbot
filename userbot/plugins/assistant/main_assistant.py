@@ -123,7 +123,7 @@ async def users(event):
 async def megix(event):
     buttons = start(0)
     await event.delete()
-    await event.edit("Menu Re-opened", buttons=buttons)
+    await event.edit("≼≼≼Menu Re-opened≽≽≽", buttons=buttons)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
