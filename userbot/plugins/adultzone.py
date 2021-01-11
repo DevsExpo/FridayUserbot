@@ -8,14 +8,15 @@ from userbot import *
 from userbot.utils import *
 from var import Var
 
+sedpath = "./cipherx/"
 
 @bot.on(admin_cmd("boobs$"))
 @bot.on(sudo_cmd(pattern="boobs$", allow_sudo=True))
 async def boobs(event):
     await event.get_reply_message()
-    if not os.path.isdir(Var.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Var.TMP_DOWNLOAD_DIRECTORY)
-    pic_loc = os.path.join(Var.TMP_DOWNLOAD_DIRECTORY, "boobs.jpg")
+    if not os.path.isdir(sedpath):
+        os.makedirs(sedpath)
+    pic_loc = os.path.join(sedpath, "boobs.jpg")
     a = await event.reply("Finding some big boobs 🧐")
     await asyncio.sleep(0.5)
     await a.edit("Sending some big boobs🤪")
@@ -33,9 +34,9 @@ async def boobs(event):
 @bot.on(sudo_cmd(pattern="butts$", allow_sudo=True))
 async def butts(event):
     await event.get_reply_message()
-    if not os.path.isdir(Var.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Var.TMP_DOWNLOAD_DIRECTORY)
-    pic_loc = os.path.join(Var.TMP_DOWNLOAD_DIRECTORY, "butts.jpg")
+    if not os.path.isdir(sedpath):
+        os.makedirs(sedpath)
+    pic_loc = os.path.join(sedpath, "butts.jpg")
     a = await event.reply("Finding some beautiful butts🧐")
     await asyncio.sleep(0.5)
     await a.edit("Sending some beautiful butts🤪")
