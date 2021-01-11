@@ -23,6 +23,7 @@ from userbot.utils import friday_on_cmd, sudo_cmd
 @friday.on(friday_on_cmd(pattern="picgen"))
 @friday.on(sudo_cmd(pattern="picgen", allow_sudo=True))
 async def _(event):
+    reply = await event.get_reply_message()
     if event.fwd_from:
         return
 
@@ -35,9 +36,9 @@ async def _(event):
 
     captin = f"Fake Image Made by CɪᴘʜᴇʀX."
     fole = "cipherx.jpg"
-    await borg.send_file(event.chat_id, fole, caption=captin)
+    await borg.send_file(event.chat_id, fole, caption=captin, reply_to=event.reply_to_msg_id)
     await event.delete()
-    os.system("rm /root/userbot/cipherx.jpg ")
+    os.system("rm /root/userbot/cipherx.jpg")
 
 
 CMD_HELP.update(
