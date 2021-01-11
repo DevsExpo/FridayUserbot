@@ -52,7 +52,7 @@ async def start(event):
         await tgbot.send_message(
             vent,
             message=f"Hi Master, It's Me {bot_id}, Your Assistant ! \nWhat You Wanna Do?",
-            sebuttons=[
+            buttons=[
                 [custom.Button.inline("Show Users 🔥", data="users")],
                 [custom.Button.inline("Commands For Assistant", data="gibcmd")],
                 [
@@ -73,7 +73,7 @@ async def start(event):
             file=mypic,
             caption=starttext,
             link_preview=False,
-            sebuttons=[
+            buttons=[
                 [custom.Button.inline("Commands For Assistant", data="usercmd")],
                 [
                     Button.url(
@@ -123,7 +123,7 @@ async def users(event):
 async def megix(event):
     start(0)
     await event.delete()
-    await event.edit("Menu Re-opened", buttons=sebuttons)
+    await event.edit("Menu Re-opened", buttons=buttons)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
