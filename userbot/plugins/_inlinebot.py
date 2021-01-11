@@ -71,7 +71,7 @@ async def inline_handler(event):
                         "✓ I'm Here for Asking Something ✓", data="askme"
                     )
                 ],
-                [custom.Button.inline("⨵ Close Menu ⨵", data="close2")],
+                [custom.Button.inline("⨵ Close Menu ⨵", data="sendclose")],
             ],
         )
         await event.answer([result])
@@ -304,7 +304,7 @@ async def on_plug_in_callback_query_handler(event):
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close2")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"sendclose")))
 async def users(event):
     await event.edit(
         "⨵ CɪᴘʜᴇʀX Bot Pm-Security Menu Closed ⨵",
@@ -313,11 +313,9 @@ async def users(event):
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen2")))
-async def megic(event):
+async def megix(event):
+    start(0)
     await event.delete()
-    buttons = start(
-        0,
-    )
     await event.edit("Menu Re-opened", buttons=buttons)
 
 
