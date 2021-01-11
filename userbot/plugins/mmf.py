@@ -24,6 +24,7 @@ sedpath = Config.TMP_DOWNLOAD_DIRECTORY
 
 @friday.on(friday_on_cmd(pattern="memify (.*)"))
 async def starkmeme(event):
+    reply = await event.get_reply_message()
     hmm = event.pattern_match.group(1)
     if hmm == None:
         await event.edit("Give Some Text")
@@ -59,7 +60,7 @@ async def starkmeme(event):
             bottom_text = ""
             generate_meme(seds, top_text=top_text, bottom_text=bottom_text)
             imgpath = sedpath + "/" + "memeimg.png"
-            await borg.send_file(event.chat_id, imgpath)
+            await borg.send_file(event.chat_id, imgpath, reply_to=event.reply_to_msg_id)
             if os.path.exists(imgpath):
                 os.remove(imgpath)
             await mryeast.delete()
