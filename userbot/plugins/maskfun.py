@@ -66,7 +66,6 @@ async def scan(event):
     await event.delete()
 
 
-
 @bot.on(admin_cmd(pattern=r"pro"))
 async def scan(event):
     path = "cipherx"
