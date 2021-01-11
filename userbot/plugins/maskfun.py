@@ -24,7 +24,7 @@ async def scan(event):
     import cv2
 
     os.system(
-        "wget https://datreon.000webhostapp.com/haarcascade_frontalface_default.xml"
+        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
     )
 
     os.system(f"wget {link}")
@@ -66,60 +66,6 @@ async def scan(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern=r"thug"))
-async def scan(event):
-    path = "cipherx"
-
-    await event.edit("Lets give a Mask 🤪")
-
-    reply = await event.get_reply_message()
-
-    lol = await borg.download_media(reply.media, path)
-
-    import cv2
-
-    os.system(
-        "wget https://datreon.000webhostapp.com/haarcascade_frontalface_default.xml"
-    )
-
-    os.system("wget https://datreon.000webhostapp.com/mask.png")
-
-    imagePath = lol
-
-    maskPath = "mask.png"
-
-    cascPath = "haarcascade_frontalface_default.xml"
-
-    faceCascade = cv2.CascadeClassifier(cascPath)
-
-    image = cv2.imread(imagePath)
-
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
-    faces = faceCascade.detectMultiScale(gray, 1.15)
-
-    background = Image.open(imagePath)
-
-    for (x, y, w, h) in faces:
-        mask = Image.open(maskPath)
-        mask = mask.resize((w, h), Image.ANTIALIAS)
-        offset = (x, y)
-        background.paste(mask, offset, mask=mask)
-
-    file_name = "thug.png"
-
-    hehe = path + "/" + file_name
-
-    background.save(hehe, "PNG")
-
-    await borg.send_file(event.chat_id, hehe)
-
-    for files in (hehe, lol):
-        if files and os.path.exists(files):
-            os.remove(files)
-
-    await event.delete()
-
 
 @bot.on(admin_cmd(pattern=r"pro"))
 async def scan(event):
@@ -134,7 +80,7 @@ async def scan(event):
     import cv2
 
     os.system(
-        "wget https://datreon.000webhostapp.com/haarcascade_frontalface_default.xml"
+        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
     )
 
     os.system("wget https://telegra.ph/file/f061c861ba85fbb23a51e.png")
@@ -189,7 +135,7 @@ async def scan(event):
     import cv2
 
     os.system(
-        "wget https://datreon.000webhostapp.com/haarcascade_frontalface_default.xml"
+        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
     )
 
     os.system("wget https://telegra.ph/file/df2d739544595ae337642.png")
@@ -244,7 +190,7 @@ async def scan(event):
     import cv2
 
     os.system(
-        "wget https://datreon.000webhostapp.com/haarcascade_frontalface_default.xml"
+        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
     )
 
     os.system("wget https://telegra.ph/file/4cc40d1e0846667488341.png")
@@ -299,7 +245,7 @@ async def scan(event):
     import cv2
 
     os.system(
-        "wget https://datreon.000webhostapp.com/haarcascade_frontalface_default.xml"
+        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
     )
 
     os.system("wget https://telegra.ph/file/55fcb205c6f8f4790585e.png")
@@ -354,7 +300,7 @@ async def scan(event):
     import cv2
 
     os.system(
-        "wget https://datreon.000webhostapp.com/haarcascade_frontalface_default.xml"
+        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
     )
 
     os.system("wget https://telegra.ph/file/54d2a267d411951b41a20.png")
@@ -409,7 +355,7 @@ async def scan(event):
     import cv2
 
     os.system(
-        "wget https://datreon.000webhostapp.com/haarcascade_frontalface_default.xml"
+        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
     )
 
     os.system("wget https://telegra.ph/file/b934a713abb321bd1a9fe.png")
@@ -455,7 +401,6 @@ CMD_HELP.update(
     {
         "maskfun": "List of All Available Fun Commands.\
 \n\n.cmask\
-\n\n.thug\
 \n\n.pro\
 \n\n.oxy\
 \n\n.old\
