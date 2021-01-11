@@ -307,16 +307,16 @@ async def on_plug_in_callback_query_handler(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"sendclose")))
 async def users(event):
     await event.edit(
-        "⨵ CɪᴘʜᴇʀX Bot Pm-Security Menu Closed ⨵",
+        "⨵CɪᴘʜᴇʀX Bot Pm-Security Menu Closed⨵",
         buttons=[custom.Button.inline("Re-open Menu", data="reopen2")],
     )
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen2")))
 async def megix(event):
-    start(0)
+    buttons=start(0)
     await event.delete()
-    await event.edit("Menu Re-opened", buttons=buttons)
+    await event.edit("≼≼≼Menu Re-opened≽≽≽", buttons=buttons)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"statcheck")))
