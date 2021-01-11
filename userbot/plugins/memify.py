@@ -22,7 +22,7 @@ async def _(event):
     if not event.reply_to_msg_id:
         await event.edit("`Syntax: reply to an image with .mmf And Text `")
         return
-    reply_message = await event.get_reply_message()
+    reply = await event.get_reply_message()
     if not reply_message.media:
         await event.edit("```reply to a image/sticker/gif```")
         return
@@ -47,7 +47,7 @@ async def _(event):
             response = await conv.get_response()
             await conv.mark_read(message=response)
             den = response.media
-            await borg.send_file(hmm, den)
+            await borg.send_file(hmm, den, reply_to=event.reply_to_msg_id)
         except YouBlockedUserError:
             await event.reply("```Please unblock bot and try again```")
             return
