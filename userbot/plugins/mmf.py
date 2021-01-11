@@ -30,7 +30,7 @@ async def starkmeme(event):
         await event.edit("Give Some Text")
         return
     if not event.reply_to_msg_id:
-        await event.edit("`PLease, Reply To A MsG`")
+        await event.edit("`PLease Reply To A Message`")
         return
     mryeast = await event.edit("Making Memes...")
     response = await event.get_reply_message()
@@ -67,7 +67,7 @@ async def starkmeme(event):
 
 
 def generate_meme(
-    image_path, top_text, bottom_text="", font_path="Fonts/impact.ttf", font_size=11
+    image_path, top_text, bottom_text="", font_path="Fonts/go3v2.ttf", font_size=11
 ):
     im = Image.open(image_path)
     draw = ImageDraw.Draw(im)
