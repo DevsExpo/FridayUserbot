@@ -1,3 +1,4 @@
+import asyncio
 import html
 
 from telethon.tl import functions
@@ -5,8 +6,8 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 
 from userbot.Config import Var
-from userbot.utils import admin_cmd 
-import asyncio
+from userbot.utils import admin_cmd
+
 from .. import ALIVE_NAME, CMD_HELP
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Black Lightning"
