@@ -60,7 +60,7 @@ async def start(event):
                         "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
                     )
                 ],
-                [custom.Button.inline("⨵ Close Menu ⨵", data="close1")],
+                [custom.Button.inline("⨵ Close Menu ⨵", data="seclose")],
             ],
         )
     else:
@@ -80,7 +80,7 @@ async def start(event):
                         "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
                     )
                 ],
-                [custom.Button.inline("⨵ Close Menu ⨵", data="close1")],
+                [custom.Button.inline("⨵ Close Menu ⨵", data="seclose")],
             ],
         )
         if os.path.exists(mypic):
@@ -111,7 +111,7 @@ async def users(event):
         pass
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close1")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"seclose")))
 async def users(event):
     await event.edit(
         "CɪᴘʜᴇʀX Bot Assitant Menu Closed !!",
