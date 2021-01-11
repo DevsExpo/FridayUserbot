@@ -14,7 +14,7 @@ bot = "@VirusYabBot"
 
 @cipherx.on(cipherx_on_cmd("ment ?(.*)"))
 async def _(event):
-    reply_message = await event.get_reply_message() 
+    reply_message = await event.get_reply_message()
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
