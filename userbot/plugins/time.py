@@ -1,5 +1,3 @@
-
-
 import asyncio
 import os
 from datetime import datetime
@@ -21,12 +19,12 @@ async def _(event):
     )
     start = datetime.now()
     input_str = event.pattern_match.group(1)
-    reply_msg_id = event.message.id
+    event.message.id
     if input_str:
         current_time = input_str
     elif event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        reply_msg_id = previous_message.id
+        previous_message.id
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):  # pylint:disable=E0602
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)  # pylint:disable=E0602
     # pylint:disable=E0602
