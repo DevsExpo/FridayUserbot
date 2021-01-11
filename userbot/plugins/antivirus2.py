@@ -14,12 +14,12 @@ bot = "@VirusYabBot"
 
 @cipherx.on(cipherx_on_cmd("ment ?(.*)"))
 async def _(event):
+    reply_message = await event.get_reply_message() 
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
         await event.edit("Reply to any user message.")
         return
-    reply_message = await event.get_reply_message()
     if not reply_message.media:
         await event.edit("Reply to file")
         return
@@ -45,7 +45,7 @@ async def _(event):
 CMD_HELP.update(
     {
         "antivirus 2": "Antivirus 2\
-        \n\nSyntax : .anti <reply to file>\
+        \n\nSyntax : .ment <reply to file>\
         \nUsage : Scans files Max 300 MB."
     }
 )
