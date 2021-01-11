@@ -22,7 +22,7 @@ async def _(event):
     if not event.reply_to_msg_id:
         await event.edit("`Syntax: reply to an image with .mmf And Text `")
         return
-    reply = await event.get_reply_message()
+    await event.get_reply_message()
     if not reply_message.media:
         await event.edit("```reply to a image/sticker/gif```")
         return
