@@ -114,8 +114,8 @@ async def users(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"seclose")))
 async def users(event):
     await event.edit(
-        "CɪᴘʜᴇʀX Bot Assitant Menu Closed !!",
-        buttons=[Button.inline("Re-open Menu", data="reopen")],
+        "⨵ CɪᴘʜᴇʀX Bot Assitant Menu Closed ⨵",
+        buttons=[custom.Button.inline("Re-open Menu", data="reopen")],
     )
 
 
