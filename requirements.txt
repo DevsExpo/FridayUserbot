@@ -103,3 +103,4 @@ pyjokes
 cryptocompare
 faker
 wand
+rextester_py
