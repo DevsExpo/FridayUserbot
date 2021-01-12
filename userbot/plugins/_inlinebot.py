@@ -142,12 +142,12 @@ async def on_plug_in_callback_query_handler(event):
         await event.edit(
             f"Pasted {plugin_name} to {url}",
             link_preview=False,
-            buttons=[[(custom.Button.inline("≼≼≼", data="backme"), custom.Button.inline("⨵ Close Menu ⨵", data="close")]],
+            buttons=[[(custom.Button.inline("≼≼≼", data="backme"), custom.Button.inline("⨵ Close Menu ⨵", data="close"))]],
         )
     else:
         await event.edit(
             message=reply_pop_up_alert,
-            buttons=[[custom.Button.inline("≼≼≼", data="backme"), custom.Button.inline("⨵ Close Menu ⨵", data="close")]],
+            buttons=[[custom.Button.inline("≼≼≼", data="backme"), custom.Button.inline("⨵ Close Menu ⨵", data="close"))]],
         )
 
 
