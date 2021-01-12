@@ -115,11 +115,11 @@ async def users(event):
 async def users(event):
     await event.edit(
         "⨵ CɪᴘʜᴇʀX Bot Assitant Menu Closed ⨵",
-        buttons=[custom.Button.inline("Re-open Menu", data="reopen")],
+        buttons=[custom.Button.inline("Re-open Menu", data="Creopen")],
     )
 
 
-@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen")))
+@tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Creopen")))
 async def megix(event):
     buttons = start(0)
     await event.delete()
