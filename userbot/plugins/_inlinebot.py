@@ -142,7 +142,7 @@ async def on_plug_in_callback_query_handler(event):
         await event.edit(
             f"Pasted {plugin_name} to {url}",
             link_preview=False,
-            buttons=[[custom.Button.inline("≼≼≼", data="backme")]],
+            buttons=[[(custom.Button.inline("≼≼≼", data="backme"), custom.Button.inline("⨵ Close Menu ⨵", data="close")]],
         )
     else:
         await event.edit(
@@ -536,7 +536,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
             title = gresults["titles"][i]
             link = gresults["links"][i]
             desc = gresults["descriptions"][i]
-            okiknow = f"**GOOGLE - SEARCH** \n[{title}]({link})\n\n`{desc}`"
+            okiknow = f"**Google Search** \n[{title}]({link})\n\n`{desc}`"
             results.append(
                 await event.builder.article(
                     title=title,
@@ -571,7 +571,7 @@ async def inline_id_handler(event: events.InlineQuery.Event):
     ok = 1
     for vid in data.videos:
         if ok <= 5:
-            lul_m = f"**PORN-HUB SEARCH** \n**Video title :** `{vid.title}` \n**Video link :** `https://www.pornhub.com/view_video.php?viewkey={vid.video_id}`"
+            lul_m = f"**Pornhub Search** \n**Video title :** `{vid.title}` \n**Video link :** `https://www.pornhub.com/view_video.php?viewkey={vid.video_id}`"
             results.append(
                 await event.builder.article(
                     title=vid.title,
