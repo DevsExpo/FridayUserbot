@@ -300,7 +300,7 @@ async def on_plug_in_callback_query_handler(event):
     if event.query.user_id == bot.uid:
         await event.edit(
             "CɪᴘʜᴇʀX Super Technology Bot Menu Closed.\n(C) CɪᴘʜᴇʀX"
-            buttons=[[custom.Button.inline("≼≼≼Re-open Menu≽≽≽", data="backme")]],
+            buttons=[(custom.Button.inline("≼≼≼Re-open Menu≽≽≽", data="backme"))],
     ) 
     else:
         reply_pop_up_alert = "Don't touch that button bitch!\n(C) CɪᴘʜᴇʀX"
@@ -311,7 +311,7 @@ async def on_plug_in_callback_query_handler(event):
 async def users(event):
     await event.edit(
         "⨵CɪᴘʜᴇʀX Bot Pm-Security Menu Closed⨵",
-        buttons=[[custom.Button.inline("Re-open Menu", data="reopen2")]],
+        buttons=[(custom.Button.inline("Re-open Menu", data="reopen2"))],
     )
 
 
