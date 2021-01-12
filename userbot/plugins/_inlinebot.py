@@ -147,7 +147,7 @@ async def on_plug_in_callback_query_handler(event):
     else:
         await event.edit(
             message=reply_pop_up_alert,
-            buttons=[[custom.Button.inline("≼≼≼", data="backme")]],
+            buttons=[[custom.Button.inline("≼≼≼", data="backme"), custom.Button.inline("⨵ Close Menu ⨵", data="close")]],
         )
 
 
