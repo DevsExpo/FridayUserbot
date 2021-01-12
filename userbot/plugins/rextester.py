@@ -16,7 +16,7 @@
 
 from rextester_py import rexec
 
-from . import CMD_HELP
+from userbot import CMD_HELP
 from userbot.utils import admin_cmd 
 
 @bot.on(admin_cmd(pattern="rex"))
@@ -44,7 +44,7 @@ async def _(event):
                 "**ERROR**:\n`Unknown Language!!\nCheck available languages `[here](https://github.com/nitanmarcel/rextester_py#languages)"
             )
         return await event.edit(f"**ERROR:**\n`{str(e)}`")
-    out = f"**- Rextester**\n\n**Language:** `{lang}`\n**Code:** `{cmd}`\n\n**Output:** `{res}`\n\n"
+    out = f"**CɪᴘʜᴇʀX Ⲃⲟⲧ Rⲉⲭⲧⲉⲋⲧⲉʀ**\n\n**Ⳑⲁⲛⳋυⲁⳋⲉ:** `{lang}`\n**Ⲥⲟⲇⲉ:** `{cmd}`\n\n**Ⲟυⲧⲣυⲧ:** `{res}`\n\n"
     if err is not None:
         out += f"**Error:** `{err}`\n\n"
     if wrns is not None:
