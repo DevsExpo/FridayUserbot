@@ -142,12 +142,22 @@ async def on_plug_in_callback_query_handler(event):
         await event.edit(
             f"Pasted {plugin_name} to {url}",
             link_preview=False,
-            buttons=[[custom.Button.inline("≼≼≼", data="backme"), custom.Button.inline("⨵ Close Menu ⨵", data="close")]],
+            buttons=[
+                [
+                    custom.Button.inline("≼≼≼", data="backme"),
+                    custom.Button.inline("⨵ Close Menu ⨵", data="close"),
+                ]
+            ],
         )
     else:
         await event.edit(
             message=reply_pop_up_alert,
-            buttons=[[custom.Button.inline("≼≼≼", data="backme"), custom.Button.inline("⨵ Close Menu ⨵", data="close")]],
+            buttons=[
+                [
+                    custom.Button.inline("≼≼≼", data="backme"),
+                    custom.Button.inline("⨵ Close Menu ⨵", data="close"),
+                ]
+            ],
         )
 
 
@@ -301,8 +311,8 @@ async def on_plug_in_callback_query_handler(event):
         await event.edit(
             "CɪᴘʜᴇʀX Super Technology Bot Menu Closed.\n(C) CɪᴘʜᴇʀX",
             buttons=[(custom.Button.inline("≼≼≼Re-open Menu≽≽≽", data="backme"))],
-    ) 
-    
+        )
+
     else:
         reply_pop_up_alert = "Don't touch that button bitch!\n(C) CɪᴘʜᴇʀX"
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)

@@ -1,4 +1,4 @@
-#    Copyright (C) 2020 
+#    Copyright (C) 2020
 
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published by
@@ -17,7 +17,8 @@
 from rextester_py import rexec
 
 from userbot import CMD_HELP
-from userbot.utils import admin_cmd 
+from userbot.utils import admin_cmd
+
 
 @bot.on(admin_cmd(pattern="rex"))
 async def _(event):

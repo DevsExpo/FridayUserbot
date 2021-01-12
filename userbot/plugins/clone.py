@@ -4,9 +4,10 @@ import html
 from telethon.tl import functions
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
+
 from userbot.Configs import Config
-from var import Var
 from userbot.utils import admin_cmd
+from var import Var
 
 from .. import ALIVE_NAME, CMD_HELP
 
