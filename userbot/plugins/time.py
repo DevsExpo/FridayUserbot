@@ -16,7 +16,7 @@ async def _(event):
     if event.fwd_from:
         return
     current_time = datetime.now().strftime(
-        "CipherX Timezone \n  Time: %H:%M:%S \n  Date: %d.%m.%y"
+        "≼≼≼≼≼≼≼≼≼≽≽≽≽≽≽≽≽≽ \n CipherX Timezone \n  Time: %H:%M:%S \n  Date: %d.%m.%y \n ≼≼≼≼≼≼≼≼≼≽≽≽≽≽≽≽≽≽"
     )
     start = datetime.now()
     input_str = event.pattern_match.group(1)
