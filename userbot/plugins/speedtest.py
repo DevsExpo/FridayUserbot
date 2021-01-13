@@ -103,6 +103,6 @@ CMD_HELP.update(
     {
         "speedtest": "**Speedtest**\
 \n\n**Syntax : **`.speedtest`\
-\n**Usage :** check your userbot's internet speed"
+\n**Usage :** checks CɪᴘʜᴇʀX Server internet speed"
     }
 )
