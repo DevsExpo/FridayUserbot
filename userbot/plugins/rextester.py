@@ -17,9 +17,9 @@
 from rextester_py import rexec
 
 from userbot import CMD_HELP
-from userbot.utils import admin_cmd
 from userbot.Configs import Config
-from var import Var
+from userbot.utils import admin_cmd
+
 
 @bot.on(admin_cmd(pattern="rex"))
 async def _(event):
