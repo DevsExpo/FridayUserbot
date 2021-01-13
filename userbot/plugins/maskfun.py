@@ -23,17 +23,11 @@ async def scan(event):
     pic = linc[31:]
     import cv2
 
-    os.system(
-        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
-    )
-
-    os.system(f"wget {link}")
-
     imagePath = lol
 
     maskPath = f"{pic}"
 
-    cascPath = "face.xml"
+    cascPath = "./resources/face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
@@ -78,17 +72,13 @@ async def scan(event):
 
     import cv2
 
-    os.system(
-        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
-    )
-
     os.system("wget https://telegra.ph/file/f061c861ba85fbb23a51e.png")
 
     imagePath = lol
 
     maskPath = "f061c861ba85fbb23a51e.png"
 
-    cascPath = "face.xml"
+    cascPath = "./resources/face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
@@ -133,17 +123,13 @@ async def scan(event):
 
     import cv2
 
-    os.system(
-        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
-    )
-
     os.system("wget https://telegra.ph/file/df2d739544595ae337642.png")
 
     imagePath = lol
 
     maskPath = "df2d739544595ae337642.png"
 
-    cascPath = "face.xml"
+    cascPath = "./resources/face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
@@ -188,17 +174,13 @@ async def scan(event):
 
     import cv2
 
-    os.system(
-        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
-    )
-
     os.system("wget https://telegra.ph/file/4cc40d1e0846667488341.png")
 
     imagePath = lol
 
     maskPath = "4cc40d1e0846667488341.png"
 
-    cascPath = "face.xml"
+    cascPath = "./resources/face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
@@ -243,17 +225,13 @@ async def scan(event):
 
     import cv2
 
-    os.system(
-        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
-    )
-
     os.system("wget https://telegra.ph/file/55fcb205c6f8f4790585e.png")
 
     imagePath = lol
 
     maskPath = "55fcb205c6f8f4790585e.png"
 
-    cascPath = "face.xml"
+    cascPath = "./resources/face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
@@ -298,17 +276,13 @@ async def scan(event):
 
     import cv2
 
-    os.system(
-        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
-    )
-
     os.system("wget https://telegra.ph/file/54d2a267d411951b41a20.png")
 
     imagePath = lol
 
     maskPath = "54d2a267d411951b41a20.png"
 
-    cascPath = "face.xml"
+    cascPath = "./resources/face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
@@ -353,17 +327,13 @@ async def scan(event):
 
     import cv2
 
-    os.system(
-        "wget https://filetolinktelegrambot.herokuapp.com/62812794822968/face.xml"
-    )
-
     os.system("wget https://telegra.ph/file/b934a713abb321bd1a9fe.png")
 
     imagePath = lol
 
     maskPath = "b934a713abb321bd1a9fe.png"
 
-    cascPath = "face.xml"
+    cascPath = "./resources/face.xml"
 
     faceCascade = cv2.CascadeClassifier(cascPath)
 
