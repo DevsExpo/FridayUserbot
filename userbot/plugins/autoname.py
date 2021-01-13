@@ -1,5 +1,4 @@
-﻿"""Auto Profile Updation Commands
-.autoname"""
+#New optimized and beautified format made by @Hackintush 
 import asyncio
 import time
 
@@ -16,17 +15,21 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "CɪᴘʜᴇʀX"
 @friday.on(friday_on_cmd(pattern="autoname"))  # pylint:disable=E0602
 @friday.on(sudo_cmd(pattern="autoname", allow_sudo=True))
 async def _(event):
-    sed = await edit_or_reply(event, "`Starting AutoName Please Wait`")
+    sed = await edit_or_reply(event, "`Starting AutoName. Please Wait...`")
     if event.fwd_from:
         return
 
     while True:
-
-        DM = time.strftime("%d-%m-%y")
+        dictionary = {
+            '0' : '₀', '1' : '₁', '2' : '₂', '3' : '₃', '4': '₄',
+            '5' : '₅', '6' : '₆', '7' : '₇', '8' : '₈', '9' : '₉' 
+        }
 
         HM = time.strftime("%H:%M")
+        for key, value in dictionary.items():
+            HM = HM.replace(key,value)
 
-        name = f"🕒{HM} ⚡{DEFAULTUSER}⚡ 📅{DM}"
+        name = f"{DEFAULTUSER} {HM}"
 
         logger.info(name)
 
@@ -58,7 +61,7 @@ async def _(event):
 
         await asyncio.sleep(DEL_TIME_OUT)
 
-    await sed.edit(f"Auto Name has been started my Master")
+    await sed.edit(f"**Auto Name has been started**")
 
 
 CMD_HELP.update(
