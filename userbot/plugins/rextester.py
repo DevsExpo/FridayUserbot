@@ -18,7 +18,8 @@ from rextester_py import rexec
 
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
-
+from userbot.Configs import Config
+from var import Var
 
 @bot.on(admin_cmd(pattern="rex"))
 async def _(event):
@@ -31,7 +32,7 @@ async def _(event):
         cmd = evtxt.split("//", maxsplit=1)[1]
     except BaseException:
         return await event.edit(
-            f"Syntax - \n`{Var.CMD_HNDLR}rex language//code`\nLanguages can be found [here](https://github.com/nitanmarcel/rextester_py#languages)."
+            f"Syntax - \n`{Config.COMMAND_HAND_LER}rex language//code`\nLanguages can be found [here](https://github.com/nitanmarcel/rextester_py#languages)."
         )
 
     try:
