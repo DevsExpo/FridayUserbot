@@ -11,6 +11,7 @@ from userbot.utils import friday_on_cmd
 
 @friday.on(friday_on_cmd("speedtest ?(.*)"))
 async def _(event):
+    reply = await event.get_reply_message()
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
@@ -45,7 +46,7 @@ async def _(event):
         speedtest_image = response
         if as_text:
             await event.edit(
-                """`SpeedTest completed in {} seconds`
+                """`CɪᴘʜᴇʀX Server SpeedTest completed in {} seconds`
 
 `Download: {}`
 `Upload: {}`
@@ -64,15 +65,15 @@ async def _(event):
             await borg.send_file(
                 event.chat_id,
                 speedtest_image,
-                caption="**SpeedTest** completed in {} seconds".format(ms),
+                caption="**CɪᴘʜᴇʀX Server SpeedTest** completed in {} seconds".format(ms),
                 force_document=as_document,
-                reply_to=reply_msg_id,
+                reply_to=reply.id,
                 allow_cache=False,
             )
             await event.delete()
     except Exception as exc:
         await event.edit(
-            """**SpeedTest** completed in {} seconds
+            """**CɪᴘʜᴇʀX Server SpeedTest** completed in {} seconds
 Download: {}
 Upload: {}
 Ping: {}
