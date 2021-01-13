@@ -13,8 +13,6 @@ if not os.path.isdir(sedpath):
     os.makedirs(sedpath)
 
 friday.on(friday_on_cmd(pattern=r"reso"))
-
-
 @friday.on(sudo_cmd(pattern=r"reso", allow_sudo=True))
 async def hmm(event):
     life = Config.DEEP_API_KEY
