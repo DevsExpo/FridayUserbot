@@ -5,14 +5,16 @@ import os
 import requests
 from telethon.tl.types import MessageMediaPhoto
 
-from userbot import ALIVE_NAME, CMD_HELP
-from userbot.utils import admin_cmd, friday_on_cmd, sudo_cmd
+from userbot import CMD_HELP
+from userbot.utils import friday_on_cmd, sudo_cmd
 
 sedpath = "./cipherx/"
 if not os.path.isdir(sedpath):
     os.makedirs(sedpath)
 
 friday.on(friday_on_cmd(pattern=r"reso"))
+
+
 @friday.on(sudo_cmd(pattern=r"reso", allow_sudo=True))
 async def hmm(event):
     life = Config.DEEP_API_KEY
@@ -42,7 +44,6 @@ async def hmm(event):
     await hmm.delete()
     if os.path.exists(img):
         os.remove(img)
-
 
 
 @friday.on(friday_on_cmd(pattern=r"enc"))
