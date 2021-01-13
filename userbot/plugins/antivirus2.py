@@ -20,7 +20,7 @@ async def _(event):
     if not reply or not event.reply_to_msg_id:
         await event.edit("Reply to any user message.")
         return
-    if not reply.media or not reply_message.media:
+    if not reply.media:
         await event.edit("Reply to file")
         return
     chat = "@VirusYabBot"
