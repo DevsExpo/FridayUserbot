@@ -1,4 +1,4 @@
-#New optimized and beautified format made by @Hackintush 
+# New optimized and beautified format made by @Hackintush
 import asyncio
 import time
 
@@ -21,13 +21,21 @@ async def _(event):
 
     while True:
         dictionary = {
-            '0' : '₀', '1' : '₁', '2' : '₂', '3' : '₃', '4': '₄',
-            '5' : '₅', '6' : '₆', '7' : '₇', '8' : '₈', '9' : '₉' 
+            "0": "₀",
+            "1": "₁",
+            "2": "₂",
+            "3": "₃",
+            "4": "₄",
+            "5": "₅",
+            "6": "₆",
+            "7": "₇",
+            "8": "₈",
+            "9": "₉",
         }
 
         HM = time.strftime("%H:%M")
         for key, value in dictionary.items():
-            HM = HM.replace(key,value)
+            HM = HM.replace(key, value)
 
         name = f"{DEFAULTUSER} {HM}"
 
