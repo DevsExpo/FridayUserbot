@@ -40,6 +40,7 @@ async def _(event):
         event.chat_id,
         required_file_name,
         caption="Time",
+        reply_to=reply_msg_id,
         reply_to=previous_message,
     )
     os.remove(required_file_name)
