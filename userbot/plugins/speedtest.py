@@ -38,9 +38,9 @@ async def _(event):
     client_infos = response.get("client")
     i_s_p = client_infos.get("isp")
     i_s_p_rating = client_infos.get("isprating")
-    reply_msg_id = event.message.id
+    event.message.id
     if event.reply_to_msg_id:
-        reply_msg_id = event.reply_to_msg_id
+        event.reply_to_msg_id
     try:
         response = s.results.share()
         speedtest_image = response
@@ -65,7 +65,9 @@ async def _(event):
             await borg.send_file(
                 event.chat_id,
                 speedtest_image,
-                caption="**CɪᴘʜᴇʀX Server SpeedTest** completed in {} seconds".format(ms),
+                caption="**CɪᴘʜᴇʀX Server SpeedTest** completed in {} seconds".format(
+                    ms
+                ),
                 force_document=as_document,
                 reply_to=reply.id,
                 allow_cache=False,
