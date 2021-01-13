@@ -12,6 +12,7 @@ FONT_FILE_TO_USE = "Fonts/go3v2.ttf"
 
 @friday.on(friday_on_cmd("time ?(.*)"))  # pylint:disable=E0602
 async def _(event):
+    reply = await event.get_reply_message()
     if event.fwd_from:
         return
     current_time = datetime.now().strftime(
@@ -40,8 +41,7 @@ async def _(event):
         event.chat_id,
         required_file_name,
         caption="Time",
-        reply_to=reply_msg_id,
-        reply_to=previous_message,
+        reply_to=reply.id,
     )
     os.remove(required_file_name)
     end = datetime.now()
