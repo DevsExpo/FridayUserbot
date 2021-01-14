@@ -33,7 +33,7 @@ async def _(event):
             "9": "₉",
         }
 
-        HM = time.strftime("%H:%M")
+        HM = time.strftime("%H . %M")
         for key, value in dictionary.items():
             HM = HM.replace(key, value)
 
