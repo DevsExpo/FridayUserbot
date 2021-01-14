@@ -31,7 +31,7 @@ async def _(event):
     await event.edit("Scanning...")
     async with borg.conversation(chat) as conv:
         try:
-            await conv.send_message(reply_message)
+            await conv.send_message(reply)
             await asyncio.sleep(2)
             reply = await conv.get_response()
             final = reply.text
