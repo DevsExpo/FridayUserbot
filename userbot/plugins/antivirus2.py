@@ -24,8 +24,8 @@ async def _(event):
         await event.edit("Reply to file")
         return
     chat = "@VirusYabBot"
-    reply_message.sender
-    if reply_message.sender.bot:
+    reply.sender
+    if reply.sender.bot:
         await event.edit("Reply to actual user's message.")
         return
     await event.edit("Scanning...")
