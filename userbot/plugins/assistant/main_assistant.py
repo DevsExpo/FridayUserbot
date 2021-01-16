@@ -121,10 +121,51 @@ async def users(event):
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Creopen")))
 async def megix(event):
-    buttons = start(0)
     await event.delete()
-    await event.edit("≼≼≼Menu Re-opened≽≽≽", buttons=buttons)
-
+    starkbot = await tgbot.get_me()
+    bot_id = starkbot.first_name
+    bot_username = starkbot.username
+    replied_user = await event.client(GetFullUserRequest(event.sender_id))
+    vent = event.chat_id
+    mypic = Config.ASSISTANT_START_PIC
+    starttext = f"≼≼≼CɪᴘʜᴇʀX Assistant Bot Menu Re-opened≽≽≽\n(c)CɪᴘʜᴇʀX Exclusive"
+    if event.sender_id == bot.uid:
+        await tgbot.send_message(
+            vent,
+            message=f"≼≼≼Menu Re-opened Master≽≽≽",
+            buttons=[
+                [custom.Button.inline("Show Users 🔥", data="users")],
+                [custom.Button.inline("Commands For Assistant", data="gibcmd")],
+                [
+                    Button.url(
+                        "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
+                    )
+                ],
+                [custom.Button.inline("⨵ Close Menu ⨵", data="seclose")],
+            ],
+        )
+    else:
+        if already_added(event.sender_id):
+            pass
+        elif not already_added(event.sender_id):
+            add_usersid_in_db(event.sender_id)
+        await tgbot.send_file(
+            event.chat_id,
+            file=mypic,
+            caption=starttext,
+            link_preview=False,
+            buttons=[
+                [custom.Button.inline("Commands For Assistant", data="usercmd")],
+                [
+                    Button.url(
+                        "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
+                    )
+                ],
+                [custom.Button.inline("⨵ Close Menu ⨵", data="seclose")],
+            ],
+        )
+        if os.path.exists(mypic):
+            os.remove(mypic)
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
 async def users(event):
