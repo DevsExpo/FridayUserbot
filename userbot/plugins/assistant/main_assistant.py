@@ -123,9 +123,9 @@ async def users(event):
 async def megix(event):
     await event.delete()
     starkbot = await tgbot.get_me()
-    starkbot.first_name
+    bot_id = starkbot.first_name
     bot_username = starkbot.username
-    await event.client(GetFullUserRequest(event.sender_id))
+    replied_user = await event.client(GetFullUserRequest(event.sender_id))
     vent = event.chat_id
     mypic = Config.ASSISTANT_START_PIC
     starttext = f"≼≼≼CɪᴘʜᴇʀX Assistant Bot Menu Re-opened≽≽≽\n(c)CɪᴘʜᴇʀX Exclusive"
@@ -167,18 +167,17 @@ async def megix(event):
         if os.path.exists(mypic):
             os.remove(mypic)
 
-
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
 async def users(event):
     await event.delete()
-    grabon = "Here Are Some Commands \n➤ /start - Check if I'm Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot"
+    grabon = "Here Are Some Commands \n➤ /start - Check if I'm Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /broadcast - Sends Message To all Users In Bot \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n➤ /stats - Shows Total Users In Bot \n(c)CɪᴘʜᴇʀX Exclusive"
     await tgbot.send_message(event.chat_id, grabon)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"usercmd")))
 async def users(event):
     await event.delete()
-    userbon = "Here are Some Commands Which You Can Use in Groups \n➤ /start - Check if I'm Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message"
+    userbon = "Here are Some Commands Which You Can Use in Groups \n➤ /start - Check if I'm Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n(c)CɪᴘʜᴇʀX Exclusive"
     await tgbot.send_message(event.chat_id, userbon)
 
 
@@ -278,7 +277,7 @@ async def starkisnoob(event):
 @assistant_cmd("help", is_args=False)
 @peru_only
 async def starkislub(event):
-    grabonx = "Here are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message"
+    grabonx = "Here are Some Commands \n➤ /start - Check if I am Alive \n➤ /ping - Pong! \n➤ /tr <lang-code> \n➤ /id - Shows ID of User And Media. \n➤ /addnote - Add Note \n➤ /notes - Shows Notes \n➤ /rmnote - Remove Note \n➤ /alive - Am I Alive? \n➤ /bun - Works In Group , Bans A User. \n➤ /unbun - Unbans A User in Group \n➤ /prumote - Promotes A User \n➤ /demute - Demotes A User \n➤ /pin - Pins A Message \n(c)CɪᴘʜᴇʀX Exclusive"
     await event.reply(grabonx)
 
 
@@ -294,7 +293,7 @@ async def starkisnoob(event):
         add_nibba_in_db(user_id)
         await event.reply("Blacklisted This Dumb Person")
         await tgbot.send_message(
-            user_id, "You Have Been Blacklisted And You Can't Message My Master Now."
+            user_id, "You've Been Blacklisted, So Can't Message CɪᴘʜᴇʀX Now."
         )
 
 
@@ -312,5 +311,5 @@ async def starkisnoob(event):
         removenibba(user_id)
         await event.reply("Unblacklisted This Dumb Person")
         await tgbot.send_message(
-            user_id, "Congragulation! You Have Been Unblacklisted By My Master."
+            user_id, "Congragulation! You've Been Unblacklisted By CɪᴘʜᴇʀX."
         )
