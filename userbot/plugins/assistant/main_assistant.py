@@ -123,9 +123,9 @@ async def users(event):
 async def megix(event):
     await event.delete()
     starkbot = await tgbot.get_me()
-    bot_id = starkbot.first_name
+    starkbot.first_name
     bot_username = starkbot.username
-    replied_user = await event.client(GetFullUserRequest(event.sender_id))
+    await event.client(GetFullUserRequest(event.sender_id))
     vent = event.chat_id
     mypic = Config.ASSISTANT_START_PIC
     starttext = f"≼≼≼CɪᴘʜᴇʀX Assistant Bot Menu Re-opened≽≽≽\n(c)CɪᴘʜᴇʀX Exclusive"
@@ -166,6 +166,7 @@ async def megix(event):
         )
         if os.path.exists(mypic):
             os.remove(mypic)
+
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
 async def users(event):
