@@ -495,6 +495,8 @@ def assistant_cmd(add_cmd, is_args=False):
             pattern = bothandler + add_cmd + "(?: |$)(.*)"
         elif is_args == "stark":
             pattern = bothandler + add_cmd + " (.*)"
+        elif is_args == "heck":
+            pattern = bothandler + add_cmd
         elif is_args == "snips":
             pattern = bothandler + add_cmd + " (\S+)"
         else:
