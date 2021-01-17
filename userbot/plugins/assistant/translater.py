@@ -13,9 +13,6 @@
 
 
 import emoji
-from googletrans import Translator
-import requests
-from deep_translator import GoogleTranslator
 from googletrans import LANGUAGES
 from langdetect import detect
 
