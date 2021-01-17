@@ -121,7 +121,6 @@ async def users(event):
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"Creopen")))
 async def megix(event):
-    await event.delete()
     starkbot = await tgbot.get_me()
     starkbot.first_name
     bot_username = starkbot.username
