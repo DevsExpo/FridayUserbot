@@ -1,10 +1,10 @@
-import json
 import os
-
 import requests
-
+from userbot import CMD_HELP
 from userbot.function import convert_to_image
 from userbot.utils import friday_on_cmd, sudo_cmd
+import json
+import requests
 
 sedpath = "./yandex/"
 if not os.path.isdir(sedpath):
@@ -52,3 +52,12 @@ Another Note:- Don't Use This Command continually, Yandex Will Block Your Reques
         parse_mode="HTML",
     )
     await event.delete()
+
+    
+CMD_HELP.update(
+    {
+        "yandex_reverse_img": "**Yandex Reverse Image search**\
+\n\n**Syntax : **`.yandex <reply to image>`\
+\n**Usage :** Reverse Searches The Image on yandex."
+    }
+) 
