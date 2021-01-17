@@ -322,15 +322,38 @@ async def on_plug_in_callback_query_handler(event):
 async def users(event):
     await event.edit(
         "⨵CɪᴘʜᴇʀX Bot Pm-Security Menu Closed⨵",
-        buttons=[(custom.Button.inline("Re-open Menu", data="reopen2"))],
+        buttons=[(custom.Button.inline("≼≼≼Re-open Menu≽≽≽", data="reopen2"))],
     )
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen2")))
 async def megix(event):
-    buttons = paginate_help(0, CMD_HELP, "helpme")
+    if event.query.user_id == bot.uid and query.startswith("**Hello"):
+        result = builder.photo(
+            file=WARN_PIC,
+            text=f"≼≼≼Pm-Security Menu Re-opened≽≽≽\nChoose the reason you've messaged me.\\n(C) CɪᴘʜᴇʀX Exclusive ",
+            buttons=[
+                [
+                    custom.Button.inline(
+                        "✘ I'm Here for Spamming ✘", data="dontspamnigga"
+                    )
+                ],
+                [
+                    custom.Button.inline(
+                        "✓ I'm Here for Talking with CɪᴘʜᴇʀX ✓",
+                        data="whattalk",
+                    )
+                ],
+                [
+                    custom.Button.inline(
+                        "✓ I'm Here for Asking Something ✓", data="askme"
+                    )
+                ],
+                [custom.Button.inline("⨵ Close Menu ⨵", data="sendclose")],
+            ],
+        )
+        await event.answer([result])
     await event.delete()
-    await event.edit("≼≼≼Menu Re-opened≽≽≽", buttons=buttons)
 
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"statcheck")))
