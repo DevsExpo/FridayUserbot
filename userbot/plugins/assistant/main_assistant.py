@@ -114,8 +114,8 @@ async def users(event):
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"seclose")))
 async def users(event):
     await event.edit(
-        "⨵ CɪᴘʜᴇʀX Bot Assitant Menu Closed ⨵",
-        buttons=[custom.Button.inline("Re-open Menu", data="Creopen")],
+        "⨵ Assitant Menu Closed ⨵",
+        buttons=[custom.Button.inline("≼≼≼Re-open Menu≽≽≽", data="Creopen")],
     )
 
 
@@ -128,7 +128,7 @@ async def megix(event):
     await event.client(GetFullUserRequest(event.sender_id))
     vent = event.chat_id
     mypic = Config.ASSISTANT_START_PIC
-    starttext = f"≼≼≼CɪᴘʜᴇʀX Assistant Bot Menu Re-opened≽≽≽\n(c)CɪᴘʜᴇʀX Exclusive"
+    starttext = f"CɪᴘʜᴇʀX Assistant Bot Menu Re-opened\n\n(c)CɪᴘʜᴇʀX Exclusive"
     if event.sender_id == bot.uid:
         await tgbot.send_message(
             vent,
@@ -240,10 +240,10 @@ async def sed(event):
         )
 
 
-@assistant_cmd("broadcast", is_args=True)
+@assistant_cmd("broadcast", is_args=heck)
 @god_only
 async def sedlyfsir(event):
-    msgtobroadcast = event.pattern_match.group(1)
+    msgtobroadcast = event.text.split(" ", maxsplit=1)[1]
     userstobc = get_all_users()
     error_count = 0
     sent_count = 0
