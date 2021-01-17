@@ -3,7 +3,6 @@ nospamplus
 google-trans-new
 pymediainfo
 apscheduler
-apscheduler
 pokedex.py
 pyseoanalyzer
 faker
