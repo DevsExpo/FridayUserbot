@@ -8,9 +8,6 @@ RUN apt-get install -y\
     coreutils \
     bash \
     bzip2 \
-    xrdp \
-    pulseaudio \ 
-    screen \
     curl \
     tesseract-ocr \
     tesseract-ocr-eng \
