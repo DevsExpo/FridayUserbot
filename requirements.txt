@@ -1,11 +1,12 @@
 Pillow
-git+https://github.com/cher-nov/cryptg
 nospamplus
+google-trans-new
 pymediainfo
 apscheduler
-git+https://github.com/gleitz/howdoi
+apscheduler
 pokedex.py
 pyseoanalyzer
+faker
 countryinfo
 emoji-country-flag
 cairosvg
@@ -62,7 +63,6 @@ gitpython
 google-api-python-client==1.8.0
 google-auth-oauthlib
 google_images_download>=2.7.1
-google_trans_new
 googletrans
 gsearch
 hachoir
