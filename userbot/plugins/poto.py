@@ -17,8 +17,8 @@ if 1 == 1:
 
     client = borg
 
-    @friday.on(friday_on_cmd(pattern="poto(.*)"))
-    @friday.on(sudo_cmd(pattern="poto(.*)", allow_sudo=True))
+    @friday.on(friday_on_cmd(pattern="ppoto(.*)"))
+    @friday.on(sudo_cmd(pattern="ppoto(.*)", allow_sudo=True))
     async def potocmd(event):
 
         """Gets the profile photos of replied users, channels or chats"""
@@ -40,7 +40,7 @@ if 1 == 1:
 
             try:
 
-                await event.client.send_file(event.chat_id, photos)
+                await event.client.send_file(event.chat_id, photos, reply_to=user.id)
 
             except a:
 
@@ -78,11 +78,12 @@ if 1 == 1:
 
                 return
 
+        await event.delete()
 
 CMD_HELP.update(
     {
         "poto": "**Poto**\
-\n\n**Syntax : **`.poto <reply to a user> <profile picture number>`\
+\n\n**Syntax : **`.ppoto <reply to a user> <profile picture number>`\
 \n**Usage :** Downloads profile picture of replyed user."
     }
 )
