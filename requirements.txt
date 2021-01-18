@@ -1,5 +1,7 @@
 Pillow
 nospamplus
+git+https://github.com/gleitz/howdoi
+git+https://github.com/cher-nov/cryptg
 google-trans-new
 pymediainfo
 apscheduler
