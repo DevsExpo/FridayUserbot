@@ -16,8 +16,8 @@ import io
 import os
 import re
 
-from telethon import Button, custom, events, functions
 import telethon
+from telethon import Button, custom, events, functions
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import pack_bot_file_id
 
