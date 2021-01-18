@@ -3,11 +3,11 @@ Available Commands:
 .tr LanguageCode as reply to a message
 .tr LangaugeCode / text to translate"""
 
-from deep_translator import GoogleTranslator
-from googletrans import LANGUAGES
-from google_trans_new import google_translator
-from langdetect import detect
 import requests
+from google_trans_new import google_translator
+from googletrans import LANGUAGES
+from langdetect import detect
+
 from userbot import CMD_HELP
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
