@@ -239,7 +239,7 @@ async def sed(event):
         )
 
 
-@assistant_cmd("broadcast", is_args=heck)
+@assistant_cmd("broadcast", is_args=False)
 @god_only
 async def sedlyfsir(event):
     msgtobroadcast = event.text.split(" ", maxsplit=1)[1]
