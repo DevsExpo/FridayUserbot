@@ -40,7 +40,7 @@ async def _(event):
             SEARCH_URL = "{}/searchbyimage?image_url={}"
             request_url = SEARCH_URL.format(BASE_URL, previous_message_text)
             google_rs_response = requests.get(request_url, allow_redirects=False)
-            the_location = google_rs_response.headers.get("Location") 
+            the_location = google_rs_response.headers.get("Location")
         headers = {
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0"
         }
