@@ -8,13 +8,7 @@ from telethon import events
 
 from userbot import CMD_LIST, LOAD_PLUG, SUDO_LIST, bot
 from userbot.Configs import Config
-from userbot.wraptools import (
-    am_i_admin,
-    ignore_bot,
-    ignore_fwd,
-    ignore_grp,
-    ignore_pm,
-)
+from userbot.wraptools import am_i_admin, ignore_bot, ignore_fwd, ignore_grp, ignore_pm
 from var import Var
 
 sedprint = logging.getLogger("PLUGINS")
