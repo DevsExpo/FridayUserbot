@@ -165,7 +165,7 @@ async def megix(event):
         )
         if os.path.exists(mypic):
             os.remove(mypic)
-
+    await event.delete()
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"gibcmd")))
 async def users(event):
