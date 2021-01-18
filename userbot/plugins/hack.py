@@ -5,8 +5,9 @@ Available Commands:
 
 import asyncio
 
-from userbot import CMD_HELP
 from uniborg.util import friday_on_cmd
+
+from userbot import CMD_HELP
 
 
 @friday.on(friday_on_cmd(pattern=r"thack"))
