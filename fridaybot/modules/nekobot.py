@@ -45,12 +45,12 @@ async def noobishere(event):
             stark = input_str.split(":", 1)
         else:
             await event.reply(
-                "You Are Using Invalid Syntax ! Make Sure To Use tweetusername:text Regex"
+                "**Usage Syntax :** `username:tweet-text`"
             )
             return
     if len(stark) != 2:
         await event.reply(
-            "You Are Using Invalid Syntax ! Make Sure To Use tweetusername:text Regex"
+            "**Usage Syntax :** `username:tweet-text`"
         )
         return
 

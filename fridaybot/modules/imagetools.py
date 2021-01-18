@@ -22,7 +22,11 @@ from telegraph import upload_file
 from fridaybot import CMD_HELP
 from fridaybot.function import convert_to_image, crop_vid, runcmd
 from fridaybot.utils import friday_on_cmd, sudo_cmd
-
+import html
+from telethon.tl.functions.photos import GetUserPhotosRequest
+from telethon.tl.functions.users import GetFullUserRequest
+from telethon.tl.types import MessageEntityMentionName
+from telethon.utils import get_input_location
 sedpath = "./starkgangz/"
 if not os.path.isdir(sedpath):
     os.makedirs(sedpath)
@@ -178,7 +182,74 @@ async def lolmetrg(event):
     for files in (lolbruh, img):
         if files and os.path.exists(files):
             os.remove(files)
+            
+@friday.on(friday_on_cmd(pattern=r"geyuser"))
+@friday.on(sudo_cmd(pattern=r"geyuser", allow_sudo=True))
+async def lolmetrg(event):
+    await event.edit("`Meking This Guy Gey.`")
+    sed = await event.get_reply_message()
+    img = await convert_to_image(event, borg)
+    url_s = upload_file(img)
+    imglink = f"https://telegra.ph{url_s[0]}"
+    lolul = f"https://some-random-api.ml/canvas/gay?avatar={imglink}"
+    r = requests.get(lolul)
+    open("geys.png", "wb").write(r.content)
+    lolbruh = "geys.png"
+    await borg.send_file(
+        event.chat_id, lolbruh, caption="`You iz Gey.`", reply_to=sed
+    )
+    for files in (lolbruh, img):
+        if files and os.path.exists(files):
+            os.remove(files)
+            
+@friday.on(friday_on_cmd(pattern=r"pix"))
+@friday.on(sudo_cmd(pattern=r"pix", allow_sudo=True))
+async def lolmetrg(event):
+    await event.edit("`Pixing This Image.`")
+    sed = await event.get_reply_message()
+    img = await convert_to_image(event, borg)
+    url_s = upload_file(img)
+    imglink = f"https://telegra.ph{url_s[0]}"
+    lolul = f"https://some-random-api.ml/canvas/pixelate?avatar={imglink}"
+    r = requests.get(lolul)
+    open("pix.png", "wb").write(r.content)
+    lolbruh = "pix.png"
+    await borg.send_file(
+        event.chat_id, lolbruh, caption="`Pixeled This Image.`", reply_to=sed
+    )
+    for files in (lolbruh, img):
+        if files and os.path.exists(files):
+            os.remove(files)
 
+@friday.on(friday_on_cmd(pattern=r"ytc"))
+@friday.on(sudo_cmd(pattern=r"ytc", allow_sudo=True))
+async def lolmetrg(event):
+    await event.edit("`Making Comment`")
+    sed = await event.get_reply_message()
+    hmm_s = await borg(GetFullUserRequest(sed.sender_id))
+    if not hmm_s.profile_photo:
+        imglink = 'https://telegra.ph/file/b9684cda357dfbe6f5748.jpg'
+    elif hmm_s.profile_photo:
+        img = await borg.download_media(hmm_s.profile_photo, sedpath)
+        url_s = upload_file(img)
+        imglink = f"https://telegra.ph{url_s[0]}"
+    first_name = html.escape(hmm_s.user.first_name)
+    if first_name is not None:
+        first_name = first_name.replace("\u2060", "")
+    if sed.text is None:
+        comment = 'Give Some Text'
+    else:
+        comment = sed.raw_text
+    lolul = f"https://some-random-api.ml/canvas/youtube-comment?avatar={imglink}&username={first_name}&comment={comment}"
+    r = requests.get(lolul)
+    open("ytc.png", "wb").write(r.content)
+    lolbruh = "ytc.png"
+    await borg.send_file(
+        event.chat_id, lolbruh, caption="`Hmm Nice.`", reply_to=sed
+    )
+    for files in (lolbruh, img):
+        if files and os.path.exists(files):
+            os.remove(files)
 
 @friday.on(friday_on_cmd(pattern=r"jail"))
 @friday.on(sudo_cmd(pattern=r"jail", allow_sudo=True))
@@ -193,7 +264,6 @@ async def hmm(event):
     img = await convert_to_image(event, borg)
     mon = "./resources/jail/hmm.png"
     foreground = Image.open(mon).convert("RGBA")
-
     background = Image.open(img).convert("RGB")
     with Image.open(img) as img:
         width, height = img.size

@@ -10,7 +10,7 @@ import os
 import zipfile
 from collections import defaultdict
 from io import BytesIO
-
+from fridaybot.function import convert_to_image, crop_vid, runcmd
 from PIL import Image
 from telethon.errors import MessageNotModifiedError
 from telethon.errors.rpcerrorlist import StickersetInvalidError
@@ -24,6 +24,10 @@ from telethon.tl.types import (
 
 from fridaybot import ALIVE_NAME, CMD_HELP
 from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
+
+sedpath = Config.TMP_DOWNLOAD_DIRECTORY
+if not os.path.isdir(sedpath):
+    os.makedirs(sedpath)
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Who is this"
 FILLED_UP_DADDY = "Invalid pack selected."
@@ -41,7 +45,7 @@ async def _(event):
         await moods.edit("Reply to a photo to add to my personal sticker pack.")
         return
     reply_message = await event.get_reply_message()
-    sticker_emoji = "😎"
+    sticker_emoji = await get_sticker_emoji(event)
     input_str = event.pattern_match.group(1)
     if input_str:
         sticker_emoji = input_str
@@ -53,42 +57,27 @@ async def _(event):
         user.username = user.id
     pack = 1
     userid = event.sender_id
-    # packname = f"FRIDAY PACK"
-    # packshortname = f"FRIDAY_{userid}_ns"  # format: Uni_Borg_userid
-    if userid == 1263617196:
-        packname = f"@StarkGang Packs 🎭"
-        packshortname = "StarkGangPack"
-    else:
-        packname = f"@{user.username} KangPack {pack}"
-        packshortname = f"FRIDAY_{userid}_Pack"
+    packname = f"@{user.username} KangPack {pack}"
+    packshortname = f"FRIDAY_{userid}_Pack"
     await moods.edit("`This Sticker is Gonna Get Stolen.....`")
-
     is_a_s = is_it_animated_sticker(reply_message)
     file_ext_ns_ion = "@FRIDAYOT.png"
-    file = await borg.download_file(reply_message.media)
     uploaded_sticker = None
     if is_a_s:
+        file = await borg.download_file(reply_message.media)
         file_ext_ns_ion = "AnimatedSticker.tgs"
         uploaded_sticker = await borg.upload_file(file, file_name=file_ext_ns_ion)
-        if userid == 813878981:
-            packname = f"StarkGang Ka Pack"
-            packshortname = "StarkGangisgreat"
-        else:
-            packname = f"@{user.username} KangPack {pack}"
-            packshortname = f"FRIDAY_{userid}"  # format: Uni_Borg_userid
-    elif not is_message_image(reply_message):
-        await moods.edit("Invalid message type")
-        return
+        packname = f"@{user.username} KangPack {pack}"
+        packshortname = f"FRIDAY_{userid}"  # format: Uni_Borg_userid
     else:
-        with BytesIO(file) as mem_file, BytesIO() as sticker:
-            resize_image(mem_file, sticker)
-            sticker.seek(0)
-            uploaded_sticker = await borg.upload_file(
-                sticker, file_name=file_ext_ns_ion
-            )
-
+        sticker = await convert_to_image(event, borg)
+        resize_image(sticker)
+        ok = sedpath + "/" + "@FridayOT.png"
+        uploaded_sticker = await borg.upload_file(
+            ok, file_name=file_ext_ns_ion
+        )
+        os.remove(sticker)
     await moods.edit("`Inviting This Sticker To Your Pack 🚶`")
-
     async with borg.conversation("@Stickers") as bot_conv:
         now = datetime.datetime.now()
         dt = now + datetime.timedelta(minutes=1)
@@ -135,12 +124,6 @@ async def _(event):
                     prevv = int(pack) - 1
                     packname = f"{user.username}'s {pack}"
                     packshortname = f"Vol_{pack}_with_{user.username}"
-                    # if userid == 948408212:
-                    # packname = f"{user.username}'s {pack}"
-                    # packshortname = "Vol._{pack}_FRIDAY_ke_locker_me"
-                    # else:
-                    # packname = f"Vol._{pack}_FRIDAY{userid}"
-                    # packshortname = f"Vol._{pack}_Friday_{userid}_ns"
                     if not await stickerset_exists(bot_conv, packshortname):
                         await moods.edit(
                             "**Pack No. **"
@@ -220,6 +203,7 @@ async def _(event):
     await moods.edit(
         f"`This Sticker Has Came To Your Pack.` \n**Check It Out** [Here](t.me/addstickers/{packshortname})"
     )
+    os.remove(sedpath + "/" + "@FridayOT.png")
 
 
 @friday.on(friday_on_cmd(pattern="packinfo"))
@@ -407,7 +391,7 @@ async def stickerset_exists(conv, setname):
         return False
 
 
-def resize_image(image, save_locaton):
+def resize_image(image):
     """Copyright Rhyse Simpson:
     https://github.com/skittles9823/SkittBot/blob/master/tg_bot/modules/stickers.py
     """
@@ -430,7 +414,9 @@ def resize_image(image, save_locaton):
         im = im.resize(sizenew)
     else:
         im.thumbnail(maxsize)
-    im.save(save_locaton, "PNG")
+    file_name = "@FridayOT.png"
+    ok = sedpath + "/" + file_name
+    im.save(ok, "PNG")
 
 
 def progress(current, total):
@@ -447,6 +433,13 @@ def find_instance(items, class_or_tuple):
             return item
     return None
 
+async def get_sticker_emoji(event):
+    reply_message = await event.get_reply_message()
+    try:
+        final_emoji = reply_message.media.document.attributes[1].alt
+    except:
+        final_emoji = '😎'
+    return final_emoji
 
 def zipdir(path, ziph):
     # ziph is zipfile handle

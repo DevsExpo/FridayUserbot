@@ -14,7 +14,6 @@
 
 import emoji
 from googletrans import Translator
-from google_trans_new import google_translator
 import requests
 from deep_translator import GoogleTranslator
 from googletrans import LANGUAGES

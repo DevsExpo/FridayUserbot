@@ -31,15 +31,18 @@
 
 import io
 from random import randint, uniform
-
+from fridaybot.function import convert_to_image, crop_vid, runcmd
+from fridaybot.utils import friday_on_cmd, sudo_cmd
 from PIL import Image, ImageEnhance, ImageOps
 from telethon.tl.types import DocumentAttributeFilename
 from uniborg.util import friday_on_cmd
-
 from fridaybot import CMD_HELP
+import os 
+sedpath = "./starkgangz/"
+if not os.path.isdir(sedpath):
+    os.makedirs(sedpath)
 
-
-@friday.on(friday_on_cmd(pattern="deepfry(?: |$)(.*)", outgoing=True))
+@friday.on(friday_on_cmd(pattern="deepfry(?: |$)(.*)"))
 async def deepfryer(event):
     try:
         frycount = int(event.pattern_match.group(1))
@@ -47,37 +50,21 @@ async def deepfryer(event):
             raise ValueError
     except ValueError:
         frycount = 1
-
     if event.is_reply:
-        reply_message = await event.get_reply_message()
-        data = await check_media(reply_message)
-
-        if isinstance(data, bool):
-            await event.edit("`I can't deep fry that!`")
-            return
+        image_s = await convert_to_image(event, borg)
     else:
         await event.edit("`Reply to an image or sticker to deep fry it!`")
         return
-
-    # download last photo (highres) as byte array
-    await event.edit("`Downloading media…`")
-    image = io.BytesIO()
-    await event.client.download_media(data, image)
-    image = Image.open(image)
-
-    # fry the image
-    await event.edit("`Deep frying media…`")
+    image = Image.open(image_s)
+    await event.edit("`Now, Deep frying media…`")
     for _ in range(frycount):
         image = await deepfry(image)
-
-    fried_io = io.BytesIO()
-    fried_io.name = "image.jpeg"
-    image.save(fried_io, "JPEG")
-    fried_io.seek(0)
-
-    await event.reply(file=fried_io)
-
-
+    image.save("./starkgangz/fried.png")
+    file_name = "fried.png"
+    ok = "./starkgangz/" + file_name
+    await event.reply(file=ok)
+    os.remove(ok)
+    
 async def deepfry(img: Image) -> Image:
     colours = (
         (randint(50, 200), randint(40, 170), randint(40, 190)),

@@ -26,7 +26,19 @@ async def _(event):
         file=imgpath,
         caption=f"**WEBSHOT OF** `{urlissed}` \n**Powered By @Fridayot**",
     )
-
+    
+    
+@friday.on(friday_on_cmd(pattern="rmeme$"))
+@friday.on(sudo_cmd(pattern="rmeme$", allow_sudo=True))
+async def _(event):
+    if event.fwd_from:
+        return
+    await event.delete()
+    hmm_s = 'https://some-random-api.ml/meme'
+    r = requests.get(url=hmm_s).json()
+    image_s = r['image']
+    await borg.send_file(event.chat_id, file=image_s, caption=r['caption'])
+    
 
 @friday.on(friday_on_cmd(pattern="lp ?(.*)"))
 @friday.on(sudo_cmd(pattern="lp ?(.*)", allow_sudo=True))
