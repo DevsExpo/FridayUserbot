@@ -490,7 +490,7 @@ async def pin(msg):
         await msg.edit(NO_PERM)
         return
 
-    await msg.editawait msg.edit(f"Pinned This [Message](http://t.me/c/{msg.chat_id}/{to_pin})")
+    await msg.edit(f"Pinned This [Message](http://t.me/c/{msg.chat_id}/{to_pin})")
 
     user = await get_user_from_id(msg.from_id, msg)
 
