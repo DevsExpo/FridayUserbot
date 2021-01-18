@@ -1,5 +1,5 @@
 # CɪᴘʜᴇʀX
-# Credit by @hackintush
+# All credit belong to @hackintush
 import os
 from datetime import datetime
 
@@ -16,7 +16,6 @@ async def _(event):
     datetime.now()
     BASE_URL = "http://www.google.com"
     if event.reply_to_msg_id:
-        await event.edit("Processing...")
         previous_message = await event.get_reply_message()
         previous_message_text = previous_message.message
         if previous_message.media:
@@ -41,8 +40,7 @@ async def _(event):
             SEARCH_URL = "{}/searchbyimage?image_url={}"
             request_url = SEARCH_URL.format(BASE_URL, previous_message_text)
             google_rs_response = requests.get(request_url, allow_redirects=False)
-            the_location = google_rs_response.headers.get("Location")
-        await event.edit("Found the Charactor. Honor CɪᴘʜᴇʀX")
+            the_location = google_rs_response.headers.get("Location") 
         headers = {
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0"
         }
