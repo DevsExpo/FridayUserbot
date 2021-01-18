@@ -328,6 +328,9 @@ async def users(event):
 
 @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen2")))
 async def megix(event):
+    builder = event.builder
+    result = None
+    query = event.text
     if event.query.user_id == bot.uid and query.startswith("**Hello"):
         result = builder.photo(
             file=WARN_PIC,
