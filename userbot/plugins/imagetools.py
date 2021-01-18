@@ -12,6 +12,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
+import html
 import os
 from shutil import rmtree
 
@@ -20,16 +21,11 @@ import numpy as np
 import requests
 from PIL import Image, ImageDraw, ImageFont
 from telegraph import upload_file
+from telethon.tl.functions.users import GetFullUserRequest
 
 from userbot import CMD_HELP
 from userbot.function import convert_to_image, crop_vid, runcmd
 from userbot.utils import friday_on_cmd, sudo_cmd
-
-import html
-from telethon.tl.functions.photos import GetUserPhotosRequest
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import MessageEntityMentionName
-from telethon.utils import get_input_location
 
 sedpath = "./cipherx/"
 if not os.path.isdir(sedpath):
@@ -191,7 +187,8 @@ async def lolmetrg(event):
     for files in (lolbruh, img):
         if files and os.path.exists(files):
             os.remove(files)
-            
+
+
 @friday.on(friday_on_cmd(pattern=r"geyuser"))
 @friday.on(sudo_cmd(pattern=r"geyuser", allow_sudo=True))
 async def lolmetrg(event):
@@ -204,12 +201,11 @@ async def lolmetrg(event):
     r = requests.get(lolul)
     open("geys.png", "wb").write(r.content)
     lolbruh = "geys.png"
-    await borg.send_file(
-        event.chat_id, lolbruh, caption="`You are Gey`", reply_to=sed
-    )
+    await borg.send_file(event.chat_id, lolbruh, caption="`You are Gey`", reply_to=sed)
     for files in (lolbruh, img):
         if files and os.path.exists(files):
             os.remove(files)
+
 
 @friday.on(friday_on_cmd(pattern=r"pix"))
 @friday.on(sudo_cmd(pattern=r"pix", allow_sudo=True))
@@ -230,6 +226,7 @@ async def lolmetrg(event):
         if files and os.path.exists(files):
             os.remove(files)
 
+
 @friday.on(friday_on_cmd(pattern=r"ytc"))
 @friday.on(sudo_cmd(pattern=r"ytc", allow_sudo=True))
 async def lolmetrg(event):
@@ -237,7 +234,7 @@ async def lolmetrg(event):
     sed = await event.get_reply_message()
     hmm_s = await borg(GetFullUserRequest(sed.sender_id))
     if not hmm_s.profile_photo:
-        imglink = 'https://telegra.ph/file/b9684cda357dfbe6f5748.jpg'
+        imglink = "https://telegra.ph/file/b9684cda357dfbe6f5748.jpg"
     elif hmm_s.profile_photo:
         img = await borg.download_media(hmm_s.profile_photo, sedpath)
         url_s = upload_file(img)
@@ -246,19 +243,18 @@ async def lolmetrg(event):
     if first_name is not None:
         first_name = first_name.replace("\u2060", "")
     if sed.text is None:
-        comment = 'Give me Some Text'
+        comment = "Give me Some Text"
     else:
         comment = sed.raw_text
     lolul = f"https://some-random-api.ml/canvas/youtube-comment?avatar={imglink}&username={first_name}&comment={comment}"
     r = requests.get(lolul)
     open("ytc.png", "wb").write(r.content)
     lolbruh = "ytc.png"
-    await borg.send_file(
-        event.chat_id, lolbruh, caption="`Hmm Nice`", reply_to=sed
-    )
+    await borg.send_file(event.chat_id, lolbruh, caption="`Hmm Nice`", reply_to=sed)
     for files in (lolbruh, img):
         if files and os.path.exists(files):
             os.remove(files)
+
 
 @friday.on(friday_on_cmd(pattern=r"jail"))
 @friday.on(sudo_cmd(pattern=r"jail", allow_sudo=True))

@@ -9,8 +9,7 @@ import math
 import os
 import zipfile
 from collections import defaultdict
-from io import BytesIO
-from userbot.function import convert_to_image, crop_vid, runcmd
+
 from PIL import Image
 from telethon.errors import MessageNotModifiedError
 from telethon.errors.rpcerrorlist import StickersetInvalidError
@@ -23,6 +22,7 @@ from telethon.tl.types import (
 )
 
 from userbot import ALIVE_NAME, CMD_HELP
+from userbot.function import convert_to_image
 from userbot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 sedpath = Config.TMP_DOWNLOAD_DIRECTORY
@@ -49,9 +49,7 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     if input_str:
         sticker_emoji = input_str
-    moods = await edit_or_reply(
-        event, "`This Sticker Looks Nice. Mind if I steal it`"
-    )
+    moods = await edit_or_reply(event, "`This Sticker Looks Nice. Mind if I steal it`")
     user = await bot.get_me()
     if not user.username:
         user.username = user.id
@@ -73,9 +71,7 @@ async def _(event):
         sticker = await convert_to_image(event, borg)
         resize_image(sticker)
         ok = sedpath + "/" + "@cipherx.png"
-        uploaded_sticker = await borg.upload_file(
-            ok, file_name=file_ext_ns_ion
-        )
+        uploaded_sticker = await borg.upload_file(ok, file_name=file_ext_ns_ion)
         os.remove(sticker)
     await moods.edit("`Adding This Sticker To CɪᴘʜᴇʀX Pack 🚶`")
     async with borg.conversation("@Stickers") as bot_conv:
@@ -433,13 +429,15 @@ def find_instance(items, class_or_tuple):
             return item
     return None
 
+
 async def get_sticker_emoji(event):
     reply_message = await event.get_reply_message()
     try:
         final_emoji = reply_message.media.document.attributes[1].alt
     except:
-        final_emoji = '😎'
+        final_emoji = "😎"
     return final_emoji
+
 
 def zipdir(path, ziph):
     # ziph is zipfile handle

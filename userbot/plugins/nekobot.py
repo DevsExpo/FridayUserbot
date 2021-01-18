@@ -44,14 +44,10 @@ async def noobishere(event):
         if ":" in text:
             stark = input_str.split(":", 1)
         else:
-            await event.reply(
-                "**Usage Syntax :** `username:tweet-text`"
-            )
+            await event.reply("**Usage Syntax :** `username:tweet-text`")
             return
     if len(stark) != 2:
-        await event.reply(
-            "**Usage Syntax :** `username:tweet-text`"
-        )
+        await event.reply("**Usage Syntax :** `username:tweet-text`")
         return
 
     starky = stark[0]

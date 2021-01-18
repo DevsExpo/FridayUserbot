@@ -29,18 +29,21 @@
 # SOFTWARE.
 """ module for frying stuff. """
 
-import io
+import os
 from random import randint, uniform
-from userbot.function import convert_to_image, crop_vid, runcmd
-from userbot.utils import friday_on_cmd, sudo_cmd
+
 from PIL import Image, ImageEnhance, ImageOps
 from telethon.tl.types import DocumentAttributeFilename
 from uniborg.util import friday_on_cmd
+
 from userbot import CMD_HELP
-import os 
+from userbot.function import convert_to_image
+from userbot.utils import friday_on_cmd
+
 sedpath = "./cipherx/"
 if not os.path.isdir(sedpath):
     os.makedirs(sedpath)
+
 
 @friday.on(friday_on_cmd(pattern="deepfry(?: |$)(.*)"))
 async def deepfryer(event):
@@ -64,7 +67,8 @@ async def deepfryer(event):
     ok = "./cipherx/" + file_name
     await event.reply(file=ok)
     os.remove(ok)
-    
+
+
 async def deepfry(img: Image) -> Image:
     colours = (
         (randint(50, 200), randint(40, 170), randint(40, 190)),
