@@ -5,17 +5,17 @@ Available Commands:
 
 import asyncio
 
-from fridaybot import CMD_HELP
+from userbot import CMD_HELP
 from uniborg.util import friday_on_cmd
 
 
-@friday.on(friday_on_cmd(pattern=r"hack"))
+@friday.on(friday_on_cmd(pattern=r"thack"))
 async def _(event):
     if event.fwd_from:
         return
     animation_interval = 2
     animation_ttl = range(0, 11)
-    await event.edit("Starting Servers")
+    await event.edit("Starting CɪᴘʜᴇʀX Servers")
     animation_chars = [
         "`Connecting To T-800 At 149.154.167.51 - IPV4 - TELEGRAM // DC-4/1`",
         "`Hacking... 0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `\n\n\n  TERMINAL:\nDownloading Bruteforce-Telegram-0.1.tar.gz (9.3 kB)",
@@ -36,7 +36,7 @@ async def _(event):
 CMD_HELP.update(
     {
         "hack": "**Hack**\
-\n\n**Syntax : **`.hack <reply to your friend>`\
+\n\n**Syntax : **`.thack <reply to your friend>`\
 \n**Usage :** prank your friends with this hacking plugin"
     }
 )
