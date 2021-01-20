@@ -71,6 +71,16 @@
       "value": "",
       "required": false
     },
+    "GITA_CLIENT_ID": {
+      "description": "Needed for gita plugin. Follow https://bhagavadgita.io to get yours.",
+      "value":"",
+      "required": false
+    },
+    "GITA_CLIENT_SECRET":{
+      "description": "Needed for gita plugin. Follow https://bhagavadgita.io to get yours.",
+      "value":"",
+      "required": false
+    },
     "HEROKU_API_KEY": {
       "description": "Go to https://dashboard.heroku.com/account, scroll down and press Reveal API.Required for updater to work.",
       "value": ""
