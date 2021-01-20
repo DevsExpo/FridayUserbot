@@ -7,12 +7,12 @@ from fridaybot.utils import friday_on_cmd
 
 CLIENT_ID = Var.GITA_CLIENT_ID
 CLIENT_SECRET = Var.GITA_CLIENT_SECRET
-""" Get API crendentials from https://bhagavadgita.io . """
+"""Get API crendentials from https://bhagavadgita.io."""
 
 
 @friday.on(friday_on_cmd(pattern="gita +(.*) +(.*)$"))
 async def gita(event):
-    """ To get a specific verse from a specific chapter in English. """
+    """To get a specific verse from a specific chapter in English."""
     if CLIENT_ID is None or CLIENT_SECRET is None:
         await event.edit(
             event,
@@ -32,7 +32,7 @@ async def gita(event):
 
 @friday.on(friday_on_cmd(pattern="gita +(.*) +(.*) hi$"))
 async def gita(event):
-    """ To get a specific verse from a specific chapter in Hindi. """
+    """To get a specific verse from a specific chapter in Hindi."""
     if CLIENT_ID is None or CLIENT_SECRET is None:
         await event.edit(
             event,
