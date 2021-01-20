@@ -21,8 +21,11 @@ async def gita(event):
         )
         return
     pygita.auth(CLIENT_ID, CLIENT_SECRET)
-    chapter_number = int(event.pattern_match.group(1))
-    verse_number = int(event.pattern_match.group(2))
+    try:
+        chapter_number = int(event.pattern_match.group(1))
+        verse_number = int(event.pattern_match.group(2))
+    except:
+        return
     verse = pygita.get_verse(chapter_number, verse_number, language="en")
     await event.edit(f"**{verse.text}** {verse.meaning}")
 
