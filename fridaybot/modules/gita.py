@@ -33,7 +33,7 @@ async def gita(event):
 
 
 @friday.on(friday_on_cmd(pattern="gita +(.*) +(.*) hi$"))
-async def gita(event):
+async def gita_hindi(event):
     """To get a specific verse from a specific chapter in Hindi."""
     if CLIENT_ID is None or CLIENT_SECRET is None:
         await event.edit(
