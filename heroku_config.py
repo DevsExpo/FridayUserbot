@@ -14,6 +14,8 @@ class Var(object):
     # Here for later purposes
     SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS", "").split())
     LYDIA_API_KEY = os.environ.get("LYDIA_API_KEY", None)
+    GITA_CLIENT_ID = os.environ.get("GITA_CLIENT_ID", None)
+    GITA_CLIENT_SECRET = os.environ.get("GITA_CLIENT_SECRET", None)
     LESS_SPAMMY = os.environ.get("LESS_SPAMMY", None)
     HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
