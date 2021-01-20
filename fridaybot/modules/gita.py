@@ -4,6 +4,8 @@ import pygita
 
 from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
+from var import Var
+
 
 CLIENT_ID = Var.GITA_CLIENT_ID
 CLIENT_SECRET = Var.GITA_CLIENT_SECRET
