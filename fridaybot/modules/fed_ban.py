@@ -119,3 +119,17 @@ async def _(event):
     await event.edit(
         f"**Un-Fban Completed** \nTotal Sucess : `{len_feds - errors}` \nTotal Errors : `{errors}` \nTotal Fed Len : `{len_feds}`"
     )
+
+CMD_HELP.update(
+    {
+        "fed_ban": "**Fed Ban**\
+\n\n**Syntax : **`.fadd <fed_id>`\
+\n**Usage :** Adds the Fed to Database\
+\n\n**Syntax : **`.frm <fed_id>`\
+\n**Usage :** Remove the Fed from Database\
+\n\n**Syntax : **`.fban <user_id>`\
+\n**Usage :** Bans the user from Fed\
+\n\n**Syntax : **`.unfban <user_id>`\
+\n**Usage :** Unbans the user from Fed"
+    }
+)
