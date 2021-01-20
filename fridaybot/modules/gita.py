@@ -24,7 +24,7 @@ async def gita(event):
     try:
         chapter_number = int(event.pattern_match.group(1))
         verse_number = int(event.pattern_match.group(2))
-    except:
+    except ValueError:
         return
     verse = pygita.get_verse(chapter_number, verse_number, language="en")
     await event.edit(f"**{verse.text}** {verse.meaning}")
