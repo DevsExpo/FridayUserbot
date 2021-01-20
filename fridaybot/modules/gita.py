@@ -2,8 +2,8 @@
 # Email: shubhendrakushwaha94@gmail.com
 import pygita
 
-from .. import CMD_HELP
-from userbot.utils import admin_cmd
+from fridaybot import CMD_HELP
+from fridaybot.utils import friday_on_cmd
 
 CLIENT_ID = Var.GITA_CLIENT_ID
 CLIENT_SECRET = Var.GITA_CLIENT_SECRET

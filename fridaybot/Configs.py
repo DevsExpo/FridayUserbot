@@ -141,6 +141,9 @@ if ENV:
         MONGO_URI = os.environ.get("MONGO_URI", None)
         # Lydia API
         LYDIA_API = os.environ.get("LYDIA_API", None)
+        # pygita api
+        GITA_CLIENT_ID = os.environ.get("GITA_CLIENT_ID", None)
+        GITA_CLIENT_SECRET = os.environ.get("GITA_CLIENT_SECRET", None)
         PRIVATE_GROUP_ID = int(os.environ.get("PRIVATE_GROUP_ID", False))
         PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", False))
         NEWS_CHANNEL_ID = int(os.environ.get("NEWS_CHANNEL_ID", False))
