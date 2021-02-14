@@ -8,7 +8,7 @@ if not ENV:
 elif ENV:
     class Config(object):
         LOGGER = True
-        APP_ID = int(os.environ.get("APP_ID", 6))
+        APP_ID = int(os.environ.get("APP_ID", 10))
         TZ = os.environ.get("TZ", "Asia/Kolkata")
         API_HASH = os.environ.get("API_HASH", "eb06d4abfb49dc3eeb1aeb98ae0f581e")
         CLEAN_GROUPS = os.environ.get("CLEAN_GROUPS", False)
