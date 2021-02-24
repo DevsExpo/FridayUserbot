@@ -8,7 +8,8 @@ from uniborg.util import friday_on_cmd
 
 @friday.on(friday_on_cmd(pattern="(f?c)d "))
 async def timer_blankx(e):
-
+    if e.fwd_from:
+        return
     txt = e.text[4:] + "\nDeleting in "
 
     j = 86400
@@ -34,7 +35,8 @@ async def timer_blankx(e):
 
 @friday.on(friday_on_cmd(pattern="(f?s)cd "))
 async def timer_blankx(e):
-
+    if e.fwd_from:
+        return
     txt = e.text[4:] + "\nDeleting in "
 
     j = 10
@@ -58,9 +60,10 @@ async def timer_blankx(e):
         await e.edit(txt + "NaN")
 
 
-@friday.on(events.NewMessage(outgoing=True, pattern="^\.(f?p)an "))
+@friday.on(admin_cmd(pattern="(f?p)an"))
 async def timer_blankx(e):
-
+    if e.fwd_from:
+        return
     txt = e.text[7:] + "\n\n`Promoting You As Admin In` "
 
     j = 5

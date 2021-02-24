@@ -10,7 +10,7 @@ from uniborg.util import friday_on_cmd
 
 
 async def get_target_message(event):
-    if event.is_reply and (await event.get_reply_message()).from_id == borg.uid:
+    if event.is_reply and (await event.get_reply_message()).sender_id == borg.uid:
         return await event.get_reply_message()
     async for message in borg.iter_messages(await event.get_input_chat(), limit=20):
         if message.out:
@@ -35,6 +35,8 @@ async def await_read(chat, message):
 @friday.on(friday_on_cmd(pattern="(del)(?:ete)?$"))
 @friday.on(friday_on_cmd(pattern="(edit)(?:\s+(.*))?$"))
 async def delete(event):
+    if event.fwd_from:
+        return
     await event.delete()
     command = event.pattern_match.group(1)
     if command == "edit":
@@ -44,8 +46,6 @@ async def delete(event):
     target = await get_target_message(event)
     if target:
         chat = await event.get_input_chat()
-        await await_read(chat, target)
-        await asyncio.sleep(0.5)
         if command == "edit":
             await borg.edit_message(chat, target, text)
         else:

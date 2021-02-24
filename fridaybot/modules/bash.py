@@ -13,7 +13,7 @@ async def _(event):
         return
     PROCESS_RUN_TIME = 100
     cmd = event.pattern_match.group(1)
-    tflyf = await edit_or_reply(event, "Processing Your Request...")
+    tflyf = await friday.edit_or_reply(event, "Processing Your Request...")
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id

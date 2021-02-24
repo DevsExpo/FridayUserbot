@@ -1,4 +1,4 @@
-#    Copyright (C) Midhun KM 2020
+#    Copyright (C) Midhun KM 2020-2021
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -14,7 +14,11 @@
 
 import emoji
 from googletrans import Translator
-
+import requests
+from google_trans_new import google_translator
+from deep_translator import GoogleTranslator
+from googletrans import LANGUAGES
+from langdetect import detect
 
 @assistant_cmd("tr", is_args=True)
 async def _(event):
@@ -27,18 +31,25 @@ async def _(event):
         lan, text = input_str.split("|")
     else:
         await tgbot.send_message(
-            event.chat_id, "`.tr LanguageCode` as reply to a message"
+            event.chat_id, "`/tr LanguageCode` as reply to a message"
         )
         return
     text = emoji.demojize(text.strip())
     lan = lan.strip()
-    translator = Translator()
-    translated = translator.translate(text, dest=lan)
-    after_tr_text = translated.text
-    output_str = (
-        f"**Translated By Friday Assistant Bot** \n"
-        f"Source {translated.src} \nTranslation {lan} \nWhat I Can Translate From This {after_tr_text}"
-    )
+    translator = google_translator()
+    translated = translator.translate(text, lang_tgt=lan)
+    lmao_bruh = text
+    lmao = detect(text)
+    after_tr_text = lmao
+    source_lan = LANGUAGES[after_tr_text]
+    transl_lan = LANGUAGES[lan]
+    output_str = f"""**TRANSLATED SUCCESSFULLY**
+**Source ({source_lan})**:
+`{text}`
+
+**Translation ({transl_lan})**:
+`{translated}`"""
+      
     try:
         await tgbot.send_message(event.chat_id, output_str)
     except Exception:

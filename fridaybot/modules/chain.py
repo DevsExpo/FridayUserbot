@@ -10,7 +10,9 @@ from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 @friday.on(friday_on_cmd(pattern="chain"))
 @friday.on(sudo_cmd(pattern="chain", allow_sudo=True))
 async def _(event):
-    pokemonlub = await edit_or_reply(event, "Counting...")
+    if event.fwd_from:
+        return
+    pokemonlub = await friday.edit_or_reply(event, "Counting...")
     count = -1
     message = event.message
     while message:

@@ -8,6 +8,8 @@ from fridaybot import CMD_HELP
 @friday.on(friday_on_cmd(pattern="delpfp ?(.*)"))
 @friday.on(sudo_cmd(pattern="delpfp ?(.*)", allow_sudo=True))
 async def remove_profilepic(delpfp):
+    if delpfp.fwd_from:
+        return
     """ For .delpfp command, delete your current profile picture in Telegram. """
     group = delpfp.text[8:]
     if group == "all":
@@ -18,7 +20,7 @@ async def remove_profilepic(delpfp):
         lim = 1
 
     pfplist = await delpfp.client(
-        GetUserPhotosRequest(user_id=delpfp.from_id, offset=0, max_id=0, limit=lim)
+        GetUserPhotosRequest(user_id=delpfp.sender_id, offset=0, max_id=0, limit=lim)
     )
     input_photos = []
     for sep in pfplist.photos:
@@ -30,7 +32,7 @@ async def remove_profilepic(delpfp):
             )
         )
     await delpfp.client(DeletePhotosRequest(id=input_photos))
-    await edit_or_reply(
+    await friday.edit_or_reply(
         delpfp, f"`Successfully deleted {len(input_photos)} profile picture(s).`"
     )
 

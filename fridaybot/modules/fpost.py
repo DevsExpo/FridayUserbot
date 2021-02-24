@@ -14,6 +14,8 @@ msg_cache = {}
 
 @friday.on(friday_on_cmd(pattern=r"fpost\s+(.*)"))
 async def _(event):
+    if event.fwd_from:
+        return
     await event.delete()
     text = event.pattern_match.group(1)
     destination = await event.get_input_chat()

@@ -7,11 +7,8 @@ Available Commands:
 import asyncio
 import os
 from datetime import datetime
-
 import requests
 from bs4 import BeautifulSoup
-from google_images_download import google_images_download
-
 from fridaybot import CMD_HELP
 from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
@@ -27,7 +24,7 @@ def progress(current, total):
 @friday.on(friday_on_cmd(pattern="search (.*)"))
 @friday.on(sudo_cmd(pattern="search (.*)", allow_sudo=True))
 async def _(event):
-    stark = await edit_or_reply(event, "`Processing Your Request`")
+    stark = await friday.edit_or_reply(event, "`Processing Your Request`")
     if event.fwd_from:
         return
     start = datetime.now()
@@ -54,51 +51,6 @@ async def _(event):
     )
     await asyncio.sleep(5)
     await stark.edit("Google: {}\n{}".format(input_str, output_str), link_preview=False)
-
-
-@friday.on(friday_on_cmd(pattern="image (.*)"))
-async def _(event):
-    if event.fwd_from:
-        return
-    start = datetime.now()
-    await event.edit("Processing ...")
-    input_str = event.pattern_match.group(1)
-    response = google_images_download.googleimagesdownload()
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
-    arguments = {
-        "keywords": input_str,
-        "limit": Config.TG_GLOBAL_ALBUM_LIMIT,
-        "format": "jpg",
-        "delay": 1,
-        "safe_search": True,
-        "output_directory": Config.TMP_DOWNLOAD_DIRECTORY,
-    }
-    paths = response.download(arguments)
-    logger.info(paths)
-    lst = paths[0].get(input_str)
-    if len(lst) == 0:
-        await event.delete()
-        return
-    await borg.send_file(
-        event.chat_id,
-        lst,
-        caption=input_str,
-        reply_to=event.message.id,
-        progress_callback=progress,
-    )
-    logger.info(lst)
-    for each_file in lst:
-        os.remove(each_file)
-    end = datetime.now()
-    ms = (end - start).seconds
-    await event.edit(
-        "searched Google for {} in {} seconds.".format(input_str, ms),
-        link_preview=False,
-    )
-    await asyncio.sleep(5)
-    await event.delete()
-
 
 @friday.on(friday_on_cmd(pattern="grs"))
 async def _(event):

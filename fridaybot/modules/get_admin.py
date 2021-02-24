@@ -13,7 +13,7 @@ from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 @friday.on(friday_on_cmd("get_ad?(m)in ?(.*)"))
 @friday.on(sudo_cmd("get_ad?(m)in ?(.*)", allow_sudo=True))
 async def _(event):
-    admeme = await edit_or_reply(event, "Processing")
+    admeme = await friday.edit_or_reply(event, "Processing")
     if event.fwd_from:
         return
     mentions = "**Admins in this Channel**: \n"

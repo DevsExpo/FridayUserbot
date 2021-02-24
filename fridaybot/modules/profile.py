@@ -3,11 +3,42 @@
 .pname <Name>
 .ppic"""
 import os
-
+import asyncio
 from telethon.tl import functions
 from uniborg.util import friday_on_cmd
-
 from fridaybot import CMD_HELP
+from telethon import functions, types 
+
+
+@friday.on(friday_on_cmd(pattern="a2c(?: |$)(.*)"))
+async def _(event):
+    if event.fwd_from:
+        return
+    hmmk = event.pattern_match.group(1)
+    if event.reply_to_msg_id:
+        hmm = await event.get_reply_message()
+        id_s = hmm.sender_id    
+    elif event.pattern_match.group(1):
+        id_s = event.pattern_match.group(1)
+    elif event.is_private:
+        id_s = await event.get_input_chat()
+    if not id_s:
+        await event.edit("`Reply To User To Add Him In Contact.`")
+        return
+    user_s = await event.client.get_entity(id_s)
+    if user_s.last_name is None:
+        sed_m = " "
+    else:
+        sed_m = user_s.last_name
+    await event.client(functions.contacts.AddContactRequest(
+        id=id_s, 
+        first_name=user_s.first_name, 
+        last_name=sed_m, 
+        phone='123456', 
+        add_phone_privacy_exception=True)) 
+    star = await event.edit("**Added To Contacts SucessFully**")
+    await asyncio.sleep(3)
+    await star.delete()   
 
 
 @friday.on(friday_on_cmd(pattern="pbio (.*)"))  # pylint:disable=E0602

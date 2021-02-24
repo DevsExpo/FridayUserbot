@@ -1,4 +1,4 @@
-#    Copyright (C) Midhun KM 2020
+#    Copyright (C) Midhun KM 2020-2021
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -211,7 +211,7 @@ async def pin(event):
         )
         return
     await event.reply("Pinned This Message Sucessfully.")
-    await get_user_from_id(event.from_id, event)
+    await get_user_sender_id(event.sender_id, event)
 
 
 @assistant_cmd("kick", is_args=True)
@@ -309,7 +309,7 @@ async def get_user_from_event(event):
     extra = None
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        user_obj = await event.client.get_entity(previous_message.from_id)
+        user_obj = await event.client.get_entity(previous_message.sender_id)
         extra = event.pattern_match.group(1)
     elif args:
         user = args[0]
@@ -339,7 +339,7 @@ async def get_user_from_event(event):
     return user_obj, extra
 
 
-async def get_user_from_id(user, event):
+async def get_user_sender_id(user, event):
     if isinstance(user, str):
         user = int(user)
 

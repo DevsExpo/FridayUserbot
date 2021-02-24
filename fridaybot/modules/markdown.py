@@ -133,6 +133,10 @@ def parse(message, old_entities=None):
 @friday.on(events.MessageEdited(outgoing=True))
 @friday.on(events.NewMessage(outgoing=True))
 async def reparse(event):
+    if event.fwd_from:
+        return
+    if Config.DISABLE_MARKDOWN:
+        return
     old_entities = event.message.entities or []
     parser = partial(parse, old_entities=old_entities)
     message, msg_entities = await borg._parse_message_text(event.raw_text, parser)

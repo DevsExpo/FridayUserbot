@@ -30,7 +30,9 @@ async def all_messages_catcher(event):
     if Config.TAG_FEATURE == "DISABLE":
         return
     # the bot might not have the required access_hash to mention the appropriate PM
-    await event.forward_to(Config.TG_BOT_USER_NAME_BF_HER)
+    lol_spechide = await tgbot.get_me()
+    sedbruh = lol_spechide.username
+    await event.forward_to(sedbruh)
     # construct message
     # the message format is stolen from @MasterTagAlertBot
     ammoca_message = ""

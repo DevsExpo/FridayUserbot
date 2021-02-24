@@ -6,16 +6,21 @@ from uniborg.util import friday_on_cmd
 from fridaybot import CMD_HELP
 
 
-@friday.on(friday_on_cmd(pattern="tagall"))
+@friday.on(friday_on_cmd(pattern="tagall(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
-    mentions = "@tagall"
     chat = await event.get_input_chat()
-    async for x in borg.iter_participants(chat, 100):
-        mentions += f"[\u2063](tg://user?id={x.id})"
-    await event.reply(mentions)
+    mentions = ""
+    sh = event.pattern_match.group(1) if event.pattern_match.group(1) else "Hi !"
+    async for x in event.client.iter_participants(chat):
+        mentions += f"[{x.first_name}](tg://user?id={x.id}) \n"
     await event.delete()
+    n = 4096
+    kk = [mentions[i:i+n] for i in range(0, len(mentions), n)]
+    for i in kk:
+        j = f"**{sh}** \n{i}"
+        await event.client.send_message(event.chat_id, j)
 
 
 CMD_HELP.update(

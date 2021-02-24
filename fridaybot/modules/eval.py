@@ -7,7 +7,7 @@ Syntax: .eval PythonCode"""
 import io
 import sys
 import traceback
-
+import os
 from uniborg.util import edit_or_reply, friday_on_cmd, sudo_cmd
 
 from fridaybot import CMD_HELP
@@ -18,12 +18,13 @@ from fridaybot import CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event, "Processing ...")
-    cmd = event.text.split(" ", maxsplit=1)[1]
+    await friday.edit_or_reply(event, "Processing ...")
+    cmd = event.raw_text.split(" ", maxsplit=1)[1]
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
-
+    if "print(borg.me)" in cmd.split():
+       return
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -65,7 +66,7 @@ async def _(event):
             )
             await event.delete()
     else:
-        await edit_or_reply(event, final_output)
+        await friday.edit_or_reply(event, final_output)
 
 
 async def aexec(code, event):

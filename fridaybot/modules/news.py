@@ -1,15 +1,23 @@
-# Copyright (C) By StarkGang [@STARKXD]
-# Don't edit credits
-# Works On Bases Of Cyberboysumanjay's Inshorts News Api
-# Test
+#    Copyright (C) Midhun Km 2020-2021
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import requests
 
 from fridaybot import CMD_HELP
 from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
-from var import Var
+from fridaybot.Configs import Config
 
-newslog = Var.NEWS_CHANNEL_ID
+newslog = Config.NEWS_CHANNEL_ID
 
 
 @friday.on(friday_on_cmd("news (.*)"))
@@ -17,14 +25,14 @@ newslog = Var.NEWS_CHANNEL_ID
 async def _(event):
     if event.fwd_from:
         return
-    if Var.NEWS_CHANNEL_ID is None:
-        await edit_or_reply(
+    if Config.NEWS_CHANNEL_ID is None:
+        await friday.edit_or_reply(
             event, "`Please ADD NEWS_CHANNEL_ID For This Module To Work`"
         )
         return
     infintyvar = event.pattern_match.group(1)
     main_url = f"https://inshortsapi.vercel.app/news?category={infintyvar}"
-    stuber = await edit_or_reply(
+    stuber = await friday.edit_or_reply(
         event,
         f"Ok ! Fectching {infintyvar} From inshortsapi Server And Sending To News Channel",
     )

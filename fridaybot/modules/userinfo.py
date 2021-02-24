@@ -23,8 +23,8 @@ from telethon.tl.types import (
 )
 
 from fridaybot import CMD_HELP
-from fridaybot.events import register
-
+from fridaybot.function.events import register
+from fridaybot.utils import friday_on_cmd
 
 def parse_arguments(message: str, valid: List[str]) -> (dict, str):
     options = {}
@@ -66,7 +66,7 @@ def extract_urls(message):
     return list(matches)
 
 
-async def get_user_from_id(user, event):
+async def get_user_sender_id(user, event):
     if isinstance(user, str):
         user = int(user)
 
@@ -117,7 +117,7 @@ async def get_user_from_event(event: NewMessage.Event, **kwargs):
     # Check for a replied to message
     elif event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        replied_user = await event.client(GetFullUserRequest(previous_message.from_id))
+        replied_user = await event.client(GetFullUserRequest(previous_message.sender_id))
 
     # Last case scenario is to get the current user
     else:
@@ -285,7 +285,7 @@ class TGDoc:
         return "\n\n".join([str(section) for section in self.sections])
 
 
-@register(pattern=r"^\.u(?:ser)?(\s+[\S\s]+|$)", outgoing=True)
+@friday.on(friday_on_cmd(pattern=r"u(?:ser)?(\s+[\S\s]+|$)"))
 async def who(event: NewMessage.Event):
     """ For .user command, get info about a user. """
     if event.fwd_from:

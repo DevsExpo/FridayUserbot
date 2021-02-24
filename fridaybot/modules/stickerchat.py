@@ -86,14 +86,14 @@ if 1 == 1:
             return await message.respond(strings["no_template"])
 
         username_color = username = admintitle = user_id = None
-        profile_photo_url = reply.from_id
+        profile_photo_url = reply.sender_id
 
         admintitle = ""
         if isinstance(message.to_id, telethon.tl.types.PeerChannel):
             try:
                 user = await client(
                     telethon.tl.functions.channels.GetParticipantRequest(
-                        message.chat_id, reply.from_id
+                        message.chat_id, reply.sender_id
                     )
                 )
                 if isinstance(
@@ -113,7 +113,7 @@ if 1 == 1:
             )
             participants = chat.full_chat.participants.participants
             participant = next(
-                filter(lambda x: x.user_id == reply.from_id, participants), None
+                filter(lambda x: x.user_id == reply.sender_id, participants), None
             )
             if isinstance(participant, telethon.tl.types.ChatParticipantCreator):
                 admintitle = strings["creator"]
@@ -124,7 +124,7 @@ if 1 == 1:
             user = await reply.get_sender()
 
         username = telethon.utils.get_display_name(user)
-        user_id = reply.from_id
+        user_id = reply.sender_id
 
         if reply.fwd_from:
             if reply.fwd_from.saved_from_peer:

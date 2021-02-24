@@ -12,7 +12,7 @@ from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 @friday.on(friday_on_cmd("lock( (?P<target>\S+)|$)"))
 @friday.on(sudo_cmd("lock( (?P<target>\S+)|$)", allow_sudo=True))
 async def _(event):
-    mrhackerguy = await edit_or_reply(event, "Processing")
+    mrhackerguy = await friday.edit_or_reply(event, "Processing")
     # Space weirdness in regex required because argument is optional and other
     # commands start with ".lock"
     if event.fwd_from:
@@ -85,7 +85,7 @@ async def _(event):
 @friday.on(friday_on_cmd("unlock ?(.*)"))
 @friday.on(sudo_cmd("unlock ?(.*)", allow_sudo=True))
 async def _(event):
-    starkgang = await edit_or_reply(event, "Processing")
+    starkgang = await friday.edit_or_reply(event, "Processing")
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
@@ -100,7 +100,7 @@ async def _(event):
 @friday.on(friday_on_cmd("curenabledlocks"))
 @friday.on(friday_on_cmd("curenabledlocks", allow_sudo=True))
 async def _(event):
-    pikachu = await edit_or_reply(event, "Processing")
+    pikachu = await friday.edit_or_reply(event, "Processing")
     if event.fwd_from:
         return
     res = ""
@@ -205,7 +205,7 @@ async def _(event):
         # bots are limited Telegram accounts,
         # and cannot join by themselves
         if event.user_added:
-            users_added_by = event.action_message.from_id
+            users_added_by = event.action_message.sender_id
             is_ban_able = False
             rights = types.ChatBannedRights(until_date=None, view_messages=True)
             added_users = event.action_message.action.users

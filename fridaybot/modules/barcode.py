@@ -19,7 +19,7 @@ from fridaybot import CMD_HELP
 async def _(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event, "...")
+    await friday.edit_or_reply(event, "...")
     start = datetime.now()
     input_str = event.pattern_match.group(1)
     message = "SYNTAX: `.barcode <long text to include>`"
@@ -57,11 +57,11 @@ async def _(event):
         )
         os.remove(filename)
     except Exception as e:
-        await edit_or_reply(str(e))
+        await friday.edit_or_reply(str(e))
         return
     end = datetime.now()
     ms = (end - start).seconds
-    await edit_or_reply(event, "Created BarCode in {} seconds".format(ms))
+    await friday.edit_or_reply(event, "Created BarCode in {} seconds".format(ms))
     await asyncio.sleep(5)
     await event.delete()
 

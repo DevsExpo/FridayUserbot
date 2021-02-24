@@ -263,8 +263,10 @@ csclist = [
 csclist = sorted(csclist)
 
 
-@friday.on(events.NewMessage(pattern=r"\.check", outgoing=True))
+@friday.on(admin_cmd(pattern=r"check"))
 async def checker(e):
+    if e.fwd_from:
+        return
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("Fetching Information, Wait!")
         print(e.text)
@@ -366,8 +368,10 @@ async def checker(e):
         await e.delete()
 
 
-@friday.on(events.NewMessage(pattern=r"\.otaup", outgoing=True))
+@friday.on(admin_cmd(pattern=r"otaup"))
 async def checker(e):
+    if e.fwd_from:
+        return
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("Fetching Information, Wait!")
         print(e.text)

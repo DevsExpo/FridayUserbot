@@ -3,7 +3,7 @@
 import random
 import re
 
-from fridaybot import CMD_HELP, bot
+from fridaybot import CMD_HELP
 from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 
 EMOJI_PATTERN = re.compile(
@@ -32,12 +32,14 @@ def deEmojify(inputString: str) -> str:
 @friday.on(friday_on_cmd(pattern=r"waifu(?: |$)(.*)"))
 @friday.on(sudo_cmd(pattern=r"waifu(?: |$)(.*)", allow_sudo=True))
 async def waifu(animu):
+    if animu.fwd_from:
+        return
     text = animu.pattern_match.group(1)
     if not text:
         if animu.is_reply:
             text = (await animu.get_reply_message()).message
         else:
-            await edit_or_reply(
+            await friday.edit_or_reply(
                 animu, "`You haven't written any article, Waifu is going away.`"
             )
             return

@@ -17,10 +17,10 @@ from fridaybot import (
     CMD_HELP,
     DEFAULT_BIO,
     LASTFM_USERNAME,
-    bot,
+    ALIVE_NAME,
     lastfm,
 )
-from fridaybot.events import register
+from fridaybot.function.events import register
 
 # =================== CONSTANT ===================
 LFM_BIO_ENABLED = "```last.fm current music to bio is now enabled.```"
@@ -49,8 +49,10 @@ LastLog = False
 # ================================================
 
 
-@register(outgoing=True, pattern="^.lastfm$")
+@friday.on(friday_on_cmd(pattern="lastfm$"))
 async def last_fm(lastFM):
+    if lastFM.fwd_from:
+        return
     """ For .lastfm command, fetch scrobble data from last.fm. """
     if not lastFM.text[0].isalpha() and lastFM.text[0] not in ("/", "#", "@", "!"):
         await lastFM.edit("Processing...")
@@ -69,15 +71,17 @@ async def last_fm(lastFM):
             rectrack = sub(
                 "^", "https://www.youtube.com/results?search_query=", rectrack
             )
+            song = playing.get_title()
+            artist = playing.get_artist()
             if image:
-                output = f"[‎]({image})[{LASTFM_USERNAME}]({username}) __is now listening to:__\n\n• [{playing}]({rectrack})\n`{tags}`"
+                output = f"[‎]({image})**{borg.me.first_name}** is now listening to:\n\n 🎧 **{song}**\n 💃 {artist}\n\n`{tags}`"
                 preview = True
             else:
-                output = f"[{LASTFM_USERNAME}]({username}) __is now listening to:__\n\n• [{playing}]({rectrack})\n`{tags}`"
+                output = f"**{borg.me.first_name}** is now listening to:\n\n 🎧 **{song}**\n 💃 {artist}\n\n`{tags}`"
         else:
             recent = User(LASTFM_USERNAME, lastfm).get_recent_tracks(limit=3)
             playing = User(LASTFM_USERNAME, lastfm).get_now_playing()
-            output = f"[{LASTFM_USERNAME}]({username}) __was last listening to:__\n\n"
+            output = f"**{borg.me.first_name}** was last listening to:\n\n"
             for i, track in enumerate(recent):
                 print(i)  # vscode hates the i being there so lets make it chill
                 printable = artist_and_song(track)
@@ -86,7 +90,7 @@ async def last_fm(lastFM):
                 rectrack = sub(
                     "^", "https://www.youtube.com/results?search_query=", rectrack
                 )
-                output += f"• [{printable}]({rectrack})\n"
+                output += f"[{printable}]({rectrack})\n"
                 if tags:
                     output += f"`{tags}`\n\n"
         if preview is not None:
@@ -140,9 +144,9 @@ async def get_curr_track(lfmbio):
                 environ["oldsong"] = str(SONG)
                 environ["oldartist"] = str(ARTIST)
                 if BIOPREFIX:
-                    lfmbio = f"{BIOPREFIX} 🎧: {ARTIST} - {SONG}"
+                    lfmbio = f"{BIOPREFIX} 🎧 {ARTIST} - {SONG}"
                 else:
-                    lfmbio = f"🎧: {ARTIST} - {SONG}"
+                    lfmbio = f"🎧 {ARTIST} - {SONG}"
                 try:
                     if BOTLOG and LastLog:
                         await bot.send_message(
@@ -150,7 +154,7 @@ async def get_curr_track(lfmbio):
                         )
                     await bot(UpdateProfileRequest(about=lfmbio))
                 except AboutTooLongError:
-                    short_bio = f"🎧: {SONG}"
+                    short_bio = f"🎧 {SONG}"
                     await bot(UpdateProfileRequest(about=short_bio))
             else:
                 if playing is None and user_info.about != DEFAULT_BIO:
@@ -182,8 +186,10 @@ async def get_curr_track(lfmbio):
     RUNNING = False
 
 
-@register(outgoing=True, pattern=r"^.lastbio (\S*)")
+@friday.on(friday_on_cmd(pattern=r"lastbio (\S*)"))
 async def lastbio(lfmbio):
+    if lfmbio.fwd_from:
+        return
     if not lfmbio.text[0].isalpha() and lfmbio.text[0] not in ("/", "#", "@", "!"):
         arg = lfmbio.pattern_match.group(1)
         global LASTFMCHECK
@@ -207,7 +213,7 @@ async def lastbio(lfmbio):
             await lfmbio.edit(LFM_BIO_ERR)
 
 
-@register(outgoing=True, pattern=r"^.lastlog (\S*)")
+@borg.on(friday_on_cmd(pattern=r"lastlog (\S*)"))
 async def lastlog(lstlog):
     if not lstlog.text[0].isalpha() and lstlog.text[0] not in ("/", "#", "@", "!"):
         arg = lstlog.pattern_match.group(1)

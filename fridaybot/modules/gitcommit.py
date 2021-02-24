@@ -14,7 +14,7 @@ from github import Github
 GIT_TEMP_DIR = "./fridaybot/temp/"
 
 
-@command(pattern="^.commit", outgoing=True)
+@borg.on(friday_on_cmd(pattern="commit"))
 async def download(event):
     if event.fwd_from:
         return

@@ -6,7 +6,8 @@
 #
 
 """ Userbot module for having some fun with people. """
-
+from fridaybot.utils import friday_on_cmd
+from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 import asyncio
 import random
 import re
@@ -680,6 +681,26 @@ async def kek(keks):
             await keks.edit(":" + uio[i % 2])
 
 
+@friday.on(friday_on_cmd(pattern="ehi ?(.*)"))
+@friday.on(sudo_cmd(pattern="ehi ?(.*)", allow_sudo=True))
+async def _(event):
+    if event.fwd_from:
+        return
+    hitleR = event.pattern_match.group(1)
+    X = """
+🌺✨✨🌺✨🌺🌺🌺
+🌺✨✨🌺✨✨🌺✨
+🌺🌺🌺🌺✨✨🌺✨
+🌺✨✨🌺✨✨🌺✨
+🌺✨✨🌺✨🌺🌺🌺
+☁☁☁☁☁☁☁☁
+"""
+
+    Y = X.replace("🌺",hitleR)
+    await event.edit(Y)
+
+
+
 @register(outgoing=True, pattern=r"^.coinflip (.*)")
 async def _(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
@@ -738,7 +759,7 @@ async def get_user(event):
     """ Get the user from argument or replied message. """
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
-        replied_user = await event.client(GetFullUserRequest(previous_message.from_id))
+        replied_user = await event.client(GetFullUserRequest(previous_message.sender_id))
     else:
         user = event.pattern_match.group(1)
 
@@ -1359,14 +1380,14 @@ async def download_video(v_url):
         await v_url.delete()
 
 
-@friday.on(friday_on_cmd(pattern=r"hola"))
+@friday.on(friday_on_cmd(pattern=r"hola$"))
 async def hi(event):
     if event.fwd_from:
         return
     await event.edit("╔┓┏╦━╦┓╔┓╔━━╗\n║┗┛║┗╣┃║┃║X X  ║\n║┏┓║┏╣┗╣┗╣╰╯║\n╚┛┗╩━╩━╩━╩━━╝")
 
 
-@friday.on(friday_on_cmd(pattern=r"plus"))
+@friday.on(friday_on_cmd(pattern=r"plus$"))
 async def hi(event):
     if event.fwd_from:
         return
@@ -1375,7 +1396,7 @@ async def hi(event):
     )
 
 
-@friday.on(friday_on_cmd(pattern=r"yes"))
+@friday.on(friday_on_cmd(pattern=r"yes$"))
 async def hi(event):
     if event.fwd_from:
         return
@@ -1384,7 +1405,7 @@ async def hi(event):
     )
 
 
-@friday.on(friday_on_cmd(pattern=r"lol"))
+@friday.on(friday_on_cmd(pattern=r"lol$"))
 async def hi(event):
     if event.fwd_from:
         return
@@ -1393,7 +1414,7 @@ async def hi(event):
     )
 
 
-@friday.on(friday_on_cmd(pattern=r"android"))
+@friday.on(friday_on_cmd(pattern=r"android$"))
 async def hi(event):
     if event.fwd_from:
         return
@@ -1402,7 +1423,7 @@ async def hi(event):
     )
 
 
-@friday.on(friday_on_cmd(pattern=r"hmm"))
+@friday.on(friday_on_cmd(pattern=r"hmm$"))
 async def hi(event):
     if event.fwd_from:
         return
@@ -1411,7 +1432,9 @@ async def hi(event):
     )
 
 
-@friday.on(friday_on_cmd(pattern=r"happybirthday"))
+
+
+@friday.on(friday_on_cmd(pattern=r"happybirthday$"))
 async def hi(event):
     if event.fwd_from:
         return
@@ -1420,7 +1443,7 @@ async def hi(event):
     )
 
 
-@friday.on(friday_on_cmd(pattern=r"WTF"))
+@friday.on(friday_on_cmd(pattern=r"WTF$"))
 async def hi(event):
     if event.fwd_from:
         return
@@ -1429,7 +1452,7 @@ async def hi(event):
     )
 
 
-@friday.on(friday_on_cmd(pattern=r"lmao"))
+@friday.on(friday_on_cmd(pattern=r"lmao$"))
 async def hi(event):
     if event.fwd_from:
         return
@@ -1437,25 +1460,33 @@ async def hi(event):
         "┏┓┈╭━━╮╭━━╮╭━━╮\n┃┃┈┃┃┃┃┃╭╮┃┃╭╮┃\n┃┗┓┃┃┃┃┃┏┓┃┃╰╯┃\n┗━┛┗┻┻┛┗┛┗┛╰━━╯"
     )
 
+@friday.on(friday_on_cmd(pattern=r"gm$"))
+async def hi(event):
+    if event.fwd_from:
+        return
+    X = """
 
-@friday.on(events.NewMessage(pattern=r"\.spam", outgoing=True))
-async def spammer(e):
+ ┏━━━┓╋╋╋╋╋╋╋┏┓
+ ┃┏━┓┃╋╋╋╋╋╋╋┃┃
+ ┃┃╋┗╋━━┳━━┳━┛┃
+ ┃┃┏━┫┏┓┃┏┓┃┏┓┃
+ ┃┗┻━┃┗┛┃┗┛┃┗┛┃
+ ┗━━━┻━━┻━━┻━━┛
+ 
+ 
+ ╭━╮╭━╮
+ ┃┃╰╯┃┃
+ ┃╭╮╭╮┣━━┳━┳━╮╭┳━╮╭━━╮
+ ┃┃┃┃┃┃╭╮┃╭┫╭╮╋┫╭╮┫╭╮┃
+ ┃┃┃┃┃┃╰╯┃┃┃┃┃┃┃┃┃┃╰╯┃
+ ╰╯╰╯╰┻━━┻╯╰╯╰┻┻╯╰┻━╮┃
+ ╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╭━╯┃
+ ╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰━━╯"""
+    await event.edit(X)
 
-    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        message = e.text
-        counter = int(message[6:8])
-        spam_message = str(e.text[8:])
-
-        await wait([e.respond(spam_message) for i in range(counter)])
-
-        await e.delete()
-        if LOGGER:
-            await e.client.send_message(
-                LOGGER_GROUP, "#SPAM \n\n" "Spam was executed successfully"
-            )
 
 
-@friday.on(friday_on_cmd(pattern=r"no"))
+@friday.on(friday_on_cmd(pattern=r"no$"))
 async def hi(event):
     if event.fwd_from:
         return
@@ -1505,6 +1536,8 @@ CMD_HELP.update(
 \nUsage: Like `-_-` but crying.\
 \n\n.cp\
 \nUsage: Copypasta the famous meme\
+\n\n.gdn\
+\nUsage: Good Night ASCII message.\
 \n\n.vapor\
 \nUsage: Vaporize everything!\
 \n\n.str\
@@ -1563,6 +1596,10 @@ CMD_HELP.update(
 \nUsage: The onlu word that can be used fucking everywhere.\
 \n\n.thanos\
 \nUsage: Try and then Snap.\
+\n\n.gm\
+\nUsage: Good Morning ASCII.\
+\n\n.lmao\
+\nUsage: Lmao ASCII.\
 \n\n.noob\
 \nUsage: Whadya want to know? Are you a NOOB?\
 \n\n.pro\

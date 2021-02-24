@@ -4,24 +4,25 @@ from collections import deque
 
 from telethon.tl.functions.channels import LeaveChannelRequest
 
-from fridaybot import CMD_HELP, bot
+from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd
 
 
-@friday.on(friday_on_cmd("leave$"))
+@friday.on(friday_on_cmd("(leave|bye|kickme)$"))
 async def leave(e):
-    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("`I iz Leaving dis Lol Group kek!`")
-        time.sleep(3)
-        if "-" in str(e.chat_id):
-            await bot(LeaveChannelRequest(e.chat_id))
-        else:
-            await e.edit("`But Boss! This is Not A Chat`")
+    if e.fwd_from:
+        return
+    if e.is_private:
+        await event.edit("`I Can't Do That.`")
+        return
+    await e.edit(f"My Master {bot.me.first_name} Wishes To Leave This Chat, So Bye.")
+    await e.client.kick_participant(e.chat_id, bot.me.id)
 
 
 @friday.on(friday_on_cmd(";__;$"))
-# @register(outgoing=True, pattern="^;__;$")
 async def fun(e):
+    if e.fwd_from:
+        return
     t = ";__;"
     for j in range(10):
         t = t[:-1] + "_;"
@@ -29,8 +30,9 @@ async def fun(e):
 
 
 @friday.on(friday_on_cmd("yo$"))
-# @register(outgoing=True, pattern="^yo$")
 async def Ooo(e):
+    if e.fwd_from:
+        return
     t = "yo"
     for j in range(15):
         t = t[:-1] + "oo"
@@ -38,8 +40,9 @@ async def Ooo(e):
 
 
 @friday.on(friday_on_cmd("Oof$"))
-# @register(outgoing=True, pattern="^Oof$")
 async def Oof(e):
+    if e.fwd_from:
+        return
     t = "Oof"
     for j in range(15):
         t = t[:-1] + "of"
@@ -47,59 +50,14 @@ async def Oof(e):
 
 
 @friday.on(friday_on_cmd("ccry$"))
-# @register(outgoing=True, pattern="^.cry$")
 async def cry(e):
+    if e.fwd_from:
+        return
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("(;´༎ຶД༎ຶ)")
 
 
-@friday.on(friday_on_cmd("fp$"))
-# @register(outgoing=True, pattern="^.fp$")
-async def facepalm(e):
-    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("🤦‍♂")
-
-
-@friday.on(friday_on_cmd("moon$"))
-# @register(outgoing=True, pattern="^.mmoon$")
-async def _(event):
-    if event.fwd_from:
-        return
-    deq = deque(list("🌗🌘🌑🌒🌓🌔🌕🌖"))
-    for _ in range(32):
-        await asyncio.sleep(0.1)
-        await event.edit("".join(deq))
-        deq.rotate(1)
-
-
-@friday.on(friday_on_cmd("source$"))
-# @register(outgoing=True, pattern="^.source$")
-async def source(e):
-    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("https://github.com/StarkGang/FridayUserbot")
-
-
-@friday.on(friday_on_cmd("readme$"))
-# @register(outgoing=True, pattern="^.readme$")
-async def reedme(e):
-    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("https://github.com/StarkGang/FRIDAYUSERBOT/blob/master/README.md")
-
-
-@friday.on(friday_on_cmd("heart$"))
-# @register(outgoing=True, pattern="^.heart$")
-async def _(event):
-    if event.fwd_from:
-        return
-    deq = deque(list("❤️🧡💛💚💙💜🖤"))
-    for _ in range(32):
-        await asyncio.sleep(0.1)
-        await event.edit("".join(deq))
-        deq.rotate(1)
-
-
 @friday.on(friday_on_cmd("fap$"))
-# @register(outgoing=True, pattern="^.fap$")
 async def _(event):
     if event.fwd_from:
         return
@@ -112,13 +70,4 @@ async def _(event):
 
 CMD_HELP.update({"leave": "Leave a Chat"})
 CMD_HELP.update({"cry": "Cry"})
-CMD_HELP.update({"fp": "Send face palm emoji."})
-CMD_HELP.update({"moon": "Bot will send a cool moon animation."})
-CMD_HELP.update({"clock": "Bot will send a cool clock animation."})
-CMD_HELP.update({"readme": "Reedme."})
-CMD_HELP.update({"source": "Gives the source of your fridaybot"})
-CMD_HELP.update({"myusernames": "List of Usernames owned by you."})
-CMD_HELP.update({"oof": "Same as ;__; but ooof"})
-CMD_HELP.update({"earth": "Sends Kensar Earth animation"})
-CMD_HELP.update({"heart": "Try and you'll get your emotions back"})
 CMD_HELP.update({"fap": "Faking orgasm"})

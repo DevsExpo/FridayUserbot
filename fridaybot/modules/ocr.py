@@ -7,9 +7,8 @@ import os
 
 import requests
 
-from fridaybot import CMD_HELP, OCR_SPACE_API_KEY, TEMP_DOWNLOAD_DIRECTORY, bot
-from fridaybot.utils import register
-
+from fridaybot import CMD_HELP, OCR_SPACE_API_KEY, TEMP_DOWNLOAD_DIRECTORY
+from fridaybot.utils import register, friday_on_cmd
 
 async def ocr_space_file(
     filename, overlay=False, api_key=OCR_SPACE_API_KEY, language="eng"
@@ -41,8 +40,10 @@ async def ocr_space_file(
     return r.json()
 
 
-@register(pattern="^.ocr(?: |$)(.*)", outgoing=True)
+@friday.on(friday_on_cmd(pattern="ocr(?: |$)(.*)"))
 async def ocr(event):
+    if event.fwd_from:
+        return
     await event.edit("`Reading...`")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)

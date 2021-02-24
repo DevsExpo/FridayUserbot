@@ -6,7 +6,7 @@ from pathlib import Path
 
 from telethon import events
 
-from fridaybot import CMD_LIST, LOAD_PLUG, SUDO_LIST, bot
+from fridaybot import CMD_LIST, LOAD_PLUG, SUDO_LIST, bot, client2, client3, CMD_HELP
 from fridaybot.Configs import Config
 from fridaybot.wraptools import (
     am_i_admin,
@@ -15,12 +15,10 @@ from fridaybot.wraptools import (
     ignore_grp,
     ignore_pm,
 )
-from var import Var
-
+from fridaybot.Configs import Config
 sedprint = logging.getLogger("PLUGINS")
 cmdhandler = Config.COMMAND_HAND_LER
 bothandler = Config.BOT_HANDLER
-
 
 def command(**args):
     args["func"] = lambda e: e.via_bot_id is None
@@ -78,15 +76,18 @@ def command(**args):
             del args["allow_edited_updates"]
 
         def decorator(func):
-            if allow_edited_updates:
+            if not allow_edited_updates:
                 bot.add_event_handler(func, events.MessageEdited(**args))
             bot.add_event_handler(func, events.NewMessage(**args))
+            if client2:
+                client2.add_event_handler(func, events.NewMessage(**args))
+            if client3:
+                client3.add_event_handler(func, events.NewMessage(**args))
             try:
                 LOAD_PLUG[file_test].append(func)
-            except:
+            except Exception:
                 LOAD_PLUG.update({file_test: [func]})
             return func
-
         return decorator
 
 
@@ -121,7 +122,8 @@ def load_module(shortname):
         mod = importlib.util.module_from_spec(spec)
         mod.bot = bot
         mod.tgbot = bot.tgbot
-        mod.Var = Var
+        mod.Config = Config
+        mod.Var = Config
         mod.command = command
         mod.logger = logging.getLogger(shortname)
         # support for uniborg
@@ -129,6 +131,12 @@ def load_module(shortname):
         sys.modules["friday.util"] = fridaybot.utils
         sys.modules["userbot.utils"] = fridaybot.utils
         sys.modules["userbot.plugins"] = fridaybot.modules
+        sys.modules["plugins"] = fridaybot.modules
+        sys.modules["userbot"] = fridaybot
+        mod.admin_cmd = friday_on_cmd
+        mod.sudo_cmd = sudo_cmd
+        mod.friday_on_cmd = friday_on_cmd
+        mod.CMD_HELP = CMD_HELP
         mod.Config = Config
         mod.ignore_grp = ignore_grp()
         mod.ignore_pm = ignore_pm()
@@ -139,11 +147,70 @@ def load_module(shortname):
         mod.friday = bot
         # support for paperplaneextended
         sys.modules["fridaybot.events"] = fridaybot.utils
+        sys.modules["fridaybot.function.events"] = fridaybot.utils
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["fridaybot.modules." + shortname] = mod
         sedprint.info("Successfully imported " + shortname)
 
+def load_module_dclient(shortname, client):
+    if shortname.startswith("__"):
+        pass
+    elif shortname.endswith("_"):
+        import importlib
+        import sys
+        from pathlib import Path
+
+        import fridaybot.modules
+        import fridaybot.utils
+
+        path = Path(f"fridaybot/modules/{shortname}.py")
+        name = "fridaybot.modules.{}".format(shortname)
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+    else:
+        import importlib
+        import sys
+        from pathlib import Path
+
+        import fridaybot.modules
+        import fridaybot.utils
+
+        path = Path(f"fridaybot/modules/{shortname}.py")
+        name = "fridaybot.modules.{}".format(shortname)
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        mod.bot = client
+        mod.tgbot = bot.tgbot
+        mod.Config = Config
+        mod.Var = Config
+        mod.command = command
+        sedlu = str(shortname) + "- MClient -"
+        mod.logger = logging.getLogger(sedlu)
+        # support for uniborg
+        sys.modules["uniborg.util"] = fridaybot.utils
+        sys.modules["friday.util"] = fridaybot.utils
+        sys.modules["userbot.utils"] = fridaybot.utils
+        sys.modules["userbot.plugins"] = fridaybot.modules
+        sys.modules["plugins"] = fridaybot.modules
+        sys.modules["userbot"] = fridaybot
+        mod.admin_cmd = friday_on_cmd
+        mod.sudo_cmd = sudo_cmd
+        mod.friday_on_cmd = friday_on_cmd
+        mod.Config = Config
+        mod.ignore_grp = ignore_grp()
+        mod.ignore_pm = ignore_pm()
+        mod.ignore_bot = ignore_bot()
+        mod.am_i_admin = am_i_admin()
+        mod.ignore_fwd = ignore_fwd()
+        mod.borg = client
+        mod.friday = client
+        mod.CMD_HELP = CMD_HELP
+        sys.modules["fridaybot.events"] = fridaybot.utils
+        sys.modules["fridaybot.function.events"] = fridaybot.utils
+        spec.loader.exec_module(mod)
+        sys.modules["fridaybot.modules." + shortname] = mod
 
 def remove_plugin(shortname):
     try:
@@ -201,11 +268,8 @@ def admin_cmd(pattern=None, **args):
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
         args["allow_edited_updates"]
         del args["allow_edited_updates"]
-
     # check if the plugin should listen for outgoing 'messages'
-
     return events.NewMessage(**args)
-
 
 def friday_on_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
@@ -245,9 +309,6 @@ def friday_on_cmd(pattern=None, **args):
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
         args["allow_edited_updates"]
         del args["allow_edited_updates"]
-
-    # check if the plugin should listen for outgoing 'messages'
-
     return events.NewMessage(**args)
 
 
@@ -303,13 +364,15 @@ def register(**args):
         if not disable_edited:
             bot.add_event_handler(func, events.MessageEdited(**args))
         bot.add_event_handler(func, events.NewMessage(**args))
+        if client2:
+            client2.add_event_handler(func, events.NewMessage(**args))
+        if client3:
+            client3.add_event_handler(func, events.NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(func)
         except Exception:
             LOAD_PLUG.update({file_test: [func]})
-
         return func
-
     return decorator
 
 
@@ -424,7 +487,7 @@ def time_formatter(milliseconds: int) -> str:
 
 class Loader:
     def __init__(self, func=None, **args):
-        self.Var = Var
+        self.Config = Config
         bot.add_event_handler(func, events.NewMessage(**args))
 
 
@@ -471,13 +534,14 @@ def sudo_cmd(pattern=None, **args):
     return events.NewMessage(**args)
 
 
-async def edit_or_reply(event, text):
+async def edit_or_reply(event, text, parse_mode=None):
+    parse_mode_z = parse_mode if parse_mode else "md"
     if event.sender_id in Config.SUDO_USERS:
         reply_to = await event.get_reply_message()
         if reply_to:
-            return await reply_to.reply(text)
-        return await event.reply(text)
-    return await event.edit(text)
+            return await reply_to.reply(text, parse_mode=parse_mode_z)
+        return await event.reply(text, parse_mode=parse_mode_z)
+    return await event.edit(text, parse_mode=parse_mode_z)
 
 
 #    Copyright (C) Midhun KM 2020
@@ -501,6 +565,8 @@ def assistant_cmd(add_cmd, is_args=False):
             pattern = bothandler + add_cmd + "(?: |$)(.*)"
         elif is_args == "stark":
             pattern = bothandler + add_cmd + " (.*)"
+        elif is_args == "heck":
+            pattern = bothandler + add_cmd
         elif is_args == "snips":
             pattern = bothandler + add_cmd + " (\S+)"
         else:
@@ -556,10 +622,8 @@ def only_pro():
         @functools.wraps(func)
         async def wrapper(event):
             kek = list(Config.SUDO_USERS)
-            mm = bot.uid
-            if event.sender_id == mm:
-                await func(event)
-            elif event.sender_id == kek:
+            kek.append(bot.uid)
+            if event.sender_id in kek:
                 await func(event)
             else:
                 await event.reply("Only Owners, Sudo Users Can Use This Command.")
@@ -617,10 +681,8 @@ def peru_only():
         @functools.wraps(func)
         async def wrapper(event):
             kek = list(Config.SUDO_USERS)
-            mm = bot.uid
-            if event.sender_id == mm:
-                await func(event)
-            elif event.sender_id == kek:
+            kek.append(bot.uid)
+            if event.sender_id in kek:
                 await func(event)
             else:
                 pass

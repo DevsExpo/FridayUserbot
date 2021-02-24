@@ -19,6 +19,8 @@ from fridaybot.utils import friday_on_cmd, sudo_cmd
 
 @friday.on(friday_on_cmd(pattern="stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
 async def sticklet(event):
+    if event.fwd_from:
+        return
     R = random.randint(0, 256)
     G = random.randint(0, 256)
     B = random.randint(0, 256)

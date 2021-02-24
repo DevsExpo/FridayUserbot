@@ -11,7 +11,7 @@ from fridaybot import CMD_HELP
 @friday.on(friday_on_cmd(pattern="xkcd ?(.*)"))
 @friday.on(sudo_cmd(pattern="xkcd ?(.*)", allow_sudo=True))
 async def _(event):
-    livinglegend = await edit_or_reply(event, "Oh SeD Pls Wait")
+    livinglegend = await friday.edit_or_reply(event, "Oh SeD Pls Wait")
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)

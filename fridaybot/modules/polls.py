@@ -5,6 +5,8 @@ from uniborg.util import friday_on_cmd
 
 @friday.on(friday_on_cmd(pattern="get_poll"))
 async def _(event):
+    if event.fwd_from:
+        return
     reply_message = await event.get_reply_message()
     if reply_message.media is None:
         await event.edit(

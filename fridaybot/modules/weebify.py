@@ -68,7 +68,8 @@ weebyfont = [
 
 @friday.on(friday_on_cmd(pattern="weeb ?(.*)"))
 async def weebify(event):
-
+    if event.fwd_from:
+        return
     args = event.pattern_match.group(1)
     if not args:
         get = await event.get_reply_message()

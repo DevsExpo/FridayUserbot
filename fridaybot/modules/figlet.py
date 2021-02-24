@@ -7,7 +7,7 @@ from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 @friday.on(friday_on_cmd(pattern="figlet ?(.*)", outgoing=True))
 @friday.on(sudo_cmd(pattern="figlet ?(.*)", allow_sudo=True))
 async def figlet(event):
-    arjun = await edit_or_reply(event, "`Figleting This Text xD`")
+    arjun = await friday.edit_or_reply(event, "`Figleting This Text xD`")
     if event.fwd_from:
         return
     CMD_FIG = {

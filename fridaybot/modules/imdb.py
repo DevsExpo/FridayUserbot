@@ -19,6 +19,8 @@ langi = "en"
 # kanged from Blank-x ;---;
 @friday.on(friday_on_cmd("imdb (.*)", outgoing=True))
 async def imdb(e):
+    if e.fwd_from:
+        return
     try:
         movie_name = e.pattern_match.group(1)
         remove_space = movie_name.split(" ")

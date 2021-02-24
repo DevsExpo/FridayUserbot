@@ -8,6 +8,8 @@ from fridaybot.utils import friday_on_cmd
 
 @friday.on(friday_on_cmd(pattern="dump ?(.*)"))
 async def _(message):
+    if message.fwd_from:
+        return
     try:
         obj = message.pattern_match.group(1)
         if len(obj) != 3:

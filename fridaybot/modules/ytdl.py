@@ -47,8 +47,7 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
             humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
         )
         if file_name:
-            await event.edit(
-                "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
+            await event.edit("{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
             )
         else:
             await event.edit("{}\n{}".format(type_of_ps, tmp))
@@ -90,10 +89,12 @@ def time_formatter(milliseconds: int) -> str:
 @friday.on(friday_on_cmd(pattern="yt(a|v) (.*)"))
 @friday.on(sudo_cmd(pattern="yt(a|v) (.*)", allow_sudo=True))
 async def download_video(v_url):
+    if v_url.fwd_from:
+        return
     """ For .ytdl command, download media from YouTube and many other sites. """
     url = v_url.pattern_match.group(2)
     type = v_url.pattern_match.group(1).lower()
-    friday = await edit_or_reply(v_url, "Trying To Download......")
+    friday = await friday.edit_or_reply(v_url, "Trying To Download......")
     await friday.edit("`Preparing to download...`")
 
     if type == "a":
@@ -216,11 +217,110 @@ async def download_video(v_url):
         os.remove(f"{ytdl_data['id']}.mp4")
         await v_url.delete()
 
+@friday.on(friday_on_cmd(pattern="hyta (.*)"))
+@friday.on(sudo_cmd(pattern="hyta (.*)", allow_sudo=True))
+async def download_video(v_url):
+    if v_url.fwd_from:
+        return
+    """ For .ytdl command, download media from YouTube and many other sites. """
+    
+    url = v_url.pattern_match.group(1)
+    friday = await friday.edit_or_reply(v_url, "Trying To Download......")
+    await friday.edit("`Preparing to download...`")
+
+    if 1==1:
+        opts = {
+            "format": "bestaudio",
+            "addmetadata": True,
+            "key": "FFmpegMetadata",
+            "writethumbnail": True,
+            "prefer_ffmpeg": True,
+            "geo_bypass": True,
+            "nocheckcertificate": True,
+            "postprocessors": [
+                {
+                    "key": "FFmpegExtractAudio",
+                    "preferredcodec": "m4a",
+                    "preferredquality": "1080",
+                }
+            ],
+            "outtmpl": "%(id)s.m4a",
+            "quiet": True,
+            "logtostderr": False,
+        }
+        video = False
+        song = True
+
+    
+    try:
+        await friday.edit("`Fetching data, please wait..`")
+        with YoutubeDL(opts) as ytdl:
+            ytdl_data = ytdl.extract_info(url)
+    except DownloadError as DE:
+        await friday.edit(f"`{str(DE)}`")
+        return
+    except ContentTooShortError:
+        await friday.edit("`The download content was too short.`")
+        return
+    except GeoRestrictedError:
+        await friday.edit(
+            "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`"
+        )
+        return
+    except MaxDownloadsReached:
+        await friday.edit("`Max-downloads limit has been reached.`")
+        return
+    except PostProcessingError:
+        await friday.edit("`There was an error during post processing.`")
+        return
+    except UnavailableVideoError:
+        await friday.edit("`Media is not available in the requested format.`")
+        return
+    except XAttrMetadataError as XAME:
+        await friday.edit(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
+        return
+    except ExtractorError:
+        await friday.edit("`There was an error during info extraction.`")
+        return
+    except Exception as e:
+        await friday.edit(f"{str(type(e)): {str(e)}}")
+        return
+    c_time = time.time()
+    if song:
+        await friday.edit(
+            f"`Preparing to upload song:`\
+        \n**{ytdl_data['title']}**\
+        \nby *{ytdl_data['uploader']}*"
+        )
+        await v_url.client.send_file(
+            v_url.chat_id,
+            f"{ytdl_data['id']}.m4a",
+            supports_streaming=True,
+            attributes=[
+                DocumentAttributeAudio(
+                    duration=int(ytdl_data["duration"]),
+                    title=str(ytdl_data["title"]),
+                    performer=str(ytdl_data["uploader"]),
+                )
+            ],
+            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
+                progress(
+                    d, t, v_url, c_time, "Uploading..", f"{ytdl_data['title']}.m4a"
+                )
+            ),
+        )
+        os.remove(f"{ytdl_data['id']}.m4a")
+        await v_url.delete()
+
+
+
 
 CMD_HELP.update(
     {
         "ytdl": "**Ytdl**\
 \n\n**Syntax : **`.yta <song link> OR .ytv <video link>`\
-\n**Usage :** download songs or videos from YouTube just with a link"
+\n**Usage :** download songs or videos from YouTube just with a link\
+\n\n**Syntax : **`.hyta <song link>`\
+\n**Usage :** download songs in m4a format-higher quality."
     }
 )

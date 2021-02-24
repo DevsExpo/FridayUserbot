@@ -1,6 +1,6 @@
 import asyncio
 from datetime import datetime
-
+import os
 from fridaybot import CMD_HELP
 from fridaybot.utils import friday_on_cmd, sudo_cmd
 
@@ -15,10 +15,16 @@ async def send(event):
     message_id = event.message.id
     input_str = event.pattern_match.group(1)
     start = datetime.now()
-    the_plugin_file = "./fridaybot/modules/{}.py".format(input_str)
+    if input_str.endswith(".py"):
+        the_plugin_file = "./fridaybot/modules/{}".format(input_str)
+    else:
+        the_plugin_file = "./fridaybot/modules/{}.py".format(input_str)
     end = datetime.now()
     (end - start).seconds
-    men = f"Plugin Name - {input_str}.py \nUploaded By Friday"
+    men = f"**Plugin Name :** `{input_str}` \n**This Plugin is Part Of Friday, Please Read License Before Using In Your Projects.**"
+    if not os.path.exists(the_plugin_file):
+        await event.edit(f"__No Plugin Match Found For__ **{input_str}**")
+        return
     await event.client.send_file(  # pylint:disable=E0602
         event.chat_id,
         the_plugin_file,

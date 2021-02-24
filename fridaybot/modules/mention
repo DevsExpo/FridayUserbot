@@ -13,9 +13,9 @@ async def _(event):
 	if event.reply_to_msg_id:
 		previous_message = await event.get_reply_message()
 		if previous_message.forward:
-			replied_user = previous_message.forward.from_id
+			replied_user = previous_message.forward.sender_id
 		else:
-			replied_user = previous_message.from_id
+			replied_user = previous_message.sender_id
 	else:
 		await event.edit("reply To Message")
 	user_id = replied_user

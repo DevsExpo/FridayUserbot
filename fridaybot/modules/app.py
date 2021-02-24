@@ -14,8 +14,10 @@ from ..utils import edit_or_reply, friday_on_cmd, sudo_cmd
 @friday.on(friday_on_cmd(pattern="app (.*)"))
 @friday.on(sudo_cmd(pattern="app (.*)", allow_sudo=True))
 async def apk(event):
+    if event.fwd_from:
+        return
     app_name = event.pattern_match.group(1)
-    event = await edit_or_reply(event, "Searching!")
+    event = await friday.edit_or_reply(event, "Searching!")
     try:
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
@@ -84,8 +86,10 @@ async def apk(event):
 @friday.on(friday_on_cmd(pattern="appr (.*)"))
 @friday.on(sudo_cmd(pattern="appr (.*)", allow_sudo=True))
 async def apkr(event):
+    if event.fwd_from:
+        return
     app_name = event.pattern_match.group(1)
-    event = await edit_or_reply(event, "searching!")
+    event = await friday.edit_or_reply(event, "searching!")
     try:
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)

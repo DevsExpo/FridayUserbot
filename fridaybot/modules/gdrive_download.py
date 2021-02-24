@@ -81,7 +81,7 @@ async def get_file_name(content):
     return file_name
 
 
-@friday.on(events.NewMessage(pattern=r"\.gdl", outgoing=True))
+@friday.on(friday_on_cmd(pattern=r"gdl"))
 async def g_download(event):
     if event.fwd_from:
         return

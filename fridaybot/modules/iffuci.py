@@ -20,7 +20,7 @@ def progress(current, total):
 @friday.on(friday_on_cmd(pattern="iffuci ?(.*)"))
 @friday.on(sudo_cmd(pattern="iffuci ?(.*)", allow_sudo=True))
 async def _(event):
-    crackexy = await edit_or_reply(event, "Processing")
+    crackexy = await friday.edit_or_reply(event, "Processing")
     if event.fwd_from:
         return
     start = datetime.now()

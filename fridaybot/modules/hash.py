@@ -9,14 +9,15 @@ from subprocess import PIPE
 from subprocess import run as runapp
 
 import pybase64
-
+from fridaybot.utils import friday_on_cmd
 from fridaybot import CMD_HELP
-from fridaybot.events import errors_handler, register
+from fridaybot.function.events import errors_handler, register
 
 
-@register(outgoing=True, pattern="^.hash (.*)")
-@errors_handler
+@friday.on(friday_on_cmd(pattern="hash (.*)"))
 async def gethash(hash_q):
+    if hash_q.fwd_from:
+        return
     """ For .hash command, find the md5, sha1, sha256, sha512 of the string. """
     hashtxt_ = hash_q.pattern_match.group(1)
     hashtxt = open("hashdis.txt", "w+")
@@ -59,8 +60,7 @@ async def gethash(hash_q):
         await hash_q.reply(ans)
 
 
-@register(outgoing=True, pattern="^.hbase (en|de) (.*)")
-@errors_handler
+@friday.on(friday_on_cmd(pattern="hbase (en|de) (.*)"))
 async def endecrypt(query):
     """ For .base64 command, find the base64 encoding of the given string. """
     if query.pattern_match.group(1) == "en":

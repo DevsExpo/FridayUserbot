@@ -43,7 +43,7 @@ Profile Created: {}""".format(
         )
         await event.delete()
     else:
-        await edit_or_reply(event, "`{}`: {}".format(input_str, r.text))
+        await friday.edit_or_reply(event, "`{}`: {}".format(input_str, r.text))
 
 
 CMD_HELP.update(

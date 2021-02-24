@@ -14,7 +14,9 @@ GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
 @friday.on(friday_on_cmd(outgoing=True, pattern="lyrics (.*)"))
 @friday.on(sudo_cmd(pattern="lyrics (.*)", allow_sudo=True))
 async def _(event):
-    await edit_or_reply(event, "Searching For Lyrics.....")
+    if event.fwd_from:
+        return
+    await friday.edit_or_reply(event, "Searching For Lyrics.....")
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
@@ -24,7 +26,7 @@ async def _(event):
     elif reply.text:
         query = reply.message
     else:
-        await edit_or_reply(event, "`What I am Supposed to find `")
+        await friday.edit_or_reply(event, "`What I am Supposed to find `")
         return
 
     song = ""
@@ -50,11 +52,13 @@ async def _(event):
             )
             await event.delete()
     else:
-        await edit_or_reply(event, reply)
+        await friday.edit_or_reply(event, reply)
 
 
 @friday.on(friday_on_cmd(outgoing=True, pattern="glyrics(?: |$)(.*)"))
 async def lyrics(lyric):
+    if lyric.fwd_from:
+        return
     if r"-" in lyric.text:
         pass
     else:
@@ -66,7 +70,7 @@ async def lyrics(lyric):
 
     if GENIUS is None:
         await lyric.edit(
-            "`Provide genius access token to config.py or Heroku Var first kthxbye!`"
+            "`Provide genius access token to config.py or Heroku Config first kthxbye!`"
         )
     else:
         genius = lyricsgenius.Genius(GENIUS)

@@ -15,7 +15,7 @@ from uniborg.util import edit_or_reply, friday_on_cmd
 @friday.on(friday_on_cmd(pattern="ls ?(.*)"))
 @friday.on(friday_on_cmd(pattern="ls ?(.*)", allow_sudo=True))
 async def lst(event):
-    genesis = await edit_or_reply(event, "Processing")
+    genesis = await friday.edit_or_reply(event, "Processing")
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)

@@ -1,4 +1,4 @@
-#    Copyright (C) Midhun KM 2020
+#    Copyright (C) Midhun KM 2020-2021
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -16,8 +16,10 @@ import io
 import os
 import re
 
-from telethon import Button, custom, events
+from telethon import Button, custom, events, functions
+import telethon
 from telethon.tl.functions.users import GetFullUserRequest
+from telethon.utils import pack_bot_file_id
 
 from fridaybot import bot
 from fridaybot.Configs import Config
@@ -32,7 +34,6 @@ from fridaybot.modules.sql_helper.idadder_sql import (
     already_added,
     get_all_users,
 )
-
 
 @assistant_cmd("start", is_args=False)
 async def start(event):
@@ -129,17 +130,24 @@ async def users(event):
 async def all_messages_catcher(event):
     if is_he_added(event.sender_id):
         return
-    if event.raw_text.startswith("/"):
-        pass
-    elif event.sender_id == bot.uid:
+    if event.sender_id == bot.uid:
         return
-    else:
-        await event.get_sender()
-        event.chat_id
-        sed = await event.forward_to(bot.uid)
-        # Add User To Database ,Later For Broadcast Purpose
-        # (C) @SpecHide
-        add_me_in_db(sed.id, event.sender_id, event.id)
+    if event.raw_text.startswith("/"):
+        return
+    if Config.SUB_TO_MSG_ASSISTANT:
+        try:
+            result = await tgbot(
+                functions.channels.GetParticipantRequest(
+                    channel=Config.JTM_CHANNEL_ID, user_id=event.sender_id
+                )
+            )
+        except telethon.errors.rpcerrorlist.UserNotParticipantError:
+            await event.reply(f"**Opps, I Couldn't Forward That Message To Owner. Please Join My Channel First And Then Try Again!**",
+                             buttons = [Button.url("Join Channel 🇮🇳", Config.JTM_CHANNEL_USERNAME)])
+            return
+    await event.get_sender()
+    sed = await event.forward_to(bot.uid)
+    add_me_in_db(sed.id, event.sender_id, event.id)
 
 
 @tgbot.on(events.NewMessage(func=lambda e: e.is_private))
@@ -150,30 +158,31 @@ async def sed(event):
     msg.id
     msg_s = event.raw_text
     user_id, reply_message_id = his_userid(msg.id)
-    if event.sender_id == Config.OWNER_ID:
-        if event.raw_text.startswith("/"):
-            return
-        if event.text is not None and event.media:
-            bot_api_file_id = pack_bot_file_id(event.media)
-            await tgbot.send_file(
-                user_id,
-                file=bot_api_file_id,
-                caption=event.text,
-                reply_to=reply_message_id,
-            )
-        else:
-            msg_s = event.raw_text
-            await tgbot.send_message(
-                user_id,
-                msg_s,
-                reply_to=reply_message_id,
-            )
+    if event.sender_id != bot.uid:
+        return
+    elif event.raw_text.startswith("/"):
+        return
+    elif event.text is not None and event.media:
+        bot_api_file_id = pack_bot_file_id(event.media)
+        await tgbot.send_file(
+            user_id,
+            file=bot_api_file_id,
+            caption=event.text,
+            reply_to=reply_message_id,
+        )
+    else:
+        msg_s = event.raw_text
+        await tgbot.send_message(
+            user_id,
+            msg_s,
+            reply_to=reply_message_id,
+        )
 
 
-@assistant_cmd("broadcast", is_args=True)
+@assistant_cmd("broadcast", is_args='heck')
 @god_only
 async def sedlyfsir(event):
-    msgtobroadcast = event.pattern_match.group(1)
+    msgtobroadcast = event.text.split(" ", maxsplit=1)[1]
     userstobc = get_all_users()
     error_count = 0
     sent_count = 0
@@ -187,14 +196,9 @@ async def sedlyfsir(event):
     for starkcast in userstobc:
         try:
             sent_count += 1
-            await tgbot.send_message(
-                int(starkcast.chat_id),
-                "**Hey, You Have Received A New Broadcast Message**",
-            )
             await tgbot.send_message(int(starkcast.chat_id), msgtobroadcast)
             await asyncio.sleep(0.2)
-        except Exception as e:
-            hmmok += f"Errors : {e} \n"
+        except:
             error_count += 1
     await tgbot.send_message(
         event.chat_id,
@@ -223,8 +227,6 @@ async def starkislub(event):
 async def starkisnoob(event):
     if event.sender_id == bot.uid:
         msg = await event.get_reply_message()
-        msg.id
-        event.raw_text
         user_id, reply_message_id = his_userid(msg.id)
     if is_he_added(user_id):
         await event.reply("Already Blacklisted")

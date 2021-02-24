@@ -42,4 +42,3 @@ async def _(event):
         )
     except:
         pass
-    await event.edit(caption_str)

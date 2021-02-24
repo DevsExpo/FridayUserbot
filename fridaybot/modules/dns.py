@@ -13,7 +13,7 @@ from fridaybot.utils import edit_or_reply, friday_on_cmd, sudo_cmd
 @friday.on(friday_on_cmd("dns (.*)"))
 @friday.on(sudo_cmd("dns (.*)", allow_sudo=True))
 async def _(event):
-    starky = await edit_or_reply(event, "Processing.....")
+    starky = await friday.edit_or_reply(event, "Processing.....")
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
@@ -28,7 +28,7 @@ async def _(event):
 @friday.on(friday_on_cmd("url (.*)"))
 @friday.on(sudo_cmd("dns (.*)", allow_sudo=True))
 async def _(event):
-    starkxd = await edit_or_reply(event, "Processing....")
+    starkxd = await friday.edit_or_reply(event, "Processing....")
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)
@@ -42,7 +42,7 @@ async def _(event):
 
 @friday.on(friday_on_cmd("unshort (.*)"))
 async def _(event):
-    sadness = await edit_or_reply(event, "Processing...")
+    sadness = await friday.edit_or_reply(event, "Processing...")
     if event.fwd_from:
         return
     input_str = event.pattern_match.group(1)

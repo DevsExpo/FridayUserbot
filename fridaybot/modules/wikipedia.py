@@ -18,9 +18,12 @@ async def _(event):
     result = ""
     results = wikipedia.search(input_str)
     for s in results:
-        page = wikipedia.page(s)
-        url = page.url
-        result += f"> [{s}]({url}) \n"
+        try:
+           page = wikipedia.page(s)
+           url = page.url
+           result += f"> [{s}]({url}) \n"
+        except:
+           pass
     await event.edit(
         "WikiPedia **Search**: {} \n\n **Result**: \n\n{}".format(input_str, result)
     )

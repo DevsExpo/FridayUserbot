@@ -1,4 +1,4 @@
-#    Copyright (C) Midhun KM 2020
+#    Copyright (C) Midhun KM 2020-2021
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -16,16 +16,22 @@ import requests
 from telethon.tl.types import MessageMediaPhoto
 
 from fridaybot import CMD_HELP
-from fridaybot.utils import friday_on_cmd, sudo_cmd
+from fridaybot.utils import friday_on_cmd, sudo_cmd, admin_cmd
+#from pornhub_api import PornhubApi
+from uniborg.util import friday_on_cmd
 
 
-@friday.on(friday_on_cmd(pattern=r"nsfw"))
-@friday.on(sudo_cmd(pattern=r"nsfw", allow_sudo=True))
+
+@friday.on(friday_on_cmd(pattern=r"oldnsfw"))
+@friday.on(sudo_cmd(pattern=r"oldnsfw", allow_sudo=True))
 async def nsfw(event):
+    if event.fwd_from:
+        return
     url = "https://nsfw-categorize.it/api/upload"
     await event.edit("`Processing..`")
     sed = await event.get_reply_message()
     photo = None
+    sedpath = "./fridaydevs/"
     if sed and sed.media:
         if isinstance(sed.media, MessageMediaPhoto):
             photo = await borg.download_media(sed.media, sedpath)
@@ -49,10 +55,44 @@ async def nsfw(event):
                 os.remove(photo)
 
 
+#@friday.on(admin_cmd(pattern="phs (.*)"))
+#async def _(event):
+#    if event.fwd_from:
+#        return
+#    input_str = event.pattern_match.group(1)
+#    api = PornhubApi()
+#   data = api.search.search(
+#   input_str,
+#   ordering="mostviewed"
+#   	)
+#    ok = 1
+#    oik = ""
+#    for vid in data.videos:
+#      if ok<=5:
+#        oik +=(f"""
+#Video title:- {vid.title}
+#Video link:- https://www.pornhub.com/view_video.php?viewkey={vid.video_id}
+#        """)
+#        ok = ok+1
+#      else:
+#        pass   
+#    oiko = "<b>Links Generated Successfully</b>"+"\n"+"Search Query:- "+input_str+"\n"+oik
+#    await borg.send_message(
+#        event.chat_id,
+#        oiko,
+#        parse_mode="HTML",
+#    )
+#    await event.delete()
+
+
+
+
 CMD_HELP.update(
     {
         "nsfw": "**NSFW**\
-\n\n**Syntax : **`.nsfw <reply to image>`\
-\n**Usage :** Checks if the replyed image is nsfw or not."
+\n\n**Syntax : **`.oldnsfw <reply to image>`\
+\n**Usage :** Checks if the replyed image is nsfw or not.\
+\n\n**Syntax : **`.phs <query>`\
+\n**Usage :** Searches PornHub Website With Given Query."
     }
 )

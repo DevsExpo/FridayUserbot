@@ -20,7 +20,8 @@ if 1 == 1:
     @friday.on(friday_on_cmd(pattern="poto(.*)"))
     @friday.on(sudo_cmd(pattern="poto(.*)", allow_sudo=True))
     async def potocmd(event):
-
+        if event.fwd_from:
+            return
         """Gets the profile photos of replied users, channels or chats"""
         id = "".join(event.raw_text.split(maxsplit=2)[1:])
 

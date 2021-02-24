@@ -1,6 +1,6 @@
 {
   "name": "Friday-Userbot",
-  "description": "A Userbot Based On Telethon By @StarkXD",
+  "description": "A Userbot Based On Telethon By Friday Devs",
   "logo": "https://telegra.ph/file/b4e1e36c6b1fcb32dd997.jpg",
   "keywords": [
     "telegram",
@@ -18,15 +18,6 @@
       "description": "Setting this to ANYTHING will enable heroku.",
       "value": "ANYTHING"
     },
-    "TEMP_DOWNLOAD_DIRECTORY": {
-      "description": "Where downloaded files will go.",
-      "value": "./fridaybot/DOWNLOADS/",
-      "required": false
-    },
-    "ALIVE_NAME": {
-      "description": "Enter Username Here ",
-      "value": ""
-    },
     "APP_ID": {
       "description": "Get this value from my.telegram.org! Please do not steal",
       "value": ""
@@ -35,9 +26,14 @@
       "description": "Get this value from my.telegram.org! Please do not steal",
       "value": ""
     },
-    "PLUGIN_CHANNEL": {
-      "description": "Channel Where You Save Your Plugins",
-      "value": ""
+    "NOSPAMPLUS_TOKEN": {
+      "description": "Your Token From @NospamPlusBot",
+      "value": "",
+      "required": false
+    },
+    "LOAD_OTHER_PLUGINS": {
+      "description": "Do You Wish To Load Spammy / Official Plugins?",
+      "value": "False"
     },
     "SUDO_USERS": {
       "description": "Enter A User Id Which You Would Like to Use To Control Sudo. Don't Give Your Own ID Or ID Of Users You Don't Trust.",
@@ -45,7 +41,7 @@
       "required": false
     },
     "PRIVATE_GROUP_ID": {
-      "description": "A Group ID Where You Want Logging Feature",
+      "description": "A Group ID Where You Want To Log Important Logs.",
       "value": ""
     },
     "STRING_SESSION": {
@@ -53,38 +49,19 @@
       "value": ""
     },
     "TESSDATA_PREFIX": {
-      "description": "Pytesserct Path. Don't Edit Until You Know What Are You Doing..",
+      "description": "Pytesserct Path. Don't Edit Until You Know What Are You Doing. Just leave it As it is.",
       "value": "./.apt/usr/share/tesseract-ocr/4.00/tessdata"
-    },
-    "GITHUB_ACCESS_TOKEN": {
-      "description": "Your Github Access Token for GitHub Commit Plugin. Google 'Github access token' to find more About It.",
-      "value": "",
-      "required": false
-    },
-    "GIT_REPO_NAME": {
-      "description": "Your repo name Example: Midhunkm1294/FridayUserbot, but GITHUB_ACCESS_TOKEN must be setup first.",
-      "value": "",
-      "required": false
-    },
-    "LYDIA_API_KEY": {
-      "description": "Needed for Lydia AI. Follow https://telegra.ph/Lydia-09-05 to get your API.",
-      "value": "",
-      "required": false
     },
     "HEROKU_API_KEY": {
       "description": "Go to https://dashboard.heroku.com/account, scroll down and press Reveal API.Required for updater to work.",
       "value": ""
     },
     "HEROKU_APP_NAME": {
-      "description": "The Value of App Name you filled in right on top.Required for updater to work.",
+      "description": "Heroku App Name That You Filled Above.",
       "value": ""
     },
     "TG_BOT_TOKEN_BF_HER": {
-      "description": "Needed for inline buttons maker. Make a bot at @BotFather and get the token of your bot. Get it.",
-      "value": ""
-    },
-    "TG_BOT_USER_NAME_BF_HER": {
-      "description": "You Telegram Bot API Key Here. Needed For Help Module And Cbutton.",
+      "description": "Your Bot Token Obtained From @BotFather.",
       "value": ""
     },
     "DOWNLOAD_PFP_URL_CLOCK": {

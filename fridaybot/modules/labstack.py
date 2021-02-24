@@ -1,13 +1,9 @@
-#   Copyright 2019 - 2020 DarkPrinc3
+#   Copyright 2019 - 2020-2021 DarkPrinc3
 
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
 #   You may obtain a copy of the License at
-
 #       http://www.apache.org/licenses/LICENSE-2.0
-
-import json
-
 #   Unless required by applicable law or agreed to in writing, software
 #   distributed under the License is distributed on an "AS IS" BASIS,
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,11 +11,11 @@ import json
 #   limitations under the License.
 import os
 import subprocess
-
+from fridaybot.utils import admin_cmd
 import requests
+import json
 
-
-@command(pattern="^.labstack ?(.*)")
+@friday.on(admin_cmd(pattern="labstack ?(.*)"))
 async def labstack(event):
     if event.fwd_from:
         return
@@ -30,7 +26,7 @@ async def labstack(event):
         filebase = input_str
     elif reply:
         filebase = await event.client.download_media(
-            reply.media, Var.TEMP_DOWNLOAD_DIRECTORY
+            reply.media, Config.TEMP_DOWNLOAD_DIRECTORY
         )
     else:
         await event.edit(

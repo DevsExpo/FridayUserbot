@@ -1,4 +1,4 @@
-#   Copyright 2019 - 2020 DarkPrinc3
+#   Copyright 2019 - 2020-2021 DarkPrinc3
 
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -12,38 +12,40 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-import asyncio
+import asyncio, coffeehouse
 
-from coffeehouse.api import API
 from coffeehouse.lydia import LydiaAI
 from telethon import events
+from fridaybot.utils import admin_cmd
+from fridaybot import CMD_HELP
+from fridaybot.Configs import Config
 
 # Non-SQL Mode
 ACC_LYDIA = {}
+SESSION_ID = {}
 
-if Var.LYDIA_API_KEY:
-    api_key = Var.LYDIA_API_KEY
-    api_client = API(api_key)
-    lydia = LydiaAI(api_client)
+if Config.LYDIA_API_KEY:
+    api_key = Config.LYDIA_API_KEY
+    lydia = LydiaAI(api_key)
 
 
-@command(pattern="^.repcf", outgoing=True)
+@borg.on(admin_cmd(pattern='rcf$'))
 async def repcf(event):
     if event.fwd_from:
         return
     await event.edit("Processing...")
     try:
         session = lydia.create_session()
-        session.id
+        session_id = session.id
         reply = await event.get_reply_message()
         msg = reply.text
-        text_rep = session.think_thought(msg)
+        text_rep = session.think_thought((session_id, msg))
         await event.edit("💫 {0}".format(text_rep))
     except Exception as e:
         await event.edit(str(e))
 
 
-@command(pattern="^.addcf", outgoing=True)
+@borg.on(admin_cmd(pattern='addcf$'))
 async def addcf(event):
     if event.fwd_from:
         return
@@ -53,20 +55,23 @@ async def addcf(event):
     reply_msg = await event.get_reply_message()
     if reply_msg:
         session = lydia.create_session()
-        session.id
-        if reply_msg.from_id is None:
+        session_id = session.id
+        if reply_msg.sender_id is None:
             return await event.edit("Invalid user type.")
-        ACC_LYDIA.update({(event.chat_id & reply_msg.from_id): session})
+        ACC_LYDIA.update({str(event.chat_id) + " " + str(reply_msg.sender_id): session})
+        SESSION_ID.update(
+            {str(event.chat_id) + " " + str(reply_msg.sender_id): session_id}
+        )
         await event.edit(
             "Lydia successfully (re)enabled for user: {} in chat: {}".format(
-                str(reply_msg.from_id), str(event.chat_id)
+                str(reply_msg.sender_id), str(event.chat_id)
             )
         )
     else:
         await event.edit("Reply to a user to activate Lydia AI on them")
 
 
-@command(pattern="^.remcf", outgoing=True)
+@borg.on(admin_cmd(pattern='remcf$'))
 async def remcf(event):
     if event.fwd_from:
         return
@@ -75,10 +80,11 @@ async def remcf(event):
     await event.edit("Processing...")
     reply_msg = await event.get_reply_message()
     try:
-        del ACC_LYDIA[event.chat_id & reply_msg.from_id]
+        del ACC_LYDIA[str(event.chat_id) + " " + str(reply_msg.sender_id)]
+        del SESSION_ID[str(event.chat_id) + " " + str(reply_msg.sender_id)]
         await event.edit(
             "Lydia successfully disabled for user: {} in chat: {}".format(
-                str(reply_msg.from_id), str(event.chat_id)
+                str(reply_msg.sender_id), str(event.chat_id)
             )
         )
     except Exception:
@@ -89,10 +95,11 @@ async def remcf(event):
 async def user(event):
     event.text
     try:
-        session = ACC_LYDIA[event.chat_id & event.sender_id]
+        session = ACC_LYDIA[str(event.chat_id) + " " + str(event.sender_id)]
+        session_id = SESSION_ID[str(event.chat_id) + " " + str(event.sender_id)]
         msg = event.text
         async with event.client.action(event.chat_id, "typing"):
-            text_rep = session.think_thought(msg)
+            text_rep = session.think_thought((session_id, msg))
             wait_time = 0
             for i in range(len(text_rep)):
                 wait_time = wait_time + 0.1
@@ -100,3 +107,16 @@ async def user(event):
             await event.reply(text_rep)
     except (KeyError, TypeError):
         return
+
+
+CMD_HELP.update(
+    {
+        "lydia": "**Lydia**\
+\n\n**Syntax : **`.addcf <reply to user>`\
+\n**Usage :** Enables Lydia ai on the user.\
+\n\n**Syntax : **`.remcf <reply to user>`\
+\n**Usage :** Disables AI Lydia on the user.\
+\n\n**Syntax : **`.repcf <reply to user>`\
+\n**Usage :** Auto reply on the user."
+    }
+)
