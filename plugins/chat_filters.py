@@ -101,7 +101,7 @@ async def reply_filter_(client, message):
         if re.search(pattern, owo, flags=re.IGNORECASE):
             f_info = await filters_info(filter_s, int(message.chat.id))
             m_s = await client.get_messages(int(Config.LOG_GRP), f_info["msg_id"])
-            if await is_media(m_s):
+            if m_s.media:
                 text_ = m_s.caption or ""
                 is_m = True
             else:
@@ -125,10 +125,6 @@ async def reply_filter_(client, message):
                 reply_to_message_id=message.message_id,
         )
 
-async def is_media(message):
-    if not (message.photo or message.video or message.document or message.audio or message.sticker or message.animation or message.voice or message.video_note):
-        return False
-    return True
 
 @friday_on_cmd(
     ["delfilters"],
