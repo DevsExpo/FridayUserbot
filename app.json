@@ -1,69 +1,75 @@
 {
-  "name": "Friday-Userbot",
-  "description": "A Userbot Based On Pyrogram.",
-  "logo": "https://telegra.ph/file/b4e1e36c6b1fcb32dd997.jpg",
-  "keywords": [
-    "telegram",
-    "fridaybot",
-    "plugin",
-    "fridaybot",
-    "productivity"
-  ],
-  "repository": "https://github.com/starkgang/FridayUserbot",
-  "website": "t.me/fridayot",
-  "success_url": "t.me/FridayOT",
-  "stack": "container",
-  "env": {
-    "API_ID": {
-      "description": "Get this value from my.telegram.org! Please do not steal",
-      "value": ""
+    "name": "Friday-Userbot",
+    "description": "A Userbot Based On Pyrogram.",
+    "logo": "https://telegra.ph/file/b4e1e36c6b1fcb32dd997.jpg",
+    "keywords": [
+        "telegram",
+        "fridaybot",
+        "plugin",
+        "fridaybot",
+        "productivity"
+    ],
+    "repository": "https://github.com/starkgang/FridayUserbot",
+    "website": "t.me/fridayot",
+    "success_url": "t.me/FridayOT",
+    "stack": "container",
+    "env": {
+        "API_ID": {
+            "description": "Get this value from my.telegram.org! Please do not steal",
+            "value": ""
+        },
+        "API_HASH": {
+            "description": "Get this value from my.telegram.org! Please do not steal",
+            "value": ""
+        },
+        "MONGO_DB": {
+            "description": "Create A Database In Mongodb And Get URL. Make Sure To Enter Correct URL!",
+            "value": ""
+        },
+        "COMMAND_HANDLER": {
+            "description": "Your Command Handler.",
+            "value": ".",
+            "required": false
+        },
+        "LOAD_UNOFFICIAL_PLUGINS": {
+            "description": "Do You Wish To Load X-Tra Plugins?",
+            "value": "True"
+        },
+        "LOG_GRP": {
+            "description": "A Group ID Where You Want To Log Important Logs.",
+            "value": ""
+        },
+        "HEROKU_API_KEY": {
+            "description": "Go to https://dashboard.heroku.com/account, scroll down and press Reveal API.",
+            "value": ""
+        },
+        "HEROKU_APP_NAME": {
+            "description": "Heroku App Name That You Filled Above.",
+            "value": ""
+        },
+        "UPSTREAM_REPO": {
+            "description": "Your Upstream URL HERE. If You're Beginner, Don't Change This.",
+            "value": "https://github.com/DevsExpo/FridayUserBot",
+            "required": false
+        },
+        "BOT_TOKEN": {
+            "description": "Your Bot Token Obtained From @BotFather. This is Not Important",
+            "value": "",
+            "required": false
+        },
+        "TZ": {
+            "description": "Your Time Zone",
+            "value": "Asia/Kolkata"
+        },
+        "STRINGSESSION": {
+            "description": "String Session, Run string_gen.py to get String Session.",
+            "value": ""
+        }
     },
-    "API_HASH": {
-      "description": "Get this value from my.telegram.org! Please do not steal",
-      "value": ""
-    },
-    "MONGO_DB": {
-      "description": "Create A Database In Mongodb And Get URL. Make Sure To Enter Correct URL!",
-      "value": ""
-    },
-    "COMMAND_HANDLER": {
-      "description": "Your Command Handler.",
-      "value": ".",
-      "required": false
-    },
-    "LOAD_UNOFFICIAL_PLUGINS": {
-      "description": "Do You Wish To Load X-Tra Plugins?",
-      "value": "True"
-    },
-    "LOG_GRP": {
-      "description": "A Group ID Where You Want To Log Important Logs.",
-      "value": ""
-    },
-    "HEROKU_API_KEY": {
-      "description": "Go to https://dashboard.heroku.com/account, scroll down and press Reveal API.",
-      "value": ""
-    },
-    "HEROKU_APP_NAME": {
-      "description": "Heroku App Name That You Filled Above.",
-      "value": ""
-    },
-    "UPSTREAM_REPO": {
-      "description": "Your Upstream URL HERE. If You're Beginner, Don't Change This.",
-      "value": "https://github.com/DevsExpo/FridayUserBot",
-      "required": false
-    },
-    "BOT_TOKEN": {
-      "description": "Your Bot Token Obtained From @BotFather. This is Not Important",
-      "value": "",
-      "required": false
-    },
-    "TZ": {
-      "description": "Your Time Zone",
-      "value": "Asia/Kolkata"
-    },
-    "STRINGSESSION": {
-      "description": "String Session, Run string_gen.py to get String Session.",
-      "value": ""
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
     }
-  }
 }
