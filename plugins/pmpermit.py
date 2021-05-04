@@ -318,6 +318,7 @@ async def pmPermit(client, message):
     if user_.is_support:
         return
     text = await get_pm_text()
+    text += "\n**You Have {warns} Of Warns.**"
     log = LogIt(message)
     capt = await get_thumb()
     pm_s_ = await get_pm_spam_limit()
